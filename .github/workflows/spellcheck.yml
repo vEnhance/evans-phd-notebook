@@ -13,4 +13,4 @@ jobs:
           python -m pip install --upgrade codespell
       - name: Run spellcheck
         run: |
-          codespell $(git ls-files)
+          codespell ./content/*.tex

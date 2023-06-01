@@ -1,3 +1,3 @@
 #!/bin/bash
 
-codespell ./*.tex
+codespell ./content/*.tex
