@@ -1,0 +1,127 @@
+\chapter{Adeles}
+\section{The adele ring}
+Let $K$ be a global field.
+\begin{definition}
+  The \alert{adele ring} of $K$ is defined as the restricted product
+  \[ \AA_K = \rprod_v (K_v, \OO_v) \]
+  across all the places $v$ of $K$,
+  both Archimedean and non-Archimedean.
+  Elements of $\AA_K$ are called adeles.
+\end{definition}
+This means that it consists of tuples $(a_v)_{v}$
+for which $a_v \in \OO_v$ for all but finitely many $v$.
+\begin{definition}
+The \alert{idele group} of $K$ is defined as the restricted product
+\[ \AA_K^\times = \rprod_v (K_v^\times, \OO_v^\times) \]
+across all the places $v$ of $K$,
+both Archimedean and non-Archimedean.
+Elements of $\AA_K^\times$ are called ideles.
+\end{definition}
+(The topology of the idele group is not
+the subspace topology of $\AA_K$,
+so the inclusion $\AA_K^\times \subseteq \AA_K$
+occurs only at the level of sets.)
+
+There are obviously diagonal inclusions
+$K \injto \AA_K$ and $K^\times \injto \AA_K^{\times}$.
+By abuse of notation we're going to just treat
+$K$ and $K^\times$ as subsets of $\AA_K$ and $\AA_K^\times$,
+hence e.g.\ $\AA_K/K$ refers to the coimage of the former map.
+
+The adelic absolute value is the map
+\[ \AA_K^\times \to \RR_{>0} \]
+given by $(a_v) \mapsto \prod_v \left\lvert a_v \right\rvert_v$.
+\begin{proposition}
+  [Product formula]
+  We have $|a|=1$ for $a \in K^\times$.
+\end{proposition}
+
+\section{Example}
+By ``strong approximation'',
+\[ \AA_{\QQ}^\times
+  = \QQ_{>0} \times \RR \times \prod_p \ZZ_p^\times. \]
+But if $K$ is a number field with class number greater than $1$
+then such a clean decomposition is usually impossible.
+
+\section{First properties of the adele ring}
+Upshots of using the restricted product include
+the following results.
+\begin{theorem}
+  [$\AA_K$ is LCA Hausdorff and self-dual]
+  $\AA_K$ is locally compact and Hausdorff,
+  and in fact equal to its own Pontryagin dual.
+\end{theorem}
+
+\begin{theorem}
+  [$K$ is the Pontryagin dual of $\AA_K/K$]
+  $K$ is a discrete co-compact subgroup of $\AA_K$.
+  In fact, $K$ and $\AA_K/K$ are Pontryagin duals.
+\end{theorem}
+
+\begin{remark*}
+In fact, it's also true that $K^\times$
+is discrete and co-compact in
+\[ \AA_K^{\mathbf 1} \defeq
+  \ker \left(
+    \left\lvert \bullet \right\rvert \colon
+    \AA_K^\times \to \RR^\times
+  \right) \]
+the set of ideles of adelic absolute value $1$.
+
+In general, it may be shown
+there is a short exact sequence
+\[
+  1 \to \frac{K_\infty^{\mathbf 1} \times
+    \prod_{v < \infty} \OO_v^\times}{\OO_K^\times}
+    \to \frac{\AA_K^{\mathbf 1}}{K^\times}
+    \to \opname{ClassGrp}(K) \to 1
+\]
+which does not necessarily split,
+though when $K$ has trivial class group
+it does explicitly characterize $\AA^{\mathbf 1}$
+(e.g.\ $K=\QQ$, as we saw in the earlier example).
+
+This short exact sequence is conceptually nice because
+it implies both Dirichlet's unit theorem,
+and the finiteness of the class group,
+solely from the compactness of the center term.
+\end{remark*}
+\todo{citation needed on Dirichlet unit theorem}
+
+\section{Calculus on adeles}
+The following results are included here for completeness,
+to signal that they do not depend on any of the
+automorphic-flavored stuff to follow.
+But you could skip this section for now
+and come back to it later when it's quoted, if you prefer.
+
+\subsection{Fourier setup for local fields}
+In this section, let $F$ be a local field,
+and define the following \emph{standard character} on it:
+\[
+  \psi_F(x)
+  = \begin{cases}
+    e^{-2\pi i x} & F = \RR \\
+    e^{-2\pi i |x|_p} & F = \QQ_p \\
+    e^{2\pi i a_{-1} /p} & F = \FF_p( (t) ) \\
+    \psi_0\left( \Tr_{F/F_0}(x) \right) & F = \FF_p( (t) ).
+  \end{cases}
+\]
+These choices are contrived so that later,
+if $K$ is a global field, then
+$\prod_v \psi_{K_v} \colon \AA \to \CC$ will vanish on $K$.
+
+Moreover, we can choose a Haar measure such that
+\begin{itemize}
+  \ii $dx$ is the standard Lebesgue measure for $F = \RR$
+  \ii $dx$ is twice the standard Lebesgue measure on $F = \CC$
+  \ii $dx$ is selected such that $\opname{Vol}(\OO) = (\#\OO/\mathcal D)^{-1/2}$,
+  where $\mathcal D$ is the different,
+  when $F$ is a non-Archimedean local field.
+\end{itemize}
+
+This lets us define a Fourier transform
+\[ \wh f = \int_F f(x) \psi_F(xy) \; dx. \]
+
+\subsection{Poisson summation}
+\todo{write this}

@@ -1,0 +1,545 @@
+\chapter{Prerequisites}
+This chapter covers some theory that is considered ``prerequisite''
+for all the fancy number theory to follow, but isn't already covered
+in \href{https://web.evanchen.cc/napkin.html}{Napkin}.
+
+\section{Fourier transforms}
+As usual, $\ee(t)$ is shorthand for $\exp(2\pi i t)$.
+
+\subsection{Fourier transform of a periodic function}
+We'll repeatedly need the following.
+\begin{theorem}
+[Fourier coefficients of a periodic function]
+Suppose that $g \colon \RR \to \CC$
+is smooth and satisfies $g(x+1) = g(x) + 1$.
+In that case, it can be expressed
+in terms of the basis $t \mapsto \ee(nt)$ by
+\[
+  g(x) = \sum_n a_n \ee(nx)
+  \qquad\text{where}\qquad
+  a_m = \int_0^1 g(x) \; \ee(-nx) \; dx.
+\]
+\end{theorem}
+
+Thus if $f \colon \HH \to \CC$ is holomorphic
+that satisfies $f(z+1) = f(z)$,
+then we will also have the relation
+\[ f(z) = \sum_n a_n \ee(nz) = \sum_n a_n q^n
+  \qquad\text{where}\qquad
+  a_n = \int_w^{w+1} f(z) \; \ee(-nz) \; dz \]
+for the same reason.
+Here $w$ may be any complex number in $\HH$;
+by the countour theorem, the choice doesn't matter.
+
+If we write $z = x+yi$ it's often
+more economical to divorce $x$ and $y$:
+\[ f(z) = \sum_n a_n(y) \ee(nx)
+  \qquad\text{where}\qquad
+  a_n(y) = \int_0^1 f(x+yi) \ee(-nx) \; dx \]
+
+\subsection{Fourier transform of a real function}
+Now let us suppose $f \colon \RR \to \CC$.
+We say it is
+\begin{itemize}
+  \ii of \alert{moderate decrease}
+  if $|f(x)| = O( (1+x^2)^{-1} )$, and
+  \ii a \alert{Schwartz function} (or of rapid decrease)
+  if all derivatives decay faster than any polynomial.
+\end{itemize}
+In either case,
+one can define the Fourier transform by
+\[ \wh f(\xi)
+  = \int_\RR f(x) \ee(-\xi \cdot x) \; dx \]
+which converges for any $x$.
+The advantage of the Schwartz functions is that
+$\wh{\bullet}$ is actually a bijection on this space;
+whereas $\wh f$ may not be of moderate decrease
+even if $f$ is.
+
+We'll repeatedly use the following.
+\begin{theorem}
+  [Poisson summation formula]
+  If both $f$ and $\wh f$ are both of
+  moderate decrease then
+  \[ \sum_n f(n) = \sum_n \wh f(n). \]
+\end{theorem}
+% wtf you can't just switch order of sum
+\begin{proof}
+  More generally, the following is true:
+  \[ \sum_n f(x+n) = \sum_n \wh f(n) \ee(nx). \]
+  You can prove this by applying
+  the previous result to $g(x) = \sum_n f(x+n)$.
+  Indeed, the $m$th Fourier coefficients of this $g$ is
+  \begin{align*}
+    a_m &= \int_0^1 \sum_n f(x+n) \ee(-mx) \; dx \\
+    &= \sum_n \int_0^1 f(x+n) \ee(-mx) \; dx \\
+    &= \int_\RR f(x) \ee(-m(x-\left\lfloor x \right\rfloor)) \; dx \\
+    &= \int_\RR f(x) \ee(-mx) \; dx = \wh f(m).
+    \qedhere
+  \end{align*}
+\end{proof}
+
+We'll also occasionally use:
+\begin{theorem}
+  [Fourier inversion]
+  If $f$ is a Schwartz function then
+  \[ \wh{\wh{f}}(x) = f(-x). \]
+\end{theorem}
+
+\subsection{Applications of Fourier stuff}
+We do now a few calculations which we will use later.
+
+\begin{proposition}
+  Fix $t > 0$.
+  The Fourier transform of $h_t = \exp(-\pi t x^2)$
+  is $\wh{h_t} = \frac{1}{\sqrt{t}} h_{1/t}$.
+\end{proposition}
+\begin{proof}
+  We calculate
+  \begin{align*}
+    \wh{h}_t(\xi)
+    &= \int_\RR \exp(-\pi t x^2) \exp(-2\pi i \xi x) \; dx \\
+    &= \int_\RR \exp \left( -\frac{\pi}{t}
+      \left[ t x + i \xi \right]^2 \right)
+      \exp\left( -\frac{\pi \xi^2}{t} \right) \; dx \\
+    &= \exp\left( -\frac{\pi \xi^2}{t} \right)
+      \int_{\Im z = c} \exp \left( - \pi (\sqrt t z)^2 \right) \; dz \\
+    &= \frac{1}{\sqrt{t}}
+      \exp\left( -\frac{\pi \xi^2}{t} \right)
+      \int_{\Im z = c} \exp \left( - \pi z^2 \right) \; dz \\
+    &= \frac{1}{\sqrt{t}}
+      \exp\left( -\frac{\pi \xi^2}{t} \right)
+    = \frac{1}{\sqrt{t}} h_{1/t}(\xi).
+  \end{align*}
+  Here we used the Cauchy residue theorem
+  to assert that
+  $\int_{\Im z = c} \exp \left( - \pi z^2 \right) \; dz$
+  is independent of the choice of $c$,
+  and thus we may replace it with $0$
+  at which point we get the famous Gaussian integral.
+\end{proof}
+
+\begin{proposition}
+  Fix $t > 0$.
+  The Fourier transform of $h_t(x) = x\exp(-\pi t x^2)$
+  is $\wh{h_t} = \frac{i}{t^{3/2}} h_{1/t}$.
+  %% TODO might be off by sign
+\end{proposition}
+\begin{proof}
+  Integrate by parts and repeat previous proposition.
+\end{proof}
+
+\section{Mellin transform}
+\subsection{Generalized Mellin transform}
+We'll follow
+\href{https://people.mpim-bonn.mpg.de/zagier/files/tex/MellinTransform/fulltext.pdf}{Zagier's appendix}.
+
+Initially,
+suppose $\phi \colon (0,\infty) \to \CC$ is a smooth function
+which decays rapidly at infinity.
+We will not assume $\phi$ decays rapidly at zero
+since this restriction is too much;
+we will instead just assume it is has an asymptotic expansion
+\[ \phi(t) = \sum_n a_n t^{\alpha_n} \qquad t \to 0 \]
+where $\alpha_1$, $\alpha_2$, \dots are complex numbers
+say with $\Re \alpha_1 \le \Re \alpha_2 \le \cdots$.
+We allow this sequence to be finite,
+or also infinite if $\lim_{n \to \infty} \Re \alpha_n = \infty$.
+In the most common case this will be a
+sort of ``Taylor series'' at $0$.
+It's not required that this series actually
+converges at any point.
+
+Then we define its \alert{Mellin transform}
+$\MM\phi \colon \CC \to \CC$ by
+\[ \MM(\phi, s)
+  = \int_0^\infty t^s \phi(t) \; \frac{dt}{t} \]
+which is initially defined
+as long as $\Re s > -\Re\alpha_1$.
+(For example, $\phi$ is smooth at $0$,
+the above equation is okay for $\opname{Re} s > 0$.)
+The following result will be indispensable
+as a source of meromorphic continuations:
+
+\begin{theorem}
+  [Generalized Mellin transform
+    for rapidly decaying functions]
+  This Mellin transform $\MM(\phi, s)$
+  has a meromorphic continuation to $\CC$
+  with (at most) simple poles of residue
+  $a_n$ at $s=-\alpha_n$ (and no other poles).
+\end{theorem}
+\begin{proof}
+  Let $T > 0$ be arbitrary.
+  For each $N > 0$ write
+  \begin{align*}
+    \MM(\phi, s)
+    &= \int_0^\infty t^s \phi(t) \; \frac{dt}{t} \\
+    &= \int_0^T t^s \phi(t) \; \frac{dt}{t}
+    + \int_T^\infty t^s \phi(t) \; \frac{dt}{t} \\
+    &= \int_0^T t^s
+      \left( \phi(t) - \sum_{n=1}^N
+      a_n t^{\alpha_n} \right)
+      \; \frac{dt}{t}
+      + \sum_{n \le N} \frac{a_n}{s+\alpha_n} T^{s+\alpha_n}
+    + \int_T^\infty t^s \phi(t) \; \frac{dt}{t}
+  \end{align*}
+  which gives a desired meromorphic
+  continuation to $\Re s > - \Re \alpha_N$
+  with poles in the specified places,
+  of residue $a_n$.
+  (Moreover, this choice is independent of $T$;
+  a meromorphic continuation is going to be unique, anyways.)
+\end{proof}
+
+\subsection{Applications of Mellin}
+\begin{itemize}
+  \ii Let $\phi(t) = e^{-t}$
+  which has a Taylor expansion $1 - t + \frac{t^2}{2} - \cdots$
+  near zero.
+  Then by definition
+  \[ \MM(\phi, s) = \int_0^{\infty} t^s e^{-t} \; \frac{dt}{t}
+    = \Gamma(s) \]
+  is the famous Gamma function.
+  We now immediately know that $\Gamma$
+  has meromorphic continuation
+  with poles of residue $\frac{(-1)^n}{n!}$
+  at $s = -n$, for $n = 0, 1, \dots$.
+  Note that integration by parts gives the functional equation
+  $\Gamma(s+1) = s \Gamma(s)$,
+  and since $\Gamma(1) = 1$,
+  we could have deduced the result a similar way.
+
+  \ii More generally, if $\phi(t) = e^{-\lambda t}$
+  for some $\lambda > 0$ then
+  \[ \MM(\phi, s) = \lambda^{-s} \cdot \Gamma(s) \]
+  by a change of variables.
+  (Actually, for $\lambda = 0$ we also find that the Mellin
+  transform of a constant function is zero.)
+\end{itemize}
+
+Strong use: we can take $\phi$ a sum of such exponentials.
+Consider
+\begin{align*}
+\phi(t) &= \frac{1}{e^t-1} \\
+&= \frac{1}{t + \frac{t^2}{2!} + \dots}
+= \sum_{n \ge -1} \frac{B_{n+1}}{(n+1)!} t^n \\
+&= e^{-t} + e^{-2t} + e^{-3t} + \cdots
+\end{align*}
+where $B_{n+1}$ are the Beronulli numbers.
+Taking the Mellin transform of the last expression now gives
+\[ \MM(\phi, s) = \sum_{n \ge 1} n^{-s} \Gamma(s)
+= \Gamma(s) \zeta(s) \]
+where $\zeta$ is the Riemann zeta function.
+This gives an identity
+\[ \zeta(s) = \frac{\MM(\phi, s)}{\Gamma(s)} \]
+which is now the meromorphic continuation of $\zeta$!
+
+Let's see what we can extract about its poles.
+For $n \ge -1$,
+note that $\MM(\phi, s)$ has simple poles at $s = -n$
+of residue $\frac{B_{n+1}}{(n+1)!}$.
+For $n \ge 0$, the function $\Gamma$ has simple poles at $s = -n$
+of residue $\frac{(-1)^n}{n!}$.
+That means $\zeta$ has only a simple pole of residue $1$ at $s=1$
+(since $B_0/0! = 1$).
+And the values of the zeta function for $n \ge 0$ are now given by
+\[ \zeta(-n) = (-1)^n \frac{B_{n+1}}{n+1}. \]
+In particular, $n \ge 0$ is odd then $B_{n+1} = 0$.
+
+\subsection{Mellin transforms for functions not decaying at infinity}
+This is still not general enough for us.
+For example, we will later want to take the Mellin
+transform of a certain $\theta$ function
+corresponding to the Riemann zeta function.
+However, this function behaves like $\frac{1}{2\sqrt t}$
+for $t \to 0$ and $1/2$ for $t \to \infty$.
+This makes the previous definition fail.
+
+We will now consider a case where $t$ may not decay
+rapidly at either $0$ or $\infty$, but having
+asymptotic expansions at both
+\begin{align*}
+  \phi(t) &= \sum_n a_n t^{\alpha_n} \qquad \text{as }t \to 0 \\
+  \phi(t) &= \sum_n b_n t^{\beta_n} \qquad \text{as } t \to \infty
+\end{align*}
+where $\alpha_1$, $\alpha_2$, \dots
+and $\beta_1$, $\beta_2$, \dots are complex numbers
+with $\Re \alpha_1 \le \Re \alpha_2 \le \cdots$
+and  $\Re \beta_1 \ge \Re \beta_2 \ge \cdots$; again we assume
+$\lim_{n \to \infty} \Re \alpha_n = \infty$
+and $\lim_{n \to \infty} \Re \beta_n = -\infty$
+if either sequence is infinite.
+In that case, the original integral
+$\int_0^\infty t^s \phi(t) \frac{dt}{t}$ is defined
+if $\Re s > - \Re \alpha_1$ and $\Re s < - \Re \beta_1$.
+The problem is that this might not hold for \emph{any}
+values of $s$ at all!
+
+This means even defining the function
+which we want to take extend requires some straightforward
+but annoying work.
+Here is the specification.
+Again pick a real number $T > 0$.
+The idea is that
+$\int_0^\infty t^s \phi(t) \frac{dt}{t}$
+maybe split into
+$\int_0^T t^s \phi(t) \frac{dt}{t}
++ \int_T^\infty t^s \phi(t) \frac{dt}{t}$
+and each of the two halves will be defined somewhere
+and can be extended analytically as before.
+The explicit definition is to consider
+\begin{align*}
+  \MM(\phi, s) &=
+  \int_0^T \left( \phi(t)
+    - \sum_{n=1}^N a_n t^{\alpha_n} \right) \frac{dt}{t}
+    + \sum_{n=1}^N \frac{a_n}{s+\alpha_n} T^{s+\alpha_n} \\
+  &+   \int_T^\infty \left( \phi(t)
+    - \sum_{n=1}^N b_n t^{\beta_n} \right) \frac{dt}{t}
+    - \sum_{n=1}^N \frac{b_n}{s+\beta_n} T^{s+\beta_n}
+\end{align*}
+as $N \to \infty$.
+The first line is defined
+as long as $\Re s > - \Re \alpha_N$
+while the second line is defined
+as long as $\Re s < - \Re \beta_N$.
+Of course, the overall sum is also independent of $T$.
+Thus:
+\begin{theorem}
+  [Generalized Mellin transform]
+  Let $\phi \colon (0,\infty) \to \CC$ be a function
+  with asymptotic expansions at $0$ and $\infty$ as above.
+  Then $\MM(\phi, s)$ as given above
+  is a meromorphic function
+  with at most simple poles only at $s = -\alpha_n$ and $s = -\beta_n$,
+  of residue $a_n$ and $-b_n$ (respectively, and additively).
+\end{theorem}
+
+This means that $\MM(-,s)$ is gives an $\CC$-linear map
+from the set of functions $(0,\infty) \to \CC$
+with asymptotic expansions at $0$ and $\infty$,
+to the space of meromorphic functions.
+
+An important example we can now note:
+\begin{example}
+  [Kernel of the generalized Mellin transform]
+  Suppose $\phi(t) = 1$.
+  Then $\MM(1, s) \equiv 0$, because we have $a_1 = b_1 = 1$
+  and $\alpha_1 = \beta_1 = 0$, and $a_1 - b_1 = 0$
+  means the pole there gets cancelled out.
+  More generally, if $\phi(t)$ is any polynomial in $t$,
+  or any finite sum of $t^\alpha$ terms,
+  then its generalized Mellin transform vanishes.
+\end{example}
+This means we can shift away any constants when discussing
+the Mellin transform.
+One just has to keep in mind the definition.
+
+In general, the following result
+can be proven by change of variables.
+\begin{proposition}
+  [What happens if you $u$-sub a Mellin transform]
+  \label{prop:usubmellin}
+  Let $\phi \colon (0,\infty) \to \CC$ be a function
+  with asymptotic expansions at $0$ and $\infty$ as above.
+  Then for any $c > 0$, $d \in \RR$ and $\alpha \in \CC$,
+  \[ \MM(t^\alpha \phi(ct^d), s)
+    = \frac{\MM(\phi, \frac{s+\alpha}{d})}
+    {(c^{1/d}|d|)^{s+\alpha}}. \]
+\end{proposition}
+\begin{proof}
+  This is actually a compact way of abbreviating three changes
+  of variables; the idea is
+  \begin{align*}
+    \MM(t^\alpha \phi(ct^d), s)
+    &= \MM(\phi(ct^d), s+\alpha)
+      = |d|^{-(s+\alpha)}
+      \MM\left(\phi(ct), \frac{s+\alpha}{d} \right) \\
+    &= c^{\frac{-(s+\alpha)}{d}}
+      |d|^{-(s+\alpha)}
+      \MM\left(\phi(t), \frac{s+\alpha}{d} \right). \qedhere
+  \end{align*}
+\end{proof}
+
+
+\section{Dirichlet characters}
+\subsection{Sums involving Dirichlet characters}
+Let $\chi \colon (\ZZ/N)^\times \to \CC$
+be a primitive Dirichlet character with conductor $N$.
+
+We need two things:
+\begin{itemize}
+  \ii Recall that the \alert{Gauss sum} is defined by
+  \[ \tau(\chi) = \sum_{n \bmod N} \chi(n) \ee(n/N) \]
+  which satisfies the famous
+  identity $|\tau(\chi)| = \sqrt N$.
+
+  \ii We need the interpolation formula for
+  primitive Dirichlet characters:
+  \[ \chi(n) = \frac{\chi(-1)\tau(\chi)}{N}
+    \sum_{r \bmod N} \ol{\chi}(r) \ee(nr/N).  \]
+  The point of this formula is to re-express $\chi(n)$
+  as a sum of exponentials in $n$
+  with certain coefficients (given by $\ol{\chi}$).
+
+  In particular, this extends $\chi \colon \RR \to \CC$.
+  For example, this means we could,
+  if we wanted to, speak of the Fourier transform
+  of $\chi$ (viewed as a function of period $N$).
+\end{itemize}
+
+Here is one application of the interpolation formula.
+\begin{corollary}
+  [Twisted Poisson summation]
+  If $f$ is of moderate decay then
+  \[ \sum_n \chi(n) f(n) =
+    \frac{\tau(\chi)}{N}
+    \sum_n \ol \chi (n) \wh f\left( \frac nN \right).  \]
+\end{corollary}
+\begin{proof}
+  Let $F(n) = \chi(n) f(n)$.
+  Then by the interpolation formula, we can extend to
+  \[ F(x) = \frac{\chi(-1)\tau(\chi)}{N}
+    \sum_{r \bmod N} \ol{\chi(r)} f(x) \ee(xr/N) \]
+  Now the Fourier transform of $f(x) \ee(xr/N)$
+  is given by
+  \[ \int_\RR f(x) \ee(x r /N)
+    \ee(-\xi x) \; dx
+    = \wh f \left( \xi - \frac rN \right) \]
+  Thus, by Poisson summation formula,
+  \begin{align*}
+    \sum_n \chi(n) f(n) &= \frac{\chi(-1)\tau(\chi)}{N}
+      \sum_{r \bmod N} \sum_m \ol{\chi}(r)
+      \wh f\left( n - \frac r N \right) \\
+    &= \frac{\tau(\chi)}{N}
+      \sum_m \sum_{r \bmod N} \ol{\chi}(-r)
+      \wh f\left( m - \frac r N \right) \\
+    &= \frac{\tau(\chi)}{N} \sum_n \ol{\chi}(n)
+      \wh f\left( \frac nN \right). \qedhere
+  \end{align*}
+\end{proof}
+
+\subsection{The $L$-function of a Dirichlet character}
+We then attach the $L$-function defined by
+\[
+  L(s, \chi) = \sum_n \chi(n) n^{-s}
+  = \prod_p \left( 1 - \frac{\chi(p)}{p^{-s}} \right)
+\]
+for $\Re s > 1$.
+For example, if $\chi$ is the trivial character (so $N=1$),
+then $L(s,\chi) = \zeta$ is the Riemann zeta function.
+
+Any time we have an $L$-function
+our goal will to be get an \emph{analytic continuation}
+and a \emph{functional equation}.
+For Dirichlet characters, both goals will be achieved
+by using the following so-called \emph{theta function}.
+\begin{definition}
+  Let $\eps = \frac{1-\chi(-1)}{2}$ and define
+  \[ \theta_\chi(t)
+  = \half \sum_n n^\eps \chi(n) \exp(-\pi n^2 t). \]
+\end{definition}
+Note that $\chi(0) = 0$ unless $N = 1$,
+which would cause $\chi(0) = 1$
+(and actually $\chi \equiv 1$).
+It is clear that $\theta_\chi(t) - \half \chi(0)$
+decays rapidly as $t \to \infty$.
+We'll now show the following functional equation:
+\begin{proposition}
+  [Functional equation of the theta function]
+  We have
+  \[ \theta_\chi(t) = \frac{(-i)^\eps \tau(\chi)}
+    {N^{1+\eps} t^{\eps+1/2}}
+    \theta_{\ol{\chi}} \left( \frac{1}{N^2 t} \right). \]
+\end{proposition}
+\begin{proof}
+  By cases on whether $\eps = 0$ or $\eps = 1$;
+  just apply twisted Poisson summation
+  on $\exp(-\pi x^2t)$ and $x\exp(-\pi x^2t)$ respectively.
+\end{proof}
+When $N > 1$, this means $\theta_\chi(t)$
+decays rapidly to $0$ as well.
+Let's assume momentarily that $N > 1$,
+and see what falls out when we compute the
+Mellin transform of $\theta_\chi$.
+It equals
+\begin{align*}
+  \MM\left(\theta_\chi, s\right)
+  &= \sum_{n>0} n^\eps \chi(n)
+    \MM(\exp(-\pi n^2t), s) \\
+  &= \sum_{n>0} n^\eps \chi(n) (\pi n^2)^{-s} \Gamma(s) \\
+  &= \Gamma(s) \pi^{-s} \sum_{n>0} n^\eps \chi(n) n^{-2s} \\
+  &= \Gamma(s) \pi^{-s} L(2s-\eps, \chi)
+\end{align*}
+Replacing $s$ with $\half(s+\eps)$ and rearranging:
+\[ \MM\left(\theta_\chi, \frac{s+\eps}{2} \right)
+  = \pi^{-\half(s+\eps)}
+  \Gamma\left( \frac{s+\eps}{2} \right) L(s, \chi).  \]
+Since $\Gamma$ never vanishes,
+this gives the analytic continuation of $L(s, \chi)$.
+
+When $N = 1$ and $\chi = \mathbf 1$
+is the trivial character we get
+$\theta_\chi(t) = \frac{1}{\sqrt t} \theta_{\chi}(1/t)$,
+and so $\theta_\chi(t)$ behaves like $\frac{1}{2\sqrt t}$ at zero,
+and the Mellin transform is defined.
+The same calculation gives
+\begin{align*}
+  \MM\left(\theta_{\mathbf 1}, s\right)
+  &= \MM(1/2, 0) + \sum_{n>0} \MM(\exp(-\pi n^2t), s) \\
+  &= 0 + \Gamma(s) \pi^{-s} L(2s-\eps, \mathbf 1)
+  = \Gamma(s) \pi^{-s} \zeta(2s)
+\end{align*}
+so
+\[ \MM\left(\theta_{\mathbf 1}, s/2 \right)
+  = \Gamma(s) \pi^{-s} L(2s-\eps, \mathbf 1)
+  = \Gamma(s/2) \pi^{-s/2} \zeta(s) \]
+In this case, $\MM\left(\theta_{\mathbf 1}, s/2 \right)$
+is meromorphic except for simple poles at $s=0$ and $s=1$
+of residue $1$.
+
+The Mellin transforms we mentioned are usually
+called the completed $L$-functions as follows:
+\begin{theorem}
+  [The Mellin transform of the theta function]
+  Define
+  \[ \Lambda(s, \chi)
+    = \MM\left( \theta_\chi, \frac{s+\eps}{2} \right)
+    = \pi^{-\half(s+\eps)}
+    \Gamma\left( \frac{s+\eps}{2} \right) L(s, \chi).  \]
+  Then $\Lambda(s, \chi)$ is analytic if $\chi \ne \mathbf 1$;
+  otherwise it is meromorphic,
+  with simple poles at $s = 0$ and $s = 1$ of residue $1$.
+  Moreover, we have the functional equation
+  \[ \Lambda(s, \chi) = \Lambda(1-s, \chi). \]
+\end{theorem}
+
+\begin{proof}
+The first half of the theorem follows from Mellin transform properties.
+To show the functional equation, use Proposition~\ref{prop:usubmellin}
+to clean everything up once the theta function is used.
+\begin{align*}
+  \Lambda(s, \chi) &= \MM\left(\theta_\chi(t),
+    \frac{s+\eps}{2} \right)
+  = \MM\left(
+    \frac{(-i)^{\eps} \tau(\chi)}{N^{1+\eps} t^{\eps+1/2}}
+    \theta_{\ol\chi}
+    \left( \frac{1}{N^2} t^{-1} \right),
+    \frac{s+\eps}{2} \right) \\
+  &= \frac{(-i)^{\eps} \tau(\chi)}{N^{1+\eps}}
+    \cdot \MM\left( t^{-(\eps+1/2)}\theta_{\ol\chi}
+    \left( \frac{1}{N^2} t^{-1} \right),
+    \frac{s+\eps}{2} \right) \\
+  &= \frac{(-i)^{\eps} \tau(\chi)}{N^{1+\eps}}
+    \cdot \frac{\MM\left( \theta_{\ol\chi},
+    \frac{\frac{s+\eps}{2} - (\eps + 1/2)}{-1} \right)}
+    {\left( N^2 \right)^{\frac{s+\eps}{2} - (\eps+1/2)}}
+  = \frac{(-i)^{\eps} \tau(\chi)}{N^{s}}
+    \cdot \MM\left( \theta_{\ol\chi},
+    \frac{(1-s)+\eps}{2}\right) \\
+  &= \frac{(-i)^{\eps} \tau(\chi)}{N^{s}}
+    \Lambda(\theta_{\ol\chi}, 1-s). \qedhere
+\end{align*}
+\end{proof}
+
+\section{Linear algebraic groups}

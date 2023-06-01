@@ -1,0 +1,121 @@
+\chapter{Whittaker models}
+\section{Local uniqueness}
+Let $F$ be a non-Archimedean local field,
+$G = \GL_2(F)$,
+$N = \left\{ \begin{bmatrix}
+  1 & x \\ 0 & 1
+\end{bmatrix} \right\}$,
+and $\psi_F$ a fixed additive character.
+Since $N \cong F$, we can think of $\psi_F$ as a one-dimensional representation of $N$.
+
+Recall that we have the \alert{induced representation}
+\[
+  \Ind^G_N \psi_F
+  =
+  \left\{ W \colon G \to \CC \mid
+    W\left( \begin{bmatrix} 1 & x \\ 0 & 1 \end{bmatrix} \cdot g\right)
+  = \psi_F(x) W(g) \; \forall x \in F, g \in \GL_2(F)
+  \right\}.
+\]
+\begin{definition}
+  A \alert{Whittaker model} $\WW$ of $(V, \pi)$
+  is a subrepresentation of $\Ind^G_N \psi_F$ isomorphic to $\WW$.
+\end{definition}
+
+\begin{theorem}
+  [Local uniqueness]
+  An irreducible admissible representation of $\GL_2(F)$
+  has at most one Whittaker model.
+\end{theorem}
+\begin{proof}
+  By Frobenius reciprocity reduce to fact about functional.
+\end{proof}
+
+\section{Global uniqueness}
+If $K$ is a global field,
+a \alert{Whittaker model} is a subspace of
+\[
+  \left\{ W \colon G \to \CC \mid
+    W\left( \begin{bmatrix} 1 & x \\ 0 & 1 \end{bmatrix} \cdot g\right)
+    = \psi_{\AA/K}(x) W(g) \; \forall x \in K, g \in \GL_2(K)
+  \right\}
+\]
+closed under translation by $G$.
+We also assume the functions in $\WW$ are smooth, $K$-finite,
+and of moderate growth.
+
+\begin{theorem}
+  [Global uniqueness]
+  An irreducible admissible representation $\pi$ of $G = \GL_2(\AA)$
+  has a Whittaker model if and only if each $\pi_v$ has a Whittaker model.
+  If so it is unique and equals the sums of
+  $g \mapsto \prod_v W_v(g_v)$,
+  where $W_v \in \WW_v$ and for almost all $v$ we have $W_v$ equal
+  to the spherical element of $\WW_v$, normalized to equal $1$ on $K_v = \GL_2(\OO_v)$.
+\end{theorem}
+
+\section{Automorphic cuspidal representations have Whittaker models}
+\begin{theorem}
+  [Whittaker model for an automorphic cuspidal representation]
+  Let $V$ be an automorphic \emph{cuspidal} representation.
+  For each $\phi \in V$ define
+  \[ W_\phi(g) = \int_{\AA/K} \phi\left( \begin{bmatrix}
+      1 & x \\ & 1
+  \end{bmatrix} g\right) \psi_K(-x) \; dx.
+  \]
+  The space $\WW = \left\{ W_\phi \mid \phi \in V \right\}$ is a Whittaker model.
+  It satisfies Fourier expansion
+  \[ \phi(g) = \sum_{\alpha \in K^\times}
+    W_\phi \left( \begin{bmatrix} \alpha \\ & 1 \end{bmatrix} g\right).  \]
+\end{theorem}
+The multiplicity one theorem follows from this.
+
+\section{The zeta integral}
+Given an automorphic cuspidal $\phi$
+and a central quasicharacter $\xi$ we define
+\begin{align*}
+  Z(s, \phi, \xi)
+  &\defeq \int_{\AA^\times/K^\times}
+  \phi\left( \begin{bmatrix} y \\ & 1 \end{bmatrix} \right)
+  |y|^{s-\half} \xi(y) \; d^\times y \\
+  &= \sum_{\alpha \in K^\times} \int_{\AA^\times/K^\times}
+  W_\phi\left( \begin{bmatrix} y \\ & 1 \end{bmatrix} \right)
+  |y|^{s-\half} \xi(y) \; d^\times y \\
+  &= \int_{\AA^\times}
+  W_\phi\left( \begin{bmatrix} y \\ & 1 \end{bmatrix} \right)
+  |y|^{s-\half} \xi(y) \; d^\times y.
+\end{align*}
+If $\phi = \bigotimes_v \phi_v$ and $W_\phi = \bigotimes_v W_v$
+then $Z(s, \phi, \xi) = \prod_v Z_v(s, W_v, \xi_v)$.
+
+In general, if $F$ is a non-Archimedean local field
+then most irreps of $F$ are isomorphic to $\pi(\chi_1, \chi_2)$,
+the so-called principle series.
+Then $\alpha_1 = \chi_1(\varpi)$ and $\alpha_2 = \chi_2(\varpi)$
+are called the Satake parameters.
+
+\begin{theorem}
+  If $v$ is unramified then
+  \[
+    W_v \left( \begin{bmatrix}
+      y \\ & 1
+  \end{bmatrix}\right)
+  =
+  \begin{cases}
+    q^{-m/2} \cdot \frac{\alpha_1^{m+1}-\alpha_2^{m+1}}{\alpha_1-\alpha_2} & m \ge 0 \\
+    0 & m < 0
+  \end{cases}
+\]
+where $m = \ord_v(y)$.
+Consequently, a direct calculation shows
+\[ Z_v(s, W_v, \xi_v) = L_v(s, \pi_v, \xi_v)
+  = \left( 1 - \alpha_1 \xi(\varpi) q^{-s} \right)\inv
+  \left( 1 - \alpha_2 \xi(\varpi) q^{-s} \right)\inv. \]
+\end{theorem}
+Since the Satake parameters of the contragredient $\wh{\pi_v}$
+are exactly $\alpha_1\inv$, $\alpha_2\inv$, it follows that
+\[ L_v(s, \wh \pi_v, \xi_v\inv) = L_v(s, \pi_v, \omega_v\inv \xi_v\inv) \]
+
+Using this, we get a functional equation
+\[ L(s, \pi, \xi)=  L(1-s, \wh\pi, \xi\inv) \cdot \text{gamma crap}. \]
+Dubious: discuss

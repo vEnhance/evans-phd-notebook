@@ -1,0 +1,231 @@
+\chapter{Tate's thesis}
+\section{Goals moving forward (road map of the future)}
+In brief, take a unitary character
+$\omega \colon \AA^\times / K^\times \to \CC$,
+known as a \alert{Hecke character}
+(analogous to the nebentypus Dirichlet character from earlier).
+An adelic automorphic form with central quasicharacter
+$\omega$ will be a function
+\[ \phi \colon \GL_n(\AA_K) \to \CC \]
+obeying the conditions
+\begin{itemize}
+  \ii For all $g \in \GL_n(\AA_K)$
+    and $z \in \AA_K^\times$, we have
+  \[
+    \phi\left(
+      \begin{bmatrix}
+        z \\ & \ddots \\ && z
+      \end{bmatrix}
+      g
+    \right) = \omega(z) \phi(g).
+  \]
+  The choice of the letter $z$ comes from the fact
+  that the center of the group $\GL(n, \AA_K)$
+  is exactly the diagonal matrices appearing above.
+  \ii For all $g \in \GL_n(\AA_K)$ and
+  $\gamma \in \GL_n( K^\times)$ we have
+  \[ \phi(\gamma g) = \phi(g). \]
+  The name ``automorphic'' comes from here,
+  and means we may equally regard
+  $\phi$ as a function on
+  $\GL_n(K^\times) \backslash \GL_n(\AA_K)$.
+  \ii Four other technical niceness conditions defined later.
+\end{itemize}
+We are going to have two goals:
+\begin{description}
+  \ii[First goal --- tying forms to representations]
+  Connect automorphic forms to certain
+  ``representations'' on some space of functions
+  $\GL_n(K^\times) \backslash \GL_n(\AA_K) \to \CC$.
+  This is analogous to how we saw that modular forms
+  and Maass forms turned out to correspond exactly
+  with representations of $L^2(\Gamma \backslash \SL(2,\RR))$.
+
+  \ii[Second goal --- $L$-functions]
+  For each such representation, construct an $L$-function,
+  give it an analytic continuation, and exhibit a functional equation.
+  (One common trend in analytic number theory
+  is that $L$-functions are worth their weight in gold.)
+\end{description}
+There is one place where the analogy is slightly weaker.
+Rather than attaching $L$-functions directly to the
+automorphic \emph{forms},
+it turns out to be more convenient to attach them to the
+automorphic \emph{representations} directly.
+
+\todo{make a table?}
+
+\section{Motivation}
+Even for $n=2$, this task we described will be rather technical
+(let alone replacing $\GL_n$ with a general algebraic group).
+
+So we will first examine the case where $n=1$;
+a result widely known now as Tate's thesis.
+In this case much of the theory simplifies immensely:
+\begin{exercise}
+  When $n=1$, in the notation of the earlier section,
+  prove that $\phi = c \omega$ for some constant $c$.
+\end{exercise}
+In other words, there's only a one-dimensional space
+of forms anyways (once $\omega$ is fixed)
+and they are literally just multiples of $\omega$.
+Hence Tate's thesis only involves constructing $L$-functions
+for each given Hecke character $\omega$.
+
+It is traditional that for Tate's thesis,
+the Hecke character is denoted by $\chi$ rather than $\omega$.
+
+\section{Local functional equation}
+Let $F$ be a local field, and $\eta \colon F^\times \to S^1$
+a unitary character on it.
+Recall that $\eta$ is unramified if it is trivial on $\OO^\times$,
+which is equivalent to $\eta(x) = |x|^{i\lambda}$ for $\lambda \in \RR$
+
+\subsection{Non-Archimedean definition}
+If $F$ is non-Archimedean,
+the local $L$-factors are defined in the following way:
+\[
+  L(s, \eta) =
+  \begin{cases}
+    1 & \text{ramified} \\
+    \left( 1 - \eta(\varpi) q^{-s} \right)^{-1} & \text{unramified}.
+  \end{cases}
+\]
+More generally, we may define for any Schwartz function $f$ the local zeta integral
+\[
+  Z(s, \eta, f) = \int_{F^\times} |x|^s \eta(x) f(x) \; dx^\times.
+\]
+We justify ``more generally'' right away with the following calculation.
+\begin{proposition}
+  [Zeta integral generalizes $L$-factor, at least in unramified case]
+  Suppose $F$ is non-Archimedean
+  and $\eta$ is a unramified unitary character on $F$.
+  Then we have
+  \[ L(s, \eta) = Z(s, \eta, 1_\OO). \]
+\end{proposition}
+In other words, $L$ is a special case of $Z$ with $f = 1_\OO$.
+\begin{proof}
+  By condition, $\eta(x) = |x|^{i\lambda}$
+  for some $\lambda \in \RR$ with $\eta$ trivial on $\OO$.
+  Show both equal to $Z(s + i\lambda, 1, 1_\OO)$.
+  Poonen left this as homework so I didn't do it.
+\end{proof}
+The ramified case is more annoying.
+\begin{proposition}
+  [Ramified case]
+  Suppose $F$ is non-Archimedean
+  and $\eta$ is a unitary character on $F$ with conductor $\kp^n$.
+  Then
+  \[ Z(s, \eta, 1_{1+\kp^n}) = q^{-n}. \]
+\end{proposition}
+Of course since $L(s,\eta)=1$ in this situation we could also
+write $Z(s, \eta, 1_{1+\kp^n}) = q^{-n} L(s, \eta)$,
+but that would be silly.
+
+\subsection{Archimedean definition}
+If $F = \RR$, we instead have the complicated formula
+\[
+  L(s, \underbrace{|x|^\lambda \sign(x)^\eps}_{=\eta} )
+  = \pi^{-\half(s+\lambda+\eps)/2} \Gamma\left( \frac{s+\lambda+\eps}{2} \right)
+\]
+and when $F = \CC$ the formula
+\[
+  L(s, \underbrace{|x|^{2 \lambda} (x/|x|)^n}_{=\eta} )
+  = 2(2\pi)^{-(s+\lambda+\half|n|)} \Gamma\left( s + \lambda + \frac{|n|}{2} \right).
+\]
+Again, these can be viewed as special cases of the zeta integral.
+\begin{proposition}
+  [Archimedean relation]
+  We have
+  \begin{align*}
+    L(s, \eta)
+    &= \begin{cases}
+      Z(s, e^{-\pi x^2}, \eta) & \eta = |x|^\lambda, F = \RR \\
+      i Z(s, e^{-\pi x^2}, \eta) & \eta = |x|^\lambda \sign(x), F = \RR \\
+      (-i)^a \dots Z(s, \dots, \dots) & F = \CC
+    \end{cases}
+  \end{align*}
+\end{proposition}
+\begin{proof}
+  Bash.
+\end{proof}
+
+\subsection{The local functional equation for a test function}
+We can coalesce the earlier three results in the following lemma.
+\begin{proposition}
+  [The local functional equation holds for our test function]
+  Let $F$ be a local field, and $\eta$ a unitary character on it.
+  Then there exists \emph{single, nice explicit choice}, of function $f$,
+  such that
+  \[ \frac{Z(1-s, \wh{f}, \ol\eta)}{L(1-s, \ol\eta)}
+  = \eps(s, \eta) \cdot \frac{Z(s, f, \eta)}{L(s, \eta)}. \]
+  holds for $0 < \sigma < 1$,
+  with $\eps$ of exponential type in $s$.
+  Moreover, the left-hand side is nonvanishing holomorphic when $\sigma > 0$,
+  while the right-hand side is nonvanishing holomorphic when $\sigma < 1$.
+\end{proposition}
+The choice of $f$ is called a \emph{test function},
+and it's just the function we chose in the earlier proofs.
+We will see this lemma
+verifies the functional equation for a single value of $f$.
+\begin{proof}
+  Earlier, we saw that each $L(s, \eta)$
+  is basically equal (up to some constant) to
+  $Z(f, s, \eta)$ for some choice of $f$:
+  \begin{itemize}
+    \ii $f = \OO$ if $\eta$ is unramified on non-Archimedean $F$
+    \ii $f = 1_{1+\kp^n}$ if $\eta$ is ramified on non-Archimedean $F$
+    \ii $f = e^{-\pi x^2}$ if $F = \RR$
+    \ii \dots if $F = \CC$.
+  \end{itemize}
+  So naturally, we use this as our function $f$.
+  This means the right-hand side is basically known at this point.
+  The difficulty is to calculate the left-hand side.
+
+  For the $\RR$ and $\CC$ case, this is not much different.
+  It's more difficult in the non-Archimedean case and requires a Gauss sum.
+\end{proof}
+
+\subsection{The local functional equation}
+The main result is the earlier local functional equation holds
+for any function $f$ and the epsilon factor does
+\begin{theorem}
+  [Local functional equation]
+  For any Schwartz function $f$ and unitary character $\eta$,
+  \[ \frac{Z(1-s, \wh{f}, \ol\eta)}{L(1-s, \ol\eta)}
+  = \eps(s, \eta) \cdot \frac{Z(s, f, \eta)}{L(s, \eta)}. \]
+  Moreover, the left-hand side is nonvanishing holomorphic when $\sigma > 0$,
+  while the right-hand side is nonvanishing holomorphic when $\sigma < 1$.
+\end{theorem}
+\begin{proof}
+  It suffices to prove that for arbitrary Schwartz functions $f$ and $g$ we have
+  \[ Z(s, \eta, f) Z(1-s, \ol\eta, \wh g)
+    = Z(s,\eta, g)Z(1-s, \ol\eta, \wh f). \]
+  Bash with Fubini theorem.
+\end{proof}
+
+
+\section{Global functional equation}
+A Schwartz function on $\AA_K$ is a function $\prod_{v \in K} f_v$
+such that $f_v = 1_{\OO_v}$ almost everywhere.
+For such a function we may define the global zeta integral
+\[ Z(s, f, \eta) = \int_{\AA^\times} |x|^s \eta(x) f(x) \; d^\times x \]
+in nearly the same way as before.
+In fact,
+\[ Z(s, f, \eta) = \prod_v Z(s, f_v, \eta_v). \]
+
+\begin{theorem}
+  This integral converges when $\sigma > 1$ and satisfies
+  \[ Z(s, f, \eta) = Z(1-s, \wh f, \ol\eta). \]
+\end{theorem}
+\begin{proof}
+  Poisson summation.
+\end{proof}
+
+Finally, we may define
+\begin{align*}
+  L(s, \eta) &= \prod_v L(s, \eta_v) \\
+  \eps(s, \eta) &= \prod_v \eps(s, \eta_v)
+\end{align*}
+and multiply everything together to get that
+\[ L(s, \eta) = \eps(s, \eta) L(1-s, \ol \eta). \]

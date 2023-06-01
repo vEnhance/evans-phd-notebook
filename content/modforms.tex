@@ -1,0 +1,457 @@
+\chapter{Modular forms}
+\section{The half-plane and the modular group}
+\subsection{The action of $\SL_2(\RR)$ on the half-plane}
+As usual, let $\HH = \{ z \mid \Im z > 0 \}$ be the half-plane.
+Then there is a famous action of $\SL_2(\RR)$ on $\HH$ given by
+\[
+  \begin{bmatrix}
+    a & b \\ c & d
+  \end{bmatrix}
+  \colon
+  z \mapsto \frac{az+b}{cz+d}.
+\]
+This action is not quite faithful, so commonly one will work in
+$\PSL_2(\RR) = \SL_2(\RR) / \{\pm I\}$ instead.
+The action on $\HH$ is transitive though;
+\[ \begin{bmatrix}
+    y^{1/2} & xy^{-1l2} \\
+    0 & y^{-1/2}
+  \end{bmatrix}
+  : i \mapsto x+yi. \]
+
+Let's record a few properties of the action.
+First, an identity that will come into play surprisingly often.
+\begin{proposition}
+  [The stupid identity]
+  For any $\gamma \in \SL_2(\RR)$ and $z = x+yi \in \HH$,
+  \[ \Im \gamma(z) = \frac{y}{|cz+d|^2}. \]
+\end{proposition}
+\begin{proof}
+  Trivial.
+  Compute it directly.
+\end{proof}
+
+\begin{definition}
+  An element $\gamma \in \SL_2(\RR)$ with $\gamma \neq \pm I$ is called
+  \begin{itemize}
+    \ii \alert{elliptic} if $\left\lvert \Tr\gamma \right\rvert < 2$;
+    \ii \alert{parabolic} if $\left\lvert \Tr\gamma \right\rvert = 2$;
+    \ii \alert{hyperbolic} if $\left\lvert \Tr\gamma \right\rvert > 2$.
+  \end{itemize}
+\end{definition}
+
+We extend the action of $\gamma$ to include the ``boundary'' of $\HH$,
+which is $\RP^1 = \RR \cup \{i\infty\}$.
+It still has the same formula $z \mapsto \frac{az+b}{cz+d}$ on $\RP^1$.
+Warning: in pictures, $\infty$ is typically drawn at $i\infty$.
+\begin{proposition}
+  [Number of fixed points]
+  For $\gamma \ne \pm I$,
+  \begin{itemize}
+    \ii An elliptic element has exactly one fixed point in $\HH$.
+    \ii A parabolic element has two fixed points, both in $\RP^1$.
+    \ii A hyperbolic element has exactly one fixed point in $\RP^1$.
+  \end{itemize}
+\end{proposition}
+\begin{proof}
+  Set $z = \frac{az+b}{cz+d}$ and look at the corresponding quadratic
+  $cz^2 + (d-a)z - b = 0$.
+  It is a quadratic in $z$ with real coefficients,
+  so either it has a pair of complex conjugate roots, or it has 1-2 real roots.
+  Its discriminant is $(d-a)^2 + 4bc = (d+a)^2 - 4$,
+  and the cases correspond to whether the determinant is positive,
+  zero, or negative.
+\end{proof}
+
+\begin{proposition}
+  The stabilizer of an elliptic element is a cyclic group.
+\end{proposition}
+\begin{proof}
+  Let $\gamma$ be an elliptic element fixing $z$.
+  By conjugating (since the action on $\HH$ is transitive),
+  we may as well assume $z = i$.
+  The stabilizer of $i$ in $\SL_2(\RR)$ is
+  \[ \opname{SO}(2) = \left\{ \begin{bmatrix}
+      a & b \\
+      b & -a
+    \end{bmatrix} \colon a^2+b^2=1 \right\} \]
+  and any discrete subgroup of $\opname{SO}(2)$ is cyclic.
+\end{proof}
+% Isawara decomposition
+
+\subsection{Fuchsian groups}
+Generally, we're going to mod out $\HH$ by the action of subgroups of $\SL_2(\RR)$
+which are discrete. We name them now:
+\begin{definition}
+  A \alert{Fuchsian group} is a discrete subgroup of $\SL_2(\RR)$.
+\end{definition}
+\begin{proposition}
+  A subgroup of $\SL_2(\RR)$ is Fuchsian
+  if and only if it acts \emph{discontinuously} on $\HH$,
+  meaning for any two compact subsets $K_1$ and $K_2$,
+  the set $\{ \gamma \mid \gamma(K_1) \text{ meets } K_2 \}$ is finite.
+\end{proposition}
+
+The most important Fuchsian groups are the so-called congruence subgroups.
+\begin{definition}
+  For every positive integer $N$, we will let
+  \[
+    \Gamma(N) =
+    \left\{ \begin{bmatrix} a & b \\ c & d \end{bmatrix} \in \SL_2(\ZZ)
+    \mid a \equiv d \equiv 1 \bmod N, b \equiv c \equiv 0 \bmod N\right\}.
+  \]
+  In other words, these are matrices congruent to the identity modulo $N$.
+  (In still other words, $\Gamma(N)$ is the kernel
+  of the map $\SL_2(\ZZ) \to \SL_2(\ZZ/N)$.)
+  Note in particular $\Gamma(1) = \SL_2(\ZZ)$.
+  A subgroup of $\Gamma(1)$ is a \alert{congruence subgroup}
+  if it contains $\Gamma(N)$ for some $N$.
+\end{definition}
+Note that ``most congruence subgroups contain no elliptic elements''.
+
+\subsection{Cusps}
+Let $\Gamma$ be a Fuchsian group,
+and consider its action on $\RP^1$.
+\begin{definition}
+  A \alert{cusp} of $\Gamma$ is an element of $\RP^1$
+  which is fixed by some parabolic element of $\Gamma$.
+  By abuse of language we refer to an equivalence class of cusps
+  under the action of $\Gamma$ as ``a'' cusp as well.
+\end{definition}
+
+\begin{proposition}
+  The cusps of $\Gamma(1)$ are exactly $\QQ \cup \{i\infty\}$.
+\end{proposition}
+\begin{proof}
+  Note $i\infty$ is a cusp by
+  $\begin{bmatrix} 1 & 1 \\ 0 & 1 \end{bmatrix} \in \Gamma(1)$.
+  And if $q = m/n$ for $\gcd(m,n)=1$,
+  \[ \gamma(q) = q \text{ for } \gamma =
+    \begin{bmatrix} 1+mn & -m^2 \\ n^2 & 1-mn \end{bmatrix} \]
+
+  Conversely, if $r \in \RR$ is the cusp of some $\gamma \in \Gamma(1)$,
+  then $r$ is the double root of $\frac{az+b}{cz+d} = z$,
+  so it must be rational.
+\end{proof}
+
+In general, given a Fuchsian group $\Gamma$, we denote by $\HH^\ast_\Gamma$
+(or just $\HH^\ast$ if $\Gamma$ is implied)
+the extended half-plane with the cusps added.
+Thus $\Gamma$ acts on $\HH^\ast$ too.
+
+\subsection{The classical picture of $\SL_2(\ZZ)$}
+TO BE WRITTEN
+
+\subsection{Compactification}
+The quotient space $\Gamma \backslash \HH^\ast$ can be made into a Riemann surface.
+
+%% TODO way more details
+
+\section{Modular forms}
+\subsection{Definition on $\Gamma(1)$}
+Let $k$ be an even nonnegative integer.
+\begin{definition}
+  A \alert{modular form} for $\Gamma(1)$ of \emph{weight} $k$
+  is a holomorphic function $f \colon \HH \to \CC$ satisfying
+  \[ f \left( \frac{az+b}{cz+d} \right) = (cz+d)^k f(z) \]
+  and which is holomorphic at the cusp $i\infty$.
+  If it also vanishes at the cusp, we say it is \alert{cuspidal}.
+\end{definition}
+To explain ``holomorphic at the cusp'', note that $f(z+1) = f(z)+1$ and so one
+ought to be able to write the Fourier expansion
+\[ f(z) = \sum_{n} a_n \ee(nz) = \sum_n a_n q^n \]
+for some coefficients $a_n$, with $q = \ee(z)$ the nome.
+One can then discuss holomorphic/meromorphic/vanishing at the cusp
+by taking $z \to i \infty$ (equivalently, $q \to 0$);
+we say $f$ is holomorphic at the cusp if $a_n = 0$ for all $n < 0$,
+vanishes at the cusp if $a_n = 0$ for all $n \le 0$
+and is meromorphic at the cusp if $a_n = 0$ for all $n < -N$ for some $N$.
+
+We may as well define the slash operator now for notational convenience.
+\begin{definition}
+  If $f \colon \HH \to \CC$ is holomorphic,
+  and $\gamma = \abcd \in \GL_2^+(\RR)$, then we let
+  \[ (f|\gamma)(z) = (\det \gamma)^{k/2} (cz+d)^{-k}
+    f\left( \frac{az+b}{cz+d} \right) \]
+\end{definition}
+The symbol is called a \alert{slash operator}.
+Then the modularity of $f$ is just asserting $f|\gamma = f$ for $\gamma \in \SL_2(\ZZ)$.
+
+\begin{proposition}
+  [Slash operator is a right acttion]
+  We have $f|(\gamma_1\gamma_2) = (f|\gamma_1)|\gamma_2$
+  for any $\gamma_1, \gamma_2 \in \GL_2^+(\RR)$.
+\end{proposition}
+\begin{proof}
+  Obvious.
+\end{proof}
+
+\subsection{Definition for a general Fuchsian group}
+We may as well introduce the notation now for these forms.
+
+Let $\Gamma$ be a Fuchsian group.
+\begin{definition}
+A modular form for $\Gamma$ of weight $k$ is a holomorphic $f \colon \HH \to \CC$
+for which $f|\gamma = f$ holds for any $\gamma \in \Gamma$,
+and which is holomorphic at every cusp in the following sense:
+
+Given a cusp $t \in \RR \cup \{i\infty\}$,
+we choose $\rho = \abcd \in \SL_2(\RR)$ with $\rho(t) = i\infty$,
+and consider $f|\rho\inv$ instead.
+There will exist $h$ with $f(z+h) = f(z)$,
+and we can thus take a Fourier expansion $f(z) = \sum_n a_n q^{n/h}$.
+We can then define holomorphic/vanishing/meromorphic at the cusp.
+\end{definition}
+
+Then $M_k(\Gamma)$ denotes the set of modular forms for $\Gamma$,
+and $S_k(\Gamma)$ the set of cusp forms.
+
+We will not usually need this level of generality:
+\begin{itemize}
+  \ii When $\Gamma$ is a congruence group,
+  there will exist $\mat 1h01 \in \Gamma$ for some $h$,
+  so $i\infty$ will be a cusp anyways ($\rho = \id$).
+  \ii If we specialize further to $\Gamma = \Gamma_0(N)$
+  or $\Gamma = \Gamma_1(N)$, defined later, then we may take $h=1$.
+\end{itemize}
+We will almost always restrict to the case we mentioned where $\Gamma$
+is a congruence subgroup containing $\mat1101$;
+in which case the modular form $f$ simply obeys $f(z+1)=f(z)$
+and no further antics are needed to discuss the Fourier coefficients.
+
+\subsection{Growth rate}
+It will be useful to know that cusp forms decay quickly as $y \to \infty$.
+\begin{lemma}
+  [Cusp forms decay rapidly at infinity and are bounded]
+  For any cusp form $f$ for a congruence group,
+  we have $|f(z)| = O(e^{-c y})$
+  as $y \to \infty$, uniformly in $x$,i
+  for some constant $c$ in terms of $f$.
+
+  Moreover, there is a constant $C_f$
+  such that $|f(z)| < C_fy^{-k/2}$ for all complex numbers $z$.
+\end{lemma}
+% Probably true for Fuchsian groups with \infty as pole
+\begin{proof}
+  We know $f(z) = \sum_n a_n q^{n/h}$, and since $|q|=e^{-2\pi y}$ we have
+  \[ |f(z)| \le \sum_{n \ge 1} a_n e^{-2\pi n y / h} = O(e^{-2\pi y / h}) \]
+  as claimed, as $y \to \infty$.
+
+  To get the bound for all $y$, the stupid identity
+  implies that the function
+  $z \mapsto |f(z) y^{k/2}|$ is invariant under $\Gamma(1)$,
+  and (since $f$ is a cusp form)
+  approaches zero rapidly as $y \to \infty$.
+  In particular, this function is bounded on some fundamental domain,
+  and thus is bounded above by some constant $C_f$.
+\end{proof}
+
+
+\subsection{Important special case with $\Gamma_0(N)$ and $\Gamma_1(N)$; twisting by nebentypus}
+In particular, we now define two important congruence subgroups
+that will become relevant later on.
+\begin{definition}
+  We let
+  \[ \Gamma_0(N) =
+    \left\{ \begin{bmatrix} a & b \\ c & d \end{bmatrix} \in \SL_2(\ZZ)
+    \mid c \equiv 0 \bmod N\right\} \]
+  and
+  \[ \Gamma_1(N) =
+    \left\{ \begin{bmatrix} a & b \\ c & d \end{bmatrix} \in \SL_2(\ZZ)
+    \mid a \equiv d \equiv 1 \pmod N, \; c \equiv 0 \bmod N\right\} \]
+  Note that $\Gamma_0(N) \supset \Gamma_1(N) \supset \Gamma(N)$.
+\end{definition}
+
+It's common to call $\Gamma_0(N)$ the \alert{level group},
+and we will use it more than $\Gamma_1(N)$.
+For $\Gamma_0(N)$ we will also permit twisting by a Dirichlet character:
+\begin{definition}
+  Let $\chi$ be a Dirichlet character modulo $N$ (not necessarily primitive).
+  A \alert{modular form of level $N$ with weight $k$ and nebentypus $\chi$}
+  is an element of $M_k(\Gamma_1(N))$ which satisfies the additional relation
+  \[ f\left( \frac{az+b}{cz+d} \right)
+    = (cz+d)^k \chi(d) f(z)  \]
+  for $\abcd \in \Gamma_0(N)$.
+  The set is denoted $M_k(\Gamma_0(N), \chi)$.
+
+  The cusp forms of level $N$ with weight $k$ and nebentypus $\chi$
+  are denoted similarly by $S_k(\Gamma_0(N), \chi)$;
+  they are the above modular forms which also vanish at the cusp.
+\end{definition}
+Note that $S_k(\Gamma_0(N), \mathbf 1) = S_k(\Gamma_1(N))$.
+In fact,
+\begin{theorem}
+  We have \[ M_k(\Gamma_1(N)) = \bigoplus_{\chi \bmod N} M_k(\Gamma_0(N)) \]
+  where the direct sum is over all Dirichlet characters modulo $N$,
+  not necessarily primitive.
+\end{theorem}
+\begin{proof}
+  %% TODO to be added
+\end{proof}
+
+We remind the reader that $\mat1101 \in \Gamma_1(N)$,
+so any modular forms in this group will satsify $f(z+1)=f(z)$
+and thus have a Fourier expansion $\sum_n a_n q^n$ (with no floating $h$).
+
+\section{Classification of modular forms for $\Gamma(1)$}
+\subsection{First important example}
+To proceed further, it will be convenient to know
+there \emph{exists} some modular forms.
+
+When $k=0$, a modular form of weight zero must be constant
+according to the maximum modulus principle.
+We will show later on that there are no modular forms of weight $2$ either;
+but there is a modular form of any even weight $k \ge 4$,
+and we construct it as follows.
+
+\begin{definition}
+  For $k \ge 4$ an even integer,
+  the \alert{Eisenstein series} is defined by
+  \[ E_k(z) = \half
+    \sum_{\substack{m,n \in \ZZ \\ (m,n) \ne (0,0)}} (mz+n)^{-k}. \]
+\end{definition}
+The sum is absolutely convergent for $z \in \HH$.
+Indeed, the contribution of terms with $m=0$ is $\zeta(k)$,
+the contribution of (absolute values) of remaining terms is
+\begin{align*} \sum_{m \ne 0} \sum_{n}
+  \left\lvert mz+n \right\rvert^{-k}
+  &= \sum_{m \ne 0} \sum_{n}
+  \frac{1}{\left( (n + m \Re z)^2 + (m \Im z)^2 \right)^{k/2}} \\
+  &< \sum_{m \ne 0} \left[
+    \frac{3}{(m \Im z)^k}
+    + \sum_{n \ne 0} \frac{1}{\left( n^2 + (m \Im z)^2 \right)^{k/2}} \right] \\
+  &< \sum_{m \ne 0} \left[
+    \frac{3}{(m \Im z)^k}
+    + \sum_{n \ne 0} \frac{1}{(2mn \Im z)^{k/2}} \right] \\
+  &= \frac{6\zeta(k)}{(\Im z)^k}
+  + \frac{4}{(2\Im z)^{k/2}} \zeta(k/2)^2 < \infty.
+\end{align*}
+It also satisfies the functional equation as
+\[ E_k\left( \frac{az+b}{cz+d} \right)
+  = (cz+d)^{-k}
+  \sum_{\substack{m,n \in \ZZ \\ (m,n) \ne (0,0)}}
+  \left( (ma+nc)z + (mb+nd)  \right)^{-k}
+\]
+and since $ad-bc=1$,
+the map $(m,n) \mapsto (ma+nc,mb+nd)$ is a bijection on $\ZZ^2 - \{(0,0)\}$
+(multiplying by a matrix in $\SL_2(\ZZ)$),
+so the right-hand side is $(cz+d)^{-k} E_k(z)$.
+
+%% TODO calculate
+
+
+%% TODO write
+
+\subsection{Second important example}
+Consider the Dedekind eta function
+\[ \eta(z) = \sum_{n=1}^\infty \chi(n) q^{n^2/24} \]
+where $\chi$ is primitive quadratic with conductor $12$ (unique).
+Then we define
+\[ \Delta(z) = \eta(z)^{24} = q \prod_1^\infty (1-q^n)^{24} \]
+which is a weight $12$ modular form with only a simple zero at $i\infty$,
+vanishing nowhere else.
+The equality here comes from Jacobi triple product formula.
+
+\subsection{Main result}
+\begin{proposition}
+  The space of cusp forms of weight $12$ is one-dimensional.
+\end{proposition}
+\begin{proof}
+  $\Delta$ is in it.
+  Also if $f$ is in it,
+  then $f/\Delta$ is an modular form of weight $0$ with no poles,
+  ergo it is constant.
+\end{proof}
+
+\begin{theorem}
+  The space of modular forms for $\Gamma(1)$
+  is generated by $E_4$ and $E_6$.
+\end{theorem}
+\begin{proof}
+  Analogous to the earlier the argument, dimension counting:
+  multiplication by $\Delta$ generally gives an isomorphism
+  \[ M_{k-12}(\Gamma(1)) \to S_{k}(\Gamma(1)). \]
+\end{proof}
+
+
+\section{The $L$-function of a modular form for a congruence group}
+\subsection{Definition}
+Let $f \in M_k(\Gamma_1(N))$.
+Consider its Fourier expansion $f(z) = \sum_n a_n q^{n}$.
+We want to attach to it an $L$-function defined by
+\[ L(s,f) = \sum_n a_n n^{-s}. \]
+For this to work, we need to first prove that
+the Fourier coefficients $a_n$ decay quickly enough that
+$L(s,f)$ converges.
+
+\begin{lemma}
+  [Trivial estimate, due to Hardy and Hecke]
+  %% 5.3.4 in Problems in Modular Forms
+  If $f = \sum_n a_n q^{n}$ is a cusp form, then $a_n = C_f n^{k/2}$
+  (with the implied constant depending on $f$).
+\end{lemma}
+\begin{proof}
+  Recall that
+  \[ a_n = \int_w^{w+1} f(z) \ee(-nz) \; dz. \]
+  We choose $[w,w+1]$ to be $[yi, 1+yi]$ and calculate
+  \begin{align*}
+    \left\lvert a_n \right\rvert
+    &< \int_{yi}^{yi+1} \left\lvert f(z) \ee(-nz) \right\rvert \; dz
+    = \int_{yi}^{yi+1} \left\lvert f(z) \right\rvert e^{2\pi n y} \; dz \\
+    &= e^{2\pi n y} \int_0^1 \left\lvert f(x+yi) \right\rvert \; dx
+    < e^{2\pi n y} \int_0^1 C_f y^{-k/2} \; dx \\
+    &= e^{2\pi n y} C_f y^{-k/2}.
+  \end{align*}
+  Taking $y=1/n$ completes the proof.
+\end{proof}
+\begin{remark}
+  In fact, the so-called Ramanujan conjecture (proved in 1970)
+  implies $a_n \le C_{f,\eps} n^{(k-1)/2+\eps}$.
+\end{remark}
+
+If $f$ is not a cusp form,
+then we can choose a constant $c$ such that
+$f - c E_k(z)$ is a cusp form.
+Since the coefficients of $E_k(z)$ are bounded by $n^{k-1} \log n$,
+we conclude altogether that $L(s,f)$ converges if $\Re s > 1 + (k-1) = k$.
+This completes our definition of the $L$-function.
+
+\subsection{Completed $L$-function}
+Much like for $\zeta$, we may consider the generalized Mellin transform
+\[ \Lambda(s,f) \defeq \MM\left[ y \mapsto f(iy) \right]. \]
+Note that $f(iy)$ approaches a constant $c$ rapidly as $y \to \infty$.
+From
+$\begin{bsmallmatrix} 0 & -1 \\ 1 & 0 \end{bsmallmatrix} \in \Gamma(1)$,
+we have
+\[ f(iy) = (-1)^{k/2} y^{-k} f(i/y) \]
+so as $y \to 0$ we have $f(iy) \to c (-1)^{k/2} y^{-k}$ rapidly.
+Thus, the generalized Mellin transform will have
+at most simple poles at $s=0$ and $s=k$,
+and otherwise be analytic.
+
+Now, we go ahead and actually compute
+\begin{align*}
+  \Lambda(s,f) &= \MM\left[ y \mapsto f(iy) \right]
+  = \int_0^\infty y^s f(iy) \frac{dy}{y} \\
+  &= \int_0^\infty y^{s-1} \sum_n a_n e^{-2\pi n y} dy
+  = \sum_n \int_0^\infty y^{s-1} a_n e^{-2\pi n y} dy \\
+  &= \sum_n a_n (2\pi n)^{-s} \Gamma(s)
+  = (2\pi)^{-s} \Gamma(s) \sum_n a_n n^{-s} \\
+  &= (2\pi)^{-s} \Gamma(s) L(s,f).
+\end{align*}
+Also, from a change of variables $y \mapsto 1/y$,
+we can also get that $\Lambda(s,f) = \Lambda(k-s, f)$.
+
+As before, it is more conventional to define $\Lambda$
+through the $L$-function and hide the role of the Mellin transform.
+So we have proved the following:
+\begin{theorem}
+  [$L$-function for $\Gamma(1)$]
+  Let $f$ be a modular form for $\Gamma(1)$.
+  The function
+  \[ \Lambda(s,f) = (2\pi)^{-s} \Gamma(s) L(s,f) \]
+  has analytic continuation; it has simples poles at $s=0$ and $s=k$
+  if $f$ is not cuspidal, and otherwise is analytic.
+  Moreover, it satisfies a functional equation
+  $\Lambda(s,f) = \Lambda(k-s,f)$.
+\end{theorem}

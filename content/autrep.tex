@@ -1,0 +1,88 @@
+\chapter{Automorphic representations}
+Towards the start of the text,
+we saw how the classical modular forms
+and their counterpart Maass forms naturally arose from
+representations of $L^2(\Gamma\backslash\GL_2(\RR))$.
+
+%For $\GL_2(\AA_F)$,
+%we are going to \emph{need} the representation theory
+%more deeply; that is, we want to first exhibit
+%an explicit correspondence between automorphic forms
+%and so-called automorphic representations
+%(neither of which we have defined yet, sorry).
+%The reason is that even the definition of the
+%functional equations is going to require
+%
+%We're going to want to do the same thing here \emph{first}
+
+\section{Automorphic forms}
+The definition of an adelic automorphic form was stated earlier,
+except for the technical niceness condition.
+\begin{itemize}
+  \ii Smooth
+  \ii $K$-finite
+  \ii $\mathcal Z$-finite, where $\mathcal Z$ is the center
+  of the universal enveloping algebra of $U(\mathfrak{gl}(n, K_v))$,
+  \ii moderate growth.
+\end{itemize}
+The \alert{cusp forms} are those which obey the additional hypothesis
+\[
+  \int \phi \left(
+    \begin{bmatrix}
+      I_r & X \\ & I_s
+    \end{bmatrix}
+  \right) \; dX = 0.
+\]
+
+\section{Automorphic representations, and admissible representations}
+\begin{definition}
+  An \alert{admissible representation} $(\pi, V)$
+  of $\GL_2(\AA)$ is a representation of
+  $\GL_2(\Af)$ with a commuting $(\kg_\infty, K_\infty)$-module structure
+  with the additional constraint that
+  every vector of $V$ is $K$-finite
+  and every isotypic part is finite dimensional.
+\end{definition}
+
+\begin{definition}
+  An \alert{automorphic representation} is a irreducible representation of
+  $\GL_2(\Af)$ with a commuting $(\kg_\infty, K_\infty)$-module structure
+  which can be realized as the quotient of a submodule
+  of the space of automorphic forms of some central quasicharacter.
+\end{definition}
+
+\begin{proposition}
+  Automorphic representations are admissible.
+\end{proposition}
+
+\begin{definition}
+  If $F$ is a non-Archimedean local field,
+  an admissible representation of $\GL_2(F)$
+  is an actual representation such that every vector has open stabilizer
+  and every $K = \GL_2(\OO_F)$-isotypic part is finite dimensional.
+  We say a spherical representation is one with a nonzero $K$-fixed vector,
+  which we also say is spherical.
+
+  If $F$ is an Archimedean local field,
+  we instead want a $(\kg_\infty, K_v)$-module
+  with finite-dimensional isotypic parts.
+\end{definition}
+
+\begin{theorem}
+  [Tensor product theorem]
+  Let $(V, \pi)$ be an irreducible admissible representation.
+  Then we can choose $(V_v, \pi_v)$ for every place $v$ such that
+  there exists a nonzero spherical vector $\xi^0_v \in V_v$ for almost all $v$,
+  such that \[ V = \wh{\bigotimes} (V_v, \pi_v) \]
+  where the restricted tensor product uses $\xi_0^v$.
+\end{theorem}
+
+
+The space of cusp forms contains each representation at most once;
+actually following stronger result holds.
+\begin{theorem}
+  [Strong multiplicity one theorem]
+  Let $(\pi, V)$ and $(\pi, V')$ be irreducible admissible subrepresentations
+  of the space $\opname{CuspForms}(\GL(n, K) \backslash \GL(n, \AA_k), \omega)$.
+  If $\pi_v = \pi'_v$ for almost all $v$ then $V = V'$.
+\end{theorem}
