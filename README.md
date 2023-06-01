@@ -1,9 +1,15 @@
 # Evan's PhD Notebook
 
+> public shaming is a good study strategy, i swear
+
 This is a repository where I keep the TeX source notes about math I'm studying
 in connection to my PhD thesis. By definition, everything here is stuff I'm
 learning for the first time. The content is therefore likely to be riddled with
 errors, inaccuracies, and is generally in a really rough state.
+
+## Where can I get the compiled PDF?
+
+Use the URL https://web.evanchen.cc/upload/evans-phd-notebook.pdf
 
 ## Why did you post this?
 
