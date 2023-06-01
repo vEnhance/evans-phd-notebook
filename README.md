@@ -5,7 +5,8 @@
 This is a repository where I keep the TeX source notes about math I'm studying
 in connection to my PhD thesis. By definition, everything here is stuff I'm
 learning for the first time. The content is therefore likely to be riddled with
-errors, inaccuracies, and is generally in a really rough state.
+errors, inaccuracies, and is generally in a really rough state. There are more
+holes than Swiss cheese.
 
 ## Where can I get the compiled PDF?
 
