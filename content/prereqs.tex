@@ -478,8 +478,7 @@ Replacing $s$ with $\half(s+\eps)$ and rearranging:
 Since $\Gamma$ never vanishes,
 this gives the analytic continuation of $L(s, \chi)$.
 
-When $N = 1$ and $\chi = \mathbf 1$
-is the trivial character we get
+When $N = 1$ and $\chi = \mathbf 1$ is the trivial character we get
 $\theta_\chi(t) = \frac{1}{\sqrt t} \theta_{\chi}(1/t)$,
 and so $\theta_\chi(t)$ behaves like $\frac{1}{2\sqrt t}$ at zero,
 and the Mellin transform is defined.
@@ -543,3 +542,71 @@ to clean everything up once the theta function is used.
 \end{proof}
 
 \section{Linear algebraic groups}
+\subsection{Reductive groups}
+\begin{definition}
+  A linear algebraic group $G$ over a field $k$ is a closed subscheme
+  of $\GL_n(k)$, i.e.\ a smooth affine group scheme over $k$.
+\end{definition}
+
+Recall that a generic group $H$ is
+\begin{itemize}
+  \ii \textbf{solvable} if the map $X \mapsto [X,X]$ starting from $H$
+  eventually stabilizes; equivalently, there needs to be a normal series
+  \[ 1 = G_0 \trianglelefteq G_1 \trianglelefteq G_2 \trianglelefteq
+    \dots \trianglelefteq G_n = G \]
+  where each $G_i / G_{i-1}$ is abelian.
+
+  \ii \textbf{unipotent} if every element of the group is unipotent;
+  this implies $H$ is a closed subgroup of $U_n$.
+\end{itemize}
+
+\begin{definition}
+  Given a LAG $G$, we define
+  \begin{itemize}
+    \ii its \alert{radical} is the largest connected solvable normal subgroup;
+    \ii its \alert{unipotent radical}
+    is the largest connected unipotent normal subgroup.
+  \end{itemize}
+  We say $G$ is
+  \begin{itemize}
+    \ii \alert{semisimple} if the radical is trivial;
+    \ii \alert{reductive} if the unipotent radical is trivial.
+  \end{itemize}
+\end{definition}
+
+Semisimple groups are considered pretty rigid,
+but reductive groups are not too much worse;
+from \url{https://mathoverflow.net/a/223895/70654}:
+\begin{quote}
+From the modern perspective the class of (connected) reductive groups is more
+natural than that of (connected) semisimple groups for the purposes of setting
+up a robust general theory, due to the fact that Levi factors of parabolics in
+reductive groups are always reductive but generally are not semisimple when the
+ambient group is semisimple. However, after some development of the basic theory
+one learns that reductive groups are just a fattening of semisimple groups via a
+central torus (e.g., $\GL_n$ versus $\SL_n$), so Harish-Chandra had no trouble to get by
+in the semisimple case by just dragging along some central tori here and there
+in the middle of proofs.
+\end{quote}
+
+Here's a table of (mostly) reductive groups. Help.
+\begin{center}
+  \begin{tabular}[h]{ccc}
+    $G$ & Radical & Unipotent radical \\ \hline
+    $\GL(n)$ & $k$ (diagonal matrices) & $1$ \\
+    $\SL(n)$ & $1$ & $1$ \\
+    $\opname{O}(n)$ & & $1$ \\
+    $\opname{SO}(n)$ & & $1$ \\
+    $\opname{Sp}(n)$ & & $1$ \\
+    $\opname{U}(n)$ & & $1$ \\
+    $\mathbb{G}_\mathrm{a}$ & $\mathbb{G}_\mathrm{a}$ & $\mathbb{G}_\mathrm{a}$
+  \end{tabular}
+\end{center}
+
+Following non-obvious theorem is another motivation for why reductive
+groups are considered really nice:
+\begin{theorem}
+  A smooth connected affine group over a field of characteristic $0$
+  is reductive if and only if all of its algebraic representations
+  are completely reducible.
+\end{theorem}
