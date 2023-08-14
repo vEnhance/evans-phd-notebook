@@ -589,20 +589,6 @@ in the semisimple case by just dragging along some central tori here and there
 in the middle of proofs.
 \end{quote}
 
-Here's a table of (mostly) reductive groups. Help.
-\begin{center}
-  \begin{tabular}[h]{ccc}
-    $G$ & Radical & Unipotent radical \\ \hline
-    $\GL(n)$ & $k$ (diagonal matrices) & $1$ \\
-    $\SL(n)$ & $1$ & $1$ \\
-    $\opname{O}(n)$ & & $1$ \\
-    $\opname{SO}(n)$ & & $1$ \\
-    $\opname{Sp}(n)$ & & $1$ \\
-    $\opname{U}(n)$ & & $1$ \\
-    $\mathbb{G}_\mathrm{a}$ & $\mathbb{G}_\mathrm{a}$ & $\mathbb{G}_\mathrm{a}$
-  \end{tabular}
-\end{center}
-
 Following non-obvious theorem is another motivation for why reductive
 groups are considered really nice:
 \begin{theorem}
@@ -610,3 +596,49 @@ groups are considered really nice:
   is reductive if and only if all of its algebraic representations
   are completely reducible.
 \end{theorem}
+
+\subsection{Parabolic and Borel subgroups}
+\begin{definition}
+  A \alert{Borel subgroup} of $G$ is
+  \begin{itemize}
+    \ii a connected solvable subgroup variety $B$ for which $G/B$ is complete;
+    \ii or equivalently, a maximal Zariski-closed normal solvable subgroup
+    (but not necessarily normal).
+  \end{itemize}
+\end{definition}
+The Borel subgroups are all conjugate to each other.
+
+\begin{definition}
+  A \alert{parabolic subgroup} $P$ of $G$ is
+  \begin{itemize}
+    \ii any subgroup containing a Borel subgroup;
+    \ii over an algebraically closed field, equivalently,
+    such that $G/P$ is a complete variety.
+  \end{itemize}
+\end{definition}
+
+Example copied from Wikipedia: for $G = \GL_4(\CC)$, a Borel subgroup is
+\[ \left\{A={\begin{bmatrix}a_{11}&a_{12}&a_{13}&a_{14}\\0&a_{22}&a_{23}&a_{24}\\0&0&a_{33}&a_{34}\\0&0&0&a_{44}\end{bmatrix}}:\det(A)\neq 0\right\}
+\]
+and the maximal proper parabolic subgroups of $G$ containing $B$ are:
+\[
+{\displaystyle \left\{{\begin{bmatrix}a_{11}&a_{12}&a_{13}&a_{14}\\0&a_{22}&a_{23}&a_{24}\\0&a_{32}&a_{33}&a_{34}\\0&a_{42}&a_{43}&a_{44}\end{bmatrix}}\right\},{\text{ }}\left\{{\begin{bmatrix}a_{11}&a_{12}&a_{13}&a_{14}\\a_{21}&a_{22}&a_{23}&a_{24}\\0&0&a_{33}&a_{34}\\0&0&a_{43}&a_{44}\end{bmatrix}}\right\},{\text{ }}\left\{{\begin{bmatrix}a_{11}&a_{12}&a_{13}&a_{14}\\a_{21}&a_{22}&a_{23}&a_{24}\\a_{31}&a_{32}&a_{33}&a_{34}\\0&0&0&a_{44}\end{bmatrix}}\right\}}
+\]
+Also, a maximal torus in $B$ is
+\[ \left\{{\begin{bmatrix}a_{11}&0&0&0\\0&a_{22}&0&0\\0&0&a_{33}&0\\0&0&0&a_{44}\end{bmatrix}}:a_{11}\cdot a_{22}\cdot a_{33}\cdot a_{44}\neq 0\right\}
+  \cong \Gm^4
+\]
+
+\subsection{Table}
+\begin{center}
+  \begin{tabular}[h]{cccc}
+    $G$ & Radical & Unipotent radical & Borel subgroup \\ \hline
+    $\GL(n)$ & $\CC$ (diagonal matrices) & $1$ & Upper tri \\
+    $\SL(n)$ & $1$ & $1$ \\
+    $\opname{O}(n)$ & & $1$ \\
+    $\opname{SO}(n)$ & & $1$ \\
+    $\opname{Sp}(n)$ & & $1$ \\
+    $\opname{U}(n)$ & & $1$ \\
+    $\Ga$ & $\Ga$ & $\Ga$ & \\
+  \end{tabular}
+\end{center}
