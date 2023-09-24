@@ -1,0 +1,61 @@
+\chapter{Orbital integral}
+\section{Symmetric space}
+Let $F$ be a finite extension of $\QQ_p$ and
+let $E/F$ be a quadratic field extension.
+Denote by $\varpi$ a uniformizer of $\OO_F$.
+
+We define the symmetric space
+\[ S_3(F) \coloneqq \left\{ s \in \GL_3(E) \mid s \ol s = \id \right\}. \]
+We also pay particular attention to the subspace which have $\OO_E$ entries:
+\[ K_S \coloneqq S_3(F) \cap \GL_3(\OO_E). \]
+\begin{lemma}
+  [Cartan decomposition]
+  For each integer $m \ge 0$ let
+  \[ K_{S,m} \coloneqq K_S \cdot \begin{bmatrix} 0 & 0 & \varpi^m \\ 0 & 1 & 0 \\ \varpi^{-m} & 0 & 0 \end{bmatrix}. \]
+  Then we have a decomposition
+  \[ S_3(F) = \coprod_{m \geq 0} K_{S,m}. \]
+\end{lemma}
+
+\section{Orbital integral}
+Define
+\[
+  H' \coloneqq
+  \left\{ \begin{bmatrix} t_1 & t_2 \\ \ol{t_2} & \ol{t_1} \end{bmatrix} \right\}
+  \cong \GL_2(F).
+\]
+We embed $H'$ into $\GL_3(F)$ by
+$h' \mapsto \left[ \begin{smallmatrix} h' & 0 \\ 0 &1 \end{smallmatrix} \right]$,
+which allows $H$ to act on $\GL_3(FF)$ and hence $S_3(F)$.
+
+Now we can define the orbital integral.
+\begin{definition}
+  Let $\eta$ be the quadratic character attached to $E/F$ by class field theory,
+  and for brevity let $\eta(h') \coloneqq \eta(\det h')$ for $h' \in H'$.
+  For $\gamma \in S_3(F)$ and $s \in \CC$, we define the orbital
+  \[ O(\gamma, s) \coloneqq
+    \int_{g \in H'} 1_{K_{S,m}}(\bar g\inv \gamma g) \det(g) \odif g \]
+  where
+  \[ \odif g = \kappa \cdot \frac{\odif t_1 \odif t_2}
+    {\left\lvert t_1 \ol{t_1} - t_2 \ol{t_2} \right\rvert_F^2} \]
+  for the constant $\kappa \coloneqq (1-q\inv)\inv(1-q^{-2})\inv$.
+\end{definition}
+
+Indeed, for $h' \in H$ and $\gamma \in S_3(F)$ we have $h' \gamma \ol{h'}\inv \in S_3(F)$
+and so the indicator function is filtering based on which part of the
+Cartan decomposition that $h' \gamma \ol{h'}\inv$ falls in.
+
+Evidently $O(\gamma, s)$ only depends on the $H'$-orbit of $\gamma$.
+So it makes sense to pick a canonical representative for the $H'$-orbit to compute
+the orbital integral in terms of.
+For so-called \emph{regular} $\gamma$, the representatives
+\[ \gamma(a,b,d) =
+  \begin{bmatrix}
+    a & 0 & 0 \\
+    b & - \ol d & 1 \\
+    c & 1 - d \ol d & d
+  \end{bmatrix}
+  \in S_3(F); \quad \text{where $c = -a \ol b + b d$} \]
+cover all the \emph{regular} orbits, which are the ones we care about.
+
+For $m=0$, AFL computes $\pdv{}{s}O(\gamma,s)$ at $s=0$.
+Our goal is to compute it for $m > 0$ too.
