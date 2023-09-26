@@ -5,7 +5,7 @@ let $E/F$ be a quadratic field extension.
 Denote by $\varpi$ a uniformizer of $\OO_F$.
 
 We define the symmetric space
-\[ S_3(F) \coloneqq \left\{ s \in \GL_3(E) \mid s \ol s = \id \right\}. \]
+\[ S_3(F) \coloneqq \left\{ s \in \GL_3(E) \mid s \bar s = \id \right\}. \]
 We also pay particular attention to the subspace which have $\OO_E$ entries:
 \[ K_S \coloneqq S_3(F) \cap \GL_3(\OO_E). \]
 \begin{lemma}
@@ -20,7 +20,7 @@ We also pay particular attention to the subspace which have $\OO_E$ entries:
 Define
 \[
   H' \coloneqq
-  \left\{ \begin{bmatrix} t_1 & t_2 \\ \ol{t_2} & \ol{t_1} \end{bmatrix} \right\}
+  \left\{ \begin{bmatrix} t_1 & t_2 \\ \bar t_2 & \bar t_1 \end{bmatrix} \right\}
   \cong \GL_2(F).
 \]
 We embed $H'$ into $\GL_3(F)$ by
@@ -36,13 +36,13 @@ Now we can define the orbital integral.
     \int_{g \in H'} 1_{K_{S,m}}(\bar g\inv \gamma g) \det(g) \odif g \]
   where
   \[ \odif g = \kappa \cdot \frac{\odif t_1 \odif t_2}
-    {\left\lvert t_1 \ol{t_1} - t_2 \ol{t_2} \right\rvert_F^2} \]
+    {\left\lvert t_1 \bar t_1 - t_2 \bar t_2 \right\rvert_F^2} \]
   for the constant $\kappa \coloneqq (1-q\inv)\inv(1-q^{-2})\inv$.
 \end{definition}
 
-Indeed, for $h' \in H$ and $\gamma \in S_3(F)$ we have $h' \gamma \ol{h'}\inv \in S_3(F)$
+Indeed, for $h' \in H$ and $\gamma \in S_3(F)$ we have $h' \gamma (\bar h')\inv \in S_3(F)$
 and so the indicator function is filtering based on which part of the
-Cartan decomposition that $h' \gamma \ol{h'}\inv$ falls in.
+Cartan decomposition that $h' \gamma (\bar h')\inv$ falls in.
 
 Evidently $O(\gamma, s)$ only depends on the $H'$-orbit of $\gamma$.
 So it makes sense to pick a canonical representative for the $H'$-orbit to compute
@@ -51,10 +51,10 @@ For so-called \emph{regular} $\gamma$, the representatives
 \[ \gamma(a,b,d) =
   \begin{bmatrix}
     a & 0 & 0 \\
-    b & - \ol d & 1 \\
-    c & 1 - d \ol d & d
+    b & - \bar d & 1 \\
+    c & 1 - d \bar d & d
   \end{bmatrix}
-  \in S_3(F); \quad \text{where $c = -a \ol b + b d$} \]
+  \in S_3(F); \quad \text{where $c = -a \bar b + b d$} \]
 cover all the \emph{regular} orbits, which are the ones we care about.
 
 For $m=0$, AFL computes $\pdv{}{s}O(\gamma,s)$ at $s=0$.
