@@ -1,4 +1,6 @@
-#!/bin/sh
+#!/bin/bash
+
+set -euxo pipefail
 
 latexmk
 gsutil cp main.pdf gs://web.evanchen.cc/upload/evans-phd-notebook.pdf
