@@ -31,9 +31,9 @@ Now we can define the orbital integral.
 \begin{definition}
   Let $\eta$ be the quadratic character attached to $E/F$ by class field theory,
   and for brevity let $\eta(h') \coloneqq \eta(\det h')$ for $h' \in H'$.
-  For $\gamma \in S_3(F)$ and $s \in \CC$, we define the orbital
+  For $\gamma \in S_3(F)$ and $s \in \CC$, we define the orbital integral by
   \[ O(\gamma, s) \coloneqq
-    \int_{g \in H'} 1_{K_{S,m}}(\bar g\inv \gamma g) \det(g) \odif g \]
+    \int_{g \in H'} 1_{K_{S,m}}(\bar g\inv \gamma g) \eta(g) |\det(g)|^s \odif g \]
   where
   \[ \odif g = \kappa \cdot \frac{\odif t_1 \odif t_2}
     {\left\lvert t_1 \bar t_1 - t_2 \bar t_2 \right\rvert_F^2} \]
