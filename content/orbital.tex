@@ -201,11 +201,17 @@ we will only care about the following case:
 \begin{assume}
   \[ v\left( (1-d\bar d)^2 - c \bar c\right) \equiv 1 \pmod 2 \]
 \end{assume}
-This means in particular that
-\[ v(1 - d \bar d) = v(c) \neq -\infty \]
-are nonzero with the same valuation.
-So following \cite{ref:AFL} we will define
-\[ u \coloneqq \frac{\bar c}{1-d \bar d} \in \OO_E^\times \]
+This means in particular that we may define the following quantity
+that will appear repeatedly:
+\begin{equation}
+  \delta \coloneqq v(1-d \bar d) = v(c) \neq -\infty.
+  \label{eqn:delta}
+\end{equation}
+Following \cite{ref:AFL} we will also define
+\begin{equation}
+  u \coloneqq \frac{\bar c}{1-d \bar d} \in \OO_E^\times
+  \label{eqn:u}
+\end{equation}
 so that
 \begin{equation}
   b = -au - \bar{d} \bar{u}
@@ -218,7 +224,10 @@ We will also assume:
 \end{assume}
 This is fine because if this $v(d) < -r$ then the integral will always vanish
 (because the bottom-right entry of $\Gamma(\gamma, t, m)$ is no-good).
-Because of this, it then also follows that $v(b) \geq -r$ from \eqref{eqn:b}.
+Because of this, from \eqref{eqn:b} we then get
+\begin{corollary}
+  $v(b) \geq -r$.
+\end{corollary}
 
 \section{Evaluation of the integral}
 \subsection{The case where $n \leq 0$}
@@ -227,7 +236,7 @@ Because of this, it then also follows that $v(b) \geq -r$ from \eqref{eqn:b}.
   \[
     \mathbf{1}(\gamma, t, m) =
     \begin{cases}
-      1 & \text{if } -r \le m \le v(1-d\bar d)+r \\
+      1 & \text{if } -r \le m \le \delta+r \\
       0 & \text{otherwise.}
     \end{cases}
   \]
@@ -243,15 +252,15 @@ Because of this, it then also follows that $v(b) \geq -r$ from \eqref{eqn:b}.
   In the bottom row, we need
   $v\left( c+(1-d\bar d) \bar t \right)-m \geq -r$
   and $v\left( ct +(1-d\bar d) \right)-m \geq -r$.
-  Since $v(c) = v(1-d \bar d)$,
-  if $v(t) > 0$ this is equivalent to $m-r \leq v(1-d \bar d)$.
+  If $v(t) > 0$ this is equivalent to $m-r \leq \delta$.
   In the case where $v(t) = 0$ we instead use the observation that
-  \[ \bar t \left[ ct + (1-d \bar d) \right]
-    - \left[ c + (1-d \bar d) \bar t \right] = (1-t\bar t) c \]
-  which forces at least one of
-  $ct + (1-d \bar d)$
-  and $c + (1-d \bar d) \bar t$ to have the valuation equal to $v(c) = v(1-d \bar d)$.
-  So the claim follows now.
+  \begin{equation}
+    \left[ c + (1-d \bar d) \bar t \right]
+    - \bar t \left[ ct + (1-d \bar d) \right] = (1-t\bar t) c
+    \label{eqn:ctrick}
+  \end{equation}
+  which forces at least one of $ct + (1-d \bar d)$ and $c + (1-d \bar d) \bar t$ to
+  have valuation $\delta$. So the claim follows now.
 \end{proof}
 
 \begin{claim}
@@ -259,7 +268,7 @@ Because of this, it then also follows that $v(b) \geq -r$ from \eqref{eqn:b}.
   \[
     \mathbf{1}(\gamma, t, m) =
     \begin{cases}
-      1 & \text{if } -r \le m+k \le v(1-d\bar d)+r \\
+      1 & \text{if } -r \le m+k \le \delta+r \\
       0 & \text{otherwise.}
     \end{cases}
   \]
@@ -270,8 +279,8 @@ Because of this, it then also follows that $v(b) \geq -r$ from \eqref{eqn:b}.
   Since $k > 0$, the fraction $\frac{t^2}{1-t \bar t}$ has positive valuation,
   so the upper $2 \times 2$ of $\Gamma(\gamma, t, m)$ is always in $\varpi^{-r}\OO_E$.
   Turning to the right column, the condition reads exactly $m+k \geq -r$.
-  Finally, in the bottom row, from $v(t) > 0$ and $v(c) = v(1-d \bar d)$
-  the condition is simply $-k+v(1-d \bar d)-m \geq -r$.
+  Finally, in the bottom row, from $v(t) > 0$ and $v(c) = \delta$
+  the condition is simply $-k+\delta-m \geq -r$.
 \end{proof}
 
 We may now evaluate the orbital integral over these two cases.
@@ -279,34 +288,84 @@ For the region where $n = 0$, we get a contribution of
 \begin{align*}
   &\phantom= \kappa \int_{t, t_1 \in E} \mathbf{1}(n=0) \mathbf{1}(\gamma,t,m)
     q^{2s \cdot m} q^{-2m} \odif t \odif t_1 \\
-  &= \kappa \Vol(t: n =0) \sum_{j=-r}^{v(1-d \bar d)+r} \Vol(t_1: m=j) q^{2j(s-1)} \\
-  &= \kappa \left( 1 - \frac{q+1}{q^2} \right) \sum_{j=-r}^{v(1-d \bar d)+r}
+  &= \kappa \Vol(t: n =0) \sum_{j=-r}^{\delta+r} \Vol(t_1: m=j) q^{2j(s-1)} \\
+  &= \kappa \left( 1 - \frac{q+1}{q^2} \right) \sum_{j=-r}^{\delta+r}
   \left( q^{2j} \left( 1-q^{-2} \right) \right) q^{2j(s-1)} \\
   &= \kappa \left( 1 - \frac{q+1}{q^2} \right) \left( 1-q^{-2} \right)
-  \sum_{j=-r}^{v(1-d \bar d)+r} q^{2js}.
+  \sum_{j=-r}^{\delta+r} q^{2js}.
 \end{align*}
 For the region where $v(t) = -k < 0$, for each individual $k > 0$,
 \begin{align*}
   &\phantom= \kappa \int_{t, t_1 \in E} \mathbf{1}(v(t)=-k) \mathbf{1}(\gamma,t,m)
     q^{s(2m-n)} q^{2n-2m} \odif t \odif t_1 \\
-  &= \kappa \Vol(t: v(t)=-k) \sum_{j=-r-k}^{v(1-d \bar d)+r-k}
+  &= \kappa \Vol(t: v(t)=-k) \sum_{j=-r-k}^{\delta+r-k}
     \Vol(t_1: m=j) q^{s(2j+2k)-4k-2j} \\
-  &= \kappa q^{2k} \left( 1 - q^{-2} \right) \sum_{j=-r-k}^{v(1-d \bar d)+r-k}
+  &= \kappa q^{2k} \left( 1 - q^{-2} \right) \sum_{j=-r-k}^{\delta+r-k}
     \left( q^{2j} \left( 1-q^{-2} \right) \right) q^{s(2j+2k)-4k-2j} \\
-  &= \kappa q^{2k} \left( 1 - q^{-2} \right) \sum_{j=-r-k}^{v(1-d \bar d)+r-k}
+  &= \kappa q^{2k} \left( 1 - q^{-2} \right) \sum_{j=-r-k}^{\delta+r-k}
     \left( q^{2j} \left( 1-q^{-2} \right) \right) q^{s(2j+2k)-4k-2j} \\
   &= \kappa q^{-2k} \left( 1 - q^{-2} \right)^2
-    \sum_{j=-r-k}^{v(1-d \bar d)+r-k} q^{2(j+k)s} \\
-  &= \kappa q^{-2k} \left( 1 - q^{-2} \right)^2 \sum_{j=-r}^{v(1-d \bar d)+r} q^{2js} \\
-  &= \kappa q^{-2k} \left( 1 - q^{-2} \right)^2 \sum_{j=-r}^{v(1-d \bar d)+r} q^{2js}.
+    \sum_{j=-r-k}^{\delta+r-k} q^{2(j+k)s} \\
+  &= \kappa q^{-2k} \left( 1 - q^{-2} \right)^2 \sum_{j=-r}^{\delta+r} q^{2js} \\
+  &= \kappa q^{-2k} \left( 1 - q^{-2} \right)^2 \sum_{j=-r}^{\delta+r} q^{2js}.
 \end{align*}
 Since $\sum_{k > 0} q^{-2k} = \frac{q^{-2}}{1-q^{-2}}$,
 we find that the total contribution across both
 the $n=0$ case and the $k > 0$ case is
 \begin{align*}
   &\phantom= \left( \left( 1 - \frac{q+1}{q^2} \right) \left( 1-q^{-2} \right)
-    + q^{-2}(1-q^{-2})  \right) \kappa \sum_{j=-r}^{v(1-d \bar d)+r} q^{2js} \\
+    + q^{-2}(1-q^{-2})  \right) \kappa \sum_{j=-r}^{\delta+r} q^{2js} \\
   &\phantom= \left( 1-q\inv \right) \left(1-q^{-2}  \right)
-    \kappa \sum_{j=-r}^{v(1-d \bar d)+r} q^{2js} \\
-  &= \kappa \sum_{j=-r}^{v(1-d \bar d)+r} q^{2js}.
+    \kappa \sum_{j=-r}^{\delta+r} q^{2js} \\
+  &= \kappa \sum_{j=-r}^{\delta+r} q^{2js}.
 \end{align*}
+
+\subsection{The case where $n > 0$}
+In this situation we evaluate over $n > 0$ only.
+In this case $t$ is automatically a unit.
+
+Consider the upper $2 \times 2$ matrix of $\Gamma(\gamma, t, m)$.
+Using the identities
+\begin{align*}
+  \dfrac{a-b\bar t+\bar d \bar t^2}{1-t \bar t}
+    - \bar t \cdot \dfrac{at-bt\bar t+\bar d \bar t}{1-t \bar t}
+    &= a-b\bar t \in \varpi^{-r} \OO_E \\[2ex]
+  \dfrac{a-b\bar t+\bar d \bar t^2}{1-t \bar t}
+    + \bar t \cdot \dfrac{-at+b-\bar d \bar t}{1-t \bar t}
+    &= a \in \varpi^{-r} \OO_E \\[2ex]
+  \dfrac{-at+b-\bar d \bar t}{1-t \bar t}
+    - \bar t \cdot \dfrac{-at^2+bt-\bar d}{1-t \bar t}
+    &= -a+b \in \varpi^{-r} \OO_E.
+\end{align*}
+it follows that as soon as one entry is in $\varpi^{-r} \OO_E$, they all are.
+Meanwhile, the requirements on the other entries amount to
+\begin{align}
+  m & \geq n - r \\
+  v\left( c+(1-d \bar d) \bar t \right) &\geq m-r \label{eqn:cddtop} \\
+  v\left( ct+(1-d \bar d) \right) &\geq m-r \label{eqn:cddbot}
+\end{align}
+According to the earlier identity \eqref{eqn:ctrick},
+if \eqref{eqn:cddtop} is assumed true,
+then \eqref{eqn:cddbot} is equivalent to
+\[ \delta + v(1-t \bar t) \ge m-r. \]
+Meanwhile, since $v(c+(1-d \bar d) \bar t) = v(\bar c + (1-d \bar d)t)$,
+\eqref{eqn:cddtop} is itself equivalent to
+\[ v(t+u) + \delta \geq m-r \]
+by reading the definition of \eqref{eqn:u}.
+
+Finally, we use a tricky substitution
+\[ (2at-b)^2 - (b^2-4a\bar d) = -4a(-at^2+bt-\bar d) \]
+to rewrite $v(-at^2+bt-\bar d) \geq n-r$
+as $v\left( (2at-b)^2 - (b^2-4a\bar d) \right) \geq n-r$.
+
+In summary:
+\begin{claim}
+  Assume $t$ is such that $n = v(1-t \bar t) > 0$.
+  Then $\mathbf{1}(\gamma, t, m) = 1$ if and only if
+  \[ n - r \leq m \leq n + r + \delta \]
+  and $t$ lies in the set specified by
+  \begin{align*}
+    v\left( (2at-b)^2 - (b^2-4a\bar d) \right) &\geq n-r \\
+    v(t+u) &\ge m-r-\delta.
+  \end{align*}
+\end{claim}
