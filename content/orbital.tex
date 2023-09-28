@@ -16,7 +16,7 @@ We also pay particular attention to the subspace which have $\OO_E$ entries:
   Then we have a decomposition
   \[ S_3(F) = \coprod_{m \geq 0} K_{S,m}. \]
 \end{lemma}
-For $r \geq 0$, dfeine
+For $r \geq 0$, define
 \[ \Omega_r \coloneqq S_3(F) \cap \varpi^{-m} \GL_3(\OO_E). \]
 We can re-parametrize the problem according to the following claim.
 \begin{claim}
@@ -161,14 +161,14 @@ Then we actually have
 For brevity, we will let $\Gamma(\gamma, t, m)$ denote the right-hand matrix.
 The conjugation by
 $\left[ \begin{smallmatrix} \eps\inv \\ & \bar\eps\inv \\ & & 1 \end{smallmatrix} \right]$
-has no effect on any of the $\Omega_r$,
-so we may use the above expression $\mathbf{1}_{\Omega_r}(\Gamma(\gamma, t, m))$
+has no effect on any of the $\Omega_r$, so that we can simply use
+\[ \mathbf{1}_{\Omega_r}(\bar g \inv \gamma g) = \mathbf{1}_{\Omega_r}(\Gamma(\gamma, t, m)) \]
 in the work that follows.
 By abuse of notation, we abbreviate
-\[ \mathbf{1}_r(\gamma, t, m) \coloneqq \mathbf{1}_{\Omega_r}(\Gamma(\gamma, t, m)). \]
+\[ \mathbf{1}(\gamma, t, m) \coloneqq \mathbf{1}_{\Omega_r}(\Gamma(\gamma, t, m)). \]
 
 \subsection{Reparametrizing the integral in terms of $t$ and $m$}
-From now on, we always fix the notation
+From now on, following \cite{ref:AFL} we always fix the notation
 \begin{align*}
   m &= m(t_1) \coloneqq -v(t_1) \\
   n &= n(t) \coloneqq v(1-t\bar t).
@@ -189,17 +189,18 @@ Meanwhile, from $t_2 = t \bar t_1$ we derive
 
 Bringing this all into the orbital integral gives
 \begin{align*}
-  O(\gamma, s) &= \kappa \int_{t, t_1 \in E} \mathbf{1}_r(\gamma, t, m)
+  O(\gamma, s) &= \kappa \int_{t, t_1 \in E} \mathbf{1}(\gamma, t, m)
   (-1)^n \left( q^{2m-n} \right)^{s-2} \odif t_1 \cdot (q^{2m} \odif t) \\
-  &= \kappa \int_{t, t_1 \in E} \mathbf{1}_r(\gamma, t, m)
+  &= \kappa \int_{t, t_1 \in E} \mathbf{1}(\gamma, t, m)
   (-1)^n q^{s(2m-n)} \cdot q^{2n-2m} \odif t \odif t_1.
 \end{align*}
 
 \section{Simplifying assumptions}
 For the purposes of \cite{ref:AFL},
-we will only care about when
-\[ v\left( (1-d\bar d)^2 - c \bar c\right) \equiv 1 \pmod 2 \]
-and assume so.
+we will only care about the following case:
+\begin{assume}
+  \[ v\left( (1-d\bar d)^2 - c \bar c\right) \equiv 1 \pmod 2 \]
+\end{assume}
 This means in particular that
 \[ v(1 - d \bar d) = v(c) \neq -\infty \]
 are nonzero with the same valuation.
@@ -211,13 +212,16 @@ so that
   \label{eqn:b}
 \end{equation}
 
-In what follows, we are going to always assume $v(d) \geq -r$,
-because if this $v(d) < -r$ then the integral will always vanish
+We will also assume:
+\begin{assume}
+  $v(d) \geq -r$.
+\end{assume}
+This is fine because if this $v(d) < -r$ then the integral will always vanish
 (because the bottom-right entry of $\Gamma(\gamma, t, m)$ is no-good).
 Because of this, it then also follows that $v(b) \geq -r$ from \eqref{eqn:b}.
 
 \section{Evaluation of the integral}
-\subsection{Easy cases}
+\subsection{The case where $n \leq 0$}
 \begin{claim}
   Whenever $n = 0$ (this requires $v(t) \geq 0$),
   \[
@@ -251,11 +255,11 @@ Because of this, it then also follows that $v(b) \geq -r$ from \eqref{eqn:b}.
 \end{proof}
 
 \begin{claim}
-  Suppose $n = -2j < 0$, equivalently, $v(t) = -j < 0$, for some $j$.
+  Suppose $n = -2k < 0$, equivalently, $v(t) = -k < 0$, for some $k$.
   \[
     \mathbf{1}(\gamma, t, m) =
     \begin{cases}
-      1 & \text{if } -r \le m+j \le v(1-d\bar d)+r \\
+      1 & \text{if } -r \le m+k \le v(1-d\bar d)+r \\
       0 & \text{otherwise.}
     \end{cases}
   \]
@@ -263,9 +267,46 @@ Because of this, it then also follows that $v(b) \geq -r$ from \eqref{eqn:b}.
 \begin{proof}
   The proof is similar to the previous claim, but simpler.
 
-  Since $j > 0$, the fraction $\frac{t^2}{1-t \bar t}$ has positive valuation,
+  Since $k > 0$, the fraction $\frac{t^2}{1-t \bar t}$ has positive valuation,
   so the upper $2 \times 2$ of $\Gamma(\gamma, t, m)$ is always in $\varpi^{-r}\OO_E$.
-  Turning to the right column, the condition reads exactly $m+j \geq -r$.
+  Turning to the right column, the condition reads exactly $m+k \geq -r$.
   Finally, in the bottom row, from $v(t) > 0$ and $v(c) = v(1-d \bar d)$
-  the condition is simply $-j+v(1-d \bar d)-m \geq -r$.
+  the condition is simply $-k+v(1-d \bar d)-m \geq -r$.
 \end{proof}
+
+We may now evaluate the orbital integral over these two cases.
+For the region where $n = 0$, we get a contribution of
+\begin{align*}
+  &\phantom= \kappa \int_{t, t_1 \in E} \mathbf{1}(n=0) \mathbf{1}(\gamma,t,m)
+    q^{2s \cdot m} q^{-2m} \odif t \odif t_1 \\
+  &= \kappa \Vol(t: n =0) \sum_{j=-r}^{v(1-d \bar d)+r} \Vol(t_1: m=j) q^{2j(s-1)} \\
+  &= \kappa \left( 1 - \frac{q+1}{q^2} \right) \sum_{j=-r}^{v(1-d \bar d)+r}
+  \left( q^{2j} \left( 1-q^{-2} \right) \right) q^{2j(s-1)} \\
+  &= \kappa \left( 1 - \frac{q+1}{q^2} \right) \left( 1-q^{-2} \right)
+  \sum_{j=-r}^{v(1-d \bar d)+r} q^{2js}.
+\end{align*}
+For the region where $v(t) = -k < 0$, for each individual $k > 0$,
+\begin{align*}
+  &\phantom= \kappa \int_{t, t_1 \in E} \mathbf{1}(v(t)=-k) \mathbf{1}(\gamma,t,m)
+    q^{s(2m-n)} q^{2n-2m} \odif t \odif t_1 \\
+  &= \kappa \Vol(t: v(t)=-k) \sum_{j=-r-k}^{v(1-d \bar d)+r-k}
+    \Vol(t_1: m=j) q^{s(2j+2k)-4k-2j} \\
+  &= \kappa q^{2k} \left( 1 - q^{-2} \right) \sum_{j=-r-k}^{v(1-d \bar d)+r-k}
+    \left( q^{2j} \left( 1-q^{-2} \right) \right) q^{s(2j+2k)-4k-2j} \\
+  &= \kappa q^{2k} \left( 1 - q^{-2} \right) \sum_{j=-r-k}^{v(1-d \bar d)+r-k}
+    \left( q^{2j} \left( 1-q^{-2} \right) \right) q^{s(2j+2k)-4k-2j} \\
+  &= \kappa q^{-2k} \left( 1 - q^{-2} \right)^2
+    \sum_{j=-r-k}^{v(1-d \bar d)+r-k} q^{2(j+k)s} \\
+  &= \kappa q^{-2k} \left( 1 - q^{-2} \right)^2 \sum_{j=-r}^{v(1-d \bar d)+r} q^{2js} \\
+  &= \kappa q^{-2k} \left( 1 - q^{-2} \right)^2 \sum_{j=-r}^{v(1-d \bar d)+r} q^{2js}.
+\end{align*}
+Since $\sum_{k > 0} q^{-2k} = \frac{q^{-2}}{1-q^{-2}}$,
+we find that the total contribution across both
+the $n=0$ case and the $k > 0$ case is
+\begin{align*}
+  &\phantom= \left( \left( 1 - \frac{q+1}{q^2} \right) \left( 1-q^{-2} \right)
+    + q^{-2}(1-q^{-2})  \right) \kappa \sum_{j=-r}^{v(1-d \bar d)+r} q^{2js} \\
+  &\phantom= \left( 1-q\inv \right) \left(1-q^{-2}  \right)
+    \kappa \sum_{j=-r}^{v(1-d \bar d)+r} q^{2js} \\
+  &= \kappa \sum_{j=-r}^{v(1-d \bar d)+r} q^{2js}.
+\end{align*}
