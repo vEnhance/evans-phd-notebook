@@ -65,7 +65,7 @@ For so-called \emph{regular} $\gamma$, the representatives
   \in S_3(F); \quad \text{where $c = -a \bar b + b d$} \]
 cover all the \emph{regular} orbits, which are the ones we care about.
 
-For $r=0$, AFL computes $\pdv{}{s}O(\gamma,s)$ at $s=0$.
+For $r=0$, \cite{ref:AFL} computes $\pdv{}{s}O(\gamma,s)$ at $s=0$ in terms of $a$, $b$, $d$.
 Our goal is to compute it for $r > 0$ too.
 
 \section{Reparametrization in terms of valuations}
@@ -164,5 +164,108 @@ $\left[ \begin{smallmatrix} \eps\inv \\ & \bar\eps\inv \\ & & 1 \end{smallmatrix
 has no effect on any of the $\Omega_r$,
 so we may use the above expression $\mathbf{1}_{\Omega_r}(\Gamma(\gamma, t, m))$
 in the work that follows.
+By abuse of notation, we abbreviate
+\[ \mathbf{1}_r(\gamma, t, m) \coloneqq \mathbf{1}_{\Omega_r}(\Gamma(\gamma, t, m)). \]
+
+\subsection{Reparametrizing the integral in terms of $t$ and $m$}
+From now on, we always fix the notation
+\begin{align*}
+  m &= m(t_1) \coloneqq -v(t_1) \\
+  n &= n(t) \coloneqq v(1-t\bar t).
+\end{align*}
+We need to rewrite the integral, phrased originally via $\odif g$,
+in terms of the parameters $t$ (hence $n$), $m$, and $\gamma$.
+We start by observing that
+\[ \det g = t_1 \bar t_1 - t_2 \bar t_2 = t_1 \bar t_1 (1 - t\bar t) \]
+which means that
+\[ v(\det g) = -2m + n \]
+ergo
+\begin{align*}
+  \left\lvert \det g \right\rvert_F &= q^{-v(\det g)} = q^{2m-n} \\
+  \eta(g) &= (-1)^{v(\det g)} = (-1)^n.
+\end{align*}
+Meanwhile, from $t_2 = t \bar t_1$ we derive
+\[ \odif t_2 = \left\lvert t_1 \right\rvert_E \odif t = q^{2m} \odif t. \]
+
+Bringing this all into the orbital integral gives
+\begin{align*}
+  O(\gamma, s) &= \kappa \int_{t, t_1 \in E} \mathbf{1}_r(\gamma, t, m)
+  (-1)^n \left( q^{2m-n} \right)^{s-2} \odif t_1 \cdot (q^{2m} \odif t) \\
+  &= \kappa \int_{t, t_1 \in E} \mathbf{1}_r(\gamma, t, m)
+  (-1)^n q^{s(2m-n)} \cdot q^{2n-2m} \odif t \odif t_1.
+\end{align*}
 
 \section{Simplifying assumptions}
+For the purposes of \cite{ref:AFL},
+we will only care about when
+\[ v\left( (1-d\bar d)^2 - c \bar c\right) \equiv 1 \pmod 2 \]
+and assume so.
+This means in particular that
+\[ v(1 - d \bar d) = v(c) \neq -\infty \]
+are nonzero with the same valuation.
+So following \cite{ref:AFL} we will define
+\[ u \coloneqq \frac{\bar c}{1-d \bar d} \in \OO_E^\times \]
+so that
+\begin{equation}
+  b = -au - \bar{d} \bar{u}
+  \label{eqn:b}
+\end{equation}
+
+In what follows, we are going to always assume $v(d) \geq -r$,
+because if this $v(d) < -r$ then the integral will always vanish
+(because the bottom-right entry of $\Gamma(\gamma, t, m)$ is no-good).
+Because of this, it then also follows that $v(b) \geq -r$ from \eqref{eqn:b}.
+
+\section{Evaluation of the integral}
+\subsection{Easy cases}
+\begin{claim}
+  Whenever $n = 0$ (this requires $v(t) \geq 0$),
+  \[
+    \mathbf{1}(\gamma, t, m) =
+    \begin{cases}
+      1 & \text{if } -r \le m \le v(1-d\bar d)+r \\
+      0 & \text{otherwise.}
+    \end{cases}
+  \]
+\end{claim}
+\begin{proof}
+  We have to consider the nine entries of $\Gamma(\gamma, t, m)$ in tandem.
+
+  The upper $2 \times 2$ matrix is always in $\omega^{-r}\OO_E$,
+  because $v(t) \geq 0$, $v(d) \geq -r$, $v(b) \geq -r$, and $v(a) = 0$ suffices.
+
+  In the right column, since $v(t) \geq 0$ and $n = 0$, the condition is simply $m \ge -r$.
+
+  In the bottom row, we need
+  $v\left( c+(1-d\bar d) \bar t \right)-m \geq -r$
+  and $v\left( ct +(1-d\bar d) \right)-m \geq -r$.
+  Since $v(c) = v(1-d \bar d)$,
+  if $v(t) > 0$ this is equivalent to $m-r \leq v(1-d \bar d)$.
+  In the case where $v(t) = 0$ we instead use the observation that
+  \[ \bar t \left[ ct + (1-d \bar d) \right]
+    - \left[ c + (1-d \bar d) \bar t \right] = (1-t\bar t) c \]
+  which forces at least one of
+  $ct + (1-d \bar d)$
+  and $c + (1-d \bar d) \bar t$ to have the valuation equal to $v(c) = v(1-d \bar d)$.
+  So the claim follows now.
+\end{proof}
+
+\begin{claim}
+  Suppose $n = -2j < 0$, equivalently, $v(t) = -j < 0$, for some $j$.
+  \[
+    \mathbf{1}(\gamma, t, m) =
+    \begin{cases}
+      1 & \text{if } -r \le m+j \le v(1-d\bar d)+r \\
+      0 & \text{otherwise.}
+    \end{cases}
+  \]
+\end{claim}
+\begin{proof}
+  The proof is similar to the previous claim, but simpler.
+
+  Since $j > 0$, the fraction $\frac{t^2}{1-t \bar t}$ has positive valuation,
+  so the upper $2 \times 2$ of $\Gamma(\gamma, t, m)$ is always in $\varpi^{-r}\OO_E$.
+  Turning to the right column, the condition reads exactly $m+j \geq -r$.
+  Finally, in the bottom row, from $v(t) > 0$ and $v(c) = v(1-d \bar d)$
+  the condition is simply $-j+v(1-d \bar d)-m \geq -r$.
+\end{proof}
