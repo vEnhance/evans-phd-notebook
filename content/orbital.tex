@@ -1,8 +1,9 @@
 \chapter{Orbital integral}
-\section{Symmetric space}
+\section{Background}
+\subsection{Symmetric space}
 Let $F$ be a finite extension of $\QQ_p$ and
 let $E/F$ be a quadratic field extension.
-Denote by $\varpi$ a uniformizer of $\OO_F$.
+Denote by $\varpi$ a uniformizer of $\OO_F$, such that $\bar \varpi = \varpi$.
 
 We define the symmetric space
 \[ S_3(F) \coloneqq \left\{ s \in \GL_3(E) \mid s \bar s = \id \right\}. \]
@@ -15,14 +16,20 @@ We also pay particular attention to the subspace which have $\OO_E$ entries:
   Then we have a decomposition
   \[ S_3(F) = \coprod_{m \geq 0} K_{S,m}. \]
 \end{lemma}
+For $r \geq 0$, dfeine
+\[ \Omega_r \coloneqq S_3(F) \cap \varpi^{-m} \GL_3(\OO_E). \]
+We can re-parametrize the problem according to the following claim.
+\begin{claim}
+  \[ \Omega_r = K_{S,0} \sqcup K_{S,1} \sqcup \dots \sqcup K_{S,r}. \]
+\end{claim}
+If this claim is true (still need to check it),
+then an integral over each $\Omega_r$ lets us extract the integrals over $K_{S,m}$.
 
-\section{Orbital integral}
+\subsection{Orbital integral}
 Define
-\[
-  H' \coloneqq
+\[ H' \coloneqq
   \left\{ \begin{bmatrix} t_1 & t_2 \\ \bar t_2 & \bar t_1 \end{bmatrix} \right\}
-  \cong \GL_2(F).
-\]
+  \cong \GL_2(F). \]
 We embed $H'$ into $\GL_3(F)$ by
 $h' \mapsto \left[ \begin{smallmatrix} h' & 0 \\ 0 &1 \end{smallmatrix} \right]$,
 which allows $H$ to act on $\GL_3(FF)$ and hence $S_3(F)$.
@@ -33,7 +40,8 @@ Now we can define the orbital integral.
   and for brevity let $\eta(h') \coloneqq \eta(\det h')$ for $h' \in H'$.
   For $\gamma \in S_3(F)$ and $s \in \CC$, we define the orbital integral by
   \[ O(\gamma, s) \coloneqq
-    \int_{g \in H'} 1_{K_{S,m}}(\bar g\inv \gamma g) \eta(g) |\det(g)|^s \odif g \]
+    \int_{g \in H'} \mathbf{1}_{\Omega_r}(\bar g\inv \gamma g) \eta(g)
+    \left\lvert \det(g) \right\rvert_F^{-s} \odif g \]
   where
   \[ \odif g = \kappa \cdot \frac{\odif t_1 \odif t_2}
     {\left\lvert t_1 \bar t_1 - t_2 \bar t_2 \right\rvert_F^2} \]
@@ -57,5 +65,104 @@ For so-called \emph{regular} $\gamma$, the representatives
   \in S_3(F); \quad \text{where $c = -a \bar b + b d$} \]
 cover all the \emph{regular} orbits, which are the ones we care about.
 
-For $m=0$, AFL computes $\pdv{}{s}O(\gamma,s)$ at $s=0$.
-Our goal is to compute it for $m > 0$ too.
+For $r=0$, AFL computes $\pdv{}{s}O(\gamma,s)$ at $s=0$.
+Our goal is to compute it for $r > 0$ too.
+
+\section{Reparametrization in terms of valuations}
+\subsection{Computation of value in indicator function}
+We are integrating over $t_1 \in E$ and $t_2 \in E$.
+Regarding $g \in H'$ as an element of $\GL_3$ as described before, we have
+\[ g = \begin{bmatrix}
+  t_1 & t_2 & 0  \\
+  \bar t_2 & \bar t_1 & 0 \\
+  0 & 0 & 1
+  \end{bmatrix}. \]
+We therefore have
+\[ \bar g \inv = \begin{bmatrix}
+  \frac{t_1}{t_1 \bar t_1 - t_2 \bar t_2} & \frac{-\bar t_2}{t_1 \bar t_1 - t_2 \bar t_2} & 0 \\
+  \frac{-t_2}{t_1 \bar t_1 - t_2 \bar t_2} & \frac{\bar t_1}{t_1 \bar t_1 - t_2 \bar t_2} & 0 \\
+  0 & 0 & 1 \end{bmatrix}. \]
+Hence
+\begin{align*}
+  \bar g \inv \gamma g
+  &=
+  \begin{bmatrix}
+  \frac{t_1}{t_1 \bar t_1 - t_2 \bar t_2} & \frac{-\bar t_2}{t_1 \bar t_1 - t_2 \bar t_2} & 0 \\
+  \frac{-t_2}{t_1 \bar t_1 - t_2 \bar t_2} & \frac{\bar t_1}{t_1 \bar t_1 - t_2 \bar t_2} & 0 \\
+  0 & 0 & 1 \end{bmatrix}
+  \begin{bmatrix}
+    a & 0 & 0 \\
+    b & - \bar d & 1 \\
+    c & 1 - d \bar d & d
+  \end{bmatrix}
+  \begin{bmatrix}
+  t_1 & t_2 & 0  \\
+  \bar t_2 & \bar t_1 & 0 \\
+  0 & 0 & 1
+  \end{bmatrix} \\
+  &=
+  \begin{bmatrix}
+  \frac{t_1}{t_1 \bar t_1 - t_2 \bar t_2} & \frac{-\bar t_2}{t_1 \bar t_1 - t_2 \bar t_2} & 0 \\
+  \frac{-t_2}{t_1 \bar t_1 - t_2 \bar t_2} & \frac{\bar t_1}{t_1 \bar t_1 - t_2 \bar t_2} & 0 \\
+  0 & 0 & 1 \end{bmatrix}
+  \begin{bmatrix}
+    at_1 & at_2 & 0 \\
+    bt_1 - \bar d \bar t_2 & b t_2 - \bar d \bar t_1 & 1 \\
+    ct_1 + (1-d\bar d)\bar t_2 & ct_2 + (1-d \bar d) \bar t_1 & d
+  \end{bmatrix}
+  \\
+  &=
+  \begin{bmatrix}
+    \dfrac{at_1^2 - bt_1 \bar t_2 + d \bar t_2^2}{t_1 \bar t_1 - t_2 \bar t_2}
+    & \dfrac{at_1t_2 - bt_2 \bar t_2 + \bar d \bar t_1 \bar t_2}{t_1 \bar t_1 - t_2 \bar t_2}
+    & \dfrac{-\bar t_2}{t_1 \bar t_1 - t_2 \bar t_2} \\[2ex]
+    \dfrac{-at_1t_2+bt_1\bar t_1-\bar d \bar t_1 \bar t_2}{t_1 \bar t_1 - t_2 \bar t_2}
+    & \dfrac{-at_2^2+b\bar t_1 t_2-d\bar t_1^2}{t_1 \bar t_1 - t_2 \bar t_2}
+    & \dfrac{\bar t_1}{t_1 \bar t_1 - t_2 \bar t_2} \\[2ex]
+    ct_1 + (1-d\bar d)\bar t_2 & ct_2 + (1-d \bar d) \bar t_1 & d
+  \end{bmatrix}
+\end{align*}
+Let us define \[ t = t_2 \bar t_1 \inv \iff t_2 = t \bar t_1. \]
+This lets us rewrite everything in terms of the ratio $t$ and $t_1 \in E$:
+\[
+  \bar g \inv \gamma g
+  =
+  \begin{bmatrix}
+    \dfrac{t_1^2(a-b\bar t+\bar d \bar t^2)}{t_1 \bar t_1(1-t \bar t)}
+    & \dfrac{t_1 \bar t_1(at-bt\bar t+\bar d \bar t)}{t_1 \bar t_1(1-t \bar t)}
+    & \dfrac{t_1 \cdot (-\bar t)}{t_1 \bar t_1 (1-t \bar t)} \\[2ex]
+    \dfrac{t_1\bar t_1(-at+b-\bar d \bar t)}{t_1 \bar t_1(1-t \bar t)}
+    & \dfrac{\bar t_1^2(-at^2+bt-\bar d)}{t_1 \bar t_1(1-t \bar t)}
+    & \dfrac{-\bar t_1}{t_1 \bar t_1(1-t \bar t)} \\[2ex]
+    t_1(c + (1-d\bar d)\bar t) & \bar t_1(ct + (1-d \bar d)) & d
+  \end{bmatrix}
+\]
+This new parametrization is better because $t_1$ only plays the role of
+a scale factor on the outside, with ``interesting'' terms only involving $t$.
+To make this further explicit, we write
+\[ t_1 = \varpi^m \eps \]
+for $m \in \ZZ$ and $\eps \in \OO_E^\times$.
+Then we actually have
+\[
+  \begin{bmatrix} \bar\eps \\ & \eps \\ & & 1 \end{bmatrix}
+  \bar g \inv \gamma g
+  \begin{bmatrix} \eps\inv \\ & \bar\eps\inv \\ & & 1 \end{bmatrix}
+  =
+  \begin{bmatrix}
+    \dfrac{a-b\bar t+\bar d \bar t^2}{1-t \bar t}
+    & \dfrac{at-bt\bar t+\bar d \bar t}{1-t \bar t}
+    & \dfrac{-\varpi^m \bar t}{1-t \bar t} \\[2ex]
+    \dfrac{-at+b-\bar d \bar t}{1-t \bar t}
+    & \dfrac{-at^2+bt-\bar d}{1-t \bar t}
+    & \dfrac{-\varpi^m}{1-t \bar t} \\[2ex]
+    \dfrac{c + (1-d\bar d)\bar t}{\varpi^m} & \dfrac{ct + (1-d \bar d)}{\varpi^m} & d
+  \end{bmatrix}
+\]
+For brevity, we will let $\Gamma(\gamma, t, m)$ denote the right-hand matrix.
+The conjugation by
+$\left[ \begin{smallmatrix} \eps\inv \\ & \bar\eps\inv \\ & & 1 \end{smallmatrix} \right]$
+has no effect on any of the $\Omega_r$,
+so we may use the above expression $\mathbf{1}_{\Omega_r}(\Gamma(\gamma, t, m))$
+in the work that follows.
+
+\section{Simplifying assumptions}
