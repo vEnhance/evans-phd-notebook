@@ -1,10 +1,13 @@
 \chapter{Orbital integral}
 \section{Background}
-\subsection{Symmetric space}
-Let $F$ be a finite extension of $\QQ_p$ and
-let $E/F$ be a quadratic field extension.
-Denote by $\varpi$ a uniformizer of $\OO_F$, such that $\bar \varpi = \varpi$.
+Let $F$ be a finite extension of $\QQ_p$ for $p > 2$ and
+let $E/F$ be an unramified quadratic field extension.
+Denote by $\varpi$ a uniformizer of $\OO_F$, such that $\bar \varpi = \varpi$,
+and let $v$ be the associated valuation.
+Let $\eta$ be the quadratic character attached to $E/F$ by class field theory,
+so that $\eta(x) = -1^{v(x)}$.
 
+\subsection{Symmetric space}
 We define the symmetric space
 \[ S_3(F) \coloneqq \left\{ s \in \GL_3(E) \mid s \bar s = \id \right\}. \]
 We also pay particular attention to the subspace which have $\OO_E$ entries:
@@ -31,12 +34,11 @@ Define
   \left\{ \begin{bmatrix} t_1 & t_2 \\ \bar t_2 & \bar t_1 \end{bmatrix} \right\}
   \cong \GL_2(F). \]
 We embed $H'$ into $\GL_3(F)$ by
-$h' \mapsto \left[ \begin{smallmatrix} h' & 0 \\ 0 &1 \end{smallmatrix} \right]$,
-which allows $H$ to act on $\GL_3(FF)$ and hence $S_3(F)$.
+$h' \mapsto \left[ \begin{smallmatrix} h' & 0 \\ 0 & 1 \end{smallmatrix} \right]$,
+which allows $H$ to act on $\GL_3(F)$ and hence $S_3(F)$.
 
 Now we can define the orbital integral.
 \begin{definition}
-  Let $\eta$ be the quadratic character attached to $E/F$ by class field theory,
   and for brevity let $\eta(h') \coloneqq \eta(\det h')$ for $h' \in H'$.
   For $\gamma \in S_3(F)$ and $s \in \CC$, we define the orbital integral by
   \[ O(\gamma, s) \coloneqq
