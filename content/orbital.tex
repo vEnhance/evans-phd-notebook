@@ -65,6 +65,7 @@ For so-called \emph{regular} $\gamma$, the representatives
     c & 1 - d \bar d & d
   \end{bmatrix}
   \in S_3(F); \quad \text{where $c = -a \bar b + b d$} \]
+over all $a \in E^1$, $b \in E$, $d \in E$ for which $(1-d\bar d)^2 - c \bar c \neq 0$,
 cover all the \emph{regular} orbits, which are the ones we care about.
 
 For $r=0$, \cite{ref:AFL} computes $\pdv{}{s}O(\gamma,s)$ at $s=0$ in terms of $a$, $b$, $d$.
@@ -197,41 +198,52 @@ Bringing this all into the orbital integral gives
   (-1)^n q^{s(2m-n)} \cdot q^{2n-2m} \odif t \odif t_1.
 \end{align*}
 
-\section{Simplifying assumptions}
+\section{Setup}
+\subsection{Simplifying assumptions}
 For the purposes of \cite{ref:AFL},
 we will only care about the following case:
 \begin{assume}
   \[ v\left( (1-d\bar d)^2 - c \bar c\right) \equiv 1 \pmod 2 \]
+  \label{assume:implies_delta}
 \end{assume}
-This means in particular that we may define the following quantity
-that will appear repeatedly:
-\begin{equation}
-  \delta \coloneqq v(1-d \bar d) = v(c) \neq -\infty.
-  \label{eqn:delta}
-\end{equation}
-Following \cite{ref:AFL} we will also define
-\begin{equation}
-  u \coloneqq \frac{\bar c}{1-d \bar d} \in \OO_E^\times
-  \label{eqn:u}
-\end{equation}
-so that
-\begin{equation}
-  b = -au - \bar{d} \bar{u}
-  \label{eqn:b}
-\end{equation}
-
 We will also assume:
 \begin{assume}
   $v(d) \geq -r$.
 \end{assume}
 This is fine because if this $v(d) < -r$ then the integral will always vanish
 (because the bottom-right entry of $\Gamma(\gamma, t, m)$ is no-good).
-Because of this, from \eqref{eqn:b} we then get
+Because of this, from \eqref{eq:b} we then get
 \begin{corollary}
   $v(b) \geq -r$.
 \end{corollary}
 
-\section{Evaluation of the integral}
+\subsection{Notations}
+As we described earlier, our goal is to give an answer in terms of
+\[ a \in E^1, \qquad b, d \in E, \qquad r > 0. \]
+To simplify the notation in what follows,
+it will be convenient to define several quantities that reappear frequently.
+From \Cref{assume:implies_delta}, we may define
+\begin{equation}
+  \delta \coloneqq v(1-d \bar d) = v(c) \neq -\infty.
+  \label{eq:delta}
+\end{equation}
+Following \cite{ref:AFL} we will also define
+\begin{equation}
+  u \coloneqq \frac{\bar c}{1-d \bar d} \in \OO_E^\times
+  \label{eq:u}
+\end{equation}
+so that
+\begin{equation}
+  b = -au - \bar{d} \bar{u}.
+  \label{eq:b}
+\end{equation}
+Finally, define
+\begin{equation}
+  \ell \coloneqq v(b^2 - 4 a \ol d).
+  \label{eq:ell}
+\end{equation}
+
+\section{Description of the nonzero regions}
 \subsection{The case where $n \leq 0$}
 \begin{claim}
   Whenever $n = 0$ (this requires $v(t) \geq 0$),
@@ -259,7 +271,7 @@ Because of this, from \eqref{eqn:b} we then get
   \begin{equation}
     \left[ c + (1-d \bar d) \bar t \right]
     - \bar t \left[ ct + (1-d \bar d) \right] = (1-t\bar t) c
-    \label{eqn:ctrick}
+    \label{eq:ctrick}
   \end{equation}
   which forces at least one of $ct + (1-d \bar d)$ and $c + (1-d \bar d) \bar t$ to
   have valuation $\delta$. So the claim follows now.
@@ -285,44 +297,8 @@ Because of this, from \eqref{eqn:b} we then get
   the condition is simply $-k+\delta-m \geq -r$.
 \end{proof}
 
-We may now evaluate the orbital integral over these two cases.
-For the region where $n = 0$, we get a contribution of
-\begin{align*}
-  &\phantom= \kappa \int_{t, t_1 \in E} \mathbf{1}(n=0) \mathbf{1}(\gamma,t,m)
-    q^{2s \cdot m} q^{-2m} \odif t \odif t_1 \\
-  &= \kappa \Vol(t: n =0) \sum_{j=-r}^{\delta+r} \Vol(t_1: m=j) q^{2j(s-1)} \\
-  &= \kappa \left( 1 - \frac{q+1}{q^2} \right) \sum_{j=-r}^{\delta+r}
-  \left( q^{2j} \left( 1-q^{-2} \right) \right) q^{2j(s-1)} \\
-  &= \kappa \left( 1 - \frac{q+1}{q^2} \right) \left( 1-q^{-2} \right)
-  \sum_{j=-r}^{\delta+r} q^{2js}.
-\end{align*}
-For the region where $v(t) = -k < 0$, for each individual $k > 0$,
-\begin{align*}
-  &\phantom= \kappa \int_{t, t_1 \in E} \mathbf{1}(v(t)=-k) \mathbf{1}(\gamma,t,m)
-    q^{s(2m-n)} q^{2n-2m} \odif t \odif t_1 \\
-  &= \kappa \Vol(t: v(t)=-k) \sum_{j=-r-k}^{\delta+r-k}
-    \Vol(t_1: m=j) q^{s(2j+2k)-4k-2j} \\
-  &= \kappa q^{2k} \left( 1 - q^{-2} \right) \sum_{j=-r-k}^{\delta+r-k}
-    \left( q^{2j} \left( 1-q^{-2} \right) \right) q^{s(2j+2k)-4k-2j} \\
-  &= \kappa q^{2k} \left( 1 - q^{-2} \right) \sum_{j=-r-k}^{\delta+r-k}
-    \left( q^{2j} \left( 1-q^{-2} \right) \right) q^{s(2j+2k)-4k-2j} \\
-  &= \kappa q^{-2k} \left( 1 - q^{-2} \right)^2
-    \sum_{j=-r-k}^{\delta+r-k} q^{2(j+k)s} \\
-  &= \kappa q^{-2k} \left( 1 - q^{-2} \right)^2 \sum_{j=-r}^{\delta+r} q^{2js} \\
-  &= \kappa q^{-2k} \left( 1 - q^{-2} \right)^2 \sum_{j=-r}^{\delta+r} q^{2js}.
-\end{align*}
-Since $\sum_{k > 0} q^{-2k} = \frac{q^{-2}}{1-q^{-2}}$,
-we find that the total contribution across both
-the $n=0$ case and the $k > 0$ case is
-\begin{align*}
-  &\phantom= \left( \left( 1 - \frac{q+1}{q^2} \right) \left( 1-q^{-2} \right)
-    + q^{-2}(1-q^{-2})  \right) \kappa \sum_{j=-r}^{\delta+r} q^{2js} \\
-  &\phantom= \left( 1-q\inv \right) \left(1-q^{-2}  \right)
-    \kappa \sum_{j=-r}^{\delta+r} q^{2js} \\
-  &= \kappa \sum_{j=-r}^{\delta+r} q^{2js}.
-\end{align*}
 
-\subsection{The case where $n > 0$}
+\subsection{Setup for $n > 0$}
 In this situation we evaluate over $n > 0$ only.
 In this case $t$ is automatically a unit.
 
@@ -343,17 +319,17 @@ it follows that as soon as one entry is in $\varpi^{-r} \OO_E$, they all are.
 Meanwhile, the requirements on the other entries amount to
 \begin{align}
   m & \geq n - r \\
-  v\left( c+(1-d \bar d) \bar t \right) &\geq m-r \label{eqn:cddtop} \\
-  v\left( ct+(1-d \bar d) \right) &\geq m-r \label{eqn:cddbot}
+  v\left( c+(1-d \bar d) \bar t \right) &\geq m-r \label{eq:cddtop} \\
+  v\left( ct+(1-d \bar d) \right) &\geq m-r \label{eq:cddbot}
 \end{align}
-According to the earlier identity \eqref{eqn:ctrick},
-if \eqref{eqn:cddtop} is assumed true,
-then \eqref{eqn:cddbot} is equivalent to
+According to the earlier identity \eqref{eq:ctrick},
+if \eqref{eq:cddtop} is assumed true,
+then \eqref{eq:cddbot} is equivalent to
 \[ \delta + v(1-t \bar t) \ge m-r. \]
 Meanwhile, since $v(c+(1-d \bar d) \bar t) = v(\bar c + (1-d \bar d)t)$,
-\eqref{eqn:cddtop} is itself equivalent to
+\eqref{eq:cddtop} is itself equivalent to
 \[ v(t+u) + \delta \geq m-r \]
-by reading the definition of \eqref{eqn:u}.
+by reading the definition of \eqref{eq:u}.
 
 Finally, we use a tricky substitution
 \[ (2at-b)^2 - (b^2-4a\bar d) = -4a(-at^2+bt-\bar d) \]
@@ -371,3 +347,192 @@ In summary:
     v(t+u) &\ge m-r-\delta.
   \end{align*}
 \end{claim}
+
+\subsection{Volume lemma}
+The following lemma will be useful.
+\begin{lemma}
+  [{\cite[Lemma 4.4]{ref:AFL}}]
+  Let $\xi \in \OO_E^\times$, $i \in \ZZ$, and integer $\lambda$,
+  the volume of the set
+  \[ \left\{ x \in E \mid v(1-x \bar x) = \lambda, \; v(x-\xi) \ge \lambda \right\} \]
+  equals
+  \[
+    \begin{cases}
+      0 & v(1-\xi\bar\xi) < \lambda \\
+      q^{-(n+i)}(1-q\inv) & v(1-\xi\bar\xi) \ge \lambda.
+    \end{cases}
+  \]
+\end{lemma}
+
+We will also need to intersect two disks. In an ultrametric space, this is easy to do:
+\begin{lemma}
+  [No MasterCard logo in an ultrametric space]
+  Choose $\xi_1, \xi_2 \in E$ and $\lambda_1 \geq \lambda_2 \geq 0$.
+  Consider the two disks:
+  \begin{align*}
+    D_1 &= \left\{ x \in E \mid v(x-\xi_1) \ge \lambda_1 \right\} \\
+    D_2 &= \left\{ x \in E \mid v(x-\xi_2) \ge \lambda_2 \right\}.
+  \end{align*}
+  Then, if $v(\xi_1-\xi_2) \geq \lambda_2$, we have $D_1 \subseteq D_2$.
+  If not, instead $D_1 \cap D_2 = \varnothing$.
+  \label{lem:mastercard}
+\end{lemma}
+\begin{proof}
+  Because $E$ is an ultrametric space and $\Vol(D_1) \leq \Vol(D_2)$,
+  we either have $D_1 \subseteq D_2$ or $D_1 \cap D_2 = \varnothing$.
+  The latter condition checks which case we are in by testing if $\xi_1 \in D_2$,
+  since $\xi_1 \in D_1$.
+\end{proof}
+
+\subsection{The case where $n > 0$, and $\ell$ is odd}
+Considering $n > 0$ and $n-r \le m \le n+r+\delta$ as fixed,
+we compute the volume of the set of $t$
+for which $n = v(1-t\bar t)$ and $\mathbf{1}(\gamma,t,m) = 0$.
+
+Supposing $\ell$ is odd, the condition
+\[ v\left( (2at-b)^2 - (b^2-4a\bar d) \right) \geq n-r \]
+is equivalent to simultaneously the two conditions
+\begin{align}
+  v\left( (2at-b)^2 \right) \geq n-r
+  \implies v\left( t-\frac{b}{2a} \right) &\geq \left\lceil \frac{n-r}{2} \right\rceil
+  \label{eq:odd_disk1} \\
+  \ell &\ge n-r. \label{eq:odd_n_bound}
+\end{align}
+We also had the requirement
+\begin{equation}
+  v(t+u) \ge m-r-\delta.
+  \label{eq:odd_disk2}
+\end{equation}
+Use \Cref{lem:mastercard} on \eqref{eq:odd_disk1} and \eqref{eq:odd_disk2},
+noting the distance between the two centers is exactly
+\[ v\left( u + \frac{b}{2a} \right) = v\left( \frac{au-\bar d \bar u}{2a} \right)
+  = v(au - \bar d \bar u). \]
+This means that we obtain two possible situations:
+\begin{itemize}
+  \ii If $m \leq \left\lceil \frac{n-r}{2} \right\rceil + r + \delta$
+  the nonempty condition reads
+  \begin{align}
+    v(4-b\bar b) &\ge \left\lceil \frac{n-r}{2} \right\rceil \label{eq:odd_ineq1} \\
+    v(au - \bar d \bar u) &\ge m - r - \delta \label{eq:odd_ineq2}.
+  \end{align}
+
+  \ii If $m > \left\lceil \frac{n-r}{2} \right\rceil + r + \delta$
+  the nonempty condition reads
+  \begin{align}
+    v(1-u \bar u) &\ge m-r-\delta \label{eq:odd_ineq3} \\
+    v(au - \bar d \bar u) &\ge m - r - \delta \label{eq:odd_ineq4}.
+  \end{align}
+\end{itemize}
+To proceed further, we need to prove a few properties.
+We list them in turn.
+
+\begin{fact}
+  Whenever $\ell$ is odd, we must have
+  \begin{equation}
+    v(b) = v(d) = 0.
+    \label{eq:odd_b_d_zero}
+  \end{equation}
+\end{fact}
+\begin{proof}
+  [Proof of \eqref{eq:odd_b_d_zero}]
+  If $v(d) \neq 0$, then $b = -au-\bar d\bar u$ is a unit,
+  and hence so is $b^2 - 4 a \bar d$, causing $\ell = 0$, contradiction.
+  And if $d$ is a unit, $\ell \neq 0$ means $v(b) = 0$ too.
+\end{proof}
+
+Next, note that
+$b^2-4a\bar d = (au - \bar d \bar u)^2 - 4a \bar d (1-u \bar u)$
+together with \eqref{eq:odd_b_d_zero} implies
+\begin{equation}
+  \ell = v(1-u \bar u) < 2v(au - \bar d \bar u).
+  \label{eq:odd_center_distance}
+\end{equation}
+This implies that:
+\begin{fact}
+  \eqref{eq:odd_ineq2} and \eqref{eq:odd_ineq4} are redundant for odd $\ell$,
+  i.e.\ they are automatically true whenever $n > 0$ and $n-r \le m \le n+r+\delta$.
+\end{fact}
+\begin{proof}
+  Delete the ceilings.
+  We have $\frac{n-r}{2} \le \frac{\ell}{2} < v(au - \bar d \bar u)$ in both cases.
+  And in \eqref{eq:odd_ineq1}, we have $m-r-\delta \le \frac{n-r}{2}$ anyway.
+\end{proof}
+
+Finally, the equation $b(4-b \bar b) = -4au(1-d\bar d) - \bar b(b^2-4a\bar d)$
+together with \eqref{eq:odd_b_d_zero} implies
+\begin{equation}
+  v(4-b\bar b) \ge \min(\ell,\delta) \text{ with equality if } \ell \neq \delta.
+  \label{eq:odd_bb}
+\end{equation}
+
+Putting all of this together,
+we find that the valid pairs $(n,m)$ come in two cases.
+
+\paragraph{First case}
+The first case is
+\begin{equation}
+  1 \leq n \leq r + \min(\ell, 2\delta),
+  \qquad n-r \leq m \leq n+r+\delta
+  \label{eq:odd_range1}
+\end{equation}
+and these $(m,n)$ gives a volume contribution of
+\[ q^{-n + \left\lceil \frac{n-r}{2} \right\rceil} \left( 1 - \frac 1q \right). \]
+
+\paragraph{Second case}
+The second case is
+\begin{equation}
+  1 \leq n \leq r + \ell,
+  \qquad n-r \leq m \leq \min(n,\ell)+r+\delta
+  \label{eq:odd_range2}
+\end{equation}
+and these $(m,n)$ give a volume contribution of
+\[ q^{-n + (m-r-\delta)} \left( 1 - \frac 1q \right). \]
+
+\subsection{The case where $n > 0$, and $\ell$ is even}
+
+\section{Evaluation of the integral}
+\subsection{Region where $n \leq 0$ for all values of $\ell$}
+\begin{proposition}
+  The contribution to the integral $O(\gamma,s)$ over $n \leq 0$ is exactly
+  \[ \sum_{j=-r}^{\delta+r} q^{2js}. \]
+\end{proposition}
+\begin{proof}
+  For $n = 0$ we get a contribution of
+  \begin{align*}
+    &\phantom= \kappa \int_{t, t_1 \in E} \mathbf{1}(n=0) \mathbf{1}(\gamma,t,m)
+      q^{2s \cdot m} q^{-2m} \odif t \odif t_1 \\
+    &= \kappa \Vol(t: n =0) \sum_{j=-r}^{\delta+r} \Vol(t_1: m=j) q^{2j(s-1)} \\
+    &= \kappa \left( 1 - \frac{q+1}{q^2} \right) \sum_{j=-r}^{\delta+r}
+    \left( q^{2j} \left( 1-q^{-2} \right) \right) q^{2j(s-1)} \\
+    &= \kappa \left( 1 - \frac{q+1}{q^2} \right) \left( 1-q^{-2} \right)
+    \sum_{j=-r}^{\delta+r} q^{2js}.
+  \end{align*}
+  For the region where $v(t) = -k < 0$, for each individual $k > 0$,
+  \begin{align*}
+    &\phantom= \kappa \int_{t, t_1 \in E} \mathbf{1}(v(t)=-k) \mathbf{1}(\gamma,t,m)
+      q^{s(2m-n)} q^{2n-2m} \odif t \odif t_1 \\
+    &= \kappa \Vol(t: v(t)=-k) \sum_{j=-r-k}^{\delta+r-k}
+      \Vol(t_1: m=j) q^{s(2j+2k)-4k-2j} \\
+    &= \kappa q^{2k} \left( 1 - q^{-2} \right) \sum_{j=-r-k}^{\delta+r-k}
+      \left( q^{2j} \left( 1-q^{-2} \right) \right) q^{s(2j+2k)-4k-2j} \\
+    &= \kappa q^{2k} \left( 1 - q^{-2} \right) \sum_{j=-r-k}^{\delta+r-k}
+      \left( q^{2j} \left( 1-q^{-2} \right) \right) q^{s(2j+2k)-4k-2j} \\
+    &= \kappa q^{-2k} \left( 1 - q^{-2} \right)^2
+      \sum_{j=-r-k}^{\delta+r-k} q^{2(j+k)s} \\
+    &= \kappa q^{-2k} \left( 1 - q^{-2} \right)^2 \sum_{j=-r}^{\delta+r} q^{2js} \\
+    &= \kappa q^{-2k} \left( 1 - q^{-2} \right)^2 \sum_{j=-r}^{\delta+r} q^{2js}.
+  \end{align*}
+  Since $\sum_{k > 0} q^{-2k} = \frac{q^{-2}}{1-q^{-2}}$,
+  we find that the total contribution across both
+  the $n=0$ case and the $k > 0$ case is
+  \begin{align*}
+    &\phantom= \left( \left( 1 - \frac{q+1}{q^2} \right) \left( 1-q^{-2} \right)
+      + q^{-2}(1-q^{-2})  \right) \kappa \sum_{j=-r}^{\delta+r} q^{2js} \\
+    &= \left( 1-q\inv \right) \left(1-q^{-2} \right)
+      \kappa \sum_{j=-r}^{\delta+r} q^{2js} \\
+    &= \sum_{j=-r}^{\delta+r} q^{2js}. \qedhere
+  \end{align*}
+\end{proof}
+
+\subsection{Region where $n > 0$ for odd $\ell$}
+\subsection{Region where $n > 0$ for even $\ell$}
