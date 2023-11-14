@@ -470,23 +470,33 @@ we find that the valid pairs $(n,m)$ come in two cases.
 
 \paragraph{First case}
 The first case is
-\begin{equation}
+\[
   1 \leq n \leq r + \min(\ell, 2\delta),
   \qquad n-r \leq m \leq \left\lceil \frac{n-r}{2} \right\rceil+r+\delta
+\]
+which if we switch the summation to $m$ first becomes
+\begin{equation}
+  1-r \le m \le \left\lfloor \frac{\min(\ell,2\delta)}{2} \right\rfloor+r+\delta
+  \qquad 2m-2\delta-r-1 \le n \le r + \min(m, \ell, 2\delta).
   \label{eq:odd_range1}
 \end{equation}
-and these $(m,n)$ gives a volume contribution of
+Either way, these $(m,n)$ gives a volume contribution of
 \[ q^{-n + \left\lceil \frac{n-r}{2} \right\rceil} \left( 1 - \frac 1q \right). \]
 
 \paragraph{Second case}
 The second case is
-\begin{equation}
+\[
   1 \leq n \leq r + \ell,
   \qquad \left\lceil \frac{n-r}{2} \right\rceil+r+\delta+1
-    \leq m \leq \min(n,\ell)+r+\delta
+  \leq m \leq \min(n,\ell)+r+\delta
+\]
+which if we switch the summation to $m$ first gives
+\begin{equation}
+  \left\lceil \frac{1+r}{2} \right\rceil + \delta + 1 \le m \le \ell + r + \delta
+  \qquad \max(1, m-r-\delta) \le n \le
   \label{eq:odd_range2}
 \end{equation}
-and these $(m,n)$ give a volume contribution of
+Either way, these $(m,n)$ give a volume contribution of
 \[ q^{-n + (m-r-\delta)} \left( 1 - \frac 1q \right). \]
 
 \subsection{The case where $n > 0$, and $\ell$ is even}
@@ -495,43 +505,43 @@ and these $(m,n)$ give a volume contribution of
 \subsection{Region where $n \leq 0$ for all values of $\ell$}
 \begin{proposition}
   The contribution to the integral $O(\gamma,s)$ over $n \leq 0$ is exactly
-  \[ \sum_{j=-r}^{\delta+r} q^{2js}. \]
+  \[ \sum_{m=-r}^{\delta+r} q^{2js}. \]
 \end{proposition}
 \begin{proof}
   For $n = 0$ we get a contribution of
   \begin{align*}
     &\phantom= \kappa \int_{t, t_1 \in E} \mathbf{1}(n=0) \mathbf{1}(\gamma,t,m)
       q^{2s \cdot m} q^{-2m} \odif t \odif t_1 \\
-    &= \kappa \Vol(t: n =0) \sum_{j=-r}^{\delta+r} \Vol(t_1: m=j) q^{2j(s-1)} \\
-    &= \kappa \left( 1 - \frac{q+1}{q^2} \right) \sum_{j=-r}^{\delta+r}
-    \left( q^{2j} \left( 1-q^{-2} \right) \right) q^{2j(s-1)} \\
+    &= \kappa \Vol(t: n =0) \sum_{m=-r}^{\delta+r} \Vol(t_1: -v(t_1)=m) q^{2m(s-1)} \\
+    &= \kappa \left( 1 - \frac{q+1}{q^2} \right) \sum_{m=-r}^{\delta+r}
+    \left( q^{2m} \left( 1-q^{-2} \right) \right) q^{2m(s-1)} \\
     &= \kappa \left( 1 - \frac{q+1}{q^2} \right) \left( 1-q^{-2} \right)
-    \sum_{j=-r}^{\delta+r} q^{2js}.
+    \sum_{m=-r}^{\delta+r} q^{2ms}.
   \end{align*}
   For the region where $v(t) = -k < 0$, for each individual $k > 0$,
   \begin{align*}
     &\phantom= \kappa \int_{t, t_1 \in E} \mathbf{1}(v(t)=-k) \mathbf{1}(\gamma,t,m)
       q^{s(2m-n)} q^{2n-2m} \odif t \odif t_1 \\
-    &= \kappa \Vol(t: v(t)=-k) \sum_{j=-r-k}^{\delta+r-k}
-      \Vol(t_1: m=j) q^{s(2j+2k)-4k-2j} \\
-    &= \kappa q^{2k} \left( 1 - q^{-2} \right) \sum_{j=-r-k}^{\delta+r-k}
-      \left( q^{2j} \left( 1-q^{-2} \right) \right) q^{s(2j+2k)-4k-2j} \\
-    &= \kappa q^{2k} \left( 1 - q^{-2} \right) \sum_{j=-r-k}^{\delta+r-k}
-      \left( q^{2j} \left( 1-q^{-2} \right) \right) q^{s(2j+2k)-4k-2j} \\
+    &= \kappa \Vol(t: v(t)=-k) \sum_{m=-r-k}^{\delta+r-k}
+      \Vol(t_1: m=m) q^{s(2m+2k)-4k-2m} \\
+    &= \kappa q^{2k} \left( 1 - q^{-2} \right) \sum_{m=-r-k}^{\delta+r-k}
+      \left( q^{2m} \left( 1-q^{-2} \right) \right) q^{s(2m+2k)-4k-2m} \\
+    &= \kappa q^{2k} \left( 1 - q^{-2} \right) \sum_{m=-r-k}^{\delta+r-k}
+      \left( q^{2m} \left( 1-q^{-2} \right) \right) q^{s(2m+2k)-4k-2m} \\
     &= \kappa q^{-2k} \left( 1 - q^{-2} \right)^2
-      \sum_{j=-r-k}^{\delta+r-k} q^{2(j+k)s} \\
-    &= \kappa q^{-2k} \left( 1 - q^{-2} \right)^2 \sum_{j=-r}^{\delta+r} q^{2js} \\
-    &= \kappa q^{-2k} \left( 1 - q^{-2} \right)^2 \sum_{j=-r}^{\delta+r} q^{2js}.
+      \sum_{m=-r-k}^{\delta+r-k} q^{2(m+k)s} \\
+    &= \kappa q^{-2k} \left( 1 - q^{-2} \right)^2 \sum_{m=-r}^{\delta+r} q^{2ms} \\
+    &= \kappa q^{-2k} \left( 1 - q^{-2} \right)^2 \sum_{m=-r}^{\delta+r} q^{2ms}.
   \end{align*}
   Since $\sum_{k > 0} q^{-2k} = \frac{q^{-2}}{1-q^{-2}}$,
   we find that the total contribution across both
   the $n=0$ case and the $k > 0$ case is
   \begin{align*}
     &\phantom= \left( \left( 1 - \frac{q+1}{q^2} \right) \left( 1-q^{-2} \right)
-      + q^{-2}(1-q^{-2})  \right) \kappa \sum_{j=-r}^{\delta+r} q^{2js} \\
+      + q^{-2}(1-q^{-2})  \right) \kappa \sum_{m=-r}^{\delta+r} q^{2ms} \\
     &= \left( 1-q\inv \right) \left(1-q^{-2} \right)
-      \kappa \sum_{j=-r}^{\delta+r} q^{2js} \\
-    &= \sum_{j=-r}^{\delta+r} q^{2js}. \qedhere
+      \kappa \sum_{m=-r}^{\delta+r} q^{2ms} \\
+    &= \sum_{m=-r}^{\delta+r} q^{2ms}. \qedhere
   \end{align*}
 \end{proof}
 
