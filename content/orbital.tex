@@ -352,14 +352,15 @@ In summary:
 The following lemma will be useful.
 \begin{lemma}
   [{\cite[Lemma 4.4]{ref:AFL}}]
-  Let $\xi \in \OO_E^\times$, $i \in \ZZ$, and integer $\lambda$,
+  Let $\xi \in \OO_E^\times$, $i \in \ZZ$,
+  and integer $\lambda$, such that $1 \le i \le n$,
   the volume of the set
-  \[ \left\{ x \in E \mid v(1-x \bar x) = \lambda, \; v(x-\xi) \ge \lambda \right\} \]
+  \[ \left\{ x \in E \mid v(1-x \bar x) = n, \; v(x-\xi) \ge \lambda \right\} \]
   equals
   \[
     \begin{cases}
       0 & v(1-\xi\bar\xi) < \lambda \\
-      q^{-(n+i)}(1-q\inv) & v(1-\xi\bar\xi) \ge \lambda.
+      q^{-(n+\lambda)}(1-q\inv) & v(1-\xi\bar\xi) \ge \lambda.
     \end{cases}
   \]
 \end{lemma}
@@ -407,16 +408,18 @@ Use \Cref{lem:mastercard} on \eqref{eq:odd_disk1} and \eqref{eq:odd_disk2},
 noting the distance between the two centers is exactly
 \[ v\left( u + \frac{b}{2a} \right) = v\left( \frac{au-\bar d \bar u}{2a} \right)
   = v(au - \bar d \bar u). \]
-This means that we obtain two possible situations:
+Considering that our disks have ``radius''
+$\left\lceil \frac{n-r}{2} \right\rceil$ and $m-r-\delta$ respectively,
+we obtain two possible situations:
 \begin{itemize}
-  \ii If $m \leq \left\lceil \frac{n-r}{2} \right\rceil + r + \delta$
+  \ii If $m < \left\lceil \frac{n-r}{2} \right\rceil + r + \delta$
   the nonempty condition reads
   \begin{align}
     v(4-b\bar b) &\ge \left\lceil \frac{n-r}{2} \right\rceil \label{eq:odd_ineq1} \\
     v(au - \bar d \bar u) &\ge m - r - \delta \label{eq:odd_ineq2}.
   \end{align}
 
-  \ii If $m > \left\lceil \frac{n-r}{2} \right\rceil + r + \delta$
+  \ii If $m \geq \left\lceil \frac{n-r}{2} \right\rceil + r + \delta$
   the nonempty condition reads
   \begin{align}
     v(1-u \bar u) &\ge m-r-\delta \label{eq:odd_ineq3} \\
@@ -472,32 +475,30 @@ we find that the valid pairs $(n,m)$ come in two cases.
 The first case is
 \[
   1 \leq n \leq r + \min(\ell, 2\delta),
-  \qquad n-r \leq m \leq \left\lceil \frac{n-r}{2} \right\rceil+r+\delta
+  \qquad n-r \leq m \leq \left\lceil \frac{n-r}{2} \right\rceil+r+\delta - 1
 \]
 which if we switch the summation to $m$ first becomes
 \begin{equation}
-  1-r \le m \le \left\lfloor \frac{\min(\ell,2\delta)}{2} \right\rfloor+r+\delta
-  \qquad 2m-2\delta-r-1 \le n \le r + \min(m, \ell, 2\delta).
+  ???
   \label{eq:odd_range1}
 \end{equation}
 Either way, these $(m,n)$ gives a volume contribution of
-\[ q^{-n + \left\lceil \frac{n-r}{2} \right\rceil} \left( 1 - \frac 1q \right). \]
+\[ q^{-n - \left\lceil \frac{n-r}{2} \right\rceil} \left( 1 - \frac 1q \right). \]
 
 \paragraph{Second case}
 The second case is
 \[
   1 \leq n \leq r + \ell,
-  \qquad \left\lceil \frac{n-r}{2} \right\rceil+r+\delta+1
+  \qquad \left\lceil \frac{n-r}{2} \right\rceil+r+\delta
   \leq m \leq \min(n,\ell)+r+\delta
 \]
 which if we switch the summation to $m$ first gives
 \begin{equation}
-  \left\lceil \frac{1+r}{2} \right\rceil + \delta + 1 \le m \le \ell + r + \delta
-  \qquad \max(1, m-r-\delta) \le n \le
+  ???
   \label{eq:odd_range2}
 \end{equation}
 Either way, these $(m,n)$ give a volume contribution of
-\[ q^{-n + (m-r-\delta)} \left( 1 - \frac 1q \right). \]
+\[ q^{-n - (m-r-\delta)} \left( 1 - \frac 1q \right). \]
 
 \subsection{The case where $n > 0$, and $\ell$ is even}
 
@@ -552,19 +553,19 @@ Summing the two cases gives
     \kappa \int_{t, t_1 \in E} \mathbf{1}(n > 0) \mathbf{1}(\gamma,t,m) \\
   &= \kappa \sum_{n=1}^{r+\min(2\ell,\delta)}
     \sum_{m=n-r}^{\left\lceil \frac{n-r}{2} \right\rceil+r+\delta}
-    q^{-n + \left\lceil \frac{n-r}{2} \right\rceil} \left( 1 - \frac 1q \right)
+    q^{-n - \left\lceil \frac{n-r}{2} \right\rceil} \left( 1 - \frac 1q \right)
     \cdot (-1)^n q^{s(2m-n)} q^{2n-2m} \\
   &+ \kappa \sum_{n=1}^{r+\ell}
     \sum_{m=\left\lceil \frac{n-r}{2} \right\rceil+r+\delta+1}^{\min(n,\ell)+r+\delta}
-    q^{-n + (m-r-\delta)} \left( 1 - \frac 1q \right)
+    q^{-n - (m-r-\delta)} \left( 1 - \frac 1q \right)
     \cdot (-1)^n q^{s(2m-n)} q^{2n-2m} \\
   &= \kappa \sum_{n=1}^{r+\min(2\ell,\delta)}
     \sum_{m=n-r}^{\left\lceil \frac{n-r}{2} \right\rceil+r+\delta}
-    q^{n-2m + \left\lceil \frac{n-r}{2} \right\rceil} \left( 1 - \frac 1q \right)
+    q^{n-2m - \left\lceil \frac{n-r}{2} \right\rceil} \left( 1 - \frac 1q \right)
     \cdot (-1)^n q^{s(2m-n)} \\
   &+ \kappa \sum_{n=1}^{r+\ell}
     \sum_{m=\left\lceil \frac{n-r}{2} \right\rceil+r+\delta+1}^{\min(n,\ell)+r+\delta}
-    q^{n-m-(r+\delta)} \left( 1 - \frac 1q \right)
+    q^{n-3m+r+\delta} \left( 1 - \frac 1q \right)/
     \cdot (-1)^n q^{s(2m-n)}.
 \end{align*}
 
