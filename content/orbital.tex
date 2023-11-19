@@ -505,7 +505,7 @@ Either way, these $(m,n)$ give a volume contribution of
 \subsection{Region where $n \leq 0$ for all values of $\ell$}
 \begin{proposition}
   The contribution to the integral $O(\gamma,s)$ over $n \leq 0$ is exactly
-  \[ \sum_{m=-r}^{\delta+r} q^{2js}. \]
+  \[ \sum_{j=-r}^{\delta+r} q^{2js}. \]
 \end{proposition}
 \begin{proof}
   For $n = 0$ we get a contribution of
@@ -538,10 +538,10 @@ Either way, these $(m,n)$ give a volume contribution of
   the $n=0$ case and the $k > 0$ case is
   \begin{align*}
     &\phantom= \left( \left( 1 - \frac{q+1}{q^2} \right) \left( 1-q^{-2} \right)
-      + q^{-2}(1-q^{-2})  \right) \kappa \sum_{m=-r}^{\delta+r} q^{2ms} \\
+      + q^{-2}(1-q^{-2})  \right) \kappa \sum_{j=-r}^{\delta+r} q^{2js} \\
     &= \left( 1-q\inv \right) \left(1-q^{-2} \right)
-      \kappa \sum_{m=-r}^{\delta+r} q^{2ms} \\
-    &= \sum_{m=-r}^{\delta+r} q^{2ms}. \qedhere
+      \kappa \sum_{j=-r}^{\delta+r} q^{2js} \\
+    &= \sum_{j=-r}^{\delta+r} q^{2js}. \qedhere
   \end{align*}
 \end{proof}
 
@@ -551,21 +551,31 @@ Summing the two cases gives
   &\phantom=
     \kappa \int_{t, t_1 \in E} \mathbf{1}(n > 0) \mathbf{1}(\gamma,t,m) \\
   &= \kappa \sum_{n=1}^{r+\min(2\ell,\delta)}
-    \sum_{m=n-r}^{\left\lceil \frac{n-r}{2} \right\rceil+r+\delta}
+    \sum_{m=n-r}^{\left\lceil \frac{n-r}{2} \right\rceil+r+\delta-1}
     q^{-n - \left\lceil \frac{n-r}{2} \right\rceil} \left( 1 - \frac 1q \right)
-    \cdot (-1)^n q^{s(2m-n)} q^{2n-2m} \\
+    \cdot (-1)^n q^{s(2m-n)} q^{2n-2m}
+    \cdot {\color{red} (1-q^{-2})(q^{2m})}
+    \\
   &+ \kappa \sum_{n=1}^{r+\ell}
-    \sum_{m=\left\lceil \frac{n-r}{2} \right\rceil+r+\delta+1}^{\min(n,\ell)+r+\delta}
-    q^{-n - (m-r-\delta)} \left( 1 - \frac 1q \right)
-    \cdot (-1)^n q^{s(2m-n)} q^{2n-2m} \\
-  &= \kappa \sum_{n=1}^{r+\min(2\ell,\delta)}
-    \sum_{m=n-r}^{\left\lceil \frac{n-r}{2} \right\rceil+r+\delta}
-    q^{n-2m - \left\lceil \frac{n-r}{2} \right\rceil} \left( 1 - \frac 1q \right)
-    \cdot (-1)^n q^{s(2m-n)} \\
-  &+ \kappa \sum_{n=1}^{r+\ell}
-    \sum_{m=\left\lceil \frac{n-r}{2} \right\rceil+r+\delta+1}^{\min(n,\ell)+r+\delta}
-    q^{n-3m+r+\delta} \left( 1 - \frac 1q \right)/
-    \cdot (-1)^n q^{s(2m-n)}.
+    \sum_{m=\left\lceil \frac{n-r}{2} \right\rceil+r+\delta}^{\min(n,\ell)+r+\delta}
+    q^{-n - (m-r-\delta)} \left( 1 - \frac 1q \right) \cdot (-1)^n q^{s(2m-n)} q^{2n-2m}
+    \cdot {\color{red} (1-q^{-2})(q^{2m})}
+    \\
+  &= \sum_{n=1}^{r+\min(2\ell,\delta)}
+    \sum_{m=n-r}^{\left\lceil \frac{n-r}{2} \right\rceil+r+\delta-1}
+    q^{-n - \left\lceil \frac{n-r}{2} \right\rceil} \cdot (-1)^n q^{s(2m-n)} q^{2n}
+    \\
+  &+ \sum_{n=1}^{r+\ell}
+    \sum_{m=\left\lceil \frac{n-r}{2} \right\rceil+r+\delta}^{\min(n,\ell)+r+\delta}
+    q^{-n - (m-r-\delta)} \cdot (-1)^n q^{s(2m-n)} q^{2n}
+    \\
+  &= \sum_{n=1}^{r+\min(2\ell,\delta)}
+    \sum_{m=n-r}^{\left\lceil \frac{n-r}{2} \right\rceil+r+\delta-1}
+    q^{n - \left\lceil \frac{n-r}{2} \right\rceil} \cdot (-1)^n q^{s(2m-n)}
+  + \sum_{n=1}^{r+\ell}
+    \sum_{m=\left\lceil \frac{n-r}{2} \right\rceil+r+\delta}^{\min(n,\ell)+r+\delta}
+    q^{n - (m-r-\delta)} \cdot (-1)^n q^{s(2m-n)}
+  .
 \end{align*}
 
 \subsection{Region where $n > 0$ for even $\ell$}
