@@ -472,31 +472,24 @@ we find that the valid pairs $(n,m)$ come in two cases.
 
 \paragraph{First case}
 The first case is
-\[
+\begin{equation}
   1 \leq n \leq r + \min(\ell, 2\delta),
   \qquad n-r \leq m \leq \left\lceil \frac{n-r}{2} \right\rceil+r+\delta - 1
-\]
-which if we switch the summation to $m$ first becomes
-\begin{equation}
-  ???
   \label{eq:odd_range1}
 \end{equation}
-Either way, these $(m,n)$ gives a volume contribution of
+where each $(m,n)$ gives a volume contribution of
 \[ q^{-n - \left\lceil \frac{n-r}{2} \right\rceil} \left( 1 - \frac 1q \right). \]
 
 \paragraph{Second case}
 The second case is
-\[
+which if we switch the summation to $m$ first gives
+\begin{equation}
   1 \leq n \leq r + \ell,
   \qquad \left\lceil \frac{n-r}{2} \right\rceil+r+\delta
   \leq m \leq \min(n,\ell)+r+\delta
-\]
-which if we switch the summation to $m$ first gives
-\begin{equation}
-  ???
   \label{eq:odd_range2}
 \end{equation}
-Either way, these $(m,n)$ give a volume contribution of
+where each $(m,n)$ gives a volume contribution of
 \[ q^{-n - (m-r-\delta)} \left( 1 - \frac 1q \right). \]
 
 \subsection{The case where $n > 0$, and $\ell$ is even}
