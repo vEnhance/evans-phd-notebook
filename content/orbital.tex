@@ -554,12 +554,12 @@ Summing the two cases gives
     \sum_{m=n-r}^{\left\lceil \frac{n-r}{2} \right\rceil+r+\delta-1}
     q^{-n - \left\lceil \frac{n-r}{2} \right\rceil} \left( 1 - \frac 1q \right)
     \cdot (-1)^n q^{s(2m-n)} q^{2n-2m}
-    \cdot {\color{red} (1-q^{-2})(q^{2m})}
+    \cdot \Vol(t_1:-v(t_1)=m)
     \\
   &+ \kappa \sum_{n=1}^{r+\ell}
     \sum_{m=\left\lceil \frac{n-r}{2} \right\rceil+r+\delta}^{\min(n,\ell)+r+\delta}
     q^{-n - (m-r-\delta)} \left( 1 - \frac 1q \right) \cdot (-1)^n q^{s(2m-n)} q^{2n-2m}
-    \cdot {\color{red} (1-q^{-2})(q^{2m})}
+    \cdot q^{2m}(1-q^{-2})
     \\
   &= \sum_{n=1}^{r+\min(2\ell,\delta)}
     \sum_{m=n-r}^{\left\lceil \frac{n-r}{2} \right\rceil+r+\delta-1}
