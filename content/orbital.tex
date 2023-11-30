@@ -340,11 +340,11 @@ In summary:
 \begin{claim}
   Assume $t$ is such that $n = v(1-t \bar t) > 0$.
   Then $\mathbf{1}(\gamma, t, m) = 1$ if and only if
-  \[ n - r \leq m \leq n + r + \delta \]
+  \[ n - r \leq m \leq n + \delta + r \]
   and $t$ lies in the set specified by
   \begin{align*}
     v\left( (2at-b)^2 - (b^2-4a\bar d) \right) &\geq n-r \\
-    v(t+u) &\ge m-r-\delta.
+    v(t+u) &\ge m-\delta-r.
   \end{align*}
 \end{claim}
 
@@ -385,7 +385,7 @@ We will also need to intersect two disks. In an ultrametric space, this is easy 
 \end{proof}
 
 \subsection{The case where $n > 0$, and $\ell$ is odd}
-Considering $n > 0$ and $n-r \le m \le n+r+\delta$ as fixed,
+Considering $n > 0$ and $n-r \le m \le n+\delta+r$ as fixed,
 we compute the volume of the set of $t$
 for which $n = v(1-t\bar t)$ and $\mathbf{1}(\gamma,t,m) = 0$.
 
@@ -400,7 +400,7 @@ is equivalent to simultaneously the two conditions
 \end{align}
 We also had the requirement
 \begin{equation}
-  v(t+u) \ge m-r-\delta.
+  v(t+u) \ge m-\delta-r.
   \label{eq:odd_disk2}
 \end{equation}
 Use \Cref{lem:mastercard} on \eqref{eq:odd_disk1} and \eqref{eq:odd_disk2},
@@ -408,20 +408,20 @@ noting the distance between the two centers is exactly
 \[ v\left( u + \frac{b}{2a} \right) = v\left( \frac{au-\bar d \bar u}{2a} \right)
   = v(au - \bar d \bar u). \]
 Considering that our disks have ``radius''
-$\left\lceil \frac{n-r}{2} \right\rceil$ and $m-r-\delta$ respectively,
+$\left\lceil \frac{n-r}{2} \right\rceil$ and $m-\delta-r$ respectively,
 we obtain two possible situations:
 \begin{itemize}
-  \ii If $m < \left\lceil \frac{n-r}{2} \right\rceil + r + \delta$
+  \ii If $m < \left\lceil \frac{n-r}{2} \right\rceil + \delta + r$
   the nonempty condition reads
   \begin{align}
     v(4-b\bar b) &\ge \left\lceil \frac{n-r}{2} \right\rceil \label{eq:odd_ineq1} \\
-    v(au - \bar d \bar u) &\ge m - r - \delta \label{eq:odd_ineq2}.
+    v(au - \bar d \bar u) &\ge m - \delta - r \label{eq:odd_ineq2}.
   \end{align}
 
-  \ii If $m \geq \left\lceil \frac{n-r}{2} \right\rceil + r + \delta$
+  \ii If $m \geq \left\lceil \frac{n-r}{2} \right\rceil + \delta + r$
   the nonempty condition reads
   \begin{align}
-    v(1-u \bar u) &\ge m-r-\delta \label{eq:odd_ineq3} \\
+    v(1-u \bar u) &\ge m-\delta-r \label{eq:odd_ineq3} \\
     v(au - \bar d \bar u) &\ge \left\lceil \frac{n-r}{2} \right\rceil \label{eq:odd_ineq4}.
   \end{align}
 \end{itemize}
@@ -452,12 +452,12 @@ together with \eqref{eq:odd_b_d_zero} implies
 This implies that:
 \begin{fact}
   \eqref{eq:odd_ineq2} and \eqref{eq:odd_ineq4} are redundant for odd $\ell$,
-  i.e.\ they are automatically true whenever $n > 0$ and $n-r \le m \le n+r+\delta$.
+  i.e.\ they are automatically true whenever $n > 0$ and $n-r \le m \le n+\delta+r$.
 \end{fact}
 \begin{proof}
   Delete the ceilings.
   We have $\frac{n-r}{2} \le \frac{\ell}{2} < v(au - \bar d \bar u)$ in both cases.
-  And in \eqref{eq:odd_ineq1}, we have $m-r-\delta \le \frac{n-r}{2}$ anyway.
+  And in \eqref{eq:odd_ineq1}, we have $m-\delta-r \le \frac{n-r}{2}$ anyway.
 \end{proof}
 
 Finally, the equation $b(4-b \bar b) = -4au(1-d\bar d) - \bar b(b^2-4a\bar d)$
@@ -473,8 +473,8 @@ we find that the valid pairs $(n,m)$ come in two cases.
 \paragraph{First case}
 The first case is
 \begin{equation}
-  1 \leq n \leq r + \min(\ell, 2\delta),
-  \qquad n-r \leq m \leq \left\lceil \frac{n-r}{2} \right\rceil+r+\delta - 1
+  1 \leq n \leq \min(\ell, 2\delta) + r,
+  \qquad n-r \leq m \leq \left\lceil \frac{n-r}{2} \right\rceil+\delta+r - 1
   \label{eq:odd_range1}
 \end{equation}
 where each $(m,n)$ gives a volume contribution of
@@ -482,15 +482,13 @@ where each $(m,n)$ gives a volume contribution of
 
 \paragraph{Second case}
 The second case is
-which if we switch the summation to $m$ first gives
 \begin{equation}
-  1 \leq n \leq r + \ell,
-  \qquad \left\lceil \frac{n-r}{2} \right\rceil+r+\delta
-  \leq m \leq \min(n,\ell)+r+\delta
+  1 \leq n \leq \ell + r,
+  \qquad \left\lceil \frac{n-r}{2} \right\rceil+\delta+r \leq m \leq \min(n,\ell)+\delta+r
   \label{eq:odd_range2}
 \end{equation}
 where each $(m,n)$ gives a volume contribution of
-\[ q^{-n - (m-r-\delta)} \left( 1 - \frac 1q \right). \]
+\[ q^{-n - (m-\delta-r)} \left( 1 - \frac 1q \right). \]
 
 \subsection{The case where $n > 0$, and $\ell$ is even}
 
@@ -542,27 +540,27 @@ Summing the two cases gives
 \begin{align*}
   &\phantom=
     \kappa \int_{t, t_1 \in E} \mathbf{1}(n > 0) \mathbf{1}(\gamma,t,m) \\
-  &= \kappa \sum_{n=1}^{r+\min(2\ell,\delta)}
-    \sum_{m=n-r}^{\left\lceil \frac{n-r}{2} \right\rceil+r+\delta-1}
+  &= \kappa \sum_{n=1}^{\min(2\ell,\delta)+r}
+    \sum_{m=n-r}^{\left\lceil \frac{n-r}{2} \right\rceil+\delta+r-1}
     q^{-n - \left\lceil \frac{n-r}{2} \right\rceil} \left( 1 - \frac 1q \right)
-    \cdot (-1)^n q^{s(2m-n)} q^{2n-2m}
+    \\ &\qquad \cdot (-1)^n q^{s(2m-n)} q^{2n-2m}
     \cdot \Vol(t_1:-v(t_1)=m)
     \\
-  &+ \kappa \sum_{n=1}^{r+\ell}
-    \sum_{m=\left\lceil \frac{n-r}{2} \right\rceil+r+\delta}^{\min(n,\ell)+r+\delta}
+  &+ \kappa \sum_{n=1}^{\ell+r}
+    \sum_{m=\left\lceil \frac{n-r}{2} \right\rceil+\delta+r}^{\min(n,\ell)+\delta+r}
     q^{-n - (m-r-\delta)} \left( 1 - \frac 1q \right) \cdot (-1)^n q^{s(2m-n)} q^{2n-2m}
     \cdot q^{2m}(1-q^{-2})
     \\
-  &= \sum_{n=1}^{r+\min(2\ell,\delta)}
-    \sum_{m=n-r}^{\left\lceil \frac{n-r}{2} \right\rceil+r+\delta-1}
+  &= \sum_{n=1}^{\min(2\ell,\delta)+r}
+    \sum_{m=n-r}^{\left\lceil \frac{n-r}{2} \right\rceil+\delta+r-1}
     q^{-n - \left\lceil \frac{n-r}{2} \right\rceil} \cdot (-1)^n q^{s(2m-n)} q^{2n}
     \\
-  &+ \sum_{n=1}^{r+\ell}
-    \sum_{m=\left\lceil \frac{n-r}{2} \right\rceil+r+\delta}^{\min(n,\ell)+r+\delta}
+  &+ \sum_{n=1}^{\ell+r}
+    \sum_{m=\left\lceil \frac{n-r}{2} \right\rceil+\delta+r}^{\min(n,\ell)+\delta+r}
     q^{-n - (m-r-\delta)} \cdot (-1)^n q^{s(2m-n)} q^{2n}
     \\
   &= \sum_{n=1}^{r+\min(2\ell,\delta)}
-    \sum_{m=n-r}^{\left\lceil \frac{n-r}{2} \right\rceil+r+\delta-1}
+    \sum_{m=n-r}^{\left\lceil \frac{n-r}{2} \right\rceil+\delta+r-1}
     q^{n - \left\lceil \frac{n-r}{2} \right\rceil} \cdot (-1)^n q^{s(2m-n)}
   + \sum_{n=1}^{r+\ell}
     \sum_{m=\left\lceil \frac{n-r}{2} \right\rceil+r+\delta}^{\min(n,\ell)+r+\delta}
