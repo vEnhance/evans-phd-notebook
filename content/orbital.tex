@@ -572,12 +572,12 @@ Summing the two cases gives
     q^{\left\lfloor \frac{n+r}{2} \right\rfloor} \cdot (-1)^n q^{s(2m-n)}
     \\
   &+ \sum_{n=1}^{\ell+r}
-    \sum_{m=n-\left\lfloor \frac{n-r}{2} \right\rfloor+\delta+r}^{\min(n,\ell)+\delta+r}
+    \sum_{m=n-\left\lfloor \frac{n+r}{2} \right\rfloor+\delta+r}^{\min(n,\ell)+\delta+r}
     q^{n - (m-\delta-r)} \cdot (-1)^n q^{s(2m-n)}
   .
 \end{align*}
 To simplify the expressions, we replace the summation variable $m$ with
-\[ j \coloneqq \delta + n - m + r. \]
+\[ j \coloneqq (n + \delta + r) - m. \]
 Then the expression rewrites as
 \begin{align*}
   &\phantom= \sum_{n=1}^{\min(2\ell,\delta)+r}
@@ -585,8 +585,8 @@ Then the expression rewrites as
     q^{\left\lfloor \frac{n+r}{2} \right\rfloor} \cdot (-1)^n q^{s(2(\delta+n+r-j)-n)}
     \\
   &+ \sum_{n=1}^{\ell+r}
-    \sum_{m=n-\left\lfloor \frac{n-r}{2} \right\rfloor+\delta+r}^{\min(n,\ell)+\delta+r}
-    q^j \cdot (-1)^n q^{s(2(\delta+n+r-j)-n)}
+    \sum_{j=n-\min(n,\ell)}^{\left\lfloor \frac{n+r}{2} \right\rfloor}
+    q^j \cdot (-1)^n q^{s(2(\delta+n+r-j)-n)}.
 \end{align*}
 
 \subsection{Region where $n > 0$ for even $\ell$}
