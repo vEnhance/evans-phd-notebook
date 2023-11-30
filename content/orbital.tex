@@ -484,7 +484,8 @@ where each $(m,n)$ gives a volume contribution of
 The second case is
 \begin{equation}
   1 \leq n \leq \ell + r,
-  \qquad \left\lceil \frac{n-r}{2} \right\rceil+\delta+r \leq m \leq \min(n,\ell)+\delta+r
+  \qquad \max\left(n-r, \left\lceil \frac{n-r}{2} \right\rceil+\delta+r \right)
+    \leq m \leq \min(n,\ell)+\delta+r
   \label{eq:odd_range2}
 \end{equation}
 where each $(m,n)$ gives a volume contribution of
@@ -536,7 +537,8 @@ where each $(m,n)$ gives a volume contribution of
 \end{proof}
 
 \subsection{Region where $n > 0$ for odd $\ell$}
-Summing the two cases gives
+Again using $\Vol(t_1:-v(t_1)=m) = q^{2m} (1-q^{-2})$,
+summing the two cases gives
 \begin{align*}
   &\phantom=
     \kappa \int_{t, t_1 \in E} \mathbf{1}(n > 0) \mathbf{1}(\gamma,t,m) \\
@@ -544,19 +546,19 @@ Summing the two cases gives
     \sum_{m=n-r}^{\left\lceil \frac{n-r}{2} \right\rceil+\delta+r-1}
     q^{-n - \left\lceil \frac{n-r}{2} \right\rceil} \left( 1 - \frac 1q \right)
     \\ &\qquad \cdot (-1)^n q^{s(2m-n)} q^{2n-2m}
-    \cdot \Vol(t_1:-v(t_1)=m)
+    \cdot q^{2m}(1-q^{-2})
     \\
   &+ \kappa \sum_{n=1}^{\ell+r}
-    \sum_{m=\left\lceil \frac{n-r}{2} \right\rceil+\delta+r}^{\min(n,\ell)+\delta+r}
-    q^{-n - (m-\delta-r)} \left( 1 - \frac 1q \right) \cdot (-1)^n q^{s(2m-n)} q^{2n-2m}
-    \cdot q^{2m}(1-q^{-2})
+    \sum_{m=\max\left(n-r, \left\lceil \frac{n-r}{2} \right\rceil+\delta+r\right)}^{\min(n,\ell)+\delta+r}
+    q^{-n - (m-\delta-r)} \left( 1 - \frac 1q \right)
+    \\ &\qquad \cdot (-1)^n q^{s(2m-n)} q^{2n-2m} \cdot q^{2m}(1-q^{-2})
     \\
   &= \sum_{n=1}^{\min(\ell,2\delta)+r}
     \sum_{m=n-r}^{\left\lceil \frac{n-r}{2} \right\rceil+\delta+r-1}
     q^{-n - \left\lceil \frac{n-r}{2} \right\rceil} \cdot (-1)^n q^{s(2m-n)} q^{2n}
     \\
   &+ \sum_{n=1}^{\ell+r}
-    \sum_{m=\left\lceil \frac{n-r}{2} \right\rceil+\delta+r}^{\min(n,\ell)+\delta+r}
+    \sum_{m=\max\left(n-r, \left\lceil \frac{n-r}{2} \right\rceil+\delta+r\right)}^{\min(n,\ell)+\delta+r}
     q^{-n - (m-\delta-r)} \cdot (-1)^n q^{s(2m-n)} q^{2n}
     \\
   &= \sum_{n=1}^{\min(\ell,2\delta)+r}
@@ -564,7 +566,7 @@ Summing the two cases gives
     q^{n - \left\lceil \frac{n-r}{2} \right\rceil} \cdot (-1)^n q^{s(2m-n)}
     \\
   &+ \sum_{n=1}^{\ell+r}
-    \sum_{m=\left\lceil \frac{n-r}{2} \right\rceil+\delta+r}^{\min(n,\ell)+\delta+r}
+    \sum_{m=\max\left(n-r, \left\lceil \frac{n-r}{2} \right\rceil+\delta+r\right)}^{\min(n,\ell)+\delta+r}
     q^{n - (m-\delta-r)} \cdot (-1)^n q^{s(2m-n)}
     \\
   &= \sum_{n=1}^{\min(\ell,2\delta)+r}
@@ -572,20 +574,22 @@ Summing the two cases gives
     q^{\left\lfloor \frac{n+r}{2} \right\rfloor} \cdot (-1)^n q^{s(2m-n)}
     \\
   &+ \sum_{n=1}^{\ell+r}
-    \sum_{m=n-\left\lfloor \frac{n+r}{2} \right\rfloor+\delta+r}^{\min(n,\ell)+\delta+r}
+    \sum_{m=\max\left(n-r, n-\left\lfloor \frac{n+r}{2} \right\rfloor+\delta+r \right)}^{\min(n,\ell)+\delta+r}
     q^{n - (m-\delta-r)} \cdot (-1)^n q^{s(2m-n)}
   .
 \end{align*}
 To simplify the expressions, we replace the summation variable $m$ with
-\[ j \coloneqq (n + \delta + r) - m. \]
+\[ j \coloneqq (n + \delta + r) - m \geq 0. \]
 In that case, $2m-n = 2(\delta+n+r-j)-n) = n + 2\delta + 2r - 2j$.
 Then the expression rewrites as
-\[ \sum_{n=1}^{\min(\ell,2\delta)+r}
+\begin{align*}
+  &\phantom= \sum_{n=1}^{\min(\ell,2\delta)+r}
     \sum_{j=\left\lfloor \frac{n+r}{2} \right\rfloor+1}^{\delta+2r}
-    q^{\left\lfloor \frac{n+r}{2} \right\rfloor} \cdot (-1)^n q^{s(n+2\delta+2r-2j)}
-  + \sum_{n=1}^{\ell+r}
-    \sum_{j=n-\min(n,\ell)}^{\left\lfloor \frac{n+r}{2} \right\rfloor}
-  q^j \cdot (-1)^n q^{s(n+2\delta+2r-2j)}. \]
+    q^{\left\lfloor \frac{n+r}{2} \right\rfloor} \cdot (-1)^n q^{s(n+2\delta+2r-2j)} \\
+  &+ \sum_{n=1}^{\ell+r}
+    \sum_{j=n-\min(n,\ell)}^{\min\left(\delta+2r, \left\lfloor \frac{n+r}{2} \right\rfloor\right)}
+  q^j \cdot (-1)^n q^{s(n+2\delta+2r-2j)}
+\end{align*}
 We interchange the order of summation so that it is first over $j$ and then $n$.
 \begin{itemize}
   \ii The permissible values of $j$ in the second sum
@@ -596,7 +600,9 @@ We interchange the order of summation so that it is first over $j$ and then $n$.
 
   \ii The second sum was over pairs $(n,j)$ satisfying $1 \le n \le \ell+r$
   and $j \ge 0$, $j \ge n-\ell$, and $j \le \left\lfloor \frac{n+r}{2} \right\rfloor$.
-  Hence we now have $0 \leq j \leq \left\lfloor \frac{\ell}{2} \right\rfloor + r$.
+  Hence we now have
+  \[ 0 \leq j \leq \min\left(\delta+2r,
+    \left\lfloor \frac{\ell}{2} \right\rfloor + r\right). \]
   Solving for $n$ gives $\max(1, 2j-r) \leq n \leq \ell + r$.
 \end{itemize}
 Hence we get
@@ -605,9 +611,22 @@ Hence we get
     \sum_{n=1}^{\min(2j-1-r, \ell+r, 2\delta+r)}
     q^{\left\lfloor \frac{n+r}{2} \right\rfloor} \cdot (-1)^n q^{s(n+2\delta+2r-2j)}
     \\
-  &\qquad+ \sum_{j=0}^{\left\lfloor \frac{\ell}{2} \right\rfloor+r}
+  &\qquad+ \sum_{j=0}^{\min\left(\delta+2r, \left\lfloor \frac{\ell}{2} \right\rfloor+r\right)}
     \sum_{n=\max(1,2j-r)}^{\ell+\min(j,r)}
     q^j \cdot (-1)^n q^{s(n+2\delta+2r-2j)}.
 \end{align*}
+At this point, two of the bounds on $j$ are redundant.
+In the first sum, if $j \leq \left\lfloor \frac{r+1}{2} \right\rfloor + 1$,
+the sum is empty anyway.
+Similarly, the second sum anyway if $j > \left\lfloor \frac{\ell}{2} \right\rfloor + r$.
+Therefore we can unify the two parts for the same range $0 \le j \le \delta+2r$ to get
+\[
+  q^{2\delta s} \sum_{j=0}^{\delta+2r} \left(
+    \sum_{n=1}^{\min(2j-1-r, \ell+r, 2\delta+r)}
+    q^{\left\lfloor \frac{n+r}{2} \right\rfloor} \cdot (-1)^n q^{s(n+2r-2j)}
+    + \sum_{n=\max(1,2j-r)}^{\ell+\min(j,r)}
+    q^j \cdot (-1)^n q^{s(n+2r-2j)}
+  \right).
+\]
 
 \subsection{Region where $n > 0$ for even $\ell$}
