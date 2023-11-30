@@ -578,15 +578,36 @@ Summing the two cases gives
 \end{align*}
 To simplify the expressions, we replace the summation variable $m$ with
 \[ j \coloneqq (n + \delta + r) - m. \]
+In that case, $2m-n = 2(\delta+n+r-j)-n) = n + 2\delta + 2r - 2j$.
 Then the expression rewrites as
-\begin{align*}
-  &\phantom= \sum_{n=1}^{\min(2\ell,\delta)+r}
+\[ \sum_{n=1}^{\min(2\ell,\delta)+r}
     \sum_{j=\left\lfloor \frac{n+r}{2} \right\rfloor+1}^{\delta+2r}
-    q^{\left\lfloor \frac{n+r}{2} \right\rfloor} \cdot (-1)^n q^{s(2(\delta+n+r-j)-n)}
-    \\
-  &+ \sum_{n=1}^{\ell+r}
+    q^{\left\lfloor \frac{n+r}{2} \right\rfloor} \cdot (-1)^n q^{s(n+2\delta+2r-2j)}
+  + \sum_{n=1}^{\ell+r}
     \sum_{j=n-\min(n,\ell)}^{\left\lfloor \frac{n+r}{2} \right\rfloor}
-    q^j \cdot (-1)^n q^{s(2(\delta+n+r-j)-n)}.
-\end{align*}
+  q^j \cdot (-1)^n q^{s(n+2\delta+2r-2j)}. \]
+We interchange the order of summation so that it is first over $j$ and then $n$.
+\begin{itemize}
+  \ii The permissible values of $j$ in the second sum
+  clearly run from $j=\left\lfloor \frac{r+1}{2} \right\rfloor+1$ to $j=\delta+2r$.
+  The constraints for $n$ are that $n \ge 1$, $n \le \min(2\ell, \delta)+r$,
+  and $\left\lfloor \frac{n+r}{2} \right\rfloor + 1 \leq j$,
+  which solves to $\frac{n+r}{2} \leq j-\half$ or $n \leq 2j-1-r$.
+
+  \ii The second sum was over pairs $(n,j)$ satisfying $1 \le n \le \ell+r$
+  and $j \ge 0$, $j \ge n-\ell$, and $j \le \left\lfloor \frac{n+r}{2} \right\rfloor$.
+  Hence we now have $0 \leq j \leq \left\lfloor \frac{\ell}{2} \right\rfloor + r$.
+  Solving for $n$ gives $\max(1, 2j-r) \leq n \leq \ell + r$.
+\end{itemize}
+Hence we get
+\[
+  \sum_{j=\left\lfloor \frac{r+1}{2} \right\rfloor+1}^{\delta+2r}
+  \sum_{n=1}^{\min(2j-1-r, \min(2\ell,\delta)+r)}
+  q^{\left\lfloor \frac{n+r}{2} \right\rfloor} \cdot (-1)^n q^{s(n+2\delta+2r-2j)}
+  + \sum_{j=0}^{\left\lfloor \frac{\ell}{2} \right\rfloor+r}
+    \sum_{n=\max(1,2j-r)}^{\ell+\min(j,r)}
+    q^j \cdot (-1)^n q^{s(n+2\delta+2r-2j)}.
+\]
+
 
 \subsection{Region where $n > 0$ for even $\ell$}
