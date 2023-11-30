@@ -497,7 +497,8 @@ where each $(m,n)$ gives a volume contribution of
 \subsection{Region where $n \leq 0$ for all values of $\ell$}
 \begin{proposition}
   The contribution to the integral $O(\gamma,s)$ over $n \leq 0$ is exactly
-  \[ \sum_{j=-r}^{\delta+r} q^{2js}. \]
+  \[ q^{2 \delta s} \sum_{j=0}^{\delta+2r} q^{-2js}
+    = q^{-2rs} + \dots + q^{2(\delta+r)s}. \]
 \end{proposition}
 \begin{proof}
   For $n = 0$ we get a contribution of
@@ -522,18 +523,20 @@ where each $(m,n)$ gives a volume contribution of
       \left( q^{2m} \left( 1-q^{-2} \right) \right) q^{s(2m+2k)-4k-2m} \\
     &= \kappa q^{-2k} \left( 1 - q^{-2} \right)^2
       \sum_{m=-r-k}^{\delta+r-k} q^{2(m+k)s} \\
-    &= \kappa q^{-2k} \left( 1 - q^{-2} \right)^2 \sum_{j=-r}^{\delta+r} q^{2js}.
+    &= \kappa q^{-2k} \left( 1 - q^{-2} \right)^2 \sum_{i=-r}^{\delta+r} q^{2is}.
   \end{align*}
   Since $\sum_{k > 0} q^{-2k} = \frac{q^{-2}}{1-q^{-2}}$,
   we find that the total contribution across both
   the $n=0$ case and the $k > 0$ case is
   \begin{align*}
     &\phantom= \left( \left( 1 - \frac{q+1}{q^2} \right) \left( 1-q^{-2} \right)
-      + q^{-2}(1-q^{-2})  \right) \kappa \sum_{j=-r}^{\delta+r} q^{2js} \\
+      + q^{-2}(1-q^{-2})  \right) \kappa \sum_{i=-r}^{\delta+r} q^{2is} \\
     &= \left( 1-q\inv \right) \left(1-q^{-2} \right)
-      \kappa \sum_{j=-r}^{\delta+r} q^{2js} \\
-    &= \sum_{j=-r}^{\delta+r} q^{2js}. \qedhere
+      \kappa \sum_{i=-r}^{\delta+r} q^{2is} \\
+    &= \sum_{i=-r}^{\delta+r} q^{2is}.
   \end{align*}
+  This equals the claimed sum above.
+  (We write it over $0 \le j \le \delta+2r$ for consistency with a later part.)
 \end{proof}
 
 \subsection{Region where $n > 0$ for odd $\ell$}
