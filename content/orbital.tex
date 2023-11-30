@@ -559,13 +559,34 @@ Summing the two cases gives
     \sum_{m=\left\lceil \frac{n-r}{2} \right\rceil+\delta+r}^{\min(n,\ell)+\delta+r}
     q^{-n - (m-r-\delta)} \cdot (-1)^n q^{s(2m-n)} q^{2n}
     \\
-  &= \sum_{n=1}^{r+\min(2\ell,\delta)}
+  &= \sum_{n=1}^{\min(2\ell,\delta)+r}
     \sum_{m=n-r}^{\left\lceil \frac{n-r}{2} \right\rceil+\delta+r-1}
     q^{n - \left\lceil \frac{n-r}{2} \right\rceil} \cdot (-1)^n q^{s(2m-n)}
-  + \sum_{n=1}^{r+\ell}
-    \sum_{m=\left\lceil \frac{n-r}{2} \right\rceil+r+\delta}^{\min(n,\ell)+r+\delta}
+    \\
+  &+ \sum_{n=1}^{\ell+r}
+    \sum_{m=\left\lceil \frac{n-r}{2} \right\rceil+\delta+r}^{\min(n,\ell)+\delta+r}
+    q^{n - (m-r-\delta)} \cdot (-1)^n q^{s(2m-n)}
+    \\
+  &= \sum_{n=1}^{\min(2\ell,\delta)+r}
+    \sum_{m=n-r}^{n-\left\lfloor \frac{n+r}{2} \right\rfloor+\delta+r-1}
+    q^{\left\lfloor \frac{n+r}{2} \right\rfloor} \cdot (-1)^n q^{s(2m-n)}
+    \\
+  &+ \sum_{n=1}^{\ell+r}
+    \sum_{m=n-\left\lfloor \frac{n-r}{2} \right\rfloor+\delta+r}^{\min(n,\ell)+\delta+r}
     q^{n - (m-r-\delta)} \cdot (-1)^n q^{s(2m-n)}
   .
+\end{align*}
+To simplify the expressions, we replace the summation variable $m$ with
+\[ j \coloneqq \delta + n - m + r. \]
+Then the expression rewrites as
+\begin{align*}
+  &\phantom= \sum_{n=1}^{\min(2\ell,\delta)+r}
+    \sum_{j=\left\lfloor \frac{n+r}{2} \right\rfloor+1}^{\delta+2r}
+    q^{\left\lfloor \frac{n+r}{2} \right\rfloor} \cdot (-1)^n q^{s(2(\delta+n+r-j)-n)}
+    \\
+  &+ \sum_{n=1}^{\ell+r}
+    \sum_{m=n-\left\lfloor \frac{n-r}{2} \right\rfloor+\delta+r}^{\min(n,\ell)+\delta+r}
+    q^j \cdot (-1)^n q^{s(2(\delta+n+r-j)-n)}
 \end{align*}
 
 \subsection{Region where $n > 0$ for even $\ell$}
