@@ -232,10 +232,15 @@ Following \cite{ref:AFL} we will also define
   u \coloneqq \frac{\bar c}{1-d \bar d} \in \OO_E^\times
   \label{eq:u}
 \end{equation}
-so that
+so that $\nu(1-u \bar u) \equiv 1 \pmod 2$ and
 \begin{equation}
   b = -au - \bar{d} \bar{u}.
   \label{eq:b}
+\end{equation}
+Note that this gives us the following repeatedly used identity
+\begin{equation}
+  b^2-4a\bar d = (au-\bar d \bar u)^2 - 4a\bar d(1-u\bar u).
+  \label{eq:dos}
 \end{equation}
 Finally, define
 \begin{equation}
@@ -396,7 +401,7 @@ is equivalent to simultaneously the two conditions
   v\left( (2at-b)^2 \right) \geq n-r
   \implies v\left( t-\frac{b}{2a} \right) &\geq \left\lceil \frac{n-r}{2} \right\rceil
   \label{eq:odd_disk1} \\
-  \ell &\ge n-r. \label{eq:odd_n_bound}
+  v(b^2-4a\bar d) \ge n-r \implies \ell &\ge n-r. \label{eq:odd_n_bound}
 \end{align}
 We also had the requirement
 \begin{equation}
@@ -442,9 +447,8 @@ We list them in turn.
   And if $d$ is a unit, $\ell \neq 0$ means $v(b) = 0$ too.
 \end{proof}
 
-Next, note that
-$b^2-4a\bar d = (au - \bar d \bar u)^2 - 4a \bar d (1-u \bar u)$
-together with \eqref{eq:odd_b_d_zero} and the assumption $\ell$ was odd implies
+Next, note that \eqref{eq:dos} together with \eqref{eq:odd_b_d_zero}
+and the assumption $\ell$ was odd implies
 \begin{equation}
   \ell = v(1-u \bar u) < 2v(au - \bar d \bar u).
   \label{eq:odd_center_distance}
@@ -491,7 +495,116 @@ The second case is
 where each $(m,n)$ gives a volume contribution of
 \[ q^{-n - (m-\delta-r)} \left( 1 - \frac 1q \right). \]
 
-\subsection{The case where $n > 0$, and $\ell$ is even}
+\subsection{The case where $n > 0$, $\ell$ is even, $v(b)=v(d)=0$}
+As before we consider $n > 0$ and $n-r \le m \le n+\delta+r$ as fixed,
+and seek to compute the volume of the set of $t$
+for which $n = v(1-t\bar t)$ and $\mathbf{1}(\gamma,t,m) = 0$.
+
+Suppose $\ell$ is even.
+Then the left-hand side of \eqref{eq:dos} is a square, which we denote $\tau^2$.
+In this case, we obtain
+\[ 2v(\tau) = \ell = 2v(au-\bar d\bar u) > v(1-u \bar u). \]
+Then the condition that
+\[ v\Big( (2at-b)^2 - \underbrace{(b^2-4a\bar d)}_{=\tau^2} \Big) \geq n-r \]
+falls into three disjoint parts:
+\begin{itemize}
+  \ii Both $v\left( (2at-b)^2 \right) \geq n-r$ and $\ell = v(\tau^2) \geq n-r$ hold,
+  as in the $\ell$ odd case.
+  \ii We have $\ell = v(\tau^2) < n-r$ but
+  \[ v(2at-b \mp \tau) \geq (n-r)-\ell/2 > 0, \qquad v(2at-b \pm \tau) = \ell/2. \]
+  This is two parts, corresponding to the choice of $\pm$.
+\end{itemize}
+We analyze the second case since the first case is the same as before
+(as we have are assuming \eqref{eq:odd_b_d_zero} in this section;
+it does not follow for $\ell$ even).
+The constrains on $t$ become the two circles
+\begin{align}
+  v\left( t - \frac{b \pm \tau}{2a} \right) &\geq n - \ell/2 - r \\
+  v(t+u) &\ge m - \delta - r.
+\end{align}
+Note that
+\[ 1 - \frac{b \pm \tau}{2a} \cdot \frac{\bar b \pm \bar \tau}{2\bar a}
+= \frac{4 - \Norm(b \pm \tau)}{4} \]
+
+The distance between the two circles has valuation
+\[
+  v\left( u + \frac{b \pm \tau}{2} \right)
+  = v(au - \bar d \bar u \pm \tau).
+\]
+Since $(au-\bar d \bar u)^2 - \tau^2 = 4a\bar d(1- \bar u)$,
+we agree now to fix the choice of the square root of $\tau$ such that
+\begin{equation}
+  v(au-\bar d \bar u + \tau) = v(1-u\bar u) - v(\tau) \quad\text{and}\quad
+  v(au-\bar d \bar u - \tau) = v(\tau).
+  \label{eq:tau_choice}
+\end{equation}
+This lets us invoke \cite[Lemma 4.7]{ref:AFL} to evaluate $v(4-\Norm(b \pm \tau))$.
+
+In the $\frac{b+\tau}{2a}$ case, we get
+\begin{itemize}
+  \ii If $m < n - \frac{\ell}{2} + \delta$, the nonempty condition becomes
+  \begin{align*}
+    v(1-u \bar u) + \delta - \ell = v(4-N(b+\tau)) &\geq n - \frac{\ell}{2} - r \\
+    v(1-u\bar u) - \ell/2 = v(au-\bar d \bar u + \tau) & \geq m - \delta - r.
+  \end{align*}
+  \ii If $m \geq n - \frac{\ell}{2} + \delta$, the nonempty condition becomes
+  \begin{align*}
+    v(1-u \bar u) &\geq m - \delta - r \\
+    v(1-u\bar u) - \ell/2 = v(au-\bar d \bar u + \tau) & \geq n - \frac{\ell}{2} - r.
+  \end{align*}
+\end{itemize}
+Meanwhile, in the $\frac{b-\tau}{2a}$ case, we get
+\begin{itemize}
+  \ii If $m < n - \frac{\ell}{2} + \delta$, the nonempty condition becomes
+  \begin{align*}
+    \delta = v(4-N(b-\tau)) &\geq n - \frac{\ell}{2} - r \\
+    \ell/2 = v(au-\bar d \bar u - \tau) & \geq m - \delta - r.
+  \end{align*}
+  \ii If $m \geq n - \frac{\ell}{2} + \delta$, the nonempty condition becomes
+  \begin{align*}
+    v(1-u \bar u) &\geq m - \delta - r \\
+    \ell/2 = v(au-\bar d \bar u - \tau) & \geq n - \frac{\ell}{2} - r.
+  \end{align*}
+\end{itemize}
+
+\paragraph{First case}
+The first case is the union of two regions:
+\begin{equation}
+  \max(1, \ell+r+1) \leq n \leq -\frac{\ell}{2}+\delta+r + v(1-u \bar u),
+  \qquad
+  n-r \leq m \leq \max\left( n - \frac{\ell}{2}+\delta, v(1-u\bar u)-\frac{\ell}{2}+\delta+r \right)
+  \label{eq:even_case1_plus}
+\end{equation}
+and
+\begin{equation}
+  \max(1, \ell+r+1) \leq n \leq \frac{\ell}{2}+\delta+r,
+  \qquad
+  n-r \leq m \leq \max\left( n - \frac{\ell}{2}+\delta, \delta+\frac{\ell}{2}+r \right)
+  \label{eq:even_case1_minus}
+\end{equation}
+Note the condition that $m \leq n+\delta+r$ is redundant with
+$m \leq n - \frac{\ell}{2} + r$ since $\ell,\delta,r \ge 0$ for $v(b)=v(d)=0$.
+\todo{may cause pain for $v(b),v(d) < 0$}
+
+\paragraph{Second case}
+The second case is the disjoint union of two bounds:
+\begin{equation}
+  \leq n \leq
+  \qquad
+  \leq m \leq
+  \label{eq:even_case2_plus}
+\end{equation}
+and
+\begin{equation}
+  \leq n \leq
+  \qquad
+  \leq m \leq
+  \label{eq:even_case2_minus}
+\end{equation}
+Note the condition that $m \leq n+\delta+r$ is redundant with
+$m \leq n - \frac{\ell}{2} + r$ since $\ell,\delta,r \ge 0$ for $v(b)=v(d)=0$.
+
+TODO: finish
 
 \section{Evaluation of the integral}
 \subsection{Region where $n \leq 0$ for all values of $\ell$}
