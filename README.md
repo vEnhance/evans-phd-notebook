@@ -25,7 +25,7 @@ off, and then everyone in the world can see:
 There is one other benefit to me. I expect 90% of people reading this repository
 won't understand a single word of what's going on, and will just be like "orz".
 Which is good public relations for me, because then I can keep pretending I'm
-good at math, when really I have absolutely no fucking clue what I'm doing.
+good at math, when really I have absolutely no clue what I'm doing.
 
 ## What field of math is this?
 
