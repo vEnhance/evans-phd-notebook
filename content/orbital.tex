@@ -497,7 +497,7 @@ where each $(m,n)$ gives a volume contribution of
 \subsection{Region where $n \leq 0$ for all values of $\ell$}
 \begin{proposition}
   The contribution to the integral $O(\gamma,s)$ over $n \leq 0$ is exactly
-  \[ q^{2 \delta s} \sum_{j=0}^{\delta+2r} q^{-2js}
+  \[ q^{2(\delta+r)s} \sum_{j=0}^{\delta+2r} q^{-2js}
     = q^{-2rs} + \dots + q^{2(\delta+r)s}. \]
 \end{proposition}
 \begin{proof}
@@ -621,14 +621,15 @@ Hence we get
 At this point, two of the bounds on $j$ are redundant.
 In the first sum, if $j \leq \left\lfloor \frac{r+1}{2} \right\rfloor + 1$,
 the sum is empty anyway.
-Similarly, the second sum anyway if $j > \left\lfloor \frac{\ell}{2} \right\rfloor + r$.
+Similarly, the second sum is empty anyway if
+$j > \left\lfloor \frac{\ell}{2} \right\rfloor + r$.
 Therefore we can unify the two parts for the same range $0 \le j \le \delta+2r$ to get
 \[
-  q^{2\delta s} \sum_{j=0}^{\delta+2r} \left(
+  q^{2(\delta+r)s} \sum_{j=0}^{\delta+2r} \left(
     \sum_{n=1}^{\min(2j-1-r, \ell+r, 2\delta+r)}
-    q^{\left\lfloor \frac{n+r}{2} \right\rfloor} \cdot (-1)^n q^{s(n+2r-2j)}
+    q^{\left\lfloor \frac{n+r}{2} \right\rfloor} \cdot (-1)^n q^{s(n-2j)}
     + \sum_{n=\max(1,2j-r)}^{\ell+\min(j,r)}
-    q^j \cdot (-1)^n q^{s(n+2r-2j)}
+    q^j \cdot (-1)^n q^{s(n-2j)}
   \right).
 \]
 
