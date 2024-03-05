@@ -483,6 +483,7 @@ $n \le r + 2 \delta$ in addition to $n \le r + \ell$.
 However, this condition also turns out to be redundant.
 \begin{lemma}
   When $\ell$ is odd we always have $\ell < 2 \delta$.
+  \label{lem:wtfell}
 \end{lemma}
 \begin{proof}
   To be written up.
@@ -525,6 +526,7 @@ where each $(m,n)$ gives a volume contribution of
       & \text{if $m \le \delta + r$}.
   \end{cases}
 \]
+Notice that $m \leq \delta + r$ could only occur when $n \leq r$.
 
 \subsection{The case where $n > 0$, $\ell$ is even, $v(b)=v(d)=0$}
 As before we consider $n > 0$ and $n-r \le m \le n+\delta+r$ as fixed,
@@ -685,83 +687,119 @@ TODO: finish
 
 \subsection{Region where $n > 0$ for odd $\ell$}
 Again using $\Vol(t_1:-v(t_1)=m) = q^{2m} (1-q^{-2})$,
-summing the two cases gives
+summing all the cases gives
 \begin{align*}
-  &\phantom=
+  I_{n > 0}^{\text{odd}} &\coloneqq
     \kappa \int_{t, t_1 \in E} \mathbf{1}(n > 0) \mathbf{1}(\gamma,t,m) \\
-  &= \kappa \sum_{n=1}^{\min(\ell,2\delta)+r}
-    \sum_{m=n-r}^{\left\lceil \frac{n-r}{2} \right\rceil+\delta+r-1}
-    q^{-n - \left\lceil \frac{n-r}{2} \right\rceil} \left( 1 - q\inv \right)
-    \\ &\qquad \cdot (-1)^n q^{s(2m-n)} q^{2n-2m}
-    \cdot q^{2m}(1-q^{-2})
+  % -----------------------------------------------------------
+  &= \kappa \sum_{n=1}^{r}
+      \sum_{m=n-r}^{\left\lceil \frac{n-r}{2} \right\rceil+\delta+r-1}
+      q^{-n} \left( 1 - q^{-2} \right)
+      \cdot \Big( (-1)^n q^{s(2m-n)} q^{2n-2m} \Big) \Big( q^{2m}(1-q^{-2}) \Big) \\
+  &\qquad+ \kappa \sum_{n=r+1}^{\ell+r}
+      \sum_{m=n-r}^{\left\lceil \frac{n-r}{2} \right\rceil+\delta+r-1}
+      q^{-n - \left\lceil \frac{n-r}{2} \right\rceil} \left( 1 - q\inv \right)
+      \cdot \Big( (-1)^n q^{s(2m-n)} q^{2n-2m} \Big) \Big( q^{2m}(1-q^{-2}) \Big) \\
+  &\qquad+ \kappa \sum_{n=1}^{r}
+    \sum_{m=\max\left(n-r, \left\lceil \frac{n-r}{2} \right\rceil+\delta+r\right)}^{\delta+r}
+      q^{-n} \left( 1 - q^{-2} \right)
+      \cdot \Big( (-1)^n q^{s(2m-n)} q^{2n-2m} \Big) \Big( q^{2m}(1-q^{-2}) \Big) \\
     \\
-  &+ \kappa \sum_{n=1}^{\ell+r}
-    \sum_{m=\max\left(n-r, \left\lceil \frac{n-r}{2} \right\rceil+\delta+r\right)}^{\min(n,\ell)+\delta+r}
-    q^{-n - (m-\delta-r)} \left( 1 - q\inv \right)
-    \\ &\qquad \cdot (-1)^n q^{s(2m-n)} q^{2n-2m} \cdot q^{2m}(1-q^{-2})
-    \\
-  &= \sum_{n=1}^{\min(\ell,2\delta)+r}
-    \sum_{m=n-r}^{\left\lceil \frac{n-r}{2} \right\rceil+\delta+r-1}
-    q^{-n - \left\lceil \frac{n-r}{2} \right\rceil} \cdot (-1)^n q^{s(2m-n)} q^{2n}
-    \\
-  &+ \sum_{n=1}^{\ell+r}
-    \sum_{m=\max\left(n-r, \left\lceil \frac{n-r}{2} \right\rceil+\delta+r\right)}^{\min(n,\ell)+\delta+r}
-    q^{-n - (m-\delta-r)} \cdot (-1)^n q^{s(2m-n)} q^{2n}
-    \\
-  &= \sum_{n=1}^{\min(\ell,2\delta)+r}
-    \sum_{m=n-r}^{\left\lceil \frac{n-r}{2} \right\rceil+\delta+r-1}
-    q^{n - \left\lceil \frac{n-r}{2} \right\rceil} \cdot (-1)^n q^{s(2m-n)}
-    \\
-  &+ \sum_{n=1}^{\ell+r}
-    \sum_{m=\max\left(n-r, \left\lceil \frac{n-r}{2} \right\rceil+\delta+r\right)}^{\min(n,\ell)+\delta+r}
-    q^{n - (m-\delta-r)} \cdot (-1)^n q^{s(2m-n)}
-    \\
-  &= \sum_{n=1}^{\min(\ell,2\delta)+r}
-    \sum_{m=n-r}^{n-\left\lfloor \frac{n+r}{2} \right\rfloor+\delta+r-1}
-    q^{\left\lfloor \frac{n+r}{2} \right\rfloor} \cdot (-1)^n q^{s(2m-n)}
-    \\
-  &+ \sum_{n=1}^{\ell+r}
-    \sum_{m=\max\left(n-r, n-\left\lfloor \frac{n+r}{2} \right\rfloor+\delta+r \right)}^{\min(n,\ell)+\delta+r}
-    q^{n - (m-\delta-r)} \cdot (-1)^n q^{s(2m-n)}
-  .
+  &\qquad+ \kappa \sum_{n=1}^{\ell+r}
+    \sum_{m=\max\left(n-r, \left\lceil \frac{n-r}{2} \right\rceil+\delta+r, \delta+r+1 \right)}^{\min(n,\ell)+\delta+r}
+      q^{-n - (m-\delta-r)} \left( 1 - q\inv \right)
+      \\ &\qquad\qquad
+      \cdot \Big( (-1)^n q^{s(2m-n)} q^{2n-2m} \Big) \Big( q^{2m}(1-q^{-2}) \Big) \\
+  % -----------------------------------------------------------
+  &= \sum_{n=1}^{r}
+      \sum_{m=n-r}^{\left\lceil \frac{n-r}{2} \right\rceil+\delta+r-1}
+      q^{n} \left( 1 + q\inv \right)
+      \cdot (-1)^n q^{s(2m-n)} \\
+  &\qquad+ \sum_{n=r+1}^{\ell+r}
+      \sum_{m=n-r}^{\left\lceil \frac{n-r}{2} \right\rceil+\delta+r-1}
+      q^{\left\lfloor \frac{n+r}{2} \right\rfloor}
+      \cdot (-1)^n q^{s(2m-n)} \\
+  &\qquad+ \sum_{n=1}^{r}
+    \sum_{m=\max\left(n-r, \left\lceil \frac{n-r}{2} \right\rceil+\delta+r\right)}^{\delta+r}
+    q^{n} \left( 1 + q\inv \right)
+    \cdot (-1)^n q^{s(2m-n)} \\
+  &\qquad+ \sum_{n=1}^{\ell+r}
+    \sum_{m=\max\left(n-r, \left\lceil \frac{n-r}{2} \right\rceil+\delta+r, \delta+r+1 \right)}^{\min(n,\ell)+\delta+r}
+    q^{n - (m-\delta-r)}
+    \cdot (-1)^n q^{s(2m-n)}.
 \end{align*}
 To simplify the expressions, we replace the summation variable $m$ with
 \[ j \coloneqq (n + \delta + r) - m \geq 0. \]
-In that case, $2m-n = 2(\delta+n+r-j)-n = n + 2\delta + 2r - 2j$.
+In that case,
+\[ 2m-n = 2(\delta+n+r-j)-n = n + 2\delta + 2r - 2j. \]
 Then the expression rewrites as
 \begin{align*}
-  &\phantom= \sum_{n=1}^{\min(\ell,2\delta)+r}
-    \sum_{j=\left\lfloor \frac{n+r}{2} \right\rfloor+1}^{\delta+2r}
-    q^{\left\lfloor \frac{n+r}{2} \right\rfloor} \cdot (-1)^n q^{s(n+2\delta+2r-2j)} \\
-  &+ \sum_{n=1}^{\ell+r}
-    \sum_{j=n-\min(n,\ell)}^{\min\left(\delta+2r, \left\lfloor \frac{n+r}{2} \right\rfloor\right)}
-  q^j \cdot (-1)^n q^{s(n+2\delta+2r-2j)}
+  I_{n > 0}^{\text{odd}}
+  % -----------------------------------------------------------
+  &= \sum_{n=1}^{r}
+    \sum_{j = \left\lfloor \frac{n+r}{2} \right\rfloor+ 1}^{\delta + 2r}
+      q^{n} \left( 1 + q\inv \right) \cdot (-1)^n q^{s(n+2\delta+2r-2j)} \\
+  &\qquad+ \sum_{n=r+1}^{\ell+r}
+    \sum_{j = \left\lfloor \frac{n+r}{2} \right\rfloor+ 1}^{\delta + 2r}
+      q^{\left\lfloor \frac{n+r}{2} \right\rfloor} \cdot (-1)^n q^{s(n+2\delta+2r-2j)} \\
+  &\qquad+ \sum_{n=1}^{r}
+    \sum_{j=n}^{\min\left( \delta+2r, \left\lfloor \frac{n+r}{2} \right\rfloor \right)}
+    q^{n} \left( 1 + q\inv \right) \cdot (-1)^n q^{s(n+2\delta+2r-2j)} \\
+  &\qquad+ \sum_{n=1}^{\ell+r}
+    \sum_{j=\max(0,n-\ell)}^{\min(\delta+2r, \left\lfloor \frac{n+r}{2} \right\rfloor, n-1)}
+    q^{j} \cdot (-1)^n q^{s(n+2\delta+2r-2j)}.
 \end{align*}
-We interchange the order of summation so that it is first over $j$ and then $n$.
-\begin{itemize}
-  \ii The permissible values of $j$ in the second sum
-  clearly run from $j=\left\lfloor \frac{r+1}{2} \right\rfloor+1$ to $j=\delta+2r$.
-  The constraints for $n$ are that $n \ge 1$, $n \le \min(\ell, 2\delta)+r$,
-  and $\left\lfloor \frac{n+r}{2} \right\rfloor + 1 \leq j$,
-  which solves to $\frac{n+r}{2} \leq j-\half$ or $n \leq 2j-1-r$.
 
-  \ii The second sum was over pairs $(n,j)$ satisfying $1 \le n \le \ell+r$
-  and $j \ge 0$, $j \ge n-\ell$, and $j \le \left\lfloor \frac{n+r}{2} \right\rfloor$.
-  Hence we now have
-  \[ 0 \leq j \leq \min\left(\delta+2r,
-    \left\lfloor \frac{\ell}{2} \right\rfloor + r\right). \]
-  Solving for $n$ gives $\max(1, 2j-r) \leq n \leq \ell + r$.
+We interchange the order of summation so that it is first over $j$ and then $n$.
+There are four double sums to interchange.
+
+\begin{itemize}
+  \ii The first double sum runs from $j=\left\lfloor \frac{r+1}{2} \right\rfloor+1$ to $j=\delta+2r$.
+  In addition to $1 \le n \le r$,
+  we need $\left\lfloor \frac{n+r}{2} \right\rfloor + 1 \leq j$,
+  which solves to $\frac{n+r}{2} \leq j-\half$ or $n \leq 2j-1-r$.
+  Thus the condition on $n$ is
+  \[ 1 \leq n \leq \min(2j-1-r, r). \]
+
+  \ii The second double sum runs from $j=r+1$ to $\delta+2r$.
+  We also need $r+1 \le n \le \ell+r$ and $n \le 2j-1-r$.
+  Hence, the desired condition on $n$ is
+  \[ r+1 \leq n \leq \min(2j-1-r, \ell+r). \]
+
+  \ii The third double runs from $j=1$ to $j=r$.
+  Meanwhile, the values of $n$ need to satisfy $1 \le n \le r$, $n \leq j$
+  and $j \leq \left\lfloor \frac{n+r}{2} \right\rfloor \implies n \geq 2j-r$,
+  consequently we just obtain
+  \[ \max(1, 2j-r) \leq n \leq j. \]
+
+  \ii The fourth double sum runs $j=0$ to
+  \[ j=\min\left( \delta+2r, \left\lfloor \frac{\ell}{2} \right\rfloor + r, \ell+r-1 \right)
+    = \left\lfloor \frac{\ell}{2} \right\rfloor + r \]
+  again because of \Cref{lem:wtfell}.
+  Meanwhile, we require $1 \le n \le \ell+r$, $j \ge n-\ell$, $j \le n-1$,
+  as well as $j \le \left\lfloor \frac{n+r}{2} \right\rfloor
+  \iff n \ge 2j-r$.
+  Putting these four conditions together gives
+  \[ \max(j+1, 2j-r) \le n \le \ell+\min(j,r). \]
 \end{itemize}
 Hence we get
 \begin{align*}
-  &\phantom=\sum_{j=\left\lfloor \frac{r+1}{2} \right\rfloor+1}^{\delta+2r}
-    \sum_{n=1}^{\min(2j-1-r, \ell+r, 2\delta+r)}
-    q^{\left\lfloor \frac{n+r}{2} \right\rfloor} \cdot (-1)^n q^{s(n+2\delta+2r-2j)}
-    \\
-  &\qquad+ \sum_{j=0}^{\min\left(\delta+2r, \left\lfloor \frac{\ell}{2} \right\rfloor+r\right)}
-    \sum_{n=\max(1,2j-r)}^{\ell+\min(j,r)}
-    q^j \cdot (-1)^n q^{s(n+2\delta+2r-2j)}.
+  I_{n > 0}^{\text{odd}}
+  % -----------------------------------------------------------
+  &= \sum_{j = \left\lfloor \frac{r+1}{2} \right\rfloor+ 1}^{\delta+2r}
+   \sum_{n=1}^{\min(2j-1-r, r)}
+      q^{n} \left( 1 + q\inv \right) \cdot (-1)^n q^{s(n+2\delta+2r-2j)} \\
+  &\qquad+ \sum_{j = r+1}^{\delta + 2r}
+    \sum_{n=r+1}^{\min(2j-1-r, \ell+r)}
+      q^{\left\lfloor \frac{n+r}{2} \right\rfloor} \cdot (-1)^n q^{s(n+2\delta+2r-2j)} \\
+  &\qquad+ \sum_{j=1}^{r}
+    \sum_{n=\max(1,2j-r)}^{j}
+    q^{n} \left( 1 + q\inv \right) \cdot (-1)^n q^{s(n+2\delta+2r-2j)} \\
+  &\qquad+ \sum_{j=0}^{\left\lfloor \frac{\ell}{2} \right\rfloor + r}
+    \sum_{n=\max(j+1, 2j-r)}^{\ell+\min(j,r)}
+    q^{j} \cdot (-1)^n q^{s(n+2\delta+2r-2j)}.
 \end{align*}
+
 At this point, two of the bounds on $j$ are redundant.
 In the first sum, if $j < \left\lfloor \frac{r+1}{2} \right\rfloor + 1$,
 the sum is empty anyway.
