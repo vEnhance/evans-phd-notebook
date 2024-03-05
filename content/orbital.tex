@@ -501,9 +501,9 @@ The first case is
 where each $(m,n)$ gives a volume contribution of
 \[
   \begin{cases}
-    q^{-n - \left\lceil \frac{n-r}{2} \right\rceil} \left( 1 - \frac 1q \right)
+    q^{-n - \left\lceil \frac{n-r}{2} \right\rceil} \left( 1 - q\inv \right)
       & \text{if $n > r$} \\
-    q^{-n} \left( 1 - \frac{1}{q^2} \right)
+    q^{-n} \left( 1 - q^{-2} \right)
       & \text{if $n \leq r$}.
   \end{cases}
 \]
@@ -519,9 +519,9 @@ The second case is
 where each $(m,n)$ gives a volume contribution of
 \[
   \begin{cases}
-    q^{-n - (m-\delta-r)} \left( 1 - \frac 1q \right)
+    q^{-n - (m-\delta-r)} \left( 1 - q\inv \right)
       & \text{if $m > \delta + r$} \\
-      q^{-n} \left( 1 - \frac{1}{q^2} \right)
+    q^{-n} \left( 1 - q^{-2} \right)
       & \text{if $m \le \delta + r$}.
   \end{cases}
 \]
@@ -691,13 +691,13 @@ summing the two cases gives
     \kappa \int_{t, t_1 \in E} \mathbf{1}(n > 0) \mathbf{1}(\gamma,t,m) \\
   &= \kappa \sum_{n=1}^{\min(\ell,2\delta)+r}
     \sum_{m=n-r}^{\left\lceil \frac{n-r}{2} \right\rceil+\delta+r-1}
-    q^{-n - \left\lceil \frac{n-r}{2} \right\rceil} \left( 1 - \frac 1q \right)
+    q^{-n - \left\lceil \frac{n-r}{2} \right\rceil} \left( 1 - q\inv \right)
     \\ &\qquad \cdot (-1)^n q^{s(2m-n)} q^{2n-2m}
     \cdot q^{2m}(1-q^{-2})
     \\
   &+ \kappa \sum_{n=1}^{\ell+r}
     \sum_{m=\max\left(n-r, \left\lceil \frac{n-r}{2} \right\rceil+\delta+r\right)}^{\min(n,\ell)+\delta+r}
-    q^{-n - (m-\delta-r)} \left( 1 - \frac 1q \right)
+    q^{-n - (m-\delta-r)} \left( 1 - q\inv \right)
     \\ &\qquad \cdot (-1)^n q^{s(2m-n)} q^{2n-2m} \cdot q^{2m}(1-q^{-2})
     \\
   &= \sum_{n=1}^{\min(\ell,2\delta)+r}
