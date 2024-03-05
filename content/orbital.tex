@@ -354,7 +354,15 @@ In summary:
 \end{claim}
 
 \subsection{Volume lemma}
-The following lemma will be useful.
+The following two lemmas will be useful.
+\begin{lemma}
+  Let $\xi \in \OO_E^\times$ and let $n \ge 1$.
+  Then the volume of the set
+  \[ \left\{ x \in E \mid v(1-x \bar x) = n, \right\} \]
+  equals
+  \[ q^{-n}(1-q^{-2}). \]
+\end{lemma}
+
 \begin{lemma}
   [{\cite[Lemma 4.4]{ref:AFL}}]
   Let $\xi \in \OO_E^\times$ and let $n \ge \lambda \ge 1$ be integers.
@@ -470,6 +478,15 @@ together with \eqref{eq:odd_b_d_zero} implies
   v(4-b\bar b) \ge \min(\ell,\delta) \text{ with equality if } \ell \neq \delta.
   \label{eq:odd_bb}
 \end{equation}
+Hence, a priori \eqref{eq:odd_bb} suggests that we have a condition
+$n \le r + 2 \delta$ in addition to $n \le r + \ell$.
+However, this condition also turns out to be redundant.
+\begin{lemma}
+  When $\ell$ is odd we always have $\ell < 2 \delta$.
+\end{lemma}
+\begin{proof}
+  To be written up.
+\end{proof}
 
 Putting all of this together,
 we find that the valid pairs $(n,m)$ come in two cases.
@@ -477,12 +494,19 @@ we find that the valid pairs $(n,m)$ come in two cases.
 \paragraph{First case}
 The first case is
 \begin{equation}
-  1 \leq n \leq \min(\ell, 2\delta) + r,
+  1 \leq n \leq \ell + r,
   \qquad n-r \leq m \leq \left\lceil \frac{n-r}{2} \right\rceil+\delta+r - 1
   \label{eq:odd_range1}
 \end{equation}
 where each $(m,n)$ gives a volume contribution of
-\[ q^{-n - \left\lceil \frac{n-r}{2} \right\rceil} \left( 1 - \frac 1q \right). \]
+\[
+  \begin{cases}
+    q^{-n - \left\lceil \frac{n-r}{2} \right\rceil} \left( 1 - \frac 1q \right)
+      & \text{if $n > r$} \\
+    q^{-n} \left( 1 - \frac{1}{q^2} \right)
+      & \text{if $n \leq r$}.
+  \end{cases}
+\]
 
 \paragraph{Second case}
 The second case is
@@ -493,7 +517,14 @@ The second case is
   \label{eq:odd_range2}
 \end{equation}
 where each $(m,n)$ gives a volume contribution of
-\[ q^{-n - (m-\delta-r)} \left( 1 - \frac 1q \right). \]
+\[
+  \begin{cases}
+    q^{-n - (m-\delta-r)} \left( 1 - \frac 1q \right)
+      & \text{if $m > \delta + r$} \\
+      q^{-n} \left( 1 - \frac{1}{q^2} \right)
+      & \text{if $m \le \delta + r$}.
+  \end{cases}
+\]
 
 \subsection{The case where $n > 0$, $\ell$ is even, $v(b)=v(d)=0$}
 As before we consider $n > 0$ and $n-r \le m \le n+\delta+r$ as fixed,
