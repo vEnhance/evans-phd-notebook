@@ -365,14 +365,14 @@ The following two lemmas will be useful.
 
 \begin{lemma}
   [{\cite[Lemma 4.4]{ref:AFL}}]
-  Let $\xi \in \OO_E^\times$ and let $n \ge \lambda \ge 1$ be integers.
+  Let $\xi \in \OO_E^\times$ and let $n \ge \rho \ge 1$ be integers.
   Then the volume of the set
-  \[ \left\{ x \in E \mid v(1-x \bar x) = n, \; v(x-\xi) \ge \lambda \right\} \]
+  \[ \left\{ x \in E \mid v(1-x \bar x) = n, \; v(x-\xi) \ge \rho \right\} \]
   equals
   \[
     \begin{cases}
-      0 & v(1-\xi\bar\xi) < \lambda \\
-      q^{-(n+\lambda)}(1-q\inv) & v(1-\xi\bar\xi) \ge \lambda.
+      0 & v(1-\xi\bar\xi) < \rho \\
+      q^{-(n+\rho)}(1-q\inv) & v(1-\xi\bar\xi) \ge \rho.
     \end{cases}
   \]
 \end{lemma}
@@ -380,13 +380,13 @@ The following two lemmas will be useful.
 We will also need to intersect two disks. In an ultrametric space, this is easy to do:
 \begin{lemma}
   [No MasterCard logo in an ultrametric space]
-  Choose $\xi_1, \xi_2 \in E$ and $\lambda_1 \geq \lambda_2 \geq 0$.
+  Choose $\xi_1, \xi_2 \in E$ and $\rho_1 \geq \rho_2 \geq 0$.
   Consider the two disks:
   \begin{align*}
-    D_1 &= \left\{ x \in E \mid v(x-\xi_1) \ge \lambda_1 \right\} \\
-    D_2 &= \left\{ x \in E \mid v(x-\xi_2) \ge \lambda_2 \right\}.
+    D_1 &= \left\{ x \in E \mid v(x-\xi_1) \ge \rho_1 \right\} \\
+    D_2 &= \left\{ x \in E \mid v(x-\xi_2) \ge \rho_2 \right\}.
   \end{align*}
-  Then, if $v(\xi_1-\xi_2) \geq \lambda_2$, we have $D_1 \subseteq D_2$.
+  Then, if $v(\xi_1-\xi_2) \geq \rho_2$, we have $D_1 \subseteq D_2$.
   If not, instead $D_1 \cap D_2 = \varnothing$.
   \label{lem:mastercard}
 \end{lemma}
