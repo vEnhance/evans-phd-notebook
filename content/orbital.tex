@@ -247,15 +247,15 @@ Finally, define
   \ell \coloneqq v(b^2 - 4 a \ol d).
   \label{eq:ell}
 \end{equation}
-We will also define one additional parameter
+We will also define one additional parameter useful when $\ell$ is even:
 \begin{equation}
-  \lambda \coloneqq v(1-u \bar u)
+  \lambda \coloneqq v(1-u \bar u) \equiv 1 \pmod 2.
   \label{eq:lambda}
 \end{equation}
-In the case where $\ell$ is odd, it will turn out that $\lambda = \ell$
+In the case where $\ell$ is odd, we get \eqref{eq:dos} implying $\lambda = \ell$
 and this definition will never be used --- the orbital will be computed
 as a function of $\ell$ and $\delta$ (and $r$).
-However for even $\ell$ these numbers are not necessarily equal and our orbital
+However for even $\ell$ these numbers are never equal and our orbital
 integral will be stated in terms of $\ell$, $\delta$, and $\lambda$ (and $r$).
 
 \section{Description of the nonzero regions}
@@ -574,13 +574,16 @@ The distance between the two circles has valuation
   v\left( u + \frac{b \pm \tau}{2} \right)
   = v(au - \bar d \bar u \pm \tau).
 \]
-Since $(au-\bar d \bar u)^2 - \tau^2 = 4a\bar d(1- \bar u)$,
+Since $(au-\bar d \bar u)^2 - \tau^2 = 4a\bar d(1- u\bar u)$,
 we agree now to fix the choice of the square root of $\tau$ such that
 \begin{equation}
   v(au-\bar d \bar u + \tau) = v(1-u\bar u) - v(\tau) \quad\text{and}\quad
   v(au-\bar d \bar u - \tau) = v(\tau).
   \label{eq:tau_choice}
 \end{equation}
+From $v(b) = v(d) = 0$ and \eqref{eq:dos}, we have
+\[ \ell = 2v(\tau) = 2v(au - \bar d \bar u) < \lambda. \]
+
 This lets us invoke \cite[Lemma 4.7]{ref:AFL} to evaluate $v(4-\Norm(b \pm \tau))$.
 
 In the $\frac{b+\tau}{2a}$ case, we get
