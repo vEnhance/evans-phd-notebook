@@ -385,6 +385,7 @@ The following two lemmas will be useful.
       q^{-(n+\rho)}(1-q\inv) & v(1-\xi\bar\xi) \ge \rho.
     \end{cases}
   \]
+  \label{lem:volume}
 \end{lemma}
 
 We will also need to intersect two disks. In an ultrametric space, this is easy to do:
@@ -435,14 +436,14 @@ $\left\lceil \frac{n-r}{2} \right\rceil$ and $m-\delta-r$ respectively,
 we obtain two possible situations:
 \begin{itemize}
   \ii If $m < \left\lceil \frac{n-r}{2} \right\rceil + \delta + r$
-  the nonempty condition reads
+  then \Cref{lem:volume} and \Cref{lem:mastercard} apply if and only if, respectively,
   \begin{align}
     v(4-b\bar b) &\ge \left\lceil \frac{n-r}{2} \right\rceil \label{eq:odd_ineq1} \\
     v(au - \bar d \bar u) &\ge m - \delta - r \label{eq:odd_ineq2}.
   \end{align}
 
   \ii If $m \geq \left\lceil \frac{n-r}{2} \right\rceil + \delta + r$
-  the nonempty condition reads
+  then \Cref{lem:volume} and \Cref{lem:mastercard} apply if and only if, respectively,
   \begin{align}
     v(1-u \bar u) &\ge m-\delta-r \label{eq:odd_ineq3} \\
     v(au - \bar d \bar u) &\ge \left\lceil \frac{n-r}{2} \right\rceil \label{eq:odd_ineq4}.
@@ -505,8 +506,10 @@ we find that the valid pairs $(n,m)$ come in two cases.
 \paragraph{First case}
 The first case is
 \begin{equation}
-  1 \leq n \leq \ell + r,
-  \qquad n-r \leq m \leq \left\lceil \frac{n-r}{2} \right\rceil+\delta+r - 1
+  \begin{aligned}
+    1 &\leq n \leq \ell + r, \\
+    n-r &\leq m \leq \left\lceil \frac{n-r}{2} \right\rceil+\delta+r - 1
+  \end{aligned}
   \label{eq:odd_range1}
 \end{equation}
 where each $(m,n)$ gives a volume contribution of
@@ -522,9 +525,11 @@ where each $(m,n)$ gives a volume contribution of
 \paragraph{Second case}
 The second case is
 \begin{equation}
-  1 \leq n \leq \ell + r,
-  \qquad \max\left(n-r, \left\lceil \frac{n-r}{2} \right\rceil+\delta+r \right)
-    \leq m \leq \min(n,\ell)+\delta+r
+  \begin{aligned}
+    1 &\leq n \leq \ell + r, \\
+    \max\left(n-r, \left\lceil \frac{n-r}{2} \right\rceil+\delta+r \right)
+    &\leq m \leq \min(n,\ell)+\delta+r.
+  \end{aligned}
   \label{eq:odd_range2}
 \end{equation}
 where each $(m,n)$ gives a volume contribution of
@@ -546,14 +551,14 @@ for which $n = v(1-t\bar t)$ and $\mathbf{1}(\gamma,t,m) = 0$.
 Suppose $\ell$ is even.
 Then the left-hand side of \eqref{eq:dos} is a square, which we denote $\tau^2$.
 In this case, we obtain
-\[ 2v(\tau) = \ell = 2v(au-\bar d\bar u) > v(1-u \bar u). \]
+\[ 2v(\tau) = \ell = 2v(au-\bar d\bar u) > \lambda \coloneqq v(1-u \bar u). \]
 Then the condition that
 \[ v\Big( (2at-b)^2 - \underbrace{(b^2-4a\bar d)}_{=\tau^2} \Big) \geq n-r \]
 falls into three disjoint parts:
 \begin{itemize}
   \ii Both $v\left( (2at-b)^2 \right) \geq n-r$ and $\ell = v(\tau^2) \geq n-r$ hold,
   as in the $\ell$ odd case.
-  \ii We have $\ell = v(\tau^2) < n-r$ but
+  \ii We have $\ell = v(\tau^2) < n-r$ (hence $v\left( (2at-b)^2 \right) < n-r$ too) but
   \[ v(2at-b \mp \tau) \geq (n-r)-\ell/2 > 0, \qquad v(2at-b \pm \tau) = \ell/2. \]
   This is two parts, corresponding to the choice of $\pm$.
 \end{itemize}
@@ -577,80 +582,76 @@ The distance between the two circles has valuation
 Since $(au-\bar d \bar u)^2 - \tau^2 = 4a\bar d(1- u\bar u)$,
 we agree now to fix the choice of the square root of $\tau$ such that
 \begin{equation}
-  v(au-\bar d \bar u + \tau) = v(1-u\bar u) - v(\tau) \quad\text{and}\quad
+  v(au-\bar d \bar u + \tau) = \lambda - v(\tau) \quad\text{and}\quad
   v(au-\bar d \bar u - \tau) = v(\tau).
   \label{eq:tau_choice}
 \end{equation}
 From $v(b) = v(d) = 0$ and \eqref{eq:dos}, we have
 \[ \ell = 2v(\tau) = 2v(au - \bar d \bar u) < \lambda. \]
 
-This lets us invoke \cite[Lemma 4.7]{ref:AFL} to evaluate $v(4-\Norm(b \pm \tau))$.
+This lets us invoke \cite[Lemma 4.7]{ref:AFL} to evaluate $v(4-\Norm(b \pm \tau))$:
+we have
+\begin{align*}
+  \lambda + \delta - \ell &= v\left( 4 - \Norm(b+\tau) \right) \\
+  \delta &= v\left( 4 - \Norm(b-\tau) \right).
+\end{align*}
+So we obtain $2 \cdot 2 = 4$ total cases.
 
-In the $\frac{b+\tau}{2a}$ case, we get
-\begin{itemize}
-  \ii If $m < n - \frac{\ell}{2} + \delta$, the nonempty condition becomes
-  \begin{align*}
-    v(1-u \bar u) + \delta - \ell = v(4-\Norm(b+\tau)) &\geq n - \frac{\ell}{2} - r \\
-    v(1-u\bar u) - \ell/2 = v(au-\bar d \bar u + \tau) & \geq m - \delta - r.
-  \end{align*}
-  \ii If $m \geq n - \frac{\ell}{2} + \delta$, the nonempty condition becomes
-  \begin{align*}
-    v(1-u \bar u) &\geq m - \delta - r \\
-    v(1-u\bar u) - \ell/2 = v(au-\bar d \bar u + \tau) & \geq n - \frac{\ell}{2} - r.
-  \end{align*}
-\end{itemize}
-Meanwhile, in the $\frac{b-\tau}{2a}$ case, we get
-\begin{itemize}
-  \ii If $m < n - \frac{\ell}{2} + \delta$, the nonempty condition becomes
-  \begin{align*}
-    \delta = v(4-\Norm(b-\tau)) &\geq n - \frac{\ell}{2} - r \\
-    \ell/2 = v(au-\bar d \bar u - \tau) & \geq m - \delta - r.
-  \end{align*}
-  \ii If $m \geq n - \frac{\ell}{2} + \delta$, the nonempty condition becomes
-  \begin{align*}
-    v(1-u \bar u) &\geq m - \delta - r \\
-    \ell/2 = v(au-\bar d \bar u - \tau) & \geq n - \frac{\ell}{2} - r.
-  \end{align*}
-\end{itemize}
-
-\paragraph{First case}
-The first case is the union of two regions:
+\paragraph{Case $1^+$.}
+Suppose $m < n - \frac{\ell}{2} + \delta$, and we choose $\frac{b+\tau}{2a}$.
+Then the contribution is nonempty if and only if
+\begin{align*}
+  \lambda + \delta - \ell = v(4-\Norm(b+\tau)) &\geq n - \frac{\ell}{2} - r \\
+  \lambda - \ell/2 = v(au-\bar d \bar u + \tau) & \geq m - \delta - r.
+\end{align*}
+Rearranging gives
 \begin{equation}
-  \max(1, \ell+r+1) \leq n \leq -\frac{\ell}{2}+\delta+r + v(1-u \bar u),
-  \qquad
-  n-r \leq m \leq \max\left( n - \frac{\ell}{2}+\delta, v(1-u\bar u)-\frac{\ell}{2}+\delta+r \right)
+  \begin{aligned}
+    \max(1, \ell+r+1) &\leq n \leq  -\frac{\ell}{2}+\delta+r + \lambda, \\
+    n-r &\leq m \leq \max\left( n - \frac{\ell}{2}+\delta,
+      \lambda-\frac{\ell}{2}+\delta+r \right)
+  \end{aligned}
   \label{eq:even_case1_plus}
 \end{equation}
-and
+
+\paragraph{Case $2^+$.}
+Suppose $m \ge n - \frac{\ell}{2} + \delta$, and we choose $\frac{b+\tau}{2a}$.
+Then the contribution is nonempty if and only if
+\begin{align*}
+  \lambda &\geq m - \delta - r \\
+  \lambda - \ell/2 = v(au-\bar d \bar u + \tau) & \geq n - \frac{\ell}{2} - r.
+\end{align*}
+Rearranging gives that the valid pairs $(m,n)$ are those for which
 \begin{equation}
-  \max(1, \ell+r+1) \leq n \leq \frac{\ell}{2}+\delta+r,
-  \qquad
-  n-r \leq m \leq \max\left( n - \frac{\ell}{2}+\delta, \delta+\frac{\ell}{2}+r \right)
+  \begin{aligned}
+    \max(1, \ell+r+1) &\leq n \leq \frac{\ell}{2}+\delta+r, \\
+    n-r &\leq m \leq \max\left( n - \frac{\ell}{2}+\delta, \delta+\frac{\ell}{2}+r \right)
+  \end{aligned}
   \label{eq:even_case1_minus}
 \end{equation}
-Note the condition that $m \leq n+\delta+r$ is redundant with
-$m \leq n - \frac{\ell}{2} + r$ since $\ell,\delta,r \ge 0$ for $v(b)=v(d)=0$.
-\todo{may cause pain for $v(b),v(d) < 0$}
 
-\paragraph{Second case}
-The second case is the disjoint union of two bounds:
-\begin{equation}
-  \leq n \leq
-  \qquad
-  \leq m \leq
-  \label{eq:even_case2_plus}
-\end{equation}
-and
-\begin{equation}
-  \leq n \leq
-  \qquad
-  \leq m \leq
-  \label{eq:even_case2_minus}
-\end{equation}
-Note the condition that $m \leq n+\delta+r$ is redundant with
-$m \leq n - \frac{\ell}{2} + r$ since $\ell,\delta,r \ge 0$ for $v(b)=v(d)=0$.
+\paragraph{Case $1^-$.}
+Suppose $m < n - \frac{\ell}{2} + \delta$, and we choose $\frac{b-\tau}{2a}$.
+Then the disks have nonempty intersection whenever
+\begin{align*}
+  \delta = v(4-\Norm(b-\tau)) &\geq n - \frac{\ell}{2} - r \\
+  \ell/2 = v(au-\bar d \bar u - \tau) & \geq m - \delta - r.
+\end{align*}
 
-TODO: finish
+\paragraph{Case $2^-$.}
+Suppose $m \geq n - \frac{\ell}{2} + \delta$, and we choose $\frac{b+\tau}{2a}$.
+Then the disks have nonempty intersection whenever
+\begin{align*}
+  \lambda &\geq m - \delta - r \\
+  \ell/2 = v(au-\bar d \bar u - \tau) & \geq n - \frac{\ell}{2} - r.
+\end{align*}
+
+\newpage
+
+%Note the condition that $m \leq n+\delta+r$ is redundant with
+%$m \leq n - \frac{\ell}{2} + r$ since $\ell,\delta,r \ge 0$ for $v(b)=v(d)=0$.
+%\todo{may cause pain for $v(b),v(d) < 0$}
+
 
 \section{Evaluation of the integral}
 \subsection{Region where $n \leq 0$ for all values of $\ell$}
