@@ -559,7 +559,8 @@ falls into three disjoint parts:
   \ii Both $v\left( (2at-b)^2 \right) \geq n-r$ and $\ell = v(\tau^2) \geq n-r$ hold,
   as in the $\ell$ odd case.
   \ii We have $\ell = v(\tau^2) < n-r$ (hence $v\left( (2at-b)^2 \right) < n-r$ too) but
-  \[ v(2at-b \mp \tau) \geq (n-r)-\ell/2 > 0, \qquad v(2at-b \pm \tau) = \ell/2. \]
+  \[ v(2at-b \mp \tau) \geq (n-r)-\ell/2 > 0 \]
+  which in particular implies $v(2at-b \pm \tau) = \ell/2$.
   This is two parts, corresponding to the choice of $\pm$.
 \end{itemize}
 We analyze the second case since the first case is the same as before
@@ -588,6 +589,7 @@ we agree now to fix the choice of the square root of $\tau$ such that
 \end{equation}
 From $v(b) = v(d) = 0$ and \eqref{eq:dos}, we have
 \[ \ell = 2v(\tau) = 2v(au - \bar d \bar u) < \lambda. \]
+When $v(b) = v(d) = 0$ we also automatically have $\delta, \ell \ge 0$
 
 This lets us invoke \cite[Lemma 4.7]{ref:AFL} to evaluate $v(4-\Norm(b \pm \tau))$:
 we have
@@ -604,14 +606,48 @@ Then the contribution is nonempty if and only if
   \lambda + \delta - \ell = v(4-\Norm(b+\tau)) &\geq n - \frac{\ell}{2} - r \\
   \lambda - \ell/2 = v(au-\bar d \bar u + \tau) & \geq m - \delta - r.
 \end{align*}
-Rearranging gives
+Compiling all seven constraints gives that the valid pairs $(m,n)$ are those for which
+\begin{align*}
+  \max(1, \ell+r+1) &\leq n \leq -\frac{\ell}{2} + \delta + r + \lambda, \\
+  n-r &\leq m \leq \min\left( n+\delta+r, n - \frac{\ell}{2}+\delta - 1,
+    \lambda-\frac{\ell}{2}+\delta+r \right)
+\end{align*}
+However, $n + \delta + r \ge n - \frac{\ell}{2} + r$ is clear.
+So this equation can be whittled down to
 \begin{equation}
   \begin{aligned}
-    \max(1, \ell+r+1) &\leq n \leq  -\frac{\ell}{2}+\delta+r + \lambda, \\
-    n-r &\leq m \leq \max\left( n - \frac{\ell}{2}+\delta,
-      \lambda-\frac{\ell}{2}+\delta+r \right)
+    \max(1, \ell+r+1) &\leq n \leq  -\frac{\ell}{2} + \delta + r + \lambda, \\
+    n-r &\leq m \leq \min\left( n - \frac{\ell}{2}+\delta - 1,
+      \lambda-\frac{\ell}{2}+\delta+r \right).
   \end{aligned}
   \label{eq:even_case1_plus}
+\end{equation}
+\todo{can this min be further simplified?}
+
+\paragraph{Case $1^-$.}
+Suppose $m < n - \frac{\ell}{2} + \delta$, and we choose $\frac{b-\tau}{2a}$.
+Then the disks have nonempty intersection whenever
+\begin{align*}
+  \delta = v(4-\Norm(b-\tau)) &\geq n - \frac{\ell}{2} - r \\
+  \ell/2 = v(au-\bar d \bar u - \tau) & \geq m - \delta - r.
+\end{align*}
+Compiling all seven constraints gives that the valid pairs $(m,n)$ are those for which
+\begin{align*}
+  \max(1, \ell+r+1) &\leq n \leq \frac{\ell}{2}+\delta+r, \\
+  n-r &\leq m \leq \min\left( n - \frac{\ell}{2}+\delta - 1,
+    \frac{\ell}{2} + \delta + r, n + \delta + r \right)
+\end{align*}
+However, $n - \frac{\ell}{2}+\delta - 1 \ge \frac{\ell}{2} + \delta + r$
+hold automatically once $n \ge \ell + r + 1$,
+and $n + \delta + r \ge n - \frac{\ell}{2}+\delta - 1$
+is true for $\ell \ge 0$.
+So we can simplify this to
+\begin{equation}
+  \begin{aligned}
+    \max(1, \ell+r+1) &\leq n \leq \frac{\ell}{2}+\delta+r, \\
+    n-r &\leq m \leq \frac{\ell}{2} + \delta + r.
+  \end{aligned}
+  \label{eq:even_case1_minus}
 \end{equation}
 
 \paragraph{Case $2^+$.}
@@ -624,19 +660,11 @@ Then the contribution is nonempty if and only if
 Rearranging gives that the valid pairs $(m,n)$ are those for which
 \begin{equation}
   \begin{aligned}
-    \max(1, \ell+r+1) &\leq n \leq \frac{\ell}{2}+\delta+r, \\
-    n-r &\leq m \leq \max\left( n - \frac{\ell}{2}+\delta, \delta+\frac{\ell}{2}+r \right)
+    \max(1, \ell+r+1) &\leq n \leq \lambda + r \\
+    \max\left( n-r, n - \frac{\ell}{2} + \delta \right) &\leq m \leq \min(n, \lambda) + r + \delta.
   \end{aligned}
-  \label{eq:even_case1_minus}
+  \label{eq:even_case2_plus}
 \end{equation}
-
-\paragraph{Case $1^-$.}
-Suppose $m < n - \frac{\ell}{2} + \delta$, and we choose $\frac{b-\tau}{2a}$.
-Then the disks have nonempty intersection whenever
-\begin{align*}
-  \delta = v(4-\Norm(b-\tau)) &\geq n - \frac{\ell}{2} - r \\
-  \ell/2 = v(au-\bar d \bar u - \tau) & \geq m - \delta - r.
-\end{align*}
 
 \paragraph{Case $2^-$.}
 Suppose $m \geq n - \frac{\ell}{2} + \delta$, and we choose $\frac{b+\tau}{2a}$.
@@ -645,13 +673,10 @@ Then the disks have nonempty intersection whenever
   \lambda &\geq m - \delta - r \\
   \ell/2 = v(au-\bar d \bar u - \tau) & \geq n - \frac{\ell}{2} - r.
 \end{align*}
+The latter inequality contradicts the assumption that $n > \ell + r$,
+so this case can never occur.
 
 \newpage
-
-%Note the condition that $m \leq n+\delta+r$ is redundant with
-%$m \leq n - \frac{\ell}{2} + r$ since $\ell,\delta,r \ge 0$ for $v(b)=v(d)=0$.
-%\todo{may cause pain for $v(b),v(d) < 0$}
-
 
 \section{Evaluation of the integral}
 \subsection{Region where $n \leq 0$ for all values of $\ell$}
