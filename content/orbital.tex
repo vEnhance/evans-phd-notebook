@@ -612,7 +612,7 @@ Compiling all seven constraints gives that the valid pairs $(m,n)$ are those for
   n-r &\leq m \leq \min\left( n+\delta+r, n - \frac{\ell}{2}+\delta - 1,
     \lambda-\frac{\ell}{2}+\delta+r \right)
 \end{align*}
-However, $n + \delta + r \ge n - \frac{\ell}{2} + r$ is clear.
+However, $n + \delta + r \ge n - \frac{\ell}{2} + r$ is clear if $\ell \ge 0$.
 So this equation can be whittled down to
 \begin{equation}
   \begin{aligned}
@@ -640,8 +640,8 @@ Compiling all seven constraints gives that the valid pairs $(m,n)$ are those for
 \end{align*}
 However, $n - \frac{\ell}{2}+\delta - 1 \ge \frac{\ell}{2} + \delta + r$
 hold automatically once $n \ge \ell + r + 1$,
-and $n + \delta + r \ge n - \frac{\ell}{2}+\delta - 1$
-is true for $\ell \ge 0$.
+and $n + \delta + r \ge \frac{\ell}{2} + \delta + r$ is true since
+$\ell \ge -2r$ gives $n > \ell + r \ge \frac{\ell}{2}$.
 So we can simplify this to
 \begin{equation}
   \begin{aligned}
