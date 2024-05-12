@@ -2,3 +2,61 @@
 \section{Notation}
 Although our paper is primarily interested in the case $n=3$,
 we provide the notes for this section for general $n$.
+Retain all the notation of \Cref{sec:orbital_background}.
+
+\begin{itemize}
+  \ii Set $G' \coloneqq \GL_n(E)$.
+  \ii Set $K' \coloneqq \GL_n(\OO_E) \subseteq G$ as the maximal compact subgroup of $G$.
+  \ii $V_0$ denotes a split $E/F$-Hermitian space of dimension $n$.
+  \ii $m \coloneqq \left\lfloor n/2 \right\rfloor$ for brevity.
+  \ii $G = \U(V_0)$.
+  \ii $K = G \cap \GL_n(\OO_E)$ is the natural hyperspecial maximal compact subgroup.
+  \ii The symmetric space
+  \[ S_n(F) \coloneqq \left\{ g \in \GL_n(E) \mid g \bar g = \id \right\}. \]
+  is the obvious generalization of $S_3(F)$ defined in \Cref{sec:orbital_background}.
+  \ii $K'_S \coloneqq S_n(F) \cap \GL_n(\OO_F)$ is as before.
+  \ii We have a map
+  \begin{align*}
+    r \colon G' &\surjto S_n(F) \\
+    g &\mapsto g\bar{g}^{-1}.
+  \end{align*}
+\end{itemize}
+
+\subsection{Hecke algebra}
+In general, if $G$ is a unimodular locally compact topological group,
+and $K$ is a closed subgroup, then we can define the \emph{Hecke algebra} by
+\[ \HH(G, K) \coloneqq \QQ[K \backslash G \slash K] \]
+i.e.\ as the space of compactly supported $K$-binvariant continuous functions on $G$.
+Given two such functions $\phi_1$ and $\phi_2$, one can consider define the convolution
+\[ (\phi_1 \ast \phi_2)(g) \coloneqq \int_G \phi_1(g\inv x) \phi_2(x) \; \odif x \]
+which makes $\HH(G, K)$ into a $\QQ$-algebra,
+whose identity element is $\mathbf{1}_K$.
+In the case where $G$ is a reductive Lie group and
+$K$ is the maximal compact subgroup
+(or more generally whenever $(G,K)$ is a Gelfand pair),
+this Hecke algebra is actually commutative.
+
+We invoke this construct in our setting to get the Hecke algebras
+\begin{align*}
+  \HH(G', K') &\coloneqq \HH(\GL_n(E), \GL_n(\OO_E)) \\
+  \HH(G, K) &\coloneqq \HH(\U(V_0), \U(V_0) \cap \GL_n(\OO_E))
+\end{align*}
+Now the symmetric space $S_n(F)$ is not a group,
+and the construction here does not apply directly.
+Nevertheless, we can define (via an abuse of notation?) the algebra
+\[ \HH(S_n(F_0), K') = \mathcal C_{\mathrm{c}}^{\infty}(S_n(F_0))^{K'} \]
+as the set of smooth compactly supported functions on $S_n(F_0)$
+which are invariant under the action of $K' \subseteq G'$.
+this is an $\HH(G', K')$-module.
+Our prior map $r \colon G' \surjto S_n(F)$ induces a map
+\begin{align*}
+  r_\ast \colon \HH(G', K') &\to \HH(S_n(F_0), K') \\
+  r_\ast(f')\left( g\bar{g}\inv \right) &= \int_{\GL_n(F)} f'(gh) \odif h
+\end{align*}
+by integration on the fibers.
+However, in our setting we actually consider a twisted version
+\begin{align*}
+  r_\ast^\eta \colon \HH(G', K') &\to \HH(S_n(F_0), K') \\
+  r_\ast^\eta(f')\left( g\bar{g}\inv \right) &= \int_{\GL_n(F)} f'(gh) \eta(gh) \odif h
+\end{align*}
+where as before $\eta(g) = (-1)^{v(\det g)}$ in a slight abuse of notation.

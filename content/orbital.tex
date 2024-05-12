@@ -1,32 +1,37 @@
 \chapter{Orbital integral}
 \section{Background}
-Let $F$ be a finite extension of $\QQ_p$ for $p > 2$ and
-let $E/F$ be an unramified quadratic field extension.
-Denote by $\varpi$ a uniformizer of $\OO_F$, such that $\bar \varpi = \varpi$,
-and let $v$ be the associated valuation.
-Let $\eta$ be the quadratic character attached to $E/F$ by class field theory,
-so that $\eta(x) = -1^{v(x)}$.
+\label{sec:orbital_background}
+
+\subsection{Notation}
+\begin{itemize}
+  \ii Let $F$ be a finite extension of $\QQ_p$ for $p > 2$.
+  \ii Let $E/F$ be an unramified quadratic field extension.
+  \ii Denote by $\varpi$ a uniformizer of $\OO_F$, such that $\bar \varpi = \varpi$,
+  \ii Let $v$ be the associated valuation for $\varpi$.
+  \ii Let $\eta$ be the quadratic character attached to $E/F$ by class field theory,
+  so that $\eta(x) = -1^{v(x)}$.
+\end{itemize}
 
 \subsection{Symmetric space}
 We define the symmetric space
 \[ S_3(F) \coloneqq \left\{ s \in \GL_3(E) \mid s \bar s = \id \right\}. \]
 We also pay particular attention to the subspace which have $\OO_E$ entries:
-\[ K_S \coloneqq S_3(F) \cap \GL_3(\OO_E). \]
+\[ K'_S \coloneqq S_3(F) \cap \GL_3(\OO_E). \]
 \begin{lemma}
   [Cartan decomposition]
   For each integer $m \ge 0$ let
-  \[ K_{S,m} \coloneqq K_S \cdot \begin{bmatrix} 0 & 0 & \varpi^m \\ 0 & 1 & 0 \\ \varpi^{-m} & 0 & 0 \end{bmatrix}. \]
+  \[ K'_{S,m} \coloneqq K'_S \cdot \begin{bmatrix} 0 & 0 & \varpi^m \\ 0 & 1 & 0 \\ \varpi^{-m} & 0 & 0 \end{bmatrix}. \]
   Then we have a decomposition
-  \[ S_3(F) = \coprod_{m \geq 0} K_{S,m}. \]
+  \[ S_3(F) = \coprod_{m \geq 0} K'_{S,m}. \]
 \end{lemma}
 For $r \geq 0$, define
 \[ \Omega_r \coloneqq S_3(F) \cap \varpi^{-m} \GL_3(\OO_E). \]
 We can re-parametrize the problem according to the following claim.
 \begin{claim}
-  \[ \Omega_r = K_{S,0} \sqcup K_{S,1} \sqcup \dots \sqcup K_{S,r}. \]
+  \[ \Omega_r = K'_{S,0} \sqcup K'_{S,1} \sqcup \dots \sqcup K'_{S,r}. \]
 \end{claim}
 If this claim is true (still need to check it),
-then an integral over each $\Omega_r$ lets us extract the integrals over $K_{S,m}$.
+then an integral over each $\Omega_r$ lets us extract the integrals over $K'_{S,m}$.
 
 \subsection{Orbital integral}
 Define
