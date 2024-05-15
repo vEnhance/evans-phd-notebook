@@ -15,7 +15,7 @@
 
 \subsection{Symmetric space}
 We define the symmetric space
-\[ S_3(F) \coloneqq \left\{ s \in \GL_3(E) \mid s \bar s = \id \right\}. \]
+\[ S_3(F) \coloneqq \left\{ g \in \GL_3(E) \mid g \bar{g} = \id_3 \right\}. \]
 We also pay particular attention to the subspace which have $\OO_E$ entries:
 \[ K'_S \coloneqq S_3(F) \cap \GL_3(\OO_E). \]
 \begin{lemma}
@@ -25,6 +25,7 @@ We also pay particular attention to the subspace which have $\OO_E$ entries:
   Then we have a decomposition
   \[ S_3(F) = \coprod_{m \geq 0} K'_{S,m}. \]
 \end{lemma}
+\todo{this isn't matrix multiplication, huh, is it}
 For $r \geq 0$, define
 \[ \Omega_r \coloneqq S_3(F) \cap \varpi^{-m} \GL_3(\OO_E). \]
 We can re-parametrize the problem according to the following claim.
@@ -149,13 +150,13 @@ This lets us rewrite everything in terms of the ratio $t$ and $t_1 \in E$:
 This new parametrization is better because $t_1$ only plays the role of
 a scale factor on the outside, with ``interesting'' terms only involving $t$.
 To make this further explicit, we write
-\[ t_1 = \varpi^{-m} \eps \]
-for $m \in \ZZ$ and $\eps \in \OO_E^\times$.
+\[ t_1 = \varpi^{-m} \epsilon \]
+for $m \in \ZZ$ and $\epsilon \in \OO_E^\times$.
 Then we actually have
 \[
-  \begin{bmatrix} \bar\eps \\ & \eps \\ & & 1 \end{bmatrix}
+  \begin{bmatrix} \bar\epsilon \\ & \epsilon \\ & & 1 \end{bmatrix}
   \bar g \inv \gamma g
-  \begin{bmatrix} \eps\inv \\ & \bar\eps\inv \\ & & 1 \end{bmatrix}
+  \begin{bmatrix} \epsilon\inv \\ & \bar\epsilon\inv \\ & & 1 \end{bmatrix}
   =
   \begin{bmatrix}
     \dfrac{a-b\bar t+\bar d \bar t^2}{1-t \bar t}
@@ -169,7 +170,7 @@ Then we actually have
 \]
 For brevity, we will let $\Gamma(\gamma, t, m)$ denote the right-hand matrix.
 The conjugation by
-$\left[ \begin{smallmatrix} \eps\inv \\ & \bar\eps\inv \\ & & 1 \end{smallmatrix} \right]$
+$\left[ \begin{smallmatrix} \epsilon\inv \\ & \bar\epsilon\inv \\ & & 1 \end{smallmatrix} \right]$
 has no effect on any of the $\Omega_r$, so that we can simply use
 \[ \mathbf{1}_{\Omega_r}(\bar g \inv \gamma g) = \mathbf{1}_{\Omega_r}(\Gamma(\gamma, t, m)) \]
 in the work that follows.
