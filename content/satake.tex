@@ -1,33 +1,10 @@
 \chapter{Base change}
-\section{Background}
-Although our paper is primarily interested in the case $n=3$,
-we provide the notes for this section for general $n$.
-Retain all the notation of \Cref{sec:orbital_background}.
-
-\subsection{Initial notation}
-\begin{itemize}
-  \ii Set $G' \coloneqq \GL_n(E)$.
-  \ii Set $K' \coloneqq \GL_n(\OO_E) \subseteq G$ as the maximal compact subgroup of $G$.
-  \ii $V_0$ denotes a split $E/F$-Hermitian space of dimension $n$.
-  \ii $m \coloneqq \left\lfloor n/2 \right\rfloor$ for brevity.
-  \ii $G = \U(V_0)$.
-  \ii $K = G \cap \GL_n(\OO_E)$ is the natural hyperspecial maximal compact subgroup.
-  \ii The symmetric space
-  \[ S_n(F) \coloneqq \left\{ g \in \GL_n(E) \mid g \bar g = \id \right\}. \]
-  is the obvious generalization of $S_3(F)$ defined in \Cref{sec:orbital_background}.
-  \ii $K'_S \coloneqq S_n(F) \cap \GL_n(\OO_F)$ is as before.
-  \ii We have a map
-  \begin{align*}
-    r \colon G' &\surjto S_n(F) \\
-    g &\mapsto g\bar{g}^{-1}.
-  \end{align*}
-\end{itemize}
-
+\section{Reminder}
 \subsection{Hecke algebra}
 In general, if $G$ is a unimodular locally compact topological group,
 and $K$ is a closed subgroup, then we can define the \emph{Hecke algebra} by
 \[ \HH(G, K) \coloneqq \QQ[K \backslash G \slash K] \]
-i.e.\ as the space of compactly supported $K$-binvariant continuous functions on $G$.
+i.e.\ as the space of compactly supported $K$-binvariant locally constant functions on $G$.
 Given two such functions $\phi_1$ and $\phi_2$, one can consider define the convolution
 \[ (\phi_1 \ast \phi_2)(g) \coloneqq \int_G \phi_1(g\inv x) \phi_2(x) \; \odif x \]
 which makes $\HH(G, K)$ into a $\QQ$-algebra,
@@ -37,20 +14,88 @@ $K$ is the maximal compact subgroup
 (or more generally whenever $(G,K)$ is a Gelfand pair),
 this Hecke algebra is actually commutative.
 
-We invoke this construct in our setting to get the Hecke algebras
+\subsection{Satake transform}
+We state a general form of the Satake transformation, which will be used later.
+
+For this section, $G$ will denote an arbitrary connected reductive group
+over some non-Archimedean local field $F$.
+We will not distinguish between $G$ and $G(F)$ when there is no confusion.
+
+To simplify things, we will assume $G$ is unramified;
+but we do \emph{not} assume $G$ is split.
+Introduce the following notation:
+\begin{itemize}
+  \ii Let $K$ be a hyperspecial maximal compact subgroup of $G$
+  (it exists because $G$ is unramified).
+  \ii Let $A$ denote a maximal $F$-split torus in $G$.
+  All the maximal $F$-split tori in $G$ are conjugate; let $A$ denote one of them.
+  \ii Let $M$ be the centralizer of $A$; this is itself a maximal torus in $G$.
+  \ii Let $\prescript{\circ}{} M \coloneqq M(F) \cap K$
+  be the maximal compact subgroup of $M$.
+  \ii Let $P$ denote a minimal $F$-parabolic containing $A$.
+  \ii Let $\delta$ denotes the modulus character of $P$.
+  \ii Let $N$ denote the unipotent radical of $P$.
+  \ii Let $W$ be the relative Weyl group for the pair $(G,A)$,
+  which acts on $\HH(M, \prescript{\circ}{} M)$.
+\end{itemize}
+We can now state the Satake isomorphism.
+\begin{definition}
+  The \emph{Satake transform} is a canonical isomorphism of Hecke algebras
+  \[ \Sat \colon \HH(G, K) \to \HH(M, \prescript{\circ}{} M)^W \]
+  which is given by defining
+  \[ (\Sat(f))(t) \coloneqq \delta(t)^\half \int_N f(nt) \odif n  \]
+  for each $t \in M$.
+\end{definition}
+We are going to apply this momentarily in two situations:
+once when $G$ is the general linear group (which is split),
+and once when $G$ is a unitary group.
+
+\subsection{Modulus character}
+Let $\varpi$ denote a uniformizer for $F$ and $q$ the residue characteristic.
+In general, if $\rho$ is the Weyl vector and $\mu$ is a positive cocharacter, then
+\[ \delta(\mu(\varpi)) = q^{- \left< \mu, \rho\right>}. \]
+\todo{does this help for unitary group}
+
+\section{Setup}
+Although our paper is primarily interested in the case $n=3$,
+we provide the notes for this section for general $n$.
+
+\subsection{Notation}
+Retain all the notation of \Cref{sec:orbital_background}.
+Moving forward we also fix the following notation:
+\begin{itemize}
+  \ii Set $G' \coloneqq \GL_n(E)$.
+  \ii Set $K' \coloneqq \GL_n(\OO_E) \subseteq G$ as the hyperspecial maximal compact subgroup of $G$.
+  \ii $V_0$ denotes a split $E/F$-Hermitian space of dimension $n$.
+  \ii Let
+  \[ \beta \coloneqq \begin{bmatrix} && 1 \\ & \iddots \\ 1 \end{bmatrix} \]
+  and pick the basis of $V_0$ such that the Hermitian form is given by
+  $(x,y) \mapsto x^\ast \beta y $.
+  \ii $G = \U(V_0) = \{ g \in \GL_n(\OO_E) \mid g^\ast \beta g = \beta\}$.
+  \ii $K = G \cap \GL_n(\OO_E)$ is the natural hyperspecial maximal compact subgroup.
+  \ii The symmetric space
+  \[ S_n(F) \coloneqq \left\{ g \in \GL_n(E) \mid g \bar g = \id \right\}. \]
+  is the obvious generalization of $S_3(F)$ defined in \Cref{sec:orbital_background}.
+  \ii Denote by $r \colon G' \surjto S_n(F)$ the projection defined by
+  \[ r(g) \coloneqq g \bar{g}\inv. \]
+  \ii $K'_S \coloneqq S_n(F) \cap \GL_n(\OO_F)$ is as before.
+\end{itemize}
+
+\subsection{Two Hecke algebras, and a module}
+We define two Hecke algebras:
 \begin{align*}
   \HH(G', K') &\coloneqq \HH(\GL_n(E), \GL_n(\OO_E)) \\
   \HH(G, K) &\coloneqq \HH(\U(V_0), \U(V_0) \cap \GL_n(\OO_E))
 \end{align*}
 Now the symmetric space $S_n(F)$ is not a group,
-and the construction here does not apply directly.
-Nevertheless, we can define
+so it does not make sense to define the same thing here.
+Nevertheless, we introduce
 \[ \HH(S_n(F_0), K') \coloneqq \mathcal C_{\mathrm{c}}^{\infty}(S_n(F_0))^{K'} \]
 as the set of smooth compactly supported functions on $S_n(F_0)$
 which are invariant under the action of $K' \subseteq G'$;
-this is an $\HH(G', K')$-module,
-although unlike the previous construction, it does NOT \emph{a priori}
-have a multiplication structure at the moment.
+this is an $\HH(G', K')$-module.
+This does \textbf{not} have a multiplication structure at the moment, \emph{a priori},
+although later we will see how one could be imposed.
 
 Our prior map $r \colon G' \surjto S_n(F)$ induces a map
 \begin{align*}
@@ -65,21 +110,170 @@ However, in our setting we actually consider a twisted version
 \end{align*}
 where as before $\eta(g) = (-1)^{v(\det g)}$ in a slight abuse of notation.
 
-\subsection{Satake transform}
-For this section, we state a general form of the Satake transformatoin.
-Suppose that $\BG$ is a connected reductive group over some local field $F_0$.
-Following
-Denote by
+\subsection{Satake transformation for $\HH(G',K')$ and $\HH(G,K)$}
+We introduce more notation.
+To take the Satake transform of $\HH(G', K')$, we define the following abbreviations.
 \begin{itemize}
-  \ii $\BK$ a special maximal compact subgroup of $\BG$;
-  \ii $\BS$ a maximal $F_0$-split torus,
-  and $\BS^{\text{an}}$ the maximal anisotropic subtorus;
-  \ii $\BP$ a minimal $F_0$-parabolic containing $\BS$;
-  \ii $\BN$ the unipotent radical of $\BP$;
-  \ii $\delta_{\BP}$ the modular function of $\BP$.
+  \ii Let $T$ denote the split diagonal torus of $\GL_n$.
+  \ii Let
+  \[ N' \coloneqq \left\{ \begin{bmatrix}
+      1 & \ast & \dots & \ast \\
+      0 & 1 & \dots & \ast \\
+      0 & 0 & \ddots & \vdots \\
+      0 & 0 & \dots & 1 \end{bmatrix}\right\} \subseteq G' \]
+  denote the unipotent upper-triangular matrices.
 \end{itemize}
-\begin{definition}
-  The \alert{Satake transform} is defined as a map
-  \[ \Sat \colon \HH(\BG(F_0), \BK(F_0)) \to \HH(\BM(F_0), \BS^{\text{an}}(F_0))
-    \[ \Sat(f)(t) = \delta_{\BP}(t)^{\half} int
-\end{definition}<++>
+Similarly for $\HH(G, K)$:
+\begin{itemize}
+  \ii Set $m \coloneqq \left\lfloor n/2 \right\rfloor$ for brevity.
+  \ii Let
+  \[ A \coloneqq \left\{
+    \diag(x_1, \dots, x_m, 1_{n-2m}, x_m\inv, \dots, x_1\inv) \right\} \]
+  so that $A(F)$ is a maximal $F$-split torus of $G$.
+  \ii Let $N \coloneqq N' \cap G$ denote the unipotent upper triangular matrices
+  which are also unitary.
+  \ii For brevity, let $W_m \coloneqq (\ZZ/2\ZZ)^m \rtimes \Sym(m)$
+  be the relative Weyl group of $(G,A)$.
+\end{itemize}
+
+We can now introduce the Satake transform for our two
+\emph{bona fide} Hecke algebras, using the data in Table~\ref{tab:satakestuff}.
+
+\begin{table}
+  \centering
+  \begin{tabular}{lcc}
+    Group & $G' = \GL_n(E)$ & $G = \U(V_0)$ \\ \hline
+    Local field & $E$ & $F$ \\
+    Hyperspecial & $K' = \GL_n(\OO_E)$ & $K = G \cap \GL_n(\OO_E)$ \\
+    Max'l split torus & $T(E)$ & $A(F)$ \\
+    Centralizer of split torus & $T(\OO_E)$ & $A(\OO_F)$ \\
+    Parabolic (Borel) & Upper tri in $G'$ & Upper tri in $G$ \\
+    Unipotent rad.\ of parabolic & $N'$ (unipotent upper tri) & $N$ (unipotent upper tri)  \\
+    Relative Weyl group & $\Sym(n)$ & $W_m = (\ZZ/2\ZZ)^m \rtimes \Sym(m)$ \\
+    %Cocharacter group & $\ZZ^{\oplus n}$ & $\ZZ^{\oplus m}$?? \\
+    %Weyl vector & $\left< \frac{n-1}{2}, \frac{n-3}{2}, \dots, -\frac{n-1}{2} \right>$
+    %            & $\left< \frac{m-1}{2}, \frac{m-3}{2}, \dots, -\frac{m-1}{2} \right>$??
+  \end{tabular}
+  \caption{Data needed to run the Satake transformation.}
+  \label{tab:satakestuff}
+\end{table}
+%\todo{please audit this table}
+
+Hence, the Satake transformations obtained can be viewed as
+\begin{align*}
+  \Sat &\colon \HH(G', K') \xrightarrow{\sim} \QQ[T(E) / T(\OO_E)]^{\Sym(n)} \\
+  \Sat &\colon \HH(G, K)\xrightarrow{\sim} \QQ[A(F) / A(\OO_F)]^{W_m}
+\end{align*}
+(In both cases, the modular character $\delta^{1/2}$ gives rational values,
+so it is okay to work over $\QQ$.)
+
+To make this further concrete, we remark that the cocharacter groups
+involved are free abelian groups with known bases.
+This identification lets us rewrite the right-hand sides above as concrete polynomials.
+Specifically, we identify
+\[ \QQ[T(E) / T(\OO_E)]^{\Sym(n)}
+  \xrightarrow{\sim} \QQ[X_1^\pm, \dots, X_n^\pm]^{\Sym(n)} \]
+by identifying $X_i$ with the
+cocharacter corresponding to injection into the $i$\ts{th} factor.
+Similarly, we identify
+\[ \QQ[A(F) / A(\OO_F)]^{(\ZZ/2\ZZ)^m \rtimes \Sym(m)}
+  \xrightarrow{\sim} \QQ[Y_1^{\pm}, \dots, Y_m^{\pm}]^{W_m} \]
+by identifying $Y_i + Y_i^{-1}$
+with the cocharacter corresponding to
+\[ x \mapsto \diag(1, \dots, x, \dots, x\inv, \dots, 1) \]
+where $x$ is in the $i$\ts{th} position and $x\inv$ is in the $(n-i)$\ts{th} position,
+and all other positions are $1$.
+Here $\QQ[Y_1^{\pm}, \dots, Y_m^{\pm}]^{W_m}$
+denotes the ring of symmetric polynomials in $Y_i + Y_i^{-1}$.
+
+So, henceforth, we will consider
+\begin{align*}
+  \Sat &\colon \HH(G', K') \xrightarrow{\sim}\QQ[X_1^\pm, \dots, X_n^\pm]^{\Sym(n)} \\
+  \Sat &\colon \HH(G, K)\xrightarrow{\sim} \QQ[Y_1^{\pm}, \dots, Y_m^{\pm}]^{W_m}.
+\end{align*}
+
+\subsection{Base change}
+[draw this later]
+
+help
+
+\section{Calculations}
+Specialize now to $n=3$.
+Throughout this section, we use the shorthand
+\[ \varpi^{(n_1, n_2, n_3)} \coloneqq \diag(\varpi^{n_1}, \varpi^{n_2}, \varpi^{n_3}). \]
+
+\begin{proposition}
+  We have
+  \[
+    r_\ast^\eta(\mathbf{1}_{\Mat_3(\OO_E), v\circ\det=m})
+    = (-1)^m \sum_{i=0}^m \left( {?} \right) \mathbf{1}_{K' \cdot t_i}.
+  \]
+\end{proposition}
+\begin{proof}
+  Because of Cartan decomposition, it suffices to calculate on elements of the form
+  \[ g = \begin{bmatrix} && \varpi^\ell \\ & 1 \\ \varpi^{-\ell} \end{bmatrix}. \]
+  We calculate
+  \begin{align*}
+    r_\ast^\eta(\mathbf{1}_{\Mat_3(\OO_E), v\circ\det=m})(g\bar{g})
+    &= \int_{h \in \GL_3(F)} \mathbf{1}_{\Mat_3(\OO_E), v\circ\det=m}(gh) \wt\eta(gh) \odif h \\
+    &= (-1)^m \int_{h \in \GL_3(F)} \mathbf{1}_{\Mat_3(\OO_E), v\circ\det=m}(gh).
+  \end{align*}
+  We take an Iwasawa decomposition of $h \in \GL_3(F)$ as
+  \[
+    h =
+    \begin{bmatrix} x_1 \\ & x_2 \\ && x_3 \end{bmatrix}
+    \begin{bmatrix} 1 & y_1 & y_2 \\ & 1 & y_3 \\ & & 1 \end{bmatrix}
+    k
+  \]
+  for $k \in \GL_3(\OO_F) \subseteq K$, which does not affect the indicator function.
+  Here $x_1, x_2, x_3 \in \OO_F$ and $y_1, y_2, y_3 \in F$.
+  In that case, note that
+  \[ gh
+    =
+    \begin{bmatrix} && \varpi^{\ell} \\ & 1 \\ \varpi^{-\ell} \end{bmatrix}
+    \begin{bmatrix} x_1 \\ & x_2 \\ && x_3 \end{bmatrix}
+    \begin{bmatrix} 1 & y_1 & y_2 \\ & 1 & y_3 \\ & & 1 \end{bmatrix} k
+    =
+    \begin{bmatrix}
+      & & \varpi^\ell x_3 \\
+      & x_2 & x_2 y_3 \\
+      \varpi^{-\ell} x_1 & \varpi^{-\ell} x_1 y_1 & \varpi^\ell x_1 y_2
+    \end{bmatrix}
+  \]
+  Hence, we can rewrite the $r_\ast^\eta(\mathbf{1}_{\Mat_3(\OO_E), v\circ\det=m})$
+  as a six-fold integral
+  \begin{align*}
+    r_\ast^\eta(\mathbf{1}_{\Mat_3(\OO_E), v\circ\det=m}) =
+    (-1)^m
+    & \int_{F^\times} \int_{F^\times} \int_{F^\times} \int_F \int_F \int_F \\
+    &\quad \mathbf{1}_{\Mat_3(\OO_E), v\circ\det=m} \left( \begin{bmatrix}
+      & & \varpi^\ell x_3 \\
+      & x_2 & x_2 y_3 \\
+      \varpi^{-\ell} x_1 & \varpi^{-\ell} x_1 y_1 & \varpi^\ell x_1 y_2
+    \end{bmatrix} \right) \\
+    &\quad \odif x_1
+    \odif x_2
+    \odif x_3
+    \odif[\times] y_1
+    \odif[\times] y_2
+    \odif[\times] y_3.
+  \end{align*}
+  Apparently the indicator function only depends on the valuations,
+  so accordingly we rewrite the six-fold integral as a discrete sum over the valuations
+  $\alpha_i \coloneqq v(x_i) \ge 0$ and $\beta_i \coloneqq v(y_i)$.
+  Then the conditions are that
+  \begin{align*}
+    \alpha_1 \ge \ell, \quad \alpha_2 \ge 0, \quad \alpha_3 \ge 0 \\
+    \beta_1 \ge \ell - \alpha_1, \quad \beta_2 \ge -\ell - \alpha_1, \quad \beta_3 \ge -\alpha_2.
+  \end{align*}
+  Hence the integral can be rewritten as
+  \begin{align*}
+    \sum_{\substack{\alpha_1 + \alpha_2 + \alpha_3 = m \\ \alpha_1 \ge \ell \\ \alpha_2 \ge 0 \\ \alpha_3 \ge 0}}
+    q^{-\alpha_1} \cdot q^{-\alpha_2} \cdot q^{-\alpha_3} \cdot
+    q^{\alpha_1-\ell} \cdot q^{\alpha_1+\ell} \cdot q^{\alpha_2}
+    &= \sum_{\substack{\alpha_1 + \alpha_2 + \alpha_3 = m \\ \alpha_1 \ge \ell \\ \alpha_2 \ge 0 \\ \alpha_3 \ge 0}}
+    q^{\alpha_1 - \alpha_3} \\
+    &= \sum_{\substack{\alpha_1 + \alpha_3 \le m \\ \alpha_1 \ge \ell \\ \alpha_3 \ge 0}}
+    q^{\alpha_1 - \alpha_3} \\
+  \end{align*}
+\end{proof}
