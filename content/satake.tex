@@ -1,9 +1,10 @@
 \chapter{Base change}
-\section{Notation}
+\section{Background}
 Although our paper is primarily interested in the case $n=3$,
 we provide the notes for this section for general $n$.
 Retain all the notation of \Cref{sec:orbital_background}.
 
+\subsection{Initial notation}
 \begin{itemize}
   \ii Set $G' \coloneqq \GL_n(E)$.
   \ii Set $K' \coloneqq \GL_n(\OO_E) \subseteq G$ as the maximal compact subgroup of $G$.
@@ -43,11 +44,14 @@ We invoke this construct in our setting to get the Hecke algebras
 \end{align*}
 Now the symmetric space $S_n(F)$ is not a group,
 and the construction here does not apply directly.
-Nevertheless, we can define (via an abuse of notation?) the algebra
-\[ \HH(S_n(F_0), K') = \mathcal C_{\mathrm{c}}^{\infty}(S_n(F_0))^{K'} \]
+Nevertheless, we can define
+\[ \HH(S_n(F_0), K') \coloneqq \mathcal C_{\mathrm{c}}^{\infty}(S_n(F_0))^{K'} \]
 as the set of smooth compactly supported functions on $S_n(F_0)$
-which are invariant under the action of $K' \subseteq G'$.
-this is an $\HH(G', K')$-module.
+which are invariant under the action of $K' \subseteq G'$;
+this is an $\HH(G', K')$-module,
+although unlike the previous construction, it does NOT \emph{a priori}
+have a multiplication structure at the moment.
+
 Our prior map $r \colon G' \surjto S_n(F)$ induces a map
 \begin{align*}
   r_\ast \colon \HH(G', K') &\to \HH(S_n(F_0), K') \\
@@ -60,3 +64,22 @@ However, in our setting we actually consider a twisted version
   r_\ast^\eta(f')\left( g\bar{g}\inv \right) &= \int_{\GL_n(F)} f'(gh) \eta(gh) \odif h
 \end{align*}
 where as before $\eta(g) = (-1)^{v(\det g)}$ in a slight abuse of notation.
+
+\subsection{Satake transform}
+For this section, we state a general form of the Satake transformatoin.
+Suppose that $\BG$ is a connected reductive group over some local field $F_0$.
+Following
+Denote by
+\begin{itemize}
+  \ii $\BK$ a special maximal compact subgroup of $\BG$;
+  \ii $\BS$ a maximal $F_0$-split torus,
+  and $\BS^{\text{an}}$ the maximal anisotropic subtorus;
+  \ii $\BP$ a minimal $F_0$-parabolic containing $\BS$;
+  \ii $\BN$ the unipotent radical of $\BP$;
+  \ii $\delta_{\BP}$ the modular function of $\BP$.
+\end{itemize}
+\begin{definition}
+  The \alert{Satake transform} is defined as a map
+  \[ \Sat \colon \HH(\BG(F_0), \BK(F_0)) \to \HH(\BM(F_0), \BS^{\text{an}}(F_0))
+    \[ \Sat(f)(t) = \delta_{\BP}(t)^{\half} int
+\end{definition}<++>
