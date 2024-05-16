@@ -380,8 +380,7 @@ Throughout this section, we use the shorthand
 \begin{proposition}
   For each $m \ge 0$ we have
   \[ \Sat\left(\mathbf{1}_{\varpi^{-m} \Mat_3(\OO_E) \cap G}\right)
-    = \sum_{i=0}^m q^{2\left\lfloor \frac{m+i}{2} \right\rfloor - i + m} Y_1^{\pm i}
-  \]
+    = \sum_{i=0}^m q^{2m - \mathbf{1}_{m \equiv i \bmod 2}} Y_1^{\pm i} \]
   where we adopt the shorthand
   \[
     Y_1^{\pm i} \coloneqq
@@ -439,7 +438,7 @@ Throughout this section, we use the shorthand
   So the indicator needs to check whether all the entries have valuation at least $-m$.
   If we switch characterization to the coordinates $z_1$, $z_2$, $z_3$ we described earlier,
   we see that the conditions are
-  \[ i \le m, \; v(z_1) \ge -m, \; v(z_2) \ge -m, \; v(z_3) \ge -m, \;
+  \[ i \le m, \; v(z_1) \ge -m, \; v(z_2) \ge -m, \; v(z_3) \ge -(m+i), \;
     v(z_1^2 + z_2^2 \eps) \ge -(m+i). \]
   Assume $i \le m$ henceforth.
   The condition for $z_1$ and $z_2$ then really says
@@ -451,12 +450,12 @@ Throughout this section, we use the shorthand
     \int_{z_3 \in F}
     \mathbf{1}_{\varpi^{-\left\lfloor \frac{m+i}{2} \right\rfloor} \OO_F}(z_1)
     \mathbf{1}_{\varpi^{-\left\lfloor \frac{m+i}{2} \right\rfloor} \OO_F}(z_2)
-    \mathbf{1}_{\varpi^{-m} \OO_F}(z_3)
+    \mathbf{1}_{\varpi^{-(m+i)} \OO_F}(z_3)
     \odif{z_1,z_2,z_3}
   \]
   which is equal to
-  \[ q^{2\left\lfloor \frac{m+i}{2} \right\rfloor+m}. \]
-  Meanwhile, $\delta(\nu(\varpi))^{\half} = q^{-i}$\todo{dubious}.
+  \[ q^{2\left\lfloor \frac{m+i}{2} \right\rfloor+m+i}. \]
+  Meanwhile, $\delta(\nu(\varpi))^{\half} = q^{-2i}$.
   In summary,
   \[
     \Sat\left( \mathbf{1}_{\varpi^{-m} \Mat_3(\OO_E) \cap G}\right) \left( \nu(\varpi) \right)
@@ -466,5 +465,12 @@ Throughout this section, we use the shorthand
       0 & i > m
     \end{cases}
   \]
-  which is thus the coefficient of $Y_1^{\pm i}$.
+  Finally, since
+  \[ 2\left\lfloor \frac{m+i}{2} \right\rfloor - i + m
+    = \begin{cases}
+      2m & m+i \text{ is even} \\
+      2m-1 & m+i \text{ is odd}
+    \end{cases}
+  \]
+  we get the formula claimed.
 \end{proof}
