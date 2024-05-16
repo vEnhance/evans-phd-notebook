@@ -106,12 +106,12 @@ Our prior map $r \colon G' \surjto S_n(F)$ induces a map
   r_\ast(f')\left( g\bar{g}\inv \right) &= \int_{\GL_n(F)} f'(gh) \odif h
 \end{align*}
 by integration on the fibers.
-However, in our setting we actually consider a twisted version
-\begin{align*}
-  r_\ast^\eta \colon \HH(G', K') &\to \HH(S_n(F_0), K') \\
-  r_\ast^\eta(f')\left( g\bar{g}\inv \right) &= \int_{\GL_n(F)} f'(gh) \eta(gh) \odif h
-\end{align*}
-where as before $\eta(g) = (-1)^{v(\det g)}$ in a slight abuse of notation.
+%However, in our setting we actually consider a twisted version
+%\begin{align*}
+%  r_\ast^\eta \colon \HH(G', K') &\to \HH(S_n(F_0), K') \\
+%  r_\ast^\eta(f')\left( g\bar{g}\inv \right) &= \int_{\GL_n(F)} f'(gh) \eta(gh) \odif h
+%\end{align*}
+%where as before $\eta(g) = (-1)^{v(\det g)}$ in a slight abuse of notation.
 
 \subsection{Satake transformation for $\HH(G',K')$ and $\HH(G,K)$}
 We introduce more notation.
@@ -201,7 +201,7 @@ So, henceforth, we will consider
 \subsection{Overall picture}
 \begin{center}
 \begin{tikzcd}
-  & \HH(G',K') \ar[ld, "r_\ast^\eta"'] \ar[r, "\Sat"] \ar[d, "\BC"] & \QQ[X_1^\pm, \dots, X_n^\pm]^{\Sym(n)} \ar[d, "\BC"] \\
+  & \HH(G',K') \ar[ld, "r_\ast"'] \ar[r, "\Sat"] \ar[d, "\BC"] & \QQ[X_1^\pm, \dots, X_n^\pm]^{\Sym(n)} \ar[d, "\BC"] \\
   \HH(S_n(F_0, K')) \ar[r, "\sim", "?"'] & \HH(G,K) \ar[r, "\Sat"] & \QQ[Y_1^\pm, \dots, Y_n^\pm]^{W_m} \\
 \end{tikzcd}
 \end{center}
@@ -217,7 +217,7 @@ Throughout this section, we use the shorthand
 \begin{proposition}
   For every integer $m \ge 0$, we have
   \begin{align*}
-    &\phantom= r_\ast^\eta(\mathbf{1}_{\Mat_3(\OO_E), v\circ\det=m}) \\
+    &\phantom= r_\ast(\mathbf{1}_{\Mat_3(\OO_E), v\circ\det=m}) \\
     &= (-1)^m \sum_{j=0}^m \left(
       \sum_{i=0}^{2(m-j)} \min \left( 1 + \left\lfloor \frac i2 \right\rfloor,
         1 + \left\lfloor \frac{2(m-j)-i}{2} \right\rfloor \right) q^i \right)
@@ -248,12 +248,11 @@ Throughout this section, we use the shorthand
     \end{bmatrix} \in K' \cdot t_j
   \]
   \todo{this is based on worst valuation, idr the action}
-  We calculate
-  \begin{align*}
+  We aim to calculate the right-hand side of
+  \[
     r_\ast^\eta(\mathbf{1}_{\Mat_3(\OO_E), v\circ\det=m})(g\bar{g})
-    &= \int_{h \in \GL_3(F)} \mathbf{1}_{\Mat_3(\OO_E), v\circ\det=m}(gh) \wt\eta(gh) \odif h \\
-    &= (-1)^m \int_{h \in \GL_3(F)} \mathbf{1}_{\Mat_3(\OO_E), v\circ\det=m}(gh).
-  \end{align*}
+    = \int_{h \in \GL_3(F)} \mathbf{1}_{\Mat_3(\OO_E), v\circ\det=m}(gh) \odif h.
+  \]
   We take an Iwasawa decomposition of $h \in \GL_3(F)$ as
   \[
     h =
@@ -293,7 +292,6 @@ Throughout this section, we use the shorthand
   as a six-fold integral
   \begin{align*}
     r_\ast^\eta(\mathbf{1}_{\Mat_3(\OO_E), v\circ\det=m}) =
-    (-1)^m
     & \int_{x_1 \in F^\times} \int_{x_2 \in F^\times} \int_{x_3 \in F^\times}
     \int_{y_1 \in F} \int_{y_2 \in F} \int_{y_3 \in F} \\
     &\quad \mathbf{1}_{\Mat_3(\OO_E), v\circ\det=m} \left(
