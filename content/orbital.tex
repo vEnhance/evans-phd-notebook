@@ -16,16 +16,24 @@
 \subsection{Symmetric space}
 We define the symmetric space
 \[ S_3(F) \coloneqq \left\{ g \in \GL_3(E) \mid g \bar{g} = \id_3 \right\}. \]
-We also pay particular attention to the subspace which have $\OO_E$ entries:
-\[ K'_S \coloneqq S_3(F) \cap \GL_3(\OO_E). \]
+It has a left action under $\GL_3(E)$ by $g \cdot s \mapsto gs\bar{g}\inv$.
 \begin{lemma}
   [Cartan decomposition]
   For each integer $m \ge 0$ let
-  \[ K'_{S,m} \coloneqq K'_S \cdot \begin{bmatrix} 0 & 0 & \varpi^m \\ 0 & 1 & 0 \\ \varpi^{-m} & 0 & 0 \end{bmatrix}. \]
+  \[ K'_{S,m} \coloneqq \GL_3(\OO_E) \cdot \begin{bmatrix} 0 & 0 & \varpi^m \\ 0 & 1 & 0 \\ \varpi^{-m} & 0 & 0 \end{bmatrix} \]
+  denote the orbit of
+  $\begin{bmatrix} 0 & 0 & \varpi^m \\ 0 & 1 & 0 \\ \varpi^{-m} & 0 & 0 \end{bmatrix}$
+  under the left action of $\GL_3(\OO_E)$.
   Then we have a decomposition
   \[ S_3(F) = \coprod_{m \geq 0} K'_{S,m}. \]
 \end{lemma}
-\todo{this isn't matrix multiplication, huh, is it}
+The $m=0$ case is particularly important:
+\[ K'_S \coloneqq K'_{S,0}
+  = K' \cdot \begin{bmatrix} & & 1 \\ & 1 \\ 1 \end{bmatrix}
+  = K' \cdot \id_3 = S_3(F) \cap \GL_3(\OO_E). \]
+One can equivalently define $K'_{S,m}$ to be the part of $S_3(F)$
+for which the most negative valuation among the nine entries is $-m$.
+
 For $r \geq 0$, define
 \[ \Omega_r \coloneqq S_3(F) \cap \varpi^{-m} \GL_3(\OO_E). \]
 We can re-parametrize the problem according to the following claim.
