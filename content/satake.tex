@@ -221,12 +221,12 @@ Throughout this section, we use the shorthand
     &= (-1)^m \sum_{j=0}^m \left(
       \sum_{i=0}^{2(m-j)} \min \left( 1 + \left\lfloor \frac i2 \right\rfloor,
         1 + \left\lfloor \frac{2(m-j)-i}{2} \right\rfloor \right) q^i \right)
-      \mathbf{1}_{K' \cdot t_j}.
+        \mathbf{1}_{K'_{S,j}}.
   \end{align*}
 \end{proposition}
 \begin{proof}
-  The coefficient of $\mathbf{1}_{K' \cdot t_j}$ will be equal to
-  the evaluation of the integral at any $g$ such that $g\bar{g} \in K' \cdot t_j$.
+  The coefficient of $\mathbf{1}_{K'_{S,j}}$ will be equal to
+  the evaluation of the integral at any $g$ such that $g\bar{g} \in K'_{S,j}$.
   Fixing $j \ge 0$, we are going to take the choice
   \[
     g = \begin{bmatrix}
@@ -245,7 +245,7 @@ Throughout this section, we use the shorthand
       1 &   & 2\varpi^{-j} \sqrt{\eps} \\
       & 1 \\
       &   & 1
-    \end{bmatrix} \in K' \cdot t_j
+    \end{bmatrix} \in K'_{S,j}
   \]
   \todo{this is based on worst valuation, idr the action}
   We aim to calculate the right-hand side of
