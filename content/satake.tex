@@ -200,26 +200,59 @@ So, henceforth, we will consider
 \subsection{Base change}
 \todo{this section needs to be written}
 
+We don't have to twist since $n$ is odd.
+
 \subsection{Overall picture}
 \begin{center}
 \begin{tikzcd}
-  & \HH(G',K') \ar[ld, "r_\ast"'] \ar[r, "\Sat"] \ar[d, "\BC"] & \QQ[X_1^\pm, \dots, X_n^\pm]^{\Sym(n)} \ar[d, "\BC"] \\
-  \HH(S_n(F), K') \ar[r, "\sim", "?"'] & \HH(G,K) \ar[r, "\Sat"] & \QQ[Y_1^\pm, \dots, Y_n^\pm]^{W_m} \\
+  & \HH(G',K') \ar[ld, "r_\ast"'] \ar[r, "\sim"', "\Sat"] \ar[d, "\BC"]
+    & \QQ[X_1^\pm, \dots, X_n^\pm]^{\Sym(n)} \ar[d, "\BC"] \\
+  \HH(S_n(F), K') \ar[r, "\sim"', "\BC_S"]
+    & \HH(G,K) \ar[r, "\sim"', "\Sat"]
+    & \QQ[Y_1^\pm, \dots, Y_n^\pm]^{W_m}
 \end{tikzcd}
 \end{center}
+Goal: describe $\BC_S$.
+
 \todo{describe this}
 
-
-\section{Calculations}
+\section{Initial calculation on the diagram}
 Specialize now to $n=3$.
 Throughout this section, we use the shorthand
 \[ \varpi^{(n_1, n_2, n_3)} \coloneqq \diag(\varpi^{n_1}, \varpi^{n_2}, \varpi^{n_3}). \]
+
+As a $\QQ$-module, the spaces $\HH(G,K)$ and $\HH(S_n(F), K')$
+have a canonical basis of indicator functions indexed by $\ZZ$:
+\begin{itemize}
+  \ii $\HH(S_n(F), K')$ has $\QQ$-module basis $\mathbf{1}_{K'_{S,j}}$ for $j \ge 0$.
+  \ii $\HH(G,K)$ has a $\QQ$-module basis given by the indictaor functions
+  \[ \mathbf{1}_{\varpi^{-m} \Mat(\OO_E) \cap G} \]
+  for $m \ge 0$.
+\end{itemize}
+On the other hand, the natural $\QQ$-module basis for $\HH(G', K')$, namely
+\[ \mathbf{1}_{K'\varpi^{(n_1, n_2, n_3)}K'} \]
+is given by triples of integers $n_1 \ge n_2 \ge n_3 \ge 0$, and is much larger.
+So explicit calculations for the $r_\ast$ or the Satake transforms viewed in
+$\CC[X_1, X_2, X_3]^{\Sym(n)}$ is nontrivial if one works with the entire basis.
+Hence the overall strategy, to reduce the amount of work we have to do,
+is to focus on on the only the $\ZZ$-indexed elements
+\[
+  \mathbf{1}_{\Mat_3(\OO_E), v\circ\det=m}
+  = \sum_{\substack{n_1 \ge n_2 \ge n_3 \\ n_1 + n_2 + n_3 = m}}
+  \mathbf{1}_{K'\varpi^{(n_1, n_2, n_3)}K'} \in \HH(G', K').
+\]
+This aggregated indicator function is easier to compute,
+because given an explicit matrix it is somewhat easier
+to evaluate $\mathbf{1}_{\Mat_3(\OO_E), v\circ\det=m}$
+at it (one only needs to check it has $\OO_E$ entries
+and that the determinant has valuation $m$,
+rather than determining the exact coset $K'\varpi^{(n_1, n_2, n_3)}K'$).
 
 \subsection{Integration over fiber}
 \begin{proposition}
   For every integer $m \ge 0$, we have
   \begin{align*}
-    &\phantom= r_\ast(\mathbf{1}_{\Mat_3(\OO_E), v\circ\det=m}) \\
+    &r_\ast(\mathbf{1}_{\Mat_3(\OO_E), v\circ\det=m}) \\
     &= \sum_{j=0}^m \left(
       \sum_{i=0}^{2(m-j)} \min \left( 1 + \left\lfloor \frac i2 \right\rfloor,
         1 + \left\lfloor \frac{2(m-j)-i}{2} \right\rfloor \right) q^i \right)
@@ -237,9 +270,10 @@ Throughout this section, we use the shorthand
       &   & 1
     \end{bmatrix}.
   \]
-  This $g$ has the desired property
+  We need to check this choice of $g$ indeed satisfies $g\bar{g}\inv \in K'_{S,j}$.
+  This follows as
   $\bar{g} = \left[ \begin{smallmatrix} 1 &   & -\varpi^{-j} \sqrt{\eps} \\ & 1 \\ &   & 1 \end{smallmatrix} \right]$
-  so
+  implies
   $\bar{g}\inv = \left[ \begin{smallmatrix} 1 &   & \varpi^{-j} \sqrt{\eps} \\ & 1 \\ &   & 1 \end{smallmatrix} \right]$
   and therefore
   \[
@@ -249,7 +283,9 @@ Throughout this section, we use the shorthand
       &   & 1
     \end{bmatrix} \in K'_{S,j}
   \]
-  We aim to calculate the right-hand side of
+  as needed.
+
+  Having chosen the representative $g$, we aim to calculate the right-hand side of
   \[
     r_\ast(\mathbf{1}_{\Mat_3(\OO_E), v\circ\det=m})(g\bar{g})
     = \int_{h \in \GL_3(F)} \mathbf{1}_{\Mat_3(\OO_E), v\circ\det=m}(gh) \odif h.
@@ -262,7 +298,7 @@ Throughout this section, we use the shorthand
     k
   \]
   for $k \in \GL_3(\OO_F) \subseteq K'$, which does not affect the indicator function.
-  Here $x_1, x_2, x_3 \in F$ and $y_1, y_2, y_3 \in F$.
+  Here $x_1, x_2, x_3 \in F^\times$ and $y_1, y_2, y_3 \in F$.
   In that case, note that
   \begin{align*}
     gh
@@ -350,7 +386,7 @@ Throughout this section, we use the shorthand
   Recall also the Weyl vector for $G' = \GL_3(\OO_E)$ is just $\left< 1,0,-1\right>$.
   Compute
   \begin{align*}
-    &\phantom=\Sat(\mathbf{1}_{\Mat_3(\OO_E), v\circ\det=m})(\mu(\varpi)) \\
+    &\Sat(\mathbf{1}_{\Mat_3(\OO_E), v\circ\det=m})(\mu(\varpi)) \\
     &= \delta(\mu(\varpi))^\half \int_{n' \in N'}
       \mathbf{1}_{\Mat_3(\OO_E, v\circ \det = m)} (\mu(\varpi) n') \odif{n'} \\
     &= q_E^{-\left< \mu, \rho\right>} \int_{y_1 \in E} \int_{y_2 \in E} \int_{y_3 \in E} \\
@@ -425,8 +461,7 @@ Throughout this section, we use the shorthand
   $\nu(\varpi) = \diag(\varpi^i, 1, \varpi^{-i})$, for the cocharacter $\nu$
   corresponding to $Y_1^i + Y_1^{-i}$:
   \begin{align*}
-    &\phantom=
-    \Sat\left( \mathbf{1}_{\varpi^{-m} \Mat_3(\OO_E) \cap G}\right)
+    &\Sat\left( \mathbf{1}_{\varpi^{-m} \Mat_3(\OO_E) \cap G}\right)
       \left( \nu(\varpi)  \right) \\
     &= \delta(\nu(\varpi))^\half \int_{n \in N}
       \mathbf{1}_{\varpi^{-m} \Mat_3(\OO_E) \cap G}
@@ -476,4 +511,103 @@ Throughout this section, we use the shorthand
     \end{cases}
   \]
   we get the formula claimed.
+\end{proof}
+
+\section{Base change from $\HH(G,K)$ to $\HH(S_3(F), K')$}
+We first need to determine an element of $\HH(G,K)$
+which is in the pre-image of $\mathbf{1}_{\varpi^{-m} \Mat_3(\OO_E) \cap G}$
+under $\BC \colon \HH(G', K') \to \HH(G, K)$.
+
+For convenience, we define the shorthand
+\[
+  \HH(G',K') \ni
+  f'_m \coloneqq \begin{cases}
+    \mathbf{1}_{\Mat_3(\OO_E), v \circ \det = m} & m \ge 0 \\
+    0 & m < 0
+  \end{cases}
+\]
+for every integer $m$.
+We start with the following intermediate calculation.
+\begin{align*}
+  &\BC\left( \Sat \left( f'_m - q^2 f'_{m-1} \right) \right) \\
+  &= \BC \left(
+    q^{2m} \sum_{n_1+n_2+n_3=m} X_1^{n_1} X_2^{n_2} X_3^{n_3}
+    - q^2 \cdot q^{2(m-1)} \sum_{n_1+n_2+n_3=(m-1)} X_1^{n_1} X_2^{n_2} X_3^{n_3} \right) \\
+  &= q^{2m} \left( \sum_{n_1+n_2+n_3=m} Y_1^{n_1-n_3} - \sum_{n_1+n_2+n_3=(m-1)} Y_1^{n_1-n_3} \right) \\
+  &= q^{2m} \left( \sum_{n_1+n_3=m} Y_1^{n_1-n_3} \right) \\
+  &= q^{2m} \left( Y_1^{m} + Y_1^{m-2} + \dots + Y_1^{-m} \right).
+  \intertext{Replacing $m$ with $m-1$ gives}
+  &\BC\left( \Sat \left(f'_{m-1} - q^2 f'_{m-2} \right) \right) \\
+  &= q^{2m-2} \left( Y_1^{m-1} + Y_1^{m-3} + \dots + Y_1^{-(m-1)} \right)
+  \intertext{Adding the former equation to $q$ times the latter gives}
+  &\BC\left( \Sat\left( f'_m + (q-q^2) f'_{m-1} - q^3 f'_{m-2} \right) \right) \\
+  &= q^{2m} \left( Y_1^m + Y_1^{m-2} + \dots + Y_1^{-m} \right)
+  + q^{2m-1} \left( Y_1^{m-1} + Y_1^{m-3} + \dots + Y_1^{-(m-1)} \right) \\
+  &= \Sat(\mathbf{1}_{\varpi^{-m} \Mat_3(\OO_E) \cap G}).
+\end{align*}
+This shows that $f'_m + (q-q^2) f'_{m-1} - q^3 f'_{m-2}$ lies in the
+pre-image of $\BC \colon \HH(G', K') \to \HH(G,K)$.
+
+On the other hand, it is easy to check that
+\begin{align*}
+  &r_\ast(f'_m -q^2 f'_{m-1}) \\
+  &= \sum_{j=0}^m \Bigg[
+      \sum_{i=0}^{2(m-j)} \min \left( 1 + \left\lfloor \frac i2 \right\rfloor,
+      1 + \left\lfloor \frac{2(m-j)-i}{2} \right\rfloor \right) q^i \\
+  &\qquad - \sum_{i=0}^{2(m-1-j)} \min \left( 1 + \left\lfloor \frac i2 \right\rfloor,
+    1 + \left\lfloor \frac{2((m-1)-j)-i}{2} \right\rfloor \right) q^{i+2}
+  \Bigg] \mathbf{1}_{K'_{S,j}} \\
+  &= \sum_{j=0}^m \left[ 1+q+q^2+\dots+q^{m-j} \right] \mathbf{1}_{K'_{S,j}} \\
+  \intertext{so}
+  &r_\ast(f'_m -q^2 f'_{m-1} + q \left( f'_{m-1} - q^2 f'_{m-3} \right)) \\
+  &= \sum_{j=0}^m \left[ (1+q+q^2+\dots+q^{m-j})+(q+q^2+\dots+q^{m-j}) \right] \mathbf{1}_{K'_{S,j}} \\
+  &= \sum_{j=0}^m \left[ 1 + 2q + 2q^2 + \dots + 2q^{m-j} \right] \mathbf{1}_{K'_{S,j}}.
+\end{align*}
+To summarize, the completed commutative diagram can be written in full as
+\begin{center}
+\begin{tikzcd}
+  & \begin{tabular}{c} $f'_m + (q-q^2) f'_{m-1}$ \\ $- q^3 f'_{m-2} \in \HH(G',K')$ \end{tabular}
+    \ar[ld, "r_\ast"', mapsto] \ar[r, "\Sat", mapsto] \ar[d, "\BC", mapsto]
+    & \dots \in \QQ[X_1^\pm, \dots, X_n^\pm]^{\Sym(n)} \ar[d, "\BC", mapsto] \\
+  \begin{tabular}{c}
+    $\sum_{j=0}^m \big[ 1 + 2q + 2q^2$ \\
+    $+ \dots + 2q^{m-j} \big] \mathbf{1}_{K'_{S,j}}$ \\
+    $\in \HH(S_n(F), K')$
+  \end{tabular} \ar[r, "\sim", "\BC_S"', mapsto]
+    & \begin{tabular}{c} $\mathbf{1}_{\varpi{^-m} \Mat_3(\OO_E) \cap G}$ \\ $\in \HH(G,K)$ \end{tabular}
+    \ar[r, "\Sat", mapsto]
+    & \begin{tabular}{r}
+      $q^{2m} \left( Y_1^{\pm} + \dotsb \right)$ \\
+      $+ q^{2m-1} \left( Y_1^{\pm(m-1)} + \dotsb \right)$ \\
+      $\in \QQ[Y_1^\pm, \dots, Y_n^\pm]^{W_m}$
+      \end{tabular}
+\end{tikzcd}
+\end{center}
+
+Thus, we arrive at the following:
+\begin{proposition}
+  We have
+  \begin{align*}
+    \BC_S \left(
+    \sum_{j=0}^m \left[ 1 + 2q + 2q^2 + \dots + 2q^{m-j} \right]
+    \mathbf{1}_{K'_{S,j}} \right)
+    &= \mathbf{1}_{\varpi^{-m} \Mat_3(\OO_E) \cap G} \\
+    \BC_S \left(
+    \mathbf{1}_{K'_{S,m}}
+    + 2q \mathbf{1}_{K'_{S,m-1}}
+    + 2q^2 \mathbf{1}_{K'_{S,m-2}}
+    + \dots
+    + 2q^m \mathbf{1}_{K'_{S,0}} \right)
+    &= \mathbf{1}_{K\varpi^{(m,0,-m)}K}.
+  \end{align*}
+\end{proposition}
+\begin{proof}
+  The first equation is the one we just proved.
+  The second one follows by noting that
+  \[
+    \mathbf{1}_{K\varpi^{(m,0,-m)}K}
+    = \mathbf{1}_{\varpi^{-m} \Mat_3(\OO_E) \cap G}
+    - \mathbf{1}_{\varpi^{-(m-1)} \Mat_3(\OO_E) \cap G}
+  \]
+  so one merely subtracts the left-hand sides evaluated at $m$ and $m-1$.
 \end{proof}
