@@ -82,6 +82,8 @@ Moving forward we also fix the following notation:
   \ii Denote by $r \colon G' \surjto S_n(F)$ the projection defined by
   \[ r(g) \coloneqq g \bar{g}\inv. \]
   \ii $K'_S \coloneqq S_n(F) \cap \GL_n(\OO_F)$ is as before.
+  \ii $\Sym(n)$ denotes the symmetric group in $n$ variables with order $n!$
+  (since $S_n$ is already reserved for the symmetric space).
 \end{itemize}
 
 \subsection{Two Hecke algebras, and a module}
@@ -93,8 +95,8 @@ We define two Hecke algebras:
 Now the symmetric space $S_n(F)$ is not a group,
 so it does not make sense to define the same thing here.
 Nevertheless, we introduce
-\[ \HH(S_n(F_0), K') \coloneqq \mathcal C_{\mathrm{c}}^{\infty}(S_n(F_0))^{K'} \]
-as the set of smooth compactly supported functions on $S_n(F_0)$
+\[ \HH(S_n(F), K') \coloneqq \mathcal C_{\mathrm{c}}^{\infty}(S_n(F))^{K'} \]
+as the set of smooth compactly supported functions on $S_n(F)$
 which are invariant under the action of $K' \subseteq G'$;
 this is an $\HH(G', K')$-module.
 This does \textbf{not} have a multiplication structure at the moment, \emph{a priori},
@@ -102,13 +104,13 @@ although later we will see how one could be imposed.
 
 Our prior map $r \colon G' \surjto S_n(F)$ induces a map
 \begin{align*}
-  r_\ast \colon \HH(G', K') &\to \HH(S_n(F_0), K') \\
+  r_\ast \colon \HH(G', K') &\to \HH(S_n(F), K') \\
   r_\ast(f')\left( g\bar{g}\inv \right) &= \int_{\GL_n(F)} f'(gh) \odif h
 \end{align*}
 by integration on the fibers.
 %However, in our setting we actually consider a twisted version
 %\begin{align*}
-%  r_\ast^\eta \colon \HH(G', K') &\to \HH(S_n(F_0), K') \\
+%  r_\ast^\eta \colon \HH(G', K') &\to \HH(S_n(F), K') \\
 %  r_\ast^\eta(f')\left( g\bar{g}\inv \right) &= \int_{\GL_n(F)} f'(gh) \eta(gh) \odif h
 %\end{align*}
 %where as before $\eta(g) = (-1)^{v(\det g)}$ in a slight abuse of notation.
@@ -202,7 +204,7 @@ So, henceforth, we will consider
 \begin{center}
 \begin{tikzcd}
   & \HH(G',K') \ar[ld, "r_\ast"'] \ar[r, "\Sat"] \ar[d, "\BC"] & \QQ[X_1^\pm, \dots, X_n^\pm]^{\Sym(n)} \ar[d, "\BC"] \\
-  \HH(S_n(F_0, K')) \ar[r, "\sim", "?"'] & \HH(G,K) \ar[r, "\Sat"] & \QQ[Y_1^\pm, \dots, Y_n^\pm]^{W_m} \\
+  \HH(S_n(F), K') \ar[r, "\sim", "?"'] & \HH(G,K) \ar[r, "\Sat"] & \QQ[Y_1^\pm, \dots, Y_n^\pm]^{W_m} \\
 \end{tikzcd}
 \end{center}
 \todo{describe this}
@@ -351,7 +353,8 @@ Throughout this section, we use the shorthand
     &\phantom=\Sat(\mathbf{1}_{\Mat_3(\OO_E), v\circ\det=m})(\mu(\varpi)) \\
     &= \delta(\mu(\varpi))^\half \int_{n' \in N'}
       \mathbf{1}_{\Mat_3(\OO_E, v\circ \det = m)} (\mu(\varpi) n') \odif{n'} \\
-    &= q_E^{-\left< \mu, \rho\right>} \int_{y_1 \in E} \int_{y_2 \in E} \int_{y_3 \in E}
+    &= q_E^{-\left< \mu, \rho\right>} \int_{y_1 \in E} \int_{y_2 \in E} \int_{y_3 \in E} \\
+    &\qquad
       \mathbf{1}_{\Mat_3(\OO_E), v \circ \det = m}
       \left(
         \begin{bmatrix}
@@ -361,9 +364,10 @@ Throughout this section, we use the shorthand
         \end{bmatrix}
       \right) \odif{y_1,y_2,y_3} \\
     &= q_E^{-(n_1-n_3)} \mathbf{1}_{n_1+n_2+n_3=m}
-    \int_{y_1 \in E} \mathbf{1}_{\OO_E}(\varpi^{n_1} y_1) \odif y_1 \\
-    &\qquad \int_{y_2 \in E} \mathbf{1}_{\OO_E}(\varpi^{n_1} y_2) \odif y_2
-    \int_{y_2 \in E} \mathbf{1}_{\OO_E}(\varpi^{n_2} y_3) \odif y_3 \\
+    \int_{y_1 \in E} \int_{y_2 \in E} \int_{y_3 \in E} \\
+    &\quad \mathbf{1}_{\OO_E}(\varpi^{n_1} y_1) \odif y_1
+      \mathbf{1}_{\OO_E}(\varpi^{n_1} y_2) \odif y_2
+     \mathbf{1}_{\OO_E}(\varpi^{n_2} y_3) \odif y_3 \\
     &= q_E^{-(n_1-n_3)} q_E^{n_1} q_E^{n_1} q_E^{n_2} \mathbf{1}_{n_1+n_2+n_3=m}
     = q_E^{n_1+n_2+n_3}\mathbf{1}_{n_1+n_2+n_3=m}
     = q_E^{m}\mathbf{1}_{n_1+n_2+n_3=m} \\
