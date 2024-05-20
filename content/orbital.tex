@@ -1073,7 +1073,7 @@ Therefore, the orbital integral can be expressed succincitly in the following wa
   Under the assumptions before, the orbital integral is given by
   \[
     O(\gamma, \mathbf{1}_{\Omega_r}, s)
-    = \sum_{k \in \ZZ}
+    = \sum_{k = -2r}^{2\delta + \ell + 2r}
     (-1)^k \left( 1 + q + q^2 + \dots + q^{\nn_{\gamma}(k)}  \right) (q^s)^k
   \]
   where the piecewise function $\nn_\gamma \colon \ZZ \to \ZZ_{\ge 0}$ is defined by
@@ -1084,8 +1084,7 @@ Therefore, the orbital integral can be expressed succincitly in the following wa
       r + \left\lfloor \frac{k+r}{2} \right\rfloor & \text{if }-r \le k \le \ell-r \\
       r + \left\lfloor \frac{\ell}{2} \right\rfloor & \text{if } \ell - r \le k < 2\delta + r \\
       r + \left\lfloor \frac{(2\delta+\ell+r)-k}{2} \right\rfloor & \text{if } 2\delta + r \le k \le 2\delta + \ell + r\\
-      (2\delta + \ell + 2r) - k & \text{if } 2\delta + \ell + r \le k \le 2\delta + \ell + 2r \\
-      0 & \text{otherwise}.
+      (2\delta + \ell + 2r) - k & \text{if } 2\delta + \ell + r \le k \le 2\delta + \ell + 2r.
     \end{cases}
   \]
 \end{theorem}
