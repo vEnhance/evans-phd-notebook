@@ -954,22 +954,33 @@ In the region where $k < 2\delta + r$, the first two sums contribute:
   \ii The second sum contributes if and only if \eqref{eq:outer_assumption} holds,
   \eqref{eq:outer_half_assumption_12} holds and $r+1 \le n \le \ell + r$.
   The hypothesis $n > r$ means we need $k \geq -r$.
-  Since $\ell < 2\delta$, we get two cases based on which of
-  $\ell + r$ and $k + 2r$ is smaller.
-  In the case where $\ell+r > k+2r$, then since $\ell < 2\delta$,
+  Since $\ell < 2\delta$, the upper bound for $n$ is $n \le \min(\ell+r, k+2r)$
+  which we split into two cases.
+
+  In the case where $k+2r \le \ell+r$, then since $\ell < 2\delta$,
   the inequality $k < 2\delta + r$ holds automatically.
+  We have the largest term $n=k+2r \equiv k \pmod 2$,
+  so the largest exponent $q$ that appears is
+  $\left\lfloor \frac{(k+2r)+r}{2} \right\rfloor$.
+
+  In the other case $\ell+r \le k+2r$,
+  we obtain exponents of
+  $\left\lfloor \frac{r + \ell+r-(\ell+r-k)\%2}{2} \right\rfloor$,
+  but since $\ell$ is odd, this is equal to $r + \left\lfloor \frac{\ell}{2} \right\rfloor$.
+
   Thus, we obtain
   \[
     \begin{cases}
-      q^{r + \left\lfloor \frac{\ell-(\ell+r-k)\%2}{2} \right\rfloor}
+      q^{\left\lfloor \frac{k+3r}{2} \right\rfloor} + \dots + q^{r+(r+1-k)\%2}
+        & \text{if } -r \le k \le \ell - r \\
+      q^{r + \left\lfloor \frac{\ell}{2} \right\rfloor}
         + \dots + q^{r + (r+1-k)\%2}
         & \text{if } \ell - r \leq k < 2\delta + r \\
-      q^{r+\left\lfloor \frac{k+r-(k+r)\%2}{2} \right\rfloor} + \dots + q^{r+(r+1-k)\%2}
-        & \text{if } -r \le k \le \ell - r \\
       0 & \text{otherwise}.
     \end{cases}
   \]
 \end{itemize}
+
 In the region where $k \ge 2\delta + r$, the latter two sums are in play:
 \begin{itemize}
   \ii In the third sum, we assume \eqref{eq:outer_half_assumption_34};
@@ -989,7 +1000,7 @@ In the region where $k \ge 2\delta + r$, the latter two sums are in play:
   \]
   \ii Unlike the other sums, the $j$ is in the exponent in the fourth sum,
   so \eqref{eq:outer_assumption} will not be useful to us.
-  Insetad our goal is to detect the values of $j$ for which the corresponding value of
+  Instead our goal is to detect the values of $j$ for which the corresponding value of
   \[ n = 2j-2\delta-2r+k \]
   lies in the desired interval.
   That is, we get a contribution of $q^j$ if and only if
@@ -1024,31 +1035,59 @@ In the region where $k \ge 2\delta + r$, the latter two sums are in play:
       q^{\delta+\left\lfloor\frac{3r+\ell-k}{2}\right\rfloor} + \dots + q^{2\delta+2r-k+1}
         & \text{if } 2\delta+\ell+r \le k \le 2\delta+2r  \\
       q^{2\delta+2r-k+\ell} + \dots + q^0
-        & \text{if } 2\delta+2r < k \le 2\delta+2r+\ell \\
+        & \text{if } 2\delta+2r < k \le 2\delta+\ell+2r \\
       0 & \text{otherwise}.
     \end{cases}
   \]
+  For later purposes, it will be more symmetric to rewrite the exponent as
+  \[ \delta + \left\lfloor \frac{3r+\ell-k}{2} \right\rfloor
+    = r + \left\lfloor \frac{(2\delta+\ell+r)-k}{2} \right\rfloor. \]
+\end{itemize}
+This completes the analysis of the four sums above.
+
+Now we can piece together all the parts below.
+It turns out that for every value of $k$,
+the coefficient of $(-q^s)^k$ is an expression
+of the form $1 + q + q^2 + \dots + q^{\nn_\gamma(k)}$ for some $k$.
+Indeed,
+\begin{itemize}
+  \ii When $k = 2r$ the only term is $q^0$.
+  \ii For $-2r < k < r$, only the first sum contributes
+  $q^{k+2r} + \dots + q^{(k-1)\%2}$,
+  which is then completed by the $q^0$ contribution from $I_{n \le 0}$ when $k$ is even.
+  with a possible $q^0$
+  \ii For $-r \le k < 2\delta+r$,
+  the first and second sum actually fit together with a ``seam'' near $q^r$,
+  which is for even $k$ then completed by
+  the single $q^0$ contribution from $I_{n \le 0}$ (only when $k$ is even).
+  \ii For $2\delta+r \le k \le 2\delta+2r$,
+  the same holds with piecing the third and fourth sum together
+  (where the seam is near $q^k$ this time).
+  \ii Finally, only the fourth sum contributes for $2\delta+2r \le k \le 2\delta+\ell+2r$,
+  and it is of the desired form.
 \end{itemize}
 
-%We split the sum based on $0 \le j \le r$ and $r+1 \le j \le \delta+2r$
-%to make it more manageable:
-%\begin{align*}
-%  I_{n>0}^{\text{odd}} =
-%  q^{2(\delta+r)s} \sum_{j = 0}^{r} \Bigg(
-%    & \sum_{n=1}^{2j-1}
-%      q^{n} \left( 1 + q\inv \right) \cdot (-1)^n q^{s(n-2j)} \\
-%    &+ \sum_{n=\max(1,2j-r)}^{j}
-%      q^{n} \left( 1 + q\inv \right) \cdot (-1)^n q^{s(n-2j)} \\
-%    &+ \sum_{n=j+1}^{\ell+j} q^{j} \cdot (-1)^n q^{s(n-2j)} \Bigg) \\
-%  {} + q^{2(\delta+r)s}
-%  \sum_{j = r + 1}^{\delta + 2r} \Bigg( & \sum_{n=1}^{r}
-%      q^{n} \left( 1 + q\inv \right) \cdot (-1)^n q^{s(n-2j)} \\
-%    &+ \sum_{n=r+1}^{\min(2j-1-r, \ell+r)}
-%      q^{\left\lfloor \frac{n+r}{2} \right\rfloor} \cdot (-1)^n q^{s(n-2j)} \\
-%    &+ \sum_{n=2j-r}^{\ell+r} q^{j} \cdot (-1)^n q^{s(n-2j)} \Bigg).
-%\end{align*}
-%We also have
-%\[ I_{n \le 0} = \sum_{i=-r}^{\delta+r} q^{2is}
-%  = q^{2(\delta+r)s} \sum_{j = 0}^{\delta + 2r} q^{-2js}. \]
+Therefore, the orbital integral can be expressed succincitly in the following way.
+\begin{theorem}
+  [Orbital integral in the odd case]
+  Under the assumptions before, the orbital integral is given by
+  \[
+    O(\gamma, \mathbf{1}_{\Omega_r}, s)
+    = \sum_{k \in \ZZ}
+    (-1)^k \left( 1 + q + q^2 + \dots + q^{\nn_{\gamma}(k)}  \right) (q^s)^k
+  \]
+  where the piecewise function $\nn_\gamma \colon \ZZ \to \ZZ_{\ge 0}$ is defined by
+  \[
+    \nn_\gamma(k) =
+    \begin{cases}
+      k + 2r & \text{if } -2r \le k \le -r \\
+      r + \left\lfloor \frac{k+r}{2} \right\rfloor & \text{if }-r \le k \le \ell-r \\
+      r + \left\lfloor \frac{\ell}{2} \right\rfloor & \text{if } \ell - r \le k < 2\delta + r \\
+      r + \left\lfloor \frac{(2\delta+\ell+r)-k}{2} \right\rfloor & \text{if } 2\delta + r \le k \le 2\delta + \ell + r\\
+      (2\delta + \ell + 2r) - k & \text{if } 2\delta + \ell + r \le k \le 2\delta + \ell - 2r \\
+      0 & \text{otherwise}.
+    \end{cases}
+  \]
+\end{theorem}
 
 \subsection{Region where $n > 0$ for even $\ell$}
