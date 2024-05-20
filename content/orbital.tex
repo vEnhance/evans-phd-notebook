@@ -885,7 +885,7 @@ simplifying the expression to just
 \end{align*}
 
 \subsection{Completed case when $\ell$ is odd}
-Combining the previous two results gives
+Put everything together to get
 \begin{align*}
   I_{n \le 0} + I_{n > 0}^{\text{odd}}
   = q^{2(\delta+r)s}
@@ -899,5 +899,156 @@ Combining the previous two results gives
       q^{n} \left( 1 + q\inv \right) \cdot (-1)^n q^{s(n-2j)} \\
     &+ \sum_{n=\max(j+1, 2j-r)}^{\ell+\min(j,r)} q^{j} \cdot (-1)^n q^{s(n-2j)} \Bigg).
 \end{align*}
+Note that when $r=0$ we recover \cite[equation (4.13)]{ref:AFL}.
+
+The above expression can be considered as a Laurent polynomial in $-q^s$,
+whose coefficients are nonnegative polynomials in $q$ (note that $(-1)^n = (-1)^{n-2j}$).
+Now we are going to extract the coefficient of $(-q^s)^k$, for each integer $k$.
+First, note that
+\begin{itemize}
+  \ii The initial term before the sums adds $1$
+  if $k$ is even and $-2r \le k \le 2\delta + 2r$, and $0$ otherwise.
+\end{itemize}
+We move on to the inner sums and calculate their contributions.
+For a fixed $k \in \ZZ$, we want to consider $(n,j)$ with $n-2j + 2(\delta+r) = k$,
+that is, $2j = n + 2\delta + 2r - k$, or $n = 2j + k - 2\delta - 2r$.
+The condition that $j \in \ZZ$ and $0 \le j \le \delta+2r$ is then equivalent to
+\begin{equation}
+  k-2\delta-2r \le n \le k+2r \qquad\text{and}\qquad n \equiv k \pmod 2.
+  \label{eq:outer_assumption}
+\end{equation}
+We note also that
+\begin{equation}
+  n < 2j-r \iff n < n + 2 \delta + r - k \iff k < 2\delta + r
+  \label{eq:outer_half_assumption_12}
+\end{equation}
+which needs to hold for the first two sums to contribute.
+Conversely, in the latter two sums, we will assume that
+\begin{equation}
+  n \ge 2j-r \iff k \ge 2\delta + r.
+  \label{eq:outer_half_assumption_34}
+\end{equation}
+Now we are ready for the main calculation.
+In what follows $i \% 2 \in \{0,1\}$ means the remainder when $i$ is divided by $2$.
+Moreover, any ellipses of the form $q^i + \dots + q^{i'}$
+will be abbreviate for $q^i + q^{i-1} + \dots + q^{i'}$
+(i.e.\ within any ellipses, the exponents are understood to decrease by $1$,
+and the sums are always nonempty, meaning $i \ge i'$).
+
+In the region where $k < 2\delta + r$, the first two sums contribute:
+\begin{itemize}
+  \ii The first sum contributes if and only if \eqref{eq:outer_assumption} holds,
+  $1 \le n \le r$ and \eqref{eq:outer_half_assumption_12} is true.
+  Hence, the contribution only occurs when $k < 2\delta + r$.
+  In that case, all $1 \le n \le \min(r,k+2r)$ with $n \equiv k \pmod 2$ appear.
+  Since the contribution of a given $n$ is $q^n + q^{n-1}$
+  and the $n$ are incrementing by $2$, our final total is
+  \[
+    \begin{cases}
+      q^{k+2r} + \dots + q^{(k-1)\%2} & \text{if } -2r < k \leq -r \\
+      q^{r-(k-r)\%2} + \dots + q^{(k-1)\%2} & \text{if } -r \le k < 2\delta + r \\
+      0 & \text{otherwise}.
+    \end{cases}
+  \]
+
+  \ii The second sum contributes if and only if \eqref{eq:outer_assumption} holds,
+  \eqref{eq:outer_half_assumption_12} holds and $r+1 \le n \le \ell + r$.
+  The hypothesis $n > r$ means we need $k \geq -r$.
+  Since $\ell < 2\delta$, we get two cases based on which of
+  $\ell + r$ and $k + 2r$ is smaller.
+  In the case where $\ell+r > k+2r$, then since $\ell < 2\delta$,
+  the inequality $k < 2\delta + r$ holds automatically.
+  Thus, we obtain
+  \[
+    \begin{cases}
+      q^{r + \left\lfloor \frac{\ell-(\ell+r-k)\%2}{2} \right\rfloor}
+        + \dots + q^{r + (r+1-k)\%2}
+        & \text{if } \ell - r \leq k < 2\delta + r \\
+      q^{r+\left\lfloor \frac{k+r-(k+r)\%2}{2} \right\rfloor} + \dots + q^{r+(r+1-k)\%2}
+        & \text{if } -r \le k \le \ell - r \\
+      0 & \text{otherwise}.
+    \end{cases}
+  \]
+\end{itemize}
+In the region where $k \ge 2\delta + r$, the latter two sums are in play:
+\begin{itemize}
+  \ii In the third sum, we assume \eqref{eq:outer_half_assumption_34};
+  then the other constraints on $n$ are
+  \begin{align*}
+    n &\ge 1 \\
+    n \le j \iff 2n \le n+2\delta+2r-k \iff n &\le 2\delta + 2r - k
+  \end{align*}
+  which implies $k < 2 \delta + 2r$ for this range to be nonempty.
+  In this case, \eqref{eq:outer_assumption} is actually redundant already.
+  That means our contribution can be described as
+  \[
+    \begin{cases}
+      q^{2\delta+2r-k} + \dots + q^{(k-1)\%2} & \text{if } 2\delta+r \le k < 2\delta+2r \\
+      0 & \text{otherwise}.
+    \end{cases}
+  \]
+  \ii Unlike the other sums, the $j$ is in the exponent in the fourth sum,
+  so \eqref{eq:outer_assumption} will not be useful to us.
+  Insetad our goal is to detect the values of $j$ for which the corresponding value of
+  \[ n = 2j-2\delta-2r+k \]
+  lies in the desired interval.
+  That is, we get a contribution of $q^j$ if and only if
+  \eqref{eq:outer_half_assumption_34} holds and
+  \begin{align*}
+    &\phantom{\iff} 0 \le j \le \delta + 2r \\
+    j < 2j-2\delta-2r+k &\implies 2\delta+2r-k < j \\
+    2j-2\delta-2r+k \le \ell+j &\iff j \le 2\delta+2r-k+\ell \\
+    2j-2\delta-2r+k \le \ell+r &\iff j \le \delta+\frac{3r+\ell-k}{2}
+  \end{align*}
+  The breakpoint for the two upper bounds on $j$ occurs when
+  \[ 2\delta+2r-k+l \le \delta+\frac{3r+\ell-k}{2}
+    \iff k \ge 2\delta + \ell + r. \]
+  Thus there are two possible splits here.
+  In the case where $\ell \ge r$, we have
+  \[
+    \begin{cases}
+      q^{\delta+\left\lfloor\frac{3r+\ell-k}{2}\right\rfloor} + \dots + q^{2\delta+2r-k+1}
+        & \text{if } 2\delta+r \le k \le 2\delta+2r  \\
+      q^{\delta+\left\lfloor\frac{3r+\ell-k}{2}\right\rfloor} + \dots + q^{0}
+        & \text{if } 2\delta+2r < k \le 2\delta+\ell+r  \\
+      q^{2\delta+2r-k+\ell} + \dots + q^0
+        & \text{if } 2\delta+\ell+r \le k \le 2\delta+2r+\ell \\
+      0 & \text{otherwise}.
+    \end{cases}
+  \]
+  whereas in the case where $\ell \le r$, we have
+  \[
+    \begin{cases}
+      q^{\delta+\left\lfloor\frac{3r+\ell-k}{2}\right\rfloor} + \dots + q^{2\delta+2r-k+1}
+        & \text{if } 2\delta+r \le k \le 2\delta+\ell+r  \\
+      q^{\delta+\left\lfloor\frac{3r+\ell-k}{2}\right\rfloor} + \dots + q^{2\delta+2r-k+1}
+        & \text{if } 2\delta+\ell+r \le k \le 2\delta+2r  \\
+      q^{2\delta+2r-k+\ell} + \dots + q^0
+        & \text{if } 2\delta+2r < k \le 2\delta+2r+\ell \\
+      0 & \text{otherwise}.
+    \end{cases}
+  \]
+\end{itemize}
+
+%We split the sum based on $0 \le j \le r$ and $r+1 \le j \le \delta+2r$
+%to make it more manageable:
+%\begin{align*}
+%  I_{n>0}^{\text{odd}} =
+%  q^{2(\delta+r)s} \sum_{j = 0}^{r} \Bigg(
+%    & \sum_{n=1}^{2j-1}
+%      q^{n} \left( 1 + q\inv \right) \cdot (-1)^n q^{s(n-2j)} \\
+%    &+ \sum_{n=\max(1,2j-r)}^{j}
+%      q^{n} \left( 1 + q\inv \right) \cdot (-1)^n q^{s(n-2j)} \\
+%    &+ \sum_{n=j+1}^{\ell+j} q^{j} \cdot (-1)^n q^{s(n-2j)} \Bigg) \\
+%  {} + q^{2(\delta+r)s}
+%  \sum_{j = r + 1}^{\delta + 2r} \Bigg( & \sum_{n=1}^{r}
+%      q^{n} \left( 1 + q\inv \right) \cdot (-1)^n q^{s(n-2j)} \\
+%    &+ \sum_{n=r+1}^{\min(2j-1-r, \ell+r)}
+%      q^{\left\lfloor \frac{n+r}{2} \right\rfloor} \cdot (-1)^n q^{s(n-2j)} \\
+%    &+ \sum_{n=2j-r}^{\ell+r} q^{j} \cdot (-1)^n q^{s(n-2j)} \Bigg).
+%\end{align*}
+%We also have
+%\[ I_{n \le 0} = \sum_{i=-r}^{\delta+r} q^{2is}
+%  = q^{2(\delta+r)s} \sum_{j = 0}^{\delta + 2r} q^{-2js}. \]
 
 \subsection{Region where $n > 0$ for even $\ell$}
