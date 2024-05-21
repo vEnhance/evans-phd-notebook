@@ -227,8 +227,8 @@ have a canonical basis of indicator functions indexed by $\ZZ$:
 \begin{itemize}
   \ii $\HH(S_n(F), K')$ has $\QQ$-module basis $\mathbf{1}_{K'_{S,j}}$ for $j \ge 0$.
   \ii $\HH(G,K)$ has a $\QQ$-module basis given by the indictaor functions
-  \[ \mathbf{1}_{\varpi^{-m} \Mat(\OO_E) \cap G} \]
-  for $m \ge 0$.
+  \[ \mathbf{1}_{\varpi^{-r} \Mat(\OO_E) \cap G} \]
+  for $r \ge 0$.
 \end{itemize}
 On the other hand, the natural $\QQ$-module basis for $\HH(G', K')$, namely
 \[ \mathbf{1}_{K'\varpi^{(n_1, n_2, n_3)}K'} \]
@@ -238,25 +238,25 @@ $\CC[X_1, X_2, X_3]^{\Sym(n)}$ is nontrivial if one works with the entire basis.
 Hence the overall strategy, to reduce the amount of work we have to do,
 is to focus on on the only the $\ZZ$-indexed elements
 \[
-  \mathbf{1}_{\Mat_3(\OO_E), v\circ\det=m}
-  = \sum_{\substack{n_1 \ge n_2 \ge n_3 \\ n_1 + n_2 + n_3 = m}}
+  \mathbf{1}_{\Mat_3(\OO_E), v\circ\det=r}
+  = \sum_{\substack{n_1 \ge n_2 \ge n_3 \\ n_1 + n_2 + n_3 = r}}
   \mathbf{1}_{K'\varpi^{(n_1, n_2, n_3)}K'} \in \HH(G', K').
 \]
 This aggregated indicator function is easier to compute,
 because given an explicit matrix it is somewhat easier
-to evaluate $\mathbf{1}_{\Mat_3(\OO_E), v\circ\det=m}$
+to evaluate $\mathbf{1}_{\Mat_3(\OO_E), v\circ\det=r}$
 at it (one only needs to check it has $\OO_E$ entries
-and that the determinant has valuation $m$,
+and that the determinant has valuation $r$,
 rather than determining the exact coset $K'\varpi^{(n_1, n_2, n_3)}K'$).
 
 \subsection{Integration over fiber}
 \begin{proposition}
-  For every integer $m \ge 0$, we have
+  For every integer $r \ge 0$, we have
   \begin{align*}
-    &r_\ast(\mathbf{1}_{\Mat_3(\OO_E), v\circ\det=m}) \\
-    &= \sum_{j=0}^m \left(
-      \sum_{i=0}^{2(m-j)} \min \left( 1 + \left\lfloor \frac i2 \right\rfloor,
-        1 + \left\lfloor \frac{2(m-j)-i}{2} \right\rfloor \right) q^i \right)
+    &r_\ast(\mathbf{1}_{\Mat_3(\OO_E), v\circ\det=r}) \\
+    &= \sum_{j=0}^r \left(
+      \sum_{i=0}^{2(r-j)} \min \left( 1 + \left\lfloor \frac i2 \right\rfloor,
+        1 + \left\lfloor \frac{2(r-j)-i}{2} \right\rfloor \right) q^i \right)
         \mathbf{1}_{K'_{S,j}}.
   \end{align*}
 \end{proposition}
@@ -288,8 +288,8 @@ rather than determining the exact coset $K'\varpi^{(n_1, n_2, n_3)}K'$).
 
   Having chosen the representative $g$, we aim to calculate the right-hand side of
   \[
-    r_\ast(\mathbf{1}_{\Mat_3(\OO_E), v\circ\det=m})(g\bar{g})
-    = \int_{h \in \GL_3(F)} \mathbf{1}_{\Mat_3(\OO_E), v\circ\det=m}(gh) \odif h.
+    r_\ast(\mathbf{1}_{\Mat_3(\OO_E), v\circ\det=r})(g\bar{g})
+    = \int_{h \in \GL_3(F)} \mathbf{1}_{\Mat_3(\OO_E), v\circ\det=r}(gh) \odif h.
   \]
   We take an Iwasawa decomposition of $h \in \GL_3(F)$ as
   \[
@@ -326,13 +326,13 @@ rather than determining the exact coset $K'\varpi^{(n_1, n_2, n_3)}K'$).
     \end{bmatrix}
     k.
   \end{align*}
-  Hence, we can rewrite the $r_\ast(\mathbf{1}_{\Mat_3(\OO_E), v\circ\det=m})$
+  Hence, we can rewrite the $r_\ast(\mathbf{1}_{\Mat_3(\OO_E), v\circ\det=r})$
   as a six-fold integral
   \begin{align*}
-    r_\ast(\mathbf{1}_{\Mat_3(\OO_E), v\circ\det=m}) =
+    r_\ast(\mathbf{1}_{\Mat_3(\OO_E), v\circ\det=r}) =
     & \int_{x_1 \in F^\times} \int_{x_2 \in F^\times} \int_{x_3 \in F^\times}
     \int_{y_1 \in F} \int_{y_2 \in F} \int_{y_3 \in F} \\
-    &\quad \mathbf{1}_{\Mat_3(\OO_E), v\circ\det=m} \left(
+    &\quad \mathbf{1}_{\Mat_3(\OO_E), v\circ\det=r} \left(
     \begin{bmatrix}
       x_1 & x_1 y_1 & x_1 y_2 + x_3 \varpi^{-j} \sqrt\eps \\
       & x_2 & x_2 y_3 \\
@@ -353,13 +353,13 @@ rather than determining the exact coset $K'\varpi^{(n_1, n_2, n_3)}K'$).
   and $\Vol(\varpi^{-\alpha_i} \OO_F) = q^{\alpha_i}$.
   Hence the integral can be rewritten as the discrete sum
   \begin{align*}
-    \sum_{\substack{\alpha_1 + \alpha_2 + \alpha_3 = m \\ \alpha_1 \ge 0 \\ \alpha_2 \ge 0 \\ \alpha_3 \ge j}}
+    \sum_{\substack{\alpha_1 + \alpha_2 + \alpha_3 = r \\ \alpha_1 \ge 0 \\ \alpha_2 \ge 0 \\ \alpha_3 \ge j}}
     q^{\alpha_1} \cdot q^{\alpha_1} \cdot q^{\alpha_2}
-    &= \sum_{\substack{\alpha_1 + \alpha_2 \le m-j \\ \alpha_1 \ge 0 \\ \alpha_2 \ge 0}}
+    &= \sum_{\substack{\alpha_1 + \alpha_2 \le r-j \\ \alpha_1 \ge 0 \\ \alpha_2 \ge 0}}
     q^{2\alpha_1+\alpha_2} \\
-    &= \sum_{i=0}^{2(m-j)}
+    &= \sum_{i=0}^{2(r-j)}
     \min \left( 1 + \left\lfloor \frac i2 \right\rfloor,
-      1 + \left\lfloor \frac{2(m-j)-i}{2} \right\rfloor
+      1 + \left\lfloor \frac{2(r-j)-i}{2} \right\rfloor
     \right) q^i
   \end{align*}
   as desired.
@@ -367,9 +367,9 @@ rather than determining the exact coset $K'\varpi^{(n_1, n_2, n_3)}K'$).
 
 \subsection{Satake transform of the determinant characteristic function on the top arrow}
 \begin{proposition}
-  For every integer $m \ge 0$, we have
-  \[ \Sat(\mathbf{1}_{\Mat_3(\OO_E), v\circ\det=m})
-    = q^{2m} \sum_{n_1 + n_2 + n_3 = m} X_1^{n_1} X_2^{n_2} X_3^{n_3}. \]
+  For every integer $r \ge 0$, we have
+  \[ \Sat(\mathbf{1}_{\Mat_3(\OO_E), v\circ\det=r})
+    = q^{2r} \sum_{n_1 + n_2 + n_3 = r} X_1^{n_1} X_2^{n_2} X_3^{n_3}. \]
 \end{proposition}
 \begin{proof}
   We evaluate the coefficient $X_1^{n_1} X_2^{n_2} X_3^{n_3}$.
@@ -387,12 +387,12 @@ rather than determining the exact coset $K'\varpi^{(n_1, n_2, n_3)}K'$).
   Recall also the Weyl vector for $G' = \GL_3(\OO_E)$ is just $\left< 1,0,-1\right>$.
   Compute
   \begin{align*}
-    &\Sat(\mathbf{1}_{\Mat_3(\OO_E), v\circ\det=m})(\mu(\varpi)) \\
+    &\Sat(\mathbf{1}_{\Mat_3(\OO_E), v\circ\det=r})(\mu(\varpi)) \\
     &= \delta(\mu(\varpi))^\half \int_{n' \in N'}
-      \mathbf{1}_{\Mat_3(\OO_E, v\circ \det = m)} (\mu(\varpi) n') \odif{n'} \\
+      \mathbf{1}_{\Mat_3(\OO_E, v\circ \det = r)} (\mu(\varpi) n') \odif{n'} \\
     &= q_E^{-\left< \mu, \rho\right>} \int_{y_1 \in E} \int_{y_2 \in E} \int_{y_3 \in E} \\
     &\qquad
-      \mathbf{1}_{\Mat_3(\OO_E), v \circ \det = m}
+      \mathbf{1}_{\Mat_3(\OO_E), v \circ \det = r}
       \left(
         \begin{bmatrix}
           \varpi^{n_1} & \varpi^{n_1} y_1 & \varpi^{n_1} y_2 \\
@@ -400,16 +400,16 @@ rather than determining the exact coset $K'\varpi^{(n_1, n_2, n_3)}K'$).
           & & \varpi^{n_3} \\
         \end{bmatrix}
       \right) \odif{y_1,y_2,y_3} \\
-    &= q_E^{-(n_1-n_3)} \mathbf{1}_{n_1+n_2+n_3=m}
+    &= q_E^{-(n_1-n_3)} \mathbf{1}_{n_1+n_2+n_3=r}
     \int_{y_1 \in E} \int_{y_2 \in E} \int_{y_3 \in E} \\
     &\quad \mathbf{1}_{\OO_E}(\varpi^{n_1} y_1) \odif y_1
       \mathbf{1}_{\OO_E}(\varpi^{n_1} y_2) \odif y_2
      \mathbf{1}_{\OO_E}(\varpi^{n_2} y_3) \odif y_3 \\
-    &= q_E^{-(n_1-n_3)} q_E^{n_1} q_E^{n_1} q_E^{n_2} \mathbf{1}_{n_1+n_2+n_3=m}
-    = q_E^{n_1+n_2+n_3}\mathbf{1}_{n_1+n_2+n_3=m}
-    = q_E^{m}\mathbf{1}_{n_1+n_2+n_3=m} \\
+    &= q_E^{-(n_1-n_3)} q_E^{n_1} q_E^{n_1} q_E^{n_2} \mathbf{1}_{n_1+n_2+n_3=r}
+    = q_E^{n_1+n_2+n_3}\mathbf{1}_{n_1+n_2+n_3=r}
+    = q_E^{r}\mathbf{1}_{n_1+n_2+n_3=r} \\
     &= \begin{cases}
-      q^{2m} & \text{if }n_1 + n_2 + n_3 = m \\
+      q^{2r} & \text{if }n_1 + n_2 + n_3 = r \\
       0 & \text{otherwise}.
     \end{cases}
   \end{align*}
@@ -418,9 +418,9 @@ rather than determining the exact coset $K'\varpi^{(n_1, n_2, n_3)}K'$).
 
 \subsection{Satake transform of the indicator on the bottom arrow}
 \begin{proposition}
-  For each $m \ge 0$ we have
-  \[ \Sat\left(\mathbf{1}_{\varpi^{-m} \Mat_3(\OO_E) \cap G}\right)
-    = \sum_{i=0}^m q^{2m - \mathbf{1}_{m \equiv i \bmod 2}} Y_1^{\pm i} \]
+  For each $r \ge 0$ we have
+  \[ \Sat\left(\mathbf{1}_{\varpi^{-r} \Mat_3(\OO_E) \cap G}\right)
+    = \sum_{i=0}^r q^{2r - \mathbf{1}_{r \equiv i \bmod 2}} Y_1^{\pm i} \]
   where we adopt the shorthand
   \[
     Y_1^{\pm i} \coloneqq
@@ -462,53 +462,53 @@ rather than determining the exact coset $K'\varpi^{(n_1, n_2, n_3)}K'$).
   $\nu(\varpi) = \diag(\varpi^i, 1, \varpi^{-i})$, for the cocharacter $\nu$
   corresponding to $Y_1^i + Y_1^{-i}$:
   \begin{align*}
-    &\Sat\left( \mathbf{1}_{\varpi^{-m} \Mat_3(\OO_E) \cap G}\right)
+    &\Sat\left( \mathbf{1}_{\varpi^{-r} \Mat_3(\OO_E) \cap G}\right)
       \left( \nu(\varpi)  \right) \\
     &= \delta(\nu(\varpi))^\half \int_{n \in N}
-      \mathbf{1}_{\varpi^{-m} \Mat_3(\OO_E) \cap G}
+      \mathbf{1}_{\varpi^{-r} \Mat_3(\OO_E) \cap G}
       \left( \nu(\varpi) n' \right) \odif n \\
     &= \delta(\nu(\varpi))^\half \int_{n \in N}
-      \mathbf{1}_{{\varpi^{-m}} \Mat_3(\OO_E) \cap G}
+      \mathbf{1}_{{\varpi^{-r}} \Mat_3(\OO_E) \cap G}
       \left( \begin{bmatrix} \varpi^i & \varpi^i y_1 & \varpi^i y_2 \\
                & 1 & y_3 \\
                & & \varpi^{-i} \end{bmatrix} \right) \odif n
   \end{align*}
   The matrix itself is always in $G$, because it's the product of two unitary matrices.
-  So the indicator needs to check whether all the entries have valuation at least $-m$.
+  So the indicator needs to check whether all the entries have valuation at least $-r$.
   If we switch characterization to the coordinates $z_1$, $z_2$, $z_3$ we described earlier,
   we see that the conditions are
-  \[ i \le m, \; v(z_1) \ge -m, \; v(z_2) \ge -m, \; v(z_3) \ge -(m+i), \;
-    v(z_1^2 + z_2^2 \eps) \ge -(m+i). \]
-  Assume $i \le m$ henceforth.
+  \[ i \le r, \; v(z_1) \ge -r, \; v(z_2) \ge -r, \; v(z_3) \ge -(r+i), \;
+    v(z_1^2 + z_2^2 \eps) \ge -(r+i). \]
+  Assume $i \le r$ henceforth.
   The condition for $z_1$ and $z_2$ then really says
-  \[ \min(v(z_1), v(z_2)) \ge -\left\lfloor \frac{m+i}{2} \right\rfloor. \]
+  \[ \min(v(z_1), v(z_2)) \ge -\left\lfloor \frac{r+i}{2} \right\rfloor. \]
   So the integral factors as a triple integral
   \[
     \int_{z_1 \in F}
     \int_{z_2 \in F}
     \int_{z_3 \in F}
-    \mathbf{1}_{\varpi^{-\left\lfloor \frac{m+i}{2} \right\rfloor} \OO_F}(z_1)
-    \mathbf{1}_{\varpi^{-\left\lfloor \frac{m+i}{2} \right\rfloor} \OO_F}(z_2)
-    \mathbf{1}_{\varpi^{-(m+i)} \OO_F}(z_3)
+    \mathbf{1}_{\varpi^{-\left\lfloor \frac{r+i}{2} \right\rfloor} \OO_F}(z_1)
+    \mathbf{1}_{\varpi^{-\left\lfloor \frac{r+i}{2} \right\rfloor} \OO_F}(z_2)
+    \mathbf{1}_{\varpi^{-(r+i)} \OO_F}(z_3)
     \odif{z_1,z_2,z_3}
   \]
   which is equal to
-  \[ q^{2\left\lfloor \frac{m+i}{2} \right\rfloor+m+i}. \]
+  \[ q^{2\left\lfloor \frac{r+i}{2} \right\rfloor+r+i}. \]
   Meanwhile, $\delta(\nu(\varpi))^{\half} = q^{-2i}$.
   In summary,
   \[
-    \Sat\left( \mathbf{1}_{\varpi^{-m} \Mat_3(\OO_E) \cap G}\right) \left( \nu(\varpi) \right)
+    \Sat\left( \mathbf{1}_{\varpi^{-r} \Mat_3(\OO_E) \cap G}\right) \left( \nu(\varpi) \right)
     =
     \begin{cases}
-      q^{2\left\lfloor \frac{m+i}{2} \right\rfloor - i + m} & i \le m \\
-      0 & i > m
+      q^{2\left\lfloor \frac{r+i}{2} \right\rfloor - i + r} & i \le r \\
+      0 & i > r
     \end{cases}
   \]
   Finally, since
-  \[ 2\left\lfloor \frac{m+i}{2} \right\rfloor - i + m
+  \[ 2\left\lfloor \frac{r+i}{2} \right\rfloor - i + r
     = \begin{cases}
-      2m & m+i \text{ is even} \\
-      2m-1 & m+i \text{ is odd}
+      2r & r+i \text{ is even} \\
+      2r-1 & r+i \text{ is odd}
     \end{cases}
   \]
   we get the formula claimed.
@@ -516,70 +516,70 @@ rather than determining the exact coset $K'\varpi^{(n_1, n_2, n_3)}K'$).
 
 \section{Base change from $\HH(G,K)$ to $\HH(S_3(F), K')$}
 We first need to determine an element of $\HH(G,K)$
-which is in the pre-image of $\mathbf{1}_{\varpi^{-m} \Mat_3(\OO_E) \cap G}$
+which is in the pre-image of $\mathbf{1}_{\varpi^{-r} \Mat_3(\OO_E) \cap G}$
 under $\BC \colon \HH(G', K') \to \HH(G, K)$.
 
 For convenience, we define the shorthand
 \[
   \HH(G',K') \ni
-  f'_m \coloneqq \begin{cases}
-    \mathbf{1}_{\Mat_3(\OO_E), v \circ \det = m} & m \ge 0 \\
-    0 & m < 0
+  f'_r \coloneqq \begin{cases}
+    \mathbf{1}_{\Mat_3(\OO_E), v \circ \det = r} & r \ge 0 \\
+    0 & r < 0
   \end{cases}
 \]
-for every integer $m$.
+for every integer $r$.
 We start with the following intermediate calculation.
 \begin{align*}
-  &\BC\left( \Sat \left( f'_m - q^2 f'_{m-1} \right) \right) \\
+  &\BC\left( \Sat \left( f'_r - q^2 f'_{r-1} \right) \right) \\
   &= \BC \left(
-    q^{2m} \sum_{n_1+n_2+n_3=m} X_1^{n_1} X_2^{n_2} X_3^{n_3}
-    - q^2 \cdot q^{2(m-1)} \sum_{n_1+n_2+n_3=(m-1)} X_1^{n_1} X_2^{n_2} X_3^{n_3} \right) \\
-  &= q^{2m} \left( \sum_{n_1+n_2+n_3=m} Y_1^{n_1-n_3} - \sum_{n_1+n_2+n_3=(m-1)} Y_1^{n_1-n_3} \right) \\
-  &= q^{2m} \left( \sum_{n_1+n_3=m} Y_1^{n_1-n_3} \right) \\
-  &= q^{2m} \left( Y_1^{m} + Y_1^{m-2} + \dots + Y_1^{-m} \right).
-  \intertext{Replacing $m$ with $m-1$ gives}
-  &\BC\left( \Sat \left(f'_{m-1} - q^2 f'_{m-2} \right) \right) \\
-  &= q^{2m-2} \left( Y_1^{m-1} + Y_1^{m-3} + \dots + Y_1^{-(m-1)} \right)
+    q^{2r} \sum_{n_1+n_2+n_3=r} X_1^{n_1} X_2^{n_2} X_3^{n_3}
+    - q^2 \cdot q^{2(r-1)} \sum_{n_1+n_2+n_3=(r-1)} X_1^{n_1} X_2^{n_2} X_3^{n_3} \right) \\
+  &= q^{2r} \left( \sum_{n_1+n_2+n_3=r} Y_1^{n_1-n_3} - \sum_{n_1+n_2+n_3=(r-1)} Y_1^{n_1-n_3} \right) \\
+  &= q^{2r} \left( \sum_{n_1+n_3=r} Y_1^{n_1-n_3} \right) \\
+  &= q^{2r} \left( Y_1^{r} + Y_1^{r-2} + \dots + Y_1^{-r} \right).
+  \intertext{Replacing $r$ with $r-1$ gives}
+  &\BC\left( \Sat \left(f'_{r-1} - q^2 f'_{r-2} \right) \right) \\
+  &= q^{2r-2} \left( Y_1^{r-1} + Y_1^{r-3} + \dots + Y_1^{-(r-1)} \right)
   \intertext{Adding the former equation to $q$ times the latter gives}
-  &\BC\left( \Sat\left( f'_m + (q-q^2) f'_{m-1} - q^3 f'_{m-2} \right) \right) \\
-  &= q^{2m} \left( Y_1^m + Y_1^{m-2} + \dots + Y_1^{-m} \right)
-  + q^{2m-1} \left( Y_1^{m-1} + Y_1^{m-3} + \dots + Y_1^{-(m-1)} \right) \\
-  &= \Sat(\mathbf{1}_{\varpi^{-m} \Mat_3(\OO_E) \cap G}).
+  &\BC\left( \Sat\left( f'_r + (q-q^2) f'_{r-1} - q^3 f'_{r-2} \right) \right) \\
+  &= q^{2r} \left( Y_1^r + Y_1^{r-2} + \dots + Y_1^{-r} \right)
+  + q^{2r-1} \left( Y_1^{r-1} + Y_1^{r-3} + \dots + Y_1^{-(r-1)} \right) \\
+  &= \Sat(\mathbf{1}_{\varpi^{-r} \Mat_3(\OO_E) \cap G}).
 \end{align*}
-This shows that $f'_m + (q-q^2) f'_{m-1} - q^3 f'_{m-2}$ lies in the
+This shows that $f'_r + (q-q^2) f'_{r-1} - q^3 f'_{r-2}$ lies in the
 pre-image of $\BC \colon \HH(G', K') \to \HH(G,K)$.
 
 On the other hand, it is easy to check that
 \begin{align*}
-  &r_\ast(f'_m -q^2 f'_{m-1}) \\
-  &= \sum_{j=0}^m \Bigg[
-      \sum_{i=0}^{2(m-j)} \min \left( 1 + \left\lfloor \frac i2 \right\rfloor,
-      1 + \left\lfloor \frac{2(m-j)-i}{2} \right\rfloor \right) q^i \\
-  &\qquad - \sum_{i=0}^{2(m-1-j)} \min \left( 1 + \left\lfloor \frac i2 \right\rfloor,
-    1 + \left\lfloor \frac{2((m-1)-j)-i}{2} \right\rfloor \right) q^{i+2}
+  &r_\ast(f'_r -q^2 f'_{r-1}) \\
+  &= \sum_{j=0}^r \Bigg[
+      \sum_{i=0}^{2(r-j)} \min \left( 1 + \left\lfloor \frac i2 \right\rfloor,
+      1 + \left\lfloor \frac{2(r-j)-i}{2} \right\rfloor \right) q^i \\
+  &\qquad - \sum_{i=0}^{2(r-1-j)} \min \left( 1 + \left\lfloor \frac i2 \right\rfloor,
+    1 + \left\lfloor \frac{2((r-1)-j)-i}{2} \right\rfloor \right) q^{i+2}
   \Bigg] \mathbf{1}_{K'_{S,j}} \\
-  &= \sum_{j=0}^m \left[ 1+q+q^2+\dots+q^{m-j} \right] \mathbf{1}_{K'_{S,j}} \\
+  &= \sum_{j=0}^r \left[ 1+q+q^2+\dots+q^{r-j} \right] \mathbf{1}_{K'_{S,j}} \\
   \intertext{so}
-  &r_\ast(f'_m -q^2 f'_{m-1} + q \left( f'_{m-1} - q^2 f'_{m-3} \right)) \\
-  &= \sum_{j=0}^m \left[ (1+q+q^2+\dots+q^{m-j})+(q+q^2+\dots+q^{m-j}) \right] \mathbf{1}_{K'_{S,j}} \\
-  &= \sum_{j=0}^m \left[ 1 + 2q + 2q^2 + \dots + 2q^{m-j} \right] \mathbf{1}_{K'_{S,j}}.
+  &r_\ast(f'_r -q^2 f'_{r-1} + q \left( f'_{r-1} - q^2 f'_{r-3} \right)) \\
+  &= \sum_{j=0}^r \left[ (1+q+q^2+\dots+q^{r-j})+(q+q^2+\dots+q^{r-j}) \right] \mathbf{1}_{K'_{S,j}} \\
+  &= \sum_{j=0}^r \left[ 1 + 2q + 2q^2 + \dots + 2q^{r-j} \right] \mathbf{1}_{K'_{S,j}}.
 \end{align*}
 To summarize, the completed commutative diagram can be written in full as
 \begin{center}
 \begin{tikzcd}
-  & \begin{tabular}{c} $f'_m + (q-q^2) f'_{m-1}$ \\ $- q^3 f'_{m-2} \in \HH(G',K')$ \end{tabular}
+  & \begin{tabular}{c} $f'_r + (q-q^2) f'_{r-1}$ \\ $- q^3 f'_{r-2} \in \HH(G',K')$ \end{tabular}
     \ar[ld, "r_\ast"', mapsto] \ar[r, "\Sat", mapsto] \ar[d, "\BC", mapsto]
     & \dots \in \QQ[X_1^\pm, \dots, X_n^\pm]^{\Sym(n)} \ar[d, "\BC", mapsto] \\
   \begin{tabular}{c}
-    $\sum_{j=0}^m \big[ 1 + 2q + 2q^2$ \\
-    $+ \dots + 2q^{m-j} \big] \mathbf{1}_{K'_{S,j}}$ \\
+    $\sum_{j=0}^r \big[ 1 + 2q + 2q^2$ \\
+    $+ \dots + 2q^{r-j} \big] \mathbf{1}_{K'_{S,j}}$ \\
     $\in \HH(S_n(F), K')$
   \end{tabular} \ar[r, "\sim", "\BC_S"', mapsto]
-    & \begin{tabular}{c} $\mathbf{1}_{\varpi{^-m} \Mat_3(\OO_E) \cap G}$ \\ $\in \HH(G,K)$ \end{tabular}
+    & \begin{tabular}{c} $\mathbf{1}_{\varpi{^-r} \Mat_3(\OO_E) \cap G}$ \\ $\in \HH(G,K)$ \end{tabular}
     \ar[r, "\Sat", mapsto]
     & \begin{tabular}{r}
-      $q^{2m} \left( Y_1^{\pm} + \dotsb \right)$ \\
-      $+ q^{2m-1} \left( Y_1^{\pm(m-1)} + \dotsb \right)$ \\
+      $q^{2r} \left( Y_1^{\pm} + \dotsb \right)$ \\
+      $+ q^{2r-1} \left( Y_1^{\pm(r-1)} + \dotsb \right)$ \\
       $\in \QQ[Y_1^\pm, \dots, Y_n^\pm]^{W_m}$
       \end{tabular}
 \end{tikzcd}
@@ -590,25 +590,25 @@ Thus, we arrive at the following:
   We have
   \begin{align*}
     \BC_S \left(
-    \sum_{j=0}^m \left[ 1 + 2q + 2q^2 + \dots + 2q^{m-j} \right]
+    \sum_{j=0}^r \left[ 1 + 2q + 2q^2 + \dots + 2q^{r-j} \right]
     \mathbf{1}_{K'_{S,j}} \right)
-    &= \mathbf{1}_{\varpi^{-m} \Mat_3(\OO_E) \cap G} \\
+    &= \mathbf{1}_{\varpi^{-r} \Mat_3(\OO_E) \cap G} \\
     \BC_S \left(
-    \mathbf{1}_{K'_{S,m}}
-    + 2q \mathbf{1}_{K'_{S,m-1}}
-    + 2q^2 \mathbf{1}_{K'_{S,m-2}}
+    \mathbf{1}_{K'_{S,r}}
+    + 2q \mathbf{1}_{K'_{S,r-1}}
+    + 2q^2 \mathbf{1}_{K'_{S,r-2}}
     + \dots
-    + 2q^m \mathbf{1}_{K'_{S,0}} \right)
-    &= \mathbf{1}_{K\varpi^{(m,0,-m)}K}.
+    + 2q^r \mathbf{1}_{K'_{S,0}} \right)
+    &= \mathbf{1}_{K\varpi^{(r,0,-r)}K}.
   \end{align*}
 \end{proposition}
 \begin{proof}
   The first equation is the one we just proved.
   The second one follows by noting that
   \[
-    \mathbf{1}_{K\varpi^{(m,0,-m)}K}
-    = \mathbf{1}_{\varpi^{-m} \Mat_3(\OO_E) \cap G}
-    - \mathbf{1}_{\varpi^{-(m-1)} \Mat_3(\OO_E) \cap G}
+    \mathbf{1}_{K\varpi^{(r,0,-r)}K}
+    = \mathbf{1}_{\varpi^{-r} \Mat_3(\OO_E) \cap G}
+    - \mathbf{1}_{\varpi^{-(r-1)} \Mat_3(\OO_E) \cap G}
   \]
-  so one merely subtracts the left-hand sides evaluated at $m$ and $m-1$.
+  so one merely subtracts the left-hand sides evaluated at $r$ and $r-1$.
 \end{proof}
