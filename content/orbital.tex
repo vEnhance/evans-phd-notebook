@@ -36,13 +36,13 @@ One can equivalently define $K'_{S,m}$ to be the part of $S_3(F)$
 for which the most negative valuation among the nine entries is $-m$.
 
 For $r \geq 0$, define
-\[ \Omega_r \coloneqq S_3(F) \cap \varpi^{-m} \GL_3(\OO_E). \]
+\[ K'_{S, \le r} \coloneqq S_3(F) \cap \varpi^{-m} \GL_3(\OO_E). \]
 We can re-parametrize the problem according to the following claim.
 \begin{claim}
-  \[ \Omega_r = K'_{S,0} \sqcup K'_{S,1} \sqcup \dots \sqcup K'_{S,r}. \]
+  \[ K'_{S, \le r} = K'_{S,0} \sqcup K'_{S,1} \sqcup \dots \sqcup K'_{S,r}. \]
 \end{claim}
 If this claim is true (still need to check it),
-then an integral over each $\Omega_r$ lets us extract the integrals over $K'_{S,m}$.
+then an integral over each $K'_{S, \le r}$ lets us extract the integrals over $K'_{S,m}$.
 
 \subsection{Orbital integral}
 Define
@@ -57,8 +57,8 @@ Now we can define the orbital integral.
 \begin{definition}
   For brevity let $\eta(h') \coloneqq \eta(\det h')$ for $h' \in H'$.
   For $\gamma \in S_3(F)$ and $s \in \CC$, we define the orbital integral by
-  \[ O(\gamma, s) \coloneqq
-    \int_{g \in H'} \mathbf{1}_{\Omega_r}(\bar g\inv \gamma g) \eta(g)
+  \[ \Orb(\gamma, \phi, s) \coloneqq
+    \int_{g \in H'} \phi(\bar g\inv \gamma g) \eta(g)
     \left\lvert \det(g) \right\rvert_F^{-s} \odif g \]
   where
   \[ \odif g = \kappa \cdot \frac{\odif t_1 \odif t_2}
@@ -70,7 +70,7 @@ Indeed, for $h' \in H$ and $\gamma \in S_3(F)$ we have $h' \gamma (\bar h')\inv 
 and so the indicator function is filtering based on which part of the
 Cartan decomposition that $h' \gamma (\bar h')\inv$ falls in.
 
-Evidently $O(\gamma, s)$ only depends on the $H'$-orbit of $\gamma$.
+Evidently $\Orb(\gamma, \phi, s)$ only depends on the $H'$-orbit of $\gamma$.
 So it makes sense to pick a canonical representative for the $H'$-orbit to compute
 the orbital integral in terms of.
 For so-called \emph{regular} $\gamma$, the representatives
@@ -84,8 +84,11 @@ For so-called \emph{regular} $\gamma$, the representatives
 over all $a \in E^1$, $b \in E$, $d \in E$ for which $(1-d\bar d)^2 - c \bar c \neq 0$,
 cover all the \emph{regular} orbits, which are the ones we care about.
 
-For $r=0$, \cite{ref:AFL} computes $\pdv{}{s}O(\gamma,s)$ at $s=0$ in terms of $a$, $b$, $d$.
-Our goal is to compute it for $r > 0$ too.
+The paper \cite{ref:AFL} computes $\pdv{}{s}\Orb(\gamma, \mathbf{1}_{K'_S}, s)$ at $s=0$
+in terms of $a$, $b$, $d$.
+Our goal is to compute for
+\[ \pdv{}{s}\Orb(\gamma, \mathbf{1}_{K'_{S, \le r}}, s) \]
+at $s=0$ for any $r > 0$ as well.
 
 \section{Reparametrization in terms of valuations}
 \subsection{Computation of value in indicator function}
@@ -180,11 +183,11 @@ Then we actually have
 For brevity, we will let $\Gamma(\gamma, t, m)$ denote the right-hand matrix.
 The conjugation by
 $\left[ \begin{smallmatrix} \epsilon\inv \\ & \bar\epsilon\inv \\ & & 1 \end{smallmatrix} \right]$
-has no effect on any of the $\Omega_r$, so that we can simply use
-\[ \mathbf{1}_{\Omega_r}(\bar g \inv \gamma g) = \mathbf{1}_{\Omega_r}(\Gamma(\gamma, t, m)) \]
+has no effect on any of the $K'_{S, \le r}$, so that we can simply use
+\[ \mathbf{1}_{K'_{S, \le r}}(\bar g \inv \gamma g) = \mathbf{1}_{K'_{S, \le r}}(\Gamma(\gamma, t, m)) \]
 in the work that follows.
-By abuse of notation, we abbreviate
-\[ \mathbf{1}(\gamma, t, m) \coloneqq \mathbf{1}_{\Omega_r}(\Gamma(\gamma, t, m)). \]
+For brevity, we abbreviate
+\[ \mathbf{1}_r(\gamma, t, m) \coloneqq \mathbf{1}_{K'_{S, \le r}}(\Gamma(\gamma, t, m)). \]
 
 \subsection{Reparametrizing the integral in terms of $t$ and $m$}
 From now on, following \cite{ref:AFL} we always fix the notation
@@ -208,9 +211,10 @@ Meanwhile, from $t_2 = t \bar t_1$ we derive
 
 Bringing this all into the orbital integral gives
 \begin{align*}
-  O(\gamma, s) &= \kappa \int_{t, t_1 \in E} \mathbf{1}(\gamma, t, m)
+  \Orb(\gamma, \mathbf{1}_{K'_{S, \le r}} s)
+  &= \kappa \int_{t, t_1 \in E} \mathbf{1}_r(\gamma, t, m)
   (-1)^n \left( q^{2m-n} \right)^{s-2} \odif t_1 \cdot (q^{2m} \odif t) \\
-  &= \kappa \int_{t, t_1 \in E} \mathbf{1}(\gamma, t, m)
+  &= \kappa \int_{t, t_1 \in E} \mathbf{1}_r(\gamma, t, m)
   (-1)^n q^{s(2m-n)} \cdot q^{2n-2m} \odif t \odif t_1.
 \end{align*}
 
@@ -279,7 +283,7 @@ integral will be stated in terms of $\ell$, $\delta$, and $\lambda$ (and $r$).
 \begin{claim}
   Whenever $n = 0$ (this requires $v(t) \geq 0$),
   \[
-    \mathbf{1}(\gamma, t, m) =
+    \mathbf{1}_r(\gamma, t, m) =
     \begin{cases}
       1 & \text{if } -r \le m \le \delta+r \\
       0 & \text{otherwise.}
@@ -311,7 +315,7 @@ integral will be stated in terms of $\ell$, $\delta$, and $\lambda$ (and $r$).
 \begin{claim}
   Suppose $n = -2k < 0$, equivalently, $v(t) = -k < 0$, for some $k$.
   \[
-    \mathbf{1}(\gamma, t, m) =
+    \mathbf{1}_r(\gamma, t, m) =
     \begin{cases}
       1 & \text{if } -r \le m+k \le \delta+r \\
       0 & \text{otherwise.}
@@ -370,7 +374,7 @@ as $v\left( (2at-b)^2 - (b^2-4a\bar d) \right) \geq n-r$.
 In summary:
 \begin{claim}
   Assume $t$ is such that $n = v(1-t \bar t) > 0$.
-  Then $\mathbf{1}(\gamma, t, m) = 1$ if and only if
+  Then $\mathbf{1}_r(\gamma, t, m) = 1$ if and only if
   \[ n - r \leq m \leq n + \delta + r \]
   and $t$ lies in the set specified by
   \begin{align*}
@@ -427,7 +431,7 @@ We will also need to intersect two disks. In an ultrametric space, this is easy 
 \subsection{The case where $n > 0$, and $\ell$ is odd}
 Considering $n > 0$ and $n-r \le m \le n+\delta+r$ as fixed,
 we compute the volume of the set of $t$
-for which $n = v(1-t\bar t)$ and $\mathbf{1}(\gamma,t,m) = 1$.
+for which $n = v(1-t\bar t)$ and $\mathbf{1}_r(\gamma,t,m) = 1$.
 
 Supposing $\ell$ is odd, the condition
 \[ v\left( (2at-b)^2 - (b^2-4a\bar d) \right) \geq n-r \]
@@ -562,7 +566,7 @@ Notice that $m \leq \delta + r$ could only occur when $n \leq r$.
 \subsection{The case where $n > 0$, $\ell$ is even, $v(b)=v(d)=0$}
 As before we consider $n > 0$ and $n-r \le m \le n+\delta+r$ as fixed,
 and seek to compute the volume of the set of $t$
-for which $n = v(1-t\bar t)$ and $\mathbf{1}(\gamma,t,m) = 0$.
+for which $n = v(1-t\bar t)$ and $\mathbf{1}_r(\gamma,t,m) = 0$.
 
 Suppose $\ell$ is even.
 Then the left-hand side of \eqref{eq:dos} is a square, which we denote $\tau^2$.
@@ -702,14 +706,14 @@ so this case can never occur.
 \section{Evaluation of the integral}
 \subsection{Region where $n \leq 0$ for all values of $\ell$}
 \begin{proposition}
-  The contribution to the integral $O(\gamma,s)$ over $n \leq 0$ is exactly
+  The contribution to the integral $\Orb(\gamma, \mathbf{1}_{K'_{S, \le r}}, s)$ over $n \leq 0$ is exactly
   \[ I_{n \le 0} \coloneqq q^{2(\delta+r)s} \sum_{j=0}^{\delta+2r} q^{-2js}
     = q^{-2rs} + \dots + q^{2(\delta+r)s}. \]
 \end{proposition}
 \begin{proof}
   For $n = 0$ we get a contribution of
   \begin{align*}
-    &\phantom= \kappa \int_{t, t_1 \in E} \mathbf{1}(n=0) \mathbf{1}(\gamma,t,m)
+    &\phantom= \kappa \int_{t, t_1 \in E} \mathbf{1}[n=0] \mathbf{1}_r(\gamma,t,m)
       q^{2s \cdot m} q^{-2m} \odif t \odif t_1 \\
     &= \kappa \Vol(t: n =0) \sum_{m=-r}^{\delta+r} \Vol(t_1: -v(t_1)=m) q^{2m(s-1)} \\
     &= \kappa \left( 1 - \frac{q+1}{q^2} \right) \sum_{m=-r}^{\delta+r}
@@ -719,7 +723,7 @@ so this case can never occur.
   \end{align*}
   For the region where $v(t) = -k < 0$, for each individual $k > 0$,
   \begin{align*}
-    &\phantom= \kappa \int_{t, t_1 \in E} \mathbf{1}(v(t)=-k) \mathbf{1}(\gamma,t,m)
+    &\phantom= \kappa \int_{t, t_1 \in E} \mathbf{1}[v(t)=-k] \mathbf{1}_r(\gamma,t,m)
       q^{s(2m-n)} q^{2n-2m} \odif t \odif t_1 \\
     &= \kappa \Vol(t: v(t)=-k) \sum_{m=-r-k}^{\delta+r-k}
       \Vol(t_1: -v(t_1)=m) q^{s(2m+2k)-4k-2m} \\
@@ -748,7 +752,7 @@ Again using $\Vol(t_1:-v(t_1)=m) = q^{2m} (1-q^{-2})$,
 summing all the cases gives
 \begin{align*}
   I_{n > 0}^{\text{odd}} &\coloneqq
-    \kappa \int_{t, t_1 \in E} \mathbf{1}(n > 0) \mathbf{1}(\gamma,t,m) \\
+    \kappa \int_{t, t_1 \in E} \mathbf{1}[n > 0] \mathbf{1}_r(\gamma,t,m) \\
   % -----------------------------------------------------------
   &= \kappa \sum_{n=1}^{r}
     \sum_{m=n-r}^{\left\lceil \frac{n-r}{2} \right\rceil+\delta+r-1}
@@ -1067,12 +1071,12 @@ Indeed,
   and it is of the desired form.
 \end{itemize}
 
-Therefore, the orbital integral can be expressed succincitly in the following way.
+Therefore, the orbital integral can be expressed succinctly in the following way.
 \begin{theorem}
-  [Orbital integral in the odd case]
-  Under the assumptions before, the orbital integral is given by
+  [Orbital integral in the odd case for $\mathbf{1}_{K'_{S, \le r}}$]
+  Under the assumptions before, for any $r \ge 0$ we have the formula
   \[
-    O(\gamma, \mathbf{1}_{\Omega_r}, s)
+    \Orb(\gamma, \mathbf{1}_{K'_{S, \le r}}, s)
     = \sum_{k = -2r}^{2\delta + \ell + 2r}
     (-1)^k \left( 1 + q + q^2 + \dots + q^{\nn_{\gamma}(k)}  \right) (q^s)^k
   \]
@@ -1088,5 +1092,85 @@ Therefore, the orbital integral can be expressed succincitly in the following wa
     \end{cases}
   \]
 \end{theorem}
+From the identity
+\[
+  \Orb(\gamma, \mathbf{1}_{K'_{S, r}}, s)
+  = \Orb(\gamma, \mathbf{1}_{K'_{S, \le r}}, s)
+  - \Orb(\gamma, \mathbf{1}_{K'_{S, \le (r-1)}}, s)
+\]
+we can then write the following equivalent formulation.
+\begin{theorem}
+  [Orbital integral in the odd case for $\mathbf{1}_{K'_{S,r}}$]
+  Retaining the setting of the previous theorem, we have for any $r \ge 1$ the formula
+  \[
+    \Orb(\gamma, \mathbf{1}_{K'_{S, r}}, s)
+    = \sum_{k = -2r}^{2\delta + \ell + 2r}
+    (-1)^k q^{\nn_{\gamma}(k)}
+    (1+q^{-1})^{\mathbf{1}[k \in \mathcal I_{\gamma, r}]}
+    (q^s)^k
+  \]
+  where $\mathcal I_{\gamma, r}$ is the set of indices defined by
+  \begin{align*}
+    \mathcal{I}_{\gamma, r}
+    &\coloneqq \left\{ -(2r-1), -(2r-2), -(2r-3), \dots, -(r+1) \right\} \\
+    &\sqcup \{-r, -r+2, -r+4 \dots, -r+\ell-1 \} \\
+    &\sqcup \{ 2\delta+r+1, 2\delta+r+3, ...2\delta+r+1, 2\delta+r+3, \dots, 2\delta+\ell+r \} \\
+    &\sqcup \{ 2\delta+\ell+r+1, 2\delta+\ell+r+2, \dots, 2\delta+\ell+2r-1 \}.
+  \end{align*}
+\end{theorem}
+
+\begin{example}
+  If $r=3$, $\ell=5$, and $\delta=100$, the formulas above read
+  \begin{align*}
+  \Orb(\gamma, \mathbf{1}_{K'_{S, \le 2}}, s)
+  &= q^{-6s} \\
+  &- (q+1) \cdot q^{-5s} \\
+  &+ (q^2+q+1) \cdot q^{-4s} \\
+  &- (q^3+q^2+q+1) \cdot q^{-3s} \\
+  &+ (q^3+q^2+q+1) \cdot q^{-2s} \\
+  &- (q^4+q^3+q^2+q+1) \cdot q^{-s} \\
+  &+ (q^4+q^3+q^2+q+1) \cdot q^{0} \\
+  &- (q^5+q^4+q^3+q^2+q+1) \cdot q^{s} \\
+  &+ (q^5+q^4+q^3+q^2+q+1) \cdot q^{2s} \\
+  &\vdotswithin= \\
+  &+ (q^5+q^4+q^3+q^2+q+1) \cdot q^{204s} \\
+  &- (q^4+q^3+q^2+q+1) \cdot q^{205s} \\
+  &+ (q^4+q^3+q^2+q+1) \cdot q^{206s} \\
+  &- (q^3+q^2+q+1) \cdot q^{207s} \\
+  &+ (q^3+q^2+q+1) \cdot q^{208s} \\
+  &- (q^2+q+1) \cdot q^{209s} \\
+  &+ (q+1) \cdot q^{210s} \\
+  &- q^{211s}.
+  \end{align*}
+  In the ellipses, all the omitted terms
+  have the same coefficient $q^5+q^4+q^3+q^2+q+1$
+  and alternate sign.
+\end{example}
+
+\begin{example}
+  Continuing the previous example with
+  $r=3$, $\ell=5$, and $\delta=100$, we have
+  \begin{align*}
+  \Orb(\gamma, \mathbf{1}_{K'_{S, 2}}, s)
+  &= q^{-6s} \\
+  &- (q+1) \cdot q^{-5s}
+  + (q^2+q) \cdot q^{-4s}
+  - (q^3+q^2) \cdot q^{-3s} \\
+  &+ q^3 \cdot q^{-2s}
+  - (q^4+q^3) \cdot q^{-s}
+  + q^4 \cdot q^{0}
+  - (q^5+q^4) \cdot q^{s} \\
+  &+ q^5 \cdot \Big( q^{2s} - q^{3s} + q^{4s} - q^{5s} + q^{6s} - \dots + q^{202s} - q^{203s} \Big) \\
+  &+ (q^5+q^4) \cdot q^{204s}
+  - q^4 \cdot q^{205s}
+  + (q^4+q^3) \cdot q^{206s}
+  - q^3 \cdot q^{207s} \\
+  &+ (q^3+q^2) \cdot q^{208s}
+  - (q^2+q) \cdot q^{209s}
+  + (q+1) \cdot q^{210s} \\
+  &- q^{211s}.
+  \end{align*}
+\end{example}
+
 
 \subsection{Region where $n > 0$ for even $\ell$}
