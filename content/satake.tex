@@ -80,8 +80,8 @@ Moving forward we also fix the following notation:
   \ii The symmetric space
   \[ S_n(F) \coloneqq \left\{ g \in \GL_n(E) \mid g \bar g = \id_n \right\}. \]
   is the obvious generalization of $S_3(F)$ defined in \Cref{sec:orbital_background}.
-  \ii Denote by $r \colon G' \surjto S_n(F)$ the projection defined by
-  \[ r(g) \coloneqq g \bar{g}\inv. \]
+  \ii Denote by $\rproj \colon G' \surjto S_n(F)$ the projection defined by
+  \[ \rproj(g) \coloneqq g \bar{g}\inv. \]
   \ii $K'_S \coloneqq S_n(F) \cap \GL_n(\OO_F)$ is as before.
   \ii $\Sym(n)$ denotes the symmetric group in $n$ variables with order $n!$
   (since $S_n$ is already reserved for the symmetric space).
@@ -103,16 +103,16 @@ this is an $\HH(G', K')$-module.
 This does \textbf{not} have a multiplication structure at the moment, \emph{a priori},
 although later we will see how one could be imposed.
 
-Our prior map $r \colon G' \surjto S_n(F)$ induces a map
+Our prior map $\rproj \colon G' \surjto S_n(F)$ induces a map
 \begin{align*}
-  r_\ast \colon \HH(G', K') &\to \HH(S_n(F), K') \\
-  r_\ast(f')\left( g\bar{g}\inv \right) &= \int_{\GL_n(F)} f'(gh) \odif h
+  \rproj_\ast \colon \HH(G', K') &\to \HH(S_n(F), K') \\
+  \rproj_\ast(f')\left( g\bar{g}\inv \right) &= \int_{\GL_n(F)} f'(gh) \odif h
 \end{align*}
 by integration on the fibers.
 %However, in our setting we actually consider a twisted version
 %\begin{align*}
-%  r_\ast^\eta \colon \HH(G', K') &\to \HH(S_n(F), K') \\
-%  r_\ast^\eta(f')\left( g\bar{g}\inv \right) &= \int_{\GL_n(F)} f'(gh) \eta(gh) \odif h
+%  \rproj_\ast^\eta \colon \HH(G', K') &\to \HH(S_n(F), K') \\
+%  \rproj_\ast^\eta(f')\left( g\bar{g}\inv \right) &= \int_{\GL_n(F)} f'(gh) \eta(gh) \odif h
 %\end{align*}
 %where as before $\eta(g) = (-1)^{v(\det g)}$ in a slight abuse of notation.
 
@@ -206,7 +206,7 @@ We don't have to twist since $n$ is odd.
 \subsection{Overall picture}
 \begin{center}
 \begin{tikzcd}
-  & \HH(G',K') \ar[ld, "r_\ast"'] \ar[r, "\sim"', "\Sat"] \ar[d, "\BC"]
+  & \HH(G',K') \ar[ld, "\rproj_\ast"'] \ar[r, "\sim"', "\Sat"] \ar[d, "\BC"]
     & \QQ[X_1^\pm, \dots, X_n^\pm]^{\Sym(n)} \ar[d, "\BC"] \\
   \HH(S_n(F), K') \ar[r, "\sim"', "\BC_S"]
     & \HH(G,K) \ar[r, "\sim"', "\Sat"]
@@ -233,7 +233,7 @@ have a canonical basis of indicator functions indexed by $\ZZ$:
 On the other hand, the natural $\QQ$-module basis for $\HH(G', K')$, namely
 \[ \mathbf{1}_{K'\varpi^{(n_1, n_2, n_3)}K'} \]
 is given by triples of integers $n_1 \ge n_2 \ge n_3 \ge 0$, and is much larger.
-So explicit calculations for the $r_\ast$ or the Satake transforms viewed in
+So explicit calculations for the $\rproj_\ast$ or the Satake transforms viewed in
 $\CC[X_1, X_2, X_3]^{\Sym(n)}$ is nontrivial if one works with the entire basis.
 Hence the overall strategy, to reduce the amount of work we have to do,
 is to focus on on the only the $\ZZ$-indexed elements
@@ -253,7 +253,7 @@ rather than determining the exact coset $K'\varpi^{(n_1, n_2, n_3)}K'$).
 \begin{proposition}
   For every integer $r \ge 0$, we have
   \begin{align*}
-    &r_\ast(\mathbf{1}_{\Mat_3(\OO_E), v\circ\det=r}) \\
+    &\rproj_\ast(\mathbf{1}_{\Mat_3(\OO_E), v\circ\det=r}) \\
     &= \sum_{j=0}^r \left(
       \sum_{i=0}^{2(r-j)} \min \left( 1 + \left\lfloor \frac i2 \right\rfloor,
         1 + \left\lfloor \frac{2(r-j)-i}{2} \right\rfloor \right) q^i \right)
@@ -288,7 +288,7 @@ rather than determining the exact coset $K'\varpi^{(n_1, n_2, n_3)}K'$).
 
   Having chosen the representative $g$, we aim to calculate the right-hand side of
   \[
-    r_\ast(\mathbf{1}_{\Mat_3(\OO_E), v\circ\det=r})(g\bar{g})
+    \rproj_\ast(\mathbf{1}_{\Mat_3(\OO_E), v\circ\det=r})(g\bar{g})
     = \int_{h \in \GL_3(F)} \mathbf{1}_{\Mat_3(\OO_E), v\circ\det=r}(gh) \odif h.
   \]
   We take an Iwasawa decomposition of $h \in \GL_3(F)$ as
@@ -326,10 +326,10 @@ rather than determining the exact coset $K'\varpi^{(n_1, n_2, n_3)}K'$).
     \end{bmatrix}
     k.
   \end{align*}
-  Hence, we can rewrite the $r_\ast(\mathbf{1}_{\Mat_3(\OO_E), v\circ\det=r})$
+  Hence, we can rewrite the $\rproj_\ast(\mathbf{1}_{\Mat_3(\OO_E), v\circ\det=r})$
   as a six-fold integral
   \begin{align*}
-    r_\ast(\mathbf{1}_{\Mat_3(\OO_E), v\circ\det=r}) =
+    \rproj_\ast(\mathbf{1}_{\Mat_3(\OO_E), v\circ\det=r}) =
     & \int_{x_1 \in F^\times} \int_{x_2 \in F^\times} \int_{x_3 \in F^\times}
     \int_{y_1 \in F} \int_{y_2 \in F} \int_{y_3 \in F} \\
     &\quad \mathbf{1}_{\Mat_3(\OO_E), v\circ\det=r} \left(
@@ -551,7 +551,7 @@ pre-image of $\BC \colon \HH(G', K') \to \HH(G,K)$.
 
 On the other hand, it is easy to check that
 \begin{align*}
-  &r_\ast(f'_r -q^2 f'_{r-1}) \\
+  &\rproj_\ast(f'_r -q^2 f'_{r-1}) \\
   &= \sum_{j=0}^r \Bigg[
       \sum_{i=0}^{2(r-j)} \min \left( 1 + \left\lfloor \frac i2 \right\rfloor,
       1 + \left\lfloor \frac{2(r-j)-i}{2} \right\rfloor \right) q^i \\
@@ -560,7 +560,7 @@ On the other hand, it is easy to check that
   \Bigg] \mathbf{1}_{K'_{S,j}} \\
   &= \sum_{j=0}^r \left[ 1+q+q^2+\dots+q^{r-j} \right] \mathbf{1}_{K'_{S,j}} \\
   \intertext{so}
-  &r_\ast(f'_r -q^2 f'_{r-1} + q \left( f'_{r-1} - q^2 f'_{r-3} \right)) \\
+  &\rproj_\ast(f'_r -q^2 f'_{r-1} + q \left( f'_{r-1} - q^2 f'_{r-3} \right)) \\
   &= \sum_{j=0}^r \left[ (1+q+q^2+\dots+q^{r-j})+(q+q^2+\dots+q^{r-j}) \right] \mathbf{1}_{K'_{S,j}} \\
   &= \sum_{j=0}^r \left[ 1 + 2q + 2q^2 + \dots + 2q^{r-j} \right] \mathbf{1}_{K'_{S,j}}.
 \end{align*}
@@ -568,7 +568,7 @@ To summarize, the completed commutative diagram can be written in full as
 \begin{center}
 \begin{tikzcd}
   & \begin{tabular}{c} $f'_r + (q-q^2) f'_{r-1}$ \\ $- q^3 f'_{r-2} \in \HH(G',K')$ \end{tabular}
-    \ar[ld, "r_\ast"', mapsto] \ar[r, "\Sat", mapsto] \ar[d, "\BC", mapsto]
+    \ar[ld, "\rproj_\ast"', mapsto] \ar[r, "\Sat", mapsto] \ar[d, "\BC", mapsto]
     & \dots \in \QQ[X_1^\pm, \dots, X_n^\pm]^{\Sym(n)} \ar[d, "\BC", mapsto] \\
   \begin{tabular}{c}
     $\sum_{j=0}^r \big[ 1 + 2q + 2q^2$ \\
