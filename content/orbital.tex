@@ -187,7 +187,7 @@ has no effect on any of the $K'_{S, \le r}$, so that we can simply use
 \[ \mathbf{1}_{K'_{S, \le r}}(\bar g \inv \gamma g) = \mathbf{1}_{K'_{S, \le r}}(\Gamma(\gamma, t, m)) \]
 in the work that follows.
 For brevity, we abbreviate
-\[ \mathbf{1}_r(\gamma, t, m) \coloneqq \mathbf{1}_{K'_{S, \le r}}(\Gamma(\gamma, t, m)). \]
+\[ \mathbf{1}_{\le r}(\gamma, t, m) \coloneqq \mathbf{1}_{K'_{S, \le r}}(\Gamma(\gamma, t, m)). \]
 
 \subsection{Reparametrizing the integral in terms of $t$ and $m$}
 From now on, following \cite{ref:AFL} we always fix the notation
@@ -212,9 +212,9 @@ Meanwhile, from $t_2 = t \bar t_1$ we derive
 Bringing this all into the orbital integral gives
 \begin{align*}
   \Orb(\gamma, \mathbf{1}_{K'_{S, \le r}} s)
-  &= \kappa \int_{t, t_1 \in E} \mathbf{1}_r(\gamma, t, m)
+  &= \kappa \int_{t, t_1 \in E} \mathbf{1}_{\le r}(\gamma, t, m)
   (-1)^n \left( q^{2m-n} \right)^{s-2} \odif t_1 \cdot (q^{2m} \odif t) \\
-  &= \kappa \int_{t, t_1 \in E} \mathbf{1}_r(\gamma, t, m)
+  &= \kappa \int_{t, t_1 \in E} \mathbf{1}_{\le r}(\gamma, t, m)
   (-1)^n q^{s(2m-n)} \cdot q^{2n-2m} \odif t \odif t_1.
 \end{align*}
 
@@ -283,7 +283,7 @@ integral will be stated in terms of $\ell$, $\delta$, and $\lambda$ (and $r$).
 \begin{claim}
   Whenever $n = 0$ (this requires $v(t) \geq 0$),
   \[
-    \mathbf{1}_r(\gamma, t, m) =
+    \mathbf{1}_{\le r}(\gamma, t, m) =
     \begin{cases}
       1 & \text{if } -r \le m \le \delta+r \\
       0 & \text{otherwise.}
@@ -315,7 +315,7 @@ integral will be stated in terms of $\ell$, $\delta$, and $\lambda$ (and $r$).
 \begin{claim}
   Suppose $n = -2k < 0$, equivalently, $v(t) = -k < 0$, for some $k$.
   \[
-    \mathbf{1}_r(\gamma, t, m) =
+    \mathbf{1}_{\le r}(\gamma, t, m) =
     \begin{cases}
       1 & \text{if } -r \le m+k \le \delta+r \\
       0 & \text{otherwise.}
@@ -374,7 +374,7 @@ as $v\left( (2at-b)^2 - (b^2-4a\bar d) \right) \geq n-r$.
 In summary:
 \begin{claim}
   Assume $t$ is such that $n = v(1-t \bar t) > 0$.
-  Then $\mathbf{1}_r(\gamma, t, m) = 1$ if and only if
+  Then $\mathbf{1}_{\le r}(\gamma, t, m) = 1$ if and only if
   \[ n - r \leq m \leq n + \delta + r \]
   and $t$ lies in the set specified by
   \begin{align*}
@@ -431,7 +431,7 @@ We will also need to intersect two disks. In an ultrametric space, this is easy 
 \subsection{The case where $n > 0$, and $\ell$ is odd}
 Considering $n > 0$ and $n-r \le m \le n+\delta+r$ as fixed,
 we compute the volume of the set of $t$
-for which $n = v(1-t\bar t)$ and $\mathbf{1}_r(\gamma,t,m) = 1$.
+for which $n = v(1-t\bar t)$ and $\mathbf{1}_{\le r}(\gamma,t,m) = 1$.
 
 Supposing $\ell$ is odd, the condition
 \[ v\left( (2at-b)^2 - (b^2-4a\bar d) \right) \geq n-r \]
@@ -566,7 +566,7 @@ Notice that $m \leq \delta + r$ could only occur when $n \leq r$.
 \subsection{The case where $n > 0$, $\ell$ is even, $v(b)=v(d)=0$}
 As before we consider $n > 0$ and $n-r \le m \le n+\delta+r$ as fixed,
 and seek to compute the volume of the set of $t$
-for which $n = v(1-t\bar t)$ and $\mathbf{1}_r(\gamma,t,m) = 0$.
+for which $n = v(1-t\bar t)$ and $\mathbf{1}_{\le r}(\gamma,t,m) = 0$.
 
 Suppose $\ell$ is even.
 Then the left-hand side of \eqref{eq:dos} is a square, which we denote $\tau^2$.
@@ -713,7 +713,7 @@ so this case can never occur.
 \begin{proof}
   For $n = 0$ we get a contribution of
   \begin{align*}
-    &\phantom= \kappa \int_{t, t_1 \in E} \mathbf{1}[n=0] \mathbf{1}_r(\gamma,t,m)
+    &\phantom= \kappa \int_{t, t_1 \in E} \mathbf{1}[n=0] \mathbf{1}_{\le r}(\gamma,t,m)
       q^{2s \cdot m} q^{-2m} \odif t \odif t_1 \\
     &= \kappa \Vol(t: n =0) \sum_{m=-r}^{\delta+r} \Vol(t_1: -v(t_1)=m) q^{2m(s-1)} \\
     &= \kappa \left( 1 - \frac{q+1}{q^2} \right) \sum_{m=-r}^{\delta+r}
@@ -723,7 +723,7 @@ so this case can never occur.
   \end{align*}
   For the region where $v(t) = -k < 0$, for each individual $k > 0$,
   \begin{align*}
-    &\phantom= \kappa \int_{t, t_1 \in E} \mathbf{1}[v(t)=-k] \mathbf{1}_r(\gamma,t,m)
+    &\phantom= \kappa \int_{t, t_1 \in E} \mathbf{1}[v(t)=-k] \mathbf{1}_{\le r}(\gamma,t,m)
       q^{s(2m-n)} q^{2n-2m} \odif t \odif t_1 \\
     &= \kappa \Vol(t: v(t)=-k) \sum_{m=-r-k}^{\delta+r-k}
       \Vol(t_1: -v(t_1)=m) q^{s(2m+2k)-4k-2m} \\
@@ -752,7 +752,7 @@ Again using $\Vol(t_1:-v(t_1)=m) = q^{2m} (1-q^{-2})$,
 summing all the cases gives
 \begin{align*}
   I_{n > 0}^{\text{odd}} &\coloneqq
-    \kappa \int_{t, t_1 \in E} \mathbf{1}[n > 0] \mathbf{1}_r(\gamma,t,m) \\
+    \kappa \int_{t, t_1 \in E} \mathbf{1}[n > 0] \mathbf{1}_{\le r}(\gamma,t,m) \\
   % -----------------------------------------------------------
   &= \kappa \sum_{n=1}^{r}
     \sum_{m=n-r}^{\left\lceil \frac{n-r}{2} \right\rceil+\delta+r-1}
