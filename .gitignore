@@ -1,5 +1,7 @@
 main-[0-9].asy
 main-[0-9].pdf
+main-[0-9][0-9].asy
+main-[0-9][0-9].pdf
 main.asy
 main.pdf
 main.aux
@@ -14,3 +16,7 @@ main.toc
 **.aux
 
 working.*
+working-[0-9].asy
+working-[0-9].pdf
+working-[0-9][0-9].asy
+working-[0-9][0-9].pdf

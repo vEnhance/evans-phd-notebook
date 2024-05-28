@@ -434,6 +434,27 @@ We will also need to intersect two disks. In an ultrametric space, this is easy 
   since $\xi_1 \in D_1$.
 \end{proof}
 
+\begin{center}
+\begin{asy}
+  defaultpen(fontsize(12pt));
+  size(7cm);
+  pair O1 = 0.57*dir(-30);
+  pair O2 = origin;
+  real r1 = 0.4;
+  real r2 = 1;
+  filldraw(circle(O2, r2), rgb(0.9, 0.9, 0.9));
+  filldraw(circle(O1, r1), rgb(0.8, 0.8, 0.9));
+  pair P1 = O1+r1*dir(230);
+  pair P2 = O2+r2*dir( 70);
+  draw(O1--P1);
+  draw(O2--P2);
+  dot("$\xi_1$", O1, dir(90));
+  dot("$\xi_2$", O2, dir(180));
+  label("$\rho_1$", midpoint(O1--P1), dir(P1-O1)*dir(90));
+  label("$\rho_2$", midpoint(O2--P2), dir(P2-O2)*dir(90));
+\end{asy}
+\end{center}
+
 \subsection{The case where $n > 0$, and $\ell$ is odd}
 Considering $n > 0$ and $n-r \le m \le n+\delta+r$ as fixed,
 we compute the volume of the set of $t$
@@ -651,6 +672,24 @@ So this equation can be whittled down to
 Each $(m,n)$ gives a volume contribution of
 \[ q^{-n - (n - \ell/2 - r)} \left( 1 - q\inv \right). \]
 
+\paragraph{Case $2^+$.}
+Suppose $m \ge n - \frac{\ell}{2} + \delta$, and we choose $\frac{b+\tau}{2a}$.
+Then the contribution is nonempty if and only if
+\begin{align*}
+  \lambda &\geq m - \delta - r \\
+  \lambda - \ell/2 = v(au-\bar d \bar u + \tau) & \geq n - \frac{\ell}{2} - r.
+\end{align*}
+Rearranging gives that the valid pairs $(m,n)$ are those for which
+\begin{equation}
+  \begin{aligned}
+    \max(1, \ell+r+1) &\leq n \leq \lambda + r \\
+    \max\left( n-r, n - \frac{\ell}{2} + \delta \right) &\leq m \leq \min(n, \lambda) + r + \delta.
+  \end{aligned}
+  \label{eq:even_case2_plus}
+\end{equation}
+Here, each $(m,n)$ gives a volume contribution of
+\[ q^{-n - (m - \delta - r)} \left( 1 - q\inv \right). \]
+
 \paragraph{Case $1^-$.}
 Suppose $m < n - \frac{\ell}{2} + \delta$, and we choose $\frac{b-\tau}{2a}$.
 Then the disks have nonempty intersection whenever
@@ -679,26 +718,8 @@ So we can simplify this to
 As in the previous case, $(m,n)$ gives a volume contribution of
 \[ q^{-n - (n - \ell/2 - r)} \left( 1 - q\inv \right). \]
 
-\paragraph{Case $2^+$.}
-Suppose $m \ge n - \frac{\ell}{2} + \delta$, and we choose $\frac{b+\tau}{2a}$.
-Then the contribution is nonempty if and only if
-\begin{align*}
-  \lambda &\geq m - \delta - r \\
-  \lambda - \ell/2 = v(au-\bar d \bar u + \tau) & \geq n - \frac{\ell}{2} - r.
-\end{align*}
-Rearranging gives that the valid pairs $(m,n)$ are those for which
-\begin{equation}
-  \begin{aligned}
-    \max(1, \ell+r+1) &\leq n \leq \lambda + r \\
-    \max\left( n-r, n - \frac{\ell}{2} + \delta \right) &\leq m \leq \min(n, \lambda) + r + \delta.
-  \end{aligned}
-  \label{eq:even_case2_plus}
-\end{equation}
-Here, each $(m,n)$ gives a volume contribution of
-\[ q^{-n - (m - \delta - r)} \left( 1 - q\inv \right). \]
-
 \paragraph{Case $2^-$.}
-Suppose $m \geq n - \frac{\ell}{2} + \delta$, and we choose $\frac{b+\tau}{2a}$.
+Suppose $m \geq n - \frac{\ell}{2} + \delta$, and we choose $\frac{b-\tau}{2a}$.
 Then the disks have nonempty intersection whenever
 \begin{align*}
   \lambda &\geq m - \delta - r \\
