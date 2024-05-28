@@ -385,13 +385,6 @@ In summary:
 
 \subsection{Volume lemma}
 The following two lemmas will be useful.
-\begin{lemma}
-  Let $\xi \in \OO_E^\times$ and let $n \ge 1$.
-  Then the volume of the set
-  \[ \left\{ x \in E \mid v(1-x \bar x) = n, \right\} \]
-  equals
-  \[ q^{-n}(1-q^{-2}). \]
-\end{lemma}
 
 \begin{lemma}
   [{\cite[Lemma 4.4]{ref:AFL}}]
@@ -407,6 +400,19 @@ The following two lemmas will be useful.
   \]
   \label{lem:volume}
 \end{lemma}
+\begin{lemma}
+  Let $\xi \in \OO_E^\times$ and let $n \ge 1$.
+  Then the volume of the set
+  \[ \left\{ x \in E \mid v(1-x \bar x) = n \right\} \]
+  equals
+  \[ q^{-n}(1-q^{-2}). \]
+\end{lemma}
+\begin{proof}
+  Follows from summing the previous lemma over $\rho = 1$
+  and $\xi \in \OO_E / \varpi$ (there are $q_E-1 = q^2-1$ choices for $\xi$).
+  \todo{This doesn't actually check out. Check margin of page 235 of notebook.}
+\end{proof}
+\todo{Merge this with the previous one tbh, three cases I think}
 
 We will also need to intersect two disks. In an ultrametric space, this is easy to do:
 \begin{lemma}
