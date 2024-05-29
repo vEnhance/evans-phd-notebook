@@ -224,25 +224,30 @@ For the purposes of \cite{ref:AFL},
 we will only care about the following case:
 \begin{assume}
   \[ v\left( (1-d\bar d)^2 - c \bar c\right) \equiv 1 \pmod 2 \]
-  \label{assume:implies_delta}
+  \label{assume:u_odd}
 \end{assume}
-We will also assume:
+\todo{I need to ask Wei exactly why we're only doing this case}
+
+We will thus also assume:
 \begin{assume}
   $v(d) \geq -r$.
 \end{assume}
 This is fine because if this $v(d) < -r$ then the integral will always vanish
 (because the bottom-right entry of $\Gamma(\gamma, t, m)$ is no-good).
-Because of this, from \eqref{eq:b} we then get
-\begin{corollary}
-  $v(b) \geq -r$.
-\end{corollary}
+
+We will really mostly be interested in the case where $v(b) = v(d) = 0$.
+In fact, few other cases even occur at all
+given \Cref{assume:u_odd};
+we will see momentarily that either
+$v(b) = v(d) \in \{-1, -2, \dots, -r\}$,
+or one of $\{v(b), v(d)\}$ is zero and the other is nonnegative.
 
 \subsection{Notations}
 As we described earlier, our goal is to give an answer in terms of
-\[ a \in E^1, \qquad b, d \in E, \qquad r > 0. \]
+\[ a \in E^1, \qquad b, d \in E, \qquad r \ge 0. \]
 To simplify the notation in what follows,
 it will be convenient to define several quantities that reappear frequently.
-From \Cref{assume:implies_delta}, we may define
+From \Cref{assume:u_odd}, we may define
 \begin{equation}
   \delta \coloneqq v(1-d \bar d) = v(c) \neq -\infty.
   \label{eq:delta}
@@ -267,19 +272,43 @@ Finally, define
   \ell \coloneqq v(b^2 - 4 a \ol d).
   \label{eq:ell}
 \end{equation}
-We will also define one additional parameter useful when $\ell$ is even:
+We will also define one additional parameter useful when $\ell$ is even
+(but as we will see, redundant for odd $\ell$):
 \begin{equation}
   \lambda \coloneqq v(1-u \bar u) \equiv 1 \pmod 2.
   \label{eq:lambda}
 \end{equation}
-In the case where $\ell$ is odd, we get \eqref{eq:dos} implying $\lambda = \ell$
+
+Just as many pairs $(v(b), v(d))$ do not occur (given \Cref{assume:u_odd})
+and $v(b) = v(d) = 0$ is the main case of interest,
+the parameters $(\delta, \ell, \lambda)$ satisfy some additional relations.
+We will now describe them.
+\begin{proposition}
+  Exactly one of the following situations is true.
+  \begin{enumerate}[a.]
+    \ii $v(b) = v(d) = 0$, $\ell \ge 1$ is odd,
+      $\ell < 2 \delta$, and $\lambda = \ell$.
+    \ii $v(b) = v(d) = 0$, $\ell \ge 0$ is even,
+      $\ell \le 2 \delta$, and $\lambda > \ell$ is odd.
+    \ii $v(b) = 0$, $v(d) > 0$, $\ell = \delta = 0$, and ???
+    \ii $v(b) > 0$, $v(d) = 0$, $\ell  = 0$, $\delta \ge 0$, and ???
+    \ii $v(b) = v(d) \in \{-1, \dots, -r\}$,
+    $\ell = \delta = 2v(d) < 0$, and ???
+  \end{enumerate}
+\end{proposition}
+\begin{proof}
+  \todo{Write this out; import from previous if needed.
+    Also figure out exactly what the constraints on $\lambda$ are.}
+\end{proof}
+
+In the case where $\ell$ is odd (and hence $\ell \ge 1$ and $v(b) = v(d) = 0$),
+we get \eqref{eq:dos} implying $\lambda = \ell$
 and this definition will never be used --- the orbital will be computed
 as a function of $\ell$ and $\delta$ (and $r$).
 However for even $\ell$ these numbers are never equal and our orbital
 integral will be stated in terms of $\ell$, $\delta$, and $\lambda$ (and $r$).
 
-\section{Description of the nonzero regions}
-\subsection{The case where $n \leq 0$}
+\section{Description of the nonzero regions when $n \le 0$}
 \begin{claim}
   Whenever $n = 0$ (this requires $v(t) \geq 0$),
   \[
@@ -332,11 +361,116 @@ integral will be stated in terms of $\ell$, $\delta$, and $\lambda$ (and $r$).
   the condition is simply $-k+\delta-m \geq -r$.
 \end{proof}
 
-
-\subsection{Setup for $n > 0$}
+\section{Description of the nonzero regions when $n > 0$}
 In this situation we evaluate over $n > 0$ only.
 In this case $t$ is automatically a unit.
 
+\subsection{Volume lemma}
+The following two lemmas will be useful.
+
+\begin{lemma}
+  Let $\xi \in \OO_E^\times$, $\rho \in \ZZ$, and $n \ge \max(\rho, 1)$.
+  and let $n \ge \rho \ge 1$ be integers.
+  Then
+  \begin{align*}
+    &\Vol\left( \left\{ x \in E \mid v(1-x \bar x) = n,
+      \; v(x-\xi) \ge \rho \right\} \right) \\
+    &=
+    \begin{cases}
+      0 & \text{if } v(1-\xi\bar\xi) < \rho \\
+      q^{-n}(1-q^{-2}) & \text{if } \rho \le 0 \\
+      q^{-(n+\rho)}(1-q\inv) & \text{if } v(1-\xi\bar\xi) \ge \rho \ge 1.
+    \end{cases}
+  \end{align*}
+  \label{lem:volume}
+\end{lemma}
+\begin{proof}
+  The case $\rho > 0$ is proved in \cite[Lemma 4.4]{ref:AFL}.
+
+  When $\rho \le 0$, the condition $v(x - \xi) \ge \rho$ is vacuously true,
+  so we just are computing
+  $\Vol\left( \left\{ x \in E \mid v(1-x \bar x) = n \right\} \right)$.
+  Follows from summing the previous lemma over $\rho = 1$
+  and $\xi \in \OO_E / \varpi$ (there are $q_E-1 = q^2-1$ choices for $\xi$).
+  \todo{This doesn't actually check out. Check margin of page 235 of notebook.}
+\end{proof}
+
+\todo{Merge this with the previous one tbh, three cases I think}
+
+We also comment on the well-known fact that in an ultrametric space,
+any two disks are either disjoint or one is contained in the other.
+(In other words, the Mastercard logo cannot be drawn.)
+\begin{fact}
+  Choose $\xi_1, \xi_2 \in E$ and $\rho_1 \geq \rho_2$.
+  Consider the two disks:
+  \begin{align*}
+    D_1 &= \left\{ x \in E \mid v(x-\xi_1) \ge \rho_1 \right\} \\
+    D_2 &= \left\{ x \in E \mid v(x-\xi_2) \ge \rho_2 \right\}.
+  \end{align*}
+  Then, if $v(\xi_1-\xi_2) \geq \rho_2$, we have $D_1 \subseteq D_2$.
+  If not, instead $D_1 \cap D_2 = \varnothing$.
+  \label{fact:mastercard}
+\end{fact}
+\begin{proof}
+  Because $E$ is an ultrametric space and $\Vol(D_1) \leq \Vol(D_2)$,
+  we either have $D_1 \subseteq D_2$ or $D_1 \cap D_2 = \varnothing$.
+  The latter condition checks which case we are in by testing if $\xi_1 \in D_2$,
+  since $\xi_1 \in D_1$.
+\end{proof}
+
+\begin{center}
+\begin{asy}
+  defaultpen(fontsize(12pt));
+  size(7cm);
+  pair O1 = 0.57*dir(-30);
+  pair O2 = origin;
+  real r1 = 0.4;
+  real r2 = 1;
+  filldraw(circle(O2, r2), rgb(0.9, 0.9, 0.9));
+  filldraw(circle(O1, r1), rgb(0.8, 0.8, 0.9));
+  pair P1 = O1+r1*dir(230);
+  pair P2 = O2+r2*dir( 70);
+  draw(O1--P1);
+  draw(O2--P2);
+  dot("$\xi_1$", O1, dir(90));
+  dot("$\xi_2$", O2, dir(180));
+  label("$q^{-\rho_1}$", midpoint(O1--P1), dir(P1-O1)*dir(90));
+  label("$q^{-\rho_2}$", midpoint(O2--P2), dir(P2-O2)*dir(90));
+\end{asy}
+\end{center}
+
+We package both of these results together
+lemma that will be used repeatedly.
+\begin{lemma}
+  Let $\xi_1, \xi_2 \in \OO_E^\times$ and let $\rho_1 \ge \rho_2$ be integers.
+  Also let $n \ge \max(\rho_1, 1)$ be an integer.
+  Then the set of points $x \in E$ satisfying all of the equations
+  \begin{align*}
+    v(x - \xi_1) &\ge \rho_1 \\
+    v(x - \xi_2) &\ge \rho_2 \\
+    v(1 - x \ol x) &= n
+  \end{align*}
+  has positive volume if and only if
+  \[ v(1 - \xi_1 \bar{\xi_1}) \ge \rho_1, \qquad \rho_2 \le v(\xi_1 - \xi_2). \]
+  In that case, the volume is equal to
+  \[
+    \begin{cases}
+      q^{-(n+\rho_1)}(1-q\inv) & \text{if } \rho_1 \ge 1 \\
+      q^{-n}(1-q^{-2}) & \text{if } \rho_1 \le 0.
+    \end{cases}
+  \]
+  \label{lem:quadruple_ineq}
+\end{lemma}
+\begin{proof}
+  \todo{inline the previous three facts}
+\end{proof}
+In the situation where $\xi_i \notin \OO_E^\times$,
+the condition $v(x-\xi_i) = \min(0, v(\xi_i))$ becomes independent of the value of $x$,
+and so \Cref{lem:quadruple_ineq} becomes unnecessary
+(\Cref{lem:volume} will suffice).
+We will deal with this situation when it arises.
+
+\subsection{Setup}
 Consider the upper $2 \times 2$ matrix of $\Gamma(\gamma, t, m)$.
 Using the identities
 \begin{align*}
@@ -383,77 +517,7 @@ In summary:
   \end{align*}
 \end{claim}
 
-\subsection{Volume lemma}
-The following two lemmas will be useful.
-
-\begin{lemma}
-  [{\cite[Lemma 4.4]{ref:AFL}}]
-  Let $\xi \in \OO_E^\times$ and let $n \ge \rho \ge 1$ be integers.
-  Then the volume of the set
-  \[ \left\{ x \in E \mid v(1-x \bar x) = n, \; v(x-\xi) \ge \rho \right\} \]
-  equals
-  \[
-    \begin{cases}
-      0 & v(1-\xi\bar\xi) < \rho \\
-      q^{-(n+\rho)}(1-q\inv) & v(1-\xi\bar\xi) \ge \rho.
-    \end{cases}
-  \]
-  \label{lem:volume}
-\end{lemma}
-\begin{lemma}
-  Let $\xi \in \OO_E^\times$ and let $n \ge 1$.
-  Then the volume of the set
-  \[ \left\{ x \in E \mid v(1-x \bar x) = n \right\} \]
-  equals
-  \[ q^{-n}(1-q^{-2}). \]
-\end{lemma}
-\begin{proof}
-  Follows from summing the previous lemma over $\rho = 1$
-  and $\xi \in \OO_E / \varpi$ (there are $q_E-1 = q^2-1$ choices for $\xi$).
-  \todo{This doesn't actually check out. Check margin of page 235 of notebook.}
-\end{proof}
-\todo{Merge this with the previous one tbh, three cases I think}
-
-We will also need to intersect two disks. In an ultrametric space, this is easy to do:
-\begin{lemma}
-  [No MasterCard logo in an ultrametric space]
-  Choose $\xi_1, \xi_2 \in E$ and $\rho_1 \geq \rho_2 \geq 0$.
-  Consider the two disks:
-  \begin{align*}
-    D_1 &= \left\{ x \in E \mid v(x-\xi_1) \ge \rho_1 \right\} \\
-    D_2 &= \left\{ x \in E \mid v(x-\xi_2) \ge \rho_2 \right\}.
-  \end{align*}
-  Then, if $v(\xi_1-\xi_2) \geq \rho_2$, we have $D_1 \subseteq D_2$.
-  If not, instead $D_1 \cap D_2 = \varnothing$.
-  \label{lem:mastercard}
-\end{lemma}
-\begin{proof}
-  Because $E$ is an ultrametric space and $\Vol(D_1) \leq \Vol(D_2)$,
-  we either have $D_1 \subseteq D_2$ or $D_1 \cap D_2 = \varnothing$.
-  The latter condition checks which case we are in by testing if $\xi_1 \in D_2$,
-  since $\xi_1 \in D_1$.
-\end{proof}
-
-\begin{center}
-\begin{asy}
-  defaultpen(fontsize(12pt));
-  size(7cm);
-  pair O1 = 0.57*dir(-30);
-  pair O2 = origin;
-  real r1 = 0.4;
-  real r2 = 1;
-  filldraw(circle(O2, r2), rgb(0.9, 0.9, 0.9));
-  filldraw(circle(O1, r1), rgb(0.8, 0.8, 0.9));
-  pair P1 = O1+r1*dir(230);
-  pair P2 = O2+r2*dir( 70);
-  draw(O1--P1);
-  draw(O2--P2);
-  dot("$\xi_1$", O1, dir(90));
-  dot("$\xi_2$", O2, dir(180));
-  label("$\rho_1$", midpoint(O1--P1), dir(P1-O1)*dir(90));
-  label("$\rho_2$", midpoint(O2--P2), dir(P2-O2)*dir(90));
-\end{asy}
-\end{center}
+\todo{make a table here.}
 
 \subsection{The case where $n > 0$, and $\ell$ is odd}
 Considering $n > 0$ and $n-r \le m \le n+\delta+r$ as fixed,
@@ -474,7 +538,7 @@ We also had the requirement
   v(t+u) \ge m-\delta-r.
   \label{eq:odd_disk2}
 \end{equation}
-Use \Cref{lem:mastercard} on \eqref{eq:odd_disk1} and \eqref{eq:odd_disk2},
+Use \Cref{fact:mastercard} on \eqref{eq:odd_disk1} and \eqref{eq:odd_disk2},
 noting the distance between the two centers is exactly
 \[ v\left( u + \frac{b}{2a} \right) = v\left( \frac{au-\bar d \bar u}{2a} \right)
   = v(au - \bar d \bar u). \]
@@ -483,14 +547,14 @@ $\left\lceil \frac{n-r}{2} \right\rceil$ and $m-\delta-r$ respectively,
 we obtain two possible situations:
 \begin{itemize}
   \ii If $m < \left\lceil \frac{n-r}{2} \right\rceil + \delta + r$
-  then \Cref{lem:volume} and \Cref{lem:mastercard} apply if and only if, respectively,
+  then \Cref{lem:volume} and \Cref{fact:mastercard} apply if and only if, respectively,
   \begin{align}
     v(4-b\bar b) &\ge \left\lceil \frac{n-r}{2} \right\rceil \label{eq:odd_ineq1} \\
     v(au - \bar d \bar u) &\ge m - \delta - r \label{eq:odd_ineq2}.
   \end{align}
 
   \ii If $m \geq \left\lceil \frac{n-r}{2} \right\rceil + \delta + r$
-  then \Cref{lem:volume} and \Cref{lem:mastercard} apply if and only if, respectively,
+  then \Cref{lem:volume} and \Cref{fact:mastercard} apply if and only if, respectively,
   \begin{align}
     v(1-u \bar u) &\ge m-\delta-r \label{eq:odd_ineq3} \\
     v(au - \bar d \bar u) &\ge \left\lceil \frac{n-r}{2} \right\rceil \label{eq:odd_ineq4}.
