@@ -295,10 +295,26 @@ We will now describe them.
     \ii $v(b) = v(d) \in \{-1, \dots, -r\}$,
     $\ell = \delta = 2v(d) < 0$, and ???
   \end{enumerate}
+  \label{prop:parameter_constraints}
 \end{proposition}
 \begin{proof}
   \todo{Write this out; import from previous if needed.
     Also figure out exactly what the constraints on $\lambda$ are.}
+\end{proof}
+
+\todo{imported this; need to rearrange}
+\begin{fact}
+  Whenever $\ell$ is odd, we must have
+  \begin{equation}
+    v(b) = v(d) = 0.
+    \label{eq:odd_b_d_zero}
+  \end{equation}
+\end{fact}
+\begin{proof}
+  [Proof of \eqref{eq:odd_b_d_zero}]
+  If $v(d) \neq 0$, then $b = -au-\bar d\bar u$ is a unit,
+  and hence so is $b^2 - 4 a \bar d$, causing $\ell = 0$, contradiction.
+  And if $d$ is a unit, $\ell \neq 0$ means $v(b) = 0$ too.
 \end{proof}
 
 In the case where $\ell$ is odd (and hence $\ell \ge 1$ and $v(b) = v(d) = 0$),
@@ -442,6 +458,7 @@ any two disks are either disjoint or one is contained in the other.
 We package both of these results together
 lemma that will be used repeatedly.
 \begin{lemma}
+  \label{lem:quadruple_ineq}
   Let $\xi_1, \xi_2 \in \OO_E^\times$ and let $\rho_1 \ge \rho_2$ be integers.
   Also let $n \ge \max(\rho_1, 1)$ be an integer.
   Then the set of points $x \in E$ satisfying all of the equations
@@ -459,11 +476,7 @@ lemma that will be used repeatedly.
       q^{-n}(1-q^{-2}) & \text{if } \rho_1 \le 0.
     \end{cases}
   \]
-  \label{lem:quadruple_ineq}
 \end{lemma}
-\begin{proof}
-  \todo{inline the previous three facts}
-\end{proof}
 In the situation where $\xi_i \notin \OO_E^\times$,
 the condition $v(x-\xi_i) = \min(0, v(\xi_i))$ becomes independent of the value of $x$,
 and so \Cref{lem:quadruple_ineq} becomes unnecessary
@@ -517,70 +530,133 @@ In summary:
   \end{align*}
 \end{claim}
 
-\todo{make a table here.}
+\subsection{Rewriting the quadratic constraint on the valuation of $t$}
+We now analyze the inequality
+\begin{equation}
+  v\left( (2at-b)^2 - (b^2-4a\bar d) \right) \geq n-r
+  \label{eq:2atb_dos}
+\end{equation}
+and divide it into several (disjoint) possibilities.
+Recalling that $\ell = b^2 - 4 a \bar d$, there are three possibilities:
+\begin{itemize}
+  \ii If $\ell \ge n-r$, then \eqref{eq:2atb_dos} is equvialent to
+  \[ 2v(2at-b) \ge n-r
+    \iff v\left( t - \frac{b}{2a} \right) \ge \left\lceil \frac{n-r}{2} \right\rceil. \]
+  We will further subdivide this into two cases.
+  \begin{itemize}
+    \ii \textbf{Case 1} is the situation where $\left\lceil \frac{n-r}{2} \right\rceil \ge m - \delta - r$.
+    \ii \textbf{Case 2} is the situation where $\left\lceil \frac{n-r}{2} \right\rceil < m - \delta - r$.
+  \end{itemize}
 
-\subsection{The case where $n > 0$, and $\ell$ is odd}
+  \ii If $\ell < n-r$, then \eqref{eq:2atb_dos} could only hold if $v(2at-b) = \ell/2$.
+  Note that in particular, this requires $\ell$ to be even.
+  If this happens, then $b^2 - 4 a \bar d$ must be a square and we denote it $\tau^2$.
+  Thus, \eqref{eq:2atb_dos} then reads
+  \[ v(2at-b+\tau) + v(2at-b-\tau) \ge n-r. \]
+  Since we are assuming $n > \ell + r$,
+  it must be the case that one of the two factors
+  $v(2at-b\mp\tau)$ is equal to $v(\tau) = \ell / 2$ exactly.
+
+  Suppose $v(2at-b+\tau) = \ell/2$, so we need
+  \[ v\left( t - \frac{b+\tau}{2a} \right) = v(2at-b-\tau) \ge n - \frac{\ell}{2} - r. \]
+  We further subdivide this into two cases:
+  \begin{itemize}
+    \ii \textbf{Case 3\ts+} is the situation where $n - \frac{\ell}{2} - r > m - \delta - r$.
+    \ii \textbf{Case 4\ts+} is the situation where $n - \frac{\ell}{2} - r \le m - \delta - r$.
+  \end{itemize}
+  Replacing $\tau$ with $-\tau$ above gives us two additional cases
+  which we denote \textbf{Case 3\ts-} and \textbf{Case 4\ts-}.
+\end{itemize}
+
+This gives us six cases, with each $t \in E$ satisfying at most one of them.
+(If $\ell$ is odd, only \textbf{Case 1} and \textbf{Case 2} are used.)
+In each case, for a given pair $(n,m)$ we are interested in the volume of $t$
+such that two disk inequalities hold together with the assumption $n = v(1-t \bar t)$.
+
+We rewrite these six cases in the format specified by \Cref{lem:quadruple_ineq},
+noting that each possibility will actually split into two sub-cases
+(although the lemma will only apply in the cases where the centers
+$\xi_i$ are actually in $\OO_E^\times$;
+this which will be true in the main case $v(b) = v(d) = 0$).
+This gives the \Cref{tab:orbital_cases} below;
+
+\begin{table}[ht]
+  \centering
+  \begin{tabular}{ll cccc cc}
+    & Assume & $v(1-\xi_1 \bar{\xi_1})$ & $\rho_1$ and $\rho_2$ & $v(\xi_1-\xi_2)$ & $\xi_1$ & $\xi_2$ \\ \hline
+    \textbf{1} & $n \le \ell+r$
+        & $v(4-b\bar{b})$
+        & $\left\lceil \frac{n-r}{2} \right\rceil \ge m-\delta-r$
+        & $v(au - \bar d \bar u)$
+        & $\frac{b}{2a}$ & $-u$ \\
+    \textbf{2} & $n \le \ell+r$
+        & $\lambda$
+        & $m-\delta-r > \left\lceil \frac{n-r}{2} \right\rceil$
+        & $v(au- \bar d \bar u)$
+        & $-u$ & $\frac{b}{2a}$ \\ \hline
+    \textbf{3\ts+} & $n > \ell + r$
+          & $v(1-\frac{\Norm(b+\tau)}{4})$
+          & $n-\frac{\ell}{2}-r > m-\delta-r$
+          & $v(au-\bar d \bar u+\tau)$
+          & $\frac{b+\tau}{2a}$ & $-u$ \\
+    \textbf{3\ts-} & $n > \ell + r$
+          & $v(1-\frac{\Norm(b-\tau)}{4})$
+          & $n-\frac{\ell}{2}-r > m-\delta-r$
+          & $v(au-\bar d \bar u-\tau)$
+          & $\frac{b-\tau}{2a}$ & $-u$ \\
+    \textbf{4\ts+} & $n > \ell + r$
+          & $v(1-\frac{\Norm(b+\tau)}{4})$
+          & $m-\delta-r \ge n-\frac{\ell}{2}-r$
+          & $v(au-\bar d \bar u+\tau)$
+          & $-u$ & $\frac{b+\tau}{2a}$ \\
+    \textbf{4\ts-} & $n > \ell + r$
+          & $v(1-\frac{\Norm(b+\tau)}{4})$
+          & $m-\delta-r \ge n-\frac{\ell}{2}-r$
+          & $v(au-\bar d \bar u-\tau)$
+          & $-u$ & $\frac{b-\tau}{2a}$ \\
+  \end{tabular}
+  \caption{The six cases for calculating the orbital integral.}
+  \label{tab:orbital_cases}
+\end{table}
+Note that in generating this table, we did the calculations
+\begin{align*}
+  v\left( u + \frac{b}{2a} \right)
+  &= v\left( \frac{au-\bar d \bar u}{2a} \right)
+  = v(au - \bar d \bar u) \\
+  v\left( u + \frac{b \pm \tau}{2} \right)
+  &= v(au - \bar d \bar u \pm \tau).
+\end{align*}
+to populate the entries for $v(\xi_1 - \xi_2)$,
+as well as the identity
+\[ 1 - \frac{b \pm \tau}{2a} \cdot \frac{\bar b \pm \bar \tau}{2\bar a}
+= \frac{4 - \Norm(b \pm \tau)}{4} \]
+to calculate $v(1-\xi_1\bar{\xi_1})$ entries in the latter four cases.
+
+\subsection{The case where $n > 0$, and $\ell$ is odd.}
 Considering $n > 0$ and $n-r \le m \le n+\delta+r$ as fixed,
 we compute the volume of the set of $t$
 for which $n = v(1-t\bar t)$ and $\mathbf{1}_{\le r}(\gamma,t,m) = 1$.
 
-Supposing $\ell$ is odd, the condition
-\[ v\left( (2at-b)^2 - (b^2-4a\bar d) \right) \geq n-r \]
-is equivalent to simultaneously the two conditions
-\begin{align}
-  v\left( (2at-b)^2 \right) \geq n-r
-  \implies v\left( t-\frac{b}{2a} \right) &\geq \left\lceil \frac{n-r}{2} \right\rceil
-  \label{eq:odd_disk1} \\
-  v(b^2-4a\bar d) \ge n-r \implies \ell &\ge n-r. \label{eq:odd_n_bound}
-\end{align}
-We also had the requirement
-\begin{equation}
-  v(t+u) \ge m-\delta-r.
-  \label{eq:odd_disk2}
-\end{equation}
-Use \Cref{fact:mastercard} on \eqref{eq:odd_disk1} and \eqref{eq:odd_disk2},
-noting the distance between the two centers is exactly
-\[ v\left( u + \frac{b}{2a} \right) = v\left( \frac{au-\bar d \bar u}{2a} \right)
-  = v(au - \bar d \bar u). \]
-Considering that our disks have ``radius''
-$\left\lceil \frac{n-r}{2} \right\rceil$ and $m-\delta-r$ respectively,
-we obtain two possible situations:
-\begin{itemize}
-  \ii If $m < \left\lceil \frac{n-r}{2} \right\rceil + \delta + r$
-  then \Cref{lem:volume} and \Cref{fact:mastercard} apply if and only if, respectively,
+In addition to the constraint $n \le \ell + r$,
+we see that the two cases have the following additional requirements:
+\begin{description}
+  \ii[Case 1.] If $m < \left\lceil \frac{n-r}{2} \right\rceil + \delta + r$ then we need
   \begin{align}
     v(4-b\bar b) &\ge \left\lceil \frac{n-r}{2} \right\rceil \label{eq:odd_ineq1} \\
     v(au - \bar d \bar u) &\ge m - \delta - r \label{eq:odd_ineq2}.
   \end{align}
 
-  \ii If $m \geq \left\lceil \frac{n-r}{2} \right\rceil + \delta + r$
-  then \Cref{lem:volume} and \Cref{fact:mastercard} apply if and only if, respectively,
+  \ii[Case 2.] If $m \geq \left\lceil \frac{n-r}{2} \right\rceil + \delta + r$ then we need
   \begin{align}
-    v(1-u \bar u) &\ge m-\delta-r \label{eq:odd_ineq3} \\
+    \lambda = v(1-u \bar u) &\ge m-\delta-r \label{eq:odd_ineq3} \\
     v(au - \bar d \bar u) &\ge \left\lceil \frac{n-r}{2} \right\rceil \label{eq:odd_ineq4}.
   \end{align}
-\end{itemize}
-To proceed further, we need to prove a few properties.
-We list them in turn.
-
-\begin{fact}
-  Whenever $\ell$ is odd, we must have
-  \begin{equation}
-    v(b) = v(d) = 0.
-    \label{eq:odd_b_d_zero}
-  \end{equation}
-\end{fact}
-\begin{proof}
-  [Proof of \eqref{eq:odd_b_d_zero}]
-  If $v(d) \neq 0$, then $b = -au-\bar d\bar u$ is a unit,
-  and hence so is $b^2 - 4 a \bar d$, causing $\ell = 0$, contradiction.
-  And if $d$ is a unit, $\ell \neq 0$ means $v(b) = 0$ too.
-\end{proof}
-
-Next, note that \eqref{eq:dos} together with \eqref{eq:odd_b_d_zero}
+\end{description}
+We will now show that some of these inequalities are redundant and can be ignored.
+First, note that \eqref{eq:dos} together with \eqref{eq:odd_b_d_zero}
 and the assumption $\ell$ was odd implies
 \begin{equation}
-  \ell = v(1-u \bar u) < 2v(au - \bar d \bar u).
+  \lambda = \ell = v(1-u \bar u) < 2v(au - \bar d \bar u).
   \label{eq:odd_center_distance}
 \end{equation}
 This implies that:
@@ -602,20 +678,12 @@ together with \eqref{eq:odd_b_d_zero} implies
 \end{equation}
 Hence, a priori \eqref{eq:odd_bb} suggests that we have a condition
 $n \le r + 2 \delta$ in addition to $n \le r + \ell$.
-However, this condition also turns out to be redundant.
-\begin{lemma}
-  When $\ell$ is odd we always have $\ell < 2 \delta$.
-  \label{lem:wtfell}
-\end{lemma}
-\begin{proof}
-  To be written up.
-\end{proof}
+However, by \Cref{prop:parameter_constraints}, we always have $\ell < 2 \delta$,
+and consequently \eqref{eq:odd_ineq1} is redundant as well.
+Putting all of this together, we find that the valid pairs $(n,m)$ come in two cases.
 
-Putting all of this together,
-we find that the valid pairs $(n,m)$ come in two cases.
-
-\paragraph{First case}
-The first case is
+\paragraph{Double sum for Case 1.}
+We sum over $(m,n)$ such that
 \begin{equation}
   \begin{aligned}
     1 &\leq n \leq \ell + r, \\
@@ -633,8 +701,8 @@ where each $(m,n)$ gives a volume contribution of
   \end{cases}
 \]
 
-\paragraph{Second case}
-The second case is
+\paragraph{Double sum for Case 2.}
+We sum over $(m,n)$ such that
 \begin{equation}
   \begin{aligned}
     1 &\leq n \leq \ell + r, \\
@@ -654,65 +722,40 @@ where each $(m,n)$ gives a volume contribution of
 \]
 Notice that $m \leq \delta + r$ could only occur when $n \leq r$.
 
-\subsection{The case where $n > 0$, $\ell$ is even, $v(b)=v(d)=0$}
+\subsection{The case where $n > 0$, $\ell \ge 0$ is even, $v(b)=v(d)=0$}
+Suppose $\ell$ is even.
+Using the identity
+\[ (au-\bar d \bar u)^2 - \tau^2 = 4a\bar d(1- u\bar u) \]
+we agree now to fix the choice of the square root of $\tau$ such that
+\begin{equation}
+  v(au-\bar d \bar u + \tau) = \lambda - \half \ell \quad\text{and}\quad
+  v(au-\bar d \bar u - \tau) = \half \ell.
+  \label{eq:tau_choice}
+\end{equation}
+
 As before we consider $n > 0$ and $n-r \le m \le n+\delta+r$ as fixed,
 and seek to compute the volume of the set of $t$
 for which $n = v(1-t\bar t)$ and $\mathbf{1}_{\le r}(\gamma,t,m) = 0$.
 
-Suppose $\ell$ is even.
-Then the left-hand side of \eqref{eq:dos} is a square, which we denote $\tau^2$.
-In this case, we obtain
-\[ 2v(\tau) = \ell = 2v(au-\bar d\bar u) > \lambda \coloneqq v(1-u \bar u). \]
-Then the condition that
-\[ v\Big( (2at-b)^2 - \underbrace{(b^2-4a\bar d)}_{=\tau^2} \Big) \geq n-r \]
-falls into three disjoint parts:
-\begin{itemize}
-  \ii Both $v\left( (2at-b)^2 \right) \geq n-r$ and $\ell = v(\tau^2) \geq n-r$ hold,
-  as in the $\ell$ odd case.
-  \ii We have $\ell = v(\tau^2) < n-r$ (hence $v\left( (2at-b)^2 \right) < n-r$ too) but
-  \[ v(2at-b \mp \tau) \geq (n-r)-\ell/2 > 0 \]
-  which in particular implies $v(2at-b \pm \tau) = \ell/2$.
-  This is two parts, corresponding to the choice of $\pm$.
-\end{itemize}
-We analyze the second case since the first case is the same as before
-(as we are assuming \eqref{eq:odd_b_d_zero} in this section;
-it does not follow for $\ell$ even).
-The constrains on $t$ become the two circles
-\begin{align}
-  v\left( t - \frac{b \pm \tau}{2a} \right) &\geq n - \ell/2 - r \\
-  v(t+u) &\ge m - \delta - r.
-\end{align}
-Note that
-\[ 1 - \frac{b \pm \tau}{2a} \cdot \frac{\bar b \pm \bar \tau}{2\bar a}
-= \frac{4 - \Norm(b \pm \tau)}{4} \]
-
-The distance between the two circles has valuation
-\[
-  v\left( u + \frac{b \pm \tau}{2} \right)
-  = v(au - \bar d \bar u \pm \tau).
-\]
-Since $(au-\bar d \bar u)^2 - \tau^2 = 4a\bar d(1- u\bar u)$,
-we agree now to fix the choice of the square root of $\tau$ such that
-\begin{equation}
-  v(au-\bar d \bar u + \tau) = \lambda - v(\tau) \quad\text{and}\quad
-  v(au-\bar d \bar u - \tau) = v(\tau).
-  \label{eq:tau_choice}
-\end{equation}
 From $v(b) = v(d) = 0$ and \eqref{eq:dos}, we have
 \[ \ell = 2v(\tau) = 2v(au - \bar d \bar u) < \lambda. \]
-When $v(b) = v(d) = 0$ we also automatically have $\delta, \ell \ge 0$
-
 This lets us invoke \cite[Lemma 4.7]{ref:AFL} to evaluate $v(4-\Norm(b \pm \tau))$:
-we have
+we have the calculation
 \begin{align*}
-  \lambda + \delta - \ell &= v\left( 4 - \Norm(b+\tau) \right) \\
-  \delta &= v\left( 4 - \Norm(b-\tau) \right).
+  v\left( 4 - \Norm(b+\tau) \right) &= \lambda + \delta - \ell \\
+  v\left( 4 - \Norm(b-\tau) \right) &= \delta.
 \end{align*}
-So we obtain $2 \cdot 2 = 4$ total cases.
 
-\paragraph{Case $1^+$.}
-Suppose $m < n - \frac{\ell}{2} + \delta$, and we choose $\frac{b+\tau}{2a}$.
-Then the contribution is nonempty if and only if
+\paragraph{Double sum for Case 1.}
+\todo{write this out}
+
+\paragraph{Double sum for Case 2.}
+\todo{write this out}
+
+\paragraph{Double sum for Case 3\ts+.}
+Suppose $n > \max(\ell+r, 0)$,
+$m < n - \frac{\ell}{2} + \delta$, and we choose $\frac{b+\tau}{2a}$.
+Then \Cref{lem:quadruple_ineq} gives a nonzero contribution if and only if
 \begin{align*}
   \lambda + \delta - \ell = v(4-\Norm(b+\tau)) &\geq n - \frac{\ell}{2} - r \\
   \lambda - \ell/2 = v(au-\bar d \bar u + \tau) & \geq m - \delta - r.
@@ -736,27 +779,10 @@ So this equation can be whittled down to
 Each $(m,n)$ gives a volume contribution of
 \[ q^{-n - (n - \ell/2 - r)} \left( 1 - q\inv \right). \]
 
-\paragraph{Case $2^+$.}
-Suppose $m \ge n - \frac{\ell}{2} + \delta$, and we choose $\frac{b+\tau}{2a}$.
-Then the contribution is nonempty if and only if
-\begin{align*}
-  \lambda &\geq m - \delta - r \\
-  \lambda - \ell/2 = v(au-\bar d \bar u + \tau) & \geq n - \frac{\ell}{2} - r.
-\end{align*}
-Rearranging gives that the valid pairs $(m,n)$ are those for which
-\begin{equation}
-  \begin{aligned}
-    \max(1, \ell+r+1) &\leq n \leq \lambda + r \\
-    \max\left( n-r, n - \frac{\ell}{2} + \delta \right) &\leq m \leq \min(n, \lambda) + r + \delta.
-  \end{aligned}
-  \label{eq:even_case2_plus}
-\end{equation}
-Here, each $(m,n)$ gives a volume contribution of
-\[ q^{-n - (m - \delta - r)} \left( 1 - q\inv \right). \]
-
-\paragraph{Case $1^-$.}
-Suppose $m < n - \frac{\ell}{2} + \delta$, and we choose $\frac{b-\tau}{2a}$.
-Then the disks have nonempty intersection whenever
+\paragraph{Double sum for Case 3\ts-.}
+Suppose $n > \max(\ell+r, 0)$,
+$m < n - \frac{\ell}{2} + \delta$, and we choose $\frac{b-\tau}{2a}$.
+Then \Cref{lem:quadruple_ineq} gives a nonzero contribution if and only if
 \begin{align*}
   \delta = v(4-\Norm(b-\tau)) &\geq n - \frac{\ell}{2} - r \\
   \ell/2 = v(au-\bar d \bar u - \tau) & \geq m - \delta - r.
@@ -782,15 +808,35 @@ So we can simplify this to
 As in the previous case, $(m,n)$ gives a volume contribution of
 \[ q^{-n - (n - \ell/2 - r)} \left( 1 - q\inv \right). \]
 
-\paragraph{Case $2^-$.}
-Suppose $m \geq n - \frac{\ell}{2} + \delta$, and we choose $\frac{b-\tau}{2a}$.
-Then the disks have nonempty intersection whenever
+\paragraph{Double sum for Case 4\ts+.}
+Suppose $n > \max(\ell+r, 0)$,
+$m \ge n - \frac{\ell}{2} + \delta$, and we choose $\frac{b+\tau}{2a}$.
+Then \Cref{lem:quadruple_ineq} gives a nonzero contribution if and only if
+\begin{align*}
+  \lambda &\geq m - \delta - r \\
+  \lambda - \ell/2 = v(au-\bar d \bar u + \tau) & \geq n - \frac{\ell}{2} - r.
+\end{align*}
+Rearranging gives that the valid pairs $(m,n)$ are those for which
+\begin{equation}
+  \begin{aligned}
+    \max(1, \ell+r+1) &\leq n \leq \lambda + r \\
+    \max\left( n-r, n - \frac{\ell}{2} + \delta \right) &\leq m \leq \min(n, \lambda) + r + \delta.
+  \end{aligned}
+  \label{eq:even_case2_plus}
+\end{equation}
+Here, each $(m,n)$ gives a volume contribution of
+\[ q^{-n - (m - \delta - r)} \left( 1 - q\inv \right). \]
+
+\paragraph{Double sum for Case 4\ts-.}
+Suppose $n > \max(\ell+r, 0)$,
+$m \ge n - \frac{\ell}{2} + \delta$, and we choose $\frac{b-\tau}{2a}$.
+Then \Cref{lem:quadruple_ineq} gives a nonzero contribution if and only if
 \begin{align*}
   \lambda &\geq m - \delta - r \\
   \ell/2 = v(au-\bar d \bar u - \tau) & \geq n - \frac{\ell}{2} - r.
 \end{align*}
 The latter inequality contradicts the assumption that $n > \ell + r$,
-so this case can never occur.
+so in fact this case can never occur.
 
 \newpage
 
