@@ -324,7 +324,7 @@ as a function of $\ell$ and $\delta$ (and $r$).
 However for even $\ell$ these numbers are never equal and our orbital
 integral will be stated in terms of $\ell$, $\delta$, and $\lambda$ (and $r$).
 
-\section{Description of the nonzero regions when $n \le 0$}
+\section{Description of the support of $\mathbf{1}_{\le r}$ when $n \le 0$}
 \begin{claim}
   Whenever $n = 0$ (this requires $v(t) \geq 0$),
   \[
@@ -377,7 +377,7 @@ integral will be stated in terms of $\ell$, $\delta$, and $\lambda$ (and $r$).
   the condition is simply $-k+\delta-m \geq -r$.
 \end{proof}
 
-\section{Description of the nonzero regions when $n > 0$}
+\section{Description of the support of $\mathbf{1}_{\le r}$ when $n > 0$}
 In this situation we evaluate over $n > 0$ only.
 In this case $t$ is automatically a unit.
 
@@ -630,7 +630,9 @@ as well as the identity
 = \frac{4 - \Norm(b \pm \tau)}{4} \]
 to calculate $v(1-\xi_1\bar{\xi_1})$ entries in the latter four cases.
 
-\subsection{The case where $n > 0$, and $\ell$ is odd.}
+\subsection{Analysis of Case 1 and 2 assuming $n > 0$ and $v(b) = v(d) = 0$.}
+We analyze Case 1 and 2 assuming $v(b) = v(d) = 0$.
+
 Considering $n > 0$ and $n-r \le m \le n+\delta+r$ as fixed,
 we compute the volume of the set of $t$
 for which $n = v(1-t\bar t)$ and $\mathbf{1}_{\le r}(\gamma,t,m) = 1$.
@@ -650,34 +652,46 @@ we see that the two cases have the following additional requirements:
     v(au - \bar d \bar u) &\ge \left\lceil \frac{n-r}{2} \right\rceil \label{eq:odd_ineq4}.
   \end{align}
 \end{description}
+
 We will now show that some of these inequalities are redundant and can be ignored.
-First, note that \eqref{eq:dos} together with \eqref{eq:odd_b_d_zero}
-and the assumption $\ell$ was odd implies
-\begin{equation}
-  \lambda = \ell = v(1-u \bar u) < 2v(au - \bar d \bar u).
-  \label{eq:odd_center_distance}
-\end{equation}
-This implies that:
-\begin{fact}
-  \eqref{eq:odd_ineq2} and \eqref{eq:odd_ineq4} are redundant for odd $\ell$,
-  i.e.\ they are automatically true whenever $n > 0$ and $n-r \le m \le n+\delta+r$.
-\end{fact}
+
+\begin{claim}
+  \eqref{eq:odd_ineq2} and \eqref{eq:odd_ineq4} are redundant
+  i.e.\ they are automatically true for $0 < n \le \ell + r$.
+\end{claim}
 \begin{proof}
-  Delete the ceilings.
-  We have $\frac{n-r}{2} \le \frac{\ell}{2} < v(au - \bar d \bar u)$ in both cases.
-  And in \eqref{eq:odd_ineq1}, we have $m-\delta-r \le \frac{n-r}{2}$ anyway.
+  First, assume that $\ell$ is odd.
+  Then \eqref{eq:dos} together with $v(b) = v(d) = 0$ gives
+  \begin{equation}
+    \lambda = \ell = v(1-u \bar u) < 2v(au - \bar d \bar u).
+    \label{eq:odd_center_distance}
+  \end{equation}
+  On the other hand, if $\ell$ is even, then we have instead
+  \begin{equation}
+    \ell = 2v(au - \bar d \bar u) < v(1-u\bar u) = \lambda
+    \label{eq:even_center_distance_case12}
+  \end{equation}
+  Thus, regardless of the parity of $\ell$, we always have
+  \[ v(au - \bar d \bar u) \ge \frac{\ell}{2} \ge \frac{n-r}{2}. \qedhere \]
 \end{proof}
 
-Finally, the equation $v(4-b \bar b) = -4au(1-d\bar d) - \bar b(b^2-4a\bar d)$
-together with \eqref{eq:odd_b_d_zero} implies
-\begin{equation}
-  v(4-b\bar b) \ge \min(\ell,\delta) \text{ with equality if } \ell \neq \delta.
-  \label{eq:odd_bb}
-\end{equation}
-Hence, a priori \eqref{eq:odd_bb} suggests that we have a condition
-$n \le r + 2 \delta$ in addition to $n \le r + \ell$.
-However, by \Cref{prop:parameter_constraints}, we always have $\ell < 2 \delta$,
-and consequently \eqref{eq:odd_ineq1} is redundant as well.
+\begin{claim*}
+  \eqref{eq:odd_ineq1} is redundant.
+\end{claim*}
+\begin{proof}
+  The equation
+  \[ (4-b \bar b) = -4au(1-d\bar d) - \bar b(b^2-4a\bar d) \]
+  implies
+  \begin{equation}
+    v(4-b\bar b) \ge \min(\ell,\delta) \text{ with equality if } \ell \neq \delta.
+    \label{eq:bb_odd}
+  \end{equation}
+  Hence, a priori \eqref{eq:bb_odd} suggests that we have a condition
+  $n \le r + 2 \delta$ in addition to $n \le r + \ell$.
+  However, by \Cref{prop:parameter_constraints}, we always have $\ell \le 2 \delta$,
+  and consequently \eqref{eq:odd_ineq1} is redundant as well.
+\end{proof}
+
 Putting all of this together, we find that the valid pairs $(n,m)$ come in two cases.
 
 \paragraph{Double sum for Case 1.}
@@ -705,7 +719,7 @@ We sum over $(m,n)$ such that
   \begin{aligned}
     1 &\leq n \leq \ell + r, \\
     \max\left(n-r, \left\lceil \frac{n-r}{2} \right\rceil+\delta+r \right)
-    &\leq m \leq \min(n,\ell)+\delta+r.
+    &\leq m \leq \min(n,\lambda)+\delta+r.
   \end{aligned}
   \label{eq:odd_range2}
 \end{equation}
@@ -720,7 +734,7 @@ where each $(m,n)$ gives a volume contribution of
 \]
 Notice that $m \leq \delta + r$ could only occur when $n \leq r$.
 
-\subsection{The case where $n > 0$, $\ell \ge 0$ is even, $v(b)=v(d)=0$}
+\subsection{Analysis of Case 3 and 4 assuming $n > 0$ and $v(b) = v(d) = 0$.}
 Suppose $\ell$ is even.
 Using the identity
 \[ (au-\bar d \bar u)^2 - \tau^2 = 4a\bar d(1- u\bar u) \]
@@ -882,11 +896,11 @@ so in fact this case can never occur.
   (We write it over $0 \le j \le \delta+2r$ for consistency with a later part.)
 \end{proof}
 
-\subsection{Region where $n > 0$ for odd $\ell$}
+\subsection{Contribution from Case 1 and Case 2 assuming $v(b)=v(d)=0$}
 Again using $\Vol(t_1:-v(t_1)=m) = q^{2m} (1-q^{-2})$,
 summing all the cases gives
 \begin{align*}
-  I_{n > 0}^{\text{odd}} &\coloneqq
+  I_{n > 0}^{12} &\coloneqq
     \kappa \int_{t, t_1 \in E} \mathbf{1}[n > 0] \mathbf{1}_{\le r}(\gamma,t,m) \\
   % -----------------------------------------------------------
   &= \kappa \sum_{n=1}^{r}
@@ -903,7 +917,7 @@ summing all the cases gives
       \cdot \Big( (-1)^n q^{s(2m-n)} q^{2n-2m} \Big) \Big( q^{2m}(1-q^{-2}) \Big) \\
     \\
   &\qquad+ \kappa \sum_{n=1}^{\ell+r}
-    \sum_{m=\max\left(n-r, \left\lceil \frac{n-r}{2} \right\rceil+\delta+r, \delta+r+1 \right)}^{\min(n,\ell)+\delta+r}
+    \sum_{m=\max\left(n-r, \left\lceil \frac{n-r}{2} \right\rceil+\delta+r, \delta+r+1 \right)}^{\min(n,\lambda)+\delta+r}
     q^{-n - (m-\delta-r)} \left( 1 - q\inv \right)
       \\ &\qquad\qquad
       \cdot \Big( (-1)^n q^{s(2m-n)} q^{2n-2m} \Big) \Big( q^{2m}(1-q^{-2}) \Big) \\
@@ -921,7 +935,7 @@ summing all the cases gives
     q^{n} \left( 1 + q\inv \right)
       \cdot (-1)^n q^{s(2m-n)} \\
   &\qquad+ \sum_{n=1}^{\ell+r}
-    \sum_{m=\max\left(n-r, \left\lceil \frac{n-r}{2} \right\rceil+\delta+r, \delta+r+1 \right)}^{\min(n,\ell)+\delta+r}
+    \sum_{m=\max\left(n-r, \left\lceil \frac{n-r}{2} \right\rceil+\delta+r, \delta+r+1 \right)}^{\min(n,\lambda)+\delta+r}
     q^{n - (m-\delta-r)}
       \cdot (-1)^n q^{s(2m-n)}.
 \end{align*}
@@ -931,7 +945,7 @@ In that case,
 \[ 2m-n = 2(\delta+n+r-j)-n = n + 2\delta + 2r - 2j. \]
 Then the expression rewrites as
 \begin{align*}
-  I_{n > 0}^{\text{odd}}
+  I_{n > 0}^{12}
   % -----------------------------------------------------------
   &= \sum_{n=1}^{r}
     \sum_{j = \left\lfloor \frac{n+r}{2} \right\rfloor+ 1}^{\delta + 2r}
@@ -943,7 +957,7 @@ Then the expression rewrites as
     \sum_{j=n}^{\min\left( \delta+2r, \left\lfloor \frac{n+r}{2} \right\rfloor \right)}
     q^{n} \left( 1 + q\inv \right) \cdot (-1)^n q^{s(n+2\delta+2r-2j)} \\
   &\qquad+ \sum_{n=1}^{\ell+r}
-    \sum_{j=\max(0,n-\ell)}^{\min(\delta+2r, \left\lfloor \frac{n+r}{2} \right\rfloor, n-1)}
+    \sum_{j=\max(0,n-\lambda)}^{\min(\delta+2r, \left\lfloor \frac{n+r}{2} \right\rfloor, n-1)}
     q^{j} \cdot (-1)^n q^{s(n+2\delta+2r-2j)}.
 \end{align*}
 
@@ -971,17 +985,17 @@ There are four double sums to interchange.
 
   \ii The fourth double sum runs $j=0$ to
   \[ j=\min\left( \delta+2r, \left\lfloor \frac{\ell}{2} \right\rfloor + r, \ell+r-1 \right)
-    = \left\lfloor \frac{\ell}{2} \right\rfloor + r \]
+    = \left\lfloor \frac{\ell}{2} \right\rfloor + r - \mathbf{1}[\ell = 0] \]
   again because of $\ell < 2\delta$.
-  Meanwhile, we require $1 \le n \le \ell+r$, $j \ge n-\ell$, $j \le n-1$,
+  Meanwhile, we require $1 \le n \le \ell+r$, $j \ge n-\lambda$, $j \le n-1$,
   as well as $j \le \left\lfloor \frac{n+r}{2} \right\rfloor
   \iff n \ge 2j-r$.
   Putting these four conditions together gives
-  \[ \max(j+1, 2j-r) \le n \le \ell+\min(j,r). \]
+  \[ \max(j+1, 2j-r) \le n \le \min(\lambda+j, \ell+r). \]
 \end{itemize}
 Hence we get
 \begin{align*}
-  I_{n > 0}^{\text{odd}}
+  I_{n > 0}^{12}
   &= \sum_{j = \left\lfloor \frac{r+1}{2} \right\rfloor+ 1}^{\delta+2r}
     \sum_{n=1}^{\min(2j-1-r, r)}
     q^{n} \left( 1 + q\inv \right) \cdot (-1)^n q^{s(n+2\delta+2r-2j)} \\
@@ -991,8 +1005,8 @@ Hence we get
   &\qquad+ \sum_{j=1}^{r}
     \sum_{n=\max(1,2j-r)}^{j}
     q^{n} \left( 1 + q\inv \right) \cdot (-1)^n q^{s(n+2\delta+2r-2j)} \\
-  &\qquad+ \sum_{j=0}^{\left\lfloor \frac{\ell}{2} \right\rfloor + r}
-    \sum_{n=\max(j+1, 2j-r)}^{\ell+\min(j,r)}
+  &\qquad+ \sum_{j=0}^{\left\lfloor \frac{\ell}{2} \right\rfloor + r - \mathbf{1}[\ell = 0]}
+    \sum_{n=\max(j+1, 2j-r)}^{\min(\lambda+j, \ell+r)}
     q^{j} \cdot (-1)^n q^{s(n+2\delta+2r-2j)}.
 \end{align*}
 
@@ -1004,14 +1018,18 @@ Specifically, note that:
   the inner sum over $n$ is empty anyway when $j < r$.
   \ii In the third double sum, adding $j=0$ does not introduce new terms.
   Moreover, when $j > r$ the inner sum over $n$ is also empty anyway.
-  \ii In the fourth double sum, if $j > \left\lfloor \frac{\ell}{2} \right\rfloor + r$,
-  the inner double sum vanishes since $2j-r > \ell + \min(j,r)$ in that case.
+  \ii In the fourth double sum,
+  \begin{itemize}
+    \ii If $\ell = 0$ and $j \ge r$, then $j+1 \ge 0+r$; and
+    \ii If $\ell > 0$ and $j > \frac{\ell}{2} + r$, then $2j-r \ge \ell+r$.
+  \end{itemize}
+  So no new terms are introduced in this case either.
 \end{itemize}
 So we can unify all four double sums to run over $0 \le j \le \delta + 2r$,
 simplifying the expression to just
 
 \begin{align*}
-  I_{n > 0}^{\text{odd}}
+  I_{n > 0}^{12}
   = q^{2(\delta+r)s}
   \sum_{j = 0}^{\delta + 2r} \Bigg(
     & \sum_{n=1}^{\min(2j-1-r, r)}
@@ -1020,13 +1038,16 @@ simplifying the expression to just
       q^{\left\lfloor \frac{n+r}{2} \right\rfloor} \cdot (-1)^n q^{s(n-2j)} \\
     &+ \sum_{n=\max(1,2j-r)}^{j}
       q^{n} \left( 1 + q\inv \right) \cdot (-1)^n q^{s(n-2j)} \\
-    &+ \sum_{n=\max(j+1, 2j-r)}^{\ell+\min(j,r)} q^{j} \cdot (-1)^n q^{s(n-2j)} \Bigg).
+    &+ \sum_{n=\max(j+1, 2j-r)}^{\min(\lambda+j, \ell+r)} q^{j} \cdot (-1)^n q^{s(n-2j)} \Bigg).
 \end{align*}
 
-\subsection{Completed case when $\ell$ is odd}
-Put everything together to get
+\subsection{Merging of $I_{n \le 0}$ with $I_{n > 0}^{12}$}
+We continue assuming $v(b) = v(d) = 0$.
+It turns out that $I_{n \le 0} + I_{n > 0}^{12}$ can be rewritten more compactly
+(giving a simple answer especially when $\ell$ is odd).
+Write
 \begin{align*}
-  I_{n \le 0} + I_{n > 0}^{\text{odd}}
+  I_{n \le 0} + I_{n > 0}^{\text{1+2}}
   = q^{2(\delta+r)s}
   \sum_{j = 0}^{\delta + 2r} \Bigg(
     q^{-2js}
@@ -1036,9 +1057,10 @@ Put everything together to get
       q^{\left\lfloor \frac{n+r}{2} \right\rfloor} \cdot (-1)^n q^{s(n-2j)} \\
     &+ \sum_{n=\max(1,2j-r)}^{j}
       q^{n} \left( 1 + q\inv \right) \cdot (-1)^n q^{s(n-2j)} \\
-    &+ \sum_{n=\max(j+1, 2j-r)}^{\ell+\min(j,r)} q^{j} \cdot (-1)^n q^{s(n-2j)} \Bigg).
+    &+ \sum_{n=\max(j+1, 2j-r)}^{\min(\lambda+j, \ell+r)} q^{j} \cdot (-1)^n q^{s(n-2j)} \Bigg).
 \end{align*}
-Note that when $r=0$ we recover \cite[equation (4.13)]{ref:AFL}.
+Note that when $r=0$ and $\ell = \lambda \equiv 1 \pmod 2$
+we recover \cite[equation (4.13)]{ref:AFL}.
 
 The above expression can be considered as a Laurent polynomial in $-q^s$,
 whose coefficients are nonnegative polynomials in $q$ (note that $(-1)^n = (-1)^{n-2j}$).
@@ -1104,15 +1126,15 @@ In the region where $k < 2\delta + r$, the first two sums contribute:
 
   In the other case $\ell+r \le k+2r$,
   we obtain exponents of
-  $\left\lfloor \frac{r + \ell+r-(\ell+r-k)\%2}{2} \right\rfloor$,
-  but since $\ell$ is odd, this is equal to $r + \left\lfloor \frac{\ell}{2} \right\rfloor$.
-
+  \[ \left\lfloor \frac{r + \ell+r-(\ell+r-k)\%2}{2} \right\rfloor
+    = r + \left\lfloor \frac{\ell-(\ell-k)\%2}{2} \right\rfloor.
+  \]
   Thus, we obtain
   \[
     \begin{cases}
       q^{\left\lfloor \frac{k+3r}{2} \right\rfloor} + \dots + q^{r+(r+1-k)\%2}
         & \text{if } -r \le k \le \ell - r \\
-      q^{r + \left\lfloor \frac{\ell}{2} \right\rfloor}
+      q^{r + \left\lfloor \frac{\ell-(\ell-k)\%2}{2} \right\rfloor}
         + \dots + q^{r + (r+1-k)\%2}
         & \text{if } \ell - r \leq k < 2\delta + r \\
       0 & \text{otherwise}.
@@ -1147,34 +1169,38 @@ In the region where $k \ge 2\delta + r$, the latter two sums are in play:
   \begin{align*}
     &\phantom{\iff} 0 \le j \le \delta + 2r \\
     j < 2j-2\delta-2r+k &\implies 2\delta+2r-k < j \\
-    2j-2\delta-2r+k \le \ell+j &\iff j \le 2\delta+2r-k+\ell \\
+    2j-2\delta-2r+k \le \lambda+j &\iff j \le 2\delta+2r-k+\lambda \\
     2j-2\delta-2r+k \le \ell+r &\iff j \le \delta+\frac{3r+\ell-k}{2}
   \end{align*}
+  The values of $k$ for which there is any valid index $j$
+  is always exactly $2\delta + r \le k \le 2 \delta + 2r + \lambda$.
+  \todo{need to finish editing stuff after this}
+
   The breakpoint for the two upper bounds on $j$ occurs when
-  \[ 2\delta+2r-k+l \le \delta+\frac{3r+\ell-k}{2}
-    \iff k \ge 2\delta + \ell + r. \]
-  Thus there are two possible splits here.
-  In the case where $\ell \ge r$, we have
+  \[ 2\delta+2r-k+\lambda \le \delta+\frac{3r+\ell-k}{2}
+    \iff k \ge 2\delta + 2\lambda - \ell + r. \]
+  We compare this right-hand side to $2\delta+2r$ to get two possible situations.
+  In the case where $2\lambda - \ell \le r$, we have
   \[
     \begin{cases}
       q^{\delta+\left\lfloor\frac{3r+\ell-k}{2}\right\rfloor} + \dots + q^{2\delta+2r-k+1}
         & \text{if } 2\delta+r \le k \le 2\delta+2r  \\
       q^{\delta+\left\lfloor\frac{3r+\ell-k}{2}\right\rfloor} + \dots + q^{0}
-        & \text{if } 2\delta+2r < k \le 2\delta+\ell+r  \\
-      q^{2\delta+2r-k+\ell} + \dots + q^0
-        & \text{if } 2\delta+\ell+r \le k \le 2\delta+2r+\ell \\
+        & \text{if } 2\delta+2r < k \le 2\delta+2\lambda-\ell+r  \\
+      q^{2\delta+2r-k+\lambda} + \dots + q^0
+        & \text{if } 2\delta+2\lambda-\ell+r \le k \le 2\delta+\lambda+2r \\
       0 & \text{otherwise}.
     \end{cases}
   \]
-  whereas in the case where $\ell \le r$, we have
+  whereas in the case where $2\lambda - \ell > r$, we have
   \[
     \begin{cases}
       q^{\delta+\left\lfloor\frac{3r+\ell-k}{2}\right\rfloor} + \dots + q^{2\delta+2r-k+1}
-        & \text{if } 2\delta+r \le k \le 2\delta+\ell+r  \\
+        & \text{if } 2\delta+r \le k \le 2\delta+2\lambda-\ell+r  \\
       q^{\delta+\left\lfloor\frac{3r+\ell-k}{2}\right\rfloor} + \dots + q^{2\delta+2r-k+1}
-        & \text{if } 2\delta+\ell+r \le k \le 2\delta+2r  \\
-      q^{2\delta+2r-k+\ell} + \dots + q^0
-        & \text{if } 2\delta+2r < k \le 2\delta+\ell+2r \\
+        & \text{if } 2\delta+2\lambda-\ell+r \le k \le 2\delta+2r  \\
+      q^{2\delta+2r-k+\lambda} + \dots + q^0
+        & \text{if } 2\delta+2r < k \le 2\delta+\lambda+2r \\
       0 & \text{otherwise}.
     \end{cases}
   \]
