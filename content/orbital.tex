@@ -1125,16 +1125,16 @@ In the region where $k < 2\delta + r$, the first two sums contribute:
   $\left\lfloor \frac{(k+2r)+r}{2} \right\rfloor$.
 
   In the other case $\ell+r \le k+2r$,
-  we obtain exponents of
-  \[ \left\lfloor \frac{r + \ell+r-(\ell+r-k)\%2}{2} \right\rfloor
-    = r + \left\lfloor \frac{\ell-(\ell-k)\%2}{2} \right\rfloor.
+  we obtain largest exponents of
+  \[ \left\lfloor \frac{(\ell+r-(\ell+r-k)\%2) + r}{2} \right\rfloor
+    = r + \left\lfloor \frac{\ell-(\ell+r-k)\%2}{2} \right\rfloor.
   \]
   Thus, we obtain
   \[
     \begin{cases}
       q^{\left\lfloor \frac{k+3r}{2} \right\rfloor} + \dots + q^{r+(r+1-k)\%2}
         & \text{if } -r \le k \le \ell - r \\
-      q^{r + \left\lfloor \frac{\ell-(\ell-k)\%2}{2} \right\rfloor}
+      q^{r + \left\lfloor \frac{\ell-(\ell+r-k)\%2}{2} \right\rfloor}
         + \dots + q^{r + (r+1-k)\%2}
         & \text{if } \ell - r \leq k < 2\delta + r \\
       0 & \text{otherwise}.
@@ -1169,46 +1169,59 @@ In the region where $k \ge 2\delta + r$, the latter two sums are in play:
   \begin{align*}
     &\phantom{\iff} 0 \le j \le \delta + 2r \\
     j < 2j-2\delta-2r+k &\implies 2\delta+2r-k < j \\
-    2j-2\delta-2r+k \le \lambda+j &\iff j \le 2\delta+2r-k+\lambda \\
+    2j-2\delta-2r+k \le \lambda+j &\iff j \le 2\delta+2r+\lambda-k \\
     2j-2\delta-2r+k \le \ell+r &\iff j \le \delta+\frac{3r+\ell-k}{2}
   \end{align*}
-  The values of $k$ for which there is any valid index $j$
-  is always exactly $2\delta + r \le k \le 2 \delta + 2r + \lambda$.
-  \todo{need to finish editing stuff after this}
-
+  The values of $k$ for which there is any valid index $j$ is given by
+  \[ 2\delta + r \le k \le 2 \delta + \min \left( \lambda + 2r, \ell + 3r \right). \]
   The breakpoint for the two upper bounds on $j$ occurs when
   \[ 2\delta+2r-k+\lambda \le \delta+\frac{3r+\ell-k}{2}
     \iff k \ge 2\delta + 2\lambda - \ell + r. \]
-  We compare this right-hand side to $2\delta+2r$ to get two possible situations.
-  In the case where $2\lambda - \ell \le r$, we have
-  \[
-    \begin{cases}
-      q^{\delta+\left\lfloor\frac{3r+\ell-k}{2}\right\rfloor} + \dots + q^{2\delta+2r-k+1}
-        & \text{if } 2\delta+r \le k \le 2\delta+2r  \\
-      q^{\delta+\left\lfloor\frac{3r+\ell-k}{2}\right\rfloor} + \dots + q^{0}
-        & \text{if } 2\delta+2r < k \le 2\delta+2\lambda-\ell+r  \\
-      q^{2\delta+2r-k+\lambda} + \dots + q^0
-        & \text{if } 2\delta+2\lambda-\ell+r \le k \le 2\delta+\lambda+2r \\
-      0 & \text{otherwise}.
-    \end{cases}
-  \]
-  whereas in the case where $2\lambda - \ell > r$, we have
-  \[
-    \begin{cases}
-      q^{\delta+\left\lfloor\frac{3r+\ell-k}{2}\right\rfloor} + \dots + q^{2\delta+2r-k+1}
-        & \text{if } 2\delta+r \le k \le 2\delta+2\lambda-\ell+r  \\
-      q^{\delta+\left\lfloor\frac{3r+\ell-k}{2}\right\rfloor} + \dots + q^{2\delta+2r-k+1}
-        & \text{if } 2\delta+2\lambda-\ell+r \le k \le 2\delta+2r  \\
-      q^{2\delta+2r-k+\lambda} + \dots + q^0
-        & \text{if } 2\delta+2r < k \le 2\delta+\lambda+2r \\
-      0 & \text{otherwise}.
-    \end{cases}
-  \]
-  For later purposes, it will be more symmetric to rewrite the exponent as
-  \[ \delta + \left\lfloor \frac{3r+\ell-k}{2} \right\rfloor
-    = r + \left\lfloor \frac{(2\delta+\ell+r)-k}{2} \right\rfloor. \]
+
+  Comparing all the bounds, we find there are three possible scenarios.
+  \begin{itemize}
+    \ii If $\lambda \le \frac{\ell+r}{2}$, then we get
+    \[
+      \begin{cases}
+        q^{\delta+\left\lfloor\frac{3r+\ell-k}{2}\right\rfloor} + \dots + q^{2\delta+2r-k+1}
+          & \text{if } 2\delta+r \le k \le 2\delta+2r  \\
+        q^{\delta+\left\lfloor\frac{3r+\ell-k}{2}\right\rfloor} + \dots + q^{0}
+          & \text{if } 2\delta+2r < k \le 2\delta+2\lambda-\ell+r  \\
+        q^{2\delta+2r+\lambda-k} + \dots + q^0
+          & \text{if } 2\delta+2\lambda-\ell+r \le k \le 2\delta+\lambda+2r \\
+        0 & \text{otherwise}.
+      \end{cases}
+    \]
+
+    \ii If $\frac{\ell+r}{2} < \lambda \le \ell + r$, then we get
+    \[
+      \begin{cases}
+        q^{\delta+\left\lfloor\frac{3r+\ell-k}{2}\right\rfloor} + \dots + q^{2\delta+2r-k+1}
+          & \text{if } 2\delta+r \le k \le 2\delta+2\lambda-\ell+r  \\
+        q^{\delta+\left\lfloor\frac{3r+\ell-k}{2}\right\rfloor} + \dots + q^{2\delta+2r-k+1}
+          & \text{if } 2\delta+2\lambda-\ell+r \le k \le 2\delta+2r  \\
+        q^{2\delta+2r+\lambda-k} + \dots + q^0
+          & \text{if } 2\delta+2r < k \le 2\delta+\lambda+2r \\
+        0 & \text{otherwise}.
+      \end{cases}
+    \]
+
+    \ii If $\ell+r < \lambda$, then we get
+    \[
+      \begin{cases}
+        q^{\delta+\left\lfloor\frac{3r+\ell-k}{2}\right\rfloor} + \dots + q^{2\delta+2r-k+1}
+          & \text{if } 2\delta+r \le k \le 2\delta+2r \\
+        q^{\delta+\left\lfloor\frac{3r+\ell-k}{2}\right\rfloor} + \dots + q^{0}
+          & \text{if } 2\delta+2r < k \le 2\delta+\ell+3r \\
+        0 & \text{otherwise}.
+      \end{cases}
+    \]
+  \end{itemize}
 \end{itemize}
 This completes the analysis of the four sums above.
+For later purposes, it will be more symmetric to rewrite the exponent as
+\[ \delta + \left\lfloor \frac{3r+\ell-k}{2} \right\rfloor
+  = r + \left\lfloor \frac{(2\delta+\ell+r)-k}{2} \right\rfloor. \]
 
 Now we can piece together all the parts below.
 It turns out that for every value of $k$,
@@ -1219,8 +1232,8 @@ Indeed,
   \ii When $k = -2r$ the only term is $q^0$.
   \ii For $-2r < k < r$, only the first sum contributes
   $q^{k+2r} + \dots + q^{(k-1)\%2}$,
-  which is then completed by the $q^0$ contribution from $I_{n \le 0}$ when $k$ is even.
-  with a possible $q^0$
+  which is then completed by the $q^0$ contribution from $I_{n \le 0}$ when $k$ is even
+  with a possible $q^0$.
   \ii For $-r \le k < 2\delta+r$,
   the first and second sum actually fit together with a ``seam'' near $q^r$,
   which is for even $k$ then completed by
@@ -1228,11 +1241,14 @@ Indeed,
   \ii For $2\delta+r \le k \le 2\delta+2r$,
   the same holds with piecing the third and fourth sum together
   (where the seam is near $q^k$ this time).
-  \ii Finally, only the fourth sum contributes for $2\delta+2r \le k \le 2\delta+\ell+2r$,
+  \ii Finally, only the fourth sum contributes for $k \ge 2\delta+2r$,
   and it is of the desired form.
 \end{itemize}
+This gives us a succinct description of the orbital integral.
+We describe it in the cases where $\ell$ is odd and $\ell$ is even.
 
-Therefore, the orbital integral can be expressed succinctly in the following way.
+If $\ell$ is odd, so $\lambda = \ell$, then
+the orbital integral can be expressed succinctly in the following way.
 \begin{theorem}
   [Orbital integral in the odd case for $\mathbf{1}_{K'_{S, \le r}}$]
   Under the assumptions before, for any $r \ge 0$ we have the formula
@@ -1247,7 +1263,7 @@ Therefore, the orbital integral can be expressed succinctly in the following way
     \begin{cases}
       k + 2r & \text{if } {-2r} \le k \le -r \\
       r + \left\lfloor \frac{k+r}{2} \right\rfloor & \text{if }{-r} \le k \le \ell-r \\
-      r + \left\lfloor \frac{\ell}{2} \right\rfloor & \text{if } \ell - r \le k \le 2\delta + r \\
+      r + \frac{\ell-1}{2} & \text{if } \ell - r \le k \le 2\delta + r \\
       r + \left\lfloor \frac{(2\delta+\ell+r)-k}{2} \right\rfloor & \text{if } 2\delta + r \le k \le 2\delta + \ell + r\\
       (2\delta + \ell + 2r) - k & \text{if } 2\delta + \ell + r \le k \le 2\delta + \ell + 2r.
     \end{cases}
@@ -1337,6 +1353,41 @@ we can then write the following equivalent formulation.
   &- q^{211s}.
   \end{align*}
 \end{example}
+
+If $\ell$ is even, we have a similar intermediate result.
+\begin{proposition}
+  Suppose $\ell$ is even.
+  Then we have the intermediate result
+  \[
+    I_{n \le 0} + I_{n > 0}^{\text{1+2}}
+    = \sum_{k = -2r}^{2\delta + \min(\lambda+2r, \ell+3r)}
+    (-1)^k \left( 1 + q + q^2 + \dots + q^{\nn^{1+2}_{\gamma}(k)}  \right) (q^s)^k
+  \]
+  where the piecewise function $\nn_\gamma \colon \ZZ \to \ZZ_{\ge 0}$ is defined by
+  \[
+    \nn^{1+2}_\gamma(k) =
+    \begin{cases}
+      k + 2r & \text{if } {-2r} \le k \le -r \\
+      r + \left\lfloor \frac{k+r}{2} \right\rfloor & \text{if }{-r} \le k \le \ell-r \\
+      r + \frac{\ell}{2} - (k-r)\%2 & \text{if } \ell - r \le k \le 2\delta + r \\
+      r + \left\lfloor \frac{(2\delta+\ell+r)-k}{2} \right\rfloor & \text{if } 2\delta + r \le k \le 2\delta + \ell + 3r
+    \end{cases}
+  \]
+  in the case $\lambda \ge \ell+r$, and
+  \[
+    \nn^{1+2}_\gamma(k) =
+    \begin{cases}
+      k + 2r & \text{if } {-2r} \le k \le -r \\
+      r + \left\lfloor \frac{k+r}{2} \right\rfloor & \text{if }{-r} \le k \le \ell-r \\
+      r + \left\lfloor \frac{\ell}{2} \right\rfloor - (k-r) \% 2 & \text{if } \ell - r \le k \le 2\delta + r \\
+      r + \left\lfloor \frac{(2\delta+\ell+r)-k}{2} \right\rfloor & \text{if } 2\delta + r \le k \le 2\delta + 2\lambda - \ell + r \\
+      (2\delta + \lambda + 2r) - k & \text{if } 2 \delta + 2 \lambda - \ell + r \le k \le 2 \delta + \lambda + 2r.
+    \end{cases}
+  \]
+  in the case $\lambda \le \ell+r$.
+
+\end{proposition}
+
 
 
 \subsection{Region where $n > 0$ for even $\ell$}
