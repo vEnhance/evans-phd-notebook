@@ -1254,9 +1254,9 @@ the orbital integral can be expressed succinctly in the following way.
     \nn_\gamma(k) =
     \begin{cases}
       k + 2r & \text{if } {-2r} \le k \le -r \\
-      r + \left\lfloor \frac{k+r}{2} \right\rfloor & \text{if }{-r} \le k \le \ell-r \\
-      r + \frac{\ell-1}{2} & \text{if } \ell - r \le k \le 2\delta + r \\
-      r + \left\lfloor \frac{(2\delta+\ell+r)-k}{2} \right\rfloor & \text{if } 2\delta + r \le k \le 2\delta + \ell + r\\
+      \left\lfloor \frac{k+r}{2} \right\rfloor + r & \text{if }{-r} \le k \le \ell-r \\
+      \frac{\ell-1}{2} + r & \text{if } \ell - r \le k \le 2\delta + r \\
+      \left\lfloor \frac{(2\delta+\ell+r)-k}{2} \right\rfloor + r & \text{if } 2\delta + r \le k \le 2\delta + \ell + r\\
       (2\delta + \ell + 2r) - k & \text{if } 2\delta + \ell + r \le k \le 2\delta + \ell + 2r.
     \end{cases}
   \]
@@ -1360,9 +1360,9 @@ If $\ell$ is even, we have a similar intermediate result.
     \nn^{1+2}_\gamma(k) =
     \begin{cases}
       k + 2r & \text{if } {-2r} \le k \le -r \\
-      r + \left\lfloor \frac{k+r}{2} \right\rfloor & \text{if }{-r} \le k \le \ell-r \\
-      r + \frac{\ell}{2} - (k-r)\%2 & \text{if } \ell - r \le k \le 2\delta + r \\
-      r + \left\lfloor \frac{(2\delta+\ell+r)-k}{2} \right\rfloor & \text{if } 2\delta + r \le k \le 2\delta + \ell + 3r
+      \left\lfloor \frac{k+r}{2} \right\rfloor + r & \text{if }{-r} \le k \le \ell-r \\
+      \frac{\ell}{2} + r - (k-r)\%2 & \text{if } \ell - r \le k \le 2\delta + r \\
+      \left\lfloor \frac{(2\delta+\ell+r)-k}{2} \right\rfloor + r & \text{if } 2\delta + r \le k \le 2\delta + \ell + 3r
     \end{cases}
   \]
   in the case $\lambda \ge \ell+r$, and
@@ -1370,9 +1370,9 @@ If $\ell$ is even, we have a similar intermediate result.
     \nn^{1+2}_\gamma(k) =
     \begin{cases}
       k + 2r & \text{if } {-2r} \le k \le -r \\
-      r + \left\lfloor \frac{k+r}{2} \right\rfloor & \text{if }{-r} \le k \le \ell-r \\
-      r + \left\lfloor \frac{\ell}{2} \right\rfloor - (k-r) \% 2 & \text{if } \ell - r \le k \le 2\delta + r \\
-      r + \left\lfloor \frac{(2\delta+\ell+r)-k}{2} \right\rfloor & \text{if } 2\delta + r \le k \le 2\delta + 2\lambda - \ell + r \\
+      \left\lfloor \frac{k+r}{2} \right\rfloor + r & \text{if }{-r} \le k \le \ell-r \\
+      \frac{\ell}{2} + r - (k-r) \% 2 & \text{if } \ell - r \le k \le 2\delta + r \\
+      \left\lfloor \frac{(2\delta+\ell+r)-k}{2} \right\rfloor + r & \text{if } 2\delta + r \le k \le 2\delta + 2\lambda - \ell + r \\
       (2\delta + \lambda + 2r) - k & \text{if } 2 \delta + 2 \lambda - \ell + r \le k \le 2 \delta + \lambda + 2r.
     \end{cases}
   \]
@@ -1421,5 +1421,5 @@ and put $\Vol(t_1:-v(t_1)=m) = q^{2m} (1-q^{-2})$ to get:
     q^{\frac{\ell}{2}+r} \cdot (-1)^n q^{s(2m-n)} \\
   &\qquad+ \sum_{n=\ell+r+1}^{\lambda+r}
     \sum_{m=n-\frac{\ell}{2}+\delta}^{\min(n,\lambda)+\delta+r}
-    q^{n-m+\delta+r} (-1)^n q^{s(2m-n)} \\
+    q^{n-m+\delta+r} \cdot (-1)^n q^{s(2m-n)} \\
 \end{align*}
