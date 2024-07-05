@@ -735,7 +735,7 @@ where each $(m,n)$ gives a volume contribution of
 Notice that $m \leq \delta + r$ could only occur when $n \leq r$.
 
 \subsection{Analysis of Case 3 and 4 assuming $n > 0$ and $v(b) = v(d) = 0$.}
-Suppose $\ell$ is even.
+Suppose $\ell \geq 0$ is even.
 Using the identity
 \[ (au-\bar d \bar u)^2 - \tau^2 = 4a\bar d(1- u\bar u) \]
 we agree now to fix the choice of the square root of $\tau$ such that
@@ -759,7 +759,7 @@ we have the calculation
 \end{align*}
 
 \paragraph{Double sum for Case 3\ts+.}
-Suppose $n > \max(\ell+r, 0)$,
+Suppose $n > \ell + r$,
 $m < n - \frac{\ell}{2} + \delta$, and we choose $\frac{b+\tau}{2a}$.
 Then \Cref{lem:quadruple_ineq} gives a nonzero contribution if and only if
 \begin{align*}
@@ -768,25 +768,23 @@ Then \Cref{lem:quadruple_ineq} gives a nonzero contribution if and only if
 \end{align*}
 Compiling all seven constraints gives that the valid pairs $(m,n)$ are those for which
 \begin{align*}
-  \max(1, \ell+r+1) &\leq n \leq -\frac{\ell}{2} + \delta + r + \lambda, \\
+  \max(1, \ell+r+1) &\leq n \leq -\frac{\ell}{2} + \delta + \lambda + r, \\
   n-r &\leq m \leq \min\left( n+\delta+r, n - \frac{\ell}{2}+\delta - 1,
     \lambda-\frac{\ell}{2}+\delta+r \right)
 \end{align*}
-However, $n + \delta + r \ge n - \frac{\ell}{2} + r$ is clear if $\ell \ge 0$.
-So this equation can be whittled down to
+which from $\ell, \delta, r \ge 0$ can be simplified to just
 \begin{equation}
   \begin{aligned}
-    \max(1, \ell+r+1) &\leq n \leq  -\frac{\ell}{2} + \delta + r + \lambda, \\
-    n-r &\leq m \leq \min\left( n - \frac{\ell}{2}+\delta - 1,
-      \lambda-\frac{\ell}{2}+\delta+r \right).
+    \ell+r+1 &\leq n \leq  -\frac{\ell}{2} + \delta + \lambda + r, \\
+    n-r &\leq m \leq n - \frac{\ell}{2} + \delta - 1
   \end{aligned}
-  \label{eq:even_case1_plus}
+  \label{eq:even_case3_plus}
 \end{equation}
 Each $(m,n)$ gives a volume contribution of
 \[ q^{-n - (n - \ell/2 - r)} \left( 1 - q\inv \right). \]
 
 \paragraph{Double sum for Case 3\ts-.}
-Suppose $n > \max(\ell+r, 0)$,
+Suppose $n > \ell + r$,
 $m < n - \frac{\ell}{2} + \delta$, and we choose $\frac{b-\tau}{2a}$.
 Then \Cref{lem:quadruple_ineq} gives a nonzero contribution if and only if
 \begin{align*}
@@ -795,28 +793,26 @@ Then \Cref{lem:quadruple_ineq} gives a nonzero contribution if and only if
 \end{align*}
 Compiling all seven constraints gives that the valid pairs $(m,n)$ are those for which
 \begin{align*}
-  \max(1, \ell+r+1) &\leq n \leq \frac{\ell}{2}+\delta+r, \\
+  \ell + r + 1 &\leq n \leq \frac{\ell}{2}+\delta+r, \\
   n-r &\leq m \leq \min\left( n - \frac{\ell}{2}+\delta - 1,
     \frac{\ell}{2} + \delta + r, n + \delta + r \right)
 \end{align*}
-However, $n - \frac{\ell}{2}+\delta - 1 \ge \frac{\ell}{2} + \delta + r$
-hold automatically once $n \ge \ell + r + 1$,
-and $n + \delta + r \ge \frac{\ell}{2} + \delta + r$ is true since
-$\ell \ge -2r$ gives $n > \ell + r \ge \frac{\ell}{2}$.
-So we can simplify this to
+This simplifies to
 \begin{equation}
   \begin{aligned}
-    \max(1, \ell+r+1) &\leq n \leq \frac{\ell}{2}+\delta+r, \\
+    \ell+r+1 &\leq n \leq \frac{\ell}{2}+\delta+r, \\
     n-r &\leq m \leq \frac{\ell}{2} + \delta + r.
   \end{aligned}
-  \label{eq:even_case1_minus}
+  \label{eq:even_case3_minus}
 \end{equation}
 As in the previous case, $(m,n)$ gives a volume contribution of
 \[ q^{-n - (n - \ell/2 - r)} \left( 1 - q\inv \right). \]
 
 \paragraph{Double sum for Case 4\ts+.}
-Suppose $n > \max(\ell+r, 0)$,
-$m \ge n - \frac{\ell}{2} + \delta$, and we choose $\frac{b+\tau}{2a}$.
+Suppose $n > \ell + r$,
+$m \ge n - \frac{\ell}{2} + \delta$
+(which implies $m \ge n-r$ since $r \ge 0$ and $0 \le \ell \le 2 \delta$),
+and we choose $\frac{b+\tau}{2a}$.
 Then \Cref{lem:quadruple_ineq} gives a nonzero contribution if and only if
 \begin{align*}
   \lambda &\geq m - \delta - r \\
@@ -825,16 +821,16 @@ Then \Cref{lem:quadruple_ineq} gives a nonzero contribution if and only if
 Rearranging gives that the valid pairs $(m,n)$ are those for which
 \begin{equation}
   \begin{aligned}
-    \max(1, \ell+r+1) &\leq n \leq \lambda + r \\
-    \max\left( n-r, n - \frac{\ell}{2} + \delta \right) &\leq m \leq \min(n, \lambda) + r + \delta.
+    \ell + r + 1 &\leq n \leq \lambda + r \\
+    n - \frac{\ell}{2} + \delta &\leq m \leq \min(n, \lambda) + \delta + r.
   \end{aligned}
-  \label{eq:even_case2_plus}
+  \label{eq:even_case4_plus}
 \end{equation}
 Here, each $(m,n)$ gives a volume contribution of
 \[ q^{-n - (m - \delta - r)} \left( 1 - q\inv \right). \]
 
 \paragraph{Double sum for Case 4\ts-.}
-Suppose $n > \max(\ell+r, 0)$,
+Suppose $n > \ell + r$,
 $m \ge n - \frac{\ell}{2} + \delta$, and we choose $\frac{b-\tau}{2a}$.
 Then \Cref{lem:quadruple_ineq} gives a nonzero contribution if and only if
 \begin{align*}
@@ -893,11 +889,12 @@ so in fact this case can never occur.
 \subsection{Contribution from Case 1 and Case 2 assuming $v(b)=v(d)=0$}
 Again using $\Vol(t_1:-v(t_1)=m) = q^{2m} (1-q^{-2})$,
 summing all the cases gives
+the following contribution within
+$\kappa \int_{t, t_1 \in E} \mathbf{1}[n > 0] \mathbf{1}_{\le r}(\gamma,t,m)$:
 \begin{align*}
-  I_{n > 0}^{\text{1+2}} &\coloneqq
-    \kappa \int_{t, t_1 \in E} \mathbf{1}[n > 0] \mathbf{1}_{\le r}(\gamma,t,m) \\
+  I_{n > 0}^{\text{1+2}}
   % -----------------------------------------------------------
-  &= \kappa \sum_{n=1}^{r}
+  &\coloneqq \kappa \sum_{n=1}^{r}
     \sum_{m=n-r}^{\left\lceil \frac{n-r}{2} \right\rceil+\delta+r-1}
     q^{-n} \left( 1 - q^{-2} \right)
       \cdot \Big( (-1)^n q^{s(2m-n)} q^{2n-2m} \Big) \Big( q^{2m}(1-q^{-2}) \Big) \\
@@ -1382,6 +1379,25 @@ If $\ell$ is even, we have a similar intermediate result.
 
 \end{proposition}
 
-
-
-\subsection{Region where $n > 0$ for even $\ell$}
+\subsection{Contribution from Case 3\ts{+}, 3\ts{-}, 4\ts{+} assuming $v(b) = v(d) = 0$}
+These cases only appear when $\ell$ is even and we assume this for this section.
+We consider the contribution of these cases within
+$\kappa \int_{t, t_1 \in E} \mathbf{1}[n > 0] \mathbf{1}_{\le r}(\gamma,t,m)$
+(using \eqref{eq:even_case3_plus}, \eqref{eq:even_case3_minus}, \eqref{eq:even_case4_plus})
+and put $\Vol(t_1:-v(t_1)=m) = q^{2m} (1-q^{-2})$ to get:
+\begin{align*}
+  I_{n > 0}^{\text{3+4}}
+  % -----------------------------------------------------------
+  &\coloneqq \kappa \sum_{n=\ell+r+1}^{-\frac{\ell}{2}+\delta+\lambda+r}
+  \sum_{m=n-r}^{n-\frac{\ell}{2}+\delta-1}
+    q^{-n-(n-\ell/2-r)} \left( 1 - q^{-1} \right)
+      \cdot \Big( (-1)^n q^{s(2m-n)} q^{2n-2m} \Big) \Big( q^{2m}(1-q^{-2}) \Big) \\
+  &\qquad+ \kappa \sum_{n=\ell+r+1}^{\frac{\ell}{2}+\delta+r}
+    \sum_{m=n-r}^{\frac{\ell}{2}+\delta+r}
+    q^{-n-(n-\ell/2-r)} \left( 1 - q^{-1} \right)
+      \cdot \Big( (-1)^n q^{s(2m-n)} q^{2n-2m} \Big) \Big( q^{2m}(1-q^{-2}) \Big) \\
+  &\qquad+ \kappa \sum_{n=\ell+r+1}^{\lambda+r}
+    \sum_{m=n-\frac{\ell}{2}+\delta}^{\min(n,\lambda)+\delta+r}
+    q^{-n-(m-\delta-r)} \left( 1 - q^{-1} \right)
+      \cdot \Big( (-1)^n q^{s(2m-n)} q^{2n-2m} \Big) \Big( q^{2m}(1-q^{-2}) \Big) \\
+\end{align*}
