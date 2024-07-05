@@ -63,7 +63,8 @@ Now we can define the orbital integral.
   where
   \[ \odif g = \kappa \cdot \frac{\odif t_1 \odif t_2}
     {\left\lvert t_1 \bar t_1 - t_2 \bar t_2 \right\rvert_F^2} \]
-  for the constant $\kappa \coloneqq (1-q\inv)\inv(1-q^{-2})\inv$.
+  for the constant
+  \[ \kappa \coloneqq \frac{1}{(1-q\inv)(1-q^{-2})}. \]
 \end{definition}
 
 Indeed, for $h' \in H$ and $\gamma \in S_3(F)$ we have $h' \gamma (\bar h')\inv \in S_3(F)$
@@ -546,7 +547,7 @@ Recalling that $\ell = b^2 - 4 a \bar d$, there are three possibilities:
     \ii \textbf{Case 2} is the situation where $\left\lceil \frac{n-r}{2} \right\rceil < m - \delta - r$.
   \end{itemize}
 
-  \ii If $\ell < n-r$, then \eqref{eq:2atb_dos} could only hold if $v(2at-b) = \ell/2$.
+  \ii If $\ell < n-r$, then \eqref{eq:2atb_dos} could only hold if $v(2at-b) = \frac{\ell}{2}$.
   Note that in particular, this requires $\ell$ to be even.
   If this happens, then $b^2 - 4 a \bar d$ must be a square and we denote it $\tau^2$.
   Thus, \eqref{eq:2atb_dos} then reads
@@ -555,7 +556,7 @@ Recalling that $\ell = b^2 - 4 a \bar d$, there are three possibilities:
   it must be the case that one of the two factors
   $v(2at-b\mp\tau)$ is equal to $v(\tau) = \ell / 2$ exactly.
 
-  Suppose $v(2at-b+\tau) = \ell/2$, so we need
+  Suppose $v(2at-b+\tau) = \frac{\ell}{2}$, so we need
   \[ v\left( t - \frac{b+\tau}{2a} \right) = v(2at-b-\tau) \ge n - \frac{\ell}{2} - r. \]
   We further subdivide this into two cases:
   \begin{itemize}
@@ -764,7 +765,7 @@ $m < n - \frac{\ell}{2} + \delta$, and we choose $\frac{b+\tau}{2a}$.
 Then \Cref{lem:quadruple_ineq} gives a nonzero contribution if and only if
 \begin{align*}
   \lambda + \delta - \ell = v(4-\Norm(b+\tau)) &\geq n - \frac{\ell}{2} - r \\
-  \lambda - \ell/2 = v(au-\bar d \bar u + \tau) & \geq m - \delta - r.
+  \lambda - \frac{\ell}{2} = v(au-\bar d \bar u + \tau) & \geq m - \delta - r.
 \end{align*}
 Compiling all seven constraints gives that the valid pairs $(m,n)$ are those for which
 \begin{align*}
@@ -776,12 +777,12 @@ which from $\ell, \delta, r \ge 0$ can be simplified to just
 \begin{equation}
   \begin{aligned}
     \ell+r+1 &\leq n \leq  -\frac{\ell}{2} + \delta + \lambda + r, \\
-    n-r &\leq m \leq n - \frac{\ell}{2} + \delta - 1
+    n-r &\leq m \leq \min(n-1, \lambda-r) - \frac{\ell}{2} + \delta
   \end{aligned}
   \label{eq:even_case3_plus}
 \end{equation}
 Each $(m,n)$ gives a volume contribution of
-\[ q^{-n - (n - \ell/2 - r)} \left( 1 - q\inv \right). \]
+\[ q^{-n - (n - \frac{\ell}{2} - r)} \left( 1 - q\inv \right). \]
 
 \paragraph{Double sum for Case 3\ts-.}
 Suppose $n > \ell + r$,
@@ -789,7 +790,7 @@ $m < n - \frac{\ell}{2} + \delta$, and we choose $\frac{b-\tau}{2a}$.
 Then \Cref{lem:quadruple_ineq} gives a nonzero contribution if and only if
 \begin{align*}
   \delta = v(4-\Norm(b-\tau)) &\geq n - \frac{\ell}{2} - r \\
-  \ell/2 = v(au-\bar d \bar u - \tau) & \geq m - \delta - r.
+  \frac{\ell}{2} = v(au-\bar d \bar u - \tau) & \geq m - \delta - r.
 \end{align*}
 Compiling all seven constraints gives that the valid pairs $(m,n)$ are those for which
 \begin{align*}
@@ -806,7 +807,7 @@ This simplifies to
   \label{eq:even_case3_minus}
 \end{equation}
 As in the previous case, $(m,n)$ gives a volume contribution of
-\[ q^{-n - (n - \ell/2 - r)} \left( 1 - q\inv \right). \]
+\[ q^{-n - (n - \frac{\ell}{2} - r)} \left( 1 - q\inv \right). \]
 
 \paragraph{Double sum for Case 4\ts+.}
 Suppose $n > \ell + r$,
@@ -816,7 +817,7 @@ and we choose $\frac{b+\tau}{2a}$.
 Then \Cref{lem:quadruple_ineq} gives a nonzero contribution if and only if
 \begin{align*}
   \lambda &\geq m - \delta - r \\
-  \lambda - \ell/2 = v(au-\bar d \bar u + \tau) & \geq n - \frac{\ell}{2} - r.
+  \lambda - \frac{\ell}{2} = v(au-\bar d \bar u + \tau) & \geq n - \frac{\ell}{2} - r.
 \end{align*}
 Rearranging gives that the valid pairs $(m,n)$ are those for which
 \begin{equation}
@@ -835,7 +836,7 @@ $m \ge n - \frac{\ell}{2} + \delta$, and we choose $\frac{b-\tau}{2a}$.
 Then \Cref{lem:quadruple_ineq} gives a nonzero contribution if and only if
 \begin{align*}
   \lambda &\geq m - \delta - r \\
-  \ell/2 = v(au-\bar d \bar u - \tau) & \geq n - \frac{\ell}{2} - r.
+  \frac{\ell}{2} = v(au-\bar d \bar u - \tau) & \geq n - \frac{\ell}{2} - r.
 \end{align*}
 The latter inequality contradicts the assumption that $n > \ell + r$,
 so in fact this case can never occur.
@@ -1389,15 +1390,36 @@ and put $\Vol(t_1:-v(t_1)=m) = q^{2m} (1-q^{-2})$ to get:
   I_{n > 0}^{\text{3+4}}
   % -----------------------------------------------------------
   &\coloneqq \kappa \sum_{n=\ell+r+1}^{-\frac{\ell}{2}+\delta+\lambda+r}
-  \sum_{m=n-r}^{n-\frac{\ell}{2}+\delta-1}
-    q^{-n-(n-\ell/2-r)} \left( 1 - q^{-1} \right)
+    \sum_{m=n-r}^{\min(n-1, \lambda+r)-\frac{\ell}{2}+\delta}
+    q^{-n-(n-\frac{\ell}{2}-r)} \left( 1 - q^{-1} \right)
       \cdot \Big( (-1)^n q^{s(2m-n)} q^{2n-2m} \Big) \Big( q^{2m}(1-q^{-2}) \Big) \\
   &\qquad+ \kappa \sum_{n=\ell+r+1}^{\frac{\ell}{2}+\delta+r}
     \sum_{m=n-r}^{\frac{\ell}{2}+\delta+r}
-    q^{-n-(n-\ell/2-r)} \left( 1 - q^{-1} \right)
+    q^{-n-(n-\frac{\ell}{2}-r)} \left( 1 - q^{-1} \right)
       \cdot \Big( (-1)^n q^{s(2m-n)} q^{2n-2m} \Big) \Big( q^{2m}(1-q^{-2}) \Big) \\
   &\qquad+ \kappa \sum_{n=\ell+r+1}^{\lambda+r}
     \sum_{m=n-\frac{\ell}{2}+\delta}^{\min(n,\lambda)+\delta+r}
     q^{-n-(m-\delta-r)} \left( 1 - q^{-1} \right)
       \cdot \Big( (-1)^n q^{s(2m-n)} q^{2n-2m} \Big) \Big( q^{2m}(1-q^{-2}) \Big) \\
+  &= \sum_{n=\ell+r+1}^{-\frac{\ell}{2}+\delta+\lambda+r}
+    \sum_{m=n-r}^{\min(n-1, \lambda+r)-\frac{\ell}{2}+\delta}
+    q^{-n-(n-\frac{\ell}{2}-r)}
+      \cdot \Big( (-1)^n q^{s(2m-n)} q^{2n} \Big) \\
+  &\qquad+ \sum_{n=\ell+r+1}^{\frac{\ell}{2}+\delta+r}
+    \sum_{m=n-r}^{\frac{\ell}{2}+\delta+r}
+    q^{-n-(n-\frac{\ell}{2}-r)}
+      \cdot \Big( (-1)^n q^{s(2m-n)} q^{2n} \Big) \\
+  &\qquad+ \sum_{n=\ell+r+1}^{\lambda+r}
+    \sum_{m=n-\frac{\ell}{2}+\delta}^{\min(n,\lambda)+\delta+r}
+    q^{-n-(m-\delta-r)}
+      \cdot \Big( (-1)^n q^{s(2m-n)} q^{2n} \Big) \\
+  &= \sum_{n=\ell+r+1}^{-\frac{\ell}{2}+\delta+\lambda+r}
+    \sum_{m=n-r}^{\min(n-1, \lambda+r)-\frac{\ell}{2}+\delta}
+    q^{\frac{\ell}{2}+r} \cdot (-1)^n q^{s(2m-n)} \\
+  &\qquad+ \sum_{n=\ell+r+1}^{\frac{\ell}{2}+\delta+r}
+    \sum_{m=n-r}^{\frac{\ell}{2}+\delta+r}
+    q^{\frac{\ell}{2}+r} \cdot (-1)^n q^{s(2m-n)} \\
+  &\qquad+ \sum_{n=\ell+r+1}^{\lambda+r}
+    \sum_{m=n-\frac{\ell}{2}+\delta}^{\min(n,\lambda)+\delta+r}
+    q^{n-m+\delta+r} (-1)^n q^{s(2m-n)} \\
 \end{align*}
