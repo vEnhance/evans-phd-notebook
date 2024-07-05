@@ -894,7 +894,7 @@ so in fact this case can never occur.
 Again using $\Vol(t_1:-v(t_1)=m) = q^{2m} (1-q^{-2})$,
 summing all the cases gives
 \begin{align*}
-  I_{n > 0}^{12} &\coloneqq
+  I_{n > 0}^{\text{1+2}} &\coloneqq
     \kappa \int_{t, t_1 \in E} \mathbf{1}[n > 0] \mathbf{1}_{\le r}(\gamma,t,m) \\
   % -----------------------------------------------------------
   &= \kappa \sum_{n=1}^{r}
@@ -939,7 +939,7 @@ In that case,
 \[ 2m-n = 2(\delta+n+r-j)-n = n + 2\delta + 2r - 2j. \]
 Then the expression rewrites as
 \begin{align*}
-  I_{n > 0}^{12}
+  I_{n > 0}^{\text{1+2}}
   % -----------------------------------------------------------
   &= \sum_{n=1}^{r}
     \sum_{j = \left\lfloor \frac{n+r}{2} \right\rfloor+ 1}^{\delta + 2r}
@@ -989,7 +989,7 @@ There are four double sums to interchange.
 \end{itemize}
 Hence we get
 \begin{align*}
-  I_{n > 0}^{12}
+  I_{n > 0}^{\text{1+2}}
   &= \sum_{j = \left\lfloor \frac{r+1}{2} \right\rfloor+ 1}^{\delta+2r}
     \sum_{n=1}^{\min(2j-1-r, r)}
     q^{n} \left( 1 + q\inv \right) \cdot (-1)^n q^{s(n+2\delta+2r-2j)} \\
@@ -1023,7 +1023,7 @@ So we can unify all four double sums to run over $0 \le j \le \delta + 2r$,
 simplifying the expression to just
 
 \begin{align*}
-  I_{n > 0}^{12}
+  I_{n > 0}^{\text{1+2}}
   = q^{2(\delta+r)s}
   \sum_{j = 0}^{\delta + 2r} \Bigg(
     & \sum_{n=1}^{\min(2j-1-r, r)}
@@ -1035,9 +1035,9 @@ simplifying the expression to just
     &+ \sum_{n=\max(j+1, 2j-r)}^{\min(\lambda+j, \ell+r)} q^{j} \cdot (-1)^n q^{s(n-2j)} \Bigg).
 \end{align*}
 
-\subsection{Merging of $I_{n \le 0}$ with $I_{n > 0}^{12}$}
+\subsection{Merging of $I_{n \le 0}$ with $I_{n > 0}^{\text{1+2}}$}
 We continue assuming $v(b) = v(d) = 0$.
-It turns out that $I_{n \le 0} + I_{n > 0}^{12}$ can be rewritten more compactly
+It turns out that $I_{n \le 0} + I_{n > 0}^{\text{1+2}}$ can be rewritten more compactly
 (giving a simple answer especially when $\ell$ is odd).
 Write
 \begin{align*}
