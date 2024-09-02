@@ -1,0 +1,585 @@
+\chapter{Evaluation of the orbital integral}
+We now proceed to actually evaluate the orbital integral.
+This requires several steps.
+
+\section{Region where $n \leq 0$ for all values of $\ell$}
+\begin{proposition}
+  The contribution to the integral $\Orb(\gamma, \mathbf{1}_{K'_{S, \le r}}, s)$ over $n \leq 0$ is exactly
+  \[ I_{n \le 0} \coloneqq q^{2(\delta+r)s} \sum_{j=0}^{\delta+2r} q^{-2js}
+    = q^{-2rs} + \dots + q^{2(\delta+r)s}. \]
+\end{proposition}
+\begin{proof}
+  For $n = 0$ we get a contribution of
+  \begin{align*}
+    &\phantom= \kappa \int_{t, t_1 \in E} \mathbf{1}[n=0] \mathbf{1}_{\le r}(\gamma,t,m)
+      q^{2s \cdot m} q^{-2m} \odif t \odif t_1 \\
+    &= \kappa \Vol(t: n =0) \sum_{m=-r}^{\delta+r} \Vol(t_1: -v(t_1)=m) q^{2m(s-1)} \\
+    &= \kappa \left( 1 - \frac{q+1}{q^2} \right) \sum_{m=-r}^{\delta+r}
+    \left( q^{2m} \left( 1-q^{-2} \right) \right) q^{2m(s-1)} \\
+    &= \kappa \left( 1 - \frac{q+1}{q^2} \right) \left( 1-q^{-2} \right)
+    \sum_{m=-r}^{\delta+r} q^{2ms}.
+  \end{align*}
+  For the region where $v(t) = -k < 0$, for each individual $k > 0$,
+  \begin{align*}
+    &\phantom= \kappa \int_{t, t_1 \in E} \mathbf{1}[v(t)=-k] \mathbf{1}_{\le r}(\gamma,t,m)
+      q^{s(2m-n)} q^{2n-2m} \odif t \odif t_1 \\
+    &= \kappa \Vol(t: v(t)=-k) \sum_{m=-r-k}^{\delta+r-k}
+      \Vol(t_1: -v(t_1)=m) q^{s(2m+2k)-4k-2m} \\
+    &= \kappa q^{2k} \left( 1 - q^{-2} \right) \sum_{m=-r-k}^{\delta+r-k}
+      \left( q^{2m} \left( 1-q^{-2} \right) \right) q^{s(2m+2k)-4k-2m} \\
+    &= \kappa q^{-2k} \left( 1 - q^{-2} \right)^2
+      \sum_{m=-r-k}^{\delta+r-k} q^{2(m+k)s} \\
+    &= \kappa q^{-2k} \left( 1 - q^{-2} \right)^2 \sum_{i=-r}^{\delta+r} q^{2is}.
+  \end{align*}
+  Since $\sum_{k > 0} q^{-2k} = \frac{q^{-2}}{1-q^{-2}}$,
+  we find that the total contribution across both
+  the $n=0$ case and the $k > 0$ case is
+  \begin{align*}
+    &\phantom= \left( \left( 1 - \frac{q+1}{q^2} \right) \left( 1-q^{-2} \right)
+      + q^{-2}(1-q^{-2})  \right) \kappa \sum_{i=-r}^{\delta+r} q^{2is} \\
+    &= \left( 1-q\inv \right) \left(1-q^{-2} \right)
+      \kappa \sum_{i=-r}^{\delta+r} q^{2is} \\
+    &= \sum_{i=-r}^{\delta+r} q^{2is}.
+  \end{align*}
+  This equals the claimed sum above.
+  (We write it over $0 \le j \le \delta+2r$ for consistency with a later part.)
+\end{proof}
+
+\section{Contribution from Case 1 and Case 2 assuming $v(b)=v(d)=0$}
+Again using $\Vol(t_1:-v(t_1)=m) = q^{2m} (1-q^{-2})$,
+summing all the cases gives
+the following contribution within
+$\kappa \int_{t, t_1 \in E} \mathbf{1}[n > 0] \mathbf{1}_{\le r}(\gamma,t,m)$:
+\begin{align*}
+  I_{n > 0}^{\text{1+2}}
+  % -----------------------------------------------------------
+  &\coloneqq \kappa \sum_{n=1}^{r}
+    \sum_{m=n-r}^{\left\lceil \frac{n-r}{2} \right\rceil+\delta+r-1}
+    q^{-n} \left( 1 - q^{-2} \right)
+      \cdot \Big( (-1)^n q^{s(2m-n)} q^{2n-2m} \Big) \Big( q^{2m}(1-q^{-2}) \Big) \\
+  &\qquad+ \kappa \sum_{n=r+1}^{\ell+r}
+    \sum_{m=n-r}^{\left\lceil \frac{n-r}{2} \right\rceil+\delta+r-1}
+    q^{-n - \left\lceil \frac{n-r}{2} \right\rceil} \left( 1 - q\inv \right)
+      \cdot \Big( (-1)^n q^{s(2m-n)} q^{2n-2m} \Big) \Big( q^{2m}(1-q^{-2}) \Big) \\
+  &\qquad+ \kappa \sum_{n=1}^{r}
+    \sum_{m=\max\left(n-r, \left\lceil \frac{n-r}{2} \right\rceil+\delta+r\right)}^{\delta+r}
+    q^{-n} \left( 1 - q^{-2} \right)
+      \cdot \Big( (-1)^n q^{s(2m-n)} q^{2n-2m} \Big) \Big( q^{2m}(1-q^{-2}) \Big) \\
+    \\
+  &\qquad+ \kappa \sum_{n=1}^{\ell+r}
+    \sum_{m=\max\left(n-r, \left\lceil \frac{n-r}{2} \right\rceil+\delta+r, \delta+r+1 \right)}^{\min(n,\lambda)+\delta+r}
+    q^{-n - (m-\delta-r)} \left( 1 - q\inv \right)
+      \\ &\qquad\qquad
+      \cdot \Big( (-1)^n q^{s(2m-n)} q^{2n-2m} \Big) \Big( q^{2m}(1-q^{-2}) \Big) \\
+  % -----------------------------------------------------------
+  &= \sum_{n=1}^{r}
+    \sum_{m=n-r}^{\left\lceil \frac{n-r}{2} \right\rceil+\delta+r-1}
+    q^{n} \left( 1 + q\inv \right)
+      \cdot (-1)^n q^{s(2m-n)} \\
+  &\qquad+ \sum_{n=r+1}^{\ell+r}
+    \sum_{m=n-r}^{\left\lceil \frac{n-r}{2} \right\rceil+\delta+r-1}
+    q^{\left\lfloor \frac{n+r}{2} \right\rfloor}
+      \cdot (-1)^n q^{s(2m-n)} \\
+  &\qquad+ \sum_{n=1}^{r}
+    \sum_{m=\max\left(n-r, \left\lceil \frac{n-r}{2} \right\rceil+\delta+r\right)}^{\delta+r}
+    q^{n} \left( 1 + q\inv \right)
+      \cdot (-1)^n q^{s(2m-n)} \\
+  &\qquad+ \sum_{n=1}^{\ell+r}
+    \sum_{m=\max\left(n-r, \left\lceil \frac{n-r}{2} \right\rceil+\delta+r, \delta+r+1 \right)}^{\min(n,\lambda)+\delta+r}
+    q^{n - (m-\delta-r)}
+      \cdot (-1)^n q^{s(2m-n)}.
+\end{align*}
+To simplify the expressions, we replace the summation variable $m$ with
+\[ j \coloneqq (n + \delta + r) - m \geq 0. \]
+In that case,
+\[ 2m-n = 2(\delta+n+r-j)-n = n + 2\delta + 2r - 2j. \]
+Then the expression rewrites as
+\begin{align*}
+  I_{n > 0}^{\text{1+2}}
+  % -----------------------------------------------------------
+  &= \sum_{n=1}^{r}
+    \sum_{j = \left\lfloor \frac{n+r}{2} \right\rfloor+ 1}^{\delta + 2r}
+    q^{n} \left( 1 + q\inv \right) \cdot (-1)^n q^{s(n+2\delta+2r-2j)} \\
+  &\qquad+ \sum_{n=r+1}^{\ell+r}
+    \sum_{j = \left\lfloor \frac{n+r}{2} \right\rfloor+ 1}^{\delta + 2r}
+    q^{\left\lfloor \frac{n+r}{2} \right\rfloor} \cdot (-1)^n q^{s(n+2\delta+2r-2j)} \\
+  &\qquad+ \sum_{n=1}^{r}
+    \sum_{j=n}^{\min\left( \delta+2r, \left\lfloor \frac{n+r}{2} \right\rfloor \right)}
+    q^{n} \left( 1 + q\inv \right) \cdot (-1)^n q^{s(n+2\delta+2r-2j)} \\
+  &\qquad+ \sum_{n=1}^{\ell+r}
+    \sum_{j=\max(0,n-\lambda)}^{\min(\delta+2r, \left\lfloor \frac{n+r}{2} \right\rfloor, n-1)}
+    q^{j} \cdot (-1)^n q^{s(n+2\delta+2r-2j)}.
+\end{align*}
+
+We interchange the order of summation so that it is first over $j$ and then $n$.
+There are four double sums to interchange.
+
+\begin{itemize}
+  \ii The first double sum runs from $j=\left\lfloor \frac{r+1}{2} \right\rfloor+1$ to $j=\delta+2r$.
+  In addition to $1 \le n \le r$,
+  we need $\left\lfloor \frac{n+r}{2} \right\rfloor + 1 \leq j$,
+  which solves to $\frac{n+r}{2} \leq j-\half$ or $n \leq 2j-1-r$.
+  Thus the condition on $n$ is
+  \[ 1 \leq n \leq \min(2j-1-r, r). \]
+
+  \ii The second double sum runs from $j=r+1$ to $\delta+2r$.
+  We also need $r+1 \le n \le \ell+r$ and $n \le 2j-1-r$.
+  Hence, the desired condition on $n$ is
+  \[ r+1 \leq n \leq \min(2j-1-r, \ell+r). \]
+
+  \ii The third double sum runs from $j=1$ to $j=r$.
+  Meanwhile, the values of $n$ need to satisfy $1 \le n \le r$, $n \leq j$
+  and $j \leq \left\lfloor \frac{n+r}{2} \right\rfloor \implies n \geq 2j-r$,
+  consequently we just obtain
+  \[ \max(1, 2j-r) \leq n \leq j. \]
+
+  \ii The fourth double sum runs $j=0$ to
+  \[ j=\min\left( \delta+2r, \left\lfloor \frac{\ell}{2} \right\rfloor + r, \ell+r-1 \right)
+    = \left\lfloor \frac{\ell}{2} \right\rfloor + r - \mathbf{1}[\ell = 0] \]
+  again because of $\ell < 2\delta$.
+  Meanwhile, we require $1 \le n \le \ell+r$, $j \ge n-\lambda$, $j \le n-1$,
+  as well as $j \le \left\lfloor \frac{n+r}{2} \right\rfloor
+  \iff n \ge 2j-r$.
+  Putting these four conditions together gives
+  \[ \max(j+1, 2j-r) \le n \le \min(\lambda+j, \ell+r). \]
+\end{itemize}
+Hence we get
+\begin{align*}
+  I_{n > 0}^{\text{1+2}}
+  &= \sum_{j = \left\lfloor \frac{r+1}{2} \right\rfloor+ 1}^{\delta+2r}
+    \sum_{n=1}^{\min(2j-1-r, r)}
+    q^{n} \left( 1 + q\inv \right) \cdot (-1)^n q^{s(n+2\delta+2r-2j)} \\
+  &\qquad+ \sum_{j = r+1}^{\delta + 2r}
+    \sum_{n=r+1}^{\min(2j-1-r, \ell+r)}
+    q^{\left\lfloor \frac{n+r}{2} \right\rfloor} \cdot (-1)^n q^{s(n+2\delta+2r-2j)} \\
+  &\qquad+ \sum_{j=1}^{r}
+    \sum_{n=\max(1,2j-r)}^{j}
+    q^{n} \left( 1 + q\inv \right) \cdot (-1)^n q^{s(n+2\delta+2r-2j)} \\
+  &\qquad+ \sum_{j=0}^{\left\lfloor \frac{\ell}{2} \right\rfloor + r - \mathbf{1}[\ell = 0]}
+    \sum_{n=\max(j+1, 2j-r)}^{\min(\lambda+j, \ell+r)}
+    q^{j} \cdot (-1)^n q^{s(n+2\delta+2r-2j)}.
+\end{align*}
+
+At this point, we can unify the sum over $j$ by noting that for $j$ outside of the
+summation range, the inner sum is empty anyway.
+Specifically, note that:
+\begin{itemize}
+  \ii In the first and second double sum,
+  the inner sum over $n$ is empty anyway when $j < r$.
+  \ii In the third double sum, adding $j=0$ does not introduce new terms.
+  Moreover, when $j > r$ the inner sum over $n$ is also empty anyway.
+  \ii In the fourth double sum,
+  \begin{itemize}
+    \ii If $\ell = 0$ and $j \ge r$, then $j+1 \ge 0+r$; and
+    \ii If $\ell > 0$ and $j > \frac{\ell}{2} + r$, then $2j-r \ge \ell+r$.
+  \end{itemize}
+  So no new terms are introduced in this case either.
+\end{itemize}
+So we can unify all four double sums to run over $0 \le j \le \delta + 2r$,
+simplifying the expression to just
+
+\begin{align*}
+  I_{n > 0}^{\text{1+2}}
+  = q^{2(\delta+r)s}
+  \sum_{j = 0}^{\delta + 2r} \Bigg(
+    & \sum_{n=1}^{\min(2j-1-r, r)}
+      q^{n} \left( 1 + q\inv \right) \cdot (-1)^n q^{s(n-2j)} \\
+    & + \sum_{n=r+1}^{\min(2j-1-r, \ell+r)}
+      q^{\left\lfloor \frac{n+r}{2} \right\rfloor} \cdot (-1)^n q^{s(n-2j)} \\
+    &+ \sum_{n=\max(1,2j-r)}^{j}
+      q^{n} \left( 1 + q\inv \right) \cdot (-1)^n q^{s(n-2j)} \\
+    &+ \sum_{n=\max(j+1, 2j-r)}^{\min(\lambda+j, \ell+r)} q^{j} \cdot (-1)^n q^{s(n-2j)} \Bigg).
+\end{align*}
+
+\section{Merging of $I_{n \le 0}$ with $I_{n > 0}^{\text{1+2}}$}
+We continue assuming $v(b) = v(d) = 0$.
+It turns out that $I_{n \le 0} + I_{n > 0}^{\text{1+2}}$ can be rewritten more compactly
+(giving a simple answer especially when $\ell$ is odd).
+Write
+\begin{align*}
+  I_{n \le 0} + I_{n > 0}^{\text{1+2}}
+  = q^{2(\delta+r)s}
+  \sum_{j = 0}^{\delta + 2r} \Bigg(
+    q^{-2js}
+    &+ \sum_{n=1}^{\min(2j-1-r, r)}
+      q^{n} \left( 1 + q\inv \right) \cdot (-1)^n q^{s(n-2j)} \\
+    &+ \sum_{n=r+1}^{\min(2j-1-r, \ell+r)}
+      q^{\left\lfloor \frac{n+r}{2} \right\rfloor} \cdot (-1)^n q^{s(n-2j)} \\
+    &+ \sum_{n=\max(1,2j-r)}^{j}
+      q^{n} \left( 1 + q\inv \right) \cdot (-1)^n q^{s(n-2j)} \\
+    &+ \sum_{n=\max(j+1, 2j-r)}^{\min(\lambda+j, \ell+r)} q^{j} \cdot (-1)^n q^{s(n-2j)} \Bigg).
+\end{align*}
+Note that when $r=0$ and $\ell = \lambda \equiv 1 \pmod 2$
+we recover \cite[equation (4.13)]{ref:AFL}.
+
+The above expression can be considered as a Laurent polynomial in $-q^s$,
+whose coefficients are nonnegative polynomials in $q$ (note that $(-1)^n = (-1)^{n-2j}$).
+Now we are going to extract the coefficient of $(-q^s)^k$, for each integer $k$.
+First, note that
+\begin{itemize}
+  \ii The initial term before the sums adds $1$
+  if $k$ is even and $-2r \le k \le 2\delta + 2r$, and $0$ otherwise.
+\end{itemize}
+We move on to the inner sums and calculate their contributions.
+For a fixed $k \in \ZZ$, we want to consider $(n,j)$ with $n-2j + 2(\delta+r) = k$,
+that is, $2j = n + 2\delta + 2r - k$, or $n = 2j + k - 2\delta - 2r$.
+The condition that $j \in \ZZ$ and $0 \le j \le \delta+2r$ is then equivalent to
+\begin{equation}
+  k-2\delta-2r \le n \le k+2r \qquad\text{and}\qquad n \equiv k \pmod 2.
+  \label{eq:outer_assumption}
+\end{equation}
+We note also that
+\begin{equation}
+  n < 2j-r \iff n < n + 2 \delta + r - k \iff k < 2\delta + r
+  \label{eq:outer_half_assumption_12}
+\end{equation}
+which needs to hold for the first two sums to contribute.
+Conversely, in the latter two sums, we will assume that
+\begin{equation}
+  n \ge 2j-r \iff k \ge 2\delta + r.
+  \label{eq:outer_half_assumption_34}
+\end{equation}
+Now we are ready for the main calculation.
+In what follows $i \% 2 \in \{0,1\}$ means the remainder when $i$ is divided by $2$.
+Moreover, any ellipses of the form $q^i + \dots + q^{i'}$
+will be abbreviate for $q^i + q^{i-1} + \dots + q^{i'}$
+(i.e.\ within any ellipses, the exponents are understood to decrease by $1$,
+and the sums are always nonempty, meaning $i \ge i'$).
+
+In the region where $k < 2\delta + r$, the first two sums contribute:
+\begin{itemize}
+  \ii The first sum contributes if and only if \eqref{eq:outer_assumption} holds,
+  $1 \le n \le r$ and \eqref{eq:outer_half_assumption_12} is true.
+  Hence, the contribution only occurs when $k < 2\delta + r$.
+  In that case, all $1 \le n \le \min(r,k+2r)$ with $n \equiv k \pmod 2$ appear.
+  Since the contribution of a given $n$ is $q^n + q^{n-1}$
+  and the $n$ are incrementing by $2$, our final total is
+  \[
+    \begin{cases}
+      q^{k+2r} + \dots + q^{(k-1)\%2} & \text{if } -2r < k \leq -r \\
+      q^{r-(k-r)\%2} + \dots + q^{(k-1)\%2} & \text{if } -r \le k < 2\delta + r \\
+      0 & \text{otherwise}.
+    \end{cases}
+  \]
+
+  \ii The second sum contributes if and only if \eqref{eq:outer_assumption} holds,
+  \eqref{eq:outer_half_assumption_12} holds and $r+1 \le n \le \ell + r$.
+  The hypothesis $n > r$ means we need $k \geq -r$.
+  Since $\ell < 2\delta$, the upper bound for $n$ is $n \le \min(\ell+r, k+2r)$
+  which we split into two cases.
+
+  In the case where $k+2r \le \ell+r$, then since $\ell < 2\delta$,
+  the inequality $k < 2\delta + r$ holds automatically.
+  We have the largest term $n=k+2r \equiv k \pmod 2$,
+  so the largest exponent $q$ that appears is
+  $\left\lfloor \frac{(k+2r)+r}{2} \right\rfloor$.
+
+  In the other case $\ell+r \le k+2r$,
+  we obtain largest exponents of
+  \[ \left\lfloor \frac{(\ell+r-(\ell+r-k)\%2) + r}{2} \right\rfloor
+    = r + \left\lfloor \frac{\ell-(\ell+r-k)\%2}{2} \right\rfloor.
+  \]
+  Thus, we obtain
+  \[
+    \begin{cases}
+      q^{\left\lfloor \frac{k+3r}{2} \right\rfloor} + \dots + q^{r+(r+1-k)\%2}
+        & \text{if } -r \le k \le \ell - r \\
+      q^{r + \left\lfloor \frac{\ell-(\ell+r-k)\%2}{2} \right\rfloor}
+        + \dots + q^{r + (r+1-k)\%2}
+        & \text{if } \ell - r \leq k < 2\delta + r \\
+      0 & \text{otherwise}.
+    \end{cases}
+  \]
+\end{itemize}
+
+In the region where $k \ge 2\delta + r$, the latter two sums are in play:
+\begin{itemize}
+  \ii In the third sum, we assume \eqref{eq:outer_half_assumption_34};
+  then the other constraints on $n$ are
+  \begin{align*}
+    n &\ge 1 \\
+    n \le j \iff 2n \le n+2\delta+2r-k \iff n &\le 2\delta + 2r - k
+  \end{align*}
+  which implies $k < 2 \delta + 2r$ for this range to be nonempty.
+  In this case, \eqref{eq:outer_assumption} is actually redundant already.
+  That means our contribution can be described as
+  \[
+    \begin{cases}
+      q^{2\delta+2r-k} + \dots + q^{(k-1)\%2} & \text{if } 2\delta+r \le k < 2\delta+2r \\
+      0 & \text{otherwise}.
+    \end{cases}
+  \]
+  \ii Unlike the other sums, the $j$ is in the exponent in the fourth sum,
+  so \eqref{eq:outer_assumption} will not be useful to us.
+  Instead our goal is to detect the values of $j$ for which the corresponding value of
+  \[ n = 2j-2\delta-2r+k \]
+  lies in the desired interval.
+  That is, we get a contribution of $q^j$ if and only if
+  \eqref{eq:outer_half_assumption_34} holds and
+  \begin{align*}
+    &\phantom{\iff} 0 \le j \le \delta + 2r \\
+    j < 2j-2\delta-2r+k &\implies 2\delta+2r-k < j \\
+    2j-2\delta-2r+k \le \lambda+j &\iff j \le 2\delta+2r+\lambda-k \\
+    2j-2\delta-2r+k \le \ell+r &\iff j \le \delta+\frac{3r+\ell-k}{2}
+  \end{align*}
+  The values of $k$ for which there is any valid index $j$ is given by
+  \[ 2\delta + r \le k \le 2 \delta + \min \left( \lambda + 2r, \ell + 3r \right). \]
+  The breakpoint for the two upper bounds on $j$ occurs when
+  \[ 2\delta+2r-k+\lambda \le \delta+\frac{3r+\ell-k}{2}
+    \iff k \ge 2\delta + 2\lambda - \ell + r. \]
+
+  Comparing all the bounds, we find there are three possible scenarios.
+  \begin{itemize}
+    \ii If $\lambda \le \frac{\ell+r}{2}$, then we get
+    \[
+      \begin{cases}
+        q^{\delta+\left\lfloor\frac{3r+\ell-k}{2}\right\rfloor} + \dots + q^{2\delta+2r-k+1}
+          & \text{if } 2\delta+r \le k \le 2\delta+2r  \\
+        q^{\delta+\left\lfloor\frac{3r+\ell-k}{2}\right\rfloor} + \dots + q^{0}
+          & \text{if } 2\delta+2r < k \le 2\delta+2\lambda-\ell+r  \\
+        q^{2\delta+2r+\lambda-k} + \dots + q^0
+          & \text{if } 2\delta+2\lambda-\ell+r \le k \le 2\delta+\lambda+2r \\
+        0 & \text{otherwise}.
+      \end{cases}
+    \]
+
+    \ii If $\frac{\ell+r}{2} < \lambda \le \ell + r$, then we get
+    \[
+      \begin{cases}
+        q^{\delta+\left\lfloor\frac{3r+\ell-k}{2}\right\rfloor} + \dots + q^{2\delta+2r-k+1}
+          & \text{if } 2\delta+r \le k \le 2\delta+2\lambda-\ell+r  \\
+        q^{\delta+\left\lfloor\frac{3r+\ell-k}{2}\right\rfloor} + \dots + q^{2\delta+2r-k+1}
+          & \text{if } 2\delta+2\lambda-\ell+r \le k \le 2\delta+2r  \\
+        q^{2\delta+2r+\lambda-k} + \dots + q^0
+          & \text{if } 2\delta+2r < k \le 2\delta+\lambda+2r \\
+        0 & \text{otherwise}.
+      \end{cases}
+    \]
+
+    \ii If $\ell+r < \lambda$, then we get
+    \[
+      \begin{cases}
+        q^{\delta+\left\lfloor\frac{3r+\ell-k}{2}\right\rfloor} + \dots + q^{2\delta+2r-k+1}
+          & \text{if } 2\delta+r \le k \le 2\delta+2r \\
+        q^{\delta+\left\lfloor\frac{3r+\ell-k}{2}\right\rfloor} + \dots + q^{0}
+          & \text{if } 2\delta+2r < k \le 2\delta+\ell+3r \\
+        0 & \text{otherwise}.
+      \end{cases}
+    \]
+  \end{itemize}
+\end{itemize}
+This completes the analysis of the four sums above.
+For later purposes, it will be more symmetric to rewrite the exponent as
+\[ \delta + \left\lfloor \frac{3r+\ell-k}{2} \right\rfloor
+  = r + \left\lfloor \frac{(2\delta+\ell+r)-k}{2} \right\rfloor. \]
+
+Now we can piece together all the parts below.
+It turns out that for every value of $k$,
+the coefficient of $(-q^s)^k$ is an expression
+of the form $1 + q + q^2 + \dots + q^{\nn_\gamma(k)}$ for some $k$.
+Indeed,
+\begin{itemize}
+  \ii When $k = -2r$ the only term is $q^0$.
+  \ii For $-2r < k < r$, only the first sum contributes
+  $q^{k+2r} + \dots + q^{(k-1)\%2}$,
+  which is then completed by the $q^0$ contribution from $I_{n \le 0}$ when $k$ is even
+  with a possible $q^0$.
+  \ii For $-r \le k < 2\delta+r$,
+  the first and second sum actually fit together with a ``seam'' near $q^r$,
+  which is for even $k$ then completed by
+  the single $q^0$ contribution from $I_{n \le 0}$ (only when $k$ is even).
+  \ii For $2\delta+r \le k \le 2\delta+2r$,
+  the same holds with piecing the third and fourth sum together
+  (where the seam is near $q^k$ this time).
+  \ii Finally, only the fourth sum contributes for $k \ge 2\delta+2r$,
+  and it is of the desired form.
+\end{itemize}
+This gives us a succinct description of the orbital integral.
+We describe it in the cases where $\ell$ is odd and $\ell$ is even.
+
+If $\ell$ is odd, so $\lambda = \ell$, then
+the orbital integral can be expressed succinctly in the following way.
+\begin{theorem}
+  [Orbital integral in the odd case for $\mathbf{1}_{K'_{S, \le r}}$]
+  Under the assumptions before, for any $r \ge 0$ we have the formula
+  \[
+    \Orb(\gamma, \mathbf{1}_{K'_{S, \le r}}, s)
+    = \sum_{k = -2r}^{2\delta + \ell + 2r}
+    (-1)^k \left( 1 + q + q^2 + \dots + q^{\nn_{\gamma}(k)}  \right) (q^s)^k
+  \]
+  where the piecewise function $\nn_\gamma \colon \ZZ \to \ZZ_{\ge 0}$ is defined by
+  \[
+    \nn_\gamma(k) =
+    \begin{cases}
+      k + 2r & \text{if } {-2r} \le k \le -r \\
+      \left\lfloor \frac{k+r}{2} \right\rfloor + r & \text{if }{-r} \le k \le \ell-r \\
+      \frac{\ell-1}{2} + r & \text{if } \ell - r \le k \le 2\delta + r \\
+      \left\lfloor \frac{(2\delta+\ell+r)-k}{2} \right\rfloor + r & \text{if } 2\delta + r \le k \le 2\delta + \ell + r\\
+      (2\delta + \ell + 2r) - k & \text{if } 2\delta + \ell + r \le k \le 2\delta + \ell + 2r.
+    \end{cases}
+  \]
+\end{theorem}
+From the identity
+\[
+  \Orb(\gamma, \mathbf{1}_{K'_{S, r}}, s)
+  = \Orb(\gamma, \mathbf{1}_{K'_{S, \le r}}, s)
+  - \Orb(\gamma, \mathbf{1}_{K'_{S, \le (r-1)}}, s)
+\]
+we can then write the following equivalent formulation.
+\begin{theorem}
+  [Orbital integral in the odd case for $\mathbf{1}_{K'_{S,r}}$]
+  Retaining the setting of the previous theorem, we have for any $r \ge 1$ the formula
+  \[
+    \Orb(\gamma, \mathbf{1}_{K'_{S, r}}, s)
+    = \sum_{k = -2r}^{2\delta + \ell + 2r}
+    (-1)^k q^{\nn_{\gamma}(k)}
+    (1+q^{-1})^{\mathbf{1}[k \in \mathcal I_{\gamma, r}]}
+    (q^s)^k
+  \]
+  where $\mathcal I_{\gamma, r}$ is the set of indices defined by
+  \begin{align*}
+    \mathcal{I}_{\gamma, r}
+    &\coloneqq \left\{ -(2r-1), -(2r-2), -(2r-3), \dots, -(r+1) \right\} \\
+    &\sqcup \{-r, -r+2, -r+4 \dots, -r+\ell-1 \} \\
+    &\sqcup \{ 2\delta+r+1, 2\delta+r+3, \dots, 2\delta+r+1, 2\delta+r+3, \dots, 2\delta+\ell+r \} \\
+    &\sqcup \{ 2\delta+\ell+r+1, 2\delta+\ell+r+2, \dots, 2\delta+\ell+2r-1 \}.
+  \end{align*}
+\end{theorem}
+
+\begin{example}
+  If $r=3$, $\ell=5$, and $\delta=100$, the formulas above read
+  \begin{align*}
+  \Orb(\gamma, \mathbf{1}_{K'_{S, \le 2}}, s)
+  &= q^{-6s} \\
+  &- (q+1) \cdot q^{-5s} \\
+  &+ (q^2+q+1) \cdot q^{-4s} \\
+  &- (q^3+q^2+q+1) \cdot q^{-3s} \\
+  &+ (q^3+q^2+q+1) \cdot q^{-2s} \\
+  &- (q^4+q^3+q^2+q+1) \cdot q^{-s} \\
+  &+ (q^4+q^3+q^2+q+1) \cdot q^{0} \\
+  &- (q^5+q^4+q^3+q^2+q+1) \cdot q^{s} \\
+  &+ (q^5+q^4+q^3+q^2+q+1) \cdot q^{2s} \\
+  &\vdotswithin= \\
+  &+ (q^5+q^4+q^3+q^2+q+1) \cdot q^{204s} \\
+  &- (q^4+q^3+q^2+q+1) \cdot q^{205s} \\
+  &+ (q^4+q^3+q^2+q+1) \cdot q^{206s} \\
+  &- (q^3+q^2+q+1) \cdot q^{207s} \\
+  &+ (q^3+q^2+q+1) \cdot q^{208s} \\
+  &- (q^2+q+1) \cdot q^{209s} \\
+  &+ (q+1) \cdot q^{210s} \\
+  &- q^{211s}.
+  \end{align*}
+  In the ellipses, all the omitted terms
+  have the same coefficient $q^5+q^4+q^3+q^2+q+1$
+  and alternate sign.
+\end{example}
+
+\begin{example}
+  Continuing the previous example with
+  $r=3$, $\ell=5$, and $\delta=100$, we have
+  \begin{align*}
+  \Orb(\gamma, \mathbf{1}_{K'_{S, 2}}, s)
+  &= q^{-6s} \\
+  &- (q+1) \cdot q^{-5s} \\
+  &+ (q^2+q) \cdot q^{-4s} \\
+  &- (q^3+q^2) \cdot q^{-3s} \\
+  &+ q^3 \cdot q^{-2s} \\
+  &- (q^4+q^3) \cdot q^{-s} \\
+  &+ q^4 \cdot q^{0} \\
+  &- (q^5+q^4) \cdot q^{s} \\
+  &+ q^5 \cdot q^{2s} \\
+  &- q^5 \cdot q^{3s} \\
+  &+ q^5 \cdot q^{4s} \\
+  &\vdotswithin= \\
+  &+ q^5 \cdot q^{202s} \\
+  &- q^6 \cdot q^{232s} \\
+  &+ (q^5+q^4) \cdot q^{204s} \\
+  &- q^4 \cdot q^{205s} \\
+  &+ (q^4+q^3) \cdot q^{206s} \\
+  &- q^3 \cdot q^{207s} \\
+  &+ (q^3+q^2) \cdot q^{208s} \\
+  &- (q^2+q) \cdot q^{209s} \\
+  &+ (q+1) \cdot q^{210s} \\
+  &- q^{211s}.
+  \end{align*}
+\end{example}
+
+If $\ell$ is even, we have a similar intermediate result.
+\begin{proposition}
+  Suppose $\ell$ is even.
+  Then we have the intermediate result
+  \[
+    I_{n \le 0} + I_{n > 0}^{\text{1+2}}
+    = \sum_{k = -2r}^{2\delta + \min(\lambda+2r, \ell+3r)}
+    (-1)^k \left( 1 + q + q^2 + \dots + q^{\nn^{1+2}_{\gamma}(k)}  \right) (q^s)^k
+  \]
+  where the piecewise function $\nn_\gamma \colon \ZZ \to \ZZ_{\ge 0}$ is defined by
+  \[
+    \nn^{1+2}_\gamma(k) =
+    \begin{cases}
+      k + 2r & \text{if } {-2r} \le k \le -r \\
+      \left\lfloor \frac{k+r}{2} \right\rfloor + r & \text{if }{-r} \le k \le \ell-r \\
+      \frac{\ell}{2} + r - (k-r)\%2 & \text{if } \ell - r \le k \le 2\delta + r \\
+      \left\lfloor \frac{(2\delta+\ell+r)-k}{2} \right\rfloor + r & \text{if } 2\delta + r \le k \le 2\delta + \ell + 3r
+    \end{cases}
+  \]
+  in the case $\lambda \ge \ell+r$, and
+  \[
+    \nn^{1+2}_\gamma(k) =
+    \begin{cases}
+      k + 2r & \text{if } {-2r} \le k \le -r \\
+      \left\lfloor \frac{k+r}{2} \right\rfloor + r & \text{if }{-r} \le k \le \ell-r \\
+      \frac{\ell}{2} + r - (k-r) \% 2 & \text{if } \ell - r \le k \le 2\delta + r \\
+      \left\lfloor \frac{(2\delta+\ell+r)-k}{2} \right\rfloor + r & \text{if } 2\delta + r \le k \le 2\delta + 2\lambda - \ell + r \\
+      (2\delta + \lambda + 2r) - k & \text{if } 2 \delta + 2 \lambda - \ell + r \le k \le 2 \delta + \lambda + 2r.
+    \end{cases}
+  \]
+  in the case $\lambda \le \ell+r$.
+
+\end{proposition}
+
+\section{Contribution from Case 3\ts{+}, 3\ts{-}, 4\ts{+} assuming $v(b) = v(d) = 0$}
+These cases only appear when $\ell$ is even and we assume this for this section.
+We consider the contribution of these cases within
+$\kappa \int_{t, t_1 \in E} \mathbf{1}[n > 0] \mathbf{1}_{\le r}(\gamma,t,m)$
+(using \eqref{eq:even_case3_plus}, \eqref{eq:even_case3_minus}, \eqref{eq:even_case4_plus})
+and put $\Vol(t_1:-v(t_1)=m) = q^{2m} (1-q^{-2})$ to get:
+\begin{align*}
+  I_{n > 0}^{\text{3+4}}
+  % -----------------------------------------------------------
+  &\coloneqq \kappa \sum_{n=\ell+r+1}^{-\frac{\ell}{2}+\delta+\lambda+r}
+    \sum_{m=n-r}^{\min(n-1, \lambda+r)-\frac{\ell}{2}+\delta}
+    q^{-n-(n-\frac{\ell}{2}-r)} \left( 1 - q^{-1} \right)
+      \cdot \Big( (-1)^n q^{s(2m-n)} q^{2n-2m} \Big) \Big( q^{2m}(1-q^{-2}) \Big) \\
+  &\qquad+ \kappa \sum_{n=\ell+r+1}^{\frac{\ell}{2}+\delta+r}
+    \sum_{m=n-r}^{\frac{\ell}{2}+\delta+r}
+    q^{-n-(n-\frac{\ell}{2}-r)} \left( 1 - q^{-1} \right)
+      \cdot \Big( (-1)^n q^{s(2m-n)} q^{2n-2m} \Big) \Big( q^{2m}(1-q^{-2}) \Big) \\
+  &\qquad+ \kappa \sum_{n=\ell+r+1}^{\lambda+r}
+    \sum_{m=n-\frac{\ell}{2}+\delta}^{\min(n,\lambda)+\delta+r}
+    q^{-n-(m-\delta-r)} \left( 1 - q^{-1} \right)
+      \cdot \Big( (-1)^n q^{s(2m-n)} q^{2n-2m} \Big) \Big( q^{2m}(1-q^{-2}) \Big) \\
+  &= \sum_{n=\ell+r+1}^{-\frac{\ell}{2}+\delta+\lambda+r}
+    \sum_{m=n-r}^{\min(n-1, \lambda+r)-\frac{\ell}{2}+\delta}
+    q^{-n-(n-\frac{\ell}{2}-r)}
+      \cdot \Big( (-1)^n q^{s(2m-n)} q^{2n} \Big) \\
+  &\qquad+ \sum_{n=\ell+r+1}^{\frac{\ell}{2}+\delta+r}
+    \sum_{m=n-r}^{\frac{\ell}{2}+\delta+r}
+    q^{-n-(n-\frac{\ell}{2}-r)}
+      \cdot \Big( (-1)^n q^{s(2m-n)} q^{2n} \Big) \\
+  &\qquad+ \sum_{n=\ell+r+1}^{\lambda+r}
+    \sum_{m=n-\frac{\ell}{2}+\delta}^{\min(n,\lambda)+\delta+r}
+    q^{-n-(m-\delta-r)}
+      \cdot \Big( (-1)^n q^{s(2m-n)} q^{2n} \Big) \\
+  &= \sum_{n=\ell+r+1}^{-\frac{\ell}{2}+\delta+\lambda+r}
+    \sum_{m=n-r}^{\min(n-1, \lambda+r)-\frac{\ell}{2}+\delta}
+    q^{\frac{\ell}{2}+r} \cdot (-1)^n q^{s(2m-n)} \\
+  &\qquad+ \sum_{n=\ell+r+1}^{\frac{\ell}{2}+\delta+r}
+    \sum_{m=n-r}^{\frac{\ell}{2}+\delta+r}
+    q^{\frac{\ell}{2}+r} \cdot (-1)^n q^{s(2m-n)} \\
+  &\qquad+ \sum_{n=\ell+r+1}^{\lambda+r}
+    \sum_{m=n-\frac{\ell}{2}+\delta}^{\min(n,\lambda)+\delta+r}
+    q^{n-m+\delta+r} \cdot (-1)^n q^{s(2m-n)} \\
+\end{align*}
+
+\todo{THIS CALCULATION IS REALLY ANNOYING PLEASE SEND HELP}
