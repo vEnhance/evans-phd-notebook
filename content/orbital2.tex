@@ -1,6 +1,5 @@
 \chapter{Evaluation of the orbital integral}
-We now proceed to actually evaluate the orbital integral.
-This requires several steps.
+We now proceed to actually do the calculation of the orbital integral.
 
 \section{Region where $n \leq 0$ for all values of $\ell$}
 \begin{proposition}
@@ -582,4 +581,49 @@ and put $\Vol(t_1:-v(t_1)=m) = q^{2m} (1-q^{-2})$ to get:
     q^{n-m+\delta+r} \cdot (-1)^n q^{s(2m-n)} \\
 \end{align*}
 
-\todo{THIS CALCULATION IS REALLY ANNOYING PLEASE SEND HELP}
+\todo{ok this collation is going to be\dots fun\dots}
+
+\begin{theorem}
+  [Orbital integral in the even case for $\mathbf{1}_{K'_{S, \le r}}$]
+  Under the assumptions before, for any $r \ge 0$ we have the formula
+  \begin{align*}
+    \Orb(\gamma, \mathbf{1}_{K'_{S, \le r}}, s)
+    &= \sum_{k = \ell-r}^{2\delta + \lambda - \ell + r} \cc_\gamma(k) (-1)^k q^{\frac{\ell}{2}+r} (q^s)^k \\
+    &+ \sum_{k = -2r}^{2\delta + \lambda + 2r}
+    (-1)^k \left( 1 + q + q^2 + \dots + q^{\nn_{\gamma}(k)}  \right) (q^s)^k
+  \end{align*}
+  where the piecewise function $\nn_\gamma \colon \ZZ \to \ZZ_{\ge 0}$ is defined by
+  \[
+    \nn_\gamma(k) =
+    \begin{cases}
+      k + 2r & \text{if } {-2r} \le k \le -r \\
+      \left\lfloor \frac{k+r}{2} \right\rfloor + r & \text{if }{-r} \le k \le \ell-r \\
+      \frac{\ell}{2} + r & \text{if } \ell - r \le k \le 2\delta + \lambda - \ell + r \\
+      \left\lfloor \frac{(2\delta+\lambda+r)-k}{2} \right\rfloor + r & \text{if } 2\delta + \lambda - \ell + r \le k \le 2\delta + \lambda + r \\
+      (2\delta + \lambda + 2r) - k & \text{if } 2\delta + \lambda + r \le k \le 2\delta + \lambda + 2r
+    \end{cases}
+  \]
+  and the piecewise function $\cc_\gamma \colon \ZZ \to \ZZ_{\ge 0}$ is defined by by setting the constants
+  \begin{align*}
+    \mathsf{B}_\gamma &\coloneqq \delta + \frac{\ell}{2} - r \\
+    \mathsf{T}_\gamma &\coloneqq (2\delta+\lambda) - \mathsf{B}_\gamma \\
+    \mathsf{w}_\gamma &\coloneqq \min(\lambda-\ell-1, 2r)
+  \end{align*}
+  and letting
+  \[
+    \cc_\gamma(k)
+    =
+    \begin{cases}
+      k - (\ell - r)
+        & \text{if } \ell-r \le k \le \delta + \frac{\ell}{2} - r \\
+      \left\lfloor \frac{k - \mathsf{B}_\gamma}{2} \right\rfloor + \delta - \frac{\ell}{2}
+        &\text{if } \mathsf{B}_\gamma \le k \le \mathsf{B}_\gamma + \mathsf{w}_\gamma \\
+      \delta - \frac{\ell}{2} + \half \mathsf{w}_\gamma
+        &\text{if } \mathsf{B}_\gamma + \mathsf{w}_\gamma \le k \le \mathsf{T}_\gamma - \mathsf{w}_\gamma \\
+      \left\lfloor \frac{\mathsf{T}_\gamma - k}{2} \right\rfloor + \delta - \frac{\ell}{2}
+        &\text{if } \mathsf{T}_\gamma - \mathsf{w}_\gamma \le k \le \mathsf{T}_\gamma \\
+        (2\delta + \lambda - \ell + r) - k
+        & \text{if } \mathsf{T}_\gamma \le k \le 2\delta + \lambda - \ell + r.
+    \end{cases}
+  \]
+\end{theorem}
