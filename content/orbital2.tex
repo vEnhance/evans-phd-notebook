@@ -394,8 +394,43 @@ Indeed,
   and it is of the desired form.
 \end{itemize}
 This gives us a succinct description of the orbital integral.
-We describe it in the cases where $\ell$ is odd and $\ell$ is even.
 
+If $\ell$ is even, we now have the following intermediate result.
+\begin{proposition}
+  Suppose $\ell$ is even.
+  Then we have the intermediate result
+  \[
+    I_{n \le 0} + I_{n > 0}^{\text{1+2}}
+    = \sum_{k = -2r}^{2\delta + \min(\lambda+2r, \ell+3r)}
+    (-1)^k \left( 1 + q + q^2 + \dots + q^{\nn^{1+2}_{\gamma}(k)}  \right) (q^s)^k
+  \]
+  where the piecewise function $\nn_\gamma \colon \ZZ \to \ZZ_{\ge 0}$ is defined by
+  \[
+    \nn^{1+2}_\gamma(k) =
+    \begin{cases}
+      k + 2r & \text{if } {-2r} \le k \le -r \\
+      \left\lfloor \frac{k+r}{2} \right\rfloor + r & \text{if }{-r} \le k \le \ell-r \\
+      \frac{\ell}{2} + r - (k-r)\%2 & \text{if } \ell - r \le k \le 2\delta + r \\
+      \left\lfloor \frac{(2\delta+\ell+r)-k}{2} \right\rfloor + r & \text{if } 2\delta + r \le k \le 2\delta + \ell + 3r
+    \end{cases}
+  \]
+  in the case $\lambda \ge \ell+r$, and
+  \[
+    \nn^{1+2}_\gamma(k) =
+    \begin{cases}
+      k + 2r & \text{if } {-2r} \le k \le -r \\
+      \left\lfloor \frac{k+r}{2} \right\rfloor + r & \text{if }{-r} \le k \le \ell-r \\
+      \frac{\ell}{2} + r - (k-r) \% 2 & \text{if } \ell - r \le k \le 2\delta + r \\
+      \left\lfloor \frac{(2\delta+\ell+r)-k}{2} \right\rfloor + r & \text{if } 2\delta + r \le k \le 2\delta + 2\lambda - \ell + r \\
+      (2\delta + \lambda + 2r) - k & \text{if } 2 \delta + 2 \lambda - \ell + r \le k \le 2 \delta + \lambda + 2r.
+    \end{cases}
+  \]
+  in the case $\lambda \le \ell+r$.
+\end{proposition}
+
+We describe the final result for odd $\ell$ in the next section.
+
+\section{Final result for $\ell$ odd}
 If $\ell$ is odd, so $\lambda = \ell$, then
 the orbital integral can be expressed succinctly in the following way.
 \begin{theorem}
@@ -448,7 +483,7 @@ we can then write the following equivalent formulation.
 \begin{example}
   If $r=3$, $\ell=5$, and $\delta=100$, the formulas above read
   \begin{align*}
-  \Orb(\gamma, \mathbf{1}_{K'_{S, \le 2}}, s)
+  \Orb(\gamma, \mathbf{1}_{K'_{S, \le r}}, s)
   &= q^{-6s} \\
   &- (q+1) \cdot q^{-5s} \\
   &+ (q^2+q+1) \cdot q^{-4s} \\
@@ -477,7 +512,7 @@ we can then write the following equivalent formulation.
   Continuing the previous example with
   $r=3$, $\ell=5$, and $\delta=100$, we have
   \begin{align*}
-  \Orb(\gamma, \mathbf{1}_{K'_{S, 2}}, s)
+  \Orb(\gamma, \mathbf{1}_{K'_{S, r}}, s)
   &= q^{-6s} \\
   &- (q+1) \cdot q^{-5s} \\
   &+ (q^2+q) \cdot q^{-4s} \\
@@ -502,40 +537,6 @@ we can then write the following equivalent formulation.
   &- q^{211s}.
   \end{align*}
 \end{example}
-
-If $\ell$ is even, we have a similar intermediate result.
-\begin{proposition}
-  Suppose $\ell$ is even.
-  Then we have the intermediate result
-  \[
-    I_{n \le 0} + I_{n > 0}^{\text{1+2}}
-    = \sum_{k = -2r}^{2\delta + \min(\lambda+2r, \ell+3r)}
-    (-1)^k \left( 1 + q + q^2 + \dots + q^{\nn^{1+2}_{\gamma}(k)}  \right) (q^s)^k
-  \]
-  where the piecewise function $\nn_\gamma \colon \ZZ \to \ZZ_{\ge 0}$ is defined by
-  \[
-    \nn^{1+2}_\gamma(k) =
-    \begin{cases}
-      k + 2r & \text{if } {-2r} \le k \le -r \\
-      \left\lfloor \frac{k+r}{2} \right\rfloor + r & \text{if }{-r} \le k \le \ell-r \\
-      \frac{\ell}{2} + r - (k-r)\%2 & \text{if } \ell - r \le k \le 2\delta + r \\
-      \left\lfloor \frac{(2\delta+\ell+r)-k}{2} \right\rfloor + r & \text{if } 2\delta + r \le k \le 2\delta + \ell + 3r
-    \end{cases}
-  \]
-  in the case $\lambda \ge \ell+r$, and
-  \[
-    \nn^{1+2}_\gamma(k) =
-    \begin{cases}
-      k + 2r & \text{if } {-2r} \le k \le -r \\
-      \left\lfloor \frac{k+r}{2} \right\rfloor + r & \text{if }{-r} \le k \le \ell-r \\
-      \frac{\ell}{2} + r - (k-r) \% 2 & \text{if } \ell - r \le k \le 2\delta + r \\
-      \left\lfloor \frac{(2\delta+\ell+r)-k}{2} \right\rfloor + r & \text{if } 2\delta + r \le k \le 2\delta + 2\lambda - \ell + r \\
-      (2\delta + \lambda + 2r) - k & \text{if } 2 \delta + 2 \lambda - \ell + r \le k \le 2 \delta + \lambda + 2r.
-    \end{cases}
-  \]
-  in the case $\lambda \le \ell+r$.
-
-\end{proposition}
 
 \section{Contribution from Case 3\ts{+}, 3\ts{-}, 4\ts{+} assuming $v(b) = v(d) = 0$}
 These cases only appear when $\ell$ is even and we assume this for this section.
@@ -583,6 +584,7 @@ and put $\Vol(t_1:-v(t_1)=m) = q^{2m} (1-q^{-2})$ to get:
 
 \todo{ok this collation is going to be\dots fun\dots}
 
+\section{Final answer for even $\ell$, when $v(b) = v(d) = 0$}
 \begin{theorem}
   [Orbital integral in the even case for $\mathbf{1}_{K'_{S, \le r}}$]
   Under the assumptions before, for any $r \ge 0$ we have the formula
@@ -627,3 +629,48 @@ and put $\Vol(t_1:-v(t_1)=m) = q^{2m} (1-q^{-2})$ to get:
     \end{cases}
   \]
 \end{theorem}
+
+\begin{example}
+  We provide an example for $r=5$, $\ell=2$, $\delta=8$, $\lambda=9$ for concreteness:
+  \begin{align*}
+    \Orb(\gamma, \mathbf{1}_{K'_{S, \le r}}, s)
+    &= q^{-10s} \\
+    &- (q + 1) \cdot q^{-9s} \\
+    &+ (q^2 + q + 1) \cdot q^{-8s} \\
+    &- (q^3 + q^2 + q + 1) \cdot q^{-7s} \\
+    &+ (q^4 + q^3 + q^2 + q + 1) \cdot q^{-6s} \\
+    &- (q^5 + q^4 + q^3 + q^2 + q + 1) \cdot q^{-5s} \\
+    &+ (q^5 + q^4 + q^3 + q^2 + q + 1) \cdot q^{-4s} \\
+    &- (q^6 + q^5 + q^4 + q^3 + q^2 + q + 1) \cdot q^{-3s} \\
+    &+ (2q^6 + q^5 + q^4 + q^3 + q^2 + q + 1) \cdot q^{-2s} \\
+    &- (3q^6 + q^5 + q^4 + q^3 + q^2 + q + 1) \cdot q^{-s} \\
+    &+ (4q^6 + q^5 + q^4 + q^3 + q^2 + q + 1) \cdot q^{0} \\
+    &- (4q^6 + q^5 + q^4 + q^3 + q^2 + q + 1) \cdot q^{s} \\
+    &+ (5q^6 + q^5 + q^4 + q^3 + q^2 + q + 1) \cdot q^{2s} \\
+    &- (5q^6 + q^5 + q^4 + q^3 + q^2 + q + 1) \cdot q^{3s} \\
+    &+ (6q^6 + q^5 + q^4 + q^3 + q^2 + q + 1) \cdot q^{4s} \\
+    &- (6q^6 + q^5 + q^4 + q^3 + q^2 + q + 1) \cdot q^{5s} \\
+    &+ (7q^6 + q^5 + q^4 + q^3 + q^2 + q + 1) \cdot q^{6s} \\
+    &- (7q^6 + q^5 + q^4 + q^3 + q^2 + q + 1) \cdot q^{7s} \\
+    &+ (7q^6 + q^5 + q^4 + q^3 + q^2 + q + 1) \cdot q^{8s} \\
+    &- (7q^6 + q^5 + q^4 + q^3 + q^2 + q + 1) \cdot q^{9s} \\
+    &+ (7q^6 + q^5 + q^4 + q^3 + q^2 + q + 1) \cdot q^{10s} \\
+    &- (7q^6 + q^5 + q^4 + q^3 + q^2 + q + 1) \cdot q^{11s} \\
+    &+ (6q^6 + q^5 + q^4 + q^3 + q^2 + q + 1) \cdot q^{12s} \\
+    &- (6q^6 + q^5 + q^4 + q^3 + q^2 + q + 1) \cdot q^{13s} \\
+    &+ (5q^6 + q^5 + q^4 + q^3 + q^2 + q + 1) \cdot q^{14s} \\
+    &- (5q^6 + q^5 + q^4 + q^3 + q^2 + q + 1) \cdot q^{15s} \\
+    &+ (4q^6 + q^5 + q^4 + q^3 + q^2 + q + 1) \cdot q^{16s} \\
+    &- (4q^6 + q^5 + q^4 + q^3 + q^2 + q + 1) \cdot q^{17s} \\
+    &+ (3q^6 + q^5 + q^4 + q^3 + q^2 + q + 1) \cdot q^{18s} \\
+    &- (2q^6 + q^5 + q^4 + q^3 + q^2 + q + 1) \cdot q^{19s} \\
+    &+ (q^6 + q^5 + q^4 + q^3 + q^2 + q + 1) \cdot q^{20s} \\
+    &- (q^5 + q^4 + q^3 + q^2 + q + 1) \cdot q^{21s} \\
+    &+ (q^5 + q^4 + q^3 + q^2 + q + 1) \cdot q^{22s} \\
+    &- (q^4 + q^3 + q^2 + q + 1) \cdot q^{23s} \\
+    &+ (q^3 + q^2 + q + 1) \cdot q^{24s} \\
+    &- (q^2 + q + 1) \cdot q^{25s} \\
+    &+ (q + 1) \cdot q^{26s} \\
+    &- q^{27s}.
+  \end{align*}
+\end{example}
