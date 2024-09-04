@@ -304,13 +304,13 @@ We will now describe them.
 \end{proof}
 
 \todo{imported this; need to rearrange}
-\begin{fact}
+\begin{proposition}
   Whenever $\ell$ is odd, we must have
   \begin{equation}
     v(b) = v(d) = 0.
     \label{eq:odd_b_d_zero}
   \end{equation}
-\end{fact}
+\end{proposition}
 \begin{proof}
   [Proof of \eqref{eq:odd_b_d_zero}]
   If $v(d) \neq 0$, then $b = -au-\bar d\bar u$ is a unit,
@@ -413,8 +413,8 @@ The following two lemmas will be useful.
 
 We also comment on the well-known fact that in an ultrametric space,
 any two disks are either disjoint or one is contained in the other.
-(In other words, the Mastercard logo cannot be drawn.)
-\begin{fact}
+(In other words, the Mastercard logo cannot be drawn. See \Cref{fig:no_mastercard}.)
+\begin{proposition}
   Choose $\xi_1, \xi_2 \in E$ and $\rho_1 \geq \rho_2$.
   Consider the two disks:
   \begin{align*}
@@ -423,21 +423,22 @@ any two disks are either disjoint or one is contained in the other.
   \end{align*}
   Then, if $v(\xi_1-\xi_2) \geq \rho_2$, we have $D_1 \subseteq D_2$.
   If not, instead $D_1 \cap D_2 = \varnothing$.
-  \label{fact:mastercard}
-\end{fact}
+  \label{prop:no_mastercard}
+\end{proposition}
 \begin{proof}
   Because $E$ is an ultrametric space and $\Vol(D_1) \leq \Vol(D_2)$,
   we either have $D_1 \subseteq D_2$ or $D_1 \cap D_2 = \varnothing$.
   The latter condition checks which case we are in by testing if $\xi_1 \in D_2$,
   since $\xi_1 \in D_1$.
 \end{proof}
+\todo{is it $q$ or $q_E$}
 
-\begin{center}
+\begin{figure}
 \begin{asy}
   defaultpen(fontsize(12pt));
   size(7cm);
   pair O1 = 0.57*dir(-30);
-  pair O2 = origin;
+  pair O2 = (0,0);
   real r1 = 0.4;
   real r2 = 1;
   filldraw(circle(O2, r2), rgb(0.9, 0.9, 0.9));
@@ -451,8 +452,9 @@ any two disks are either disjoint or one is contained in the other.
   label("$q^{-\rho_1}$", midpoint(O1--P1), dir(P1-O1)*dir(90));
   label("$q^{-\rho_2}$", midpoint(O2--P2), dir(P2-O2)*dir(90));
 \end{asy}
-\end{center}
-\todo{is it $q$ or $q_E$}
+\caption{Figure corresponding to \Cref{prop:no_mastercard}.}
+\label{fig:no_mastercard}
+\end{figure}
 
 We package both of these results together
 lemma that will be used repeatedly.
@@ -676,9 +678,9 @@ We will now show that some of these inequalities are redundant and can be ignore
   \[ v(au - \bar d \bar u) \ge \frac{\ell}{2} \ge \frac{n-r}{2}. \qedhere \]
 \end{proof}
 
-\begin{claim*}
+\begin{claim}
   \eqref{eq:odd_ineq1} is redundant.
-\end{claim*}
+\end{claim}
 \begin{proof}
   The equation
   \[ (4-b \bar b) = -4au(1-d\bar d) - \bar b(b^2-4a\bar d) \]
