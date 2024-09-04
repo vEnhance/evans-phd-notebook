@@ -1,6 +1,6 @@
-\chapter{Transfer}
-\section{Reminders}
-\subsection{Hecke algebra}
+\section{Transfer}
+\subsection{Reminders}
+\subsubsection{Hecke algebra}
 In general, if $G$ is a unimodular locally compact topological group,
 and $K$ is a closed subgroup, then we can define the \emph{Hecke algebra} by
 \[ \HH(G, K) \coloneqq \QQ[K \backslash G \slash K] \]
@@ -14,10 +14,10 @@ $K$ is the maximal compact subgroup
 (or more generally whenever $(G,K)$ is a Gelfand pair),
 this Hecke algebra is actually commutative.
 
-\subsection{Satake transform}
+\subsubsection{Satake transform}
 We state a general form of the Satake transformation, which will be used later.
 
-For this section, $G$ will denote an arbitrary connected reductive group
+For this subsection, $G$ will denote an arbitrary connected reductive group
 over some non-Archimedean local field $F$.
 We will not distinguish between $G$ and $G(F)$ when there is no confusion.
 
@@ -50,17 +50,17 @@ We are going to apply this momentarily in two situations:
 once when $G$ is the general linear group (which is split),
 and once when $G$ is a unitary group.
 
-\subsection{Modulus character}
+\subsubsection{Modulus character}
 Let $\varpi$ denote a uniformizer for $F$ and $q$ the residue characteristic.
 In general, if $\rho$ is the Weyl vector and $\mu$ is a positive cocharacter, then
 \[ \delta(\mu(\varpi)) = q^{- \left< \mu, \rho\right>}. \]
 \todo{does this help for unitary group}
 
-\section{Setup}
+\subsection{Setup}
 Although our paper is primarily interested in the case $n=3$,
-we provide the notes for this section for general $n$.
+we provide the notes for this subsection for general $n$.
 
-\subsection{Notation}
+\subsubsection{Notation}
 Retain all the notation of \Cref{sec:orbital_background}.
 Moving forward we also fix the following notation:
 \begin{itemize}
@@ -87,7 +87,7 @@ Moving forward we also fix the following notation:
   (since $S_n$ is already reserved for the symmetric space).
 \end{itemize}
 
-\subsection{Two Hecke algebras, and a module}
+\subsubsection{Two Hecke algebras, and a module}
 We define two Hecke algebras:
 \begin{align*}
   \HH(G', K') &\coloneqq \HH(\GL_n(E), \GL_n(\OO_E)) \\
@@ -116,7 +116,7 @@ by integration on the fibers.
 %\end{align*}
 %where as before $\eta(g) = (-1)^{v(\det g)}$ in a slight abuse of notation.
 
-\subsection{Satake transformation for $\HH(G',K')$ and $\HH(G,K)$}
+\subsubsection{Satake transformation for $\HH(G',K')$ and $\HH(G,K)$}
 We introduce more notation.
 To take the Satake transform of $\HH(G', K')$, we define the following abbreviations.
 \begin{itemize}
@@ -198,12 +198,12 @@ So, henceforth, we will consider
   \Sat &\colon \HH(G, K)\xrightarrow{\sim} \QQ[Y_1^{\pm}, \dots, Y_m^{\pm}]^{W_m}.
 \end{align*}
 
-\subsection{Base change}
-\todo{this section needs to be written}
+\subsubsection{Base change}
+\todo{this subsection needs to be written}
 
 We don't have to twist since $n$ is odd.
 
-\subsection{Overall picture}
+\subsubsection{Overall picture}
 \begin{center}
 \begin{tikzcd}
   & \HH(G',K') \ar[ld, "\rproj_\ast"'] \ar[r, "\sim"', "\Sat"] \ar[d, "\BC"]
@@ -217,9 +217,9 @@ Goal: describe $\BC_S$.
 
 \todo{describe this}
 
-\section{Initial calculation on the diagram}
+\subsection{Initial calculation on the diagram}
 Specialize now to $n=3$.
-Throughout this section, we use the shorthand
+Throughout this subsection, we use the shorthand
 \[ \varpi^{(n_1, n_2, n_3)} \coloneqq \diag(\varpi^{n_1}, \varpi^{n_2}, \varpi^{n_3}). \]
 
 As a $\QQ$-module, the spaces $\HH(G,K)$ and $\HH(S_n(F), K')$
@@ -249,7 +249,7 @@ at it (one only needs to check it has $\OO_E$ entries
 and that the determinant has valuation $r$,
 rather than determining the exact coset $K'\varpi^{(n_1, n_2, n_3)}K'$).
 
-\subsection{Integration over fiber}
+\subsubsection{Integration over fiber}
 \begin{proposition}
   For every integer $r \ge 0$, we have
   \begin{align*}
@@ -365,7 +365,7 @@ rather than determining the exact coset $K'\varpi^{(n_1, n_2, n_3)}K'$).
   as desired.
 \end{proof}
 
-\subsection{Satake transform of the determinant characteristic function on the top arrow}
+\subsubsection{Satake transform of the determinant characteristic function on the top arrow}
 \begin{proposition}
   For every integer $r \ge 0$, we have
   \[ \Sat(\mathbf{1}_{\Mat_3(\OO_E), v\circ\det=r})
@@ -416,7 +416,7 @@ rather than determining the exact coset $K'\varpi^{(n_1, n_2, n_3)}K'$).
   This gives the sum claimed earlier.
 \end{proof}
 
-\subsection{Satake transform of the indicator on the bottom arrow}
+\subsubsection{Satake transform of the indicator on the bottom arrow}
 \begin{proposition}
   For each $r \ge 0$ we have
   \[ \Sat\left(\mathbf{1}_{\varpi^{-r} \Mat_3(\OO_E) \cap G}\right)
@@ -514,7 +514,7 @@ rather than determining the exact coset $K'\varpi^{(n_1, n_2, n_3)}K'$).
   we get the formula claimed.
 \end{proof}
 
-\section{Base change from $\HH(G,K)$ to $\HH(S_3(F), K')$}
+\subsection{Base change from $\HH(G,K)$ to $\HH(S_3(F), K')$}
 We first need to determine an element of $\HH(G,K)$
 which is in the pre-image of $\mathbf{1}_{\varpi^{-r} \Mat_3(\OO_E) \cap G}$
 under $\BC \colon \HH(G', K') \to \HH(G, K)$.

@@ -8,30 +8,39 @@
 \subtitle{\url{https://github.com/vEnhance/evans-phd-notebook/}}
 \maketitle
 
-\include{content/readme}
-\tableofcontents
+\include{notes/readme}
+\tableofnotess
 
 \part{Classical theory}
-\include{content/prereqs}
-\include{content/modforms}
-\include{content/hecke}
+\include{notes/prereqs}
+\include{notes/modforms}
+\include{notes/hecke}
 
 \part{Towards adeles}
-\include{content/adeles}
-\include{content/tate}
-\include{content/adelization}
+\include{notes/adeles}
+\include{notes/tate}
+\include{notes/adelization}
 
 \part{Automorphic forms and representations}
-\include{content/autrep}
-\include{content/whittaker}
+\include{notes/autrep}
+\include{notes/whittaker}
 
 \part{Active work: GGP}
-\include{content/seesaw}
+\include{notes/seesaw}
 
 \part{Active work: Orbital}
-\include{content/orbital1}
-\include{content/orbital2}
-\include{content/satake}
+\let\oldchapter\chapter
+\let\oldsection\section
+\let\oldsubsection\subsection
+\let\oldsubsubsection\subsubsection
+
+\renewcommand{\section}{\oldchapter}
+\renewcommand{\subsection}{\oldsection}
+\renewcommand{\subsubsection}{\oldsubsection}
+
+\include{src/orbital1}
+\include{src/orbital2}
+\include{src/satake}
 
 \printbibliography[title=References]
 

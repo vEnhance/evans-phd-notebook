@@ -1,8 +1,8 @@
-\chapter{Setup for the orbital integral}
-\section{Background}
+\section{Setup for the orbital integral}
+\subsection{Background}
 \label{sec:orbital_background}
 
-\subsection{Notation}
+\subsubsection{Notation}
 \begin{itemize}
   \ii Let $F$ be a finite extension of $\QQ_p$ for $p > 2$.
   \ii Let $E/F$ be an unramified quadratic field extension.
@@ -13,7 +13,7 @@
   so that $\eta(x) = -1^{v(x)}$.
 \end{itemize}
 
-\subsection{Symmetric space}
+\subsubsection{Symmetric space}
 We define the symmetric space
 \[ S_3(F) \coloneqq \left\{ g \in \GL_3(E) \mid g \bar{g} = \id_3 \right\}. \]
 It has a left action under $\GL_3(E)$ by $g \cdot s \mapsto gs\bar{g}\inv$.
@@ -44,7 +44,7 @@ We can re-parametrize the problem according to the following claim.
 If this claim is true (still need to check it),
 then an integral over each $K'_{S, \le r}$ lets us extract the integrals over $K'_{S,r}$.
 
-\subsection{Orbital integral}
+\subsubsection{Orbital integral}
 Define
 \[ H' \coloneqq
   \left\{ \begin{bmatrix} t_1 & t_2 \\ \bar t_2 & \bar t_1 \end{bmatrix} \right\}
@@ -91,8 +91,8 @@ Our goal is to compute for
 \[ \pdv{}{s}\Orb(\gamma, \mathbf{1}_{K'_{S, \le r}}, s) \]
 at $s=0$ for any $r > 0$ as well.
 
-\section{Reparametrization in terms of valuations}
-\subsection{Computation of value in indicator function}
+\subsection{Reparametrization in terms of valuations}
+\subsubsection{Computation of value in indicator function}
 We are integrating over $t_1 \in E$ and $t_2 \in E$.
 Regarding $g \in H'$ as an element of $\GL_3$ as described before, we have
 \[ g = \begin{bmatrix}
@@ -190,7 +190,7 @@ in the work that follows.
 For brevity, we abbreviate
 \[ \mathbf{1}_{\le r}(\gamma, t, m) \coloneqq \mathbf{1}_{K'_{S, \le r}}(\Gamma(\gamma, t, m)). \]
 
-\subsection{Reparametrizing the integral in terms of $t$ and $m$}
+\subsubsection{Reparametrizing the integral in terms of $t$ and $m$}
 From now on, following \cite{ref:AFL} we always fix the notation
 \begin{align*}
   m &= m(t_1) \coloneqq -v(t_1) \\
@@ -219,8 +219,8 @@ Bringing this all into the orbital integral gives
   (-1)^n q^{s(2m-n)} \cdot q^{2n-2m} \odif t \odif t_1.
 \end{align*}
 
-\section{Setup}
-\subsection{Simplifying assumptions}
+\subsection{Setup}
+\subsubsection{Simplifying assumptions}
 For the purposes of \cite{ref:AFL},
 we will only care about the following case:
 \begin{assume}
@@ -243,7 +243,7 @@ we will see momentarily that either
 $v(b) = v(d) \in \{-1, -2, \dots, -r\}$,
 or one of $\{v(b), v(d)\}$ is zero and the other is nonnegative.
 
-\subsection{Notations}
+\subsubsection{Notations}
 As we described earlier, our goal is to give an answer in terms of
 \[ a \in E^1, \qquad b, d \in E, \qquad r \ge 0. \]
 To simplify the notation in what follows,
@@ -325,7 +325,7 @@ as a function of $\ell$ and $\delta$ (and $r$).
 However for even $\ell$ these numbers are never equal and our orbital
 integral will be stated in terms of $\ell$, $\delta$, and $\lambda$ (and $r$).
 
-\section{Description of the support of $\mathbf{1}_{\le r}$ when $n \le 0$}
+\subsection{Description of the support of $\mathbf{1}_{\le r}$ when $n \le 0$}
 \begin{claim}
   Whenever $n = 0$ (this requires $v(t) \geq 0$),
   \[
@@ -378,11 +378,11 @@ integral will be stated in terms of $\ell$, $\delta$, and $\lambda$ (and $r$).
   the condition is simply $-k+\delta-m \geq -r$.
 \end{proof}
 
-\section{Description of the support of $\mathbf{1}_{\le r}$ when $n > 0$}
+\subsection{Description of the support of $\mathbf{1}_{\le r}$ when $n > 0$}
 In this situation we evaluate over $n > 0$ only.
 In this case $t$ is automatically a unit.
 
-\subsection{Volume lemma}
+\subsubsection{Volume lemma}
 The following two lemmas will be useful.
 
 \begin{lemma}
@@ -482,7 +482,7 @@ and so \Cref{lem:quadruple_ineq} becomes unnecessary
 (\Cref{lem:volume} will suffice).
 We will deal with this situation when it arises.
 
-\subsection{Setup}
+\subsubsection{Setup}
 Consider the upper $2 \times 2$ matrix of $\Gamma(\gamma, t, m)$.
 Using the identities
 \begin{align*}
@@ -529,7 +529,7 @@ In summary:
   \end{align*}
 \end{claim}
 
-\subsection{Rewriting the quadratic constraint on the valuation of $t$}
+\subsubsection{Rewriting the quadratic constraint on the valuation of $t$}
 We now analyze the inequality
 \begin{equation}
   v\left( (2at-b)^2 - (b^2-4a\bar d) \right) \geq n-r
@@ -631,7 +631,7 @@ as well as the identity
 = \frac{4 - \Norm(b \pm \tau)}{4} \]
 to calculate $v(1-\xi_1\bar{\xi_1})$ entries in the latter four cases.
 
-\subsection{Analysis of Case 1 and 2 assuming $n > 0$ and $v(b) = v(d) = 0$.}
+\subsubsection{Analysis of Case 1 and 2 assuming $n > 0$ and $v(b) = v(d) = 0$.}
 We analyze Case 1 and 2 assuming $v(b) = v(d) = 0$.
 
 Considering $n > 0$ and $n-r \le m \le n+\delta+r$ as fixed,
@@ -735,7 +735,7 @@ where each $(m,n)$ gives a volume contribution of
 \]
 Notice that $m \leq \delta + r$ could only occur when $n \leq r$.
 
-\subsection{Analysis of Case 3 and 4 assuming $n > 0$ and $v(b) = v(d) = 0$.}
+\subsubsection{Analysis of Case 3 and 4 assuming $n > 0$ and $v(b) = v(d) = 0$.}
 Suppose $\ell \geq 0$ is even.
 Using the identity
 \[ (au-\bar d \bar u)^2 - \tau^2 = 4a\bar d(1- u\bar u) \]
