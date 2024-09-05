@@ -1,0 +1,74 @@
+\section{Background}
+\label{sec:background}
+
+\subsection{Notation}
+We provide a glossary of notation that will be used in this paper.
+As mentioned in the introduction, $p > 2$ is a prime,
+$F$ is a finite extension of $\QQ_p$,
+and $E/F$ is an unramified quadratic field extension.
+
+\begin{itemize}
+  \ii Denote by $\varpi$ a uniformizer of $\OO_F$, such that $\bar \varpi = \varpi$.
+  \ii Let $q \coloneqq |F/\varpi|$ be the residue characteristic.
+  \ii Let $v$ be the associated valuation for $\varpi$.
+  \ii Let $\eta$ be the quadratic character attached to $E/F$ by class field theory,
+  so that $\eta(x) = -1^{v(x)}$.
+  \ii Set $G' \coloneqq \GL_n(E)$.
+  \ii Set $K' \coloneqq \GL_n(\OO_E) \subseteq G'$ as the hyperspecial maximal compact subgroup of $G$.
+  \ii $V_0$ denotes a split $E/F$-Hermitian space of dimension $n$.
+  \ii Let $\beta$ denote the $n \times n$ antidiagonal matrix
+  \[ \beta \coloneqq \begin{bmatrix} && 1 \\ & \iddots \\ 1 \end{bmatrix} \]
+  and pick the basis of $V_0$ such that the Hermitian form on $V_0$ is given by
+  \[ V_0 \times V_0 \to E \qquad (x,y) \mapsto x^\ast \beta y. \]
+  \ii Set
+  \[ G \coloneqq \U(V_0) = \{ g \in \GL_n(\OO_E) \mid g^\ast \beta g = \beta\} \]
+  the unitary group over $V_0$.
+  Note that $\beta$ is \emph{antidiagonal}, in contrast to the convention $\beta = \id_n$
+  that is often used for unitary matrices with entries in $\CC$.
+  \ii Set
+  \[ K \coloneqq G \cap \GL_n(\OO_E) \]
+  as the natural hyperspecial maximal compact subgroup.
+  \ii Define the symmetric space
+  \[ S_n(F) \coloneqq \left\{ g \in \GL_n(E) \mid g \bar g = \id_n \right\}. \]
+  It has a natural left action of $\GL_n(E)$ by $g \cdot s \mapsto g s \bar g^{-1}$.
+  \ii Let \[ K'_S \coloneqq S_n(F) \cap \GL_n(\OO_F). \]
+\end{itemize}
+
+\subsection{Definition of Hecke algebra}
+We reminder the reader the definition of a Hecke algebra.
+For this subsection, $G$ will denote \emph{any}
+unimodular locally compact topological group,
+and $K$ any closed subgroup of $G$.
+
+\begin{definition}
+  The \emph{Hecke algebra}
+  \[ \HH(G, K) \coloneqq \QQ[K \backslash G \slash K] \]
+  is defined as the space of compactly supported $K$-binvariant
+  locally constant functions on $G$.
+
+  Given two such functions $\phi_1$ and $\phi_2$ in $\HH(G,K)$,
+  one can consider define the convolution
+  \[ (\phi_1 \ast \phi_2)(g) \coloneqq \int_G \phi_1(g\inv x) \phi_2(x) \; \odif x \]
+  which makes $\HH(G, K)$ into a $\QQ$-algebra,
+  whose identity element is $\mathbf{1}_K$.
+\end{definition}
+In the case where $G$ is a reductive Lie group and
+$K$ is the maximal compact subgroup
+(or more generally whenever $(G,K)$ is a Gelfand pair),
+this Hecke algebra is actually commutative.
+
+\subsection{The specific Hecke algebras for $G' = \GL_n(E)$ and $G = \U(V_0)$}
+For our purposes, we define two Hecke algebras:
+\begin{align*}
+  \HH(G', K') &\coloneqq \HH(\GL_n(E), \GL_n(\OO_E)) \\
+  \HH(G, K) &\coloneqq \HH(\U(V_0), \U(V_0) \cap \GL_n(\OO_E))
+\end{align*}
+Now the symmetric space $S_n(F)$ is not a group,
+so it does not make sense to define the same thing here.
+Nevertheless, we introduce
+\[ \HH(S_n(F), K') \coloneqq \mathcal C_{\mathrm{c}}^{\infty}(S_n(F))^{K'} \]
+as the set of smooth compactly supported functions on $S_n(F)$
+which are invariant under the action of $K' \subseteq G'$;
+this is an $\HH(G', K')$-module.
+This does \textbf{not} have a multiplication structure at the moment, \emph{a priori},
+although later we will see how one could be imposed.

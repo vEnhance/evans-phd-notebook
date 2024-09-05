@@ -3,32 +3,52 @@ Throughout this whole paper, $p > 2$ is a prime,
 $F$ is a finite extension of $\QQ_p$,
 and $E/F$ is an unramified quadratic field extension.
 
-\subsection{History and motivation}
-We briefly review the history and context
+\subsection{History and motivation for the arithmetic fundamental lemma}
+The primary motivation for this paper arises from
+the study of conjectured variants of the arithmetic fundamental lemma
+for spherical Hecke algebras proposed in \cite{ref:AFLspherical}.
+This section briefly provides an overview of the historical context
+that led to the formulation of these conjectures.
+This history is also summarized in \Cref{fig:history}.
+A more detailed account can be found in \cite{ref:survey}.
 
-\subsubsection{The GGP conjectures}
+\begin{figure}[ht]
+  \centering
+  \begin{tikzcd}
+      \text{\cite{ref:waldspurger}} \ar[d] \\
+      \text{\cite{ref:GP1,ref:GP2}} \ar[d] \\
+    \text{GGP \cite{ref:GGP}}
+      \ar[d, dotted, leftrightarrow, "\text{analog}"]
+      & \ar[l, Rightarrow, "\text{used to prove}"] \text{FL \cite{ref:JR}}
+        \ar[d, dotted, leftrightarrow, "\text{analog}"]
+      & \ar[l] \text{\cite{ref:leslie}}
+        \ar[d, dotted, leftrightarrow, "\text{analog}"] \\
+    \text{Arith.\ GGP \cite{ref:GGP}}
+      & \ar[l, Rightarrow, "\text{used to prove}"] \text{AFL \cite{ref:AFL}}
+      & \ar[l] \text{\cite{ref:AFLspherical}} \\
+    \text{\cite{ref:GZshimura}} \ar[u] \\
+    \text{\cite{ref:gross_zagier}} \ar[u]
+  \end{tikzcd}
+  \caption{The history behind the fundamental lemma and its arithmetic counterpart.
+    Unlabeled arrows denote generalizations.}
+  \label{fig:history}
+\end{figure}
+
+\subsubsection{The GGP conjectures, and the fundamental lemma of Jacquet-Rallis}
 In modern arithmetic geometry, a common theme is that there are deep connections
 between geometric data with the values of related $L$-functions.
-So our story begins with two results published at similar times:
-\begin{itemize}
-  \ii In 1986, Gross-Zagier \cite{ref:gross_zagier} proved a formula
-  relating the height of Heegner points
-  on certain modular curves to the derivative at $s=1$ of certain $L$-functions.
 
-  \ii In 1985, Waldspurger \cite{ref:waldspurger} showed a formula
-  relating the nonvanishing of an automorphic period integral
-  to the central value of the same $L$-functions.
-  Later, a conjecture that generalizes Waldspurger's formula
-  was proposed by Gross-Prasad in \cite{ref:GP1,ref:GP2}.
-\end{itemize}
-These two results then lead naturally to a series of conjectures
+This story begins with a result of
+Waldspurger \cite{ref:waldspurger} which showed a formula
+relating the nonvanishing of an automorphic period integral
+to the central value of the same $L$-functions.
+Later, a conjecture that generalizes Waldspurger's formula
+was proposed by Gross-Prasad in \cite{ref:GP1,ref:GP2}.
+This was further generalized to a series of conjectures
 now known as the Gan-Gross-Prasad (GGP) conjectures,
-which were proposed in 2012 in \cite{ref:GGP}.
-The GGP conjectures generalize both the results above:
-they generalize the Gross-Zagier formula by replacing the modular curve
-with higher-dimensional Shimura varieties,
-while generalizing the Gross-Prasad conjecture to different classical groups.
-Specifically, the GGP conjectures predict the nonvanishing of a period integral
+which were proposed in 2012 in \cite{ref:GGP};
+they generalize the Gross-Prasad conjecture to different classical groups.
+Specifically, the GGP conjecture predict the nonvanishing of a period integral
 based on the values of the $L$-function of a certain cuspidal automorphic representation.
 
 In 2011, Jacquet-Rallis \cite{ref:JR} proposed an approach to the Gross-Prasad conjectures
@@ -37,16 +57,54 @@ The idea is to compare a RTF for the general linear group to one for a unitary g
 This approach relies on a so-called \emph{fundamental lemma},
 which links values of certain orbital integrals
 over two reductive groups over a non-Archimedean local field.
-\todo{make something precise here}
+
+Let's be a bit more precise about what this fundamental lemma says.
+Let $V_0$ denote a split $E/F$-Hermitian space of dimension $n$,
+fix a unit vector $w_0$ in it,
+and let $V_0^\flat$ be the orthogonal complement of the span of $w_0$.
+Let $G'^\flat \coloneqq \GL_{n-1}(E)$, $G' \coloneqq \GL_n(E)$,
+$G^\flat \coloneqq \U(V_0^\flat)(F)$ and $G \coloneqq \U(V_0)(F)$.
+For certain
+\[ \gamma \in G'^\flat \times G, \qquad g \in G^\flat \times G \]
+the Jacquet-Rallis fundamental lemma proposes a relation between two orbital integrals.
+Specifically, it supplies a relation between
+\begin{itemize}
+\item the orbital integral of $g$ with respect to
+  the indicator function $\mathbf{1}_{K'^\flat \times K'}$
+  of the natural hyperspecial compact subgroup
+  \[ K'^\flat \times K' \subset G'^\flat \times G' = \GL_{n-1}(E) \times \GL_n(E); \]
+  and
+\item the orbital integral of $\gamma$ with respect to
+  the indicator function $\mathbf{1}_{K^\flat \times K}$
+  of the natural hyperspecial compact subgroup
+  \[ K'^\flat \times K' \subset G^\flat \times G = \U(V_0^\flat)(F) \times \U(V_0)(F). \]
+\end{itemize}
+In other words, it states that
+\begin{equation}
+  \Orb(g, \mathbf{1}_{K'^\flat \times K'}) = \omega(\gamma) \Orb(g, \mathbf{1}_{K^\flat \times K})
+  \label{eq:old_FL}
+\end{equation}
+where $\omega(\gamma)$ is called a \emph{transfer factor}.
 The fundamental lemma has since been proved completely;
 a local proof was given by Beuzart-Plessis \cite{ref:BeuzartPlessis}
 while a global proof was given for large characteristic by W.\ Zhang \cite{ref:Wei2021}.
 
-\subsubsection{The arithmetic GGP conjectures.}
-An arithmetic analogue of the Gan-Gross-Prasad conjectures,
-which we henceforth refer to as \emph{arithmetic GGP}, can also be formulated.
-Rather than period integrals,
-one instead considers intersection numbers of cycles on some Shimura varieties.
+\subsubsection{The arithmetic GGP conjectures, and the arithmetic fundamental lemma.}
+At around the same time Waldspurger's formula was published,
+Gross-Zagier \cite{ref:gross_zagier} proved a formula
+relating the height of Heegner points
+on certain modular curves to the derivative at $s=1$ of certain $L$-functions.
+The Gross-Zagier formula was then generalized over several decades,
+culminating in \cite{ref:GZshimura} where the formula is established
+for Shimura curves over arbitrary totally real fields.
+
+An arithmetic analogue of the original Gan-Gross-Prasad conjectures,
+which we henceforth refer to as \emph{arithmetic GGP} \cite{ref:GGP},
+can then be formulated, generalizing Gross-Zagier's formula.
+Here the modular curves in Gross-Zagier
+are replaced with higher dimensional Shimura varieties.
+Rather than the period integrals considered previously,
+one instead takes intersection numbers of cycles on some Shimura varieties.
 Specifically, if one considers the Shimura variety associated to a classical group,
 the arithmetic GGP conjecture predicts a relation between intersection numbers
 on this Simura variety with the central derivative of automorphic $L$-functions.
@@ -55,12 +113,124 @@ By analogy to the work Jacquet-Rallis \cite{ref:JR},
 the arithmetic GGP conjectures should have a corresponding
 \emph{arithmetic fundamental lemma} (henceforth AFL),
 which was proposed by W.\ Zhang \cite{ref:AFL}.
-The arithmetic fundamental lemma then relates the derivative of a certain orbital integral
-to arithmetic intersection numbers on a Rapoport-Zink formal moduli space.
+The arithmetic fundamental lemma then relates the derivative
+of the orbital integral with respect to the indicator function
+$\mathbf{1}_{K'^\flat \times K} \in \HH(G'^\flat \times G, K'^\flat \times K)$, that is
+\[ \left. \pdv{}{s} \right\rvert_{s=0} \Orb(\gamma, \mathbf{1}_{K'^\flat \times K}) \]
+for $\gamma \in G'^\flat \times G$,
+to arithmetic intersection numbers on a certain Rapoport-Zink formal moduli space.
 The AFL in \cite{ref:AFL} has since been proven over $p$-adic fields for any prime $p$ in
 Mihatsch-Zhang \cite{ref:MZ2021}, W.\ Zhang \cite{ref:Wei2021}, Z.\ Zhang \cite{ref:Zhiyu}.
 
+\subsubsection{Generalizations of FL and AFL to spherical Hecke algebras}
+Recently it was shown \cite{ref:leslie} that in fact
+the FL holds in greater generality where the indicator function
+$\mathbf{1}_{K^\flat \times K}$ can be replaced by any element
+in the spherical Hecke algebra $\varphi \in \HH(G'^\flat \times G', K'^\flat \times K')$.
+In that case, $\mathbf{1}_{K'^\flat \times K}$ needs to be replaced
+by the corresponding element $\varphi'$ under a certain base change homomorphism
+\[ \varphi \mapsto \varphi' \qquad
+  \HH(G'^\flat \times G', K'^\flat \times K') \to \HH(G^\flat \times G, K^\flat \times K). \]
+In that case, the identity \eqref{eq:old_FL} still hold as
+\begin{equation}
+  \Orb(g, \varphi) = \omega(\gamma) \Orb(\gamma, \varphi').
+  \label{eq:eq:leslie_FL}
+\end{equation}
+To complete the analogy illustrated in \Cref{fig:history},
+there should thus be a generalization of the AFL in which
+$\mathbf{1}_{K'^\flat \times K}$ is replaced by any element of the Hecke algebra
+$\HH(G'^\flat \times G, K'^\flat \times K)$.
+This formula is proposed by \cite{ref:AFLspherical},
+and is the primary focus of this paper; we discuss it in the next section.
+
+\subsection{The inhomogeneous version of the arithmetic fundamental lemma for spherical Hecke algebras}
+Retain the notation $G' \coloneqq \GL_n(E)$, and $G \coloneqq \U(V_0)(F)$,
+with $K' \subset G'$ and $K \subset G$ the natural hyperspecial compact subgroups.
+For concreteness, we focus on the inhomogeneous version
+of the arithmetic fundamental lemma, which is \cite[Conjecture 6.2.1]{ref:AFLspherical},
+which allows us to deal with just $G'$ instead of $G'^\flat \times G'$, etc.
+
+Let $q$ denote the residue characteristic of $F$.
+Also define the symmetric space
+\[ S_n(F) \coloneqq \left\{ g \in \GL_n(E) \mid g \bar{g} = \id_3 \right\}. \]
+In this case, the orbital integrals in the inhomogeneous AFL
+are stated more naturally in terms of $f'$ contained in a certain
+$\HH(G',K')$-module which we will denote $\HH(S_n(F), K')$;
+it is defined later in
+
+\begin{conjecture}
+  [{\cite[Conjecture 6.2.1]{ref:AFLspherical}}]
+  \label{conj:inhomog}
+  Let $f \in \HH(G, K)$ be any element of the Hecke algebra,
+  and let $f' \in \HH(S_n(F), K')$ be its image
+  under a base change $\BC_{S_n}^{\eta^{n-1}}$ defined in \Cref{sec:satake}.
+  Then for certain pairs $g \in G$\todo{in $G$, right? check with Wei}
+  and $\gamma \in S_n(F)$, we have
+  \begin{equation}
+    \Int\left( (1,g), \mathbf{1}_{K'^\flat \otimes f} \right) \log q
+    = -\omega(\gamma) \left. \pdv{}{s} \right\rvert_{s=0} \Orb(\gamma, f').
+    \label{eq:inhomog}
+  \end{equation}
+\end{conjecture}
+
+At present, the (inhomogeneous) AFL is the case where $f = \mathbf{1}_K$ and is thus proven.
+The generalized conjecture is also proved in full for
+$n = 2$ in \cite[Theorem 1.0.1]{ref:AFLspherical}
+(in that reference, our $n$ denotes their $n+1$).
+The part of the calculation involving orbital integral
+uses an explicit calculation that has two parts:
+\begin{itemize}
+  \ii The calculation also makes $\BC_{S_{n}}^{\eta^{n-1}}$
+  completely explicit in a natural basis for $n = 2$.
+  The result is \cite[Lemma 7.1.1]{ref:AFLspherical}.
+
+  \ii The calculation makes explicit the value of the orbital integral
+  \[ \Orb(\gamma, f') \]
+  for any $\gamma \in S_n(F)$ and $f'$, in terms of invariants of $\gamma$
+  and a decomposition of $f'$ in a natural basis.
+  The result is \cite[Proposition 7.3.2]{ref:AFLspherical}.
+\end{itemize}
+Combining these two (hence obtaining the right-hand side of \eqref{eq:inhomog})
+with a calculation of intersection numbers in \cite[Corollary 7.4.3]{ref:AFLspherical}
+(which is the left-hand side of \eqref{eq:inhomog})
+shows that \Cref{conj:inhomog} holds for $n = 2$,
+cf.\ \cite[Theorem 7.5.1]{ref:AFLspherical}.
+
+\subsection{Results}
+The goal of this paper is to perform the analogous calculations
+that correspond to \cite[Lemma 7.1.1 and Proposition 7.3.2]{ref:AFLspherical}
+in two new situations:
+\begin{itemize}
+  \ii The case $n = 3$ as in \Cref{conj:inhomog},
+  which involves the orbits of $\GL_2(F)$ on a certain symmetric space $S_3(F)$.
+
+  \ii A parallel Fourier-Jacobi version where one instead takes the action
+  of $\GL_2(F)$ on $S_2 \times F^2 \times F_2$.
+\end{itemize}
+The methods, which are local in nature,
+are rather similar to those employed in \cite{ref:AFL},
+which shows how to compute the orbital integral for $n = 3$ when $f = \mathbf{1}_{K'}$.
+We state these results as follows.
+
+\begin{theorem}
+  \todo{write summary theorem}
+\end{theorem}
+
+Besides providing evidence for \Cref{conj:inhomog},
+these orbital integral formulas also establish some other results.
+For example, the formula above
+proves the $n = 3$ case of \cite[Conjecture 8.2.1]{ref:AFLspherical}
+and an analogous version; we state this below.
+
+\begin{theorem}
+  \todo{need to figure out why there are all these semisimple restrictions}
+\end{theorem}
 
 \subsection{Roadmap}
+The rest of the paper is organized as follows.
+We provide some necessary background and notation in \Cref{sec:background}.
+Then, in \Cref{sec:orbital0} we describe our results on the orbital integral,
+and dedicate \Cref{sec:orbital1,sec:orbital2} to their proof.
+And in \Cref{sec:satake} we provide the explicit base change formula.
 
-\subsection{Acknowledgmetns}
+\subsection{Acknowledgments}

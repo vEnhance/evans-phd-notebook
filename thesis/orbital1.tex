@@ -1,93 +1,11 @@
 \section{Setup for the orbital integral}
-\subsection{Background}
-\label{sec:orbital_background}
+\label{sec:orbital1}
 
-\subsubsection{Notation}
-\begin{itemize}
-  \ii Denote by $\varpi$ a uniformizer of $\OO_F$, such that $\bar \varpi = \varpi$.
-  \ii Let $q \coloneqq |F/\varpi|$ be the residue characteristic.
-  \ii Let $v$ be the associated valuation for $\varpi$.
-  \ii Let $\eta$ be the quadratic character attached to $E/F$ by class field theory,
-  so that $\eta(x) = -1^{v(x)}$.
-\end{itemize}
-
-\subsubsection{Symmetric space}
-We define the symmetric space
-\[ S_3(F) \coloneqq \left\{ g \in \GL_3(E) \mid g \bar{g} = \id_3 \right\}. \]
-It has a left action under $\GL_3(E)$ by $g \cdot s \mapsto gs\bar{g}\inv$.
-\begin{lemma}
-  [Cartan decomposition]
-  For each integer $r \ge 0$ let
-  \[ K'_{S,r} \coloneqq \GL_3(\OO_E) \cdot \begin{bmatrix} 0 & 0 & \varpi^r \\ 0 & 1 & 0 \\ \varpi^{-r} & 0 & 0 \end{bmatrix} \]
-  denote the orbit of
-  $\begin{bmatrix} 0 & 0 & \varpi^r \\ 0 & 1 & 0 \\ \varpi^{-r} & 0 & 0 \end{bmatrix}$
-  under the left action of $\GL_3(\OO_E)$.
-  Then we have a decomposition
-  \[ S_3(F) = \coprod_{r \geq 0} K'_{S,r}. \]
-\end{lemma}
-The $r=0$ case will be given a special shorthand,
-and can be expressed in a few equivalent ways:
-\[ K'_S \coloneqq K'_{S,0}
-  = \GL_3(\OO_E) \cdot \begin{bmatrix} & & 1 \\ & 1 \\ 1 \end{bmatrix}
-  = \GL_3(\OO_E) \cdot \id_3 = S_3(F) \cap \GL_3(\OO_E). \]
-One can equivalently define $K'_{S,r}$ to be the part of $S_3(F)$
-for which the most negative valuation among the nine entries is $-r$.
-
-For $r \geq 0$, define
-\[ K'_{S, \le r} \coloneqq S_3(F) \cap \varpi^{-r} \GL_3(\OO_E). \]
-We can re-parametrize the problem according to the following claim.
-\begin{claim}
-  \[ K'_{S, \le r} = K'_{S,0} \sqcup K'_{S,1} \sqcup \dots \sqcup K'_{S,r}. \]
-\end{claim}
-If this claim is true (still need to check it),
-then an integral over each $K'_{S, \le r}$ lets us extract the integrals over $K'_{S,r}$.
-
-\subsubsection{Orbital integral}
-Define
-\[ H' \coloneqq
-  \left\{ \begin{bmatrix} t_1 & t_2 \\ \bar t_2 & \bar t_1 \end{bmatrix} \right\}
-  \cong \GL_2(F). \]
-We embed $H'$ into $\GL_3(F)$ by
-$h' \mapsto \left[ \begin{smallmatrix} h' & 0 \\ 0 & 1 \end{smallmatrix} \right]$,
-which allows $H$ to act on $\GL_3(F)$ and hence $S_3(F)$.
-
-Now we can define the orbital integral.
-\begin{definition}
-  For brevity let $\eta(h') \coloneqq \eta(\det h')$ for $h' \in H'$.
-  For $\gamma \in S_3(F)$ and $s \in \CC$, we define the orbital integral by
-  \[ \Orb(\gamma, \phi, s) \coloneqq
-    \int_{g \in H'} \phi(\bar g\inv \gamma g) \eta(g)
-    \left\lvert \det(g) \right\rvert_F^{-s} \odif g \]
-  where
-  \[ \odif g = \kappa \cdot \frac{\odif t_1 \odif t_2}
-    {\left\lvert t_1 \bar t_1 - t_2 \bar t_2 \right\rvert_F^2} \]
-  for the constant
-  \[ \kappa \coloneqq \frac{1}{(1-q\inv)(1-q^{-2})}. \]
-\end{definition}
-
-Indeed, for $h' \in H$ and $\gamma \in S_3(F)$ we have $h' \gamma (\bar h')\inv \in S_3(F)$
-and so the indicator function is filtering based on which part of the
-Cartan decomposition that $h' \gamma (\bar h')\inv$ falls in.
-
-Evidently $\Orb(\gamma, \phi, s)$ only depends on the $H'$-orbit of $\gamma$.
-So it makes sense to pick a canonical representative for the $H'$-orbit to compute
-the orbital integral in terms of.
-For so-called \emph{regular} $\gamma$, the representatives
-\[ \gamma(a,b,d) =
-  \begin{bmatrix}
-    a & 0 & 0 \\
-    b & - \bar d & 1 \\
-    c & 1 - d \bar d & d
-  \end{bmatrix}
-  \in S_3(F); \quad \text{where $c = -a \bar b + b d$} \]
-over all $a \in E^1$, $b \in E$, $d \in E$ for which $(1-d\bar d)^2 - c \bar c \neq 0$,
-cover all the \emph{regular} orbits, which are the ones we care about.
-
-The paper \cite{ref:AFL} computes $\pdv{}{s}\Orb(\gamma, \mathbf{1}_{K'_S}, s)$ at $s=0$
-in terms of $a$, $b$, $d$.
-Our goal is to compute for
-\[ \pdv{}{s}\Orb(\gamma, \mathbf{1}_{K'_{S, \le r}}, s) \]
-at $s=0$ for any $r > 0$ as well.
+In this section we set up the framework of the orbital integral
+based on the definitions in the previous section.
+This involves rewriting the integral as an infinite discrete double sum
+over two parameters $(n,m)$ that we will introduce later,
+and determining the volume of the supports of the indicator function.
 
 \subsection{Reparametrization in terms of valuations}
 \subsubsection{Computation of value in indicator function}
@@ -216,112 +134,6 @@ Bringing this all into the orbital integral gives
   &= \kappa \int_{t, t_1 \in E} \mathbf{1}_{\le r}(\gamma, t, m)
   (-1)^n q^{s(2m-n)} \cdot q^{2n-2m} \odif t \odif t_1.
 \end{align*}
-
-\subsection{Setup}
-\subsubsection{Simplifying assumptions}
-For the purposes of \cite{ref:AFL},
-we will only care about the following case:
-\begin{assume}
-  \[ v\left( (1-d\bar d)^2 - c \bar c\right) \equiv 1 \pmod 2 \]
-  \label{assume:u_odd}
-\end{assume}
-\todo{I need to ask Wei exactly why we're only doing this case}
-
-We will thus also assume:
-\begin{assume}
-  $v(d) \geq -r$.
-\end{assume}
-This is fine because if this $v(d) < -r$ then the integral will always vanish
-(because the bottom-right entry of $\Gamma(\gamma, t, m)$ is no-good).
-
-We will really mostly be interested in the case where $v(b) = v(d) = 0$.
-In fact, few other cases even occur at all
-given \Cref{assume:u_odd};
-we will see momentarily that either
-$v(b) = v(d) \in \{-1, -2, \dots, -r\}$,
-or one of $\{v(b), v(d)\}$ is zero and the other is nonnegative.
-
-\subsubsection{Notations}
-As we described earlier, our goal is to give an answer in terms of
-\[ a \in E^1, \qquad b, d \in E, \qquad r \ge 0. \]
-To simplify the notation in what follows,
-it will be convenient to define several quantities that reappear frequently.
-From \Cref{assume:u_odd}, we may define
-\begin{equation}
-  \delta \coloneqq v(1-d \bar d) = v(c) \neq -\infty.
-  \label{eq:delta}
-\end{equation}
-Following \cite{ref:AFL} we will also define
-\begin{equation}
-  u \coloneqq \frac{\bar c}{1-d \bar d} \in \OO_E^\times
-  \label{eq:u}
-\end{equation}
-so that $\nu(1-u \bar u) \equiv 1 \pmod 2$ and
-\begin{equation}
-  b = -au - \bar{d} \bar{u}.
-  \label{eq:b}
-\end{equation}
-Note that this gives us the following repeatedly used identity
-\begin{equation}
-  b^2-4a\bar d = (au-\bar d \bar u)^2 - 4a\bar d(1-u\bar u).
-  \label{eq:dos}
-\end{equation}
-Finally, define
-\begin{equation}
-  \ell \coloneqq v(b^2 - 4 a \ol d).
-  \label{eq:ell}
-\end{equation}
-We will also define one additional parameter useful when $\ell$ is even
-(but as we will see, redundant for odd $\ell$):
-\begin{equation}
-  \lambda \coloneqq v(1-u \bar u) \equiv 1 \pmod 2.
-  \label{eq:lambda}
-\end{equation}
-
-Just as many pairs $(v(b), v(d))$ do not occur (given \Cref{assume:u_odd})
-and $v(b) = v(d) = 0$ is the main case of interest,
-the parameters $(\delta, \ell, \lambda)$ satisfy some additional relations.
-We will now describe them.
-\begin{proposition}
-  Exactly one of the following situations is true.
-  \begin{enumerate}[a.]
-    \ii $v(b) = v(d) = 0$, $\ell \ge 1$ is odd,
-      $\ell < 2 \delta$, and $\lambda = \ell$.
-    \ii $v(b) = v(d) = 0$, $\ell \ge 0$ is even,
-      $\ell \le 2 \delta$, and $\lambda > \ell$ is odd.
-    \ii $v(b) = 0$, $v(d) > 0$, $\ell = \delta = 0$, and ???
-    \ii $v(b) > 0$, $v(d) = 0$, $\ell  = 0$, $\delta \ge 0$, and ???
-    \ii $v(b) = v(d) \in \{-1, \dots, -r\}$,
-    $\ell = \delta = 2v(d) < 0$, and ???
-  \end{enumerate}
-  \label{prop:parameter_constraints}
-\end{proposition}
-\begin{proof}
-  \todo{Write this out; import from previous if needed.
-    Also figure out exactly what the constraints on $\lambda$ are.}
-\end{proof}
-
-\todo{imported this; need to rearrange}
-\begin{proposition}
-  Whenever $\ell$ is odd, we must have
-  \begin{equation}
-    v(b) = v(d) = 0.
-    \label{eq:odd_b_d_zero}
-  \end{equation}
-\end{proposition}
-\begin{proof}
-  [Proof of \eqref{eq:odd_b_d_zero}]
-  If $v(d) \neq 0$, then $b = -au-\bar d\bar u$ is a unit,
-  and hence so is $b^2 - 4 a \bar d$, causing $\ell = 0$, contradiction.
-  And if $d$ is a unit, $\ell \neq 0$ means $v(b) = 0$ too.
-\end{proof}
-
-In the case where $\ell$ is odd (and hence $\ell \ge 1$ and $v(b) = v(d) = 0$),
-we get \eqref{eq:dos} implying $\lambda = \ell$
-and this definition will never be used --- the orbital will be computed
-as a function of $\ell$ and $\delta$ (and $r$).
-However for even $\ell$ these numbers are never equal and our orbital
-integral will be stated in terms of $\ell$, $\delta$, and $\lambda$ (and $r$).
 
 \subsection{Description of the support of $\mathbf{1}_{\le r}$ when $n \le 0$}
 \begin{claim}
@@ -641,13 +453,13 @@ for which $n = v(1-t\bar t)$ and $\mathbf{1}_{\le r}(\gamma,t,m) = 1$.
 In addition to the constraint $n \le \ell + r$,
 we see that the two cases have the following additional requirements:
 \begin{description}
-  \ii[Case 1.] If $m < \left\lceil \frac{n-r}{2} \right\rceil + \delta + r$ then we need
+  \ii[Case 1] If $m < \left\lceil \frac{n-r}{2} \right\rceil + \delta + r$ then we need
   \begin{align}
     v(4-b\bar b) &\ge \left\lceil \frac{n-r}{2} \right\rceil \label{eq:odd_ineq1} \\
     v(au - \bar d \bar u) &\ge m - \delta - r \label{eq:odd_ineq2}.
   \end{align}
 
-  \ii[Case 2.] If $m \geq \left\lceil \frac{n-r}{2} \right\rceil + \delta + r$ then we need
+  \ii[Case 2] If $m \geq \left\lceil \frac{n-r}{2} \right\rceil + \delta + r$ then we need
   \begin{align}
     \lambda = v(1-u \bar u) &\ge m-\delta-r \label{eq:odd_ineq3} \\
     v(au - \bar d \bar u) &\ge \left\lceil \frac{n-r}{2} \right\rceil \label{eq:odd_ineq4}.
@@ -695,7 +507,8 @@ We will now show that some of these inequalities are redundant and can be ignore
 
 Putting all of this together, we find that the valid pairs $(n,m)$ come in two cases.
 
-\paragraph{Double sum for Case 1.}
+\begin{description}
+\item[Double sum for Case 1]
 We sum over $(m,n)$ such that
 \begin{equation}
   \begin{aligned}
@@ -714,7 +527,7 @@ where each $(m,n)$ gives a volume contribution of
   \end{cases}
 \]
 
-\paragraph{Double sum for Case 2.}
+\item[Double sum for Case 2]
 We sum over $(m,n)$ such that
 \begin{equation}
   \begin{aligned}
@@ -734,6 +547,7 @@ where each $(m,n)$ gives a volume contribution of
   \end{cases}
 \]
 Notice that $m \leq \delta + r$ could only occur when $n \leq r$.
+\end{description}
 
 \subsubsection{Analysis of Case 3 and 4 assuming $n > 0$ and $v(b) = v(d) = 0$.}
 Suppose $\ell \geq 0$ is even.
@@ -759,7 +573,8 @@ we have the calculation
   v\left( 4 - \Norm(b-\tau) \right) &= \delta.
 \end{align*}
 
-\paragraph{Double sum for Case 3\ts+.}
+\begin{description}
+\ii[Double sum for Case 3\ts+]
 Suppose $n > \ell + r$,
 $m < n - \frac{\ell}{2} + \delta$, and we choose $\frac{b+\tau}{2a}$.
 Then \Cref{lem:quadruple_ineq} gives a nonzero contribution if and only if
@@ -784,7 +599,7 @@ which from $\ell, \delta, r \ge 0$ can be simplified to just
 Each $(m,n)$ gives a volume contribution of
 \[ q^{-n - (n - \frac{\ell}{2} - r)} \left( 1 - q\inv \right). \]
 
-\paragraph{Double sum for Case 3\ts-.}
+\ii[Double sum for Case 3\ts-]
 Suppose $n > \ell + r$,
 $m < n - \frac{\ell}{2} + \delta$, and we choose $\frac{b-\tau}{2a}$.
 Then \Cref{lem:quadruple_ineq} gives a nonzero contribution if and only if
@@ -809,7 +624,7 @@ This simplifies to
 As in the previous case, $(m,n)$ gives a volume contribution of
 \[ q^{-n - (n - \frac{\ell}{2} - r)} \left( 1 - q\inv \right). \]
 
-\paragraph{Double sum for Case 4\ts+.}
+\ii[Double sum for Case 4\ts+]
 Suppose $n > \ell + r$,
 $m \ge n - \frac{\ell}{2} + \delta$
 (which implies $m \ge n-r$ since $r \ge 0$ and $0 \le \ell \le 2 \delta$),
@@ -830,7 +645,7 @@ Rearranging gives that the valid pairs $(m,n)$ are those for which
 Here, each $(m,n)$ gives a volume contribution of
 \[ q^{-n - (m - \delta - r)} \left( 1 - q\inv \right). \]
 
-\paragraph{Double sum for Case 4\ts-.}
+\ii[Double sum for Case 4\ts-]
 Suppose $n > \ell + r$,
 $m \ge n - \frac{\ell}{2} + \delta$, and we choose $\frac{b-\tau}{2a}$.
 Then \Cref{lem:quadruple_ineq} gives a nonzero contribution if and only if
@@ -840,5 +655,4 @@ Then \Cref{lem:quadruple_ineq} gives a nonzero contribution if and only if
 \end{align*}
 The latter inequality contradicts the assumption that $n > \ell + r$,
 so in fact this case can never occur.
-
-\newpage
+\end{description}

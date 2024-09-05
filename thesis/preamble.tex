@@ -19,6 +19,8 @@
 \usepackage{tikz-cd}
 \usetikzlibrary{decorations.pathmorphing}
 
+\allowdisplaybreaks
+
 \usepackage[backend=biber,backref=true,style=alphabetic]{biblatex}
 
 \newtheorem{theorem}{Theorem}[section]
@@ -27,7 +29,7 @@
 \newtheorem{corollary}[theorem]{Corollary}
 
 \theoremstyle{definition}
-\newtheorem{assume}[theorem]{Assume}
+\newtheorem{assume}[theorem]{Assumption}
 \newtheorem{definition}[theorem]{Definition}
 \newtheorem{example}[theorem]{Example}
 \newtheorem{ques}[theorem]{Question}
@@ -58,6 +60,7 @@
 
 \DeclareMathOperator{\BC}{BC}
 \DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\Int}{Int}
 \DeclareMathOperator{\Mat}{Mat}
 \DeclareMathOperator{\Norm}{N}
 \DeclareMathOperator{\Orb}{Orb}

@@ -1,0 +1,202 @@
+\section{Synopsis of the orbital integral $\Orb(\gamma, \phi, s)$ for $\gamma \in S_3(F)$ and $\phi \in \HH(S_3(F), K')$}
+\label{sec:orbital0}
+
+This section defines the orbital integral
+and describes the parameters which we will use to express our answer.
+
+\subsection{Symmetric space}
+We have the symmetric space
+\[ S_3(F) \coloneqq \left\{ g \in \GL_3(E) \mid g \bar{g} = \id_3 \right\}. \]
+which has a left action under $\GL_3(E)$ by $g \cdot s \mapsto gs\bar{g}\inv$.
+
+Then $S_3(F)$ admits the following decomposition:
+\begin{lemma}
+  [Cartan decomposition]
+  For each integer $r \ge 0$ let
+  \[ K'_{S,r} \coloneqq \GL_3(\OO_E) \cdot \begin{bmatrix} 0 & 0 & \varpi^r \\ 0 & 1 & 0 \\ \varpi^{-r} & 0 & 0 \end{bmatrix} \]
+  denote the orbit of
+  $\begin{bmatrix} 0 & 0 & \varpi^r \\ 0 & 1 & 0 \\ \varpi^{-r} & 0 & 0 \end{bmatrix}$
+  under the left action of $\GL_3(\OO_E)$.
+  Then we have a decomposition
+  \[ S_3(F) = \coprod_{r \geq 0} K'_{S,r}. \]
+\end{lemma}
+The $r=0$ case will be given a special shorthand,
+and can be expressed in a few equivalent ways:
+\begin{align*}
+  K'_S
+  &\coloneqq K'_{S,0} \\
+  &= \GL_3(\OO_E) \cdot \begin{bmatrix} & & 1 \\ & 1 \\ 1 \end{bmatrix} \\
+  &= \GL_3(\OO_E) \cdot \id_3 = S_3(F) \cap \GL_3(\OO_E).
+\end{align*}
+One can equivalently define $K'_{S,r}$ to be the part of $S_3(F)$
+for which the most negative valuation among the nine entries is $-r$.
+
+For $r \geq 0$, define
+\[ K'_{S, \le r} \coloneqq S_3(F) \cap \varpi^{-r} \GL_3(\OO_E). \]
+We can re-parametrize the problem according to the following claim.
+\begin{proposition}
+  \[ K'_{S, \le r} = K'_{S,0} \sqcup K'_{S,1} \sqcup \dots \sqcup K'_{S,r}. \]
+\end{proposition}
+Then an integral over each $K'_{S, \le r}$ lets us extract the integrals over $K'_{S,r}$.
+
+\todo{comment some basis thing}
+
+\subsection{Definition of the orbital integral}
+Define
+\[ H' \coloneqq
+  \left\{ \begin{bmatrix} t_1 & t_2 \\ \bar t_2 & \bar t_1 \end{bmatrix} \right\}
+  \cong \GL_2(F). \]
+We embed $H'$ into $\GL_3(F)$ by
+$h' \mapsto \left[ \begin{smallmatrix} h' & 0 \\ 0 & 1 \end{smallmatrix} \right]$,
+which allows $H$ to act on $\GL_3(F)$ and hence $S_3(F)$.
+
+Now we can define the orbital integral.
+\begin{definition}
+  For brevity let $\eta(h') \coloneqq \eta(\det h')$ for $h' \in H'$.
+  For $\gamma \in S_3(F)$, $\phi \in \HH(S_3(F), K')$, and $s \in \CC$,
+  we define the orbital integral by
+  \[ \Orb(\gamma, \phi, s) \coloneqq
+    \int_{g \in H'} \phi(\bar g\inv \gamma g) \eta(g)
+    \left\lvert \det(g) \right\rvert_F^{-s} \odif g \]
+  where
+  \[ \odif g = \kappa \cdot \frac{\odif t_1 \odif t_2}
+    {\left\lvert t_1 \bar t_1 - t_2 \bar t_2 \right\rvert_F^2} \]
+  for the constant
+  \[ \kappa \coloneqq \frac{1}{(1-q\inv)(1-q^{-2})}. \]
+\end{definition}
+
+Indeed, for $h' \in H$ and $\gamma \in S_3(F)$ we have $h' \gamma (\bar h')\inv \in S_3(F)$
+and so the indicator function is filtering based on which part of the
+Cartan decomposition that $h' \gamma (\bar h')\inv$ falls in.
+
+\subsection{Invariants for the orbital integral}
+Evidently $\Orb(\gamma, \phi, s)$ only depends on the $H'$-orbit of $\gamma$.
+So it makes sense to pick a canonical representative for the $H'$-orbit to compute
+the orbital integral in terms of.
+For so-called \emph{regular} $\gamma$, the representatives
+\[ \gamma(a,b,d) =
+  \begin{bmatrix}
+    a & 0 & 0 \\
+    b & - \bar d & 1 \\
+    c & 1 - d \bar d & d
+  \end{bmatrix}
+  \in S_3(F); \quad \text{where $c = -a \bar b + b d$} \]
+over all $a \in E^1$, $b \in E$, $d \in E$ for which $(1-d\bar d)^2 - c \bar c \neq 0$,
+cover all the \emph{regular} orbits, which are the ones we care about.
+
+Then, our goal is to compute for
+\begin{equation}
+  \pdv{}{s}\Orb(\gamma, \mathbf{1}_{K'_{S, \le r}}, s)
+  \label{eq:orbital_goal}
+\end{equation}
+
+at $s=0$ for any $r > 0$ as well.
+Note that the $r = 0$ case is already done in \cite{ref:AFL}.
+
+\subsection{Simplifying assumptions}
+For the purposes here, we will only care about the following case:
+\begin{assume}
+  \[ v\left( (1-d\bar d)^2 - c \bar c\right) \equiv 1 \pmod 2 \]
+  \label{assume:u_odd}
+\end{assume}
+\todo{I need to ask Wei exactly why we're only doing this case}
+
+We will thus also assume:
+\begin{assume}
+  $v(d) \geq -r$.
+\end{assume}
+This is fine because if this $v(d) < -r$ then the integral will always vanish
+(because the bottom-right entry of $\Gamma(\gamma, t, m)$ is no-good).
+
+We will really mostly be interested in the case where $v(b) = v(d) = 0$.
+In fact, few other cases even occur at all
+given \Cref{assume:u_odd};
+we will see momentarily that either
+$v(b) = v(d) \in \{-1, -2, \dots, -r\}$,
+or one of $\{v(b), v(d)\}$ is zero and the other is nonnegative.
+
+\subsection{Parameters to state the answer in terms of}
+As we described earlier, our goal is to evaluate \eqref{eq:orbital_goal} in terms of
+\[ a \in E^1, \qquad b, d \in E, \qquad r \ge 0. \]
+To simplify the notation in what follows,
+it will be convenient to define several quantities that reappear frequently.
+From \Cref{assume:u_odd}, we may define
+\begin{equation}
+  \delta \coloneqq v(1-d \bar d) = v(c) \neq -\infty.
+  \label{eq:delta}
+\end{equation}
+Following \cite{ref:AFL} we will also define
+\begin{equation}
+  u \coloneqq \frac{\bar c}{1-d \bar d} \in \OO_E^\times
+  \label{eq:u}
+\end{equation}
+so that $\nu(1-u \bar u) \equiv 1 \pmod 2$ and
+\begin{equation}
+  b = -au - \bar{d} \bar{u}.
+  \label{eq:b}
+\end{equation}
+Note that this gives us the following repeatedly used identity
+\begin{equation}
+  b^2-4a\bar d = (au-\bar d \bar u)^2 - 4a\bar d(1-u\bar u).
+  \label{eq:dos}
+\end{equation}
+Finally, define
+\begin{equation}
+  \ell \coloneqq v(b^2 - 4 a \ol d).
+  \label{eq:ell}
+\end{equation}
+We will also define one additional parameter useful when $\ell$ is even
+(but as we will see, redundant for odd $\ell$):
+\begin{equation}
+  \lambda \coloneqq v(1-u \bar u) \equiv 1 \pmod 2.
+  \label{eq:lambda}
+\end{equation}
+
+Just as many pairs $(v(b), v(d))$ do not occur (given \Cref{assume:u_odd})
+and $v(b) = v(d) = 0$ is the main case of interest,
+the parameters $(\delta, \ell, \lambda)$ satisfy some additional relations.
+We will now describe them.
+\begin{proposition}
+  Exactly one of the following situations is true.
+  \begin{enumerate}[a.]
+    \ii $v(b) = v(d) = 0$, $\ell \ge 1$ is odd,
+      $\ell < 2 \delta$, and $\lambda = \ell$.
+    \ii $v(b) = v(d) = 0$, $\ell \ge 0$ is even,
+      $\ell \le 2 \delta$, and $\lambda > \ell$ is odd.
+    \ii $v(b) = 0$, $v(d) > 0$, $\ell = \delta = 0$, and ???
+    \ii $v(b) > 0$, $v(d) = 0$, $\ell  = 0$, $\delta \ge 0$, and ???
+    \ii $v(b) = v(d) \in \{-1, \dots, -r\}$,
+    $\ell = \delta = 2v(d) < 0$, and ???
+  \end{enumerate}
+  \label{prop:parameter_constraints}
+\end{proposition}
+\begin{proof}
+  \todo{Write this out; import from previous if needed.
+    Also figure out exactly what the constraints on $\lambda$ are.}
+\end{proof}
+
+\todo{imported this; need to rearrange}
+\begin{proposition}
+  Whenever $\ell$ is odd, we must have
+  \begin{equation}
+    v(b) = v(d) = 0.
+    \label{eq:odd_b_d_zero}
+  \end{equation}
+\end{proposition}
+\begin{proof}
+  [Proof of \eqref{eq:odd_b_d_zero}]
+  If $v(d) \neq 0$, then $b = -au-\bar d\bar u$ is a unit,
+  and hence so is $b^2 - 4 a \bar d$, causing $\ell = 0$, contradiction.
+  And if $d$ is a unit, $\ell \neq 0$ means $v(b) = 0$ too.
+\end{proof}
+
+In the case where $\ell$ is odd (and hence $\ell \ge 1$ and $v(b) = v(d) = 0$),
+we get \eqref{eq:dos} implying $\lambda = \ell$
+and this definition will never be used --- the orbital will be computed
+as a function of $\ell$ and $\delta$ (and $r$).
+However for even $\ell$ these numbers are never equal and our orbital
+integral will be stated in terms of $\ell$, $\delta$, and $\lambda$ (and $r$).
+
+\subsection{Result}
+We can now state the answer.
+\todo{put the result here}
