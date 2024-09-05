@@ -20,12 +20,12 @@ A more detailed account can be found in \cite{ref:survey}.
     \text{GGP \cite{ref:GGP}}
       \ar[d, dotted, leftrightarrow, "\text{analog}"]
       & \ar[l, Rightarrow, "\text{used to prove}"] \text{FL \cite{ref:JR}}
-        \ar[d, dotted, leftrightarrow, "\text{analog}"]
-      & \ar[l] \text{\cite{ref:leslie}}
+        \ar[d, dotted, leftrightarrow, "\text{analog}"] \ar[r]
+      & \text{\cite{ref:leslie}}
         \ar[d, dotted, leftrightarrow, "\text{analog}"] \\
     \text{Arith.\ GGP \cite{ref:GGP}}
-      & \ar[l, Rightarrow, "\text{used to prove}"] \text{AFL \cite{ref:AFL}}
-      & \ar[l] \text{\cite{ref:AFLspherical}} \\
+      & \ar[l, Rightarrow, "\text{used to prove}"] \text{AFL \cite{ref:AFL}} \ar[r]
+      & \text{\cite{ref:AFLspherical}} \\
     \text{\cite{ref:GZshimura}} \ar[u] \\
     \text{\cite{ref:gross_zagier}} \ar[u]
   \end{tikzcd}
@@ -65,26 +65,26 @@ and let $V_0^\flat$ be the orthogonal complement of the span of $w_0$.
 Let $G'^\flat \coloneqq \GL_{n-1}(E)$, $G' \coloneqq \GL_n(E)$,
 $G^\flat \coloneqq \U(V_0^\flat)(F)$ and $G \coloneqq \U(V_0)(F)$.
 For certain
-\[ \gamma \in G'^\flat \times G, \qquad g \in G^\flat \times G \]
+\[ \gamma \in G'^\flat \times G', \qquad g \in G^\flat \times G \]
 the Jacquet-Rallis fundamental lemma proposes a relation between two orbital integrals.
 Specifically, it supplies a relation between
 \begin{itemize}
-\item the orbital integral of $g$ with respect to
+\item the orbital integral of $\gamma$ with respect to
   the indicator function $\mathbf{1}_{K'^\flat \times K'}$
   of the natural hyperspecial compact subgroup
   \[ K'^\flat \times K' \subset G'^\flat \times G' = \GL_{n-1}(E) \times \GL_n(E); \]
   and
-\item the orbital integral of $\gamma$ with respect to
+\item the orbital integral of $g$ with respect to
   the indicator function $\mathbf{1}_{K^\flat \times K}$
   of the natural hyperspecial compact subgroup
-  \[ K'^\flat \times K' \subset G^\flat \times G = \U(V_0^\flat)(F) \times \U(V_0)(F). \]
+  \[ K^\flat \times K \subset G^\flat \times G = \U(V_0^\flat)(F) \times \U(V_0)(F). \]
 \end{itemize}
 In other words, it states that
 \begin{equation}
-  \Orb(g, \mathbf{1}_{K'^\flat \times K'}) = \omega(\gamma) \Orb(g, \mathbf{1}_{K^\flat \times K})
+  \Orb(\gamma, \mathbf{1}_{K'^\flat \times K'}) = \omega(\gamma) \Orb(g, \mathbf{1}_{K^\flat \times K})
   \label{eq:old_FL}
 \end{equation}
-where $\omega(\gamma)$ is called a \emph{transfer factor}.
+where $\omega(\gamma)$ is a suitable \emph{transfer factor}.
 The fundamental lemma has since been proved completely;
 a local proof was given by Beuzart-Plessis \cite{ref:BeuzartPlessis}
 while a global proof was given for large characteristic by W.\ Zhang \cite{ref:Wei2021}.
@@ -115,9 +115,9 @@ the arithmetic GGP conjectures should have a corresponding
 which was proposed by W.\ Zhang \cite{ref:AFL}.
 The arithmetic fundamental lemma then relates the derivative
 of the orbital integral with respect to the indicator function
-$\mathbf{1}_{K'^\flat \times K} \in \HH(G'^\flat \times G, K'^\flat \times K)$, that is
-\[ \left. \pdv{}{s} \right\rvert_{s=0} \Orb(\gamma, \mathbf{1}_{K'^\flat \times K}) \]
-for $\gamma \in G'^\flat \times G$,
+$\mathbf{1}_{K'^\flat \times K'} \in \HH(G'^\flat \times G, K'^\flat \times K')$, that is
+\[ \left. \pdv{}{s} \right\rvert_{s=0} \Orb(\gamma, \mathbf{1}_{K'^\flat \times K'}) \]
+for $\gamma \in G'^\flat \times G'$,
 to arithmetic intersection numbers on a certain Rapoport-Zink formal moduli space.
 The AFL in \cite{ref:AFL} has since been proven over $p$-adic fields for any prime $p$ in
 Mihatsch-Zhang \cite{ref:MZ2021}, W.\ Zhang \cite{ref:Wei2021}, Z.\ Zhang \cite{ref:Zhiyu}.
@@ -152,11 +152,11 @@ which allows us to deal with just $G'$ instead of $G'^\flat \times G'$, etc.
 
 Let $q$ denote the residue characteristic of $F$.
 Also define the symmetric space
-\[ S_n(F) \coloneqq \left\{ g \in \GL_n(E) \mid g \bar{g} = \id_3 \right\}. \]
+\[ S_n(F) \coloneqq \left\{ g \in \GL_n(E) \mid g \bar{g} = \id_n \right\}. \]
 In this case, the orbital integrals in the inhomogeneous AFL
 are stated more naturally in terms of $f'$ contained in a certain
 $\HH(G',K')$-module which we will denote $\HH(S_n(F), K')$;
-it is defined later in
+it is defined later in \Cref{sec:background}.
 
 \begin{conjecture}
   [{\cite[Conjecture 6.2.1]{ref:AFLspherical}}]
@@ -185,7 +185,7 @@ The part of the calculation involving orbital integral has two parts:
 
   \ii The calculation makes explicit the value of the orbital integral
   \[ \Orb(\gamma, f') \]
-  for any $\gamma \in S_n(F)$ and $f' \in \HH(S_n(F), K')$,'
+  for any $\gamma \in S_n(F)$ and $f' \in \HH(S_n(F), K')$,
   in terms of invariants of $\gamma$ and a decomposition of $f'$ in a natural basis.
   The result is \cite[Proposition 7.3.2]{ref:AFLspherical}.
 \end{itemize}
