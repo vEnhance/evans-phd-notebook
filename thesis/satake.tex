@@ -108,20 +108,22 @@ Similarly for $\HH(G, K)$:
 We can now introduce the Satake transform for our two
 \emph{bona fide} Hecke algebras, using the data in Table~\ref{tab:satakestuff}.
 
-\begin{table}
+\begin{table}[ht]
   \centering
-  \begin{tabular}{lcc}
-    Group & $G' = \GL_n(E)$ & $G = \U(V_0)$ \\ \hline
-    Local field & $E$ & $F$ \\
-    Hyperspecial & $K' = \GL_n(\OO_E)$ & $K = G \cap \GL_n(\OO_E)$ \\
-    Max'l split torus & $T(E)$ & $A(F)$ \\
-    Centralizer of split torus & $T(\OO_E)$ & $A(\OO_F)$ \\
-    Parabolic (Borel) & Upper tri in $G'$ & Upper tri in $G$ \\
-    Unipotent rad.\ of parabolic & $N'$ (unipotent upper tri) & $N$ (unipotent upper tri)  \\
+  \begin{tabular}{p{6em}cc}
+    \toprule
+    Group & $G' = \GL_n(E)$ & $G = \U(V_0)$ \\ \midrule
+    Local field & $E$ & $F$ \\\hline
+    Hyperspecial & $K' = \GL_n(\OO_E)$ & $K = G \cap \GL_n(\OO_E)$ \\\hline
+    Max'l split torus & $T(E)$ & $A(F)$ \\\hline
+    Centralizer of split torus & $T(\OO_E)$ & $A(\OO_F)$ \\\hline
+    Parabolic (Borel) & Upper tri in $G'$ & Upper tri in $G$ \\\hline
+    Unipotent rad.\ of parabolic & $N'$ (unipot.\ upper tri) & $N$ (unipot.\ upper tri) \\\hline
     Relative Weyl group & $\Sym(n)$ & $W_m = (\ZZ/2\ZZ)^m \rtimes \Sym(m)$ \\
     %Cocharacter group & $\ZZ^{\oplus n}$ & $\ZZ^{\oplus m}$?? \\
     %Weyl vector & $\left< \frac{n-1}{2}, \frac{n-3}{2}, \dots, -\frac{n-1}{2} \right>$
     %            & $\left< \frac{m-1}{2}, \frac{m-3}{2}, \dots, -\frac{m-1}{2} \right>$??
+    \bottomrule
   \end{tabular}
   \caption{Data needed to run the Satake transformation.}
   \label{tab:satakestuff}
@@ -157,8 +159,8 @@ denotes the ring of symmetric polynomials in $Y_i + Y_i^{-1}$.
 
 So, henceforth, we will consider
 \begin{align*}
-  \Sat &\colon \HH(G', K') \xrightarrow{\sim}\QQ[X_1^\pm, \dots, X_n^\pm]^{\Sym(n)} \\
-  \Sat &\colon \HH(G, K)\xrightarrow{\sim} \QQ[Y_1^{\pm}, \dots, Y_m^{\pm}]^{W_m}.
+  \Sat &\colon \HH(G', K') \xrightarrow{\sim} \QQ[X_1^\pm, \dots, X_n^\pm]^{\Sym(n)} \\
+  \Sat &\colon \HH(G, K) \xrightarrow{\sim} \QQ[Y_1^{\pm}, \dots, Y_m^{\pm}]^{W_m}.
 \end{align*}
 
 \subsubsection{Base change}
@@ -173,7 +175,7 @@ We don't have to twist since $n$ is odd.
     & \QQ[X_1^\pm, \dots, X_n^\pm]^{\Sym(n)} \ar[d, "\BC"] \\
   \HH(S_n(F), K') \ar[r, "\sim"', "\BC_S"]
     & \HH(G,K) \ar[r, "\sim"', "\Sat"]
-    & \QQ[Y_1^\pm, \dots, Y_n^\pm]^{W_m}
+    & \QQ[Y_1^\pm, \dots, Y_m^\pm]^{W_m}
 \end{tikzcd}
 \end{center}
 Goal: describe $\BC_S$.
@@ -292,8 +294,8 @@ rather than determining the exact coset $K'\varpi^{(n_1, n_2, n_3)}K'$).
   Hence, we can rewrite the $\rproj_\ast(\mathbf{1}_{\Mat_3(\OO_E), v\circ\det=r})$
   as a six-fold integral
   \begin{align*}
-    \rproj_\ast(\mathbf{1}_{\Mat_3(\OO_E), v\circ\det=r}) =
-    & \int_{x_1 \in F^\times} \int_{x_2 \in F^\times} \int_{x_3 \in F^\times}
+    &\rproj_\ast(\mathbf{1}_{\Mat_3(\OO_E), v\circ\det=r}) \\
+    &= \int_{x_1 \in F^\times} \int_{x_2 \in F^\times} \int_{x_3 \in F^\times}
     \int_{y_1 \in F} \int_{y_2 \in F} \int_{y_3 \in F} \\
     &\quad \mathbf{1}_{\Mat_3(\OO_E), v\circ\det=r} \left(
     \begin{bmatrix}
@@ -368,9 +370,9 @@ rather than determining the exact coset $K'\varpi^{(n_1, n_2, n_3)}K'$).
     &\quad \mathbf{1}_{\OO_E}(\varpi^{n_1} y_1) \odif y_1
       \mathbf{1}_{\OO_E}(\varpi^{n_1} y_2) \odif y_2
      \mathbf{1}_{\OO_E}(\varpi^{n_2} y_3) \odif y_3 \\
-    &= q_E^{-(n_1-n_3)} q_E^{n_1} q_E^{n_1} q_E^{n_2} \mathbf{1}_{n_1+n_2+n_3=r}
-    = q_E^{n_1+n_2+n_3}\mathbf{1}_{n_1+n_2+n_3=r}
-    = q_E^{r}\mathbf{1}_{n_1+n_2+n_3=r} \\
+    &= q_E^{-(n_1-n_3)} q_E^{n_1} q_E^{n_1} q_E^{n_2} \mathbf{1}_{n_1+n_2+n_3=r} \\
+    &= q_E^{n_1+n_2+n_3}\mathbf{1}_{n_1+n_2+n_3=r} \\
+    &= q_E^{r}\mathbf{1}_{n_1+n_2+n_3=r} \\
     &= \begin{cases}
       q^{2r} & \text{if }n_1 + n_2 + n_3 = r \\
       0 & \text{otherwise}.
@@ -530,23 +532,26 @@ On the other hand, it is easy to check that
 To summarize, the completed commutative diagram can be written in full as
 \begin{center}
 \begin{tikzcd}
-  & \begin{tabular}{c} $f'_r + (q-q^2) f'_{r-1}$ \\ $- q^3 f'_{r-2} \in \HH(G',K')$ \end{tabular}
-    \ar[ld, "\rproj_\ast"', mapsto] \ar[r, "\Sat", mapsto] \ar[d, "\BC", mapsto]
+  \begin{tabular}{c} $f'_r + (q-q^2) f'_{r-1}$ \\ $- q^3 f'_{r-2} \in \HH(G',K')$ \end{tabular}
+    \ar[dd, "\rproj_\ast"', mapsto, bend right = 50]
+    \ar[r, "\Sat", mapsto] \ar[d, "\BC", mapsto]
     & \dots \in \QQ[X_1^\pm, \dots, X_n^\pm]^{\Sym(n)} \ar[d, "\BC", mapsto] \\
-  \begin{tabular}{c}
-    $\sum_{j=0}^r \big[ 1 + 2q + 2q^2$ \\
-    $+ \dots + 2q^{r-j} \big] \mathbf{1}_{K'_{S,j}}$ \\
-    $\in \HH(S_n(F), K')$
-  \end{tabular} \ar[r, "\sim", "\BC_S"', mapsto]
-    & \begin{tabular}{c} $\mathbf{1}_{\varpi{^-r} \Mat_3(\OO_E) \cap G}$ \\ $\in \HH(G,K)$ \end{tabular}
+  \begin{tabular}{c} $\mathbf{1}_{\varpi{^-r} \Mat_3(\OO_E) \cap G}$ \\ $\in \HH(G,K)$ \end{tabular}
     \ar[r, "\Sat", mapsto]
     & \begin{tabular}{r}
       $q^{2r} \left( Y_1^{\pm} + \dotsb \right)$ \\
       $+ q^{2r-1} \left( Y_1^{\pm(r-1)} + \dotsb \right)$ \\
       $\in \QQ[Y_1^\pm, \dots, Y_n^\pm]^{W_m}$
-      \end{tabular}
+      \end{tabular} \\
+  \begin{tabular}{c}
+    $\sum_{j=0}^r \big[ 1 + 2q + 2q^2$ \\
+    $+ \dots + 2q^{r-j} \big] \mathbf{1}_{K'_{S,j}}$ \\
+    $\in \HH(S_n(F), K')$
+  \end{tabular} \ar[u, "\sim", "\BC_S"', mapsto]
 \end{tikzcd}
 \end{center}
+(Note we moved the position of the bottom left $\HH(S_n(F), K')$
+to prevent the diagram from overflowing the margins.)
 
 Thus, we arrive at the following:
 \begin{proposition}

@@ -49,30 +49,29 @@ to come up with the expression for the orbital integral.
 
 \subsection{Contribution from Case 1 and Case 2 assuming $v(b)=v(d)=0$}
 Again using $\Vol(t_1:-v(t_1)=m) = q^{2m} (1-q^{-2})$,
-summing all the cases gives
-the following contribution within
+summing all the cases gives the following contribution within
 $\kappa \int_{t, t_1 \in E} \mathbf{1}[n > 0] \mathbf{1}_{\le r}(\gamma,t,m)$:
 \begin{align*}
   I_{n > 0}^{\text{1+2}}
   % -----------------------------------------------------------
   &\coloneqq \kappa \sum_{n=1}^{r}
     \sum_{m=n-r}^{\left\lceil \frac{n-r}{2} \right\rceil+\delta+r-1}
-    q^{-n} \left( 1 - q^{-2} \right)
-      \cdot \Big( (-1)^n q^{s(2m-n)} q^{2n-2m} \Big) \Big( q^{2m}(1-q^{-2}) \Big) \\
+    q^{-n} \left( 1 - q^{-2} \right) \\
+    &\qquad\qquad\cdot \Big( (-1)^n q^{s(2m-n)} q^{2n-2m} \Big) \Big( q^{2m}(1-q^{-2}) \Big) \\
   &\qquad+ \kappa \sum_{n=r+1}^{\ell+r}
     \sum_{m=n-r}^{\left\lceil \frac{n-r}{2} \right\rceil+\delta+r-1}
-    q^{-n - \left\lceil \frac{n-r}{2} \right\rceil} \left( 1 - q\inv \right)
-      \cdot \Big( (-1)^n q^{s(2m-n)} q^{2n-2m} \Big) \Big( q^{2m}(1-q^{-2}) \Big) \\
+    q^{-n - \left\lceil \frac{n-r}{2} \right\rceil} \left( 1 - q\inv \right) \\
+    &\qquad\qquad\cdot \Big( (-1)^n q^{s(2m-n)} q^{2n-2m} \Big) \Big( q^{2m}(1-q^{-2}) \Big) \\
   &\qquad+ \kappa \sum_{n=1}^{r}
     \sum_{m=\max\left(n-r, \left\lceil \frac{n-r}{2} \right\rceil+\delta+r\right)}^{\delta+r}
-    q^{-n} \left( 1 - q^{-2} \right)
-      \cdot \Big( (-1)^n q^{s(2m-n)} q^{2n-2m} \Big) \Big( q^{2m}(1-q^{-2}) \Big) \\
+    q^{-n} \left( 1 - q^{-2} \right) \\
+    &\qquad\qquad\cdot \Big( (-1)^n q^{s(2m-n)} q^{2n-2m} \Big) \Big( q^{2m}(1-q^{-2}) \Big) \\
     \\
   &\qquad+ \kappa \sum_{n=1}^{\ell+r}
     \sum_{m=\max\left(n-r, \left\lceil \frac{n-r}{2} \right\rceil+\delta+r, \delta+r+1 \right)}^{\min(n,\lambda)+\delta+r}
-    q^{-n - (m-\delta-r)} \left( 1 - q\inv \right)
-      \\ &\qquad\qquad
-      \cdot \Big( (-1)^n q^{s(2m-n)} q^{2n-2m} \Big) \Big( q^{2m}(1-q^{-2}) \Big) \\
+    q^{-n - (m-\delta-r)} \left( 1 - q\inv \right) \\
+    &\qquad\qquad\cdot \Big( (-1)^n q^{s(2m-n)} q^{2n-2m} \Big) \Big( q^{2m}(1-q^{-2}) \Big)
+    \\
   % -----------------------------------------------------------
   &= \sum_{n=1}^{r}
     \sum_{m=n-r}^{\left\lceil \frac{n-r}{2} \right\rceil+\delta+r-1}
@@ -197,9 +196,12 @@ simplifying the expression to just
 We continue assuming $v(b) = v(d) = 0$.
 It turns out that $I_{n \le 0} + I_{n > 0}^{\text{1+2}}$ can be rewritten more compactly
 (giving a simple answer especially when $\ell$ is odd).
-Write
-\begin{align*}
+Then
+\[
   I_{n \le 0} + I_{n > 0}^{\text{1+2}}
+\]
+can be rewritten to the collation
+\begin{align*}
   = q^{2(\delta+r)s}
   \sum_{j = 0}^{\delta + 2r} \Bigg(
     q^{-2js}
@@ -552,16 +554,16 @@ and put $\Vol(t_1:-v(t_1)=m) = q^{2m} (1-q^{-2})$ to get:
   % -----------------------------------------------------------
   &\coloneqq \kappa \sum_{n=\ell+r+1}^{-\frac{\ell}{2}+\delta+\lambda+r}
     \sum_{m=n-r}^{\min(n-1, \lambda+r)-\frac{\ell}{2}+\delta}
-    q^{-n-(n-\frac{\ell}{2}-r)} \left( 1 - q^{-1} \right)
-      \cdot \Big( (-1)^n q^{s(2m-n)} q^{2n-2m} \Big) \Big( q^{2m}(1-q^{-2}) \Big) \\
+    q^{-n-(n-\frac{\ell}{2}-r)} \left( 1 - q^{-1} \right) \\
+    &\qquad\qquad\cdot \Big( (-1)^n q^{s(2m-n)} q^{2n-2m} \Big) \Big( q^{2m}(1-q^{-2}) \Big) \\
   &\qquad+ \kappa \sum_{n=\ell+r+1}^{\frac{\ell}{2}+\delta+r}
     \sum_{m=n-r}^{\frac{\ell}{2}+\delta+r}
-    q^{-n-(n-\frac{\ell}{2}-r)} \left( 1 - q^{-1} \right)
-      \cdot \Big( (-1)^n q^{s(2m-n)} q^{2n-2m} \Big) \Big( q^{2m}(1-q^{-2}) \Big) \\
+    q^{-n-(n-\frac{\ell}{2}-r)} \left( 1 - q^{-1} \right) \\
+  &\qquad\qquad\cdot \Big( (-1)^n q^{s(2m-n)} q^{2n-2m} \Big) \Big( q^{2m}(1-q^{-2}) \Big) \\
   &\qquad+ \kappa \sum_{n=\ell+r+1}^{\lambda+r}
     \sum_{m=n-\frac{\ell}{2}+\delta}^{\min(n,\lambda)+\delta+r}
-    q^{-n-(m-\delta-r)} \left( 1 - q^{-1} \right)
-      \cdot \Big( (-1)^n q^{s(2m-n)} q^{2n-2m} \Big) \Big( q^{2m}(1-q^{-2}) \Big) \\
+    q^{-n-(m-\delta-r)} \left( 1 - q^{-1} \right) \\
+    &\qquad\qquad\cdot \Big( (-1)^n q^{s(2m-n)} q^{2n-2m} \Big) \Big( q^{2m}(1-q^{-2}) \Big) \\
   &= \sum_{n=\ell+r+1}^{-\frac{\ell}{2}+\delta+\lambda+r}
     \sum_{m=n-r}^{\min(n-1, \lambda+r)-\frac{\ell}{2}+\delta}
     q^{-n-(n-\frac{\ell}{2}-r)}

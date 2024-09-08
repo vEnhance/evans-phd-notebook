@@ -390,43 +390,88 @@ noting that each possibility will actually split into two sub-cases
 (although the lemma will only apply in the cases where the centers
 $\xi_i$ are actually in $\OO_E^\times$;
 this which will be true in the main case $v(b) = v(d) = 0$).
-This gives the \Cref{tab:orbital_cases} below;
+This gives \Cref{tab:orbital_cases}.
 
 \begin{table}[ht]
   \centering
-  \begin{tabular}{ll cccc cc}
-    & Assume & $v(1-\xi_1 \bar{\xi_1})$ & $\rho_1$ and $\rho_2$ & $v(\xi_1-\xi_2)$ & $\xi_1$ & $\xi_2$ \\ \hline
-    \textbf{1} & $n \le \ell+r$
-        & $v(4-b\bar{b})$
-        & $\left\lceil \frac{n-r}{2} \right\rceil \ge m-\delta-r$
-        & $v(au - \bar d \bar u)$
-        & $\frac{b}{2a}$ & $-u$ \\
-    \textbf{2} & $n \le \ell+r$
-        & $\lambda$
-        & $m-\delta-r > \left\lceil \frac{n-r}{2} \right\rceil$
-        & $v(au- \bar d \bar u)$
-        & $-u$ & $\frac{b}{2a}$ \\ \hline
-    \textbf{3\ts+} & $n > \ell + r$
-          & $v(1-\frac{\Norm(b+\tau)}{4})$
-          & $n-\frac{\ell}{2}-r > m-\delta-r$
-          & $v(au-\bar d \bar u+\tau)$
-          & $\frac{b+\tau}{2a}$ & $-u$ \\
-    \textbf{3\ts-} & $n > \ell + r$
-          & $v(1-\frac{\Norm(b-\tau)}{4})$
-          & $n-\frac{\ell}{2}-r > m-\delta-r$
-          & $v(au-\bar d \bar u-\tau)$
-          & $\frac{b-\tau}{2a}$ & $-u$ \\
-    \textbf{4\ts+} & $n > \ell + r$
-          & $v(1-\frac{\Norm(b+\tau)}{4})$
-          & $m-\delta-r \ge n-\frac{\ell}{2}-r$
-          & $v(au-\bar d \bar u+\tau)$
-          & $-u$ & $\frac{b+\tau}{2a}$ \\
-    \textbf{4\ts-} & $n > \ell + r$
-          & $v(1-\frac{\Norm(b+\tau)}{4})$
-          & $m-\delta-r \ge n-\frac{\ell}{2}-r$
-          & $v(au-\bar d \bar u-\tau)$
-          & $-u$ & $\frac{b-\tau}{2a}$ \\
+  \begin{tabular}{ll cc}
+    \toprule
+    & Assume & $\xi_1$ and $\xi_2$ & $\rho_1$ and $\rho_2$ \\\midrule
+    \textbf{1}
+      & $n \le \ell+r$
+      & $\begin{aligned}
+        \xi_1 &= \tfrac{b}{2a} \\
+        \xi_2 &= -u \\
+        v(\xi_1 - \xi_2) &= v(au - \bar d \bar u) \\
+        v(1-\xi_1 \bar{\xi_1}) &= v(4-b\bar{b})
+        \end{aligned}$
+      & $\begin{aligned}
+        &\phantom{\ge} \left\lceil \tfrac{n-r}{2} \right\rceil \\
+        &\ge m-\delta-r
+        \end{aligned}$
+        \\\hline
+    \textbf{2}
+      & $n \le \ell+r$
+      & $\begin{aligned}
+        \xi_1 &= -u \\
+        \xi_2 &= \tfrac{b}{2a} \\
+        v(\xi_1-\xi_2) &= v(au- \bar d \bar u) \\
+        v(1-\xi_1 \bar{\xi_1}) &= \lambda
+      \end{aligned}$
+      & $\begin{aligned}
+        &\phantom> m-\delta-r \\
+        &> \left\lceil \tfrac{n-r}{2} \right\rceil
+      \end{aligned}$ \\\hline
+    \textbf{3\ts+}
+      & $n > \ell + r$
+      & $\begin{aligned}
+        \xi_1 &= \tfrac{b+\tau}{2a} \\
+        \xi_2 &= -u \\
+        v(\xi_1-\xi_2) &= v(au - \bar d \bar u + \tau) \\
+        v(1 - \xi_1 \bar{\xi_1}) &= v(1-\tfrac{\Norm(b+\tau)}{4})
+      \end{aligned}$
+      & $\begin{aligned}
+        &\phantom> n-\frac{\ell}{2}-r \\
+        &> m-\delta-r
+      \end{aligned}$ \\\hline
+    \textbf{3\ts-}
+      & $n > \ell + r$
+      & $\begin{aligned}
+        \xi_1 &= \tfrac{b-\tau}{2a} \\
+        \xi_2 &= -u \\
+        v(\xi_1-\xi_2) &= v(au-\bar d \bar u-\tau) \\
+        v(1 - \xi_1 \bar{\xi_1}) &= v(1-\tfrac{\Norm(b-\tau)}{4})
+      \end{aligned}$
+      & $\begin{aligned}
+        &\phantom> n-\frac{\ell}{2}-r \\
+        &> m-\delta-r
+      \end{aligned}$ \\\hline
+    \textbf{4\ts+}
+      & $n > \ell + r$
+      & $\begin{aligned}
+        \xi_1 &= -u \\
+        \xi_2 &= \tfrac{b+\tau}{2a} \\
+        v(\xi_1-\xi_2) &= v(au-\bar d \bar u+\tau) \\
+        v(1 - \xi_1 \bar{\xi_1}) &= \lambda
+        \end{aligned}$
+      & $\begin{aligned}
+        &\phantom\ge m-\delta-r \\
+        &\ge n-\frac{\ell}{2}-r
+        \end{aligned}$ \\\hline
+    \textbf{4\ts-}
+      & $n > \ell + r$
+      & $\begin{aligned}
+        \xi_1 &= -u \\
+        \xi_2 &= \tfrac{b-\tau}{2a} \\
+        v(\xi_1-\xi_2) &= v(au-\bar d \bar u-\tau) \\
+        v(1 - \xi_1 \bar{\xi_1}) &= \lambda
+        \end{aligned}$
+      & $\begin{aligned}
+        &\phantom\ge m-\delta-r \\
+        &\ge n-\frac{\ell}{2}-r
+      \end{aligned}$ \\\bottomrule
   \end{tabular}
+
   \caption{The six cases for calculating the orbital integral.}
   \label{tab:orbital_cases}
 \end{table}
