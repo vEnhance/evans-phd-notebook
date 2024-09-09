@@ -2,8 +2,9 @@
 \label{sec:satake}
 
 The goal of this section is to make completely explicit the base change
-\[ \HH(S_n(F), K') \to \HH(G, K') \]
-in the special case $n = 3$.
+\[ \BC_{S}^{\eta^{n-1}} = \HH(S_n(F), K') \to \HH(G, K') \]
+in the special case $n = 3$
+(in which case $\BC_S^{\eta^{n-1}} = \BC_S$ as $\eta^2 = 1$).
 When it is not more difficult, some of the results will be stated for all $n$,
 rather than $n = 3$ specifically.
 
@@ -170,11 +171,11 @@ We don't have to twist since $n$ is odd.
 \subsubsection{Overall picture}
 \begin{center}
 \begin{tikzcd}
-  & \HH(G',K') \ar[ld, "\rproj_\ast"'] \ar[r, "\sim"', "\Sat"] \ar[d, "\BC"]
+  \HH(G',K') \ar[dd, "\rproj_\ast^{\eta^{n-1}}"', bend right = 60] \ar[r, "\sim"', "\Sat"] \ar[d, "\BC"]
     & \QQ[X_1^\pm, \dots, X_n^\pm]^{\Sym(n)} \ar[d, "\BC"] \\
-  \HH(S_n(F), K') \ar[r, "\sim"', "\BC_S"]
-    & \HH(G,K) \ar[r, "\sim"', "\Sat"]
-    & \QQ[Y_1^\pm, \dots, Y_m^\pm]^{W_m}
+  \HH(G,K) \ar[r, "\sim"', "\Sat"]
+    & \QQ[Y_1^\pm, \dots, Y_m^\pm]^{W_m} \\
+  \HH(S_n(F), K') \ar[u, "\sim", "\BC_S^{\eta^{n-1}}"']
 \end{tikzcd}
 \end{center}
 Goal: describe $\BC_S$.
@@ -212,6 +213,172 @@ to evaluate $\mathbf{1}_{\Mat_3(\OO_E), v\circ\det=r}$
 at it (one only needs to check it has $\OO_E$ entries
 and that the determinant has valuation $r$,
 rather than determining the exact coset $K'\varpi^{(n_1, n_2, n_3)}K'$).
+
+\subsubsection{Satake transform of the determinant characteristic function on the top arrow}
+This is the easiest calculation, and we do it for all $n$ rather than just $n = 3$.
+\begin{proposition}
+  For every integer $r \ge 0$, we have
+  \[ \Sat(\mathbf{1}_{\Mat_n(\OO_E), v\circ\det=r})
+    = q^{(n-1)r} \sum_{e_1 \dots + e_n = r} X_1^{e_1} \dots X_n^{e_n}. \]
+\end{proposition}
+\begin{proof}
+  We evaluate the coefficient $X_1^{e_1} \dots X_n^{e_n}$.
+  Choose a cocharacter $\mu$,
+  and suppose $\mu(\varpi) = \varpi^{(e_1, \dots, e_n)}$ with $n_1 \ge n_2 \ge n_3$.
+  Let $q_E = q^2$ be the residue characteristic of $E$.
+  Take the upper triangular matrices as our Borel subgroup as usual,
+  so the unipotent radical of this Borel subgroup
+  are the unipotent upper triangulars $N'$ which we describe as
+  \[ N' \coloneqq \left\{
+      \begin{bmatrix}
+      1 & y_{12} & y_{13} & \dots & y_{1n} \\
+        & 1 & y_{23} & \dots & y_{2n} \\
+        &   & 1 & \dots & y_{3n} \\
+        &   &   & \ddots & \vdots  \\
+        &   &   &   & 1
+      \end{bmatrix}
+    \mid y_{12}, \dots, y_{(n-1)n}\in E \right\} \]
+  and with additive Haar measure is $\odif{y_{12}, y_{23} \dotso, y_{(n-1)n}}$.
+  Recall also the Weyl vector for $G' = \GL_n(\OO_E)$ is just
+  \[ \rho_{G'} = \left< \frac{n-1}{2}, \frac{n-3}{2}, \dots, -\frac{n-1}{2} \right>. \]
+  Compute
+  \begin{align*}
+    &\Sat(\mathbf{1}_{\Mat_n(\OO_E), v\circ\det=r})(\mu(\varpi)) \\
+    &= \delta(\mu(\varpi))^\half \int_{n' \in N'}
+      \mathbf{1}_{\Mat_n(\OO_E, v\circ \det = r)} (\mu(\varpi) n') \odif{n'} \\
+    &= q_E^{-\left< \mu, \rho\right>}
+    \underbrace{\int_{y_{12} \in E} \int_{y_{13} \in E} \dotso \int_{y_{(n-1)n} \in E}}_{\binom n2 \text{ integrals}} \\
+    &\qquad
+      \mathbf{1}_{\Mat_3(\OO_E), v \circ \det = r}
+      \left( \begin{bmatrix}
+        \varpi^{e_1} & \varpi^{e_1} y_{12} & \varpi^{e_1} y_{13} & \dots & \varpi^{e_1} y_{1n} \\
+        & \varpi^{e_2} & \varpi^{e_2} y_{23} & \dots & \varpi^{e_2} y_{2n} \\
+        &   & \varpi^{e_3} & \dots & \varpi^{e_3} y_{3n} \\
+        &   &   & \ddots & \vdots  \\
+        &   &   &   & \varpi^{e_n}
+        \end{bmatrix} \right) \\
+    &\qquad \odif{y_{12}, y_{23} \dotso, y_{(n-1)n}} \\
+    &= q_E^{-\left(\frac{n-1}{2}e_1 + \frac{n-3}{2}e_2 + \dots + -\frac{n-1}{2} e_n \right)}
+    \mathbf{1}_{e_1 + \dots + e_n = r}
+    \underbrace{\int_{y_{12} \in E} \int_{y_{13} \in E} \dotso \int_{y_{(n-1)n} \in E}}_{\binom n2 \text{ integrals}} \\
+    &\qquad \prod_{1 \le i < j \le n} \mathbf{1}_{\OO_E}(\varpi^{e_i} y_{ij}) \odif{y_{ij}} \\
+    &= q_E^{-\left(\frac{n-1}{2}e_1 + \frac{n-3}{2}e_2 + \dots + -\frac{n-1}{2} e_n \right)}
+    \mathbf{1}_{e_1 + \dots + e_n = r} \prod_{1 \le i < j \le n} q_E^{e_i} \\
+    &= q_E^{-\left(\frac{n-1}{2}e_1 + \frac{n-3}{2}e_2 + \dots + -\frac{n-1}{2} e_n \right)}
+    \mathbf{1}_{e_1 + \dots + e_n = r} \prod_{1 \le i \le n} q_E^{(n-i)e_i} \\
+    &= \mathbf{1}_{e_1 + \dots + e_n = r} \prod_{1 \le i \le n}^n q_E^{\frac{n-1}{2} e_i} \\
+    &= q_E^{\frac{n-1}{2} r} \mathbf{1}_{e_1 + \dots + e_n = r} \\
+    &= \begin{cases}
+      q^{\frac{n-1}{2} r} & \text{if } e_1 + \dots + e_n = r \\
+      0 & \text{otherwise}.
+    \end{cases}
+  \end{align*}
+  This gives the sum claimed earlier.
+\end{proof}
+
+
+\subsubsection{Satake transform of the indicator on the bottom arrow}
+\begin{proposition}
+  For each $r \ge 0$ we have
+  \[ \Sat\left(\mathbf{1}_{\varpi^{-r} \Mat_3(\OO_E) \cap G}\right)
+    = \sum_{i=0}^r q^{2r - \mathbf{1}_{r \equiv i \bmod 2}} Y_1^{\pm i} \]
+  where we adopt the shorthand
+  \[
+    Y_1^{\pm i} \coloneqq
+    \begin{cases}
+      Y_1^i + Y_1^{-i} & i > 0 \\
+      1 & i = 0 .
+    \end{cases}
+  \]
+\end{proposition}
+\begin{proof}
+  We first need to describe \[ N = N' \cap G \] a little more carefully.
+  For $n \in N'$ we have
+  \[
+    n^\ast \beta n
+    =
+    \begin{bmatrix} 1 \\ \bar{y_1} & 1 \\ \bar{y_2} & \bar{y_3} & 1 \end{bmatrix}
+    \beta
+    \begin{bmatrix}
+      1 & y_1 & y_2 \\
+        & 1 & y_3 \\
+        & & 1
+    \end{bmatrix}
+    = \begin{bmatrix}
+      & & 1 \\
+      & 1 & y_3 + \bar{y_1} \\
+      1 & y_1 + \bar{y_3} & y_2 + \bar{y_2} + y_3 \bar{y_3}
+    \end{bmatrix}.
+  \]
+  So $n \in N$ if and only if the above matrix equals $\beta$, which means
+  \[ 0 = y_3 + \bar{y_1} = y_2 + \bar{y_2} + y_3 \bar{y_3}. \]
+  Then we can re-parametrize by $z_1, z_2, z_3 \in F$ according to
+  \begin{align*}
+    y_3 &= z_1 + z_2 \sqrt\eps \\
+    y_2 &= -\frac{z_1^2 + z_2^2 \eps}{2} + z_3\sqrt\eps \\
+    y_1 &= -z_1 + z_2\sqrt\eps.
+  \end{align*}
+  Back to the original task.
+  For each $i \ge 0$ we can evaluate the Satake transform at the element
+  $\nu(\varpi) = \diag(\varpi^i, 1, \varpi^{-i})$, for the cocharacter $\nu$
+  corresponding to $Y_1^i + Y_1^{-i}$:
+  \begin{align*}
+    &\Sat\left( \mathbf{1}_{\varpi^{-r} \Mat_3(\OO_E) \cap G}\right)
+      \left( \nu(\varpi)  \right) \\
+    &= \delta(\nu(\varpi))^\half \int_{n \in N}
+      \mathbf{1}_{\varpi^{-r} \Mat_3(\OO_E) \cap G}
+      \left( \nu(\varpi) n' \right) \odif n \\
+    &= \delta(\nu(\varpi))^\half \int_{n \in N}
+      \mathbf{1}_{{\varpi^{-r}} \Mat_3(\OO_E) \cap G}
+      \left( \begin{bmatrix} \varpi^i & \varpi^i y_1 & \varpi^i y_2 \\
+               & 1 & y_3 \\
+               & & \varpi^{-i} \end{bmatrix} \right) \odif n
+  \end{align*}
+  The matrix itself is always in $G$, because it's the product of two unitary matrices.
+  So the indicator needs to check whether all the entries have valuation at least $-r$.
+  If we switch characterization to the coordinates $z_1$, $z_2$, $z_3$ we described earlier,
+  we see that the conditions are
+  \begin{align*}
+    i &\le r, \\
+    v(z_1) &\ge -r, \\
+    v(z_2) &\ge -r,\\
+    v(z_3) &\ge -(r+i),\\
+    v(z_1^2 + z_2^2 \eps) &\ge -(r+i).
+  \end{align*}
+  Assume $i \le r$ henceforth.
+  The condition for $z_1$ and $z_2$ then really says
+  \[ \min(v(z_1), v(z_2)) \ge -\left\lfloor \frac{r+i}{2} \right\rfloor. \]
+  So the integral factors as a triple integral
+  \[
+    \int_{z_1 \in F}
+    \int_{z_2 \in F}
+    \int_{z_3 \in F}
+    \mathbf{1}_{\varpi^{-\left\lfloor \frac{r+i}{2} \right\rfloor} \OO_F}(z_1)
+    \mathbf{1}_{\varpi^{-\left\lfloor \frac{r+i}{2} \right\rfloor} \OO_F}(z_2)
+    \mathbf{1}_{\varpi^{-(r+i)} \OO_F}(z_3)
+    \odif{z_1,z_2,z_3}
+  \]
+  which is equal to
+  \[ q^{2\left\lfloor \frac{r+i}{2} \right\rfloor+r+i}. \]
+  Meanwhile, $\delta(\nu(\varpi))^{\half} = q^{-2i}$.
+  In summary,
+  \[
+    \Sat\left( \mathbf{1}_{\varpi^{-r} \Mat_3(\OO_E) \cap G}\right) \left( \nu(\varpi) \right)
+    =
+    \begin{cases}
+      q^{2\left\lfloor \frac{r+i}{2} \right\rfloor - i + r} & i \le r \\
+      0 & i > r
+    \end{cases}
+  \]
+  Finally, since
+  \[ 2\left\lfloor \frac{r+i}{2} \right\rfloor - i + r
+    = \begin{cases}
+      2r & r+i \text{ is even} \\
+      2r-1 & r+i \text{ is odd}
+    \end{cases}
+  \]
+  we get the formula claimed.
+\end{proof}
 
 \subsubsection{Integration over fiber}
 \begin{proposition}
@@ -329,155 +496,6 @@ rather than determining the exact coset $K'\varpi^{(n_1, n_2, n_3)}K'$).
   as desired.
 \end{proof}
 
-\subsubsection{Satake transform of the determinant characteristic function on the top arrow}
-\begin{proposition}
-  For every integer $r \ge 0$, we have
-  \[ \Sat(\mathbf{1}_{\Mat_3(\OO_E), v\circ\det=r})
-    = q^{2r} \sum_{n_1 + n_2 + n_3 = r} X_1^{n_1} X_2^{n_2} X_3^{n_3}. \]
-\end{proposition}
-\begin{proof}
-  We evaluate the coefficient $X_1^{n_1} X_2^{n_2} X_3^{n_3}$.
-  Choose a cocharacter $\mu$,
-  and suppose $\mu(\varpi) = \varpi^{(n_1, n_2, n_3)}$ with $n_1 \ge n_2 \ge n_3$.
-  Let $q_E = q^2$ be the residue characteristic of $E$.
-  Take the upper triangular matrices as our Borel subgroup as usual,
-  so the unipotent radical of this Borel subgroup
-  are the unipotent upper triangulars $N'$ which we describe as
-  \[ N' \coloneqq \left\{ \begin{bmatrix}
-      1 & y_1 & y_2 \\
-        & 1 & y_3 \\
-        &   & 1 \end{bmatrix} \mid y_1, y_2, y_3 \in E \right\} \]
-  and with additive Haar measure is $\odif{y_1,y_2,y_3}$.
-  Recall also the Weyl vector for $G' = \GL_3(\OO_E)$ is just $\left< 1,0,-1\right>$.
-  Compute
-  \begin{align*}
-    &\Sat(\mathbf{1}_{\Mat_3(\OO_E), v\circ\det=r})(\mu(\varpi)) \\
-    &= \delta(\mu(\varpi))^\half \int_{n' \in N'}
-      \mathbf{1}_{\Mat_3(\OO_E, v\circ \det = r)} (\mu(\varpi) n') \odif{n'} \\
-    &= q_E^{-\left< \mu, \rho\right>} \int_{y_1 \in E} \int_{y_2 \in E} \int_{y_3 \in E} \\
-    &\qquad
-      \mathbf{1}_{\Mat_3(\OO_E), v \circ \det = r}
-      \left(
-        \begin{bmatrix}
-          \varpi^{n_1} & \varpi^{n_1} y_1 & \varpi^{n_1} y_2 \\
-          & \varpi^{n_2} & \varpi^{n_2} y_3 \\
-          & & \varpi^{n_3} \\
-        \end{bmatrix}
-      \right) \odif{y_1,y_2,y_3} \\
-    &= q_E^{-(n_1-n_3)} \mathbf{1}_{n_1+n_2+n_3=r}
-    \int_{y_1 \in E} \int_{y_2 \in E} \int_{y_3 \in E} \\
-    &\quad \mathbf{1}_{\OO_E}(\varpi^{n_1} y_1) \odif y_1
-      \mathbf{1}_{\OO_E}(\varpi^{n_1} y_2) \odif y_2
-     \mathbf{1}_{\OO_E}(\varpi^{n_2} y_3) \odif y_3 \\
-    &= q_E^{-(n_1-n_3)} q_E^{n_1} q_E^{n_1} q_E^{n_2} \mathbf{1}_{n_1+n_2+n_3=r} \\
-    &= q_E^{n_1+n_2+n_3}\mathbf{1}_{n_1+n_2+n_3=r} \\
-    &= q_E^{r}\mathbf{1}_{n_1+n_2+n_3=r} \\
-    &= \begin{cases}
-      q^{2r} & \text{if }n_1 + n_2 + n_3 = r \\
-      0 & \text{otherwise}.
-    \end{cases}
-  \end{align*}
-  This gives the sum claimed earlier.
-\end{proof}
-
-\subsubsection{Satake transform of the indicator on the bottom arrow}
-\begin{proposition}
-  For each $r \ge 0$ we have
-  \[ \Sat\left(\mathbf{1}_{\varpi^{-r} \Mat_3(\OO_E) \cap G}\right)
-    = \sum_{i=0}^r q^{2r - \mathbf{1}_{r \equiv i \bmod 2}} Y_1^{\pm i} \]
-  where we adopt the shorthand
-  \[
-    Y_1^{\pm i} \coloneqq
-    \begin{cases}
-      Y_1^i + Y_1^{-i} & i > 0 \\
-      1 & i = 0 .
-    \end{cases}
-  \]
-\end{proposition}
-\begin{proof}
-  We first need to describe \[ N = N' \cap G \] a little more carefully.
-  For $n \in N'$ we have
-  \[
-    n^\ast \beta n
-    =
-    \begin{bmatrix} 1 \\ \bar{y_1} & 1 \\ \bar{y_2} & \bar{y_3} & 1 \end{bmatrix}
-    \beta
-    \begin{bmatrix}
-      1 & y_1 & y_2 \\
-        & 1 & y_3 \\
-        & & 1
-    \end{bmatrix}
-    = \begin{bmatrix}
-      & & 1 \\
-      & 1 & y_3 + \bar{y_1} \\
-      1 & y_1 + \bar{y_3} & y_2 + \bar{y_2} + y_3 \bar{y_3}
-    \end{bmatrix}.
-  \]
-  So $n \in N$ if and only if the above matrix equals $\beta$, which means
-  \[ 0 = y_3 + \bar{y_1} = y_2 + \bar{y_2} + y_3 \bar{y_3}. \]
-  Then we can re-parametrize by $z_1, z_2, z_3 \in F$ according to
-  \begin{align*}
-    y_3 &= z_1 + z_2 \sqrt\eps \\
-    y_2 &= -\frac{z_1^2 + z_2^2 \eps}{2} + z_3\sqrt\eps \\
-    y_1 &= -z_1 + z_2\sqrt\eps.
-  \end{align*}
-  Back to the original task.
-  For each $i \ge 0$ we can evaluate the Satake transform at the element
-  $\nu(\varpi) = \diag(\varpi^i, 1, \varpi^{-i})$, for the cocharacter $\nu$
-  corresponding to $Y_1^i + Y_1^{-i}$:
-  \begin{align*}
-    &\Sat\left( \mathbf{1}_{\varpi^{-r} \Mat_3(\OO_E) \cap G}\right)
-      \left( \nu(\varpi)  \right) \\
-    &= \delta(\nu(\varpi))^\half \int_{n \in N}
-      \mathbf{1}_{\varpi^{-r} \Mat_3(\OO_E) \cap G}
-      \left( \nu(\varpi) n' \right) \odif n \\
-    &= \delta(\nu(\varpi))^\half \int_{n \in N}
-      \mathbf{1}_{{\varpi^{-r}} \Mat_3(\OO_E) \cap G}
-      \left( \begin{bmatrix} \varpi^i & \varpi^i y_1 & \varpi^i y_2 \\
-               & 1 & y_3 \\
-               & & \varpi^{-i} \end{bmatrix} \right) \odif n
-  \end{align*}
-  The matrix itself is always in $G$, because it's the product of two unitary matrices.
-  So the indicator needs to check whether all the entries have valuation at least $-r$.
-  If we switch characterization to the coordinates $z_1$, $z_2$, $z_3$ we described earlier,
-  we see that the conditions are
-  \[ i \le r, \; v(z_1) \ge -r, \; v(z_2) \ge -r, \; v(z_3) \ge -(r+i), \;
-    v(z_1^2 + z_2^2 \eps) \ge -(r+i). \]
-  Assume $i \le r$ henceforth.
-  The condition for $z_1$ and $z_2$ then really says
-  \[ \min(v(z_1), v(z_2)) \ge -\left\lfloor \frac{r+i}{2} \right\rfloor. \]
-  So the integral factors as a triple integral
-  \[
-    \int_{z_1 \in F}
-    \int_{z_2 \in F}
-    \int_{z_3 \in F}
-    \mathbf{1}_{\varpi^{-\left\lfloor \frac{r+i}{2} \right\rfloor} \OO_F}(z_1)
-    \mathbf{1}_{\varpi^{-\left\lfloor \frac{r+i}{2} \right\rfloor} \OO_F}(z_2)
-    \mathbf{1}_{\varpi^{-(r+i)} \OO_F}(z_3)
-    \odif{z_1,z_2,z_3}
-  \]
-  which is equal to
-  \[ q^{2\left\lfloor \frac{r+i}{2} \right\rfloor+r+i}. \]
-  Meanwhile, $\delta(\nu(\varpi))^{\half} = q^{-2i}$.
-  In summary,
-  \[
-    \Sat\left( \mathbf{1}_{\varpi^{-r} \Mat_3(\OO_E) \cap G}\right) \left( \nu(\varpi) \right)
-    =
-    \begin{cases}
-      q^{2\left\lfloor \frac{r+i}{2} \right\rfloor - i + r} & i \le r \\
-      0 & i > r
-    \end{cases}
-  \]
-  Finally, since
-  \[ 2\left\lfloor \frac{r+i}{2} \right\rfloor - i + r
-    = \begin{cases}
-      2r & r+i \text{ is even} \\
-      2r-1 & r+i \text{ is odd}
-    \end{cases}
-  \]
-  we get the formula claimed.
-\end{proof}
-
 \subsection{Base change from $\HH(G,K)$ to $\HH(S_3(F), K')$}
 We first need to determine an element of $\HH(G,K)$
 which is in the pre-image of $\mathbf{1}_{\varpi^{-r} \Mat_3(\OO_E) \cap G}$
@@ -534,13 +552,13 @@ To summarize, the completed commutative diagram can be written in full as
   \begin{tabular}{c} $f'_r + (q-q^2) f'_{r-1}$ \\ $- q^3 f'_{r-2} \in \HH(G',K')$ \end{tabular}
     \ar[dd, "\rproj_\ast"', mapsto, bend right = 50]
     \ar[r, "\Sat", mapsto] \ar[d, "\BC", mapsto]
-    & \dots \in \QQ[X_1^\pm, \dots, X_n^\pm]^{\Sym(n)} \ar[d, "\BC", mapsto] \\
+    & \dots \in \QQ[X_1^\pm, X_2^\pm, X_3^\pm]^{\Sym(3)} \ar[d, "\BC", mapsto] \\
   \begin{tabular}{c} $\mathbf{1}_{\varpi{^-r} \Mat_3(\OO_E) \cap G}$ \\ $\in \HH(G,K)$ \end{tabular}
     \ar[r, "\Sat", mapsto]
-    & \begin{tabular}{r}
-      $q^{2r} \left( Y_1^{\pm} + \dotsb \right)$ \\
-      $+ q^{2r-1} \left( Y_1^{\pm(r-1)} + \dotsb \right)$ \\
-      $\in \QQ[Y_1^\pm, \dots, Y_n^\pm]^{W_m}$
+    & \begin{tabular}{l}
+      $q^{2r} \left( Y_1^{\pm r} + \dotsb + Y_1^{\mp r} \right)$ \\
+      $+ q^{2r-1} \left( Y_1^{\pm(r-1)} + \dotsb + Y_1^{\mp(r-1)} \right)$ \\
+      $\in \QQ[Y_1^\pm]^{W_1}$
       \end{tabular} \\
   \begin{tabular}{c}
     $\sum_{j=0}^r \big[ 1 + 2q + 2q^2$ \\
@@ -549,23 +567,16 @@ To summarize, the completed commutative diagram can be written in full as
   \end{tabular} \ar[u, "\sim", "\BC_S"', mapsto]
 \end{tikzcd}
 \end{center}
-(Note we moved the position of the bottom left $\HH(S_n(F), K')$
-to prevent the diagram from overflowing the margins.)
 
 Thus, we arrive at the following:
 \begin{proposition}
   We have
   \begin{align*}
-    \BC_S \left(
-    \sum_{j=0}^r \left[ 1 + 2q + 2q^2 + \dots + 2q^{r-j} \right]
+    \BC_S \left( \sum_{j=0}^r \left[ 1 + 2q + 2q^2 + \dots + 2q^{r-j} \right]
     \mathbf{1}_{K'_{S,j}} \right)
     &= \mathbf{1}_{\varpi^{-r} \Mat_3(\OO_E) \cap G} \\
-    \BC_S \left(
-    \mathbf{1}_{K'_{S,r}}
-    + 2q \mathbf{1}_{K'_{S,r-1}}
-    + 2q^2 \mathbf{1}_{K'_{S,r-2}}
-    + \dots
-    + 2q^r \mathbf{1}_{K'_{S,0}} \right)
+    \BC_S \left( \mathbf{1}_{K'_{S,r}}
+    + \sum_{j=0}^{r-1} 2q^{r-j} \mathbf{1}_{K'_{S,j}} \right)
     &= \mathbf{1}_{K\varpi^{(r,0,-r)}K}.
   \end{align*}
 \end{proposition}
