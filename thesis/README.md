@@ -4,7 +4,7 @@
 
 1. [x] Fix the things going over the edges
 2. [x] Write an abstract
-3. [ ] Define an arch
+3. [x] Define an arch
 4. [ ] Generalize the Satake calculations to $n$ variables from $n = 3$
 5. [ ] Take the derivative of the known orbital integral
 

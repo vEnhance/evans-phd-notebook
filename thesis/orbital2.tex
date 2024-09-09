@@ -440,24 +440,28 @@ If $\ell$ is odd, so $\lambda = \ell$, then
 the orbital integral can be expressed succinctly in the following way.
 \begin{theorem}
   [Orbital integral in the odd case for $\mathbf{1}_{K'_{S, \le r}}$]
-  Under the assumptions before, for any $r \ge 0$ we have the formula
+  Take the assumptions before, and let
+  \[ \nn_\gamma \coloneqq \Arch_{[-2r, 2\delta + \ell + 2r]}(r, \ell). \]
+  Then for any $r \ge 0$ we have the formula
   \[
     \Orb(\gamma, \mathbf{1}_{K'_{S, \le r}}, s)
     = \sum_{k = -2r}^{2\delta + \ell + 2r}
     (-1)^k \left( 1 + q + q^2 + \dots + q^{\nn_{\gamma}(k)}  \right) (q^s)^k
   \]
-  where the piecewise function $\nn_\gamma \colon \ZZ \to \ZZ_{\ge 0}$ is defined by
+\end{theorem}
+\begin{remark}
+  To make $\nn_\gamma$ fully explicit, one could also expand the arch shorthand to
   \[
-    \nn_\gamma(k) =
-    \begin{cases}
+    \nn_\gamma(k)
+    \coloneqq \begin{cases}
       k + 2r & \text{if } {-2r} \le k \le -r \\
       \left\lfloor \frac{k+r}{2} \right\rfloor + r & \text{if }{-r} \le k \le \ell-r \\
       \frac{\ell-1}{2} + r & \text{if } \ell - r \le k \le 2\delta + r \\
       \left\lfloor \frac{(2\delta+\ell+r)-k}{2} \right\rfloor + r & \text{if } 2\delta + r \le k \le 2\delta + \ell + r\\
       (2\delta + \ell + 2r) - k & \text{if } 2\delta + \ell + r \le k \le 2\delta + \ell + 2r.
-    \end{cases}
-  \]
-\end{theorem}
+    \end{cases} \]
+\end{remark}
+
 From the identity
 \[
   \Orb(\gamma, \mathbf{1}_{K'_{S, r}}, s)
@@ -488,7 +492,7 @@ we can then write the following equivalent formulation.
 \begin{example}
   If $r=3$, $\ell=5$, and $\delta=100$, the formulas above read
   \begin{align*}
-  \Orb(\gamma, \mathbf{1}_{K'_{S, \le r}}, s)
+  \Orb(\gamma, \mathbf{1}_{K'_{S, \le 3}}, s)
   &= q^{-6s} \\
   &- (q+1) \cdot q^{-5s} \\
   &+ (q^2+q+1) \cdot q^{-4s} \\
@@ -517,7 +521,7 @@ we can then write the following equivalent formulation.
   Continuing the previous example with
   $r=3$, $\ell=5$, and $\delta=100$, we have
   \begin{align*}
-  \Orb(\gamma, \mathbf{1}_{K'_{S, r}}, s)
+  \Orb(\gamma, \mathbf{1}_{K'_{S, 3}}, s)
   &= q^{-6s} \\
   &- (q+1) \cdot q^{-5s} \\
   &+ (q^2+q) \cdot q^{-4s} \\
@@ -531,7 +535,7 @@ we can then write the following equivalent formulation.
   &+ q^5 \cdot q^{4s} \\
   &\vdotswithin= \\
   &+ q^5 \cdot q^{202s} \\
-  &- q^6 \cdot q^{232s} \\
+  &- q^6 \cdot q^{203s} \\
   &+ (q^5+q^4) \cdot q^{204s} \\
   &- q^4 \cdot q^{205s} \\
   &+ (q^4+q^3) \cdot q^{206s} \\
@@ -592,14 +596,22 @@ and put $\Vol(t_1:-v(t_1)=m) = q^{2m} (1-q^{-2})$ to get:
 \subsection{Final answer for even $\ell$, when $v(b) = v(d) = 0$}
 \begin{theorem}
   [Orbital integral in the even case for $\mathbf{1}_{K'_{S, \le r}}$]
-  Under the assumptions before, for any $r \ge 0$ we have the formula
+  Retain the assumptions before, and define
+  \begin{align*}
+    \nn_\gamma &\coloneqq \Arch_{[-2r, 2\delta + \lambda + 2r]}(r, \ell) \\
+    \cc_\gamma &\coloneqq \Arch_{[\ell-r, 2\delta + \lambda - \ell + r]}
+    (\delta - \ell/2, \min(\lambda-\ell-1, 2r)).
+  \end{align*}
+  Then for any $r \ge 0$ we have the formula.
   \begin{align*}
     \Orb(\gamma, \mathbf{1}_{K'_{S, \le r}}, s)
     &= \sum_{k = \ell-r}^{2\delta + \lambda - \ell + r} \cc_\gamma(k) (-1)^k q^{\frac{\ell}{2}+r} (q^s)^k \\
     &+ \sum_{k = -2r}^{2\delta + \lambda + 2r}
-    (-1)^k \left( 1 + q + q^2 + \dots + q^{\nn_{\gamma}(k)}  \right) (q^s)^k
+    (-1)^k \left( 1 + q + q^2 + \dots + q^{\nn_{\gamma}(k)}  \right) (q^s)^k.
   \end{align*}
-  where the piecewise function $\nn_\gamma \colon \ZZ \to \ZZ_{\ge 0}$ is defined by
+\end{theorem}
+\begin{remark}
+  One can expand the Arch notation for $\nn_\gamma$ to obtain
   \[
     \nn_\gamma(k) =
     \begin{cases}
@@ -607,16 +619,18 @@ and put $\Vol(t_1:-v(t_1)=m) = q^{2m} (1-q^{-2})$ to get:
       \left\lfloor \frac{k+r}{2} \right\rfloor + r & \text{if }{-r} \le k \le \ell-r \\
       \frac{\ell}{2} + r & \text{if } \ell - r \le k \le 2\delta + \lambda - \ell + r \\
       \left\lfloor \frac{(2\delta+\lambda+r)-k}{2} \right\rfloor + r & \text{if } 2\delta + \lambda - \ell + r \le k \le 2\delta + \lambda + r \\
-      (2\delta + \lambda + 2r) - k & \text{if } 2\delta + \lambda + r \le k \le 2\delta + \lambda + 2r
+      (2\delta + \lambda + 2r) - k & \text{if } 2\delta + \lambda + r \le k \le 2\delta + \lambda + 2r.
     \end{cases}
   \]
-  and the piecewise function $\cc_\gamma \colon \ZZ \to \ZZ_{\ge 0}$ is defined by by setting the constants
+  Then $\cc_\gamma$ can be similarly expanded, but the result is so notationally dense
+  that it is hardly worth including.
+  If one defines the shorthands
   \begin{align*}
     \mathsf{B}_\gamma &\coloneqq \delta + \frac{\ell}{2} - r \\
     \mathsf{T}_\gamma &\coloneqq (2\delta+\lambda) - \mathsf{B}_\gamma \\
     \mathsf{w}_\gamma &\coloneqq \min(\lambda-\ell-1, 2r)
   \end{align*}
-  and letting
+  then it could be written out more fully as
   \[
     \cc_\gamma(k)
     =
@@ -633,7 +647,7 @@ and put $\Vol(t_1:-v(t_1)=m) = q^{2m} (1-q^{-2})$ to get:
         & \text{if } \mathsf{T}_\gamma \le k \le 2\delta + \lambda - \ell + r.
     \end{cases}
   \]
-\end{theorem}
+\end{remark}
 
 \begin{example}
   We provide an example for $r=5$, $\ell=2$, $\delta=8$, $\lambda=9$ for concreteness:
