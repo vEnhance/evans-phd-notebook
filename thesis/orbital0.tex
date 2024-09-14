@@ -46,9 +46,13 @@ Define
 \[ H' \coloneqq
   \left\{ \begin{bmatrix} t_1 & t_2 \\ \bar t_2 & \bar t_1 \end{bmatrix} \right\}
   \cong \GL_2(F). \]
-We embed $H'$ into $\GL_3(F)$ by
-$h' \mapsto \left[ \begin{smallmatrix} h' & 0 \\ 0 & 1 \end{smallmatrix} \right]$,
-which allows $H$ to act on $\GL_3(F)$ and hence $S_3(F)$.
+\todo{you seem confused on what you're acting by}
+We embed $H'$ into $\GL_3(F)$ by the diagonal embedding
+\[ h' \mapsto \left[ \begin{smallmatrix} h' & 0 \\ 0 & 1 \end{smallmatrix} \right] \]
+which allows $H'$ to act on $\GL_3(F)$ by conjugation as
+\[ g \mapsto h' g \bar{h'}^{-1} \]
+which then restricts to an action on $S_3(F)$.
+
 
 Now we can define the orbital integral.
 \begin{definition}
@@ -89,7 +93,6 @@ Then, our goal is to compute for
   \pdv{}{s}\Orb(\gamma, \mathbf{1}_{K'_{S, \le r}}, s)
   \label{eq:orbital_goal}
 \end{equation}
-
 at $s=0$ for any $r > 0$ as well.
 Note that the $r = 0$ case is already done in \cite{ref:AFL}.
 

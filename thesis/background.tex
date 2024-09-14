@@ -28,9 +28,22 @@ and $E/F$ is an unramified quadratic field extension.
   \ii Set
   \[ K \coloneqq G \cap \GL_n(\OO_E) \]
   as the natural hyperspecial maximal compact subgroup.
+
   \ii Define the symmetric space
   \[ S_n(F) \coloneqq \left\{ g \in \GL_n(E) \mid g \bar g = \id_n \right\}. \]
-  It has a natural left action of $\GL_n(E)$ by $g \cdot s \mapsto g s \bar g^{-1}$.
+  It has a natural left action of $\GL_n(E)$ by
+  \[ \GL_n(E) \times S_n(F) \to S_n(F) \text { by } g \cdot s \mapsto g s \bar g^{-1} \]
+
+  \ii Following the notation in \cite{ref:highdim2024}, define
+  \[ V'_n \coloneqq F^n \times (F^n)^\vee \]
+  where $-^\vee$ denotes the $F$-dual space, i.e., $(F^n)^\vee = \Hom_F(F^n, F)$.
+  Then we may also consider the augmented space
+  \[ S_n(F) \times V'_n \]
+  If we identify $F^n$ with column vectors of length $n$ and $(F^n)^\vee$
+  with row vectors of length $n$ then we have a left action of $\GL_n(F)$ by
+  \[ \GL_n(F) \times S_n(F) \times V_n' \to S_n(F) \times V_n'
+    \text { by } h \cdot (s, u_1, u_2) \mapsto (hsh^{-1}, h^{-1}u_1, u_2h). \]
+
   \ii Let \[ K'_S \coloneqq S_n(F) \cap \GL_n(\OO_F). \]
 \end{itemize}
 
@@ -63,12 +76,24 @@ For our purposes, we define two Hecke algebras:
   \HH(G', K') &\coloneqq \HH(\GL_n(E), \GL_n(\OO_E)) \\
   \HH(G, K) &\coloneqq \HH(\U(V_0), \U(V_0) \cap \GL_n(\OO_E))
 \end{align*}
+
+\subsection{Two Hecke modules}
 Now the symmetric space $S_n(F)$ is not a group,
 so it does not make sense to define the same thing here.
 Nevertheless, we introduce
 \[ \HH(S_n(F), K') \coloneqq \mathcal C_{\mathrm{c}}^{\infty}(S_n(F))^{K'} \]
 as the set of smooth compactly supported functions on $S_n(F)$
 which are invariant under the action of $K' \subseteq G'$;
-this is an $\HH(G', K')$-module.
+this is an $\HH(G', K')$-module, where the action of $f \in \HH(G', K')$ is given by
+\[ f \cdot \varphi = {?} \]
+\todo{I think I successfully confused myself about the multiplication structure}
 This does \textbf{not} have a multiplication structure at the moment, \emph{a priori},
 although later we will see how one could be imposed.
+
+Similarly, consider $S_n(F) \times V_n$.
+We set
+\[ \HH(S_n(F) \times V_n', {?}) \coloneqq \mathcal C_{\mathrm{c}}^{\infty}(S_n(F) \times V_n')^{K'} \]
+as the set of smooth compactly supported functions on $S_n(F) \times V_n'$
+which are invariant under the action of ${?} \subseteq G'$.
+\todo{This should be $\GL_n(\OO_F)$? Does it need another name?}
+This is an \dots
