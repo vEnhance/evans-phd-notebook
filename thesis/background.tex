@@ -58,8 +58,12 @@ the following two spaces will be used as inputs to our orbital integrals.
     \GL_{n-1}(F) \times (S_{n-1}(F) \times V'_{n-1})
     &\to S_{n-1}(F) \times V'_{n-1} \\
     h \cdot (\gamma, \uu_1, \uu_2^\top)
-    &\coloneqq (h \gamma h^{-1}, h^{-1}\uu_1, \uu_2^\top h).
+    &\coloneqq (h \gamma h^{-1}, h\uu_1, \uu_2^\top h^{-1}).
   \end{align*}
+  \todo{shouldn't it be $h \uu_1$ to be a left action?
+    Wei wrote $h^{-1} \uu_1$ but I think that's not right.
+    Also it should be $h \gamma h^{-1}$ right?
+    We only flip it with $h'$ later.}
   Note that according to the embedding
   \begin{align*}
     S_{n-1}(F) \times V'_{n-1}

@@ -41,13 +41,15 @@ As an $F$-algebra, we have an isomorphism (see \cite[\S4.1]{ref:AFL})
 \begin{align*}
   \iota_2 \colon H = \GL_2(F)
   &\xrightarrow{\cong} H' \\
-  \begin{bmatrix} a & b \\ c & d \end{bmatrix}
+  \begin{bmatrix} a_{11} & a_{12} \\ a_{21} & a_{22} \end{bmatrix}
   &\mapsto \begin{bmatrix} t_1 & t_2 \\ \bar t_2 & \bar t_1 \end{bmatrix} \\
-  t_1 &= \half\left( a + d + \frac{b}{\sqrt{\eps}} + c\sqrt{\eps} \right) \\
-  t_2 &= \half\left( a - d + \frac{b}{\sqrt{\eps}} - c\sqrt{\eps} \right).
+  t_1 &= \half\left( a_{11} + a_{22} + \frac{a_{12}}{\sqrt{\eps}} + a_{21} \sqrt{\eps} \right) \\
+  t_2 &= \half\left( a_{11} - a_{22} + \frac{a_{12}}{\sqrt{\eps}} - a_{21} \sqrt{\eps} \right).
 \end{align*}
 Under this isomorphism, we have
 \[ h \gamma h^{-1} = \iota_2(h) \gamma \overline{\iota_2(h)^{-1}}. \]
+\todo{maybe i should actually check this to make sure I'm not crazy.}
+
 This allows us to rewrite the orbital integral over $H'$ instead.
 If we write $h' = \overline{\iota_2(h)^{-1}}$,
 then the following integral formula is obtained.
