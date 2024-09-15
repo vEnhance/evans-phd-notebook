@@ -10,20 +10,20 @@ and determining the volume of the supports of the indicator function.
 \subsection{Reparametrization in terms of valuations}
 \subsubsection{Computation of value in indicator function}
 We are integrating over $t_1 \in E$ and $t_2 \in E$.
-Regarding $g \in H'$ as an element of $\GL_3$ as described before, we have
-\[ g = \begin{bmatrix}
+Regarding $h' \in H'$ as an element of $\GL_3(E)$ as described before, we have
+\[ h' = \begin{bmatrix}
   t_1 & t_2 & 0  \\
   \bar t_2 & \bar t_1 & 0 \\
   0 & 0 & 1
   \end{bmatrix}. \]
 We therefore have
-\[ \bar g \inv = \begin{bmatrix}
+\[ \bar{h'}\inv = \begin{bmatrix}
   \frac{t_1}{t_1 \bar t_1 - t_2 \bar t_2} & \frac{-\bar t_2}{t_1 \bar t_1 - t_2 \bar t_2} & 0 \\
   \frac{-t_2}{t_1 \bar t_1 - t_2 \bar t_2} & \frac{\bar t_1}{t_1 \bar t_1 - t_2 \bar t_2} & 0 \\
   0 & 0 & 1 \end{bmatrix}. \]
 Hence
 \begin{align*}
-  \bar g \inv \gamma g
+  \bar{h'} \inv \gamma h'
   &=
   \begin{bmatrix}
   \frac{t_1}{t_1 \bar t_1 - t_2 \bar t_2} & \frac{-\bar t_2}{t_1 \bar t_1 - t_2 \bar t_2} & 0 \\
@@ -61,10 +61,11 @@ Hence
     ct_1 + (1-d\bar d)\bar t_2 & ct_2 + (1-d \bar d) \bar t_1 & d
   \end{bmatrix}
 \end{align*}
-Let us define \[ t = t_2 \bar t_1 \inv \iff t_2 = t \bar t_1. \]
+Let us define
+\[ t = t_2 \bar t_1 \inv \iff t_2 = t \bar t_1. \]
 This lets us rewrite everything in terms of the ratio $t$ and $t_1 \in E$:
 \[
-  \bar g \inv \gamma g
+  \bar{h'} \inv \gamma h'
   =
   \begin{bmatrix}
     \dfrac{t_1^2(a-b\bar t+\bar d \bar t^2)}{t_1 \bar t_1(1-t \bar t)}
@@ -81,27 +82,28 @@ a scale factor on the outside, with ``interesting'' terms only involving $t$.
 To make this further explicit, we write
 \[ t_1 = \varpi^{-m} \epsilon \]
 for $m \in \ZZ$ and $\epsilon \in \OO_E^\times$.
-Then we actually have
-\[
+Then
+\begin{align*}
+  &\phantom=
   \begin{bmatrix} \bar\epsilon \\ & \epsilon \\ & & 1 \end{bmatrix}
-  \bar g \inv \gamma g
-  \begin{bmatrix} \epsilon\inv \\ & \bar\epsilon\inv \\ & & 1 \end{bmatrix}
-  =
+  \bar{h'} \inv \gamma h'
+  \begin{bmatrix} \epsilon\inv \\ & \bar\epsilon\inv \\ & & 1 \end{bmatrix} \\
+  &=
   \begin{bmatrix}
-    \dfrac{a-b\bar t+\bar d \bar t^2}{1-t \bar t}
-    & \dfrac{at-bt\bar t+\bar d \bar t}{1-t \bar t}
-    & \dfrac{-\varpi^m \bar t}{1-t \bar t} \\[2ex]
-    \dfrac{-at+b-\bar d \bar t}{1-t \bar t}
-    & \dfrac{-at^2+bt-\bar d}{1-t \bar t}
-    & \dfrac{-\varpi^m}{1-t \bar t} \\[2ex]
-    \dfrac{c + (1-d\bar d)\bar t}{\varpi^m} & \dfrac{ct + (1-d \bar d)}{\varpi^m} & d
-  \end{bmatrix}
-\]
+  \dfrac{a-b\bar t+\bar d \bar t^2}{1-t \bar t}
+  & \dfrac{at-bt\bar t+\bar d \bar t}{1-t \bar t}
+  & \dfrac{-\varpi^m \bar t}{1-t \bar t} \\[2ex]
+  \dfrac{-at+b-\bar d \bar t}{1-t \bar t}
+  & \dfrac{-at^2+bt-\bar d}{1-t \bar t}
+  & \dfrac{-\varpi^m}{1-t \bar t} \\[2ex]
+  \dfrac{c + (1-d\bar d)\bar t}{\varpi^m} & \dfrac{ct + (1-d \bar d)}{\varpi^m} & d
+  \end{bmatrix}.
+\end{align*}
 For brevity, we will let $\Gamma(\gamma, t, m)$ denote the right-hand matrix.
 The conjugation by
 $\left[ \begin{smallmatrix} \epsilon\inv \\ & \bar\epsilon\inv \\ & & 1 \end{smallmatrix} \right]$
 has no effect on any of the $K'_{S, \le r}$, so that we can simply use
-\[ \mathbf{1}_{K'_{S, \le r}}(\bar g \inv \gamma g) = \mathbf{1}_{K'_{S, \le r}}(\Gamma(\gamma, t, m)) \]
+\[ \mathbf{1}_{K'_{S, \le r}}(\bar{h'}\inv \gamma h') = \mathbf{1}_{K'_{S, \le r}}(\Gamma(\gamma, t, m)) \]
 in the work that follows.
 For brevity, we abbreviate
 \[ \mathbf{1}_{\le r}(\gamma, t, m) \coloneqq \mathbf{1}_{K'_{S, \le r}}(\Gamma(\gamma, t, m)). \]
@@ -109,19 +111,19 @@ For brevity, we abbreviate
 \subsubsection{Reparametrizing the integral in terms of $t$ and $m$}
 From now on, following \cite{ref:AFL} we always fix the notation
 \begin{align*}
-  m &= m(t_1) \coloneqq -v(t_1) \\
-  n &= n(t) \coloneqq v(1-t\bar t).
+m &= m(t_1) \coloneqq -v(t_1) \\
+n &= n(t) \coloneqq v(1-t\bar t).
 \end{align*}
-We need to rewrite the integral, phrased originally via $\odif g$,
+We need to rewrite the integral, phrased originally via $\odif{h'}$,
 in terms of the parameters $t$ (hence $n$), $m$, and $\gamma$.
 We start by observing that
-\[ \det g = t_1 \bar t_1 - t_2 \bar t_2 = t_1 \bar t_1 (1 - t\bar t) \]
+\[ \det h' = t_1 \bar t_1 - t_2 \bar t_2 = t_1 \bar t_1 (1 - t\bar t) \]
 which means that
-\[ v(\det g) = -2m + n \]
+\[ v(\det h') = -2m + n \]
 ergo
 \begin{align*}
-  \left\lvert \det g \right\rvert_F &= q^{-v(\det g)} = q^{2m-n} \\
-  \eta(g) &= (-1)^{v(\det g)} = (-1)^n.
+\left\lvert \det h' \right\rvert_F &= q^{-v(\det h')} = q^{2m-n} \\
+\eta(h') &= (-1)^{v(\det h')} = (-1)^n.
 \end{align*}
 Meanwhile, from $t_2 = t \bar t_1$ we derive
 \[ \odif t_2 = \left\lvert t_1 \right\rvert_E \odif t = q^{2m} \odif t. \]
@@ -136,7 +138,7 @@ Bringing this all into the orbital integral gives
 \end{align*}
 
 \subsection{Description of the support of $\mathbf{1}_{\le r}$ when $n \le 0$}
-\begin{claim}
+\begin{proposition}
   Whenever $n = 0$ (this requires $v(t) \geq 0$),
   \[
     \mathbf{1}_{\le r}(\gamma, t, m) =
@@ -145,7 +147,7 @@ Bringing this all into the orbital integral gives
       0 & \text{otherwise.}
     \end{cases}
   \]
-\end{claim}
+\end{proposition}
 \begin{proof}
   We have to consider the nine entries of $\Gamma(\gamma, t, m)$ in tandem.
 
@@ -155,8 +157,10 @@ Bringing this all into the orbital integral gives
   In the right column, since $v(t) \geq 0$ and $n = 0$, the condition is simply $m \ge -r$.
 
   In the bottom row, we need
-  $v\left( c+(1-d\bar d) \bar t \right)-m \geq -r$
-  and $v\left( ct +(1-d\bar d) \right)-m \geq -r$.
+  \begin{align*}
+    v\left( c+(1-d\bar d) \bar t \right)-m &\geq -r,
+    v\left( ct +(1-d\bar d) \right)-m &\geq -r.
+  \end{align*}
   If $v(t) > 0$ this is equivalent to $m-r \leq \delta$.
   In the case where $v(t) = 0$ we instead use the observation that
   \begin{equation}
@@ -168,7 +172,7 @@ Bringing this all into the orbital integral gives
   have valuation $\delta$. So the claim follows now.
 \end{proof}
 
-\begin{claim}
+\begin{proposition}
   Suppose $n = -2k < 0$, equivalently, $v(t) = -k < 0$, for some $k$.
   \[
     \mathbf{1}_{\le r}(\gamma, t, m) =
@@ -177,7 +181,7 @@ Bringing this all into the orbital integral gives
       0 & \text{otherwise.}
     \end{cases}
   \]
-\end{claim}
+\end{proposition}
 \begin{proof}
   The proof is similar to the previous claim, but simpler.
 
@@ -331,7 +335,7 @@ to rewrite $v(-at^2+bt-\bar d) \geq n-r$
 as $v\left( (2at-b)^2 - (b^2-4a\bar d) \right) \geq n-r$.
 
 In summary:
-\begin{claim}
+\begin{proposition}
   Assume $t$ is such that $n = v(1-t \bar t) > 0$.
   Then $\mathbf{1}_{\le r}(\gamma, t, m) = 1$ if and only if
   \[ n - r \leq m \leq n + \delta + r \]
@@ -340,7 +344,7 @@ In summary:
     v\left( (2at-b)^2 - (b^2-4a\bar d) \right) &\geq n-r \\
     v(t+u) &\ge m-\delta-r.
   \end{align*}
-\end{claim}
+\end{proposition}
 
 \subsubsection{Rewriting the quadratic constraint on the valuation of $t$}
 We now analyze the inequality
@@ -514,10 +518,10 @@ we see that the two cases have the following additional requirements:
 
 We will now show that some of these inequalities are redundant and can be ignored.
 
-\begin{claim}
+\begin{proposition}
   \eqref{eq:odd_ineq2} and \eqref{eq:odd_ineq4} are redundant
   i.e.\ they are automatically true for $0 < n \le \ell + r$.
-\end{claim}
+\end{proposition}
 \begin{proof}
   First, assume that $\ell$ is odd.
   Then \eqref{eq:dos} together with $v(b) = v(d) = 0$ gives
@@ -534,9 +538,9 @@ We will now show that some of these inequalities are redundant and can be ignore
   \[ v(au - \bar d \bar u) \ge \frac{\ell}{2} \ge \frac{n-r}{2}. \qedhere \]
 \end{proof}
 
-\begin{claim}
+\begin{proposition}
   \eqref{eq:odd_ineq1} is redundant.
-\end{claim}
+\end{proposition}
 \begin{proof}
   The equation
   \[ (4-b \bar b) = -4au(1-d\bar d) - \bar b(b^2-4a\bar d) \]
