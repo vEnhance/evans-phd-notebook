@@ -31,7 +31,7 @@ and $E/F$ is an unramified quadratic field extension.
   as the natural hyperspecial maximal compact subgroup.
 \end{itemize}
 
-\subsection{The spaces $S_n(F)$ and $S_{n-1}(F) \times V'_{n-1}$}
+\subsection{The spaces $S_n(F)$ and $S_n(F) \times V'_n$}
 For the analytic side of the two AFL conjectures we investigate,
 the following two spaces will be used as inputs to our orbital integrals.
 \begin{definition}
@@ -48,42 +48,43 @@ the following two spaces will be used as inputs to our orbital integrals.
 \begin{definition}
   [{\cite[(4.11)]{ref:highdim2024}}]
   We set
-  \[ V'_{n-1} \coloneqq F^{n-1} \times (F^{n-1})^\vee \]
-  where $-^\vee$ denotes the $F$-dual space, i.e., $(F^{n-1})^\vee = \Hom_F(F^{n-1}, F)$.
+  \[ V'_n(F) \coloneqq F^n \times (F^n)^\vee \]
+  where $-^\vee$ denotes the $F$-dual space, i.e., $(F^n)^\vee = \Hom_F(F^n, F)$.
   Then we may also consider the augmented space
-  \[ S_{n-1}(F) \times V'_{n-1} \]
-  If we identify $F^{n-1}$ with column vectors of length $n-1$ and $(F^{n-1})^\vee$
-  with row vectors of length ${n-1}$ then we have a left action of $\GL_{n-1}(F)$ by
+  \[ S_n(F) \times V'_n(F) \]
+  If we identify $F^n$ with column vectors of length $n-1$ and $(F^n)^\vee$
+  with row vectors of length $n$ then we have a left action of $\GL_n(F)$ by
   \begin{align*}
-    \GL_{n-1}(F) \times (S_{n-1}(F) \times V'_{n-1})
-    &\to S_{n-1}(F) \times V'_{n-1} \\
-    h \cdot (\gamma, \uu_1, \uu_2^\top)
-    &\coloneqq (h \gamma h^{-1}, h\uu_1, \uu_2^\top h^{-1}).
+    \GL_n(F) \times (S_n(F) \times V'_n)(F)
+    &\to S_n(F) \times V'_n(F) \\
+    h \cdot (\gamma, \uu, \vv^\top)
+    &\coloneqq (h \gamma h^{-1}, h\uu, \vv^\top h^{-1}).
   \end{align*}
-  \todo{shouldn't it be $h \uu_1$ to be a left action?
-    Wei wrote $h^{-1} \uu_1$ but I think that's not right.
+  \todo{shouldn't it be $h \uu$ to be a left action?
+    Wei wrote $h^{-1} \uu$ but I think that's not right.
     Also it should be $h \gamma h^{-1}$ right?
     We only flip it with $h'$ later.}
   Note that according to the embedding
   \begin{align*}
-    S_{n-1}(F) \times V'_{n-1}
-    &\hookrightarrow \GL_n(E) \\
-    (\gamma, \uu_1, \uu_2^\top)
-    &\mapsto \begin{bmatrix} \gamma & \uu_1 \\ \uu_2^\top & 0 \end{bmatrix}
+    S_n(F) \times V'_n(F)
+    &\hookrightarrow \GL_{n+1}(E) \\
+    (\gamma, \uu, \vv^\top)
+    &\mapsto \begin{bmatrix} \gamma & \uu \\ \vv^\top & 0 \end{bmatrix}
   \end{align*}
-  we can consider elements of $S_{n-1}(F) \times V'_{n-1}$ as elements of $\GL_n(E)$ too.
-  In that case the action of $h \in \GL_{n-1}(F)$
+  we can consider elements of $S_n(F) \times V'_n(F)$ as elements of $\GL_{n+1}(E)$ too.
+  In that case the action of $h \in \GL_{n+1}(F)$
   coincides with $h \cdot g \mapsto hg\bar{h}^{-1}$ as well.
 \end{definition}
 
 \begin{definition}
   [{\cite[Section 6]{ref:multoneconj}}]
-  Let \[ \gamma = \begin{bmatrix} A & \uu_1 \\ \uu_2^\top & d \end{bmatrix} \in \GL_n(E) \]
+  Let \[ \gamma = \begin{bmatrix} A & \uu \\ \vv^\top & d \end{bmatrix} \in \GL_n(E) \]
   where $A$ is an $(n-1) \times (n-1)$ matrix.
   Then we say that $\gamma \in S_n(F)$ is \emph{regular} if
-  if \[ \left< \uu_1, A\uu_1, \dots, A^{n-1}\uu_1 \right> \]
-  and \[ \left< \uu_2^\top, \uu_2^\top A, \dots, \uu_2^\top A^{n-1} \right> \]
+  if \[ \left< \uu, A\uu, \dots, A^{n-1}\uu \right> \]
+  and \[ \left< \vv^\top, \vv^\top A, \dots, \vv^\top A^{n-1} \right> \]
   are each a basis of $E^n$.
+  \label{def:regular}
 \end{definition}
 
 \begin{definition}

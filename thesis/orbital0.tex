@@ -19,10 +19,60 @@ Then our orbital integral is defined as follows.
     \left\lvert \det(h) \right\rvert_F^{-s} \odif h. \]
 \end{definition}
 
-\subsection{Reparametrizing the orbital integral as a double integral over $E$
-  via the group $H' \cong \GL_2(F)$}
+\subsection{Basis for the indicator functions in $\HH(S_3(F), K')$}
 From now on assume $n = 3$.
-Then our orbital integral at present a quadruple integral over $F$,
+We have the symmetric space
+\[ S_3(F) \coloneqq \left\{ g \in \GL_3(E) \mid g \bar{g} = \id_3 \right\}. \]
+which has a left action under $\GL_3(E)$ by $g \cdot s \mapsto gs\bar{g}\inv$.
+
+Then $S_3(F)$ admits the following decomposition, which we will use:
+\begin{lemma}
+  [Cartan decomposition]
+  For each integer $r \ge 0$ let
+  \[ K'_{S,r} \coloneqq \GL_3(\OO_E) \cdot \begin{bmatrix} 0 & 0 & \varpi^r \\ 0 & 1 & 0 \\ \varpi^{-r} & 0 & 0 \end{bmatrix} \]
+  denote the orbit of
+  $\begin{bmatrix} 0 & 0 & \varpi^r \\ 0 & 1 & 0 \\ \varpi^{-r} & 0 & 0 \end{bmatrix}$
+  under the left action of $\GL_3(\OO_E)$.
+  Then we have a decomposition
+  \[ S_3(F) = \coprod_{r \geq 0} K'_{S,r}. \]
+\end{lemma}
+The $r=0$ case will be given a special shorthand,
+and can be expressed in a few equivalent ways:
+\begin{align*}
+  K'_S
+  &\coloneqq K'_{S,0} \\
+  &= \GL_3(\OO_E) \cdot \begin{bmatrix} & & 1 \\ & 1 \\ 1 \end{bmatrix} \\
+  &= \GL_3(\OO_E) \cdot \id_3 = S_3(F) \cap \GL_3(\OO_E).
+\end{align*}
+One can equivalently define $K'_{S,r}$ to be the part of $S_3(F)$
+for which the most negative valuation among the nine entries is $-r$.
+
+For $r \geq 0$, define
+\[ K'_{S, \le r} \coloneqq S_3(F) \cap \varpi^{-r} \GL_3(\OO_E). \]
+We can re-parametrize the problem according to the following.
+\begin{proposition}
+  \[ K'_{S, \le r} = K'_{S,0} \sqcup K'_{S,1} \sqcup \dots \sqcup K'_{S,r}. \]
+\end{proposition}
+Then an integral over each $K'_{S, \le r}$ lets us extract the integrals over $K'_{S,r}$.
+\begin{proposition}
+  For $r \ge 0$, the indicator functions $\mathbf{1}_{K'_{S, \le r}}$
+  form a basis of $\HH(S_3(F), K')$.
+\end{proposition}
+\todo{this is like an $\HH(G', K')$-basis I think? double check this}
+
+Then, our goal is to compute for
+\begin{equation}
+  \pdv{}{s}\Orb(\gamma, \mathbf{1}_{K'_{S, \le r}}, s)
+  \label{eq:orbital_goal}
+\end{equation}
+at $s=0$ for any $r > 0$ as well.
+Note that the $r = 0$ case is already done in \cite{ref:AFL}.
+\todo{comment some basis thing}
+
+\subsection{Rewriting the orbital integral as a double integral over $E$
+  via the group $H' \cong \GL_2(F)$}
+Again, assume $n = 3$.
+Our orbital integral is at present a quadruple integral over $F$,
 owing to $H = \GL_{2}(F)$ being a four-dimensional $F$-vector space.
 
 It will be more economical to work with the orbital integral as a double integral
@@ -69,13 +119,13 @@ then the following integral formula is obtained.
   \[ \kappa \coloneqq \frac{1}{(1-q\inv)(1-q^{-2})}. \]
 \end{proposition}
 
-\subsection{Invariants for the orbital integral}
+\subsection{Parametrization of $\gamma$}
 Evidently the orbital integral $\Orb(\gamma, \phi, s)$ in \Cref{prop:orbital_over_H_prime}
 only depends on the $H'$-orbit of $\gamma$.
 So it makes sense to pick a canonical representative for the $H'$-orbit to compute
 the orbital integral in terms of.
 
-We assume henceforth that $\gamma$ is regular.
+We assume henceforth that $\gamma$ is regular (cf.\ \Cref{def:regular}).
 Then by \cite[Proposition 4.1]{ref:AFL},
 we can assume $\gamma$ is a representative specifically of the form
 \[ \gamma(a,b,d) =
@@ -86,64 +136,21 @@ we can assume $\gamma$ is a representative specifically of the form
   \end{bmatrix}
   \in S_3(F); \quad \text{where $c = -a \bar b + b d$} \]
 over all $a \in E^1$, $b \in E$, $d \in E$ for which $(1-d\bar d)^2 - c \bar c \neq 0$,
-cover all the \emph{regular} orbits, which are the ones we care about.
+cover all the \emph{regular} orbits.
 
-\subsection{Basis for the indicator functions in $\HH(S_3(F), K')$}
-We have the symmetric space
-\[ S_3(F) \coloneqq \left\{ g \in \GL_3(E) \mid g \bar{g} = \id_3 \right\}. \]
-which has a left action under $\GL_3(E)$ by $g \cdot s \mapsto gs\bar{g}\inv$.
-
-Then $S_3(F)$ admits the following decomposition:
-\begin{lemma}
-  [Cartan decomposition]
-  For each integer $r \ge 0$ let
-  \[ K'_{S,r} \coloneqq \GL_3(\OO_E) \cdot \begin{bmatrix} 0 & 0 & \varpi^r \\ 0 & 1 & 0 \\ \varpi^{-r} & 0 & 0 \end{bmatrix} \]
-  denote the orbit of
-  $\begin{bmatrix} 0 & 0 & \varpi^r \\ 0 & 1 & 0 \\ \varpi^{-r} & 0 & 0 \end{bmatrix}$
-  under the left action of $\GL_3(\OO_E)$.
-  Then we have a decomposition
-  \[ S_3(F) = \coprod_{r \geq 0} K'_{S,r}. \]
-\end{lemma}
-The $r=0$ case will be given a special shorthand,
-and can be expressed in a few equivalent ways:
-\begin{align*}
-  K'_S
-  &\coloneqq K'_{S,0} \\
-  &= \GL_3(\OO_E) \cdot \begin{bmatrix} & & 1 \\ & 1 \\ 1 \end{bmatrix} \\
-  &= \GL_3(\OO_E) \cdot \id_3 = S_3(F) \cap \GL_3(\OO_E).
-\end{align*}
-One can equivalently define $K'_{S,r}$ to be the part of $S_3(F)$
-for which the most negative valuation among the nine entries is $-r$.
-
-For $r \geq 0$, define
-\[ K'_{S, \le r} \coloneqq S_3(F) \cap \varpi^{-r} \GL_3(\OO_E). \]
-We can re-parametrize the problem according to the following.
-\begin{proposition}
-  \[ K'_{S, \le r} = K'_{S,0} \sqcup K'_{S,1} \sqcup \dots \sqcup K'_{S,r}. \]
-\end{proposition}
-Then an integral over each $K'_{S, \le r}$ lets us extract the integrals over $K'_{S,r}$.
-\begin{proposition}
-  For $r \ge 0$, the indicator functions $\mathbf{1}_{K'_{S, \le r}}$
-  form a basis of $\HH(S_3(F), K')$.
-\end{proposition}
-\todo{this is like an $\HH(G', K')$-basis I think? double check this}
-
-Then, our goal is to compute for
-\begin{equation}
-  \pdv{}{s}\Orb(\gamma, \mathbf{1}_{K'_{S, \le r}}, s)
-  \label{eq:orbital_goal}
-\end{equation}
-at $s=0$ for any $r > 0$ as well.
-Note that the $r = 0$ case is already done in \cite{ref:AFL}.
-\todo{comment some basis thing}
-
-\subsection{Simplifying assumptions}
-For the purposes here, we will only care about the following case:
+\subsection{Simplification due to the matching of non-quasi-split unitary group}
+In this calculation, we restrict attention to the case where our regular $\gamma$
+matches an element in the non-quasi-split unitary group.
+\todo{I need to ask Wei exactly what's up here}
+This is controlled by the parity of the invariant
+\[ v\left( (1-d\bar d)^2 - c \bar c\right) \]
+being odd.
+Hence, we only have to consider this case:
 \begin{assume}
-  \[ v\left( (1-d\bar d)^2 - c \bar c\right) \equiv 1 \pmod 2 \]
+  We will assume that
+  \[ v\left( (1-d\bar d)^2 - c \bar c\right) \equiv 1 \pmod 2. \]
   \label{assume:u_odd}
 \end{assume}
-\todo{I need to ask Wei exactly why we're only doing this case}
 
 We will thus also assume:
 \begin{assume}
@@ -152,15 +159,14 @@ We will thus also assume:
 This is fine because if this $v(d) < -r$ then the integral will always vanish
 (because the bottom-right entry of $\Gamma(\gamma, t, m)$ is no-good).
 
-We will really mostly be interested in the case where $v(b) = v(d) = 0$.
-In fact, few other cases even occur at all
-given \Cref{assume:u_odd};
-we will see momentarily that either
-$v(b) = v(d) \in \{-1, -2, \dots, -r\}$,
+We will mostly be interested in the case where $v(b) = v(d) = 0$.
+In fact, few other cases even occur at all given \Cref{assume:u_odd};
+we will see momentarily that either $v(b) = v(d) \in \{-1, -2, \dots, -r\}$,
 or one of $\{v(b), v(d)\}$ is zero and the other is nonnegative.
 
-\subsection{Parameters to state the answer in terms of}
-As we described earlier, our goal is to evaluate \eqref{eq:orbital_goal} in terms of
+\subsection{Quantities to state the answer in terms of}
+As we described earlier, our goal is to evaluate \eqref{eq:orbital_goal}
+in terms of the parameters
 \[ a \in E^1, \qquad b, d \in E, \qquad r \ge 0. \]
 To simplify the notation in what follows,
 it will be convenient to define several quantities that reappear frequently.
