@@ -1,1 +1,67 @@
 \section{Setup of the orbital integral for $S_2(F) \times V_2'(F)$}
+\subsection{Iwasawa decomposition}
+The overall method is to take the Iwasawa decomposition in $KAN$ form:
+every element in $h \in \GL_2(F)$ may be parametrized as
+\[ h = k \begin{bmatrix} x_1 & 0 \\ 0 & x_2 \end{bmatrix}
+  \begin{bmatrix} 1 & y \\ 0 & 1 \end{bmatrix} \]
+where $k \in K' = \GL_2(\OO_F)$, $x_1, x_2 \in \OO_F^\times$ and $y \in \OO_F$.
+Because the orbits are invariant under conjugation by $K'$,
+the parameter $k$ can be discarded.
+The Haar measure integrated over is then given just by
+\[ \odif[\times] x_1 \odif[\times] x_2 \odif y \]
+i.e.\ we take multiplicative Haar measure on $F^\times$
+(normalized so that $\OO_F^\times$ has volume $1$)
+and additive Haar measure on $F$
+(so $\OO_F$ has volume $1$).
+
+\subsection{Action of upper triangular matrices on $(\gamma, \uu, \vv^\top)$.}
+We now compute the action of an arbitrary
+\[ h = \begin{bmatrix} x_1 & 0 \\ 0 & x_2 \end{bmatrix}
+  \begin{bmatrix} 1 & y \\ 0 & 1 \end{bmatrix} \]
+on $(\gamma, \uu, \vv^\top)$.
+The main term is given by
+\begin{align*}
+  h \gamma h^{-1}
+  &=
+  \begin{bmatrix} x_1 & 0 \\ 0 & x_2 \end{bmatrix}
+  \begin{bmatrix} 1 & y \\ 0 & 1 \end{bmatrix}
+  \begin{bmatrix} a & b \\ c & d \end{bmatrix}
+  \begin{bmatrix} 1 & -y \\ 0 & 1 \end{bmatrix}
+  \begin{bmatrix} x_1^{-1} & 0 \\ 0 & x_2^{-1} \end{bmatrix} \\
+  &=
+  \begin{bmatrix} x_1 & 0 \\ 0 & x_2 \end{bmatrix}
+  \begin{bmatrix} cy + a & -cy^2+(d-a)y+b \\ c & -cy+d \end{bmatrix}
+  \begin{bmatrix} x_1^{-1} & 0 \\ 0 & x_2^{-1} \end{bmatrix} \\
+  &=
+  \begin{bmatrix} cy + a & \frac{x_1}{x_2} \cdot \left( -cy^2+(d-a)y+b \right) \\
+    \frac{x_2}{x_1} \cdot c & -cy+d \end{bmatrix}
+\end{align*}
+Meanwhile, we have
+\begin{align*}
+  h \uu &=
+    \begin{bmatrix} x_1 & 0 \\ 0 & x_2 \end{bmatrix}
+    \begin{bmatrix} 1 & y \\ 0 & 1 \end{bmatrix}
+    \begin{bmatrix} 0 \\ 1 \end{bmatrix}
+    = \begin{bmatrix} x_1 y \\ x_2 \end{bmatrix} \\
+  \vv^\top h^{-1} &=
+    \begin{bmatrix} 0 & \theta \end{bmatrix}
+    \begin{bmatrix} 1 & -y \\ 0 & 1 \end{bmatrix}
+    \begin{bmatrix} x_1^{-1} & 0 \\ 0 & x_2^{-1} \end{bmatrix}
+    = \begin{bmatrix} 0 & \frac{\theta}{x_2} \end{bmatrix}.
+\end{align*}
+
+\subsection{Description of support}
+From now on we fix the notation
+\begin{align*}
+  n_1 &\coloneqq v(x_1) \\
+  n_2 &\coloneqq v(x_2).
+\end{align*}
+
+For a given $r \ge 0$, we find that $h$ contributes to the integral exactly
+if $h\uu$ and $\vv^\top h\inv$ have $\OO_F$-entries,
+and all the entries of $h \gamma h\inv$ are in $\varpi^{-r}\OO_F$.
+The former condition is just saying that
+\begin{align*}
+  v(y) &\ge -n_1 \\
+  0 &\le n_2 \le v(\theta).
+\end{align*}

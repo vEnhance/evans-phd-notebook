@@ -2,12 +2,13 @@
   $\Orb((\gamma, \uu, \vv^\top), \phi \otimes \mathbf{1}_{\OO_F^2 \times (\OO_F^2)^\vee}, s)$
   for $(\gamma, \uu, \vv^\top) \in S_2(F) \times V'_2(F)$ and $\phi \in \HH(S_2(F), K')$}
 
-Throughout this section, $H = \GL_n(F)$ (rather than $H = \GL_{n-1}(F)$.)
+Throughout this section, $H = \GL_n(F)$ (rather than $H = \GL_{n-1}(F)$)
+and $K' = \GL_n(\OO_F)$.
 For the concrete calculation, we are mostly interested in the case $n = 2$.
 
 \subsection{Definition}
 We will not need to work in the generality of a function
-on all of $S_n(F) \times V_n'(F)$, although it seems like it could be done.
+on all of $S_n(F) \times V_n'(F)$, although it could be done.
 Instead, it will be enough to define the orbital integral
 in the case where our function is of the form
 \[ \phi \otimes \mathbf{1}_{\OO_F^n \times (\OO_F^n)^\vee} \]
@@ -39,11 +40,50 @@ we analogously define the orbital integral as follows.
   \end{align*}
 \end{definition}
 
-\subsection{Parametrization for $n=2$}
+\subsection{Basis for the indicator functions in $\HH(S_2(F), K')$}
+From now on assume $n = 2$.
+This section is almost an exact analog of \Cref{sec:orbital0_hecke_basis},
+so we will be slightly terser.
+Again set
+\[ S_2(F) \coloneqq \left\{ g \in \GL_2(E) \mid g \bar{g} = \id_2 \right\}. \]
+We again have a Cartan decomposition indexed by a single integer $r \ge 0$:
+\begin{lemma}
+  [Cartan decomposition of $S_2(F)$]
+  For each integer $r \ge 0$ let
+  \[ K'_{S,r} \coloneqq \GL_3(\OO_E) \cdot
+    \begin{bmatrix} 0 & \varpi^r \\ \varpi^{-r} & 0 \end{bmatrix} \]
+  denote the orbit of
+  $\begin{bmatrix} 0 & \varpi^r \\ \varpi^{-r} & 0 \end{bmatrix}$
+  under the left action of $\GL_2(\OO_E)$.
+  Then we have a decomposition
+  \[ S_2(F) = \coprod_{r \geq 0} K'_{S,r}. \]
+\end{lemma}
+Like last time, $K'_{S,r}$ is the part of $S_2(F)$
+for which the most negative valuation among the nine entries is $-r$.
+And as before we abbreviate the $r = 0$ term specifically:
+\begin{align*}
+  K'_S
+  &\coloneqq K'_{S,0} \\
+  &= \GL_2(\OO_E) \cdot \begin{bmatrix} & 1 \\ 1 \end{bmatrix} \\
+  &= \GL_2(\OO_E) \cdot \id_2 = S_2(F) \cap \GL_2(\OO_E).
+\end{align*}
+
+Repeating the definition
+\[ K'_{S, \le r} \coloneqq S_2(F) \cap \varpi^{-r} \GL_2(\OO_E)
+  = K'_{S,0} \sqcup K'_{S,1} \sqcup \dots \sqcup K'_{S,r} \]
+we get a basis of indicator functions for the Hecke algebra $\HH(S_2(F), K')$:
+\begin{proposition}
+  For $r \ge 0$, the indicator functions $\mathbf{1}_{K'_{S, \le r}}$
+  form a basis of $\HH(S_2(F), K')$.
+\end{proposition}
+
+\subsection{Parametrization of $\gamma$}
 From now on assume $n = 2$,
 and that $(\gamma, \uu, \vv^\top)$ is regular when viewed
-as an element $\begin{bmatrix} \gamma & \uu \\ \vv^\top 0 \end{bmatrix} \in \GL_3(F)$
+as an element $\begin{bmatrix} \gamma & \uu \\ \vv^\top & 0 \end{bmatrix} \in \GL_3(F)$
 (cf.\ \Cref{def:regular}).
+
+\subsubsection{Identifying an orbit representative}
 The orbital integral depends only on the $H$-orbit of $(\gamma, \uu, \vv^\top)$.
 Consequently, we may assume without loss of generality
 (via multiplication by a suitable change-of-basis $h \in H = \GL_2(F)$) that
@@ -72,11 +112,15 @@ $\begin{bmatrix} 0 & \theta \end{bmatrix}$
 is linearly independent from $\begin{bmatrix} c & d \end{bmatrix}$.
 This is just saying that $b$, $c$, $\theta$ are all nonzero.
 We also know that $\gamma \in S_2(F)$, which gives us relations on $a$, $b$, $c$, $d$,
-cf.~\cite[equation (7.3.2)]{ref:AFLspherical}; we have
+(the same as \cite[equation (7.3.2)]{ref:AFLspherical}); we have
 \[
   \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix}
   = \begin{bmatrix} a & b \\ c & d \end{bmatrix} \begin{bmatrix} \bar a & \bar b \\ \bar c & \bar d \end{bmatrix}
-  \implies \bar b c = 1 - a \bar a \;\text{ and }\; d = -\bar a b / \bar b.
+  \implies
+  \begin{aligned}
+    \bar b c = b \bar c &= 1 - a \bar a \\
+    \text{and } d &= - \bar a c / \bar c = -\bar a b / \bar b.
+  \end{aligned}
 \]
 
 \begin{remark}
@@ -84,8 +128,7 @@ cf.~\cite[equation (7.3.2)]{ref:AFLspherical}; we have
   is invariant under the action of $h$.
 \end{remark}
 
-
-\subsection{Simplification due to the matching of non-quasi-split unitary group}
+\subsubsection{Simplification due to the matching of non-quasi-split unitary group}
 Like before, we focus on the case where regular $(\gamma, \uu, \vv^\top)$
 matches an element in the non-quasi-split unitary group.
 \todo{I need to ask Wei exactly what's up here}
@@ -102,6 +145,11 @@ Thus, we restrict attention to the following situation:
 \begin{assume}
   We will assume that
   \[ v(1-a \bar a) \equiv 1 \pmod 2. \]
-  In particular, $v(a) = 0$.
   \label{assume:a_odd}
 \end{assume}
+In particular, $a$ must be a unit.
+And since $d = -\bar a c / \bar c$, it follows $d$ is a unit.
+In other words, \Cref{assume:a_odd} gives the direct corollary
+\[ v(a) = v(d) = 0. \]
+
+\subsection{Quantities to state the answer in terms of}

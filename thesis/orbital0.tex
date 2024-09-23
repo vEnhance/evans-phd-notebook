@@ -20,6 +20,7 @@ Then our orbital integral is defined as follows.
 \end{definition}
 
 \subsection{Basis for the indicator functions in $\HH(S_3(F), K')$}
+\label{sec:orbital0_hecke_basis}
 From now on assume $n = 3$.
 We have the symmetric space
 \[ S_3(F) \coloneqq \left\{ g \in \GL_3(E) \mid g \bar{g} = \id_3 \right\}. \]
@@ -27,7 +28,7 @@ which has a left action under $\GL_3(E)$ by $g \cdot s \mapsto gs\bar{g}\inv$.
 
 Then $S_3(F)$ admits the following decomposition, which we will use:
 \begin{lemma}
-  [Cartan decomposition]
+  [Cartan decomposition of $S_3(F)$]
   For each integer $r \ge 0$ let
   \[ K'_{S,r} \coloneqq \GL_3(\OO_E) \cdot \begin{bmatrix} 0 & 0 & \varpi^r \\ 0 & 1 & 0 \\ \varpi^{-r} & 0 & 0 \end{bmatrix} \]
   denote the orbit of
@@ -69,9 +70,14 @@ at $s=0$ for any $r > 0$ as well.
 Note that the $r = 0$ case is already done in \cite{ref:AFL}.
 \todo{comment some basis thing}
 
-\subsection{Rewriting the orbital integral as a double integral over $E$
-  via the group $H' \cong \GL_2(F)$}
+\subsection{Parametrization of $\gamma$}
 Again, assume $n = 3$.
+Further assume $\gamma \in S_3(F)$ is regular.
+We identify some parameters for the orbit of $\gamma$
+that we can use for our explicit calculations.
+
+\subsubsection{Rewriting the orbital integral as a double integral over $E$
+  via the group $H' \cong \GL_2(F)$}
 Our orbital integral is at present a quadruple integral over $F$,
 owing to $H = \GL_{2}(F)$ being a four-dimensional $F$-vector space.
 
@@ -119,7 +125,7 @@ then the following integral formula is obtained.
   \[ \kappa \coloneqq \frac{1}{(1-q\inv)(1-q^{-2})}. \]
 \end{proposition}
 
-\subsection{Parametrization of $\gamma$}
+\subsubsection{Identifying a representative in the $H'$-orbit}
 Evidently the orbital integral $\Orb(\gamma, \phi, s)$ in \Cref{prop:orbital_over_H_prime}
 only depends on the $H'$-orbit of $\gamma$.
 So it makes sense to pick a canonical representative for the $H'$-orbit to compute
@@ -138,7 +144,7 @@ we can assume $\gamma$ is a representative specifically of the form
 over all $a \in E^1$, $b \in E$, $d \in E$ for which $(1-d\bar d)^2 - c \bar c \neq 0$,
 cover all the \emph{regular} orbits.
 
-\subsection{Simplification due to the matching of non-quasi-split unitary group}
+\subsubsection{Simplification due to the matching of non-quasi-split unitary group}
 In this calculation, we restrict attention to the case where our regular $\gamma$
 matches an element in the non-quasi-split unitary group.
 \todo{I need to ask Wei exactly what's up here}
@@ -152,12 +158,13 @@ Hence, we only have to consider this case:
   \label{assume:u_odd}
 \end{assume}
 
-We will thus also assume:
+We will also see quite early on in our calculation
+that the orbital integral vanishes if $v(d) < -r$.
+Hence, we will always assume:
 \begin{assume}
   $v(d) \geq -r$.
+  \label{assume:vd_ge_minus_r}
 \end{assume}
-This is fine because if this $v(d) < -r$ then the integral will always vanish
-(because the bottom-right entry of $\Gamma(\gamma, t, m)$ is no-good).
 
 We will mostly be interested in the case where $v(b) = v(d) = 0$.
 In fact, few other cases even occur at all given \Cref{assume:u_odd};
