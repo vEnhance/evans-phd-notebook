@@ -1,0 +1,107 @@
+\section{Synopsis of the orbital integral
+  $\Orb((\gamma, \uu, \vv^\top), \phi \otimes \mathbf{1}_{\OO_F^2 \times (\OO_F^2)^\vee}, s)$
+  for $(\gamma, \uu, \vv^\top) \in S_2(F) \times V'_2(F)$ and $\phi \in \HH(S_2(F), K')$}
+
+Throughout this section, $H = \GL_n(F)$ (rather than $H = \GL_{n-1}(F)$.)
+For the concrete calculation, we are mostly interested in the case $n = 2$.
+
+\subsection{Definition}
+We will not need to work in the generality of a function
+on all of $S_n(F) \times V_n'(F)$, although it seems like it could be done.
+Instead, it will be enough to define the orbital integral
+in the case where our function is of the form
+\[ \phi \otimes \mathbf{1}_{\OO_F^n \times (\OO_F^n)^\vee} \]
+where $\phi \in \HH(S_n(F), K')$ is the left component, and
+the right component is the indicator function defined in the obvious way:
+\begin{align*}
+  \mathbf{1}_{\OO_F^n \times (\OO_F^n)^\vee} \colon V'_n(F) &\to \{0,1\} \\
+  (\uu, \vv^\top) &\mapsto
+  \begin{cases}
+    1 & \uu \text{ and } \vv^\top \text{ have } \OO_F \text{-entries} \\
+    0 & \text{otherwise}.
+  \end{cases}
+\end{align*}
+
+Then, unsurprisingly from the definition of our action as
+\[ h \cdot (\gamma, \uu, \vv^\top) = (h\gamma h\inv, h\uu, \vv^\top h\inv) \]
+we analogously define the orbital integral as follows.
+\begin{definition}
+  For brevity let $\eta(h) \coloneqq \eta(\det h)$ for $h \in H$.
+  For $(\gamma, \uu, \vv^\top) \in S_n(F) \times V'_n(F)$,
+  $\phi \in \HH(S_n(F), K')$, and $s \in \CC$,
+  we define the orbital integral by
+  \begin{align*}
+    & \Orb((\gamma, \uu, \vv^\top), \phi \otimes \mathbf{1}_{\OO_F^n \times (\OO_F^n)^\vee}, s) \\
+    &\coloneqq
+    \int_{h \in H} \phi(h\inv \gamma h)
+    \mathbf{1}_{\OO_F^n \times (\OO_F^n)^\vee}(h \uu, \vv^\top h^{-1})
+    \eta(h) \left\lvert \det(h) \right\rvert_F^{-s} \odif h
+  \end{align*}
+\end{definition}
+
+\subsection{Parametrization for $n=2$}
+From now on assume $n = 2$,
+and that $(\gamma, \uu, \vv^\top)$ is regular when viewed
+as an element $\begin{bmatrix} \gamma & \uu \\ \vv^\top 0 \end{bmatrix} \in \GL_3(F)$
+(cf.\ \Cref{def:regular}).
+The orbital integral depends only on the $H$-orbit of $(\gamma, \uu, \vv^\top)$.
+Consequently, we may assume without loss of generality
+(via multiplication by a suitable change-of-basis $h \in H = \GL_2(F)$) that
+\[ \uu = \begin{bmatrix} 0 \\ 1 \end{bmatrix}, \qquad
+  \vv^\top = \begin{bmatrix} 0 & \theta \end{bmatrix} \qquad \theta \in F. \]
+(We know $\uu$ is not the zero vector from the regular condition
+applied on $(\gamma, \uu, \vv^\top)$.)
+
+Meanwhile, we will let
+$\gamma = \begin{bmatrix} a & b \\ c & d \end{bmatrix} \in \GL_2(F)$
+for $a,b,c,d \in F$.
+Then, viewed as an element of $\GL_3(F)$ via the embedding we described earlier, we have
+\[
+  (\gamma, \uu, \vv^\top)
+  \mapsto \begin{bmatrix}
+    a & b & 0 \\
+    c & d & 1 \\
+    0 & \theta & 0
+  \end{bmatrix} \in \GL_3(F).
+\]
+Thus, our definition of regular requires that
+$\begin{bmatrix} 0 \\ 1 \end{bmatrix}$
+is linearly independent from $\begin{bmatrix} b \\ d \end{bmatrix}$
+and
+$\begin{bmatrix} 0 & \theta \end{bmatrix}$
+is linearly independent from $\begin{bmatrix} c & d \end{bmatrix}$.
+This is just saying that $b$, $c$, $\theta$ are all nonzero.
+We also know that $\gamma \in S_2(F)$, which gives us relations on $a$, $b$, $c$, $d$,
+cf.~\cite[equation (7.3.2)]{ref:AFLspherical}; we have
+\[
+  \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix}
+  = \begin{bmatrix} a & b \\ c & d \end{bmatrix} \begin{bmatrix} \bar a & \bar b \\ \bar c & \bar d \end{bmatrix}
+  \implies \bar b c = 1 - a \bar a \;\text{ and }\; d = -\bar a b / \bar b.
+\]
+
+\begin{remark}
+  Note that for each integer $n$, the quantity $\vv^\top \gamma^n \uu$
+  is invariant under the action of $h$.
+\end{remark}
+
+
+\subsection{Simplification due to the matching of non-quasi-split unitary group}
+Like before, we focus on the case where regular $(\gamma, \uu, \vv^\top)$
+matches an element in the non-quasi-split unitary group.
+\todo{I need to ask Wei exactly what's up here}
+This is controlled by the parity of $v(\Delta)$, where
+\[ \Delta = \det \left[ \vv^\top \gamma^{i+j} \uu \right]_{0 \le i,j \le n-1}. \]
+When $n=2$, for the representatives we described before,
+we have
+\[ \left[ \vv^\top \gamma^{i+j} \uu \right]_{0 \le i,j \le n-1}
+  = \begin{bmatrix} e & de \\ de & bce + d^2e \end{bmatrix} \]
+so
+\[ \Delta = bce^2 = \frac{b}{\bar b}(1-a \bar a) e^2 . \]
+Hence, $v(\Delta)$ is odd if and only if $v(1-a \bar a)$ is odd.
+Thus, we restrict attention to the following situation:
+\begin{assume}
+  We will assume that
+  \[ v(1-a \bar a) \equiv 1 \pmod 2. \]
+  In particular, $v(a) = 0$.
+  \label{assume:a_odd}
+\end{assume}
