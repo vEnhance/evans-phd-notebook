@@ -88,7 +88,7 @@ The orbital integral depends only on the $H$-orbit of $(\gamma, \uu, \vv^\top)$.
 Consequently, we may assume without loss of generality
 (via multiplication by a suitable change-of-basis $h \in H = \GL_2(F)$) that
 \[ \uu = \begin{bmatrix} 0 \\ 1 \end{bmatrix}, \qquad
-  \vv^\top = \begin{bmatrix} 0 & \theta \end{bmatrix} \qquad \theta \in F. \]
+  \vv^\top = \begin{bmatrix} 0 & e \end{bmatrix} \qquad e \in F. \]
 (We know $\uu$ is not the zero vector from the regular condition
 applied on $(\gamma, \uu, \vv^\top)$.)
 
@@ -101,16 +101,16 @@ Then, viewed as an element of $\GL_3(F)$ via the embedding we described earlier,
   \mapsto \begin{bmatrix}
     a & b & 0 \\
     c & d & 1 \\
-    0 & \theta & 0
+    0 & e & 0
   \end{bmatrix} \in \GL_3(F).
 \]
 Thus, our definition of regular requires that
 $\begin{bmatrix} 0 \\ 1 \end{bmatrix}$
 is linearly independent from $\begin{bmatrix} b \\ d \end{bmatrix}$
 and
-$\begin{bmatrix} 0 & \theta \end{bmatrix}$
+$\begin{bmatrix} 0 & e \end{bmatrix}$
 is linearly independent from $\begin{bmatrix} c & d \end{bmatrix}$.
-This is just saying that $b$, $c$, $\theta$ are all nonzero.
+This is just saying that $b$, $c$, $e$ are all nonzero.
 We also know that $\gamma \in S_2(F)$, which gives us relations on $a$, $b$, $c$, $d$,
 (the same as \cite[equation (7.3.2)]{ref:AFLspherical}); we have
 \[
