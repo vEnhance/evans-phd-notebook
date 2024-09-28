@@ -65,3 +65,42 @@ The former condition is just saying that
   v(y) &\ge -n_1 \\
   0 &\le n_2 \le v(e).
 \end{align*}
+Now we consider the entries of $h\gamma h\inv$.
+First, because $a$ and $d$ are units by \Cref{assume:a_odd},
+and $r \ge 0$, it follows that
+\begin{align*}
+  cy + a, -cy + d \in \varpi^{-r}\OO_F
+  &\iff cy \in \varpi^{-r}\OO_F \\
+  &\iff v(y) \ge -r - v(c).
+\end{align*}
+Moreover,
+\[ \frac{x_2}{x_1} \cdot c \in \varpi^{-r} \OO_F
+  \iff n_2 + v(c) \ge r + n_1. \]
+As for the quadratic constraint, let us write
+\[
+  -cy^2 + (d-a)y + b
+  = c\left( -\left( y - \frac{d-a}{2c} \right)^2 + \frac bc \right).
+\]
+Because $b \bar c = 1 - a \bar a$ has odd valuation,
+it follows that $\frac b c = \frac{1-a \bar a}{c\bar c}$ has odd valuation to.
+On the other hand, the valuation of
+$\left( y - \frac{d-a}{2c} \right)^2$ is necessarily even.
+So the terms $\left( y - \frac{d-a}{2c} \right)^2$ and $\frac bc$
+never have the same valuation and hence
+\[ v\left( -\left( y - \frac{d-a}{2c} \right)^2 + \frac bc  \right)
+  = \min \left\{ 2v\left( y - \frac{d-a}{2c} \right), v\left( \frac bc \right) \right\}. \]
+This implies
+\begin{align*}
+  &\phantom= v\left( \frac{x_1}{x_2} \cdot \left( -cy^2+(d-a)y+b \right) \right) \\
+  &= n_1 - n_2 + \min \left\{ 2v\left( y - \frac{d-a}{2c} \right), v\left( \frac bc \right) \right\}.
+\end{align*}
+
+We now collate all the constraints we obtained together.
+In summary, the triple $(x_1, x_2, y) \in \OO_F^\times \times \OO_F^\times \times \OO_F$
+contributes to the orbital integral exactly if the following identities hold:
+\begin{align*}
+  0 &\le n_2 \le v(e) \\
+  n_2  - v(b) - r &\le n_1 \le n_2 + v(c) + r \\
+  v(y) &\ge \max\left(-n_1, -r-v(c)\right) \\
+  v\left( y - \frac{d-a}{2c} \right) &\ge \frac{n_2 - n_1 - v(c) - r}{2}.
+\end{align*}
