@@ -110,26 +110,21 @@ and
 $\begin{bmatrix} 0 & e \end{bmatrix}$
 is linearly independent from $\begin{bmatrix} c & d \end{bmatrix}$.
 This is just saying that $b$, $c$, $e$ are all nonzero.
-We also know that $\gamma \in S_2(F)$, which gives us relations on $a$, $b$, $c$, $d$,
+We also know that $\gamma \in S_2(F)$, which gives us relations on $a$, $b$, $c$, $d$
 (the same as \cite[equation (7.3.2)]{ref:AFLspherical}); we have
 \[
   \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix}
   = \begin{bmatrix} a & b \\ c & d \end{bmatrix} \begin{bmatrix} \bar a & \bar b \\ \bar c & \bar d \end{bmatrix}
   \implies
   \begin{aligned}
-    \bar b c = b \bar c &= 1 - a \bar a \\
+    \bar b c = b \bar c &= 1 - a \bar a = 1 - d \bar d \\
     \text{and } d &= - \bar a c / \bar c = -\bar a b / \bar b.
   \end{aligned}
 \]
 
-\begin{remark}
-  Note that for each integer $n$, the quantity $\vv^\top \gamma^n \uu$
-  is invariant under the action of $h$.
-\end{remark}
-
-\subsubsection{Simplification due to the matching of non-quasi-split unitary group}
+\subsubsection{Simplification due to the matching of non-split unitary group}
 Like before, we focus on the case where regular $(\gamma, \uu, \vv^\top)$
-matches an element in the non-quasi-split unitary group.
+matches an element in the non-split unitary group.
 \todo{I need to ask Wei exactly what's up here}
 This is controlled by the parity of $v(\Delta)$, where
 \[ \Delta = \det \left[ \vv^\top \gamma^{i+j} \uu \right]_{0 \le i,j \le n-1}. \]
