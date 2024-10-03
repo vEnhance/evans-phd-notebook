@@ -119,7 +119,7 @@ which was proposed by W.\ Zhang \cite[Conjecture 2.9]{ref:AFL}.
 The arithmetic fundamental lemma then relates the derivative
 of the orbital integral with respect to the indicator function
 $\mathbf{1}_{K'^\flat \times K'} \in \HH(G'^\flat \times G, K'^\flat \times K')$, that is
-\[ \left. \pdv{}{s} \right\rvert_{s=0} \Orb(\gamma, \mathbf{1}_{K'^\flat \times K'}) \]
+\[ \left. \pdv{}{s} \right\rvert_{s=0} \Orb(\gamma, \mathbf{1}_{K'^\flat \times K'}, s) \]
 for $\gamma \in G'^\flat \times G'$,
 to arithmetic intersection numbers on a certain Rapoport-Zink formal moduli space.
 The AFL in \cite{ref:AFL} has since been proven over $p$-adic fields for any prime $p$ in
@@ -136,7 +136,7 @@ is sometimes referred to as the \emph{group version}.
 
 A more detailed account of this equivalence is described in \cite[\S1.4]{ref:liuFJ}.
 
-\subsubsection{Generalizations of FL and AFL to spherical Hecke algebras}
+\subsubsection{Generalizations of FL and AFL to the full spherical Hecke algebra}
 Recently it was shown by Leslie \cite{ref:leslie} that in fact
 \eqref{eq:old_FL} holds in greater generality where the indicator function
 $\mathbf{1}_{K^\flat \times K}$ can be replaced by any element in the spherical
@@ -168,6 +168,7 @@ even though we will necessarily need to reference definitions appearing in later
 Retain the notation $G' \coloneqq \GL_n(E)$, and $G \coloneqq \U(V_0)(F)$,
 with $K' \subset G'$ and $K \subset G$ the natural hyperspecial compact subgroups.
 Also, let $q$ denote the residue characteristic of $F$.
+Moreover, define the symmetric space
 \[ S_n(F) \coloneqq \left\{ g \in \GL_n(E) \mid g \bar{g} = \id_n \right\}. \]
 
 For concreteness, we focus on the inhomogeneous version
@@ -229,7 +230,7 @@ we can now state the conjecture proposed in \cite{ref:AFLspherical}.
   we have
   \begin{equation}
     \Int\left( (1,g), \mathbf{1}_{K'^\flat} \otimes f \right) \log q
-    = -\omega(\gamma) \left. \pdv{}{s} \right\rvert_{s=0} \Orb(\gamma, f')
+    = -\omega(\gamma) \left. \pdv{}{s} \right\rvert_{s=0} \Orb(\gamma, f', s)
     \label{eq:inhomog}
   \end{equation}
   where the intersection number $\Int(\dots)$ and
@@ -307,7 +308,7 @@ as we did for \cite[Conjecture 6.2.1]{ref:AFLspherical}.
     \begin{aligned}
       &\phantom= \Int\left( (g,u), f \right) \log q \\
       &= -\omega(\gamma, \uu, \vv^\top) \left. \pdv{}{s} \right\rvert_{s=0}
-      \Orb( (\gamma, \uu, \vv^\top), f' \otimes \oneV)
+      \Orb( (\gamma, \uu, \vv^\top), f' \otimes \oneV, s)
     \end{aligned}
   \end{equation}
   where the intersection number $\Int(\dots)$ and
