@@ -3,13 +3,16 @@ Throughout this whole paper, $p > 2$ is a prime,
 $F$ is a finite extension of $\QQ_p$,
 and $E/F$ is an unramified quadratic field extension.
 
-\subsection{History and motivation for the arithmetic fundamental lemma}
+\subsection{Brief history and motivation for the arithmetic fundamental lemma}
 The primary motivation for this paper arises from
 the study of conjectured variants of the arithmetic fundamental lemma
 for spherical Hecke algebras proposed in \cite{ref:AFLspherical}.
 This section briefly provides an overview of the historical context
 that led to the formulation of these conjectures.
 This history is also summarized in \Cref{fig:history}.
+
+Because this subsection is meant for motivation only, in this survey we do not give
+complete definitions or statements, being content to outline a brief gist.
 A more detailed account can be found in \cite{ref:survey}.
 
 \begin{figure}[ht]
@@ -112,7 +115,7 @@ on this Simura variety with the central derivative of automorphic $L$-functions.
 By analogy to the work Jacquet-Rallis \cite{ref:JR},
 the arithmetic GGP conjectures should have a corresponding
 \emph{arithmetic fundamental lemma} (henceforth AFL),
-which was proposed by W.\ Zhang \cite{ref:AFL}.
+which was proposed by W.\ Zhang \cite[Conjecture 2.9]{ref:AFL}.
 The arithmetic fundamental lemma then relates the derivative
 of the orbital integral with respect to the indicator function
 $\mathbf{1}_{K'^\flat \times K'} \in \HH(G'^\flat \times G, K'^\flat \times K')$, that is
@@ -122,15 +125,29 @@ to arithmetic intersection numbers on a certain Rapoport-Zink formal moduli spac
 The AFL in \cite{ref:AFL} has since been proven over $p$-adic fields for any prime $p$ in
 Mihatsch-Zhang \cite{ref:MZ2021}, W.\ Zhang \cite{ref:Wei2021}, Z.\ Zhang \cite{ref:Zhiyu}.
 
+\subsubsection{The semi-Lie version of the AFL proposed by Liu}
+There is another different version of the AFL, proposed by Yifeng Liu in
+\cite[Conjecture 1.12]{ref:liuFJ},
+which is often referred to as the \emph{semi-Lie version} of the AFL.
+Its statement has been shown to be equivalent to AFL
+\cite[Remark 1.13]{ref:liuFJ}.
+In contrast, the original AFL proposed by Zhang in \cite[Conjecture 2.9]{ref:AFL}
+is sometimes referred to as the \emph{group version}.
+
+A more detailed account of this equivalence is described in \cite[\S1.4]{ref:liuFJ}.
+
 \subsubsection{Generalizations of FL and AFL to spherical Hecke algebras}
 Recently it was shown by Leslie \cite{ref:leslie} that in fact
 \eqref{eq:old_FL} holds in greater generality where the indicator function
-$\mathbf{1}_{K^\flat \times K}$ can be replaced by any element
-in the spherical Hecke algebra $\varphi \in \HH(G'^\flat \times G', K'^\flat \times K')$.
+$\mathbf{1}_{K^\flat \times K}$ can be replaced by any element in the spherical
+Hecke algebra $\varphi \in \HH(G'^\flat \times G', K'^\flat \times K')$.
 In that case, $\mathbf{1}_{K'^\flat \times K}$ needs to be replaced
 by the corresponding element $\varphi'$ under a certain base change homomorphism
-\[ \varphi \mapsto \varphi' \qquad
-  \HH(G'^\flat \times G', K'^\flat \times K') \to \HH(G^\flat \times G, K^\flat \times K). \]
+\begin{align*}
+  \HH(G'^\flat \times G', K'^\flat \times K') &\to \HH(G^\flat \times G, K^\flat \times K) \\
+  \varphi &\mapsto \varphi'
+\end{align*}
+
 In that case, the identity \eqref{eq:old_FL} still hold as
 \begin{equation}
   \Orb(g, \varphi) = \omega(\gamma) \Orb(\gamma, \varphi').
@@ -144,38 +161,88 @@ This formula is proposed by \cite{ref:AFLspherical},
 and is the primary focus of this paper; we discuss it in the next section.
 
 \subsection{The inhomogeneous version of the arithmetic fundamental lemma for spherical Hecke algebras}
+In contrast to the vague motivational cheerleading in the previous section,
+starting in this section we will give more precise statements,
+even though we will necessarily need to reference definitions appearing in later sections.
+
 Retain the notation $G' \coloneqq \GL_n(E)$, and $G \coloneqq \U(V_0)(F)$,
 with $K' \subset G'$ and $K \subset G$ the natural hyperspecial compact subgroups.
-For concreteness, we focus on the inhomogeneous version
-of the arithmetic fundamental lemma, which is \cite[Conjecture 6.2.1]{ref:AFLspherical},
-which allows us to deal with just $G'$ instead of $G'^\flat \times G'$, etc.
-
-Let $q$ denote the residue characteristic of $F$.
-Also define the symmetric space
+Also, let $q$ denote the residue characteristic of $F$.
 \[ S_n(F) \coloneqq \left\{ g \in \GL_n(E) \mid g \bar{g} = \id_n \right\}. \]
-In this case, the orbital integrals in the inhomogeneous AFL
-are stated more naturally in terms of $f'$ contained in a certain
-$\HH(G',K')$-module which we will denote $\HH(S_n(F), K')$;
-it is defined later in \Cref{sec:background}.
 
+For concreteness, we focus on the inhomogeneous version
+of the arithmetic fundamental lemma, which is \cite[Conjecture 6.2.1]{ref:AFLspherical}.
+This allows us to deal with just $G'$ instead of $G'^\flat \times G'$, etc.,
+so that the Hecke algebra $\HH(G'^\flat \times G', K'^\flat \times K')$
+can be replaced by the simpler one $\HH(G', K')$.
+
+The AFL conjecture provides a bridge between a geometric left-hand side
+(given by an intersection number)
+and an analytic right-hand side (given by an orbital integral).
+Stating it requires several pieces of data.
+We only mention these pieces by name here, with definitions given later:
+\begin{itemize}
+  \ii On the geometric side, we have an intersection number.
+  It uses the following ingredients.
+  \begin{itemize}
+    \ii We choose a regular semisimple element $g \in G$.
+    \ii We choose a function $f \in \HH(G, K)$ from the spherical Hecke algebra.
+    \ii \todo{intersection number}
+  \end{itemize}
+
+  \ii On the analytic side, we have an orbital integral.
+  It uses the following ingredients.
+  \begin{itemize}
+    \ii We choose a regular semisimple element $\gamma \in S_n(F)$.
+    \ii We choose a test function $f'$ which comes
+    from a certain $\HH(G',K')$-module that we will denote $\HH(S_n(F), K')$.
+    This module is defined later in \Cref{sec:background}.
+    \ii The orbital integral $\Orb(\gamma, f')$
+    (for $S_n(F)$) is itself defined in \Cref{sec:orbital0}.
+  \end{itemize}
+
+  \ii We need a way to connect the inputs between the two parts of our conjecture.
+  Specifically, $f$ and $f'$ need to be linked, and $g$ and $\gamma$ need to be linked.
+  This is done as follows.
+  \begin{itemize}
+    \ii Once the regular semisimple element $g \in G$ is chosen,
+    we require $\gamma \in S_n(F)$ to be a \emph{matching} element.
+    This matching is defined in \Cref{sec:matching}.
+
+    \ii Once $f \in \HH(G,K)$ is chosen, we select
+    \[ f' = \BC_{S_n}^{\eta^{n-1}}(f) \]
+    to be the image of $f$ under a \emph{base change}.
+    This base change is defined and then calculated explicitly in \Cref{sec:satake}.
+  \end{itemize}
+\end{itemize}
+With all our protagonists now having names and references,
+we can now state the conjecture proposed in \cite{ref:AFLspherical}.
 \begin{conjecture}
-  [{\cite[Conjecture 6.2.1]{ref:AFLspherical}}]
+  [Inhomogeneous version of the AFL for the full spherical Hecke algebra,
+  {\cite[Conjecture 6.2.1]{ref:AFLspherical}}]
   \label{conj:inhomog}
   Let $f \in \HH(G, K)$ be any element of the Hecke algebra,
-  and let $f' \in \HH(S_n(F), K')$ be its image
-  under a base change $\BC_{S_n}^{\eta^{n-1}}$ defined in \Cref{sec:satake}.
-  Then for certain pairs of regular semisimple $g \in G$ and $\gamma \in S_n(F)$, we have
+  and let $f' = \BC_{S_n}^{\eta^{n-1}}(f) \in \HH(S_n(F), K')$ be its image
+  under base change as defined in \Cref{sec:satake}.
+  Then for matching (as defined in \Cref{sec:matching}) regular semisimple elements
+  \[ g \in G \longleftrightarrow \gamma \in S_n(F) \]
+  we have
   \begin{equation}
     \Int\left( (1,g), \mathbf{1}_{K'^\flat} \otimes f \right) \log q
-    = -\omega(\gamma) \left. \pdv{}{s} \right\rvert_{s=0} \Orb(\gamma, f').
+    = -\omega(\gamma) \left. \pdv{}{s} \right\rvert_{s=0} \Orb(\gamma, f')
     \label{eq:inhomog}
   \end{equation}
+  where the intersection number $\Int(\dots)$ and
+  the transfer factor $\omega$ are defined in \Cref{sec:geo}
+  while the orbital integral $\Orb(\dots)$ is defined in \Cref{sec:orbital0}.
 \end{conjecture}
 
-At present, the (inhomogeneous) AFL is the case where $f = \mathbf{1}_K$ and is thus proven.
+At present, the (inhomogeneous) AFL is the case where $f = \mathbf{1}_K$,
+and is thus proven.
+
 The generalized conjecture is also proved in full for
 $n = 2$ in \cite[Theorem 1.0.1]{ref:AFLspherical}
-(in that reference, our $n$ denotes their $n+1$).
+(in that reference, our $n$ denotes the $n+1$ in \emph{loc.\ cit.}).
 The part of the calculation involving orbital integral has two parts:
 \begin{itemize}
   \ii The calculation makes $\BC_{S_{n}}^{\eta^{n-1}}$
@@ -194,16 +261,67 @@ with a calculation of intersection numbers in \cite[Corollary 7.4.3]{ref:AFLsphe
 shows that \Cref{conj:inhomog} holds for $n = 2$,
 cf.\ \cite[Theorem 7.5.1]{ref:AFLspherical}.
 
+\subsection{The arithmetic fundamental lemma for spherical Hecke algebras
+  in the Fourier-Jacobi case}
+
+This paper also states an analogous conjecture for the semi-Lie version.
+It serves to complete the analogy given in \Cref{tab:semi_lie_analogy}
+
+\begin{table}[ht]
+  \centering
+  \begin{tabular}{lll}
+    \toprule
+    & AFL for $\mathbf{1}$ (now proven) & Full spherical Hecke \\
+    \midrule
+    Group ver. & \cite[Conjecture 2.9]{ref:AFL} & \cite[Conjecture 6.2.1]{ref:AFLspherical} \\
+    Semi-Lie ver. & \cite[Conjecture 1.12]{ref:liuFJ} & \Cref{conj:semi_lie_spherical} \\
+    \bottomrule
+  \end{tabular}
+  \caption{Table showing}
+  \label{tab:semi_lie_analogy}
+\end{table}
+
+In this variation, as in \cite{ref:liuFJ},
+rather than matching $g \in G$ to $\gamma \in S_n(F)$,
+we consider an augmented space larger than $G$ and $S_n(F)$.
+Specifically, one considers a matching between tuples of regular semisimple elements
+\[ (g, u) \in G \times \VV_n
+  \longleftrightarrow (\gamma, \uu, \vv^\top) \in S_n(F) \times V_n'(F) \]
+where $V_n'(F)$ (defined in \Cref{sec:background})
+consists of pairs of column vectors and row vectors of length $n$,
+and the space $\VV_n$ is defined in \Cref{sec:matching}.
+The notion of \emph{matching} is defined in \Cref{sec:matching} as well.
+Meanwhile, we still use the same test functions $f$ and $f'$,
+as we did for \cite[Conjecture 6.2.1]{ref:AFLspherical}.
+
+\begin{conjecture}
+  [Semi-Lie version of the AFL for the full spherical Hecke algebra]
+  Let $f \in \HH(G, K)$ be any element of the Hecke algebra,
+  and let $f' \in \HH(S_n(F), K')$ be its image
+  under base change $\BC_{S_n}^{\eta^{n-1}}$ defined in \Cref{sec:satake}.
+  Then for matching (as defined in \Cref{sec:matching}) regular semisimple elements
+  \[ (g, u) \in G \times \VV_n \longleftrightarrow
+    (\gamma, \uu, \vv^\top) \in S_n(F) \times V_n' \]
+  we have
+  \begin{equation}
+    \begin{aligned}
+      &\phantom= \Int\left( (g,u), f \right) \log q \\
+      &= -\omega(\gamma, \uu, \vv^\top) \left. \pdv{}{s} \right\rvert_{s=0}
+      \Orb( (\gamma, \uu, \vv^\top), f' \otimes \oneV)
+    \end{aligned}
+  \end{equation}
+  where the intersection number $\Int(\dots)$ and
+  the transfer factor $\omega$ are defined in \Cref{sec:geo}
+  while the orbital integral $\Orb(\dots)$ is defined in \Cref{sec:orbital0}.
+  \label{conj:semi_lie_spherical}
+\end{conjecture}
+
 \subsection{Results}
 The goal of this paper is to perform the analogous calculations
-that correspond to \cite[Lemma 7.1.1 and Proposition 7.3.2]{ref:AFLspherical}
-in two new situations:
+that correspond to \cite[Lemma 7.1.1 and Proposition 7.3.2]{ref:AFLspherical} in the situations:
 \begin{itemize}
-  \ii The case $n = 3$ as in \Cref{conj:inhomog},
-  which involves the orbits of $\GL_2(F)$ on a certain symmetric space $S_3(F)$.
-
-  \ii A parallel Fourier-Jacobi version where one instead takes the action
-  of $\GL_2(F)$ on $S_2 \times F^2 \times F_2$.
+  \ii The case $n = 3$ for \Cref{conj:inhomog};
+  \ii The case $n = 2$ of \Cref{conj:semi_lie_spherical}.
 \end{itemize}
 The methods, which are local in nature,
 are rather similar to those employed in \cite{ref:AFL},
@@ -214,22 +332,40 @@ We state these results as follows.
 \end{theorem}
 \todo{write summary theorem}
 
-Besides providing evidence for \Cref{conj:inhomog},
+Besides providing evidence for \Cref{conj:inhomog} and \Cref{conj:semi_lie_spherical},
 these orbital integral formulas also establish some other results.
 For example, the formula above
 proves the $n = 3$ case of \cite[Conjecture 8.2.1]{ref:AFLspherical}
 and an analogous version; we state this below.
 
 \begin{theorem}
+  \todo{kernel thingy}
 \end{theorem}
 \todo{need to figure out why there are all these semisimple restrictions}
 
 \subsection{Roadmap}
 The rest of the paper is organized as follows.
-We provide some necessary background and notation in \Cref{sec:background}.
-Then, in \Cref{sec:orbital0} we describe our results on the orbital integral,
-and dedicate \Cref{sec:orbital1,sec:orbital2} to their proof.
-And in \Cref{sec:satake} we provide the explicit base change formula.
+\begin{itemize}
+  \ii In \Cref{sec:background} we provide some preliminary background
+  on the spaces appearing in the overall paper and the Hecke modules that will be used.
+  Further background is stated in \Cref{sec:matching},
+  where we describe the matching of regular semisimple elements
+
+  \ii In \Cref{sec:satake} we provide reminders on the Satake transform
+  and use it to derive the formulas for base change when $n = 3$.
+
+  \ii In \Cref{sec:orbital0} we introduce the orbital integral
+  for the group version of the AFL for full spherical Hecke algebra,
+  and dedicate \Cref{sec:orbital1,sec:orbital2} to their proof.
+
+  \ii In \Cref{sec:orbitalFJ0} we introduce the orbital integral
+  for the semi-Lie version of the AFL for full spherical Hecke algebra,
+  and produce analogous proofs to \Cref{sec:orbitalFJ1,sec:orbitalFJ2}.
+
+  \ii Finally in \Cref{sec:geo}, we describe the Rapoport-Zink spaces
+  that the geometric side is based on.
+\end{itemize}
+
 
 \subsection{Acknowledgments}
 \todo{write this}
