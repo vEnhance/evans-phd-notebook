@@ -60,10 +60,6 @@ the following two spaces will be used as inputs to our orbital integrals.
     h \cdot (\gamma, \uu, \vv^\top)
     &\coloneqq (h \gamma h^{-1}, h\uu, \vv^\top h^{-1}).
   \end{align*}
-  \todo{shouldn't it be $h \uu$ to be a left action?
-    Wei wrote $h^{-1} \uu$ but I think that's not right.
-    Also it should be $h \gamma h^{-1}$ right?
-    We only flip it with $h'$ later.}
   Note that according to the embedding
   \begin{align*}
     S_n(F) \times V'_n(F)
@@ -74,17 +70,6 @@ the following two spaces will be used as inputs to our orbital integrals.
   we can consider elements of $S_n(F) \times V'_n(F)$ as elements of $\GL_{n+1}(E)$ too.
   In that case the action of $h \in \GL_{n+1}(F)$
   coincides with $h \cdot g \mapsto hg\bar{h}^{-1}$ as well.
-\end{definition}
-
-\begin{definition}
-  [{\cite[Section 6]{ref:multoneconj}}]
-  Let \[ \gamma = \begin{bmatrix} A & \uu \\ \vv^\top & d \end{bmatrix} \in \GL_n(E) \]
-  where $A$ is an $(n-1) \times (n-1)$ matrix.
-  Then we say that $\gamma \in S_n(F)$ is \emph{regular} if
-  \[ \left< \uu, A\uu, \dots, A^{n-1}\uu \right> \]
-  and \[ \left< \vv^\top, \vv^\top A, \dots, \vv^\top A^{n-1} \right> \]
-  are each a basis of $E^n$.
-  \label{def:regular}
 \end{definition}
 
 \begin{definition}
@@ -135,13 +120,13 @@ this is an $\HH(G', K')$-module, where the action of $f \in \HH(G', K')$ is give
 This does \textbf{not} have a multiplication structure at the moment, \emph{a priori},
 although later we will see how one could be imposed.
 
-Similarly, consider $S_n(F) \times V_n$.
-We set
-\[ \HH(S_n(F) \times V_n', {?}) \coloneqq \mathcal C_{\mathrm{c}}^{\infty}(S_n(F) \times V_n')^{K'} \]
-as the set of smooth compactly supported functions on $S_n(F) \times V_n'$
-which are invariant under the action of ${?} \subseteq G'$.
-\todo{This should be $\GL_n(\OO_F)$? Does it need another name?}
-This is an \dots
+%Similarly, consider $S_n(F) \times V_n$.
+%We set
+%\[ \HH(S_n(F) \times V_n', {?}) \coloneqq \mathcal C_{\mathrm{c}}^{\infty}(S_n(F) \times V_n')^{K'} \]
+%as the set of smooth compactly supported functions on $S_n(F) \times V_n'$
+%which are invariant under the action of ${?} \subseteq G'$.
+%\todo{This should be $\GL_n(\OO_F)$? Does it need another name?}
+%This is an \dots
 
 \subsection{Arches}
 We introduce one more piece of notation for a common shape that our answers will take.

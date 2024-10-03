@@ -1,4 +1,100 @@
 \section{The matching}
 \label{sec:matching}
 
-\todo{define semisimple here}
+\subsection{Regular semi-simple elements}
+We first recall the notion of regularity
+that first appeared in \cite[\S6]{ref:multoneconj}.
+
+\begin{definition}
+  Consider a $n \times n$ matrix
+  \[ \begin{bmatrix} A & \uu \\ \vv^\top & d \end{bmatrix} \in \GL_n(E) \]
+  in $\GL_n(E)$, where $A$ is an $(n-1) \times (n-1)$ matrix.
+  Then we say this matrix is \emph{regular semi-simple} if
+  \[ \left< \uu, A\uu, \dots, A^{n-2}\uu \right> \]
+  and \[ \left< \vv^\top, \vv^\top A, \dots, \vv^\top A^{n-2} \right> \]
+  are each a basis of $E^{n-1}$.
+  Equivalently, the matrix
+  \[ \left[ \vv^\top A^{i+j} \uu \right]_{i,j=1}^n \]
+  should be nonsingular.
+\end{definition}
+
+\begin{remark}
+  In \cite[Theorem 6.1]{ref:multoneconj}, this definition is shown to be equivalent to
+  requiring that, under the action of conjugation by $\GL_{n-1}(E)$:
+  \begin{itemize}
+  \ii the matrix has trivial stabilizer; and
+  \ii the $\GL_{n-1}(\ol E)$-orbit is a Zariski-closed subset of $\GL_n(\ol E)$.
+  \end{itemize}
+  Here $\ol E$ is as usual an algebraic closure of $E$.
+\end{remark}
+
+\begin{remark}
+  [{\cite[Theorem 6.2]{ref:multoneconj}}]
+  It turns out we can detect whether two regular semisimple elements
+  \[
+    \begin{bmatrix} A_1 & \uu_1 \\ \vv_1^\top & d_1 \end{bmatrix},
+    \begin{bmatrix} A_2 & \uu_2 \\ \vv_2^\top & d_2 \end{bmatrix}
+    \in \GL_{n}(E)
+  \]
+  are conjugate by an element of $\GL_{n-1}(E)$.
+  This happens if and only if the following conditions all hold:
+  \begin{itemize}
+    \ii The matrices $A_1$ and $A_2$ have the same characteristic polynomial;
+    \ii We have $\vv_1^\top A_1^i \uu_1 = \vv_2^\top A_2^i \uu_2$
+    for every $i = 0, 1, \dots, n-2$; and
+    \ii We have $d_1 = d_2$.
+  \end{itemize}
+  Thus, this gives a set of invariants that completely classify the orbits
+  under the action of $\GL_{n-1}(E)$.
+  \label{rem:invariants}
+\end{remark}
+
+We can now speak of regular-simplicity in each of the four
+particular cases relevant to this paper.
+\begin{definition}
+  \begin{itemize}
+    \ii We say $\gamma \in S_n(F)$ is regular semisimple
+    if its image under the inclusion $S_n(F) \subseteq \GL_n(E)$ is regular semisimple.
+    We write $\gamma \in S_n(F)\rs$.
+
+    \ii We say $g \in G$ is regular semisimple
+    if its image under the inclusion $G \subseteq G' = \GL_n(E)$ is regular semisimple.
+    We write $g \in G\rs$.
+
+    \ii We say $(\gamma, \uu, \vv^\top) \in S_n(F) \times V_n'$
+    is regular semisimple if its image under
+    the embedding $S_n(F) \times V_n' \hookrightarrow \GL_{n+1}(E)$
+    is regular semisimple, meaning $\left< \uu, \gamma \uu \dots, \gamma^{n-1}\uu \right>$
+    and $\left< \vv^\top, \vv^\top \gamma, \dots, \vv^\top \gamma^{n-1} \right>$
+    are both a basis of $E^n$.
+    In this case we write $(\gamma, \uu, \vv^\top) \in (S_n(F) \times V_n')\rs$.
+
+    \ii We say $(g, u) \in G \times \VV_n$
+    is regular semisimple if $\{u, gu, \dots, g^{n-1}u\}$ are linearly independent
+    (i.e.\ form a basis of $\VV_n$).
+    We write $(g,u) \in (G \times \VV_n)\rs$.
+    Note that this case is slightly different from the other three situations.
+  \end{itemize}
+  \label{def:regular}
+\end{definition}
+
+\subsection{Matching}
+We now describe the matching condition used in the group version of AFL.
+\begin{definition}
+  We say $\gamma \in S_n(F)\rs$ matches the element $g \in G\rs$ if
+  $g$ is conjugate to $\gamma$ by an element of $\GL_{n-1}(E)$.
+\end{definition}
+By \Cref{rem:invariants}, this is an assertion that
+the invariants for $\gamma$ and $g$ coincide.
+
+In the semi-Lie version, the definition of matching is slightly different.
+\begin{definition}
+  [{\cite[\S1.3]{ref:liuFJ}}]
+  We say $(\gamma, \uu, \vv^\top) \in (S_n(F) \times V_n')\rs$
+  matches the element $(g, u) \in (G \times \VV_n)\rs$ if
+  \begin{itemize}
+    \ii As elements of $\GL_n(E)$,
+    the elements $g$ and $\gamma$ have the same characteristic polynomial.
+    \ii We have $\vv^\top \gamma^i \uu = \left< g^i u, u \right>$ for all $0 \le i \le n-1$.
+  \end{itemize}
+\end{definition}
