@@ -1,5 +1,5 @@
 \section{Synopsis of the orbital integral
-  $\Orb((\gamma, \uu, \vv^\top), \phi \otimes \mathbf{1}_{\OO_F^2 \times (\OO_F^2)^\vee}, s)$
+  $\Orb((\gamma, \uu, \vv^\top), \phi \otimes \oneV, s)$
   for $(\gamma, \uu, \vv^\top) \in S_2(F) \times V'_2(F)$ and $\phi \in \HH(S_2(F), K')$}
 
 Throughout this section, $H = \GL_n(F)$ (rather than $H = \GL_{n-1}(F)$)
@@ -11,7 +11,7 @@ We will not need to work in the generality of a function
 on all of $S_n(F) \times V_n'(F)$, although it could be done.
 Instead, it will be enough to define the orbital integral
 in the case where our function is of the form
-\[ \phi \otimes \mathbf{1}_{\OO_F^n \times (\OO_F^n)^\vee} \]
+\[ \phi \otimes \oneV \]
 where $\phi \in \HH(S_n(F), K')$ is the left component, and
 the right component is the indicator function defined in the obvious way:
 \begin{align*}
@@ -32,10 +32,10 @@ we analogously define the orbital integral as follows.
   $\phi \in \HH(S_n(F), K')$, and $s \in \CC$,
   we define the orbital integral by
   \begin{align*}
-    & \Orb((\gamma, \uu, \vv^\top), \phi \otimes \mathbf{1}_{\OO_F^n \times (\OO_F^n)^\vee}, s) \\
+    & \Orb((\gamma, \uu, \vv^\top), \phi \otimes \oneV, s) \\
     &\coloneqq
     \int_{h \in H} \phi(h\inv \gamma h)
-    \mathbf{1}_{\OO_F^n \times (\OO_F^n)^\vee}(h \uu, \vv^\top h^{-1})
+    \oneV(h \uu, \vv^\top h^{-1})
     \eta(h) \left\lvert \det(h) \right\rvert_F^{-s} \odif h
   \end{align*}
 \end{definition}
