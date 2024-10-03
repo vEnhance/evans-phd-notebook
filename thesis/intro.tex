@@ -186,7 +186,8 @@ We only mention these pieces by name here, with definitions given later:
   \ii On the geometric side, we have an intersection number.
   It uses the following ingredients.
   \begin{itemize}
-    \ii We choose a regular semisimple element $g \in G$.
+    \ii We choose a regular semisimple element $g \in G\rs$.
+    (The notation $G\rs$ denotes the regular semisimple elements of $G$, etc.)
     \ii We choose a function $f \in \HH(G, K)$ from the spherical Hecke algebra.
     \ii \todo{intersection number}
   \end{itemize}
@@ -194,20 +195,20 @@ We only mention these pieces by name here, with definitions given later:
   \ii On the analytic side, we have an orbital integral.
   It uses the following ingredients.
   \begin{itemize}
-    \ii We choose a regular semisimple element $\gamma \in S_n(F)$.
+    \ii We choose a regular semisimple element $\gamma \in S_n(F)\rs$.
     \ii We choose a test function $f'$ which comes
     from a certain $\HH(G',K')$-module that we will denote $\HH(S_n(F), K')$.
     This module is defined later in \Cref{sec:background}.
-    \ii The orbital integral $\Orb(\gamma, f')$
-    (for $S_n(F)$) is itself defined in \Cref{sec:orbital0}.
+    \ii The orbital integral $\Orb(\gamma, f', s)$
+    is itself defined in \Cref{sec:orbital0}.
   \end{itemize}
 
   \ii We need a way to connect the inputs between the two parts of our conjecture.
   Specifically, $f$ and $f'$ need to be linked, and $g$ and $\gamma$ need to be linked.
   This is done as follows.
   \begin{itemize}
-    \ii Once the regular semisimple element $g \in G$ is chosen,
-    we require $\gamma \in S_n(F)$ to be a \emph{matching} element.
+    \ii Once the regular semisimple element $g \in G\rs$ is chosen,
+    we require $\gamma \in S_n(F)\rs$ to be a \emph{matching} element.
     This matching is defined in \Cref{sec:matching}.
 
     \ii Once $f \in \HH(G,K)$ is chosen, we select
@@ -226,7 +227,7 @@ we can now state the conjecture proposed in \cite{ref:AFLspherical}.
   and let $f' = \BC_{S_n}^{\eta^{n-1}}(f) \in \HH(S_n(F), K')$ be its image
   under base change as defined in \Cref{sec:satake}.
   Then for matching (as defined in \Cref{sec:matching}) regular semisimple elements
-  \[ g \in G \longleftrightarrow \gamma \in S_n(F) \]
+  \[ g \in G\rs \longleftrightarrow \gamma \in S_n(F)\rs \]
   we have
   \begin{equation}
     \Int\left( (1,g), \mathbf{1}_{K'^\flat} \otimes f \right) \log q
@@ -252,7 +253,7 @@ The part of the calculation involving orbital integral has two parts:
 
   \ii The calculation makes explicit the value of the orbital integral
   \[ \Orb(\gamma, f') \]
-  for any $\gamma \in S_n(F)$ and $f' \in \HH(S_n(F), K')$,
+  for any $\gamma \in S_n(F)\rs$ and $f' \in \HH(S_n(F), K')$,
   in terms of invariants of $\gamma$ and a decomposition of $f'$ in a natural basis.
   The result is \cite[Proposition 7.3.2]{ref:AFLspherical}.
 \end{itemize}
@@ -283,11 +284,11 @@ It serves to complete the analogy given in \Cref{tab:semi_lie_analogy}
 \end{table}
 
 In this variation, as in \cite{ref:liuFJ},
-rather than matching $g \in G$ to $\gamma \in S_n(F)$,
+rather than matching $g \in G\rs$ to $\gamma \in S_n(F)\rs$,
 we consider an augmented space larger than $G$ and $S_n(F)$.
 Specifically, one considers a matching between tuples of regular semisimple elements
-\[ (g, u) \in G \times \VV_n
-  \longleftrightarrow (\gamma, \uu, \vv^\top) \in S_n(F) \times V_n'(F) \]
+\[ (g, u) \in (G \times \VV_n)\rs
+  \longleftrightarrow (\gamma, \uu, \vv^\top) \in (S_n(F) \times V_n'(F))\rs \]
 where $V_n'(F)$ (defined in \Cref{sec:background})
 consists of pairs of column vectors and row vectors of length $n$,
 and the space $\VV_n$ is defined in \Cref{sec:matching}.
@@ -298,11 +299,11 @@ as we did for \cite[Conjecture 6.2.1]{ref:AFLspherical}.
 \begin{conjecture}
   [Semi-Lie version of the AFL for the full spherical Hecke algebra]
   Let $f \in \HH(G, K)$ be any element of the Hecke algebra,
-  and let $f' \in \HH(S_n(F), K')$ be its image
-  under base change $\BC_{S_n}^{\eta^{n-1}}$ defined in \Cref{sec:satake}.
+  and let $f' = \BC_{S_n}^{\eta^{n-1}}(f) \in \HH(S_n(F), K')$ be its image
+  under base change defined in \Cref{sec:satake}.
   Then for matching (as defined in \Cref{sec:matching}) regular semisimple elements
-  \[ (g, u) \in G \times \VV_n \longleftrightarrow
-    (\gamma, \uu, \vv^\top) \in S_n(F) \times V_n' \]
+  \[ (g, u) \in (G \times \VV_n)\rs \longleftrightarrow
+    (\gamma, \uu, \vv^\top) \in (S_n(F) \times V_n')\rs \]
   we have
   \begin{equation}
     \begin{aligned}

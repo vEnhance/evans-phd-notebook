@@ -1,4 +1,4 @@
-\section{Synopsis of the orbital integral $\Orb(\gamma, \phi, s)$ for $\gamma \in S_3(F)$ and $\phi \in \HH(S_3(F), K')$}
+\section{Synopsis of the orbital integral $\Orb(\gamma, \phi, s)$ for $\gamma \in S_3(F)\rs$ and $\phi \in \HH(S_3(F), K')$}
 \label{sec:orbital0}
 
 This section defines the orbital integral
@@ -6,8 +6,8 @@ and describes the parameters which we will use to express our answer.
 
 \subsection{Initial definition of the orbital integral for general $S_n(F)$}
 Let $H = \GL_{n-1}(F)$.
-Then $H$ has a natural embedding into $G = \GL_n(E)$
-by \[ h \mapsto \left[ \begin{smallmatrix} h & 0 \\ 0 & 1 \end{smallmatrix} \right] \]
+Then $H$ has a natural embedding into $G = \GL_n(E)$ by
+\[ h \mapsto \begin{bmatrix} h & 0 \\ 0 & 1 \end{bmatrix} \]
 which endows it with an action $S_n(E)$.
 Then our orbital integral is defined as follows.
 \begin{definition}
@@ -72,7 +72,7 @@ Note that the $r = 0$ case is already done in \cite{ref:AFL}.
 
 \subsection{Parametrization of $\gamma$}
 Again, assume $n = 3$.
-Further assume $\gamma \in S_3(F)$ is regular.
+Further assume $\gamma \in S_3(F)\rs$ is regular semisimple.
 We identify some parameters for the orbit of $\gamma$
 that we can use for our explicit calculations.
 
@@ -131,9 +131,9 @@ only depends on the $H'$-orbit of $\gamma$.
 So it makes sense to pick a canonical representative for the $H'$-orbit to compute
 the orbital integral in terms of.
 
-We assume henceforth that $\gamma$ is regular (cf.\ \Cref{def:regular}).
-Then by \cite[Proposition 4.1]{ref:AFL},
-we can assume $\gamma$ is a representative specifically of the form
+Since we assumed $\gamma \in S_3(F)\rs$ is regular semisimple,
+we can invoke \cite[Proposition 4.1]{ref:AFL}
+to assume $\gamma$ is a representative specifically of the form
 \[ \gamma(a,b,d) =
   \begin{bmatrix}
     a & 0 & 0 \\
@@ -141,8 +141,8 @@ we can assume $\gamma$ is a representative specifically of the form
     c & 1 - d \bar d & d
   \end{bmatrix}
   \in S_3(F); \quad \text{where $c = -a \bar b + b d$} \]
-over all $a \in E^1$, $b \in E$, $d \in E$ for which $(1-d\bar d)^2 - c \bar c \neq 0$,
-cover all the \emph{regular} orbits.
+over all $a \in E^1$, $b \in E$, $d \in E$ for which $(1-d\bar d)^2 - c \bar c \neq 0$.
+In other words, the representatives described here cover all the regular orbits in $S_3(F)\rs$.
 
 \subsubsection{Simplification due to the matching of non-quasi-split unitary group}
 In this calculation, we restrict attention to the case where our regular $\gamma$

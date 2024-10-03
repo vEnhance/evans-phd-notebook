@@ -1,2 +1,115 @@
-\section{Background on the geometric side}
+\section{The geometric side}
 \label{sec:geo}
+
+\subsection{Rapoport-Zink spaces}
+We briefly recall the theory of Rapoport-Zink spaces.
+This follows the exposition in \cite[\S4.1]{ref:survey}.
+
+Let $\breve F$ denote the completion of a maximal unramified extension of $F$,
+and let $\FF$ denote the residue field of $\OO_{\breve F}$.
+Suppose $S$ is a $\Spf \OO_{\breve F}$-scheme.
+Then we can consider triples $(X, \iota, \lambda)$ consisting of the following data.
+\begin{itemize}
+  \ii $X$ is a formal $\varpi$-divisible $n$-dimensional $\OO_F$-module over $S$
+  whose relative height is $2n$.
+
+  \ii $\iota \colon \OO_E \to \End(X)$ is an action of $\OO_E$
+  such that the induced action of $\OO_F$ on $\Lie X$
+  is via the structure morphism $\OO_F \to \SO_S$.
+
+  We require that $\iota$ satisfies the Kottwitz condition of signature $(n-1,1)$,
+  meaning that for all $a \in \OO_E$,
+  the characteristic polynomial of $\iota(a)$ on $\Lie X$
+  is exactly \[ (T-a)^{n-1} (T-\bar a) \in \SO_S[T]. \]
+
+  \ii $\lambda \colon X \to X^\vee$ is a principal $\OO_F$-relative polarization.
+
+  We require that the Rosati involution of $\lambda$
+  induces the map $a \mapsto \bar a$ on $\OO_F$
+  (i.e.\ the nontrivial automorphism of $\Gal(E/F)$).
+\end{itemize}
+The triple is called supersingular if $X$ is a supersingular strict $\OO_F$-module.
+
+For each $n \ge 1$, over $\FF$
+we choose a supersingular triple $(\XX_n, \iota_{\XX_n}, \lambda_{\XX_n})$;
+it's unique up to $\OO_E$-linear quasi-isogeny compatible with the polarization,
+and refer to it as the \emph{framing object}.
+We also let \[ \EE \coloneqq \XX_1. \]
+
+We can now define the Rapoport-Zink space:
+\begin{definition}
+  For each $n \ge 1$, we let $\RZ_n$ denote the
+  functor over $\Spf \OO_{\breve F}$ defined as follows.
+  Let $S$ be an $\Spf \OO_{\breve F}$ scheme, and let
+  $\ol S \coloneqq S \times_{\Spf \OO_{\breve F}} \Spec \FF$
+  For every $\Spf \OO_{\breve F}$ scheme, we let $\RZ_n(S)$
+  be the set of isomorphism classes of quadruples
+  \[ (X, \iota, \lambda, \rho) \]
+  where $(X, \iota, \lambda)$ is one of the triples as we described, and
+  \[ \rho \colon X \times_S \ol S \to \XX_n \times_{\Spec \FF} \ol S \]
+  is a \emph{framing}, meaning it is an height zero $\OO_F$-linear quasi-isogeny
+  and satisfies
+  \[ \rho^\ast((\lambda_{\XX_n})_{\ol S}) = \lambda_{\ol S}. \]
+\end{definition}
+Then $\RZ_n$ is formally smooth over $\OO_{\breve F}$ of relative dimension $n-1$.
+
+Henceforth, we also make the following abbreviation.
+\begin{definition}
+  For integers $m$ and $n$
+  \[ \RZ_{m,n} \coloneq \RZ_{m} \times_{\Spf \OO_{\breve F}} \RZ_n. \]
+\end{definition}
+
+\subsection{A realization of the non-split Hermitian space $\VV_n$ of dimension $n$}
+At the same time, we can define the following Hermitian space.
+\begin{definition}
+  For each $n \ge 1$, let
+  \[ \VV_n \coloneqq \Hom_{\OO_E}^\circ (\EE, \XX_n) \]
+  which we call the space of special homomorphisms.
+  When endowed with the form
+  \[ \left< x,y \right> = \lambda_{\EE}^{-1} \circ y^\vee \circ \lambda_{\XX_n} \circ x
+    \in \End_{E}^\circ(\EE) \simeq E \]
+  it becomes an $n$-dimensional $E/F$-Hermitian space.
+\end{definition}
+\begin{proposition}
+  Up to isomorphism, $\VV_n$ is the unique $n$-dimensional
+  nondegenerate non-split $E/F$-Hermitian space.
+\end{proposition}
+\begin{proof}
+  \todo{ref}
+\end{proof}
+
+\subsection{Euler-Poincar\'{e} characteristic}
+In what follows, $\chi$ denotes the Euler-Poincar\'{e} characteristic,
+meaning that if $X$ is a formal scheme over $\Spf \OO_{\breve F}$
+then given a finite complex $\mathcal{F}$ of $\SO_X$-modules we set
+\[ \chi_X(\mathcal{F}) = \sum_i \sum_j (-1)^{i+j}
+  \operatorname*{len}_{\OO_{\breve F}} H^j(X, H_i(\mathcal F)) \]
+provided all the lengths are finite.
+
+\subsection{Hecke operator}
+We need to define $\TT_{f'} \coloneqq \TT_{\mathbf{1}_{K'^\flat} \otimes f'}$.
+\todo{help}
+
+\subsection{Intersection number for the group version of AFL}
+\begin{definition}
+  Following \cite[\S6]{ref:AFLspherical}, we define the intersection number as
+  \[
+    \Int((1,g), \mathbf{1}_{K'^\flat} \otimes f)
+    \coloneqq \chi_{\RZ_{n-1,n}} \left( \SO_{\TT_f (\Delta_{\RZ_{n-1}})}
+      \mathop{\otimes}^{\LL}_{\SO_{\RZ_{n-1,n}}} \SO_{(1,g) \cdot \Delta_{\RZ_{n-1}}} \right).
+  \]
+\end{definition}
+
+\subsection{Intersection number for the semi-Lie version of AFL}
+In what follows, let
+\[ \Gamma_g \subseteq \RZ_{n,n} \]
+denote the graph of the automorphism of $\RZ_n$ induced by $g$.
+\begin{definition}
+  \[
+    \Int((g,u), f)
+    \coloneqq \chi_{\RZ_{n,n}} \left( \SO_{\Gamma_g}
+      \mathop{\otimes}^{\LL}_{\SO_{\RZ_{n,n}}} \SO_{\Delta_{\ZD(u)}}
+      \mathop{\otimes}^{\LL}_{\SO_{\RZ_{n,n}}} \SO_{\TT_f \Delta_{\RZ_n}} \right).
+  \]
+\end{definition}
+\todo{you would think this is bilinear}
