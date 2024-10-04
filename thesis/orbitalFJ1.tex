@@ -58,13 +58,20 @@ From now on we fix the notation
   n_1 &\coloneqq v(x_1) \\
   n_2 &\coloneqq v(x_2).
 \end{align*}
+Note that although $n_2 \ge 0$, the value of $n_1$ will often be non-positive.
+In fact $n_1$ is not particularly simple to work with and we will
+prefer to introduce the notation
+\[ m \coloneqq n_2 + v(c) + r - n_1 \]
+instead to use as a summation variable.
+(This is chosen so that $\frac{x_2}{x_1} \cdot c \in \varpi^{-r} \OO_F \iff m \ge 0$.)
 
+\subsubsection{Collating the linear constraints}
 For a given $r \ge 0$, we find that $h$ contributes to the integral exactly
 if $h\uu$ and $\vv^\top h\inv$ have $\OO_F$-entries,
 and all the entries of $h \gamma h\inv$ are in $\varpi^{-r}\OO_F$.
 The former condition is just saying that
 \begin{align*}
-  v(y) &\ge -n_1 \\
+  v(y) &\ge -n_1, \\
   0 &\le n_2 \le v(e).
 \end{align*}
 Now we consider the entries of $h\gamma h\inv$.
@@ -73,36 +80,121 @@ and $r \ge 0$, it follows that
 \begin{align*}
   cy + a, -cy + d \in \varpi^{-r}\OO_F
   &\iff cy \in \varpi^{-r}\OO_F \\
-  &\iff v(y) \ge -r - v(c).
+  &\iff v(y) \ge -v(c) - r.
 \end{align*}
 Moreover,
 \[ \frac{x_2}{x_1} \cdot c \in \varpi^{-r} \OO_F
-  \iff n_2 + v(c) \ge r + n_1. \]
-As for the quadratic constraint, let us write
+  \iff n_2 + v(c) -n_1 \ge - r \iff m \ge 0. \]
+In summary, up until now we have the following requirements imposed:
+\begin{equation}
+  \begin{aligned}
+  0 &\le n_2 \le v(e) \\
+  0 &\le m \\
+  v(y) &\ge \max(-n_1, -v(c) - r) \\
+  % &= \max(m - n_2 - v(c) - r, - v(c) - r) \\
+  &= \max(m-n_2, 0) - v(c) - r.
+  \end{aligned}
+  \label{eq:linear_constraints}
+\end{equation}
+
+As for the quadratic constraint, we seek $y$ such that
+\begin{align*}
+  \phantom\iff \frac{x_1}{x_2} \cdot (-cy^2+(d-a)y+b) &\in \varpi^{-r} \OO_F \\
+  \iff v\left(-y^2+ \frac{d-a}{c} y + \frac bc \right) &\ge n_2 - n_1 - v(c) - r \\
+  &= m - 2v(c) - 2r.
+\end{align*}
+
+\subsection{Analyzing the quadratic constraint}
+As before, we complete the square:
 \[
-  -cy^2 + (d-a)y + b
-  = c\left( -\left( y - \frac{d-a}{2c} \right)^2 + \frac bc \right).
+  -y^2+ \frac{d-a}{c} y + \frac bc
+  = -\left( y - \frac{d-a}{2c} \right)^2 + \frac bc + \frac{(d-a)^2}{4c^2}
 \]
 Because $b \bar c = 1 - a \bar a$ has odd valuation,
 it follows that $\frac b c = \frac{1-a \bar a}{c\bar c}$ has odd valuation to.
-On the other hand, the valuation of
-$\left( y - \frac{d-a}{2c} \right)^2$ is necessarily even.
-So the terms $\left( y - \frac{d-a}{2c} \right)^2$ and $\frac bc$
-never have the same valuation and hence
-\[ v\left( -\left( y - \frac{d-a}{2c} \right)^2 + \frac bc  \right)
-  = \min \left\{ 2v\left( y - \frac{d-a}{2c} \right), v\left( \frac bc \right) \right\}. \]
-This implies
-\begin{align*}
-  &\phantom= v\left( \frac{x_1}{x_2} \cdot \left( -cy^2+(d-a)y+b \right) \right) \\
-  &= n_1 - n_2 + \min \left\{ 2v\left( y - \frac{d-a}{2c} \right), v\left( \frac bc \right) \right\}.
-\end{align*}
+On the other hand, $\frac{(d-a)^2}{4c^2}$ has even valuation.
 
-We now collate all the constraints we obtained together.
-In summary, the triple $(x_1, x_2, y) \in \OO_F^\times \times \OO_F^\times \times \OO_F$
-contributes to the orbital integral exactly if the following identities hold:
+This motivates us to introduce the parameter
+\[ \theta \coloneqq \min \left\{ v(b)+v(c), 2v(d-a) \right\} \ge 0. \]
+(We know $\theta \ge v(d-a) \ge 0$ since $a$ and $d$ are units.)
+Note that $v(b) + v(c)$ is odd,
+so $\theta$ takes the odd value if $v(b)+v(c) < 2v(d-a)$ and the even value otherwise.
+This definition ensures that
+\[ v \left( \frac bc + \frac{(d-a)^2}{4c^2} \right) = \theta - 2v(c). \]
+Then we can consider two cases based on $\theta$.
+(We start numbering these Case 5 and Case 6 to prevent confusion
+with the cases introduced in \Cref{sec:orbital1}.)
+\begin{description}
+  \item[Case 5]
+  Let's assume first that
+  \[ \theta - 2v(c) \ge m - 2v(c) - 2r. \]
+  Then the only additional condition on $y$ is that
+  \[
+    v\left( y - \frac{d-a}{2c} \right)
+    \ge \left\lceil \frac{m}{2} \right\rceil - v(c) - r.
+  \]
+  We refer to this as \textbf{Case 5}.
+
+  \item[Case 6\ts+ / Case 6\ts-]
+  Otherwise assume that
+  \[ \theta - 2v(c) < m - 2v(c) - 2r. \]
+  Then in order for $y$ to satisfy the constraint,
+  we would need to be in a situation where $2v(y - \frac{d-a}{2c}) = \theta - 2v(c)$.
+  So this case could only arise at all when $\theta$ is even and hence
+  \[ \theta - 2v(c) = v \left( \frac bc + \frac{(d-a)^2}{4c^2} \right)
+      = 2\left( v(d-a)-v(c) \right). \]
+  As the quantity $\frac bc + \frac{(d-a)^2}{4c^2}$ must be a perfect square
+  we denote it by $\tau^2$, with $v(\tau) = \theta/2 - v(c)$.
+  Thus the constraint on $y$ is that
+  \begin{align*}
+    v\left( y - \frac{d-a}{2c} \pm \tau \right) &\ge \left( m - 2v(c) - 2r \right) - v(\tau) \\
+    v\left( y - \frac{d-a}{2c} \mp \tau \right) &= v(\tau).
+  \end{align*}
+  Because we assumed $m - 2v(c) - 2r - v(\tau) > v(\tau)$,
+  the second equation is true whenever the first inequality is and we may disregard it.
+  \textbf{Case 6\ts+} refers to the situation where the $\pm$ sign is $+$
+  and \textbf{Case 6\ts-} refers to the situation where the $\mp$ sign is $-$;
+  they are essentially the same.
+\end{description}
+
+\subsubsection{Analysis of Case 5}
+The triple $(x_1, x_2, y) \in \OO_F^\times \times \OO_F^\times \times \OO_F$
+contributes to the orbital integral in Case 5 exactly if the following identities hold:
 \begin{align*}
   0 &\le n_2 \le v(e) \\
-  n_2  - v(b) - r &\le n_1 \le n_2 + v(c) + r \\
-  v(y) &\ge \max\left(-n_1, -r-v(c)\right) \\
-  v\left( y - \frac{d-a}{2c} \right) &\ge \frac{n_2 - n_1 - v(c) - r}{2}.
+  0 &\le m \le \theta + 2r \\
+  v(y) &\ge \max(m-n_2,0) - v(c) - r \\
+  v\left( y - \frac{d-a}{2c} \right) &\ge \left\lceil \frac{m}{2} \right\rceil - v(c) - r.
 \end{align*}
+However, from the definitions we already know that
+\[ v\left( \frac{d-a}{2c} - 0 \right)
+  \ge \frac{\theta - 2v(c)}{2} \ge \frac{m}{2} - v(c) - r \]
+so the disks in the last two conditions have nonempty intersection.
+Hence the earlier \Cref{prop:no_mastercard} applies to tell us that
+the locus of valid $y$ is a single disk whose volume in $\OO_F$ is given by
+\[ q^{-\max\left( m-n_2, \left\lceil m/2 \right\rceil, 0 \right) + v(c) + r}. \]
+Meanwhile the volume of $x_2 \in \OO_F^\times$ is $q^{-n_2}$,
+and the volume of $x_1 \in \OO_F^\times$ is $q^{-n_1}$,
+so the aggregate volume becomes
+\[ q^{-n_1 - n_2 -\max\left( m-n_2, \left\lceil m/2 \right\rceil, 0 \right) + v(c) + r}
+  = q^{m - 2n_2 - \max\left( m-n_2, \left\lceil m/2 \right\rceil, 0 \right)}. \]
+
+In summary, for this case we sum over
+\[ 0 \le n_2 \le v(e), \qquad 0 \le m \le \theta + 2r \]
+and the volume contribution of the supported region is
+\[ q^{m - 2n_2 - \max\left( m-n_2, \left\lceil m/2 \right\rceil, 0 \right)}. \]
+
+\subsubsection{Analysis of Case 6\ts+ and Case 6\ts-}
+The triple $(x_1, x_2, y) \in \OO_F^\times \times \OO_F^\times \times \OO_F$
+contributes to the orbital integral in Case 6\ts+ and Case 6\ts-
+exactly if the following identities hold:
+\begin{align*}
+  0 &\le n_2 \le v(e) \\
+  \theta + 2r &< m \\
+  v(y) &\ge \max(m-n_2,0) - v(c) - r \\
+  v\left( y - \frac{d-a}{2c} \pm \tau \right) &\ge m - 2r - \frac{\theta}{2}.
+\end{align*}
+In this situation, we are already promised that
+\[ v\left( \frac{d-a}{2c} \pm \tau \right)
+  \ge
+\]

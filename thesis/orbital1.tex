@@ -113,11 +113,12 @@ For brevity, we abbreviate
 \[ \mathbf{1}_{\le r}(\gamma, t, m) \coloneqq \mathbf{1}_{K'_{S, \le r}}(\Gamma(\gamma, t, m)). \]
 
 \subsubsection{Reparametrizing the integral in terms of $t$ and $m$}
-From now on, following \cite{ref:AFL} we always fix the notation
+From now on, following \cite[\S4]{ref:AFL} we always fix the notation
 \begin{align*}
-m &= m(t_1) \coloneqq -v(t_1) \\
-n &= n(t) \coloneqq v(1-t\bar t).
+  m &= m(t_1) \coloneqq -v(t_1) \\
+  n &= n(t) \coloneqq v(1-t\bar t).
 \end{align*}
+(At the risk of stating the obvious, this $n$ is not the same $n$ in $\GL_n$, etc.)
 We need to rewrite the integral, phrased originally via $\odif{h'}$,
 in terms of the parameters $t$ (hence $n$), $m$, and $\gamma$.
 We start by observing that
@@ -162,7 +163,7 @@ Bringing this all into the orbital integral gives
 
   In the bottom row, we need
   \begin{align*}
-    v\left( c+(1-d\bar d) \bar t \right)-m &\geq -r,
+    v\left( c+(1-d\bar d) \bar t \right)-m &\geq -r, \\
     v\left( ct +(1-d\bar d) \right)-m &\geq -r.
   \end{align*}
   If $v(t) > 0$ this is equivalent to $m-r \leq \delta$.
@@ -350,7 +351,7 @@ In summary:
   \end{align*}
 \end{proposition}
 
-\subsubsection{Rewriting the quadratic constraint on the valuation of $t$}
+\subsection{Rewriting the quadratic constraint on the valuation of $t$ in the $n > 0$ situation}
 We now analyze the inequality
 \begin{equation}
   v\left( (2at-b)^2 - (b^2-4a\bar d) \right) \geq n-r
