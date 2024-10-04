@@ -62,7 +62,7 @@ which links values of certain orbital integrals
 over two reductive groups over a non-Archimedean local field.
 
 Let's be a bit more precise about what this fundamental lemma says.
-Let $V_0$ denote a split $E/F$-Hermitian space of dimension $n$,
+Let $V_0$ denote the split $E/F$-Hermitian space of dimension $n$ (unique up to isomorphism),
 fix a unit vector $w_0$ in it,
 and let $V_0^\flat$ be the orthogonal complement of the span of $w_0$.
 Let $G'^\flat \coloneqq \GL_{n-1}(E)$, $G' \coloneqq \GL_n(E)$,
@@ -170,6 +170,8 @@ with $K' \subset G'$ and $K \subset G$ the natural hyperspecial compact subgroup
 Also, let $q$ denote the residue characteristic of $F$.
 Moreover, define the symmetric space
 \[ S_n(F) \coloneqq \left\{ g \in \GL_n(E) \mid g \bar{g} = \id_n \right\}. \]
+Finally, let $\VV_n$ be the non-split Hermitian space of dimension $n$ (unique up to isomorphism),
+and let $\U(\VV_n)$ denote its unitary group.
 
 For concreteness, we focus on the inhomogeneous version
 of the arithmetic fundamental lemma, which is \cite[Conjecture 6.2.1]{ref:AFLspherical}.
@@ -186,8 +188,8 @@ We only mention these pieces by name here, with definitions given later:
   \ii On the geometric side, we have an intersection number.
   It uses the following ingredients.
   \begin{itemize}
-    \ii We choose a regular semisimple element $g \in G\rs$.
-    (The notation $G\rs$ denotes the regular semisimple elements of $G$, etc.)
+    \ii We choose a regular semisimple element $g \in \U(\VV_n)\rs$.
+    (The notation $\U(\VV_n)\rs$ denotes the regular semisimple elements of $\U(\VV_n)$, etc.)
     \ii We choose a function $f \in \HH(G, K)$ from the spherical Hecke algebra.
     \ii \todo{intersection number}
   \end{itemize}
@@ -207,7 +209,7 @@ We only mention these pieces by name here, with definitions given later:
   Specifically, $f$ and $f'$ need to be linked, and $g$ and $\gamma$ need to be linked.
   This is done as follows.
   \begin{itemize}
-    \ii Once the regular semisimple element $g \in G\rs$ is chosen,
+    \ii Once the regular semisimple element $g \in \U(\VV_n)\rs$ is chosen,
     we require $\gamma \in S_n(F)\rs$ to be a \emph{matching} element.
     This matching is defined in \Cref{sec:matching}.
 
@@ -227,7 +229,7 @@ we can now state the conjecture proposed in \cite{ref:AFLspherical}.
   and let $f' = \BC_{S_n}^{\eta^{n-1}}(f) \in \HH(S_n(F), K')$ be its image
   under base change as defined in \Cref{sec:satake}.
   Then for matching (as defined in \Cref{sec:matching}) regular semisimple elements
-  \[ g \in G\rs \longleftrightarrow \gamma \in S_n(F)\rs \]
+  \[ g \in \U(\VV_n)\rs \longleftrightarrow \gamma \in S_n(F)\rs \]
   we have
   \begin{equation}
     \Int\left( (1,g), \mathbf{1}_{K'^\flat} \otimes f \right) \log q
@@ -284,10 +286,10 @@ It serves to complete the analogy given in \Cref{tab:semi_lie_analogy}
 \end{table}
 
 In this variation, as in \cite{ref:liuFJ},
-rather than matching $g \in G\rs$ to $\gamma \in S_n(F)\rs$,
-we consider an augmented space larger than $G$ and $S_n(F)$.
+rather than matching $g \in \U(\VV_n)\rs$ to $\gamma \in S_n(F)\rs$,
+we consider an augmented space larger than $\U(\VV_n)$ and $S_n(F)$.
 Specifically, one considers a matching between tuples of regular semisimple elements
-\[ (g, u) \in (G \times \VV_n)\rs
+\[ (g, u) \in (\U(\VV_n) \times \VV_n)\rs
   \longleftrightarrow (\gamma, \uu, \vv^\top) \in (S_n(F) \times V_n'(F))\rs \]
 where $V_n'(F)$ (defined in \Cref{sec:background})
 consists of pairs of column vectors and row vectors of length $n$,
@@ -302,7 +304,7 @@ as we did for \cite[Conjecture 6.2.1]{ref:AFLspherical}.
   and let $f' = \BC_{S_n}^{\eta^{n-1}}(f) \in \HH(S_n(F), K')$ be its image
   under base change defined in \Cref{sec:satake}.
   Then for matching (as defined in \Cref{sec:matching}) regular semisimple elements
-  \[ (g, u) \in (G \times \VV_n)\rs \longleftrightarrow
+  \[ (g, u) \in (\U(\VV_n) \times \VV_n)\rs \longleftrightarrow
     (\gamma, \uu, \vv^\top) \in (S_n(F) \times V_n')\rs \]
   we have
   \begin{equation}
