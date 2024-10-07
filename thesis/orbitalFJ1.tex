@@ -9,12 +9,11 @@ every element in $h \in \GL_2(F)$ may be parametrized as
 where $k \in K' = \GL_2(\OO_F)$, $x_1, x_2 \in \OO_F^\times$ and $y \in \OO_F$.
 Because the orbits are invariant under conjugation by $K'$,
 the parameter $k$ can be discarded.
-The Haar measure integrated over is then given just by
-\[ \odif[\times] x_1 \odif[\times] x_2 \odif y \]
+The Haar measure in these coordinates
+\[ \left\lvert \frac{x_1}{x_2} \right\rvert \odif[\times] x_1 \odif[\times] x_2 \odif y \]
 i.e.\ we take multiplicative Haar measure on $F^\times$
 (normalized so that $\OO_F^\times$ has volume $1$)
-and additive Haar measure on $F$
-(so $\OO_F$ has volume $1$).
+and additive Haar measure on $F$ (so $\OO_F$ has volume $1$).
 
 \subsection{Action of upper triangular matrices on $(\gamma, \uu, \vv^\top)$.}
 We now compute the action of an arbitrary
@@ -116,7 +115,6 @@ On the other hand, $\frac{(d-a)^2}{4c^2}$ has even valuation.
 
 This motivates us to introduce the parameter
 \[ \theta \coloneqq \min \left\{ v(b)+v(c), 2v(d-a) \right\} \ge 0. \]
-(We know $\theta \ge v(d-a) \ge 0$ since $a$ and $d$ are units.)
 Note that $v(b) + v(c)$ is odd,
 so $\theta$ takes the odd value if $v(b)+v(c) < 2v(d-a)$ and the even value otherwise.
 This definition ensures that
@@ -140,21 +138,41 @@ with the cases introduced in \Cref{sec:orbital1}.)
   \[ \theta - 2v(c) < m - 2v(c) - 2r. \]
   Then in order for $y$ to satisfy the constraint,
   we would need to be in a situation where $2v(y - \frac{d-a}{2c}) = \theta - 2v(c)$.
-  So this case could only arise at all when $\theta$ is even and hence
+  So this case could only arise at all when $\theta$ is even, that is
+  \[ 0 \le 2v(d-a) = \theta < v(b) + v(c) \]
+  (note that $v(d-a) \ge 0$ because $a$ kand $d$ are units).
+
+  and hence
   \[ \theta - 2v(c) = v \left( \frac bc + \frac{(d-a)^2}{4c^2} \right)
       = 2\left( v(d-a)-v(c) \right). \]
+
   As the quantity $\frac bc + \frac{(d-a)^2}{4c^2}$ must be a perfect square
-  we denote it by $\tau^2$, with $v(\tau) = \theta/2 - v(c)$.
-  Thus the constraint on $y$ is that
+  we denote it by $\tau^2$, with
+  \[ v(\tau) = \theta/2 - v(c). \]
+  This gives us the factorization
+  \[ \frac bc = \tau^2 - \frac{(d-a)^2}{4c^2}
+    = \left( \tau - \frac{d-a}{2c} \right) \left( \tau + \frac{d-a}{2c} \right). \]
+  The left-hand side has odd valuation,
+  so the two factors on the right have unequal valuations
+  and hence exactly one of them has valuation the same as $v(\frac{d-a}{2c}) = v(\tau)$.
+  Hence, we agree to fix the choice of the square root $\tau$ so that
   \begin{align*}
-    v\left( y - \frac{d-a}{2c} \pm \tau \right) &\ge \left( m - 2v(c) - 2r \right) - v(\tau) \\
-    v\left( y - \frac{d-a}{2c} \mp \tau \right) &= v(\tau).
+    v\left( \tau + \frac{d-a}{2c} \right) &= v(b) - v(c) - v(\tau) = v(b) - \frac{\theta}{2} \\
+    v\left( \tau - \frac{d-a}{2c} \right) &= v(\tau) = \frac{\theta}{2} - v(c)
   \end{align*}
-  Because we assumed $m - 2v(c) - 2r - v(\tau) > v(\tau)$,
+  and in particular
+  $v\left( \tau + \frac{d-a}{2c} \right) > v\left( \tau - \frac{d-a}{2c} \right)$.
+
+  In any case, the constraint on $y$ is that
+  \begin{align*}
+    v\left( y - \left( \frac{d-a}{2c} \pm \tau \right) \right)
+      &\ge \left( m - 2v(c) - 2r \right) - v(\tau) \\
+    v\left( y - \left( \frac{d-a}{2c} \mp \tau \right) \right) &= v(\tau).
+  \end{align*}
+  Because we assumed $m - 2v(c) - 2r - v(\tau) > v(\tau) = v(2\tau)$,
   the second equation is true whenever the first inequality is and we may disregard it.
   \textbf{Case 6\ts+} refers to the situation where the $\pm$ sign is $+$
-  and \textbf{Case 6\ts-} refers to the situation where the $\mp$ sign is $-$;
-  they are essentially the same.
+  and \textbf{Case 6\ts-} refers to the situation where the $\mp$ sign is $-$.
 \end{description}
 
 \subsubsection{Analysis of Case 5}
@@ -173,18 +191,20 @@ so the disks in the last two conditions have nonempty intersection.
 Hence the earlier \Cref{prop:no_mastercard} applies to tell us that
 the locus of valid $y$ is a single disk whose volume in $\OO_F$ is given by
 \[ q^{-\max\left( m-n_2, \left\lceil m/2 \right\rceil, 0 \right) + v(c) + r}. \]
-Meanwhile the volume of $x_2 \in \OO_F^\times$ is $q^{-n_2}$,
-and the volume of $x_1 \in \OO_F^\times$ is $q^{-n_1}$,
-so the aggregate volume becomes
-\[ q^{-n_1 - n_2 -\max\left( m-n_2, \left\lceil m/2 \right\rceil, 0 \right) + v(c) + r}
-  = q^{m - 2n_2 - \max\left( m-n_2, \left\lceil m/2 \right\rceil, 0 \right)}. \]
-
-In summary, for this case we sum over
-\[ 0 \le n_2 \le v(e), \qquad 0 \le m \le \theta + 2r \]
-and the volume contribution of the supported region is
-\[ q^{m - 2n_2 - \max\left( m-n_2, \left\lceil m/2 \right\rceil, 0 \right)}. \]
+The volume contribution for and $x_1 \in \OO_F^\times$ and $x_2 \in \OO_F^\times$
+is also $1$, because $v(x_1)$ and $v(x_2)$ are fixed.
+Hence the volume element contributed by this section is exactly given by
+\begin{align*}
+  \left\lvert \frac{x_1}{x_2} \right\rvert
+  q^{-\max\left( m-n_2, \left\lceil m/2 \right\rceil, 0 \right) + v(c) + r}
+  &= q^{n_2 - n_1 -\max\left( m-n_2, \left\lceil m/2 \right\rceil, 0 \right) + v(c) + r} \\
+  &= q^{m - \max\left( m-n_2, \left\lceil m/2 \right\rceil, 0 \right)}.
+\end{align*}
+And again, this case is summed over
+\[ 0 \le n_2 \le v(e), \qquad 0 \le m \le \theta + 2r. \]
 
 \subsubsection{Analysis of Case 6\ts+ and Case 6\ts-}
+Again, this case could only occur if $\theta$ is even.
 The triple $(x_1, x_2, y) \in \OO_F^\times \times \OO_F^\times \times \OO_F$
 contributes to the orbital integral in Case 6\ts+ and Case 6\ts-
 exactly if the following identities hold:
@@ -194,7 +214,21 @@ exactly if the following identities hold:
   v(y) &\ge \max(m-n_2,0) - v(c) - r \\
   v\left( y - \frac{d-a}{2c} \pm \tau \right) &\ge m - 2r - \frac{\theta}{2}.
 \end{align*}
+Note that must have
+\[ m - 2r - \frac{\theta}{2} > m - v(c) - r \]
+
+We start by checking whether the two disks specified by the bottom two equations
+have nonempty intersection or not.
+In Case 6\ts+, we have
+\begin{align*}
+  v\left( \frac{d-a}{2c} + \tau \right)
+  &= v(b) - \frac{\theta}{2}
+\end{align*}
+
+
+
 In this situation, we are already promised that
 \[ v\left( \frac{d-a}{2c} \pm \tau \right)
-  \ge
+  \ge v(\tau) = \frac{\theta}2 - v(c) \ge m - 2r - \frac{\theta}{2}.
 \]
+because $v\left( \frac{d-a}{c} \right) = v(\tau) = \frac{\theta}2 - v(c)$.
