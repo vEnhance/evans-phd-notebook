@@ -96,6 +96,7 @@ In summary, up until now we have the following requirements imposed:
   \label{eq:linear_constraints}
 \end{equation}
 
+\subsubsection{The quadratic constraint}
 As for the quadratic constraint, we seek $y$ such that
 \begin{align*}
   \phantom\iff \frac{x_1}{x_2} \cdot (-cy^2+(d-a)y+b) &\in \varpi^{-r} \OO_F \\
@@ -103,7 +104,6 @@ As for the quadratic constraint, we seek $y$ such that
   &= m - 2v(c) - 2r.
 \end{align*}
 
-\subsection{Analyzing the quadratic constraint}
 As before, we complete the square:
 \[
   -y^2+ \frac{d-a}{c} y + \frac bc
@@ -119,9 +119,11 @@ Note that $v(b) + v(c)$ is odd,
 so $\theta$ takes the odd value if $v(b)+v(c) < 2v(d-a)$ and the even value otherwise.
 This definition ensures that
 \[ v \left( \frac bc + \frac{(d-a)^2}{4c^2} \right) = \theta - 2v(c). \]
-Then we can consider two cases based on $\theta$.
-(We start numbering these Case 5 and Case 6 to prevent confusion
-with the cases introduced in \Cref{sec:orbital1}.)
+
+\subsection{Cases based on $\theta$}
+Henceforth we consider two cases based on $\theta$.
+We start number these Case 5 and Case 6 to prevent confusion
+with the cases introduced in \Cref{sec:orbital1}.
 \begin{description}
   \item[Case 5]
   Let's assume first that
@@ -192,7 +194,7 @@ the locus of valid $y$ is a single disk whose volume in $\OO_F$ is given by
 \[ q^{-\max\left( m-n_2, \left\lceil m/2 \right\rceil, 0 \right) + v(c) + r}. \]
 The volume contribution for and $x_1 \in \OO_F^\times$ and $x_2 \in \OO_F^\times$
 is also $1$, because $v(x_1)$ and $v(x_2)$ are fixed.
-Hence the volume element contributed by this portion is exactly given by
+Hence the overall volume of the support in $H$ for this pair $(m, n_2)$ is given by
 \begin{align*}
   \left\lvert \frac{x_1}{x_2} \right\rvert q^{n_2 - n_1} \Vol(\{ y \mid \dots \})
   &= q^{n_2 - n_1 -\max\left( m-n_2, \left\lceil m/2 \right\rceil, 0 \right) + v(c) + r} \\
@@ -254,14 +256,14 @@ $v\left( \frac{d-a}{2c} \pm \tau \right) + v(c) + r$ is given by the case:
 Assuming $m$ lies in the valid range so that the locus of valid $y$ is nonempty,
 it follows that the volume is given exactly by
 \[ q^{-\max(m-n_2, m - \frac{\theta}{2} - r, 0) - v(c) - r}. \]
-Hence the volume contributed by this portion is exactly given by
+Hence the overall volume of the support in $H$ for this pair $(m, n_2)$ is given by
 \begin{align*}
   \left\lvert \frac{x_1}{x_2} \right\rvert q^{n_2 - n_1} \Vol(\{ y \mid \dots \})
   &= q^{n_2 - n_1 - \max\left( m-n_2, m/2 - \frac{\theta}{2} - r, 0 \right) + v(c) + r} \\
   &= q^{m - \max\left( m-n_2, m/2 - \frac{\theta}{2} - r, 0 \right)}.
 \end{align*}
 And this sum is over two ranges of $m$
-(although the ranges obviously overlap, they sum different values of $y$):
+(although the ranges obviously overlap, they set of $y$ they cover is disjoint):
 \begin{align*}
   \theta + 2r & < m \le \max\left( r, n_2 - \frac{\theta}{2} \right) + v(b) + v(c) + r \\
   \theta + 2r & < m \le n_2 + \frac{\theta}{2} + r.
