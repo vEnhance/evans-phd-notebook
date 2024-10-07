@@ -440,9 +440,19 @@ If $\ell$ is odd, so $\lambda = \ell$, then
 the orbital integral can be expressed succinctly in the following way.
 \begin{theorem}
   [Orbital integral in the odd case for $\mathbf{1}_{K'_{S, \le r}}$]
-  Take the assumptions before, and let
+  Let the representative
+  \[ \gamma = \begin{bmatrix}
+      a & 0 & 0 \\
+      b & - \bar d & 1 \\
+      -a \bar b + b d & 1 - d \bar d & d
+    \end{bmatrix} \in S_3(F)\rs \]
+  be paired to an element in $\U(\VV_n)$.
+  Assume $v(b) = v(d) = 0$.
+  Let $\delta = v(1 - d \bar d)$
+  and $\ell = v(b^2 - 4 a \bar d)$ be the parameters defined earlier.
+  Assume further that $\ell$ is odd, and define
   \[ \nn_\gamma \coloneqq \Arch_{[-2r, 2\delta + \ell + 2r]}(r, \ell). \]
-  Then for any $r \ge 0$ we have the formula
+  Then for any $r \ge 0$ we have the formula:
   \[
     \Orb(\gamma, \mathbf{1}_{K'_{S, \le r}}, s)
     = \sum_{k = -2r}^{2\delta + \ell + 2r}
@@ -596,13 +606,24 @@ and put $\Vol(t_1:-v(t_1)=m) = q^{2m} (1-q^{-2})$ to get:
 \subsection{Final answer for even $\ell$, when $v(b) = v(d) = 0$}
 \begin{theorem}
   [Orbital integral in the even case for $\mathbf{1}_{K'_{S, \le r}}$]
-  Retain the assumptions before, and define
+  Let the representative
+  \[ \gamma = \begin{bmatrix}
+      a & 0 & 0 \\
+      b & - \bar d & 1 \\
+      -a \bar b + b d & 1 - d \bar d & d
+    \end{bmatrix} \in S_3(F)\rs \]
+  be paired to an element in $\U(\VV_n)$.
+  Assume further $v(b) = v(d) = 0$.
+  Let $\delta = v(1 - d \bar d)$, $\ell = v(b^2 - 4 a \bar d)$ and
+  $\lambda = v((1 - d \bar d)^2 - c \bar c) - 2\delta$
+  (where $c = -a \bar b + b d $) be the parameters defined earlier.
+  Assume further $\ell$ is even, and define
   \begin{align*}
     \nn_\gamma &\coloneqq \Arch_{[-2r, 2\delta + \lambda + 2r]}(r, \ell) \\
     \cc_\gamma &\coloneqq \Arch_{[\ell-r, 2\delta + \lambda - \ell + r]}
     (\delta - \ell/2, \min(\lambda-\ell-1, 2r)).
   \end{align*}
-  Then for any $r \ge 0$ we have the formula.
+  Then for any $r \ge 0$ we have the formula:
   \begin{align*}
     \Orb(\gamma, \mathbf{1}_{K'_{S, \le r}}, s)
     &= \sum_{k = \ell-r}^{2\delta + \lambda - \ell + r} \cc_\gamma(k) (-1)^k q^{\frac{\ell}{2}+r} (q^s)^k \\
@@ -636,7 +657,7 @@ and put $\Vol(t_1:-v(t_1)=m) = q^{2m} (1-q^{-2})$ to get:
     =
     \begin{cases}
       k - (\ell - r)
-        & \text{if } \ell-r \le k \le \delta + \frac{\ell}{2} - r \\
+        & \text{if } \ell-r \le k \le \mathsf{B}_\gamma \\
       \left\lfloor \frac{k - \mathsf{B}_\gamma}{2} \right\rfloor + \delta - \frac{\ell}{2}
         &\text{if } \mathsf{B}_\gamma \le k \le \mathsf{B}_\gamma + \mathsf{w}_\gamma \\
       \delta - \frac{\ell}{2} + \half \mathsf{w}_\gamma
