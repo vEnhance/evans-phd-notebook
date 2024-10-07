@@ -194,8 +194,7 @@ The volume contribution for and $x_1 \in \OO_F^\times$ and $x_2 \in \OO_F^\times
 is also $1$, because $v(x_1)$ and $v(x_2)$ are fixed.
 Hence the volume element contributed by this portion is exactly given by
 \begin{align*}
-  \left\lvert \frac{x_1}{x_2} \right\rvert
-  q^{-\max\left( m-n_2, \left\lceil m/2 \right\rceil, 0 \right) + v(c) + r}
+  \left\lvert \frac{x_1}{x_2} \right\rvert q^{n_2 - n_1} \Vol(\{ y \mid \dots \})
   &= q^{n_2 - n_1 -\max\left( m-n_2, \left\lceil m/2 \right\rceil, 0 \right) + v(c) + r} \\
   &= q^{m - \max\left( m-n_2, \left\lceil m/2 \right\rceil, 0 \right)}.
 \end{align*}
@@ -237,7 +236,7 @@ $v\left( \frac{d-a}{2c} \pm \tau \right) + v(c) + r$ is given by the case:
   to hold.
   Now the inequality $0 \le v(b) - \frac{\theta}{2} + v(c) + r$ is always true,
   as $\theta < v(b) + v(c)$, so we can disregard it.
-  Therefore \eqref{eq:case_6_plus_m_raw} can be rewritten as just
+  Therefore this can be rewritten as just
   \[ m \le \max\left( r, n_2 - \frac{\theta}{2} \right) + v(b) + v(c) + r. \]
 
   \ii In Case 6\ts-, we need at least one of the inequalities
@@ -248,21 +247,22 @@ $v\left( \frac{d-a}{2c} \pm \tau \right) + v(c) + r$ is given by the case:
     \end{cases}
   \]
   to hold.
-  But the latter inequality is always false, so this is just requiring
+  But $m \le \theta+2r$ is always false and $0 \le \frac{\theta}{2} + r$ is always true,
+  so this simplifies to
   \[ m \le n_2 + \frac{\theta}{2} + r. \]
 \end{itemize}
-If so, the locus of valid $y$ has volume
+Assuming $m$ lies in the valid range so that the locus of valid $y$ is nonempty,
+it follows that the volume is given exactly by
 \[ q^{-\max(m-n_2, m - \frac{\theta}{2} - r, 0) - v(c) - r}. \]
-Hence the volume element contributed by this portion is exactly given by
+Hence the volume contributed by this portion is exactly given by
 \begin{align*}
-  \left\lvert \frac{x_1}{x_2} \right\rvert
-  q^{-\max\left( m-n_2, m/2 - \frac{\theta}{2} - r, 0 \right) + v(c) + r}
+  \left\lvert \frac{x_1}{x_2} \right\rvert q^{n_2 - n_1} \Vol(\{ y \mid \dots \})
   &= q^{n_2 - n_1 - \max\left( m-n_2, m/2 - \frac{\theta}{2} - r, 0 \right) + v(c) + r} \\
   &= q^{m - \max\left( m-n_2, m/2 - \frac{\theta}{2} - r, 0 \right)}.
 \end{align*}
 And this sum is over two ranges of $m$
-(which overlap, but they give different values of $y$):
+(although the ranges obviously overlap, they sum different values of $y$):
 \begin{align*}
-  \theta + 2r & < m \le  \max\left( r, n_2 - \frac{\theta}{2} \right) + v(b) + v(c) + r \\
+  \theta + 2r & < m \le \max\left( r, n_2 - \frac{\theta}{2} \right) + v(b) + v(c) + r \\
   \theta + 2r & < m \le n_2 + \frac{\theta}{2} + r.
 \end{align*}
