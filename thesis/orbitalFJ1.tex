@@ -11,7 +11,7 @@ Because the orbits are invariant under conjugation by $K'$,
 the parameter $k$ can be discarded.
 The Haar measure in these coordinates
 \[ \left\lvert \frac{x_1}{x_2} \right\rvert \odif[\times] x_1 \odif[\times] x_2 \odif y \]
-i.e.\ we take multiplicative Haar measure on $F^\times$
+where we take multiplicative Haar measure on $F^\times$
 (normalized so that $\OO_F^\times$ has volume $1$)
 and additive Haar measure on $F$ (so $\OO_F$ has volume $1$).
 
@@ -114,7 +114,7 @@ it follows that $\frac b c = \frac{1-a \bar a}{c\bar c}$ has odd valuation to.
 On the other hand, $\frac{(d-a)^2}{4c^2}$ has even valuation.
 
 This motivates us to introduce the parameter
-\[ \theta \coloneqq \min \left\{ v(b)+v(c), 2v(d-a) \right\} \ge 0. \]
+\[ \theta \coloneqq \min \left( v(b)+v(c), 2v(d-a) \right) \ge 0. \]
 Note that $v(b) + v(c)$ is odd,
 so $\theta$ takes the odd value if $v(b)+v(c) < 2v(d-a)$ and the even value otherwise.
 This definition ensures that
@@ -125,7 +125,7 @@ with the cases introduced in \Cref{sec:orbital1}.)
 \begin{description}
   \item[Case 5]
   Let's assume first that
-  \[ \theta - 2v(c) \ge m - 2v(c) - 2r. \]
+  \[ \theta - 2v(c) \ge m - 2v(c) - 2r \iff m \le \theta + 2r. \]
   Then the only additional condition on $y$ is that
   \[
     v\left( y - \frac{d-a}{2c} \right)
@@ -135,24 +135,19 @@ with the cases introduced in \Cref{sec:orbital1}.)
 
   \item[Case 6\ts+ / Case 6\ts-]
   Otherwise assume that
-  \[ \theta - 2v(c) < m - 2v(c) - 2r. \]
+  \[ \theta - 2v(c) < m - 2v(c) - 2r \iff m > \theta + 2r. \]
   Then in order for $y$ to satisfy the constraint,
   we would need to be in a situation where $2v(y - \frac{d-a}{2c}) = \theta - 2v(c)$.
   So this case could only arise at all when $\theta$ is even, that is
   \[ 0 \le 2v(d-a) = \theta < v(b) + v(c) \]
-  (note that $v(d-a) \ge 0$ because $a$ kand $d$ are units).
-
-  and hence
-  \[ \theta - 2v(c) = v \left( \frac bc + \frac{(d-a)^2}{4c^2} \right)
-      = 2\left( v(d-a)-v(c) \right). \]
-
-  As the quantity $\frac bc + \frac{(d-a)^2}{4c^2}$ must be a perfect square
+  (note that $v(d-a) \ge 0$ because $a$ and $d$ are units).
+  As the quantity $\frac bc + \frac{(d-a)^2}{4c^2}$ must be a perfect square,
   we denote it by $\tau^2$, with
-  \[ v(\tau) = \theta/2 - v(c). \]
+  \[ v(\tau) = \frac{\theta}{2} - v(c). \]
   This gives us the factorization
   \[ \frac bc = \tau^2 - \frac{(d-a)^2}{4c^2}
     = \left( \tau - \frac{d-a}{2c} \right) \left( \tau + \frac{d-a}{2c} \right). \]
-  The left-hand side has odd valuation,
+  The left-hand side has odd valuation $v(b) - v(c)$,
   so the two factors on the right have unequal valuations
   and hence exactly one of them has valuation the same as $v(\frac{d-a}{2c}) = v(\tau)$.
   Hence, we agree to fix the choice of the square root $\tau$ so that
@@ -167,12 +162,16 @@ with the cases introduced in \Cref{sec:orbital1}.)
   \begin{align*}
     v\left( y - \left( \frac{d-a}{2c} \pm \tau \right) \right)
       &\ge \left( m - 2v(c) - 2r \right) - v(\tau) \\
-    v\left( y - \left( \frac{d-a}{2c} \mp \tau \right) \right) &= v(\tau).
+      &= \left( m - 2v(c) - 2r \right) - \left( \frac{\theta}{2} - v(c) \right) \\
+      &= m - \frac{\theta}{2} - v(c) - 2r \\
+    v\left( y - \left( \frac{d-a}{2c} \mp \tau \right) \right) &= v(\tau)
+      = \frac{\theta}{2} - v(c).
   \end{align*}
-  Because we assumed $m - 2v(c) - 2r - v(\tau) > v(\tau) = v(2\tau)$,
-  the second equation is true whenever the first inequality is and we may disregard it.
+  By assumption, the second equation is true
+  whenever the first inequality is and we may disregard it.
   \textbf{Case 6\ts+} refers to the situation where the $\pm$ sign is $+$
   and \textbf{Case 6\ts-} refers to the situation where the $\mp$ sign is $-$.
+  And these cases must be disjoint because the right-hand sides above are unequal.
 \end{description}
 
 \subsubsection{Analysis of Case 5}
@@ -193,7 +192,7 @@ the locus of valid $y$ is a single disk whose volume in $\OO_F$ is given by
 \[ q^{-\max\left( m-n_2, \left\lceil m/2 \right\rceil, 0 \right) + v(c) + r}. \]
 The volume contribution for and $x_1 \in \OO_F^\times$ and $x_2 \in \OO_F^\times$
 is also $1$, because $v(x_1)$ and $v(x_2)$ are fixed.
-Hence the volume element contributed by this section is exactly given by
+Hence the volume element contributed by this portion is exactly given by
 \begin{align*}
   \left\lvert \frac{x_1}{x_2} \right\rvert
   q^{-\max\left( m-n_2, \left\lceil m/2 \right\rceil, 0 \right) + v(c) + r}
@@ -212,23 +211,58 @@ exactly if the following identities hold:
   0 &\le n_2 \le v(e) \\
   \theta + 2r &< m \\
   v(y) &\ge \max(m-n_2,0) - v(c) - r \\
-  v\left( y - \frac{d-a}{2c} \pm \tau \right) &\ge m - 2r - \frac{\theta}{2}.
+  v\left( y - \left( \frac{d-a}{2c} \pm \tau \right) \right) &\ge m - \frac{\theta}{2} - v(c) - 2r.
 \end{align*}
-Note that must have
-\[ m - 2r - \frac{\theta}{2} > m - v(c) - r \]
-
-We start by checking whether the two disks specified by the bottom two equations
-have nonempty intersection or not.
-In Case 6\ts+, we have
+The last two inequalities specify disks.
+So in each case, via \Cref{prop:no_mastercard}
+we get a nonzero contribution if and only if the distance between the centers
+$0$ and $\frac{d-a}{2c} \pm \tau$ has valuation at least
+that of the smaller of the two right-hand sides, that is
 \begin{align*}
-  v\left( \frac{d-a}{2c} + \tau \right)
-  &= v(b) - \frac{\theta}{2}
+  v\left( \frac{d-a}{2c} \pm \tau \right)
+  &\ge \min\left( \max(m-n_2,0) - v(c) - r, m - \frac{\theta}{2} - v(c) - 2r \right) \\
+  &= \min\left( \max(m-n_2,0), m - \frac{\theta}{2} - r \right) - v(c) - r.
 \end{align*}
+Hence the upper bound on $m$ is given by two different requirements,
+depending on which of the two values of
+$v\left( \frac{d-a}{2c} \pm \tau \right) + v(c) + r$ is given by the case:
+\begin{itemize}
+  \ii In Case 6\ts+, we need at least one of the inequalities
+  \[
+    \begin{cases}
+    \max(m-n_2, 0) \le v(b) - \frac{\theta}{2} + v(c) + r, \\
+    m \le v(b) + v(c) + 2r
+    \end{cases}
+  \]
+  to hold.
+  Now the inequality $0 \le v(b) - \frac{\theta}{2} + v(c) + r$ is always true,
+  as $\theta < v(b) + v(c)$, so we can disregard it.
+  Therefore \eqref{eq:case_6_plus_m_raw} can be rewritten as just
+  \[ m \le \max\left( r, n_2 - \frac{\theta}{2} \right) + v(b) + v(c) + r. \]
 
-
-
-In this situation, we are already promised that
-\[ v\left( \frac{d-a}{2c} \pm \tau \right)
-  \ge v(\tau) = \frac{\theta}2 - v(c) \ge m - 2r - \frac{\theta}{2}.
-\]
-because $v\left( \frac{d-a}{c} \right) = v(\tau) = \frac{\theta}2 - v(c)$.
+  \ii In Case 6\ts-, we need at least one of the inequalities
+  \[
+    \begin{cases}
+      \max(m-n_2, 0) \le \frac{\theta}{2} + r \\
+      m \le \theta + 2r
+    \end{cases}
+  \]
+  to hold.
+  But the latter inequality is always false, so this is just requiring
+  \[ m \le n_2 + \frac{\theta}{2} + r. \]
+\end{itemize}
+If so, the locus of valid $y$ has volume
+\[ q^{-\max(m-n_2, m - \frac{\theta}{2} - r, 0) - v(c) - r}. \]
+Hence the volume element contributed by this portion is exactly given by
+\begin{align*}
+  \left\lvert \frac{x_1}{x_2} \right\rvert
+  q^{-\max\left( m-n_2, m/2 - \frac{\theta}{2} - r, 0 \right) + v(c) + r}
+  &= q^{n_2 - n_1 - \max\left( m-n_2, m/2 - \frac{\theta}{2} - r, 0 \right) + v(c) + r} \\
+  &= q^{m - \max\left( m-n_2, m/2 - \frac{\theta}{2} - r, 0 \right)}.
+\end{align*}
+And this sum is over two ranges of $m$
+(which overlap, but they give different values of $y$):
+\begin{align*}
+  \theta + 2r & < m \le  \max\left( r, n_2 - \frac{\theta}{2} \right) + v(b) + v(c) + r \\
+  \theta + 2r & < m \le n_2 + \frac{\theta}{2} + r.
+\end{align*}
