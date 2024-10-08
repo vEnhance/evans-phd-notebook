@@ -1,21 +1,159 @@
 \section{Evaluation of the orbital integral for $S_2(F) \times V'_2(F)$}
 \label{sec:orbitalFJ2}
-\subsection{The case where $\theta$ is odd}
 
+We now aggregate the supports we found in the previous section together with the
+definition of the orbital integral to extract the desired formulas.
+
+\subsection{The contribution for Case 5}
+Recall that the orbital integral was defined as
+\begin{align*}
+  & \Orb(\guv, \phi \otimes \oneV, s) \\
+  &\coloneqq
+  \int_{h \in H} \phi(h\inv \gamma h)
+  \oneV(h \uu, \vv^\top h^{-1})
+  \eta(h) \left\lvert \det(h) \right\rvert_F^{-s} \odif h
+\end{align*}
+and that after taking Iwasawa decomposition as
+\[ h = k \begin{bmatrix} x_1 & 0 \\ 0 & x_2 \end{bmatrix}
+  \begin{bmatrix} 1 & y \\ 0 & 1 \end{bmatrix} \]
+we broke the sum based on $n_1 = v(x_1)$ and $n_2 = v(x_2)$.
+So the contribution to the orbital integral looks like
+For $h$ as above, we know that
+\begin{align*}
+  \eta(h) &= (-1)^{n_1 + n_2} \\
+  \left\lvert \det(h) \right\rvert_F^{-s} &= (q^s)^{n_1 + n_2}.
+\end{align*}
+Hence, the total contribution for Case 5 is
+\[
+  I^{\text{5}} \coloneqq \sum_{n_2 = 0}^{v(e)} \sum_{m = 0}^{\theta + 2r}
+  q^{m - \max\left( m-n_2, \left\lceil m/2 \right\rceil, 0 \right)}
+  (-q^s)^{2n_2 - m - v(c) - r}.
+\]
+\todo{should sum based on exponent}
+
+\subsection{Final formula}
 \begin{theorem}
-  Let $r \ge 0$ and let
+  Let the representative
   \[
-    (\gamma, \uu, \vv^\top) = \left( \begin{bmatrix} a & b \\ c & d \end{bmatrix},
+    \guv = \left( \begin{bmatrix} a & b \\ c & d \end{bmatrix},
       \begin{bmatrix} 0 \\ 1 \end{bmatrix},
       \begin{bmatrix} 0 & e \end{bmatrix} \right)
     \in (S_2(F) \times V_2'(F))\rs.
   \]
-  Assume $\gamma$ satisfies \Cref{assume:a_odd}, and further assume that
-  \[ \theta = v(b) + v(c) < 2 v(d-a) \]
-  is an odd number.
+  be paired with an element of $(\U(\VV_2) \times \VV_2)\rs$.
+  Then
+  \[ \Orb(\guv, \mathbf{1}_{K'_{S, \le r}} \otimes \oneV, s) \]
+  is nonzero if and only if
+  \[ r \ge -v(e) - \frac{v(b)+v(c)}{2}. \]
+  In that case, one of two formulas holds.
+
+  If $v(d-a) \ge v(e) - r$ then we define
+  \[ \nn_\guv(k) = \Arch_{[-(v(b)+r), 2v(e)+v(c)+r]}(0, 2v(e)). \]
+  Then
+  \begin{align*}
+    &\phantom= \Orb(\guv, \mathbf{1}_{K'_{S, \le r}} \otimes \oneV, s) \\
+    &= \sum_{k = -(v(b)+r)}^{2v(e)+v(c)+r} (-1)^k
+    \left( 1 + q + q^2 + \dots + q^{\nn_\guv(k)} \right) (q^s)^k.
+  \end{align*}
+
+  If instead $v(d-a) < v(e) - r$, then we define
+  \begin{align*}
+    \nn_\guv(k)
+      &= \Arch_{[-(v(b)+r), 2v(e)+v(c)+r]}(0, 2v(d-a) + 2r), \\
+    \cc_\guv(k) &=
+      \Arch_{[2v(d-a)-v(b)+r, 2v(e)+v(c)-2v(d-a)-r]}\left( v(e) - v(d-a) + r, 0 \right).
+  \end{align*}
   Then we have
-  \[
-    \Orb((\gamma, \uu, \vv^\top), \mathbf{1}_{K'_{S, \le r}}, s)
-    =
-  \]
+  \begin{align*}
+    &\phantom= \Orb(\guv, \mathbf{1}_{K'_{S, \le r}} \otimes \oneV, s) \\
+    &= \sum_{k = -(v(b)+r)}^{2v(e)+v(c)+r} (-1)^k
+    \left( 1 + q + q^2 + \dots + q^{\nn_\guv(k)} \right) (q^s)^k \\
+    &+ \sum_{k = \theta-v(b)+r}^{2v(e)+v(c)-\theta-r} (-1)^k \cc_\guv(k) q^{\theta + 2r}
+  \end{align*}
 \end{theorem}
+
+\begin{remark}
+  In the first case $v(d-a) \ge v(e) - r$,
+  the ARCH notation can be written explicitly as
+  \[ \nn_\guv(k) = \min\left( \left\lfloor \tfrac{k - (v(b)+r)}{2} \right\rfloor,
+    \left\lfloor \tfrac{(2v(e)+v(c)+r)-k}{2} \right\rfloor, v(e) \right). \]
+  It has only three cases in the piecewise definition.
+  Similarly, in the second case we could write
+  \begin{align*}
+    \nn_\guv(k) &= \min\left( \left\lfloor \tfrac{k - (v(b)+r)}{2} \right\rfloor,
+      \left\lfloor \tfrac{(2v(e)+v(c)+r)-k}{2} \right\rfloor, v(d-a)+r \right) \\
+    \cc_\guv(k) &= \min\big( \left\lfloor k - (2v(d-a)-v(b)+r) \right\rfloor, \\
+      &\qquad \left\lfloor(2v(e)+v(c)-2v(d-a)-r)-k \right\rfloor, v(e)-v(d-a)+r \big).
+  \end{align*}
+\end{remark}
+
+\begin{example}
+  Suppose $r = 14$, $v(b) = -5$, $v(c) = 100$, $v(e) = 3$.
+  We always have $v(d-a) \ge 0 > -11 = v(e) - r$.
+  Hence the above formula reads
+  \begin{align*}
+    \Orb(\guv, \mathbf{1}_{K'_{S, \le 14}} \otimes \oneV, s)
+    &= -q^{-9s} \\
+    &+ q^{-8s} \\
+    &- (q+1) \cdot q^{-7s} \\
+    &+ (q+1) \cdot q^{-6s} \\
+    &- (q^2+q+1) \cdot q^{-5s} \\
+    &+ (q^2+q+1) \cdot q^{-4s} \\
+    &- (q^3+q^2+q+1) \cdot q^{-3s} \\
+    &+ (q^3+q^2+q+1) \cdot q^{-2s} \\
+    &- (q^3+q^2+q+1) \cdot q^{-s} \\
+    &+ (q^3+q^2+q+1) \cdot q^{0} \\
+    &- (q^3+q^2+q+1) \cdot q^{s} \\
+    &+ (q^3+q^2+q+1) \cdot q^{2s} \\
+    &\vdotswithin= \\
+    &- (q^3+q^2+q+1) \cdot q^{113s} \\
+    &+ (q^3+q^2+q+1) \cdot q^{114s} \\
+    &- (q^2+q+1) \cdot q^{115s} \\
+    &+ (q^2+q+1) \cdot q^{116s} \\
+    &- (q+1) \cdot q^{117s} \\
+    &+ (q+1) \cdot q^{118s} \\
+    &- q^{119s} \\
+    &+ q^{120s}.
+  \end{align*}
+\end{example}
+\begin{example}
+  Suppose $r = 2$, $v(b) = -5$, $v(c) = 100$, $v(e) = 20$, $v(d-a) = 1$.
+  Then we have
+  \begin{align*}
+    \Orb(\guv, \mathbf{1}_{K'_{S, \le 2}} \otimes \oneV, s)
+    &= -q^{3s} \\
+    &+ q^{4s} \\
+    &- (q+1) \cdot q^{5s} \\
+    &+ (q+1) \cdot q^{6s} \\
+    &- (q^2+q+1) \cdot q^{7s} \\
+    &+ (q^2+q+1) \cdot q^{8s} \\
+    &- (q^3+q^2+q+1) \cdot q^{9s} \\
+    &+ (2q^3+q^2+q+1) \cdot q^{10s} \\
+    &- (3q^3+q^2+q+1) \cdot q^{9s} \\
+    &+ (4q^3+q^2+q+1) \cdot q^{10s} \\
+    &- (5q^3+q^2+q+1) \cdot q^{9s} \\
+    &+ (6q^3+q^2+q+1) \cdot q^{10s} \\
+    &\vdotswithin= \\
+    &- (17q^3+q^2+q+1) \cdot q^{25s} \\
+    &+ (18q^3+q^2+q+1) \cdot q^{26s} \\
+    &- (18q^3+q^2+q+1) \cdot q^{27s} \\
+    &+ (18q^3+q^2+q+1) \cdot q^{28s} \\
+    &\vdotswithin= \\
+    &- (18q^3+q^2+q+1) \cdot q^{117s} \\
+    &+ (18q^3+q^2+q+1) \cdot q^{118s} \\
+    &- (18q^3+q^2+q+1) \cdot q^{119s} \\
+    &+ (17q^3+q^2+q+1) \cdot q^{120s} \\
+    &- (16q^3+q^2+q+1) \cdot q^{121s} \\
+    &+ (15q^3+q^2+q+1) \cdot q^{122s} \\
+    &\vdotswithin= \\
+    &+ (3q^3+q^2+q+1) \cdot q^{134s} \\
+    &- (2q^3+q^2+q+1) \cdot q^{135s} \\
+    &+ (q^3+q^2+q+1) \cdot q^{136s} \\
+    &- (q^2+q+1) \cdot q^{137s} \\
+    &+ (q^2+q+1) \cdot q^{138s} \\
+    &- (q+1) \cdot q^{139s} \\
+    &+ (q+1) \cdot q^{140s} \\
+    &- q^{141s} \\
+    &+ q^{142s}.
+  \end{align*}
+\end{example}
