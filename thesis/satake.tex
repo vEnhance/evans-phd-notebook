@@ -1,5 +1,5 @@
-\section{Base change}
-\label{sec:satake}
+\chapter{Base change}
+\label{ch:satake}
 
 The goal of this section is to make completely explicit the base change
 \[ \BC_{S}^{\eta^{n-1}} \colon \HH(S_n(F), K') \to \HH(G, K') \]
@@ -19,10 +19,10 @@ Throughout this section we have the following additional notation.
 We also let $\Sym(n)$ denotes the symmetric group in $n$ variables with order $n!$
 (since $S_n(F) \subseteq \GL_n(E)$ is already reserved for the symmetric space).
 
-\subsection{Reminders}
+\section{Reminders}
 We provide some background on the Satake transform.
 
-\subsubsection{Satake transform}
+\subsection{Satake transform}
 We state a general form of the Satake transformation, which will be used later.
 
 For this subsection, $G$ will denote an arbitrary connected reductive group
@@ -58,13 +58,13 @@ We are going to apply this momentarily in two situations:
 once when $G$ is the general linear group (which is split),
 and once when $G$ is a unitary group.
 
-\subsubsection{Modulus character}
+\subsection{Modulus character}
 Let $\varpi$ denote a uniformizer for $F$ and $q$ the residue characteristic.
 In general, if $\rho$ is the Weyl vector and $\mu$ is a positive cocharacter, then
 \[ \delta(\mu(\varpi)) = q^{- \left< \mu, \rho\right>}. \]
 \todo{does this help for unitary group}
 
-\subsection{Setup}
+\section{Setup}
 Although our paper is primarily interested in the case $n=3$,
 we provide the notes for this subsection for general $n$.
 
@@ -82,7 +82,7 @@ In other situations, one can also consider a twisted version
 \end{align*}
 where as before $\eta(g) = (-1)^{v(\det g)}$ in a slight abuse of notation.
 
-\subsubsection{Satake transformation for $\HH(G',K')$ and $\HH(G,K)$}
+\subsection{Satake transformation for $\HH(G',K')$ and $\HH(G,K)$}
 We introduce more notation.
 To take the Satake transform of $\HH(G', K')$, we define the following abbreviations.
 \begin{itemize}
@@ -166,12 +166,12 @@ So, henceforth, we will consider
   \Sat &\colon \HH(G, K) \xrightarrow{\sim} \QQ[Y_1^{\pm}, \dots, Y_m^{\pm}]^{W_m}.
 \end{align*}
 
-\subsubsection{Base change}
+\subsection{Base change}
 \todo{this subsection needs to be written}
 
 We don't have to twist since $n$ is odd.
 
-\subsubsection{Overall picture}
+\subsection{Overall picture}
 \begin{center}
 \begin{tikzcd}
   \HH(G',K') \ar[dd, "\rproj_\ast^{\eta^{n-1}}"', bend right = 60] \ar[r, "\sim"', "\Sat"] \ar[d, "\BC"]
@@ -185,7 +185,7 @@ Goal: describe $\BC_S$.
 
 \todo{describe this}
 
-\subsection{Initial calculation on the diagram}
+\section{Initial calculation on the diagram}
 Specialize now to $n=3$.
 Throughout this subsection, we use the shorthand
 \[ \varpi^{(n_1, n_2, n_3)} \coloneqq \diag(\varpi^{n_1}, \varpi^{n_2}, \varpi^{n_3}). \]
@@ -217,7 +217,7 @@ at it (one only needs to check it has $\OO_E$ entries
 and that the determinant has valuation $r$,
 rather than determining the exact coset $K'\varpi^{(n_1, n_2, n_3)}K'$).
 
-\subsubsection{Satake transform of the determinant characteristic function on the top arrow}
+\subsection{Satake transform of the determinant characteristic function on the top arrow}
 This is the easiest calculation, and we do it for all $n$ rather than just $n = 3$.
 \begin{proposition}
   For every integer $r \ge 0$, we have
@@ -280,7 +280,7 @@ This is the easiest calculation, and we do it for all $n$ rather than just $n = 
 \end{proof}
 
 
-\subsubsection{Satake transform of the indicator on the bottom arrow}
+\subsection{Satake transform of the indicator on the bottom arrow}
 \begin{proposition}
   For each $r \ge 0$ we have
   \[ \Sat\left(\mathbf{1}_{\varpi^{-r} \Mat_3(\OO_E) \cap G}\right)
@@ -383,7 +383,7 @@ This is the easiest calculation, and we do it for all $n$ rather than just $n = 
   we get the formula claimed.
 \end{proof}
 
-\subsubsection{Integration over fiber}
+\subsection{Integration over fiber}
 \begin{proposition}
   For every integer $r \ge 0$, we have
   \begin{align*}
@@ -499,7 +499,7 @@ This is the easiest calculation, and we do it for all $n$ rather than just $n = 
   as desired.
 \end{proof}
 
-\subsection{Base change from $\HH(G,K)$ to $\HH(S_3(F), K')$}
+\section{Base change from $\HH(G,K)$ to $\HH(S_3(F), K')$}
 We first need to determine an element of $\HH(G,K)$
 which is in the pre-image of $\mathbf{1}_{\varpi^{-r} \Mat_3(\OO_E) \cap G}$
 under $\BC \colon \HH(G', K') \to \HH(G, K)$.

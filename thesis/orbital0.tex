@@ -1,10 +1,10 @@
-\section{Synopsis of the orbital integral $\Orb(\gamma, \phi, s)$ for $\gamma \in S_3(F)\rs$ and $\phi \in \HH(S_3(F), K')$}
-\label{sec:orbital0}
+\chapter{Synopsis of the orbital integral $\Orb(\gamma, \phi, s)$ for $\gamma \in S_3(F)\rs$ and $\phi \in \HH(S_3(F), K')$}
+\label{ch:orbital0}
 
 This section defines the orbital integral
 and describes the parameters which we will use to express our answer.
 
-\subsection{Initial definition of the orbital integral for general $S_n(F)$}
+\section{Initial definition of the orbital integral for general $S_n(F)$}
 Let $H = \GL_{n-1}(F)$.
 Then $H$ has a natural embedding into $G = \GL_n(E)$ by
 \[ h \mapsto \begin{bmatrix} h & 0 \\ 0 & 1 \end{bmatrix} \]
@@ -19,8 +19,8 @@ Then our orbital integral is defined as follows.
     \left\lvert \det(h) \right\rvert_F^{-s} \odif h. \]
 \end{definition}
 
-\subsection{Basis for the indicator functions in $\HH(S_3(F), K')$}
-\label{sec:orbital0_hecke_basis}
+\section{Basis for the indicator functions in $\HH(S_3(F), K')$}
+\label{ch:orbital0_hecke_basis}
 From now on assume $n = 3$.
 We have the symmetric space
 \[ S_3(F) \coloneqq \left\{ g \in \GL_3(E) \mid g \bar{g} = \id_3 \right\}. \]
@@ -70,13 +70,13 @@ at $s=0$ for any $r > 0$ as well.
 Note that the $r = 0$ case is already done in \cite{ref:AFL}.
 \todo{comment some basis thing}
 
-\subsection{Parametrization of $\gamma$}
+\section{Parametrization of $\gamma$}
 Again, assume $n = 3$.
 Further assume $\gamma \in S_3(F)\rs$ is regular semisimple.
 We identify some parameters for the orbit of $\gamma$
 that we can use for our explicit calculations.
 
-\subsubsection{Rewriting the orbital integral as a double integral over $E$
+\subsection{Rewriting the orbital integral as a double integral over $E$
   via the group $H' \cong \GL_2(F)$}
 Our orbital integral is at present a quadruple integral over $F$,
 owing to $H = \GL_{2}(F)$ being a four-dimensional $F$-vector space.
@@ -125,7 +125,7 @@ then the following integral formula is obtained.
   \[ \kappa \coloneqq \frac{1}{(1-q\inv)(1-q^{-2})}. \]
 \end{proposition}
 
-\subsubsection{Identifying a representative in the $H'$-orbit}
+\subsection{Identifying a representative in the $H'$-orbit}
 Evidently the orbital integral $\Orb(\gamma, \phi, s)$ in \Cref{prop:orbital_over_H_prime}
 only depends on the $H'$-orbit of $\gamma$.
 So it makes sense to pick a canonical representative for the $H'$-orbit to compute
@@ -144,7 +144,7 @@ to assume $\gamma$ is a representative specifically of the form
 over all $a \in E^1$, $b \in E$, $d \in E$ for which $(1-d\bar d)^2 - c \bar c \neq 0$.
 In other words, the representatives described here cover all the regular orbits in $S_3(F)\rs$.
 
-\subsubsection{Simplification due to the matching of non-quasi-split unitary group}
+\subsection{Simplification due to the matching of non-quasi-split unitary group}
 In this calculation, we restrict attention to the case where our regular $\gamma$
 matches an element in the non-quasi-split unitary group.
 \todo{I need to ask Wei exactly what's up here}
@@ -171,7 +171,7 @@ In fact, few other cases even occur at all given \Cref{assume:u_odd};
 we will see momentarily that either $v(b) = v(d) \in \{-1, -2, \dots, -r\}$,
 or one of $\{v(b), v(d)\}$ is zero and the other is nonnegative.
 
-\subsection{Quantities to state the answer in terms of}
+\section{Quantities to state the answer in terms of}
 As we described earlier, our goal is to evaluate \eqref{eq:orbital_goal}
 in terms of the parameters
 \[ a \in E^1, \qquad b, d \in E, \qquad r \ge 0. \]
@@ -254,6 +254,6 @@ as a function of $\ell$ and $\delta$ (and $r$).
 However for even $\ell$ these numbers are never equal and our orbital
 integral will be stated in terms of $\ell$, $\delta$, and $\lambda$ (and $r$).
 
-\subsection{Result}
+\section{Result}
 We can now state the answer.
 \todo{put the result here}

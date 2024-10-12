@@ -1,5 +1,5 @@
-\section{Setup for the orbital integral for $S_3(F)$}
-\label{sec:orbital1}
+\chapter{Setup for the orbital integral for $S_3(F)$}
+\label{ch:orbital1}
 
 In this section we set up the framework of the orbital integral
 based on the definitions in the previous section.
@@ -7,8 +7,8 @@ This involves rewriting the integral as an infinite discrete double sum
 over two parameters $(n,m)$ that we will introduce later,
 and determining the volume of the supports of the indicator function.
 
-\subsection{Reparametrization in terms of valuations}
-\subsubsection{Computation of value in indicator function}
+\section{Reparametrization in terms of valuations}
+\subsection{Computation of value in indicator function}
 We are integrating over $t_1 \in E$ and $t_2 \in E$.
 Regarding $h' \in H'$ as an element of $\GL_3(E)$ as described before, we have
 \[ h' = \begin{bmatrix}
@@ -112,7 +112,7 @@ in the work that follows.
 For brevity, we abbreviate
 \[ \mathbf{1}_{\le r}(\gamma, t, m) \coloneqq \mathbf{1}_{K'_{S, \le r}}(\Gamma(\gamma, t, m)). \]
 
-\subsubsection{Reparametrizing the integral in terms of $t$ and $m$}
+\subsection{Reparametrizing the integral in terms of $t$ and $m$}
 From now on, following \cite[\S4]{ref:AFL} we always fix the notation
 \begin{align*}
   m &= m(t_1) \coloneqq -v(t_1) \\
@@ -142,7 +142,7 @@ Bringing this all into the orbital integral gives
   (-1)^n q^{s(2m-n)} \cdot q^{2n-2m} \odif t \odif t_1.
 \end{align*}
 
-\subsection{Description of the support of $\mathbf{1}_{\le r}$ when $n \le 0$}
+\section{Description of the support of $\mathbf{1}_{\le r}$ when $n \le 0$}
 \begin{proposition}
   Whenever $n = 0$ (this requires $v(t) \geq 0$),
   \[
@@ -197,11 +197,11 @@ Bringing this all into the orbital integral gives
   the condition is simply $-k+\delta-m \geq -r$.
 \end{proof}
 
-\subsection{Description of the support of $\mathbf{1}_{\le r}$ when $n > 0$}
+\section{Description of the support of $\mathbf{1}_{\le r}$ when $n > 0$}
 In this situation we evaluate over $n > 0$ only.
 In this case $t$ is automatically a unit.
 
-\subsubsection{Volume lemma}
+\subsection{Volume lemma}
 The following two lemmas will be useful.
 
 \begin{lemma}
@@ -304,7 +304,7 @@ and so \Cref{lem:quadruple_ineq} becomes unnecessary
 (\Cref{lem:volume} will suffice).
 We will deal with this situation when it arises.
 
-\subsubsection{Setup}
+\subsection{Setup}
 Consider the upper $2 \times 2$ matrix of $\Gamma(\gamma, t, m)$.
 Using the identities
 \begin{align*}
@@ -351,7 +351,7 @@ In summary:
   \end{align*}
 \end{proposition}
 
-\subsection{Rewriting the quadratic constraint on the valuation of $t$ in the $n > 0$ situation}
+\section{Rewriting the quadratic constraint on the valuation of $t$ in the $n > 0$ situation}
 We now analyze the inequality
 \begin{equation}
   v\left( (2at-b)^2 - (b^2-4a\bar d) \right) \geq n-r
@@ -498,7 +498,7 @@ as well as the identity
 = \frac{4 - \Norm(b \pm \tau)}{4} \]
 to calculate $v(1-\xi_1\bar{\xi_1})$ entries in the latter four cases.
 
-\subsubsection{Analysis of Case 1 and 2 assuming $n > 0$ and $v(b) = v(d) = 0$.}
+\subsection{Analysis of Case 1 and 2 assuming $n > 0$ and $v(b) = v(d) = 0$.}
 We analyze Case 1 and 2 assuming $v(b) = v(d) = 0$.
 
 Considering $n > 0$ and $n-r \le m \le n+\delta+r$ as fixed,
@@ -604,7 +604,7 @@ where each $(m,n)$ gives a volume contribution of
 Notice that $m \leq \delta + r$ could only occur when $n \leq r$.
 \end{description}
 
-\subsubsection{Analysis of Case 3 and 4 assuming $n > 0$ and $v(b) = v(d) = 0$.}
+\subsection{Analysis of Case 3 and 4 assuming $n > 0$ and $v(b) = v(d) = 0$.}
 Suppose $\ell \geq 0$ is even.
 Using the identity
 \[ (au-\bar d \bar u)^2 - \tau^2 = 4a\bar d(1- u\bar u) \]
