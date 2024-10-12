@@ -1,35 +1,18 @@
-% !TEX encoding = UTF-8 Unicode
-% !BIB TS-program = biber
-
-% Based on MIT-Thesis.tex, a LaTeX template for formatting an MIT thesis with the mitthesis class.
-% Version: 1.15, 2024/08/31
-% Author: John H. Lienhard, copyright 2024. Reuse under the MIT license: https://ctan.org/license/mit
-% Documentation is here: https://ctan.org/pkg/mitthesis
-\DocumentMetadata{
-  pdfstandard = a-2b,
-  pdfversion  = 1.7,
-  lang    = en-US,
-}
-
-\documentclass[twoside]{mitthesis}
+\documentclass[12pt]{amsart}
 \input{preamble}
-\input{hypersetup}
 \addbibresource{refs.bib}
-\begin{document}
 
-\title{Explicit formulas for orbital integrals for the
+\title[Explicit formulas for orbital integrals for AFL]
+  {Explicit formulas for orbital integrals for the
   inhomogeneous and semi-Lie arithmetic fundamental lemmas
   conjectured for the full spherical Hecke algebra}
 
-\Author{Evan Chen}{Department of Mathematics}
-\Degree{Doctor of Philosophy in Mathematics}{Department of Mathematics}
-\Supervisor{Wei Zhang}{Professor of Mathematics}
-\Acceptor{Davesh Maulik}{Professor of Mathematics}{Chairman, Department Committee on Graduate Studies}
-\DegreeDate{February}{2025}
-\ThesisDate{January 10, 2025} % Date that final thesis is submitted to department
+\author{Evan Chen}
+\date{\today}
+\address{Department of Mathematics, Massachusetts Institute of Technology}
+\email{evanchen@alum.mit.edu}
 
-% Omit this command if you are not using a cc license.
-\CClicense{CC BY-NC-ND 4.0}{https://creativecommons.org/licenses/by-nc-nd/4.0/}
+\begin{document}
 
 \maketitle
 
@@ -46,11 +29,8 @@
   thus verifying the conjecture in some particular cases.
 \end{abstract}
 
-\include{acknowledgments}
-
 \tableofcontents
-\listoffigures
-\listoftables
+\newpage
 
 \include{intro}
 
@@ -69,7 +49,5 @@
 \include{geo}
 
 \printbibliography[title=References]
-
-\appendix
 
 \end{document}
