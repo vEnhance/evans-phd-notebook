@@ -68,7 +68,7 @@ Hence, the total contribution for Case 5 is
     &\phantom= \Orb(\guv, \mathbf{1}_{K'_{S, \le r}} \otimes \oneV, s) \\
     &= \sum_{k = -(v(b)+r)}^{2v(e)+v(c)+r} (-1)^k
     \left( 1 + q + q^2 + \dots + q^{\nn_\guv(k)} \right) (q^s)^k \\
-    &+ \sum_{k = \theta-v(b)+r}^{2v(e)+v(c)-\theta-r} (-1)^k \cc_\guv(k) q^{\theta + 2r}
+    &+ \sum_{k = 2v(d-a)-v(b)+r}^{2v(e)+v(c)-\theta-r} (-1)^k \cc_\guv(k) q^{2v(d-a) + 2r}
   \end{align*}
 \end{theorem}
 
@@ -86,6 +86,14 @@ Hence, the total contribution for Case 5 is
       &\qquad \left\lfloor(2v(e)+v(c)-2v(d-a)-r)-k \right\rfloor, v(e)-v(d-a)+r \big).
   \end{align*}
 \end{remark}
+
+\begin{example}
+  When $v(e) = 0$ the expression is particularly simple.
+  The assumption $v(d-a) \ge v(e)-r$ is automatically true, and
+  $\nn_{\guv}$ is identically zero, so
+  \[ \Orb(\guv, \mathbf{1}_{K'_{S, \le r}} \otimes \oneV, s)
+    = \sum_{k=-(v(b)+r)}^{2v(e)+v(c)+r} (-q^s)^k. \]
+\end{example}
 
 \begin{example}
   Suppose $r = 14$, $v(b) = -5$, $v(c) = 100$, $v(e) = 3$.
