@@ -137,7 +137,8 @@ and then takes the pushforward along the other projection
 \end{definition}
 This is the part of the intersection number depending on $f$
 (or rather $\TT_{\mathbf{1}_{K^\flat} \otimes f}$).
-As for our $g \in G\rs$, we simply consider the translation $(1,g) \cdot \Delta_{\RZ_{n-1,n}}$.
+As for our $g \in \U(\VV_n)\rs$,
+consider the translation $(1,g) \cdot \Delta_{\RZ_{n-1,n}}$.
 The intersection number is then defined as by taking the intersection
 of these two objects using the derived tensor product $\jiao$ of the structure sheaves.
 \begin{definition}
@@ -232,9 +233,94 @@ This finally allows us to write a definition of the intersection number in the s
 
 \section{An analogy between the geometric and analytic sides}
 With the intersection number now defined for \Cref{conj:semi_lie_spherical},
-we provide some philosophical discussion about their connection.
-All of this is for philosophical motivation only,
+we provide some philosophical discussion about the connection.
+All of this is for philosophical cheerleading only,
 and is not meant to formally assert any definitions or results.
+But it may help in motivating the formulation of the conjecture.
 
-Let us first discuss the case of \Cref{conj:semi_lie_spherical} when
-$f = \mathbf{1}_K$
+For simplicity we only focus on the semi-Lie AFL originally proposed by Liu to start;
+which is the special case of \Cref{conj:semi_lie_spherical}
+when $f = \mathbf{1}_K$ and $\phi = \mathbf{1}_{K'}$.
+
+\paragraph{The geometric side}
+On the geometric side, $\RZ_n$ is the RZ-space acted on by $\U(\VV_n)$,
+and hence $\U(\VV_n) \times \U(\VV_n)$ acts on $\RZ_{n,n}$.
+Roughly speaking, we are considering the two morphisms
+\[ \RZ_n \xrightarrow{\Delta} \RZ_{n,n} \xleftarrow{\Gamma_g} \RZ_n \]
+with $\Delta$ being thought of as the diagonal morphism
+and $\Gamma_g$ as the graph under multiplication by $g \in \U(\VV_n)\rs$.
+
+Hence loosely speaking, the intersection $\Int\left( (g,u), \mathbf{1}_K \right)$
+can be thought of as the intersection of three images in $\RZ_{n,n}$:
+\begin{itemize}
+  \ii A ``diagonal'' object $\Delta$;
+  \ii A ``graph'' object $\Gamma$;
+  \ii A third object $\mathcal Z(u)$, the KR-divisor, corresponding to diagrams
+  \begin{center}
+  \begin{tikzcd}
+    \ol{\mathcal{E}}\ar[r] \ar[d, dash] & \mathcal{X}_n \ar[d, dash] \\
+    \EE \ar[r, "u"] & \XX_n.
+  \end{tikzcd}
+  \end{center}
+\end{itemize}
+The derived tensor product $\jiao$ and the derived tensor products
+are used together with some formalism to make this intersection idea precise.
+The intersection of the ``diagonal'' and ``graph'' is the \emph{fixed point locus},
+and in fact could be formally defined as the intersection
+\[ \Gamma_g \cap \Delta_{\RZ_n} \]
+viewed as a closed formal subscheme of $\RZ_{n,n}$;
+see \cite[equation (4.6)]{ref:survey}.\todo{Should be $\RZ_{n,n}$ right?
+  Not $\RZ_n$, like in (4.6) of the survey.}
+
+\paragraph{The analytic side}
+On the other hand, consider the analytic side.
+We will try to explain how the orbital integral in \Cref{def:orbitalFJ}
+can be thought of as some weighted intersection of analogous objects.
+
+Recall we set $G = \U(V_0)$ and $K = G \cap \GL_n(\OO_E)$
+the hyperspecial maximal compact subgroup.
+In that case the quotient $G/K$ can be identified as
+\[ G/K \simeq \left\{ \Lambda \subseteq V_0 \mid \Lambda^\vee = \Lambda \right\} \]
+that is, the set of self-dual lattices $\Lambda$ of full rank,
+which thus has a natural action of $G$.
+Henceforth we denote elements of $G/K$ by $h$,
+and fix one particular such lattice $\Lambda_0$, acted on by $\OO_E$.
+Hence $G/K$ can be thought of as
+\[ G/K \simeq \left\{ h \Lambda_0 \mid h \in G/K \right\}. \]
+
+If you squint hard enough, the orbital integral we defined in \Cref{def:orbitalFJ}
+can be viewed as something like
+\[ \int_{h \in G/K} \mathbf{1}_K(h^{-1} g h) \mathbf{1}_{\Lambda_0}(h \cdot u) \dotso \odif h \]
+where $u \in V_0$, and $\Lambda_0$ is a fixed particular lattice in $G/K$.
+See for example the ``relative fundamental lemma''
+stated as \cite[Conjecture 1.9]{ref:liuFJ},
+for a precise equivalence between the stated orbital integral and ours.
+
+Like before, we can consider two maps
+\[ G/K \xrightarrow{\Delta} G/K \times G/K \xleftarrow{\Gamma_g} \times G/K \]
+which are the diagonal morphism and the graph of the action of $g$.
+Hence the intersection are those cosets $hK$ for which
+\[ hK = ghK \iff h^{-1} g h \in K. \]
+Hence the indicator function $\mathbf{1}_K(h^{-1} g h)$
+plays the analog of the fixed point locus in the geometric side.
+
+Meanwhile, the term $h \cdot u$ plays a role analogous
+to the KR-divisor on the geometric side, giving the third intersection object.
+We have
+\[ h \cdot u \in \Lambda_0 \iff u \in h^{-1} \Lambda_0 \]
+and so the object corresponding to the KR-divisor $\mathcal Z(u)$
+is the subset in $G/K$ of those lattices containing $u$, that is
+\[ \left\{ \Lambda' \mid \Lambda' \ni u \right\}. \]
+The analog to the earlier diagram that we described for $\mathcal Z(u)$ is then
+\begin{align*}
+  \OO_E &\to \Lambda' \\
+  1 &\mapsto u.
+\end{align*}
+
+Up until now this whole section is written for $f = \mathbf{1}_K$ and $\phi = \mathbf{1}_{K'}$.
+In the general situation,
+if one replaces $\mathbf{1}_K$ in the above integral by a general $f$,
+then this corresponds to changing the analog of the fixed point locus;
+the idea of \cite{ref:AFLspherical} is that
+this should correspond to replacing $\Delta_{\mathcal Z(u)}$
+with $\TT_f(\Delta_{\mathcal Z(u)})$ on the geometric side.
