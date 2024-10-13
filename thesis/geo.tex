@@ -69,6 +69,7 @@ At the same time, we can define the following Hermitian space.
   \[ \left< x,y \right> = \lambda_{\EE}^{-1} \circ y^\vee \circ \lambda_{\XX_n} \circ x
     \in \End_{E}^\circ(\EE) \simeq E \]
   it becomes an $n$-dimensional $E/F$-Hermitian space.
+  \label{def:VV_n}
 \end{definition}
 \begin{proposition}
   Up to isomorphism, $\VV_n$ is the unique $n$-dimensional
@@ -103,7 +104,7 @@ This definition is carried out in \cite[\S5]{ref:AFLspherical},
 by defining it first for so-called \emph{atomic elements} of the spherical Hecke algebra,
 which form basis elements of a certain presentation of this Hecke algebra
 as the unitary group for a polynomial algebra;
-we refer the reader to \emph{loc. cit.}~for the full details.
+we refer the reader to \emph{loc.\ cit.}~for the full details.
 
 Now, take the natural closed embedding
 \[ \RZ_{n-1} \to \RZ_n \]
@@ -142,14 +143,15 @@ consider the translation $(1,g) \cdot \Delta_{\RZ_{n-1,n}}$.
 The intersection number is then defined as by taking the intersection
 of these two objects using the derived tensor product $\jiao$ of the structure sheaves.
 \begin{definition}
-  [{\cite[(6.1.1)]{ref:AFLspherical}}]
-  We define the intersection number in \Cref{conj:inhomog}
+  [{\cite[Equation (6.1.1)]{ref:AFLspherical}}]
+  We define the intersection number in \Cref{conj:inhomog} by
   \[
     \Int((1,g), \mathbf{1}_{K^\flat} \otimes f)
     \coloneqq \chi_{\RZ_{n-1,n}} \left(
       \SO_{\TT_{\mathbf{1}_{K^\flat} \otimes f} (\Delta_{\RZ_{n-1}})}
       \jiao_{\SO_{\RZ_{n-1,n}}} \SO_{(1,g) \cdot \Delta_{\RZ_{n-1}}} \right).
   \]
+  \label{def:intersection_number_inhomog}
 \end{definition}
 Here $\chi$ denotes the Euler-Poincar\'{e} characteristic,
 meaning that if $X$ is a formal scheme over $\Spf \OO_{\breve F}$
@@ -229,6 +231,7 @@ This finally allows us to write a definition of the intersection number in the s
       \SO_{\TT_f(\Delta_{\ZD(u)})}
       \jiao_{\SO_{\RZ_{n,n}}} \SO_{\Gamma_g} \right).
   \]
+  \label{def:intersection_number_semi_lie_spherical}
 \end{definition}
 
 \section{An analogy between the geometric and analytic sides}
