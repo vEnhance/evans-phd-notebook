@@ -78,38 +78,154 @@ At the same time, we can define the following Hermitian space.
   \todo{ref}
 \end{proof}
 
-\section{Euler-Poincar\'{e} characteristic}
-In what follows, $\chi$ denotes the Euler-Poincar\'{e} characteristic,
+\section{Intersection numbers for the group version of AFL for the full spherical Hecke algebra}
+Here we reproduce the definition of the intersection number used in \Cref{conj:inhomog}.
+
+Compared to the formulation of the group version and semi-Lie version of the AFL,
+the intersection number requires the introduction of a
+\emph{Hecke operator} $\TT_{\varphi}$ for an element
+\[ \varphi \in \HH(G^\flat \times G, K^\flat \times K) \]
+as introduced in \cite{ref:AFLspherical}.
+This definition is too involved to reproduce here in its entirety,
+we give a summary for this special cases in which we need.
+
+First consider the given $f \in \HH(G, K)$.
+The main work of the construction is to define another
+formal scheme $\mathcal{T}_{\mathbf{1}_{K^\flat} \otimes f}$ (see \cite[\S6.1]{ref:AFLspherical})
+together with two projection maps
+\begin{center}
+\begin{tikzcd}
+  & \ar[ld] \mathcal T_{\mathbf{1}_{K^\flat} \otimes f} \ar[rd] & \\
+  \RZ_{n-1,n} && \RZ_{n-1,n}
+\end{tikzcd}
+\end{center}
+This definition is carried out in \cite[\S5]{ref:AFLspherical},
+by defining it first for so-called \emph{atomic elements} of the spherical Hecke algebra,
+which form basis elements of a certain presentation of this Hecke algebra
+as the unitary group for a polynomial algebra;
+we refer the reader to \emph{loc. cit.}~for the full details.
+
+Now, take the natural closed embedding
+\[ \RZ_{n-1} \to \RZ_n \]
+and let
+\[ \Delta \colon \RZ_{n-1} \hookrightarrow \RZ_{n-1,n} \]
+be the associated graph morphism.
+Then we denote by $\iota \colon \Delta(\RZ_n) \hookrightarrow \RZ_{n-1,n}$
+the inclusion mapping of $\Delta$.
+Once this is done, consider then the diagram
+\begin{center}
+\begin{tikzcd}
+  & \pi_1^\ast(\Delta_{\RZ_{n-1,n}}) \ar[ld] \ar[r] \ar[rd]
+    & \ar["\pi_1" near end, ld] \mathcal T_{\mathbf{1}_{K^\flat} \otimes f}
+      \ar["\pi_2" near end, rd] \\
+  \Delta_{\RZ_{n-1,n}} \ar[r, "\iota"', hook] & \RZ_{n-1,n}
+  & (\pi_2)_\ast(\pi_1^\ast(\Delta_{\RZ_{n-1,n}})) \ar[r] & \RZ_{n-1,n}.
+\end{tikzcd}
+\end{center}
+That is, one takes the pullback of
+$\Delta_{\RZ_{n-1,n}} \xhookrightarrow{\iota} \RZ_{n-1,n}$
+along the projection
+\[ \RZ_{n-1,n} \xleftarrow{\pi_1} \mathcal{T}_{\mathbf{1}_{K^\flat} \otimes f} \]
+and then takes the pushforward along the other projection
+\[ \mathcal{T}_{\mathbf{1}_{K^\flat} \otimes f} \xrightarrow{\pi_2} \RZ_{n-1,n}. \]
+\begin{definition}
+  Set
+  \[
+    \TT_{\mathbf{1}_{K^\flat} \otimes f} (\Delta_{\RZ_{n-1,n}})
+    \coloneqq (\pi_2)_\ast(\pi_1^\ast(\Delta_{\RZ_{n-1,n}})).
+  \]
+\end{definition}
+This is the part of the intersection number depending on $f$
+(or rather $\TT_{\mathbf{1}_{K^\flat} \otimes f}$).
+As for our $g \in G\rs$, we simply consider the translation $(1,g) \cdot \Delta_{\RZ_{n-1,n}}$.
+The intersection number is then defined as by taking the intersection
+of these two objects using the derived tensor product $\jiao$ of the structure sheaves.
+\begin{definition}
+  [{\cite[(6.1.1)]{ref:AFLspherical}}]
+  We define the intersection number in \Cref{conj:inhomog}
+  \[
+    \Int((1,g), \mathbf{1}_{K^\flat} \otimes f)
+    \coloneqq \chi_{\RZ_{n-1,n}} \left(
+      \SO_{\TT_{\mathbf{1}_{K^\flat} \otimes f} (\Delta_{\RZ_{n-1}})}
+      \jiao_{\SO_{\RZ_{n-1,n}}} \SO_{(1,g) \cdot \Delta_{\RZ_{n-1}}} \right).
+  \]
+\end{definition}
+Here $\chi$ denotes the Euler-Poincar\'{e} characteristic,
 meaning that if $X$ is a formal scheme over $\Spf \OO_{\breve F}$
 then given a finite complex $\mathcal{F}$ of $\SO_X$-modules we set
 \[ \chi_X(\mathcal{F}) = \sum_i \sum_j (-1)^{i+j}
   \operatorname*{len}_{\OO_{\breve F}} H^j(X, H_i(\mathcal F)) \]
 provided all the lengths are finite.
 
-\section{Hecke operator}
-We need to define $\TT_{f'} \coloneqq \TT_{\mathbf{1}_{K'^\flat} \otimes f'}$.
-\todo{help}
+\section{Intersection numbers for the semi-Lie version of AFL for the full spherical Hecke algebra}
+Now we continue to define an intersection number needed for the proposed
+\Cref{conj:semi_lie_spherical} from earlier.
+The definition mirrors the one given in the last section.
+Here we reproduce the definition of the intersection number used in \Cref{conj:inhomog}.
 
-\section{Intersection number for the group version of AFL}
+We work here with $\RZ_{n,n}$ rather than $\RZ_{n-1,n}$.
+The change is that we need to incorporate the new $u \in \VV_n$ that was not present before.
+In order to do this one considers a certain relative Cartier divisor $\mathcal Z(u)$
+on $\RZ_n$ for each nonzero $u \in \VV_n$.
+This divisor was defined by Kudala and Rapport in \cite{ref:KR}
+and accordingly we call it a \emph{KR-divisor} following \cite[\S4.3]{ref:survey}.
+The definition is given as follows.
 \begin{definition}
-  Following \cite[\S6]{ref:AFLspherical}, we define the intersection number as
+  Since $\RZ_1 \cong \Spf \OO_{\breve F}$, the formal $\OO_F$-module $\EE = \XX_1$
+  has a unique lifting called its \emph{canonical lifting}, which we
+  denote by the triple $(\mathcal{E}, \iota_{\mathcal{E}}, \lambda_{\mathcal E})$.
+  Then the KR-divisor $\mathcal Z(u)$ is the locus where the quasi-homomorphism
+  $\EE \to \XX_n$ lifts to a homomorphism from $\mathcal{E}$ to the universal object over $\RZ_n$.
+\end{definition}
+Colloquially, the KR-divisor $\mathcal Z(u)$ can be thought of as the set of diagrams of the form
+\begin{center}
+\begin{tikzcd}
+  \ol{\mathcal{E}}\ar[r] \ar[d, dash] & \mathcal{X}_n \ar[d, dash] \\
+  \EE \ar[r, "u"] & \XX_n.
+\end{tikzcd}
+\end{center}
+Note also by the definition that $g \mathcal Z(u) = \mathcal Z (gu)$.
+
+The main change is then that we can consider $\Delta_{\mathcal Z(u)}$ as the image of
+\[ \mathcal Z(u) \hookrightarrow \RZ_n \xrightarrow{\Delta} \RZ_{n,n} \]
+where $\Delta \colon \RZ_n \to \RZ_{n,n}$ now denotes the diagonal map.
+If one defines an appropriate space $\mathcal T_{f}$ for $f \in \HH(G, K)$ together with
+\begin{center}
+\begin{tikzcd}
+  & \ar[ld] \mathcal T_{f} \ar[rd] & \\
+  \RZ_{n,n} && \RZ_{n,n}
+\end{tikzcd}
+\end{center}
+then one can then repeat the diagram from before:
+\begin{center}
+\begin{tikzcd}
+  & \pi_1^\ast(\Delta_{\mathcal Z(u)}) \ar[ld] \ar[r] \ar[rd]
+    & \ar["\pi_1" near end, ld] \mathcal T_{f}
+      \ar["\pi_2" near end, rd] \\
+  \Delta_{\mathcal Z(u)} \ar[r, "\iota"', hook] & \RZ_{n,n}
+  & (\pi_2)_\ast(\pi_1^\ast(\Delta_{\mathcal Z(u)})) \ar[r] & \RZ_{n,n}.
+\end{tikzcd}
+\end{center}
+In other words, we again take a pullback followed by a pushforward
+but this time of $\Delta_{\mathcal Z(u)} \hookrightarrow \RZ_{n,n}$.
+This lets us write an analogous definition:
+\begin{definition}
+  Set
   \[
-    \Int((1,g), \mathbf{1}_{K'^\flat} \otimes f)
-    \coloneqq \chi_{\RZ_{n-1,n}} \left( \SO_{\TT_f (\Delta_{\RZ_{n-1}})}
-      \mathop{\otimes}^{\LL}_{\SO_{\RZ_{n-1,n}}} \SO_{(1,g) \cdot \Delta_{\RZ_{n-1}}} \right).
+    \TT_f (\Delta_{\mathcal Z(u)})
+    \coloneqq (\pi_2)_\ast(\pi_1^\ast(\Delta_{\mathcal Z(u)})).
   \]
 \end{definition}
-
-\section{Intersection number for the semi-Lie version of AFL}
-In what follows, let
+Meanwhile to replace $(1,g) \Delta_{\RZ_{n,n-1}}$, we let
 \[ \Gamma_g \subseteq \RZ_{n,n} \]
 denote the graph of the automorphism of $\RZ_n$ induced by $g$.
+This finally allows us to write a definition of the intersection number in the semi-Lie case:
 \begin{definition}
+  We define the intersection number in \Cref{conj:semi_lie_spherical} as
   \[
     \Int((g,u), f)
-    \coloneqq \chi_{\RZ_{n,n}} \left( \SO_{\Gamma_g}
-      \mathop{\otimes}^{\LL}_{\SO_{\RZ_{n,n}}} \SO_{\Delta_{\ZD(u)}}
-      \mathop{\otimes}^{\LL}_{\SO_{\RZ_{n,n}}} \SO_{\TT_f \Delta_{\RZ_n}} \right).
+    \coloneqq \chi_{\RZ_{n,n}} \left(
+      \SO_{\TT_f(\Delta_{\ZD(u)})}
+      \jiao_{\SO_{\RZ_{n,n}}} \SO_{\Gamma_g} \right).
   \]
 \end{definition}
-\todo{you would think this is bilinear}
