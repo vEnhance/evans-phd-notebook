@@ -95,9 +95,9 @@ and $K$ any closed subgroup of $G$.
   is defined as the space of compactly supported $K$-binvariant
   locally constant functions on $G$.
 
-  Given two such functions $\phi_1$ and $\phi_2$ in $\HH(G,K)$,
+  Given two such functions $f_1$ and $f_2$ in $\HH(G,K)$,
   one can consider define the convolution
-  \[ (\phi_1 \ast \phi_2)(g) \coloneqq \int_G \phi_1(g\inv x) \phi_2(x) \; \odif x \]
+  \[ (f_1 \ast f_2)(g) \coloneqq \int_G f_1(g\inv x) f_2(x) \; \odif x \]
   which makes $\HH(G, K)$ into a $\QQ$-algebra,
   whose identity element is $\mathbf{1}_K$.
 \end{definition}
@@ -106,14 +106,14 @@ $K$ is the maximal compact subgroup
 (or more generally whenever $(G,K)$ is a Gelfand pair),
 this Hecke algebra is actually commutative.
 
-\section{The specific Hecke algebras for $G' = \GL_n(E)$ and $G = \U(V_0)$}
+\section{The specific Hecke algebras $\HH(G',K')$ and $\HH(G,K)$
+  for $G' = \GL_n(E)$ and $G = \U(V_0)$, and the module $\HH(S_n(F), K')$}
 For our purposes, we define two Hecke algebras:
 \begin{align*}
   \HH(G', K') &\coloneqq \HH(\GL_n(E), \GL_n(\OO_E)) \\
   \HH(G, K) &\coloneqq \HH(\U(V_0), \U(V_0) \cap \GL_n(\OO_E))
 \end{align*}
 
-\section{Two Hecke modules}
 Now the symmetric space $S_n(F)$ is not a group,
 so it does not make sense to define the same thing here.
 Nevertheless, we introduce
@@ -122,9 +122,19 @@ as the set of smooth compactly supported functions on $S_n(F)$
 which are invariant under the action of $K' \subseteq G'$;
 this is an $\HH(G', K')$-module, where the action of $f \in \HH(G', K')$ is given by
 \[ f \cdot \varphi = {?} \]
-\todo{I think I successfully confused myself about the multiplication structure}
+\todo{how do I set RHS}
 This does \textbf{not} have a multiplication structure at the moment, \emph{a priori},
 although later we will see how one could be imposed.
+
+Throughout this paper, to be unambiguous with the notation, we denote
+\begin{itemize}
+  \ii elements of $\HH(G,K)$ using $f$ or $f_i$ or similar
+    (i.e.\ lowercase Roman letters);
+  \ii elements of $\HH(G',K')$ by $f'$ or $f'_i$ or similar
+    (i.e.\ lowercase Roman letters with apostrophes);
+  \ii elements of $\HH(S_n(F),K')$ by $\phi$ or $\phi'_i$
+    (i.e.\ lowercase Greek letters).
+\end{itemize}
 
 %Similarly, consider $S_n(F) \times V_n$.
 %We set

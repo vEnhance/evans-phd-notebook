@@ -200,15 +200,15 @@ We only mention these pieces by name here, with definitions given later:
   It uses the following ingredients.
   \begin{itemize}
     \ii We choose a regular semisimple element $\gamma \in S_n(F)\rs$.
-    \ii We choose a test function $f'$ which comes
+    \ii We choose a test function $\phi$ which comes
     from a certain $\HH(G',K')$-module that we will denote $\HH(S_n(F), K')$.
     This module $\HH(S_n(F), K')$ is defined in \Cref{ch:background}.
-    \ii The orbital integral $\Orb(\gamma, f', s)$
+    \ii The orbital integral $\Orb(\gamma, \phi, s)$
     is itself defined in \Cref{ch:orbital0}.
   \end{itemize}
 
   \ii We need a way to connect the inputs between the two parts of our conjecture.
-  Specifically, $f$ and $f'$ need to be linked, and $g$ and $\gamma$ need to be linked.
+  Specifically, $f$ and $\phi$ need to be linked, and $g$ and $\gamma$ need to be linked.
   This is done as follows.
   \begin{itemize}
     \ii Once the regular semisimple element $g \in \U(\VV_n)\rs$ is chosen,
@@ -216,7 +216,7 @@ We only mention these pieces by name here, with definitions given later:
     This matching is defined in \Cref{ch:matching}.
 
     \ii Once $f \in \HH(G,K)$ is chosen, we select
-    \[ f' = \BC_{S_n}^{\eta^{n-1}}(f) \]
+    \[ \phi = \BC_{S_n}^{\eta^{n-1}}(f) \]
     to be the image of $f$ under a \emph{base change}.
     This base change is defined and then calculated explicitly in \Cref{ch:satake}.
   \end{itemize}
@@ -228,14 +228,14 @@ we can now state the conjecture proposed in \cite{ref:AFLspherical}.
   {\cite[Conjecture 6.2.1]{ref:AFLspherical}}]
   \label{conj:inhomog}
   Let $f \in \HH(G, K)$ be any element of the Hecke algebra,
-  and let $f' = \BC_{S_n}^{\eta^{n-1}}(f) \in \HH(S_n(F), K')$ be its image
+  and let $\phi = \BC_{S_n}^{\eta^{n-1}}(f) \in \HH(S_n(F), K')$ be its image
   under base change as defined in \Cref{ch:satake}.
   Then for matching (as defined in \Cref{ch:matching}) regular semisimple elements
   \[ g \in \U(\VV_n)\rs \longleftrightarrow \gamma \in S_n(F)\rs \]
   we have
   \begin{equation}
     \Int\left( (1,g), \mathbf{1}_{K'^\flat} \otimes f \right) \log q
-    = -\omega(\gamma) \left. \pdv{}{s} \right\rvert_{s=0} \Orb(\gamma, f', s)
+    = -\omega(\gamma) \left. \pdv{}{s} \right\rvert_{s=0} \Orb(\gamma, \phi, s)
     \label{eq:inhomog}
   \end{equation}
   where the intersection number $\Int(\dots)$ and
@@ -256,9 +256,9 @@ The part of the calculation involving orbital integral has two parts:
   The result is \cite[Lemma 7.1.1]{ref:AFLspherical}.
 
   \ii The calculation makes explicit the value of the orbital integral
-  \[ \Orb(\gamma, f') \]
-  for any $\gamma \in S_n(F)\rs$ and $f' \in \HH(S_n(F), K')$,
-  in terms of invariants of $\gamma$ and a decomposition of $f'$ in a natural basis.
+  \[ \Orb(\gamma, \phi) \]
+  for any $\gamma \in S_n(F)\rs$ and $\phi \in \HH(S_n(F), K')$,
+  in terms of invariants of $\gamma$ and a decomposition of $\phi$ in a natural basis.
   The result is \cite[Proposition 7.3.2]{ref:AFLspherical}.
 \end{itemize}
 Combining these two (hence obtaining the right-hand side of \eqref{eq:inhomog})
@@ -297,13 +297,13 @@ where $V_n'(F)$ (defined in \Cref{ch:background})
 consists of pairs of column vectors and row vectors of length $n$,
 and the space $\VV_n$ is defined in \Cref{ch:matching}.
 The notion of \emph{matching} is defined in \Cref{ch:matching} as well.
-Meanwhile, we still use the same test functions $f$ and $f'$,
+Meanwhile, we still use the same test functions $f$ and $\phi$,
 as we did for \cite[Conjecture 6.2.1]{ref:AFLspherical}.
 
 \begin{conjecture}
   [Semi-Lie version of the AFL for the full spherical Hecke algebra]
   Let $f \in \HH(G, K)$ be any element of the Hecke algebra,
-  and let $f' = \BC_{S_n}^{\eta^{n-1}}(f) \in \HH(S_n(F), K')$ be its image
+  and let $\phi = \BC_{S_n}^{\eta^{n-1}}(f) \in \HH(S_n(F), K')$ be its image
   under base change defined in \Cref{ch:satake}.
   Then for matching (as defined in \Cref{ch:matching}) regular semisimple elements
   \[ (g, u) \in (\U(\VV_n) \times \VV_n)\rs \longleftrightarrow
@@ -313,7 +313,7 @@ as we did for \cite[Conjecture 6.2.1]{ref:AFLspherical}.
     \begin{aligned}
       &\phantom= \Int\left( (g,u), f \right) \log q \\
       &= -\omega(\gamma, \uu, \vv^\top) \left. \pdv{}{s} \right\rvert_{s=0}
-      \Orb( (\gamma, \uu, \vv^\top), f' \otimes \oneV, s)
+      \Orb( (\gamma, \uu, \vv^\top), \phi \otimes \oneV, s)
     \end{aligned}
   \end{equation}
   where the intersection number $\Int(\dots)$ and
