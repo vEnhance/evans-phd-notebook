@@ -329,21 +329,55 @@ to accommodate the new term $u$ in \Cref{def:intersection_number_semi_lie_spheri
   \label{conj:semi_lie_spherical}
 \end{conjecture}
 
+\section{Large kernel}
+\todo{large kernel}
+
 \section{Results}
-The goal of this paper is to perform the analogous calculations
-that correspond to \cite[Lemma 7.1.1 and Proposition 7.3.2]{ref:AFLspherical} in the situations:
+One primary objective of this paper is to fully determine the orbital integral
+in the next situations for which the AFL for the full spherical Hecke algebra
+was not previously known:
 \begin{itemize}
   \ii The case $n = 3$ for the inhomogeneous group version of the AFL (\Cref{conj:inhomog});
   \ii The case $n = 2$ of semi-Lie verison of the AFL (\Cref{conj:semi_lie_spherical}).
 \end{itemize}
+The first calculation corresponds directly to the earlier results
+\cite[Lemma 7.1.1 and Proposition 7.3.2]{ref:AFLspherical}
+which were the case $n = 2$ of the inhomogeneous group version of the AFL
+(note what \cite{ref:AFLspherical} calls $n$ is $n+1$ in our notation).
+
 The methods, which are local in nature,
 are rather similar to those employed in \cite{ref:AFL},
 which shows how to compute the orbital integral for $n = 3$ when $f = \mathbf{1}_{K'}$.
-We state these results as follows.
-
+We were able to successfully calculate this orbital integral for all these cases.
+The result is too involved to state in the introduction,
+but we give the following summary.
 \begin{theorem}
+  For $\gamma \in S_3(F)\rs$ and $\phi \in \HH(S_3(F), K')$
+  (resp.\ $\guv \in (S_2(F) \times V'_2(F))\rs$ and $\phi \in \HH(S_3(F), K')$)
+  the orbital integral $\Orb(\gamma, \phi, s)$
+  (resp.\ $\Orb(\guv, \phi \otimes \oneV, s)$) always takes the form
+  \[ \sum_k P_k(s) (-q^s)^k \]
+  for some polynomials $P_k(s) \in \ZZ[x]$, where
+  \begin{itemize}
+    \ii the summation variable $k$ is a some contiguous range of integers,
+
+    \ii the polynomials $P_k \in \ZZ[x]$ are nonzero and satisfy the property
+    that every coefficient of $P_k$ besides possibly the leading coefficient is $1$;
+
+    \ii both $\deg P_k$ and leading coefficient of $P_k$ are the integer parts
+    of piecewise linear functions in $k$ with slopes in $\{0, \pm\half, 1\}$.
+  \end{itemize}
+  The range of the summation, and the aforementioned piecewise linear function(s),
+  can be written explicitly in terms of a particular representative in the orbit $\phi$.
 \end{theorem}
-\todo{write summary theorem}
+For the orbital integral $\Orb(\gamma, \phi, s)$
+with $\gamma \in S_3(F)\rs$ and $\phi \in \HH(S_3(F), K')$,
+the theorems \todo{list theorems} together all the cases that can arise.
+For the orbital integral $\Orb(\guv, \phi \otimes \oneV, s)$
+with $\guv \in (S_2(F) \times V'_2(F))\rs$ and $\phi \in \HH(S_3(F), K')$
+the final formula is the single theorem \Cref{thm:semi_lie_formula}.
+
+One consequence of these
 
 Besides providing evidence for \Cref{conj:inhomog} and \Cref{conj:semi_lie_spherical},
 these orbital integral formulas also establish some other results.
@@ -376,5 +410,5 @@ The rest of the paper is organized as follows.
   and produce analogous proofs to \Cref{ch:orbitalFJ1,ch:orbitalFJ2}.
 
   \ii Finally in \Cref{ch:geo}, we describe the Rapoport-Zink spaces
-  that the geometric side is based on.
+  that the geometric side is based on, and define the intersection numbers.
 \end{itemize}
