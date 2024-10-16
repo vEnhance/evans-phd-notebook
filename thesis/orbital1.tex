@@ -509,15 +509,15 @@ as well as the identity
 = \frac{4 - \Norm(b \pm \tau)}{4} \]
 to calculate $v(1-\xi_1\bar{\xi_1})$ entries in the latter four cases.
 
-\section{Case analysis when $v(b) = 0$}
+\section{Case analysis when $v(b) \ge 0$ and $v(d) \ge 0$}
 Up until now the analysis has been valid for all five cases of
 \Cref{prop:parameter_constraints}.
 However, starting from now on we will have to be a little more careful.
 The main case turns out to be if $v(b) = 0$
 which are cases (a) through (c) of \Cref{prop:parameter_constraints}.
-For the most part the cases where $v(b) \neq 0$ have to then be handled separately.
+We handle these cases in this section.
 
-\subsection{Analysis of Case 1 and 2 assuming $n > 0$ and $v(b) = 0$.}
+\subsection{Analysis of Case 1 and 2 assuming $n > 0$ and $v(b) = 0$}
 We analyze Case 1 and 2 assuming $v(b) = 0$.
 
 Considering $n > 0$ and $n-r \le m \le n+\delta+r$ as fixed,
@@ -626,7 +626,8 @@ where each $(m,n)$ gives a volume contribution of
 Notice that $m \leq \delta + r$ could only occur when $n \leq r$.
 \end{description}
 
-\subsection{Analysis of Case 3 and 4 assuming $n > 0$ and $v(b) = 0$.}
+\subsection{Analysis of Case 1 and 2 assuming $n > 0$ and $v(b) > 0$}
+\subsection{Analysis of Case 3\ts+, 3\ts-, 4\ts+, 4\ts- assuming $n > 0$ and $v(b) \ge 0$ and $v(d) \ge 0$}
 Suppose $\ell \geq 0$ is even.
 As before we consider $n > 0$ and $n-r \le m \le n+\delta+r$ as fixed,
 and seek to compute the volume of the set of $t$
@@ -634,6 +635,7 @@ for which $n = v(1-t\bar t)$ and $\mathbf{1}_{\le r}(\gamma,t,m) = 0$.
 
 Moving forward, we need to fix the choice of the square root $\tau$.
 \begin{definition}
+  [Fixing the choice of $\tau$]
   Using \eqref{eq:dos} in the form
   \[ (au-\bar d \bar u)^2 - \tau^2 = 4a\bar d(1- u\bar u) \]
   we agree now to fix the choice of the square root of $\tau$ such that
@@ -658,11 +660,13 @@ Moving forward, we need to fix the choice of the square root $\tau$.
   \end{equation}
 \end{proposition}
 \begin{proof}
-  If $v(d) = 0$ then from \eqref{eq:dos} we have
+  We consider which of $b$ and $d$ are units.
+  \begin{itemize}
+  \ii If $v(b) = v(d) = 0$ then from \eqref{eq:dos} we have
   \[ \ell = 2v(\tau) = 2v(au - \bar d \bar u) < \lambda \]
   and thus \cite[Lemma 4.7]{ref:AFL} applies to give \eqref{eq:four_norm_choice}, verabtim.
 
-  Now suppose $v(d) > 0$ but still $v(b) = v(\tau) = 0$.
+  \ii Now suppose $v(d) > 0$ but still $v(b) = v(\tau) = 0$.
   We begini with the observation that
   \[ 4 a \bar d = b^2 - \tau^2 = (b + \tau)(b - \tau) \]
   and so $\{v(b+\tau), v(b-\tau)\} = \{0, v(d)\}$.
@@ -679,15 +683,16 @@ Moving forward, we need to fix the choice of the square root $\tau$.
   We quote \cite[Lemma 4.6]{ref:AFL} which states more generally that
   \begin{align*}
     2\delta + \lambda
-    &= v(4-\Norm(b+\tau))  v(4-\Norm(b-\tau)) \\
+    &= v(4-\Norm(b+\tau)) + v(4-\Norm(b-\tau)) \\
     &+ v(16 + 16 d \bar d - 8 b \bar b + 8 \tau \bar\tau).
   \end{align*}
   In our case $\delta = 0$, $v(4-\Norm(b-\tau)) = 0$, and
   since $v(\tau - b) > 0$ we get $v(\tau\bar\tau - b \bar b) > 0$\todo{I think},
   so that the final term on the right-hand side is $0$ too.
-  This completes the proof.
- \end{proof}
 
+  \ii Finally assume $v(b) > 0$.
+  \end{itemize}
+\end{proof}
 
 \begin{description}
 \ii[Double sum for Case 3\ts+]
@@ -786,3 +791,6 @@ Then \Cref{lem:quadruple_ineq} gives a nonzero contribution if and only if
 The latter inequality contradicts the assumption that $n > \ell + r$,
 so in fact this case can never occur.
 \end{description}
+
+\section{Analysis of the Cases when $v(b) > 0$}
+\subsection{Analysis of Case 3 and 4 assuming $n > 0$ and $v(b) > 0$}
