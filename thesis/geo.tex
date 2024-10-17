@@ -34,8 +34,6 @@ For each $n \ge 1$, over $\FF$
 we choose a supersingular triple $(\XX_n, \iota_{\XX_n}, \lambda_{\XX_n})$;
 it's unique up to $\OO_E$-linear quasi-isogeny compatible with the polarization,
 and refer to it as the \emph{framing object}.
-We also let \[ \EE \coloneqq \XX_1. \]
-
 We can now define the Rapoport-Zink space:
 \begin{definition}
   For each $n \ge 1$, we let $\RZ_n$ denote the
@@ -60,6 +58,13 @@ Henceforth, we also make the following abbreviation.
 \end{definition}
 
 \section{A realization of the non-split Hermitian space $\VV_n$ of dimension $n$}
+For the following definition (and later on), we need a variation of $\RZ_1$:
+\begin{definition}
+  Let $(\EE, \iota_\EE, \lambda_\EE)$ be the unique triple over $\FF$
+  whose Rosati involution has signature $(1,0)$
+  (note this is different from $\RZ_1$ where the signature is $(0,1)$ instead).
+\end{definition}
+
 At the same time, we can define the following Hermitian space.
 \begin{definition}
   For each $n \ge 1$, let
@@ -174,9 +179,8 @@ This divisor was defined by Kudala and Rapport in \cite{ref:KR}
 and accordingly we call it a \emph{KR-divisor} following \cite[\S4.3]{ref:survey}.
 The definition is given as follows.
 \begin{definition}
-  Let $(\EE, \iota_\EE, \lambda_\EE)$ be the unique triple over $\FF$
-  whose Rosati involution has signature $(1,0)$
-  (note this is different from $\RZ_1$ where the signature is $(0,1)$ instead).
+  Recall that $(\EE, \iota_\EE, \lambda_\EE)$ is the unique triple over $\FF$
+  whose Rosati involution has signature $(1,0)$.
   Then the formal $\OO_F$-module has a unique lifting called its \emph{canonical lifting},
   which we denote by the triple $(\mathcal{E}, \iota_{\mathcal{E}}, \lambda_{\mathcal E})$.
   Then the KR-divisor $\mathcal Z(u)$ is the locus where the quasi-homomorphism
@@ -261,10 +265,10 @@ can be thought of as the intersection of three images in $\RZ_{n,n}$:
 \begin{itemize}
   \ii A ``diagonal'' object $\Delta$;
   \ii A ``graph'' object $\Gamma$;
-  \ii A third object $\mathcal Z(u)$, the KR-divisor, corresponding to diagrams
+  \ii A third object $\mathcal Z(u)$, the KR-divisor, parametrized to diagrams
   \begin{center}
   \begin{tikzcd}
-    \ol{\mathcal{E}}\ar[r] \ar[d, dash] & \mathcal{X}_n \ar[d, dash] \\
+    \mathcal{E}\ar[r] \ar[d, dash] & \mathcal{X}_n \ar[d, dash] \\
     \EE \ar[r, "u"] & \XX_n.
   \end{tikzcd}
   \end{center}
