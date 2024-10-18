@@ -370,7 +370,7 @@ We now analyze the inequality
   \label{eq:2atb_dos}
 \end{equation}
 and divide it into several (disjoint) possibilities.
-Recalling that $\ell = b^2 - 4 a \bar d$, there are three possibilities:
+Recalling that $\ell = b^2 - 4 a \bar d$, there are several possibilities:
 \begin{itemize}
   \ii If $\ell \ge n-r$, then \eqref{eq:2atb_dos} is equivalent to
   \begin{equation}
@@ -387,8 +387,8 @@ Recalling that $\ell = b^2 - 4 a \bar d$, there are three possibilities:
   \ii If $\ell < n-r$, then \eqref{eq:2atb_dos} could only hold if $v(2at-b) = \frac{\ell}{2}$.
   Note that in particular, this requires $\ell$ to be even.
 
-  If this happens, then because we have
-  $b^2 - 4 a \bar d$ must be a square and we denote it $\tau^2$.
+  If this happens, then as we saw in \Cref{prop:parameter_constraints}
+  the quantity $b^2 - 4 a \bar d$ must be a square and we denote it $\tau^2$.
   Thus, \eqref{eq:2atb_dos} then reads
   \[ v(2at-b+\tau) + v(2at-b-\tau) \ge n-r. \]
   Since we are assuming $n > \ell + r$,
@@ -520,10 +520,8 @@ to calculate $v(1-\xi_1\bar{\xi_1})$ entries in the latter four cases.
 \section{Case analysis when $v(b) \ge 0$ and $v(d) \ge 0$}
 Up until now the analysis has been valid for all five cases of
 \Cref{prop:parameter_constraints}.
-However, starting from now on we will have to be a little more careful.
-The main case turns out to be if $v(b) = 0$
-which are cases (a) through (c) of \Cref{prop:parameter_constraints}.
-We handle these cases in this section.
+However, starting from now on we will have to be a little more careful
+and think about which situation of \Cref{prop:parameter_constraints} we are in.
 
 \subsection{Analysis of Case 1 and 2 assuming $n > 0$ and $v(b) = 0$}
 We analyze Case 1 and 2 assuming $v(b) = 0$.
@@ -637,46 +635,36 @@ Notice that $m \leq \delta + r$ could only occur when $n \leq r$.
 \end{description}
 
 \subsection{Analysis of Case 1 and 2 assuming $n > 0$ and $v(b) > 0$}
-If $v(b) > 0$ instead, so that $\ell = \delta = 0$,
-then \eqref{eq:t_disk_case_1_2} becomes independent of the unit $t$ because we must have
+If $v(b) > 0$ instead, so that $\ell = 0$ but still $\delta \ge 0$.
+Then \eqref{eq:t_disk_case_1_2} becomes independent of the unit $t$ because we must have
 \[ v\left( t - \frac{b}{2a} \right) = 0. \]
 Consequently, in this situation, it is not necessary to distinguish between Cases 1 and 2.
 Instead, \eqref{eq:two_disks_S3} merely requires that
 \begin{align*}
   0 &\ge n - r \\
-  v(t+u) &\ge m - r
+  v(t+u) &\ge m - \delta - r
 \end{align*}
 In this situation, by \Cref{lem:volume},
 we get a nonzero contribution in the merged case if and only if
 \begin{equation}
   \begin{aligned}
     1 &\le n \le r \\
-    n-r &\le m \le n+r \\
-    \lambda &\ge m - r
+    n-r &\le m \le n + \delta + r \\
+    \lambda &\ge m - \delta - r.
   \end{aligned}
   \label{eq:vb_pos_range}
 \end{equation}
-In that case the volume contribution is given by
-\begin{equation}
-  \begin{cases}
-    q^{-n - (m-r)} \left( 1 - q\inv \right)
-      & \text{if $m > r$} \\
-    q^{-n} \left( 1 - q^{-2} \right)
-      & \text{if $m \le r$}.
-  \end{cases}
-  \label{eq:vb_pos_vol_contrib}
-\end{equation}
+In that case the volume contribution is given by the same expression as \eqref{eq:case_2_vol_contrib}.
 
 To avoid having to consider the situation $v(b) > 0$ separately,
 we make the following observation:
 \begin{proposition}
   Consider the two (disjoint) ranges \eqref{eq:odd_range1} and \eqref{eq:odd_range2}
-  in the special case $\ell = \delta = 0$.
+  in the special case $\ell = 0$.
   These two ranges collectively cover exactly the same elements $(m,n)$
   as \eqref{eq:vb_pos_range}.
-  Moreover, the volume contribution \eqref{eq:vb_pos_vol_contrib}
-  matches the corresponding volume element in \eqref{eq:case_1_vol_contrib}
-  or \eqref{eq:case_2_vol_contrib}
+  Moreover, the volume contribution \eqref{eq:case_1_vol_contrib}
+  equals that of \eqref{eq:case_2_vol_contrib} for pairs $(m,n)$ in \eqref{eq:odd_range1}.
 \end{proposition}
 \begin{proof}
   If we combine \eqref{eq:odd_range1} and \eqref{eq:odd_range2}, they say that
@@ -687,14 +675,10 @@ we make the following observation:
   which matches \eqref{eq:vb_pos_range} exactly.
   So it remains to verify that the volume contributions match.
 
-  In the case where $m \ge \left\lceil \frac{n-r}{2} \right\rceil + r$,
-  then it is obvious that \eqref{eq:case_2_vol_contrib}
-  matches \eqref{eq:vb_pos_vol_contrib} exactly.
-
-  Now suppose that $m \le \left\lceil \frac{n-r}{2} \right\rceil + r$.
-  Since $n \le r$, it follows that $m \le r$.
+  Now suppose that $m < \left\lceil \frac{n-r}{2} \right\rceil + \delta + r$.
+  Since $n \le r$, it follows that $m \le \delta + r$.
   So on the one hand we have the $n \le r$ case in \eqref{eq:case_1_vol_contrib}
-  and on the other hand we have the $m \le r$ case in \eqref{eq:vb_pos_vol_contrib},
+  and on the other hand we have the $m \le \delta + r$ case in \eqref{eq:case_2_vol_contrib},
   which both equal $q^{-n}(1-q^{-2})$.
   Hence the proof is complete.
 \end{proof}
@@ -771,7 +755,7 @@ Moving forward, we need to fix the choice of the square root $\tau$.
   \begin{align*}
     2\delta + \lambda
     &= v(4-\Norm(b+\tau)) + v(4-\Norm(b-\tau)) \\
-    &+ v(16 + 16 d \bar d - 8 b \bar b + 8 \tau \bar\tau).
+    &\qquad+ v(16 + 16 d \bar d - 8 b \bar b + 8 \tau \bar\tau).
   \end{align*}
   In our case $\delta = 0$, $v(4-\Norm(b-\tau)) = 0$, and
   since $v(\tau - b) > 0$ we get $v(\tau\bar\tau - b \bar b) > 0$\todo{I think},

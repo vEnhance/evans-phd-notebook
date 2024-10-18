@@ -217,40 +217,53 @@ We will now describe them.
 \begin{proposition}
   \label{prop:parameter_constraints}
   Exactly one of the following situations is true.
-  \begin{enumerate}[a.]
-    \ii $v(b) = v(d) = 0$, $\ell \ge 1$ is odd,
-      $\ell < 2 \delta$, and $\lambda = \ell$.
-    \ii $v(b) = v(d) = 0$, $\ell \ge 0$ is even,
-      $\ell \le 2 \delta$, and $\lambda > \ell$ is odd.
+  \begin{enumerate}[(a)]
+    \ii $v(b) = v(d) = 0$, $\ell \ge 1$ is odd, $\ell < 2 \delta$, and $\lambda = \ell$.
+    \ii $v(b) = v(d) = 0$, $\ell \ge 0$ is even, $\ell \le 2 \delta$, and $\lambda > \ell$ is odd.
     \ii $v(b) = 0$, $v(d) > 0$, $\ell = \delta = 0$, and ???
-    \ii $v(b) > 0$, $v(d) = 0$, $\ell  = 0$, $\delta \ge 0$, and ???
-    \ii $v(b) = v(d) \in \{-1, \dots, -r\}$,
-    $\ell = \delta = 2v(d) < 0$, and ???
+    \ii $v(b) > 0$, $v(d) = 0$, $\ell = 0$, $\delta \ge 0$, and ???
+    \ii $v(b) = v(d) \in \{-1, \dots, -r\}$, $\ell = \delta = 2v(d) < 0$, and ???
   \end{enumerate}
+  Moreover, whenever $\ell$ is even,
+  the quantity $b^2 - 4 a \bar d$ is a square of some element in $E$.
 \end{proposition}
 \begin{proof}
-  \todo{Write this out; import from previous if needed.
-    Also figure out exactly what the constraints on $\lambda$ are.}
-\end{proof}
-
-\todo{imported this; need to rearrange}
-\begin{proposition}
-  Whenever $\ell$ is odd, we must have
+  First assume $\ell$ is odd. We assert in this case we have
   \begin{equation}
     v(b) = v(d) = 0.
     \label{eq:odd_b_d_zero}
   \end{equation}
-\end{proposition}
-\begin{proof}
-  [Proof of \eqref{eq:odd_b_d_zero}]
-  If $v(d) \neq 0$, then $b = -au-\bar d\bar u$ is a unit,
+  Indeed if $v(d) \neq 0$, then $b = -au-\bar d\bar u$ is a unit,
   and hence so is $b^2 - 4 a \bar d$, causing $\ell = 0$, contradiction.
   And if $d$ is a unit, $\ell \neq 0$ means $v(b) = 0$ too.
+  \todo{prove the result of (a)}
+
+  For the rest of the proof we only consider even $\ell$.
+  Because $b = -au - \bar d \bar u$, it cannot be the case that $v(b) > 0$ and $v(d) > 0$;
+  moreover if either $v(b) < 0$ or $v(d) < 0$,
+  then in fact $v(b) = v(d)$.
+  \todo{wrap this up}
+
+  Hence
+
+  We now verify the last assertion that $b^2 - 4 a \bar d$
+  is a square whenever $\ell$ is even.
+  The proof in all cases uses \eqref{eq:dos} to show $b^2 - 4 a \bar d$
+  is equal to $\varpi^\ell$ times a quadratic residue in $\OO_E^\times$.
+  Indeed we need only verify that $v(4a \bar d(1 - u \bar u)) = v(d) + \lambda$
+  has larger valuation than $v\left( (a u - \bar d \bar u)^2 \right) = \ell$.
+  \begin{itemize}
+    \ii In the case this follows from $\lambda > \ell$;
+    \ii In the case where $v(d) > 0$ we have $\ell = 0$ and this is clear;
+    \ii If $v(b) = v(d) < 0$ then $\ell = -2v(d)$ and this is clear too.
+  \end{itemize}
+
 \end{proof}
 
+\todo{imported this; need to rearrange}
 In the case where $\ell$ is odd (and hence $\ell \ge 1$ and $v(b) = v(d) = 0$),
 we get \eqref{eq:dos} implying $\lambda = \ell$
-and this definition will never be used --- the orbital will be computed
+and thus $\lambda$ will never be used --- the orbital will be computed
 as a function of $\ell$ and $\delta$ (and $r$).
 However for even $\ell$ these numbers are never equal and our orbital
 integral will be stated in terms of $\ell$, $\delta$, and $\lambda$ (and $r$).
