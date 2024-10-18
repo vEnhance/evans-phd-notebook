@@ -3,7 +3,7 @@
 ### Main tasks
 
 1. [ ] Fill out the gaps in the base change section
-2. [ ] Work out the edge case $v(b) > 0$
+2. [x] Work out the edge case $v(b) > 0$
 3. [ ] Work out the edge case $v(b) = v(d) < 0$.
 4. [ ] Write out the summation interchange in $S_3(F)$ case
 5. [ ] Write out the summation interchange in $S_2(F) \times V_2'$ case

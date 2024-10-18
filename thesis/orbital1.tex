@@ -209,6 +209,7 @@ In this case $t$ is automatically a unit.
 The following two lemmas will be useful.
 
 \begin{lemma}
+  \label{lem:volume}
   Let $\xi \in \OO_E^\times$, $\rho \in \ZZ$, and $n \ge \max(\rho, 1)$ an integer.
   Then
   \begin{align*}
@@ -221,7 +222,6 @@ The following two lemmas will be useful.
       q^{-(n+\rho)}(1-q\inv) & \text{if } v(1-\xi\bar\xi) \ge \rho \ge 1.
     \end{cases}
   \end{align*}
-  \label{lem:volume}
 \end{lemma}
 \begin{proof}
   The case $\rho > 0$ is proved in \cite[Lemma 4.4]{ref:AFL}.
@@ -354,10 +354,13 @@ In summary:
   Then $\mathbf{1}_{\le r}(\gamma, t, m) = 1$ if and only if
   \[ n - r \leq m \leq n + \delta + r \]
   and $t$ lies in the set specified by
-  \begin{align*}
-    v\left( (2at-b)^2 - (b^2-4a\bar d) \right) &\geq n-r \\
-    v(t+u) &\ge m-\delta-r.
-  \end{align*}
+  \begin{equation}
+    \begin{aligned}
+      v\left( (2at-b)^2 - (b^2-4a\bar d) \right) &\geq n-r \\
+      v(t+u) &\ge m-\delta-r.
+    \end{aligned}
+    \label{eq:two_disks_S3}
+  \end{equation}
 \end{proposition}
 
 \section{Rewriting the quadratic constraint on the valuation of $t$ in the $n > 0$ situation}
@@ -369,9 +372,12 @@ We now analyze the inequality
 and divide it into several (disjoint) possibilities.
 Recalling that $\ell = b^2 - 4 a \bar d$, there are three possibilities:
 \begin{itemize}
-  \ii If $\ell \ge n-r$, then \eqref{eq:2atb_dos} is equvialent to
-  \[ 2v(2at-b) \ge n-r
-    \iff v\left( t - \frac{b}{2a} \right) \ge \left\lceil \frac{n-r}{2} \right\rceil. \]
+  \ii If $\ell \ge n-r$, then \eqref{eq:2atb_dos} is equivalent to
+  \begin{equation}
+    2v(2at-b) \ge n-r
+    \iff v\left( t - \frac{b}{2a} \right) \ge \left\lceil \frac{n-r}{2} \right\rceil.
+    \label{eq:t_disk_case_1_2}
+  \end{equation}
   We will further subdivide this into two cases.
   \begin{itemize}
     \ii \textbf{Case 1} is the situation where $\left\lceil \frac{n-r}{2} \right\rceil \ge m - \delta - r$.
@@ -380,7 +386,9 @@ Recalling that $\ell = b^2 - 4 a \bar d$, there are three possibilities:
 
   \ii If $\ell < n-r$, then \eqref{eq:2atb_dos} could only hold if $v(2at-b) = \frac{\ell}{2}$.
   Note that in particular, this requires $\ell$ to be even.
-  If this happens, then $b^2 - 4 a \bar d$ must be a square and we denote it $\tau^2$.
+
+  If this happens, then because we have
+  $b^2 - 4 a \bar d$ must be a square and we denote it $\tau^2$.
   Thus, \eqref{eq:2atb_dos} then reads
   \[ v(2at-b+\tau) + v(2at-b-\tau) \ge n-r. \]
   Since we are assuming $n > \ell + r$,
@@ -595,14 +603,15 @@ We sum over $(m,n)$ such that
   \label{eq:odd_range1}
 \end{equation}
 where each $(m,n)$ gives a volume contribution of
-\[
+\begin{equation}
   \begin{cases}
     q^{-n - \left\lceil \frac{n-r}{2} \right\rceil} \left( 1 - q\inv \right)
       & \text{if $n > r$} \\
     q^{-n} \left( 1 - q^{-2} \right)
       & \text{if $n \leq r$}.
   \end{cases}
-\]
+  \label{eq:case_1_vol_contrib}
+\end{equation}
 
 \item[Double sum for Case 2]
 We sum over $(m,n)$ such that
@@ -610,23 +619,101 @@ We sum over $(m,n)$ such that
   \begin{aligned}
     1 &\leq n \leq \ell + r, \\
     \max\left(n-r, \left\lceil \frac{n-r}{2} \right\rceil+\delta+r \right)
-    &\leq m \leq \min(n,\lambda)+\delta+r.
+    &\leq m \leq \min(n,\lambda)+\delta+r
   \end{aligned}
   \label{eq:odd_range2}
 \end{equation}
 where each $(m,n)$ gives a volume contribution of
-\[
+\begin{equation}
   \begin{cases}
     q^{-n - (m-\delta-r)} \left( 1 - q\inv \right)
       & \text{if $m > \delta + r$} \\
     q^{-n} \left( 1 - q^{-2} \right)
       & \text{if $m \le \delta + r$}.
   \end{cases}
-\]
+  \label{eq:case_2_vol_contrib}
+\end{equation}
 Notice that $m \leq \delta + r$ could only occur when $n \leq r$.
 \end{description}
 
 \subsection{Analysis of Case 1 and 2 assuming $n > 0$ and $v(b) > 0$}
+If $v(b) > 0$ instead, so that $\ell = \delta = 0$,
+then \eqref{eq:t_disk_case_1_2} becomes independent of the unit $t$ because we must have
+\[ v\left( t - \frac{b}{2a} \right) = 0. \]
+Consequently, in this situation, it is not necessary to distinguish between Cases 1 and 2.
+Instead, \eqref{eq:two_disks_S3} merely requires that
+\begin{align*}
+  0 &\ge n - r \\
+  v(t+u) &\ge m - r
+\end{align*}
+In this situation, by \Cref{lem:volume},
+we get a nonzero contribution in the merged case if and only if
+\begin{equation}
+  \begin{aligned}
+    1 &\le n \le r \\
+    n-r &\le m \le n+r \\
+    \lambda &\ge m - r
+  \end{aligned}
+  \label{eq:vb_pos_range}
+\end{equation}
+In that case the volume contribution is given by
+\begin{equation}
+  \begin{cases}
+    q^{-n - (m-r)} \left( 1 - q\inv \right)
+      & \text{if $m > r$} \\
+    q^{-n} \left( 1 - q^{-2} \right)
+      & \text{if $m \le r$}.
+  \end{cases}
+  \label{eq:vb_pos_vol_contrib}
+\end{equation}
+
+To avoid having to consider the situation $v(b) > 0$ separately,
+we make the following observation:
+\begin{proposition}
+  Consider the two (disjoint) ranges \eqref{eq:odd_range1} and \eqref{eq:odd_range2}
+  in the special case $\ell = \delta = 0$.
+  These two ranges collectively cover exactly the same elements $(m,n)$
+  as \eqref{eq:vb_pos_range}.
+  Moreover, the volume contribution \eqref{eq:vb_pos_vol_contrib}
+  matches the corresponding volume element in \eqref{eq:case_1_vol_contrib}
+  or \eqref{eq:case_2_vol_contrib}
+\end{proposition}
+\begin{proof}
+  If we combine \eqref{eq:odd_range1} and \eqref{eq:odd_range2}, they say that
+  \begin{align*}
+    1 &\le n \le \ell + r = r \\
+    n-r &\le m \le \min(n,\lambda) + \delta + r = \min(n, \lambda) + r
+  \end{align*}
+  which matches \eqref{eq:vb_pos_range} exactly.
+  So it remains to verify that the volume contributions match.
+
+  In the case where $m \ge \left\lceil \frac{n-r}{2} \right\rceil + r$,
+  then it is obvious that \eqref{eq:case_2_vol_contrib}
+  matches \eqref{eq:vb_pos_vol_contrib} exactly.
+
+  Now suppose that $m \le \left\lceil \frac{n-r}{2} \right\rceil + r$.
+  Since $n \le r$, it follows that $m \le r$.
+  So on the one hand we have the $n \le r$ case in \eqref{eq:case_1_vol_contrib}
+  and on the other hand we have the $m \le r$ case in \eqref{eq:vb_pos_vol_contrib},
+  which both equal $q^{-n}(1-q^{-2})$.
+  Hence the proof is complete.
+\end{proof}
+Because of this proposition then we can fold the $v(b) > 0$
+result into the case $v(b) = 0$ too in future calculations.
+In other words the double sums in Case 1 and 2 mentioned in the previous subsection
+will work verbatim even in the $v(b) > 0$ situation, which is convenient.
+
+\begin{remark}
+  Note that in the original paper \cite{ref:AFL} only $r = 0$ is considered
+  and in this case all three ranges \eqref{eq:odd_range1}, \eqref{eq:odd_range2}
+  and \eqref{eq:vb_pos_range} are empty.
+  Therefore the corresponding step in the calculation of \cite{ref:AFL}
+  is much simpler, consisting only of the one-line observation that
+  Case 1 and Case 2 cannot occur at all if $r = 0$.
+  In contrast once $r > 0$ then the ranges are not necessarily empty
+  and therefore one needs to ensure that the terms arising actually match.
+\end{remark}
+
 \subsection{Analysis of Case 3\ts+, 3\ts-, 4\ts+, 4\ts- assuming $n > 0$ and $v(b) \ge 0$ and $v(d) \ge 0$}
 Suppose $\ell \geq 0$ is even.
 As before we consider $n > 0$ and $n-r \le m \le n+\delta+r$ as fixed,
@@ -667,7 +754,7 @@ Moving forward, we need to fix the choice of the square root $\tau$.
   and thus \cite[Lemma 4.7]{ref:AFL} applies to give \eqref{eq:four_norm_choice}, verabtim.
 
   \ii Now suppose $v(d) > 0$ but still $v(b) = v(\tau) = 0$.
-  We begini with the observation that
+  We begin with the observation that
   \[ 4 a \bar d = b^2 - \tau^2 = (b + \tau)(b - \tau) \]
   and so $\{v(b+\tau), v(b-\tau)\} = \{0, v(d)\}$.
   We need to determine which is which.
@@ -691,6 +778,10 @@ Moving forward, we need to fix the choice of the square root $\tau$.
   so that the final term on the right-hand side is $0$ too.
 
   \ii Finally assume $v(b) > 0$.
+  As mentioned on \cite[p.\ 242]{ref:AFL}, the identity \eqref{eq:four_norm_choice}
+  is still true in this situation too.
+  This completes the final case.
+  \qedhere
   \end{itemize}
 \end{proof}
 
@@ -714,7 +805,7 @@ which from $\ell, \delta, r \ge 0$ can be simplified to just
   \ell+r+1 &\leq n \leq  -\frac{\ell}{2} + \delta + \lambda + r, \\
   n-r &\leq m \leq \min(n-1, \lambda + v(d) + r) - \frac{\ell}{2} + \delta
 \end{align*}
-Moreover, in any situtaion where $v(d) > 0$, we have $\ell = \delta = 0$,
+Moreover, in any situation where $v(d) > 0$, we have $\ell = \delta = 0$,
 and hence $n-1 < \lambda + r < \lambda + v(d) + r$ is obvious.
 Thus we may drop the $v(d)$ term from the inequality and obtain
 \begin{equation}
@@ -792,5 +883,4 @@ The latter inequality contradicts the assumption that $n > \ell + r$,
 so in fact this case can never occur.
 \end{description}
 
-\section{Analysis of the Cases when $v(b) > 0$}
-\subsection{Analysis of Case 3 and 4 assuming $n > 0$ and $v(b) > 0$}
+\section{Case analysis when $v(b) = v(d) < 0$}
