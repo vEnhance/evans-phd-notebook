@@ -159,17 +159,9 @@ Hence, we only have to consider this case:
   \label{assume:u_odd}
 \end{assume}
 
-We will also see quite early on in our calculation
-that the orbital integral vanishes if $v(d) < -r$.
-Hence, we will always assume:
-\begin{assume}
-  $v(d) \geq -r$.
-  \label{assume:vd_ge_minus_r}
-\end{assume}
-
 We will mostly be interested in the case where $v(b) = v(d) = 0$.
 In fact, few other cases even occur at all given \Cref{assume:u_odd};
-we will see momentarily that either $v(b) = v(d) \in \{-1, -2, \dots, -r\}$,
+we will see momentarily that either $v(b) = v(d) < 0$,
 or one of $\{v(b), v(d)\}$ is zero and the other is nonnegative.
 
 \section{Quantities to state the answer in terms of}
@@ -222,7 +214,7 @@ We will now describe them.
     \ii $v(b) = v(d) = 0$, $\ell \ge 0$ is even, $\ell \le 2 \delta$, and $\lambda > \ell$ is odd.
     \ii $v(b) = 0$, $v(d) > 0$, $\ell = \delta = 0$, and ???
     \ii $v(b) > 0$, $v(d) = 0$, $\ell = 0$, $\delta \ge 0$, and ???
-    \ii $v(b) = v(d) \in \{-1, \dots, -r\}$, $\ell = \delta = 2v(d) < 0$, and ???
+    \ii $v(b) = v(d) < 0$, $\ell = \delta = 2v(d) < 0$, and ???
   \end{enumerate}
   See \Cref{tab:parameter_constraints}.
   Moreover, whenever $\ell$ is even,
@@ -272,8 +264,95 @@ In the case where $\ell$ is odd (and hence $\ell \ge 1$ and $v(b) = v(d) = 0$),
 we get \eqref{eq:dos} implying $\lambda = \ell$
 and thus $\lambda$ will never be used --- the orbital will be computed
 as a function of $\ell$ and $\delta$ (and $r$).
+
 However for even $\ell$ these numbers are never equal and our orbital
 integral will be stated in terms of $\ell$, $\delta$, and $\lambda$ (and $r$).
+We just saw that in these situations $b^2 - 4 a \bar d$ is a square;
+moving forward, we need to fix the choice of the square root $\tau$.
+We do so as follows.
+\begin{definition}
+  [Fixing the choice of $\tau$]
+  Assuming $\ell$ is even, using \eqref{eq:dos} in the form
+  \[ (au-\bar d \bar u)^2 - \tau^2 = 4a\bar d(1- u\bar u) \]
+  we agree now to fix the choice of the square root of $\tau$ such that
+  \begin{equation}
+    \begin{aligned}
+      v(au-\bar d \bar u + \tau) &= \lambda + v(d) - \half \ell > 0, \\
+      v(au-\bar d \bar u - \tau) &= \half \ell.
+    \end{aligned}
+    \label{eq:tau_choice}
+  \end{equation}
+\end{definition}
+Here $\lambda + v(d) - \half \ell > 0$ is obvious when $v(d) \ge 0$
+(since $\lambda = \ell > 0$ for odd $\ell$ and otherwise $\lambda > \ell$),
+and for $v(d) < 0$ we have $v(d) = \half \ell$ anyway.
+
+\begin{proposition}
+  \label{prop:four_norm_choice}
+  With this choice of $\tau$, we have
+  \begin{equation}
+    \begin{aligned}
+      v\left( 4 - \Norm(b+\tau) \right) &= \lambda + \delta - \ell \\
+      v\left( 4 - \Norm(b-\tau) \right) &= \delta.
+    \end{aligned}
+    \label{eq:four_norm_choice}
+  \end{equation}
+\end{proposition}
+\begin{proof}
+  We consider several cases.
+  \begin{itemize}
+  \ii If $v(b) = v(d) = 0$ then from \eqref{eq:dos} we have
+  \[ \ell = 2v(\tau) = 2v(au - \bar d \bar u) < \lambda \]
+  and thus \cite[Lemma 4.7]{ref:AFL} applies to give \eqref{eq:four_norm_choice}, verabtim.
+
+  \ii Now suppose $v(d) > 0$ but still $v(b) = v(\tau) = 0$.
+  We begin with the observation that
+  \begin{equation}
+    4 a \bar d = b^2 - \tau^2 = (b + \tau)(b - \tau)
+    \label{eq:tau_which_which}
+  \end{equation}
+  and so $\{v(b+\tau), v(b-\tau)\} = \{0, v(d)\}$.
+  We need to determine which is which.
+  However, note that we may write
+  \[ au - \bar d \bar u - \tau = -(b + \tau) - 2 \bar d \bar u. \]
+  Since $v(au - \bar d \bar u - \tau) = 0$ and $v(d) > 0$,
+  it follows we must have $v(b+\tau) = 0$.
+  And thus $v(b-\tau) = v(d)$.
+  Hence $v(4 - \Norm(b-\tau)) = 0 = \delta$,
+  and we have obtained the bottom equation of \eqref{eq:four_norm_choice}.
+
+  It remains to show that $v(4-\Norm(b+\tau)) = \lambda$ to complete the proof.
+  We quote \cite[Lemma 4.6]{ref:AFL} which states more generally that
+  \begin{align*}
+    2\delta + \lambda
+    &= v(4-\Norm(b+\tau)) + v(4-\Norm(b-\tau)) \\
+    &\qquad+ v(16 + 16 d \bar d - 8 b \bar b + 8 \tau \bar\tau).
+  \end{align*}
+  In our case $\delta = 0$, $v(4-\Norm(b-\tau)) = 0$, and
+  since $v(\tau - b) > 0$ we get $v(\tau\bar\tau - b \bar b) > 0$\todo{I think},
+  so that the final term on the right-hand side is $0$ too.
+
+  \ii Consider $v(b) > 0$.
+  As mentioned on \cite[p.\ 242]{ref:AFL}, the identity \eqref{eq:four_norm_choice}
+  is still true in this situation too.
+
+  \ii Finally assume $v(\tau) = v(b) = v(d) < 0$.
+  Again from \eqref{eq:tau_which_which}
+  we know $\{v(b+\tau), v(b-\tau)\} = \{0, v(d)\}$ and need to determine which is which.
+  This time we write
+  \[ au - \bar d \bar u + \tau = -(b - \tau) - 2 \bar d \bar u. \]
+  Since $v(au - \bar d \bar u + \tau) = \lambda > 0$,
+  but $v(2 \bar d \bar u) = v(d) < 0$,
+  it follows we must have $v(b-\tau) < 0$,
+  so in fact $v(b-\tau) = v(d)$ and $v(b+\tau) = 0$.
+  So, in this case, we get $v(4 - \Norm(b-\tau)) = 2v(b) = \delta$,
+  which is the bottom equation of \eqref{eq:four_norm_choice}.
+
+  Then it remains to show that $v(4-\Norm(b+\tau)) = \lambda$,
+  which is done in the same way as $v(d) > 0$ earlier.
+  \qedhere
+  \end{itemize}
+\end{proof}
 
 \section{Result}
 We can now state the answer.
