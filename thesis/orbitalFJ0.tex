@@ -124,8 +124,8 @@ We also know that $\gamma \in S_2(F)$, which gives us relations on $a$, $b$, $c$
 \subsection{Simplification due to the matching of non-split unitary group}
 Like before, we focus on the case where regular $(\gamma, \uu, \vv^\top)$
 matches an element in the non-split unitary group.
-\todo{I need to ask Wei exactly what's up here}
-This is controlled by the parity of $v(\Delta)$, where
+As we described in \Cref{prop:valuation_delta_matching_semilie},
+this is controlled by the parity of $v(\Delta)$, where
 \[ \Delta = \det \left[ \vv^\top \gamma^{i+j} \uu \right]_{0 \le i,j \le n-1}. \]
 When $n=2$, for the representatives we described before,
 we have
@@ -136,13 +136,18 @@ so
 Hence, $v(\Delta)$ is odd if and only if $v(1-a \bar a)$ is odd.
 Thus, we restrict attention to the following situation:
 \begin{assume}
+  \label{assume:a_odd}
   We will assume that
   \[ v(1-a \bar a) \equiv 1 \pmod 2. \]
-  \label{assume:a_odd}
 \end{assume}
 In particular, $a$ must be a unit.
 And since $d = -\bar a c / \bar c$, it follows $d$ is a unit.
 In other words, \Cref{assume:a_odd} gives the direct corollary
 \[ v(a) = v(d) = 0. \]
 
-\section{Quantities to state the answer in terms of}
+\section{Parameters used in the calculation of the orbital integral}
+This case is simpler than the analogous \Cref{sec:param_orbital0}
+and we will state our answer in terms of just $v(b)$, $v(c)$, $v(e)$ and $v(d-a)$.
+We don't need a further setup like we did in \Cref{sec:param_orbital0}.
+
+\section{Statement of the differentiated orbital integral}

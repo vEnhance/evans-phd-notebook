@@ -147,9 +147,10 @@ In other words, the representatives described here cover all the regular orbits 
 
 \subsection{Simplification due to the matching of non-quasi-split unitary group}
 In this calculation, we restrict attention to the case where our regular $\gamma$
-matches an element in the non-quasi-split unitary group.
-\todo{I need to ask Wei exactly what's up here}
-This is controlled by the parity of the invariant
+matches an element in the non-quasi-split unitary group $\UU(\VV_n)\rs$
+(rather than $\UU(V_0)\rs$).
+As we described in \Cref{prop:valuation_delta_matching_group},
+this is controlled by the parity of the invariant
 \[ v\left( (1-d\bar d)^2 - c \bar c\right) \]
 being odd.
 Hence, we only have to consider this case:
@@ -158,13 +159,13 @@ Hence, we only have to consider this case:
   We will assume that
   \[ v\left( (1-d\bar d)^2 - c \bar c\right) \equiv 1 \pmod 2. \]
 \end{assume}
-
 We will mostly be interested in the case where $v(b) = v(d) = 0$.
 In fact, few other cases even occur at all given \Cref{assume:u_odd};
 we will see momentarily that either $v(b) = v(d) < 0$,
 or one of $\{v(b), v(d)\}$ is zero and the other is nonnegative.
 
 \section{Parameters used in the calculation of the orbital integral}
+\label{sec:param_orbital0}
 The goal of the next two sections is to evaluate \eqref{eq:orbital_goal}
 (and hence its derivative at $s = 0$) in terms of the parameters
 \[ a \in E^1, \qquad b, d \in E, \qquad r \ge 0. \]
@@ -432,6 +433,6 @@ and for $v(d) < 0$ we have $v(d) = \half \ell$ anyway.
   \end{itemize}
 \end{proof}
 
-\section{Result of the differentiated orbital integral}
+\section{Statement of the differentiated orbital integral}
 We can now state the answer.
 \todo{put the differentiated result here}
