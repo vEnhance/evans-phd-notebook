@@ -2,7 +2,7 @@
 
 ### Main tasks
 
-1. [ ] Fill out the gaps in the base change section
+1. [x] Fill out the gaps in the base change section
 2. [x] Write up $\ell \le 2 \delta$ and related results.
 3. [x] Work out the edge case $v(b) > 0$
 4. [ ] Work out the edge case $v(b) = v(d) < 0$.
