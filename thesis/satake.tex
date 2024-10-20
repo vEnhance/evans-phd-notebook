@@ -2,14 +2,11 @@
 \label{ch:satake}
 
 The goal of this section is to make completely explicit the base change
-\[ \BC_{S}^{\eta^{n-1}} \colon \HH(S_n(F), K') \to \HH(G, K') \]
-in the special case $n = 3$
-(in which case $\BC_S^{\eta^{n-1}} = \BC_S$ as $\eta^2 = 1$).
+\[ \BC_{S_n}^{\eta^{n-1}} \colon \HH(S_n(F), K') \to \HH(G, K') \]
+in the special case $n = 3$ (in which case $\BC_{S_n}^{\eta^{n-1}} = \BC_{S_n}$ as $\eta^2 = 1$).
+Note that the case $n = 2$ was already done in \cite[\S7.1]{ref:AFLspherical}.
 When it is not more difficult, some of the results will be stated for all $n$,
 rather than $n = 3$ specifically.
-
-Note that the case $n = 2$ was already done in \cite[\S7.1]{ref:AFLspherical}.
-\todo{do I need to restate these results}
 
 Throughout this section we have the following additional notation.
 \begin{definition}
@@ -19,11 +16,8 @@ Throughout this section we have the following additional notation.
 We also let $\Sym(n)$ denotes the symmetric group in $n$ variables with order $n!$
 (since $S_n(F) \subseteq \GL_n(E)$ is already reserved for the symmetric space).
 
-\section{Reminders}
-We provide some background on the Satake transform.
-
-\subsection{Satake transform}
-We state a general form of the Satake transformation, which will be used later.
+\section{Background on the Satake transformation in transformation}
+We recall a general form of the Satake transformation, which will be used later.
 
 For this subsection, $G$ will denote an arbitrary connected reductive group
 over some non-Archimedean local field $F$.
@@ -42,6 +36,10 @@ Introduce the following notation:
   be the maximal compact subgroup of $M$.
   \ii Let $P$ denote a minimal $F$-parabolic containing $A$.
   \ii Let $\delta$ denotes the modulus character of $P$.
+  It can be describes as follows.
+  Let $\varpi$ denote a uniformizer for $F$ and $q$ the residue characteristic.
+  Then if $\rho$ is the Weyl vector and $\mu$ is a positive cocharacter, then
+  \[ \delta(\mu(\varpi)) = q^{- \left< \mu, \rho\right>}. \]
   \ii Let $N$ denote the unipotent radical of $P$.
   \ii Let $W$ be the relative Weyl group for the pair $(G,A)$,
   which acts on $\HH(M, \prescript{\circ}{} M)$.
@@ -58,32 +56,8 @@ We are going to apply this momentarily in two situations:
 once when $G$ is the general linear group (which is split),
 and once when $G$ is a unitary group.
 
-\subsection{Modulus character}
-Let $\varpi$ denote a uniformizer for $F$ and $q$ the residue characteristic.
-In general, if $\rho$ is the Weyl vector and $\mu$ is a positive cocharacter, then
-\[ \delta(\mu(\varpi)) = q^{- \left< \mu, \rho\right>}. \]
-\todo{does this help for unitary group}
 
-\section{Setup}
-Although our paper is primarily interested in the case $n=3$,
-we provide the notes for this subsection for general $n$.
-
-Our prior map $\rproj \colon G' \surjto S_n(F)$ induces a map
-\begin{align*}
-  \rproj_\ast \colon \HH(G', K') &\to \HH(S_n(F), K') \\
-  \rproj_\ast(f')\left( g\bar{g}\inv \right) &= \int_{\GL_n(F)} f'(gh) \odif h
-\end{align*}
-by integration on the fibers.
-
-In other situations, one can also consider a twisted version
-\begin{align*}
-  \rproj_\ast^\eta \colon \HH(G', K') &\to \HH(S_n(F), K') \\
-  \rproj_\ast^\eta(f')\left( g\bar{g}\inv \right) &= \int_{\GL_n(F)} f'(gh) \eta(gh) \odif h
-\end{align*}
-where as before $\eta(g) = (-1)^{v(\det g)}$ in a slight abuse of notation.
-
-\subsection{Satake transformation for $\HH(G',K')$ and $\HH(G,K)$}
-We introduce more notation.
+\section{The Satake transformation for $\HH(G',K')$ and $\HH(G,K)$}
 To take the Satake transform of $\HH(G', K')$, we define the following abbreviations.
 \begin{itemize}
   \ii Let $T$ denote the split diagonal torus of $\GL_n$.
@@ -131,7 +105,6 @@ We can now introduce the Satake transform for our two
   \caption{Data needed to run the Satake transformation.}
   \label{tab:satakestuff}
 \end{table}
-%\todo{please audit this table}
 
 Hence, the Satake transformations obtained can be viewed as
 \begin{align*}
@@ -166,30 +139,82 @@ So, henceforth, we will consider
   \Sat &\colon \HH(G, K) \xrightarrow{\sim} \QQ[Y_1^{\pm}, \dots, Y_m^{\pm}]^{W_m}.
 \end{align*}
 
-\subsection{Base change}
-\todo{this subsection needs to be written}
+\section{Relation of Satake transformation to base change}
+Let
+\[ \BC \colon \HH(G', K') \to \HH(G, K) \]
+denote the stable base change morphism from $\GL_n(E)$ to the unitary group $\U$.
+The relevance of the Satake transformation is that
+(see e.g.\ \cite[Proposition 3.4]{ref:leslie})
+it gives a way to make this $\BC$ completely explicit:
+we have a commutative diagram
+\begin{center}
+\begin{tikzcd}
+  \HH(G',K')  \ar[r, "\sim"', "\Sat"] \ar[d, "\BC"]
+    & \QQ[X_1^\pm, \dots, X_n^\pm]^{\Sym(n)} \ar[d, "\BC"] \\
+  \HH(G,K) \ar[r, "\sim"', "\Sat"]
+    & \QQ[Y_1^\pm, \dots, Y_m^\pm]^{W_m}
+\end{tikzcd}
+\end{center}
+Here the right arrow is also denoted $\BC$ following \cite{ref:AFLspherical}
+(although it is denoted $\nu$ in \cite{ref:leslie}).
+This gives a way in which we can concretely calculate the map $\BC$
+in some situations.
 
-We don't have to twist since $n$ is odd.
+\section{The map $\BC^{\eta^{n-1}}_{S_n}$}
+Before we can define the map $\BC^{\eta^{n-1}}_{S_n}$
+we need one more piece of notation.
+Our prior map $\rproj \colon G' \surjto S_n(F)$ induces a map
+\begin{align*}
+  \rproj_\ast \colon \HH(G', K') &\to \HH(S_n(F), K') \\
+  \rproj_\ast(f')\left( g\bar{g}\inv \right) &= \int_{\GL_n(F)} f'(gh) \odif h
+\end{align*}
+by integration on the fibers.
+A similar twisted version by $\eta$
+\begin{align*}
+  \rproj_\ast^\eta \colon \HH(G', K') &\to \HH(S_n(F), K') \\
+  \rproj_\ast^\eta(f')\left( g\bar{g}\inv \right) &= \int_{\GL_n(F)} f'(gh) \eta(gh) \odif h
+\end{align*}
+is defined analogously,
+where as before $\eta(g) = (-1)^{v(\det g)}$ in a slight abuse of notation.
 
-\subsection{Overall picture}
+Then Leslie \cite{ref:leslie} shows the following result.
+\begin{theorem}
+  [{\cite[Theorem 3.2 and Proposition 3.4]{ref:leslie}}]
+  Both maps $\rproj_\ast$ and $\rproj_\ast^\eta$ induce isomorphisms
+  \begin{align*}
+    \BC_{S_n} \colon \HH(S_n(F), K') &\xrightarrow{\sim} \HH(G', K') \\
+    \BC^{\eta^{n-1}}_{S_n} \colon \HH(S_n(F), K') &\xrightarrow{\sim} \HH(G', K')
+  \end{align*}
+  such that
+  \begin{align*}
+    \BC &= \BC_{S_n} \circ \rproj_\ast \\
+    \BC &= \BC^{\eta^{n-1}}_{S_n} \circ \rproj_\ast^{\eta^{n-1}}.
+  \end{align*}
+\end{theorem}
+We take these isomorphisms promised by this theorem
+as the definition of $\BC_{S_n}$ and $\BC^{\eta^{n-1}}_{S_n}$ in our conjectures
+(noting when $n$ is odd they coincide, as $\eta^{n-1} = 1$).
+
+When combined with the Satake information we have, we get the following diagram.
 \begin{center}
 \begin{tikzcd}
   \HH(G',K') \ar[dd, "\rproj_\ast^{\eta^{n-1}}"', bend right = 60] \ar[r, "\sim"', "\Sat"] \ar[d, "\BC"]
     & \QQ[X_1^\pm, \dots, X_n^\pm]^{\Sym(n)} \ar[d, "\BC"] \\
   \HH(G,K) \ar[r, "\sim"', "\Sat"]
     & \QQ[Y_1^\pm, \dots, Y_m^\pm]^{W_m} \\
-  \HH(S_n(F), K') \ar[u, "\sim", "\BC_S^{\eta^{n-1}}"']
+    \HH(S_n(F), K') \ar[u, "\sim", "\BC_{S_n}^{\eta^{n-1}}"']
 \end{tikzcd}
 \end{center}
-Goal: describe $\BC_S$.
 
-\todo{describe this}
+\section{Calculation of $\BC_{S_3}$}
+Specialize now to $n=3$ (thus $m = \left\lfloor n/2 \right\rfloor = 1$).
+Our goal is to make completely explicit the arrow $\BC_{S_n}$
+in the diagram above.
+The completed result is \Cref{prop:BC_S3}.
 
-\section{Initial calculation on the diagram}
-Specialize now to $n=3$.
+\subsection{Overview}
 Throughout this subsection, we use the shorthand
 \[ \varpi^{(n_1, n_2, n_3)} \coloneqq \diag(\varpi^{n_1}, \varpi^{n_2}, \varpi^{n_3}). \]
-
 As a $\QQ$-module, the spaces $\HH(G,K)$ and $\HH(S_n(F), K')$
 have a canonical basis of indicator functions indexed by $\ZZ$:
 \begin{itemize}
@@ -203,8 +228,9 @@ On the other hand, the natural $\QQ$-module basis for $\HH(G', K')$, namely
 is given by triples of integers $n_1 \ge n_2 \ge n_3 \ge 0$, and is much larger.
 So explicit calculations for the $\rproj_\ast$ or the Satake transforms viewed in
 $\CC[X_1, X_2, X_3]^{\Sym(n)}$ is nontrivial if one works with the entire basis.
+
 Hence the overall strategy, to reduce the amount of work we have to do,
-is to focus on on the only the $\ZZ$-indexed elements
+is to focus on only the $\ZZ$-indexed elements
 \[
   \mathbf{1}_{\Mat_3(\OO_E), v\circ\det=r}
   = \sum_{\substack{n_1 \ge n_2 \ge n_3 \\ n_1 + n_2 + n_3 = r}}
@@ -212,7 +238,7 @@ is to focus on on the only the $\ZZ$-indexed elements
 \]
 This aggregated indicator function is easier to compute,
 because given an explicit matrix it is somewhat easier
-to evaluate $\mathbf{1}_{\Mat_3(\OO_E), v\circ\det=r}$
+to evaluate \[ \mathbf{1}_{\Mat_3(\OO_E), v\circ\det=r} \]
 at it (one only needs to check it has $\OO_E$ entries
 and that the determinant has valuation $r$,
 rather than determining the exact coset $K'\varpi^{(n_1, n_2, n_3)}K'$).
@@ -407,9 +433,9 @@ This is the easiest calculation, and we do it for all $n$ rather than just $n = 
   \]
   We need to check this choice of $g$ indeed satisfies $g\bar{g}\inv \in K'_{S,j}$.
   This follows as
-  $\bar{g} = \left[ \begin{smallmatrix} 1 &   & -\varpi^{-j} \sqrt{\eps} \\ & 1 \\ &   & 1 \end{smallmatrix} \right]$
-  implies
-  $\bar{g}\inv = \left[ \begin{smallmatrix} 1 &   & \varpi^{-j} \sqrt{\eps} \\ & 1 \\ &   & 1 \end{smallmatrix} \right]$
+  \[ \bar{g} = \begin{bmatrix} 1 &   & -\varpi^{-j} \sqrt{\eps} \\ & 1 \\ &   & 1 \end{bmatrix}
+    \implies \bar{g}\inv = \begin{bmatrix} 1 &   & \varpi^{-j} \sqrt{\eps} \\ & 1 \\ &   & 1 \end{bmatrix}
+  \]
   and therefore
   \[
     g\bar{g}\inv = \begin{bmatrix}
@@ -499,9 +525,10 @@ This is the easiest calculation, and we do it for all $n$ rather than just $n = 
   as desired.
 \end{proof}
 
-\section{Base change from $\HH(G,K)$ to $\HH(S_3(F), K')$}
+\subsection{Base change from $\HH(G,K)$ to $\HH(S_3(F), K')$}
 We first need to determine an element of $\HH(G,K)$
-which is in the pre-image of $\mathbf{1}_{\varpi^{-r} \Mat_3(\OO_E) \cap G}$
+which is in the pre-image of
+\[ \mathbf{1}_{\varpi^{-r} \Mat_3(\OO_E) \cap G} \]
 under $\BC \colon \HH(G', K') \to \HH(G, K)$.
 
 For convenience, we define the shorthand
@@ -531,8 +558,11 @@ We start with the following intermediate calculation.
   + q^{2r-1} \left( Y_1^{r-1} + Y_1^{r-3} + \dots + Y_1^{-(r-1)} \right) \\
   &= \Sat(\mathbf{1}_{\varpi^{-r} \Mat_3(\OO_E) \cap G}).
 \end{align*}
-This shows that $f'_r + (q-q^2) f'_{r-1} - q^3 f'_{r-2}$ lies in the
-pre-image of $\BC \colon \HH(G', K') \to \HH(G,K)$.
+This shows that
+\[ \BC(f'_r + (q-q^2) f'_{r-1} - q^3 f'_{r-2}) =
+  \mathbf{1}_{\varpi^{-r} \Mat_3(\OO_E) \cap G} \]
+so indeed $f'_r + (q-q^2) f'_{r-1} - q^3 f'_{r-2}$
+lies in the desired pre-image of the map $\BC \colon \HH(G', K') \to \HH(G,K)$.
 
 On the other hand, it is easy to check that
 \begin{align*}
@@ -567,21 +597,23 @@ To summarize, the completed commutative diagram can be written in full as
     $\sum_{j=0}^r \big[ 1 + 2q + 2q^2$ \\
     $+ \dots + 2q^{r-j} \big] \mathbf{1}_{K'_{S,j}}$ \\
     $\in \HH(S_n(F), K')$
-  \end{tabular} \ar[u, "\sim", "\BC_S"', mapsto]
+  \end{tabular} \ar[u, "\sim", "\BC_{S_n}"', mapsto]
 \end{tikzcd}
 \end{center}
 
 Thus, we arrive at the following:
 \begin{proposition}
-  We have
+  \label{prop:BC_S3}
+  For $n = 3$, we have
   \begin{align*}
-    \BC_S \left( \sum_{j=0}^r \left[ 1 + 2q + 2q^2 + \dots + 2q^{r-j} \right]
+    \BC_{S_n} \left( \sum_{j=0}^r \left[ 1 + 2q + 2q^2 + \dots + 2q^{r-j} \right]
     \mathbf{1}_{K'_{S,j}} \right)
     &= \mathbf{1}_{\varpi^{-r} \Mat_3(\OO_E) \cap G} \\
-    \BC_S \left( \mathbf{1}_{K'_{S,r}}
+    \BC_{S_n} \left( \mathbf{1}_{K'_{S,r}}
     + \sum_{j=0}^{r-1} 2q^{r-j} \mathbf{1}_{K'_{S,j}} \right)
-    &= \mathbf{1}_{K\varpi^{(r,0,-r)}K}.
+    &= \mathbf{1}_{K\varpi^{(r,0,-r)}K}
   \end{align*}
+  for every integer $r \ge 0$.
 \end{proposition}
 \begin{proof}
   The first equation is the one we just proved.
@@ -591,5 +623,15 @@ Thus, we arrive at the following:
     = \mathbf{1}_{\varpi^{-r} \Mat_3(\OO_E) \cap G}
     - \mathbf{1}_{\varpi^{-(r-1)} \Mat_3(\OO_E) \cap G}
   \]
-  so one merely subtracts the left-hand sides evaluated at $r$ and $r-1$.
+  so one merely subtracts the left-hand sides evaluated at $r$ and $r-1$ for $r \ge 1$
+  to get
+  \begin{align*}
+    &\phantom= \sum_{j=0}^r \left[ 1 + 2q + 2q^2 + \dots + 2q^{r-j} \right] \mathbf{1}_{K'_{S,j}}
+    - \sum_{j=0}^{r-1} \left[ 1 + 2q + 2q^2 + \dots + 2q^{(r-1)-j} \right] \mathbf{1}_{K'_{S,j}} \\
+    &= \mathbf{1}_{K'_{S,r}} +
+      \sum_{j=0}^{r-1} \left[ 1 + 2q + 2q^2 + \dots + 2q^{r-j} \right] \mathbf{1}_{K'_{S,j}}
+    - \sum_{j=0}^{r-1} \left[ 1 + 2q + 2q^2 + \dots + 2q^{(r-1)-j} \right] \mathbf{1}_{K'_{S,j}} \\
+    &= \mathbf{1}_{K'_{S,r}} + \sum_{j=0}^{r-1} \left[ 2q^{r-j}\mathbf{1}_{K'_{S,j}} \right].
+  \end{align*}
+  as claimed.
 \end{proof}

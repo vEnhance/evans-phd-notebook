@@ -102,6 +102,13 @@ and $K$ any closed subgroup of $G$.
   which makes $\HH(G, K)$ into a $\QQ$-algebra,
   whose identity element is $\mathbf{1}_K$.
 \end{definition}
+
+Other authors usually denote this by $\HH_K(G)$ or even just $\HH_K$.
+However, for accessibility reasons we chose a notation to show both $G$ and $K$
+in full-size font, since the subscripts can become too small to read otherwise
+(e.g. $\HH_{K'^\flat \otimes K'}$ is instead
+written $\HH(G'^\flat \otimes G', K'^\flat \otimes K')$).
+
 In the case where $G$ is a reductive Lie group and
 $K$ is the maximal compact subgroup
 (or more generally whenever $(G,K)$ is a Gelfand pair),
@@ -121,11 +128,11 @@ Nevertheless, we introduce
 \[ \HH(S_n(F), K') \coloneqq \mathcal C_{\mathrm{c}}^{\infty}(S_n(F))^{K'} \]
 as the set of smooth compactly supported functions on $S_n(F)$
 which are invariant under the action of $K' \subseteq G'$;
-this is an $\HH(G', K')$-module, where the action of $f \in \HH(G', K')$ is given by
-\[ f \cdot \varphi = {?} \]
-\todo{how do I set RHS}
-This does \textbf{not} have a multiplication structure at the moment, \emph{a priori},
-although later we will see how one could be imposed.
+this is an $\HH(G', K')$-module,
+where the action of $f \in \HH(G', K')$ on $\varphi \in \HH(S_n(F), K')$ is given by
+\[ (f \cdot \varphi)(\gamma) \coloneqq \int_G f(g) \varphi(g \cdot \gamma) \odif g \]
+for $\gamma \in S_n(F)$.
+This does \textbf{not} have a multiplication structure at the moment, \emph{a priori}.
 
 Throughout this paper, to be unambiguous with the notation, we denote
 \begin{itemize}
