@@ -105,7 +105,6 @@ As an $F$-algebra, we have an isomorphism (see \cite[\S4.1]{ref:AFL})
 \end{align*}
 Under this isomorphism, we have
 \[ h \gamma h^{-1} = \iota_2(h) \gamma \overline{\iota_2(h)^{-1}}. \]
-\todo{maybe i should actually check this to make sure I'm not crazy.}
 
 This allows us to rewrite the orbital integral over $H'$ instead.
 If we write $h' = \overline{\iota_2(h)^{-1}}$,
@@ -407,9 +406,14 @@ and for $v(d) < 0$ we have $v(d) = \half \ell$ anyway.
     &= v(4-\Norm(b+\tau)) + v(4-\Norm(b-\tau)) \\
     &\qquad+ v(16 + 16 d \bar d - 8 b \bar b + 8 \tau \bar\tau).
   \end{align*}
-  In our case $\delta = 0$, $v(4-\Norm(b-\tau)) = 0$, and
-  since $v(\tau - b) > 0$ we get $v(\tau\bar\tau - b \bar b) > 0$\todo{I think},
-  so that the final term on the right-hand side is $0$ too.
+  In our case $\delta = 0$, $v(4-\Norm(b-\tau)) = 0$.
+  Moreover since $v(\tau - b) > 0$ we get $v(\tau\bar\tau - b \bar b) > 0$.
+  (Indeed, if $\tau = x_\tau + \eps y_\tau$ and $b = x_b + \eps y_b$,
+  then $\tau\bar\tau - b \bar b = (x_\tau^2 - x_b^2 + \eps(y_\tau^2 - y_b^2))
+  + \eps(x_\tau y_\tau - y_\tau y_b)$.
+  Since $x_\tau \equiv x_b \pmod{\varpi}$ and $y_\tau \equiv y_b \pmod{\varpi}$,
+  the conclusion is immediate.)
+  Hence the final term on the right-hand side is $0$ too.
 
   \ii Consider $v(b) > 0$.
   As mentioned on \cite[p.\ 242]{ref:AFL}, the identity \eqref{eq:four_norm_choice}

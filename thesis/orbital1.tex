@@ -222,14 +222,35 @@ The following two lemmas will be useful.
   \end{align*}
 \end{lemma}
 \begin{proof}
-  The case $\rho > 0$ is proved in \cite[Lemma 4.4]{ref:AFL}.
-
   When $\rho \le 0$, the condition $v(x - \xi) \ge \rho$ is vacuously true,
   so we just are computing
-  $\Vol\left( \left\{ x \in E \mid v(1-x \bar x) = n \right\} \right)$.
-  Follows from summing the previous lemma over $\rho = 1$
-  and $\xi \in \OO_E / \varpi$ (there are $q_E-1 = q^2-1$ choices for $\xi$).
-  \todo{This doesn't actually check out. Check margin of page 235 of notebook.}
+  \[ \Vol\left( \left\{ x \in E \mid v(1-x \bar x) = n \right\} \right). \]
+  However, in general for any Schwartz function $\psi$ on $E$ we have an identity
+  \begin{equation}
+    \int_E \psi(x) \odif x
+    = \frac{1}{1-q\inv} \int_{y \in F} \int_{t \in \OO_E^\times}
+    \psi\left( x_t \cdot \frac{y}{\bar y} \right) \odif y \odif t
+    \label{eq:schwartz}
+  \end{equation}
+  where $x_t$ is any choice of element $x_t \in E$ such that $t = x_t \bar{x_t}$
+  (see the proof of \cite[Lemma 4.4]{ref:AFL}).
+  Note the measures here are additive despite $t \in \OO_E^\times$.
+  So if one selects
+  \[ \psi(x) = \mathbf{1}_{v(1 - \Norm(x)) = n} \]
+  then we get
+  \begin{align*}
+    \Vol\left( \left\{ x \in E \mid v(1-x \bar x) = n \right\} \right)
+    &= \frac{1}{1-q\inv} \int_{t \in F} \int_{y \in \OO_E^\times}
+    \mathbf{1}_{v\left( 1 - \Norm\left(x_t \cdot \frac{y}{\bar y} \right) \right) = n} \odif y \odif t \\
+    &= \frac{1}{1-q\inv} \int_{t \in F} \int_{y \in \OO_E^\times}
+    \mathbf{1}_{v\left( 1 - t \right) = n} \odif y \odif t \\
+    &= \frac{\Vol_E(\OO_E^\times)}{1-q\inv} \cdot \Vol_F(1 + \varpi^{-n} \OO_F^\times) \\
+    &= \frac{1 - \frac{1}{q^2}}{1-q\inv}
+      \cdot \left( q^{-n} \cdot \left( 1 - \frac 1q \right) \right) \\
+    &= q^{-n} (1-q^{-2}).
+  \end{align*}
+  The case $\rho > 0$ is proved in \cite[Lemma 4.4]{ref:AFL}
+  using the same method of using \eqref{eq:schwartz}.
 \end{proof}
 
 We also comment on the well-known fact that in an ultrametric space,
@@ -252,7 +273,6 @@ any two disks are either disjoint or one is contained in the other.
   The latter condition checks which case we are in by testing if $\xi_1 \in D_2$,
   since $\xi_1 \in D_1$.
 \end{proof}
-\todo{is it $q$ or $q_E$}
 
 \begin{figure}
 \centering
