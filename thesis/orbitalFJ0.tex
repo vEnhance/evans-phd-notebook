@@ -1,4 +1,4 @@
-\chapter{Synopsis of the orbital integral
+\chapter{Synopsis of the weighted orbital integral
   $\Orb((\gamma, \uu, \vv^\top), \phi \otimes \oneV, s)$
   for $(\gamma, \uu, \vv^\top) \in (S_2(F) \times V'_2(F))\rs$
   and $\phi \in \HH(S_2(F), K')$}
@@ -10,7 +10,7 @@ For the concrete calculation, we are mostly interested in the case $n = 2$.
 
 \section{Definition}
 We will not work in the generality of a function on all of $S_n(F) \times V_n'(F)$.
-Instead, for our conjecture, it will be enough to define the orbital integral
+Instead, for our conjecture, it will be enough to define the weighted orbital integral
 in the case where our function is of the form
 \[ \phi \otimes \oneV \]
 where $\phi \in \HH(S_n(F), K')$ is the left component, and
@@ -26,12 +26,12 @@ the right component is the indicator function defined in the obvious way:
 
 Then, unsurprisingly from the definition of our action as
 \[ h \cdot (\gamma, \uu, \vv^\top) = (h\gamma h\inv, h\uu, \vv^\top h\inv) \]
-we analogously define the orbital integral as follows.
+we analogously define the weighted orbital integral as follows.
 \begin{definition}
   For brevity let $\eta(h) \coloneqq \eta(\det h)$ for $h \in H$.
   For $(\gamma, \uu, \vv^\top) \in S_n(F) \times V'_n(F)$,
   $\phi \in \HH(S_n(F), K')$, and $s \in \CC$,
-  we define the orbital integral by
+  we define the weighted orbital integral by
   \begin{align*}
     & \Orb((\gamma, \uu, \vv^\top), \phi \otimes \oneV, s) \\
     &\coloneqq \int_{h \in H} \phi(h\inv \gamma h) \oneV(h \uu, \vv^\top h^{-1})
@@ -82,7 +82,7 @@ From now on assume $n = 2$,
 and that $(\gamma, \uu, \vv^\top) \in (S_2(F) \times V'_2)\rs$ is regular.
 
 \subsection{Identifying an orbit representative}
-The orbital integral depends only on the $H$-orbit of $(\gamma, \uu, \vv^\top)$.
+The weighted orbital integral depends only on the $H$-orbit of $(\gamma, \uu, \vv^\top)$.
 Consequently, we may assume without loss of generality
 (via multiplication by a suitable change-of-basis $h \in H = \GL_2(F)$) that
 \[ \uu = \begin{bmatrix} 0 \\ 1 \end{bmatrix}, \qquad
@@ -145,9 +145,9 @@ And since $d = -\bar a c / \bar c$, it follows $d$ is a unit.
 In other words, \Cref{assume:a_odd} gives the direct corollary
 \[ v(a) = v(d) = 0. \]
 
-\section{Parameters used in the calculation of the orbital integral}
+\section{Parameters used in the calculation of the weighted orbital integral}
 This case is simpler than the analogous \Cref{sec:param_orbital0}
 and we will state our answer in terms of just $v(b)$, $v(c)$, $v(e)$ and $v(d-a)$.
 We don't need a further setup like we did in \Cref{sec:param_orbital0}.
 
-\section{Statement of the differentiated orbital integral}
+\section{Statement of the differentiated weighted orbital integral}

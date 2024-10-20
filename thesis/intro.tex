@@ -117,7 +117,7 @@ the arithmetic GGP conjectures should have a corresponding
 \emph{arithmetic fundamental lemma} (henceforth AFL),
 which was proposed by W.\ Zhang \cite[Conjecture 2.9]{ref:AFL}.
 The arithmetic fundamental lemma then relates the derivative
-of the orbital integral with respect to the indicator function
+of the weighted orbital integral with respect to the indicator function
 $\mathbf{1}_{K'^\flat \times K'} \in \HH(G'^\flat \times G, K'^\flat \times K')$, that is
 \[ \left. \pdv{}{s} \right\rvert_{s=0} \Orb(\gamma, \mathbf{1}_{K'^\flat \times K'}, s) \]
 for $\gamma \in G'^\flat \times G'$,
@@ -181,7 +181,7 @@ can be replaced by the simpler one $\HH(G', K')$.
 
 The AFL conjecture provides a bridge between a geometric left-hand side
 (given by an intersection number)
-and an analytic right-hand side (given by an orbital integral).
+and an analytic right-hand side (given by an weighted orbital integral).
 Stating it requires several pieces of data.
 We only mention these pieces by name here, with definitions given later:
 \begin{itemize}
@@ -199,14 +199,14 @@ We only mention these pieces by name here, with definitions given later:
     described in \Cref{ch:geo}.
   \end{itemize}
 
-  \ii On the analytic side, we have an orbital integral.
+  \ii On the analytic side, we have an weighted orbital integral.
   It uses the following ingredients.
   \begin{itemize}
     \ii We choose a regular semisimple element $\gamma \in S_n(F)\rs$.
     \ii We choose a test function $\phi$ which comes
     from a certain $\HH(G',K')$-module that we will denote $\HH(S_n(F), K')$.
     This module $\HH(S_n(F), K')$ is defined in \Cref{ch:background}.
-    \ii The orbital integral $\Orb(\gamma, \phi, s)$
+    \ii The weighted orbital integral $\Orb(\gamma, \phi, s)$
     is itself defined in \Cref{def:orbital0}.
   \end{itemize}
 
@@ -243,7 +243,7 @@ we can now state the conjecture proposed in \cite{ref:AFLspherical}.
   \end{equation}
   where the intersection number $\Int(\dots)$ and
   the transfer factor $\omega$ are defined in \Cref{ch:geo}
-  while the orbital integral $\Orb(\dots)$ is defined in \Cref{def:orbital0}.
+  while the weighted orbital integral $\Orb(\dots)$ is defined in \Cref{def:orbital0}.
 \end{conjecture}
 
 At present, the (inhomogeneous) AFL is the case where $f = \mathbf{1}_K$,
@@ -252,13 +252,13 @@ and is thus proven.
 The generalized conjecture is also proved in full for
 $n = 2$ in \cite[Theorem 1.0.1]{ref:AFLspherical}
 (in that reference, our $n$ denotes the $n+1$ in \emph{loc.\ cit.}).
-The part of the calculation involving orbital integral has two parts:
+The part of the calculation involving weighted orbital integral has two parts:
 \begin{itemize}
   \ii The calculation makes $\BC_{S_{n}}^{\eta^{n-1}}$
   completely explicit in a natural basis for $n = 2$.
   The result is \cite[Lemma 7.1.1]{ref:AFLspherical}.
 
-  \ii The calculation makes explicit the value of the orbital integral
+  \ii The calculation makes explicit the value of the weighted orbital integral
   \[ \Orb(\gamma, \phi) \]
   for any $\gamma \in S_n(F)\rs$ and $\phi \in \HH(S_n(F), K')$,
   in terms of invariants of $\gamma$ and a decomposition of $\phi$ in a natural basis.
@@ -325,7 +325,7 @@ to accommodate the new term $u$ in \Cref{def:intersection_number_semi_lie_spheri
   \end{equation}
   where the intersection number $\Int(\dots)$ and the transfer factor $\omega$
   are defined in \Cref{ch:geo}
-  while the orbital integral $\Orb(\dots)$ is defined in \Cref{def:orbitalFJ}.
+  while the weighted orbital integral $\Orb(\dots)$ is defined in \Cref{def:orbitalFJ}.
   \label{conj:semi_lie_spherical}
 \end{conjecture}
 
@@ -333,7 +333,7 @@ to accommodate the new term $u$ in \Cref{def:intersection_number_semi_lie_spheri
 \todo{large kernel}
 
 \section{Results}
-One primary objective of this paper is to fully determine the orbital integral
+One primary objective of this paper is to fully determine the weighted orbital integral
 in the next situations for which the AFL for the full spherical Hecke algebra
 was not previously known:
 \begin{itemize}
@@ -347,8 +347,8 @@ which were the case $n = 2$ of the inhomogeneous group version of the AFL
 
 The methods, which are local in nature,
 are rather similar to those employed in \cite{ref:AFL},
-which shows how to compute the orbital integral for $n = 3$ when $f = \mathbf{1}_{K'}$.
-We were able to successfully calculate this orbital integral for all these cases.
+which shows how to compute the weighted orbital integral for $n = 3$ when $f = \mathbf{1}_{K'}$.
+We were able to successfully calculate this weighted orbital integral for all these cases.
 The result is too involved to state in the introduction,
 but we give the following summary.
 \begin{theorem}
@@ -356,7 +356,7 @@ but we give the following summary.
   (resp.\ $\guv \in (S_2(F) \times V'_2(F))\rs$ and $\phi \in \HH(S_3(F), K')$).
   Assume that $\gamma$ (resp.\ $\guv$)
   matches an element in $\U(\VV_3)\rs$ (resp.\ $(\U(\VV_2) \times \VV_2)\rs$).
-  Then the orbital integral $\Orb(\gamma, \phi, s)$
+  Then the weighted orbital integral $\Orb(\gamma, \phi, s)$
   (resp.\ $\Orb(\guv, \phi \otimes \oneV, s)$) always takes the form
   \[ \sum_k P_k(s) (-q^s)^k \]
   for some polynomials $P_k(s) \in \ZZ[x]$, where
@@ -372,15 +372,15 @@ but we give the following summary.
   The range of the summation, and the aforementioned piecewise linear function(s),
   can be written explicitly in terms of a particular representative in the orbit $\phi$.
 \end{theorem}
-For the orbital integral $\Orb(\gamma, \phi, s)$
+For the weighted orbital integral $\Orb(\gamma, \phi, s)$
 with $\gamma \in S_3(F)\rs$ and $\phi \in \HH(S_3(F), K')$,
 the theorems \todo{list theorems} together all the cases that can arise.
-For the orbital integral $\Orb(\guv, \phi \otimes \oneV, s)$
+For the weighted orbital integral $\Orb(\guv, \phi \otimes \oneV, s)$
 with $\guv \in (S_2(F) \times V'_2(F))\rs$ and $\phi \in \HH(S_3(F), K')$
 the final formula is the single theorem \Cref{thm:semi_lie_formula}.
 
 Besides providing evidence for \Cref{conj:inhomog} and \Cref{conj:semi_lie_spherical},
-these orbital integral formulas also establish some other results.
+these weighted orbital integral formulas also establish some other results.
 For example, the formula above
 proves the $n = 3$ case of \cite[Conjecture 8.2.1]{ref:AFLspherical}
 and an analogous version; we state this below.
@@ -401,11 +401,11 @@ The rest of the paper is organized as follows.
   \ii In \Cref{ch:satake} we provide reminders on the Satake transform
   and use it to derive the formulas for base change when $n = 3$.
 
-  \ii In \Cref{ch:orbital0} we introduce the orbital integral
+  \ii In \Cref{ch:orbital0} we introduce the weighted orbital integral
   for the group version of the AFL for full spherical Hecke algebra,
   and dedicate \Cref{ch:orbital1,ch:orbital2} to their proof.
 
-  \ii In \Cref{ch:orbitalFJ0} we introduce the orbital integral
+  \ii In \Cref{ch:orbitalFJ0} we introduce the weighted orbital integral
   for the semi-Lie version of the AFL for full spherical Hecke algebra,
   and produce analogous proofs to \Cref{ch:orbitalFJ1,ch:orbitalFJ2}.
 

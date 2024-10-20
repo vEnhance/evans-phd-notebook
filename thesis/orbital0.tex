@@ -1,19 +1,19 @@
-\chapter{Synopsis of the orbital integral $\Orb(\gamma, \phi, s)$ for $\gamma \in S_3(F)\rs$ and $\phi \in \HH(S_3(F), K')$}
+\chapter{Synopsis of the weighted orbital integral $\Orb(\gamma, \phi, s)$ for $\gamma \in S_3(F)\rs$ and $\phi \in \HH(S_3(F), K')$}
 \label{ch:orbital0}
 
-This section defines the orbital integral
+This section defines the weighted orbital integral
 and describes the parameters which we will use to express our answer.
 
-\section{Initial definition of the orbital integral for general $S_n(F)$}
+\section{Initial definition of the weighted orbital integral for general $S_n(F)$}
 Let $H = \GL_{n-1}(F)$.
 Then $H$ has a natural embedding into $G = \GL_n(E)$ by
 \[ h \mapsto \begin{bmatrix} h & 0 \\ 0 & 1 \end{bmatrix} \]
 which endows it with an action $S_n(E)$.
-Then our orbital integral is defined as follows.
+Then our weighted orbital integral is defined as follows.
 \begin{definition}
   For brevity let $\eta(h) \coloneqq \eta(\det h)$ for $h \in H$.
   For $\gamma \in S_n(F)$, $\phi \in \HH(S_n(F), K')$, and $s \in \CC$,
-  we define the orbital integral by
+  we define the weighted orbital integral by
   \[ \Orb(\gamma, \phi, s) \coloneqq
     \int_{h \in H} \phi(h\inv \gamma h) \eta(h)
     \left\lvert \det(h) \right\rvert_F^{-s} \odif h. \]
@@ -77,12 +77,12 @@ Further assume $\gamma \in S_3(F)\rs$ is regular semisimple.
 We identify some parameters for the orbit of $\gamma$
 that we can use for our explicit calculations.
 
-\subsection{Rewriting the orbital integral as a double integral over $E$
+\subsection{Rewriting the weighted orbital integral as a double integral over $E$
   via the group $H' \cong \GL_2(F)$}
-Our orbital integral is at present a quadruple integral over $F$,
+Our weighted orbital integral is at present a quadruple integral over $F$,
 owing to $H = \GL_{2}(F)$ being a four-dimensional $F$-vector space.
 
-It will be more economical to work with the orbital integral as a double integral
+It will be more economical to work with the weighted orbital integral as a double integral
 with two coefficients in $E$, in the following sense.
 Define
 \[ H' \coloneqq
@@ -106,7 +106,7 @@ As an $F$-algebra, we have an isomorphism (see \cite[\S4.1]{ref:AFL})
 Under this isomorphism, we have
 \[ h \gamma h^{-1} = \iota_2(h) \gamma \overline{\iota_2(h)^{-1}}. \]
 
-This allows us to rewrite the orbital integral over $H'$ instead.
+This allows us to rewrite the weighted orbital integral over $H'$ instead.
 If we write $h' = \overline{\iota_2(h)^{-1}}$,
 then the following integral formula is obtained.
 \begin{proposition}
@@ -114,7 +114,7 @@ then the following integral formula is obtained.
   \label{prop:orbital_over_H_prime}
   For brevity let $\eta(h') \coloneqq \eta(\det h')$ for $h' \in H'$.
   For $\gamma \in S_3(F)$, $\phi \in \HH(S_3(F), K')$, and $s \in \CC$,
-  the orbital integral can instead be written as
+  the weighted orbital integral can instead be written as
   \[ \Orb(\gamma, \phi, s) =
     \int_{h' \in H'} \phi(\bar{h'}\inv \gamma h') \eta(h')
     \left\lvert \det(h') \right\rvert_F^{s} \odif{h'} \]
@@ -126,10 +126,10 @@ then the following integral formula is obtained.
 \end{proposition}
 
 \subsection{Identifying a representative in the $H'$-orbit}
-Evidently the orbital integral $\Orb(\gamma, \phi, s)$ in \Cref{prop:orbital_over_H_prime}
+Evidently the weighted orbital integral $\Orb(\gamma, \phi, s)$ in \Cref{prop:orbital_over_H_prime}
 only depends on the $H'$-orbit of $\gamma$.
 So it makes sense to pick a canonical representative for the $H'$-orbit to compute
-the orbital integral in terms of.
+the weighted orbital integral in terms of.
 
 Since we assumed $\gamma \in S_3(F)\rs$ is regular semisimple,
 we can invoke \cite[Proposition 4.1]{ref:AFL}
@@ -163,7 +163,7 @@ In fact, few other cases even occur at all given \Cref{assume:u_odd};
 we will see momentarily that either $v(b) = v(d) < 0$,
 or one of $\{v(b), v(d)\}$ is zero and the other is nonnegative.
 
-\section{Parameters used in the calculation of the orbital integral}
+\section{Parameters used in the calculation of the weighted orbital integral}
 \label{sec:param_orbital0}
 The goal of the next two sections is to evaluate \eqref{eq:orbital_goal}
 (and hence its derivative at $s = 0$) in terms of the parameters
@@ -341,10 +341,10 @@ Now we can prove \Cref{prop:parameter_constraints}.
 
 In the case where $\ell$ is odd (and hence $\ell \ge 1$ and $v(b) = v(d) = 0$),
 we get \eqref{eq:dos} implying $\lambda = \ell$
-and thus $\lambda$ will never be used --- the orbital will be computed
+and thus $\lambda$ will never be used --- the weighted orbital will be computed
 as a function of $\ell$ and $\delta$ (and $r$).
 
-However for even $\ell$ these numbers are never equal and our orbital
+However for even $\ell$ these numbers are never equal and our weighted orbital
 integral will be stated in terms of $\ell$, $\delta$, and $\lambda$ (and $r$).
 We just saw that in these situations $b^2 - 4 a \bar d$ is a square;
 moving forward, we need to fix the choice of the square root $\tau$.
@@ -437,6 +437,6 @@ and for $v(d) < 0$ we have $v(d) = \half \ell$ anyway.
   \end{itemize}
 \end{proof}
 
-\section{Statement of the differentiated orbital integral}
+\section{Statement of the differentiated weighted orbital integral}
 We can now state the answer.
 \todo{put the differentiated result here}
