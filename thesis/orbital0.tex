@@ -154,9 +154,9 @@ This is controlled by the parity of the invariant
 being odd.
 Hence, we only have to consider this case:
 \begin{assume}
+  \label{assume:u_odd}
   We will assume that
   \[ v\left( (1-d\bar d)^2 - c \bar c\right) \equiv 1 \pmod 2. \]
-  \label{assume:u_odd}
 \end{assume}
 
 We will mostly be interested in the case where $v(b) = v(d) = 0$.
@@ -164,9 +164,9 @@ In fact, few other cases even occur at all given \Cref{assume:u_odd};
 we will see momentarily that either $v(b) = v(d) < 0$,
 or one of $\{v(b), v(d)\}$ is zero and the other is nonnegative.
 
-\section{Quantities to state the answer in terms of}
-As we described earlier, our goal is to evaluate \eqref{eq:orbital_goal}
-in terms of the parameters
+\section{Parameters used in the calculation of the orbital integral}
+The goal of the next two sections is to evaluate \eqref{eq:orbital_goal}
+(and hence its derivative at $s = 0$) in terms of the parameters
 \[ a \in E^1, \qquad b, d \in E, \qquad r \ge 0. \]
 To simplify the notation in what follows,
 it will be convenient to define several quantities that reappear frequently.
@@ -209,56 +209,135 @@ We will now describe them.
 \begin{proposition}
   \label{prop:parameter_constraints}
   Exactly one of the following situations is true:
-  \begin{enumerate}[(a)]
+  \begin{itemize}
     \ii $v(b) = v(d) = 0$, $\ell \ge 1$ is odd, $\ell < 2 \delta$, and $\lambda = \ell$.
     \ii $v(b) = v(d) = 0$, $\ell \ge 0$ is even, $\ell \le 2 \delta$, and $\lambda > \ell$ is odd.
-    \ii $v(b) = 0$, $v(d) > 0$, $\ell = \delta = 0$, and ???
-    \ii $v(b) > 0$, $v(d) = 0$, $\ell = 0$, $\delta \ge 0$, and ???
-    \ii $v(b) = v(d) < 0$, $\ell = \delta = 2v(d) < 0$, and ???
-  \end{enumerate}
+    \ii $v(b) = 0$, $v(d) > 0$, $\ell = \delta = 0$, and $\lambda > 0$ is odd.
+    \ii $v(b) > 0$, $v(d) = 0$, $\ell = 0$, $\delta \ge 0$, and $\lambda > 0$ is odd.
+    \ii $v(b) = v(d) < 0$, $\ell = \delta = 2v(d) < 0$, and $\lambda > 0$ is odd.
+  \end{itemize}
   See \Cref{tab:parameter_constraints}.
   Moreover, whenever $\ell$ is even,
   the quantity $b^2 - 4 a \bar d$ is a square of some element in $E$.
 \end{proposition}
+
+\begin{table}[ht]
+  \centering
+  \begin{tabular}{cccc}
+    \toprule
+    & $v(b) = 0$ & $v(b) > 0$ & $v(b) < 0$ \\
+    \midrule
+    $v(d) = 0$ & $0 \le \ell \le 2 \delta$ & $\ell = 0$, $\delta \ge 0$ & never \\
+    $v(d) > 0$ & $\ell = \delta = 0$ & never & never \\
+    $v(d) < 0$ & never & never & $v(b) = v(d) = \frac{\ell}{2} = \frac{\delta}{2} < 0$ \\
+    \bottomrule
+  \end{tabular}
+  \caption{A table showing the five cases in \Cref{prop:parameter_constraints}.}
+  \label{tab:parameter_constraints}
+\end{table}
+
+
+Before proving the proposition in full we first prove the following lemmas.
+\begin{lemma}
+  \label{lem:au_minus_du}
+  Assume $v(d) \ge 0$.
+  For odd $\ell$, we have
+  \[ 2 v(au - \bar d \bar u) < \ell = \lambda \]
+  while for even $\ell$ we instead have
+  \[ 2 v(au - \bar d \bar u) = \ell < \lambda. \]
+\end{lemma}
 \begin{proof}
-  First assume $\ell$ is odd. We assert in this case we have
+  If $v(d) = 0$, this follows from \eqref{eq:dos} directly,
+  since $v\left( (au - \bar d \bar u)^2 \right)$ is even, and hence
+  can never equal $v(4a \bar d (1- u \bar u)) = \lambda \equiv 1 \pmod 2$.
+
+  Meanwhile, if $v(d) > 0$, then from \eqref{eq:b}
+  it follows $v(b) = 0$, and hence $\ell = 0$.
+  And $v(au - \bar d \bar u) = 0$ in this case as well.
+  Since $\lambda$ is a positive odd integer, the lemma is proved.
+\end{proof}
+
+\begin{lemma}
+  If $v(b) = v(d) = 0$ and $\ell \ge 0$, then $\ell \le 2 \delta$.
+  \label{lem:ell_le_2_delta}
+\end{lemma}
+\begin{proof}
+  If $\ell = 0$ there is nothing to prove so assume $\ell > 0$.
+  Let us write
   \begin{equation}
-    v(b) = v(d) = 0.
-    \label{eq:odd_b_d_zero}
+    \OO_E^\times \ni \frac{a d u}{\bar u} = x + y \sqrt{\eps} \qquad x,y \in F
+    \label{eq:ell_delta_adu_xy}
   \end{equation}
+  which has norm
+  \begin{equation}
+    \OO_F^\times \ni x^2+y^2\eps
+    = \frac{a d u}{\bar u} \cdot \frac{\bar a \bar d \bar u}{u} = d \bar d.
+    \label{eq:ell_delta_adu_norm}
+  \end{equation}
+
+  Now, according to \Cref{lem:au_minus_du} we have that
+  \[ 0 < \ell \le 2v(au - \bar d \bar u)
+    = 2v\left( \frac{a d u}{\bar u} - d \bar d \right)
+    = 2v\left(  (x - d \bar d) + y \sqrt{\eps}. \right) \]
+  and since $d \bar d \in F$, it follows that
+  \begin{align}
+    v\left( x - d \bar d \right) &> \frac{\ell}{2} \label{eq:ell_delta_x_minus_d_bar_d} \\
+    v(y) &> \frac{\ell}{2}. \label{eq:ell_delta_y}
+  \end{align}
+  In particular, \eqref{eq:ell_delta_y} implies $v(y) > 0$ which has two consequences:
+  \begin{itemize}
+    \ii From \eqref{eq:ell_delta_adu_xy} we get $v(x) = 0$.
+    \ii From $v(y^2) > 0$ and \eqref{eq:ell_delta_adu_norm}
+    we conclude \[ v(x^2 - d \bar d) = v(y^2) > \ell. \]
+  \end{itemize}
+  Putting \eqref{eq:ell_delta_x_minus_d_bar_d} together with the previous two bullets,
+  \[ \frac{\ell}{2} \le v\left( x^2 - d \bar d - x(x - d \bar d) \right)
+    = v(x) + v(1-d \bar d) = 0 + \delta \]
+  and this proves $\ell \le 2\delta$.
+\end{proof}
+
+Now we can prove \Cref{prop:parameter_constraints}.
+\begin{proof}[Proof of \Cref{prop:parameter_constraints}]
+  It's clear the five bullets above are disjoint.
+  \begin{itemize}
+  \ii First assume $\ell$ is odd.
+  We assert in this case we have $v(b) = v(d) = 0$.
   Indeed if $v(d) \neq 0$, then $b = -au-\bar d\bar u$ is a unit,
   and hence so is $b^2 - 4 a \bar d$, causing $\ell = 0$, contradiction.
   And if $d$ is a unit, $\ell \neq 0$ means $v(b) = 0$ too.
-  \todo{prove the result of (a)}
-
+  In particular, $\ell > 0$.
+  The rest of the claims follow by \Cref{lem:au_minus_du} and \Cref{lem:ell_le_2_delta}.
+  \end{itemize}
   For the rest of the proof we only consider even $\ell$.
   Because $b = -au - \bar d \bar u$, it cannot be the case that $v(b) > 0$ and $v(d) > 0$;
   moreover if either $v(b) < 0$ or $v(d) < 0$,
   then in fact $v(b) = v(d)$.
-  \todo{wrap this up}
+  We consider each of the four possibilities.
+  \begin{itemize}
+  \ii Suppose and $v(b) = v(d) = 0$.
+  Then \Cref{lem:au_minus_du} and \Cref{lem:ell_le_2_delta} imply the results.
 
-  Hence
+  \ii If $v(b) = 0$ and $v(d) > 0$, then $b^2 - 4a \bar d$ is a unit
+  and $1 - d \bar d$ are both units, ergo $\ell = \delta = 0$.
 
+  \ii If $v(b) > 0$ and $v(d) = 0$ then $b^2 - 4 a \bar d$ is a unit,
+  and there is nothing left to prove.
+
+  \ii Finally suppose $v(b) = v(d) < 0$.
+  Then $v(b^2) < v(4 a \bar d) < 0$, so indeed $\ell = 2 v(d) < 0$.
+  And $v(1 - d \bar d) = 2v(d) < 0$ as well.
+  \end{itemize}
   We now verify the last assertion that $b^2 - 4 a \bar d$
   is a square whenever $\ell$ is even.
   The proof in all cases uses \eqref{eq:dos} to show $b^2 - 4 a \bar d$
   is equal to $\varpi^\ell$ times a quadratic residue in $\OO_E^\times$.
   Indeed we need only verify that $v(4a \bar d(1 - u \bar u)) = v(d) + \lambda$
   has larger valuation than $v\left( (a u - \bar d \bar u)^2 \right) = \ell$.
-  \begin{itemize}
-    \ii In the case this follows from $\lambda > \ell$;
-    \ii In the case where $v(d) > 0$ we have $\ell = 0$ and this is clear;
-    \ii If $v(b) = v(d) < 0$ then $\ell = -2v(d)$ and this is clear too.
-  \end{itemize}
-
+  In the case $v(b) = 0$ this follows from $\lambda > \ell$.
+  Whereas if $v(d) > 0$ we have $\ell = 0$
+  and if $v(b) = v(d) < 0$ then $\ell = -2v(d)$;
+  so in all these cases the claim is obvious too. \qedhere
 \end{proof}
-
-\begin{table}[ht]
-  TODO: TABLE GOES HERE
-  \caption{A table showing the five cases in \Cref{prop:parameter_constraints}.}
-  \label{tab:parameter_constraints}
-\end{table}
-\todo{fill in the table}
 
 In the case where $\ell$ is odd (and hence $\ell \ge 1$ and $v(b) = v(d) = 0$),
 we get \eqref{eq:dos} implying $\lambda = \ell$
@@ -287,8 +366,7 @@ Here $\lambda + v(d) - \half \ell > 0$ is obvious when $v(d) \ge 0$
 (since $\lambda = \ell > 0$ for odd $\ell$ and otherwise $\lambda > \ell$),
 and for $v(d) < 0$ we have $v(d) = \half \ell$ anyway.
 
-\begin{proposition}
-  \label{prop:four_norm_choice}
+\begin{lemma}
   With this choice of $\tau$, we have
   \begin{equation}
     \begin{aligned}
@@ -297,7 +375,7 @@ and for $v(d) < 0$ we have $v(d) = \half \ell$ anyway.
     \end{aligned}
     \label{eq:four_norm_choice}
   \end{equation}
-\end{proposition}
+\end{lemma}
 \begin{proof}
   We consider several cases.
   \begin{itemize}
@@ -354,6 +432,6 @@ and for $v(d) < 0$ we have $v(d) = \half \ell$ anyway.
   \end{itemize}
 \end{proof}
 
-\section{Result}
+\section{Result of the differentiated orbital integral}
 We can now state the answer.
 \todo{put the differentiated result here}

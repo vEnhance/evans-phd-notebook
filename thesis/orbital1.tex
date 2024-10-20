@@ -559,32 +559,17 @@ we see that the two cases have the following additional requirements:
 \end{description}
 
 We will now show that some of these inequalities are redundant and can be ignored.
-\begin{proposition}
+\begin{lemma}
   If $v(b) = 0$, then \eqref{eq:odd_ineq2} and \eqref{eq:odd_ineq4} are redundant
   i.e.\ they are automatically true for $0 < n \le \ell + r$.
-\end{proposition}
+\end{lemma}
 \begin{proof}
-  First, assume that $\ell$ is odd.
-  Then \eqref{eq:dos} together with $v(b) = v(d) = 0$ gives
-  \begin{equation}
-    \lambda = \ell = v(1-u \bar u) < 2v(au - \bar d \bar u).
-    \label{eq:odd_center_distance}
-  \end{equation}
-  On the other hand, suppose $\ell$ is even.
-  In the case where $v(d) = 0$, \eqref{eq:dos} implies that
-  \begin{equation}
-    \ell = 2v(au - \bar d \bar u) < v(1-u\bar u) = \lambda
-    \label{eq:even_center_distance_case12}
-  \end{equation}
-  Meanwhile, if $v(d) > 0$, then $\ell = 0$ and $\lambda \ge 1$,
-  so \eqref{eq:dos} implies $v(au - \bar d \bar u) = 0$.
-  So in every situation we always have
-  \[ v(au - \bar d \bar u) \ge \frac{\ell}{2} \ge \frac{n-r}{2}. \qedhere \]
+  This is immediate from \Cref{lem:au_minus_du}.
 \end{proof}
 
-\begin{proposition}
+\begin{lemma}
   If $v(b) = 0$, then \eqref{eq:odd_ineq1} is redundant.
-\end{proposition}
+\end{lemma}
 \begin{proof}
   Regardless of whether $v(d) = 0$ or $v(d) > 0$, the equation
   \[ (4-b \bar b) = -4au(1-d\bar d) - \bar b(b^2-4a\bar d) \]
@@ -670,7 +655,7 @@ In that case the volume contribution is given by the same expression as \eqref{e
 
 To avoid having to consider the situation $v(b) > 0$ separately,
 we make the following observation:
-\begin{proposition}
+\begin{lemma}
   Consider the two (disjoint) ranges \eqref{eq:odd_range1} and \eqref{eq:odd_range2}
   in the special case $\ell = 0$.
   These two ranges collectively cover exactly the same elements $(m,n)$
@@ -678,7 +663,7 @@ we make the following observation:
   Moreover, the volume contribution \eqref{eq:case_1_vol_contrib}
   equals that of \eqref{eq:case_2_vol_contrib} for pairs $(m,n)$ in \eqref{eq:odd_range1}.
   \label{prop:folding_cases_1_2}
-\end{proposition}
+\end{lemma}
 \begin{proof}
   If we combine \eqref{eq:odd_range1} and \eqref{eq:odd_range2}, they say that
   \begin{align*}
