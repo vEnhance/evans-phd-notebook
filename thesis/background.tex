@@ -20,21 +20,21 @@ and $E/F$ is an unramified quadratic field extension.
   so that $\eta(x) = -1^{v(x)}$.
   \ii Set $G' \coloneqq \GL_n(E)$.
   \ii Set $K' \coloneqq \GL_n(\OO_E) \subseteq G'$ as the hyperspecial maximal compact subgroup of $G$.
-  \ii $V_0$ denotes a split $E/F$-Hermitian space of dimension $n$ (unique up to isomorphism).
+  \ii $\VV_n^-$ denotes a split $E/F$-Hermitian space of dimension $n$ (unique up to isomorphism).
   \ii Let $\beta$ denote the $n \times n$ antidiagonal matrix
   \[ \beta \coloneqq \begin{bmatrix} && 1 \\ & \iddots \\ 1 \end{bmatrix} \]
-  and pick the basis of $V_0$ such that the Hermitian form on $V_0$ is given by
-  \[ V_0 \times V_0 \to E \qquad (x,y) \mapsto x^\ast \beta y. \]
+  and pick the basis of $\VV_n^-$ such that the Hermitian form on $\VV_n^-$ is given by
+  \[ \VV_n^- \times \VV_n^- \to E \qquad (x,y) \mapsto x^\ast \beta y. \]
   \ii Set
-  \[ G \coloneqq \U(V_0) = \{ g \in \GL_n(\OO_E) \mid g^\ast \beta g = \beta\} \]
-  the unitary group over $V_0$.
+  \[ G \coloneqq \U(\VV_n^-) = \{ g \in \GL_n(\OO_E) \mid g^\ast \beta g = \beta\} \]
+  the unitary group over $\VV_n^-$.
   Note that $\beta$ is \emph{antidiagonal}, in contrast to the convention $\beta = \id_n$
   that is often used for unitary matrices with entries in $\CC$.
   \ii Set
   \[ K \coloneqq G \cap \GL_n(\OO_E) \]
   as the natural hyperspecial maximal compact subgroup.
-  \ii Let $\VV_n$ denote the non-split $E/F$-Hermitian space of dimension $n$
-  (unique up to isomorphism), and $\U(\VV_n)$ the corresponding unitary group.
+  \ii Let $\VV_n^+$ denote the non-split $E/F$-Hermitian space of dimension $n$
+  (unique up to isomorphism), and $\U(\VV_n^+)$ the corresponding unitary group.
   This space will be realized in \Cref{ch:geo}.
 \end{itemize}
 
@@ -115,11 +115,11 @@ $K$ is the maximal compact subgroup
 this Hecke algebra is actually commutative.
 
 \section{The specific Hecke algebras $\HH(G',K')$ and $\HH(G,K)$
-  for $G' = \GL_n(E)$ and $G = \U(V_0)$, and the module $\HH(S_n(F), K')$}
+  for $G' = \GL_n(E)$ and $G = \U(\VV_n^-)$, and the module $\HH(S_n(F), K')$}
 For our purposes, we define two Hecke algebras:
 \begin{align*}
   \HH(G', K') &\coloneqq \HH(\GL_n(E), \GL_n(\OO_E)) \\
-  \HH(G, K) &\coloneqq \HH(\U(V_0), \U(V_0) \cap \GL_n(\OO_E))
+  \HH(G, K) &\coloneqq \HH(\U(\VV_n^-), \U(\VV_n^-) \cap \GL_n(\OO_E))
 \end{align*}
 
 Now the symmetric space $S_n(F)$ is not a group,

@@ -41,12 +41,12 @@ we analogously define the weighted orbital integral as follows.
 \end{definition}
 
 As before it seems this weighted orbital integral should be related to an ordinary one.
-To define it, fix a self-dual lattice $\Lambda_n$ in $V_0$ of full rank.
-First, if $(g,u) \in \U(V_0) \times V_0$ and $f \in \HH(G,K)$,
-then we define an orbital integral for $\U(V_0) \times V_0$ by
+To define it, fix a self-dual lattice $\Lambda_n$ in $\VV_n^-$ of full rank.
+First, if $(g,u) \in \U(\VV_n^-) \times \VV_n^-$ and $f \in \HH(G,K)$,
+then we define an orbital integral for $\U(\VV_n^-) \times \VV_n^-$ by
 \begin{equation}
-  \Orb^{\U(V_0) \times V_0}\left( (g,u), f \otimes \mathbf{1}_{\Lambda_n} \right)
-  \coloneqq \int_{\U(V_0)} f(x\inv g x) \mathbf{1}_{\Lambda_n}(x^{-1} u) \odif x.
+  \Orb^{\U(\VV_n^-) \times \VV_n^-}\left( (g,u), f \otimes \mathbf{1}_{\Lambda_n} \right)
+  \coloneqq \int_{\U(\VV_n^-)} f(x\inv g x) \mathbf{1}_{\Lambda_n}(x^{-1} u) \odif x.
   \label{eq:unweighted_orbital_semi_lie}
 \end{equation}
 That is, in the spirit of \cite[Conjecture 1.9]{ref:liuFJ}
@@ -54,11 +54,11 @@ and \Cref{thm:rel_fundamental_lemma}, we propose the following.
 \begin{conjecture}
   \label{conj:rel_fundamental_lemma_semilie}
   Let $\phi \in \HH(S_n(F), K')$ and $\guv \in (S_n(F) \times V_n')\rs$.
-  If $\guv$ matches an element of $(\U(\VV_n) \times \VV_n)\rs$, then
+  If $\guv$ matches an element of $(\U(\VV_n^+) \times \VV_n^+)\rs$, then
   \[ \omega\guv \Orb(\phi \otimes \oneV, \guv, 0) = 0. \]
-  If $\guv$ instead matches an element $g \in (\U(V_0) \times V_0)\rs$, then
+  If $\guv$ instead matches an element $g \in (\U(\VV_n^-) \times \VV_n^-)\rs$, then
   \[ \omega\guv \Orb(\phi \otimes \oneV, \guv, 0)
-    = \Orb^{\U(V_0) \times V_0}((g,u), \BC^{\eta^{n-1}}_{S_n}(\phi) \otimes \mathbf{1}_{\Lambda_n}) \]
+    = \Orb^{\U(\VV_n^-) \times \VV_n^-}((g,u), \BC^{\eta^{n-1}}_{S_n}(\phi) \otimes \mathbf{1}_{\Lambda_n}) \]
   where the transfer factor $\omega$ is defined in \Cref{ch:geo}.
 \end{conjecture}
 Wei Zhang suggests that this conjecture can be proven by similar means

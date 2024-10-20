@@ -66,10 +66,10 @@ particular cases relevant to this paper.
     if its image under the inclusion $S_n(F) \subseteq \GL_n(E)$ is regular semisimple.
     We write $\gamma \in S_n(F)\rs$.
 
-    \ii For either $g \in G \coloneqq \U(V_0)$ (resp.\ $g \in \U(\VV_n)$),
+    \ii For $g \in \U(\VV_n^\pm)$,
     we say $g$ is regular semisimple
-    if its image under the inclusion $\U(\VV_n) \subseteq \GL_n(E)$ is regular semisimple.
-    We write $g \in \U(V_0)\rs$ (resp.\ $g \in \U(\VV_n)\rs$).
+    if its image under the inclusion $\U(\VV_n^\pm) \subseteq \GL_n(E)$ is regular semisimple.
+    We write $g \in \U(\VV_n^\pm)\rs$.
   \end{itemize}
   In the semi-Lie version of the AFL:
   \begin{itemize}
@@ -91,23 +91,21 @@ particular cases relevant to this paper.
     are bases of $E^n$.
     In this case we write $(\gamma, \uu, \vv^\top) \in (S_n(F) \times V_n')\rs$.
 
-    \ii For either $(g,u) \in G \times V_0 \coloneqq \U(V_0) \times V_0$
-    (resp.\ $(g, u) \in \U(\VV_n) \times \VV_n$),
-    we say $(g, u)$
+    \ii For $(g,u) \in \U(\VV_n^\pm) \times \VV_n^\pm$ we say $(g, u)$
     is regular semisimple if its image under the embedding
     \begin{equation}
       \begin{aligned}
-        \U(\VV_n) \times \VV_n &\hookrightarrow \GL_{n+1}(E) \\
+        \U(\VV_n^\pm) \times \VV_n^\pm &\hookrightarrow \GL_{n+1}(E) \\
         (\gamma, u, u^\ast) &\mapsto \begin{bmatrix} \gamma & u \\ u^\ast & 0 \end{bmatrix}
       \end{aligned}
       \label{eq:embed_FJ_geometric}
     \end{equation}
     is regular semisimple; here $u^\ast$ is the conjugate transpose.
     This is equivalent to the set $\left(  u, gu, \dots, g^{n-1}u \right)$
-    being linearly independent (i.e.\ form a basis of $\VV_n$);
+    being linearly independent (i.e.\ form a basis of $\VV_n^\pm$);
     in this case the independence of $\left( u^\ast, u^\ast g, \dots, u^\ast g^{n-1} \right)$
     is redundant, so it's enough to verify one condition.
-    We write $(g,u) \in (\U(V_0) \times V_0)$ (resp.\ $(g,u) \in (\U(\VV_n) \times \VV_n)\rs$).
+    We write $(g,u) \in (\U(\VV_n^\pm) \times \VV_n^\pm)\rs$.
   \end{itemize}
   \label{def:regular}
 \end{definition}
@@ -115,11 +113,10 @@ particular cases relevant to this paper.
 \section{Matching in the group version of the inhomogeneous AFL}
 We now describe the matching condition used in the group version of AFL.
 \begin{definition}
-  We say $\gamma \in S_n(F)\rs$ matches the element $g \in \U(\VV_n)\rs$
+  We say $\gamma \in S_n(F)\rs$ matches the element $g \in \U(\VV_n^\pm)\rs$
   if $g$ is conjugate to $\gamma$ by an element of $\GL_{n-1}(E)$.
   By \Cref{rem:invariants}, this is an assertion that
   the invariants for $\gamma$ and $g$ coincide.
-  The same definition applies verbatim for $V_0$ in place of $\VV_n$.
   \label{def:matching_inhomog}
 \end{definition}
 In that case, we have the following result.
@@ -128,19 +125,19 @@ In that case, we have the following result.
   \label{prop:valuation_delta_matching_group}
   This definition of matching gives
   a bijection of regular semisimple orbits
-  \[ [S_n(F)]\rs \xrightarrow{\simeq} [\U(V_0)]\rs \amalg [\U(\VV_n)]\rs. \]
+  \[ [S_n(F)]\rs \xrightarrow{\sim} [\U(\VV_n^-)]\rs \amalg [\U(\VV_n^+)]\rs. \]
   Moreover, we can detect whether $\gamma \in S_n(F)\rs$ matches an orbit of
-  $\U(V_0)$ or $\U(\VV_n)$ as follows.
+  $\U(\VV_n^-)\rs$ or $\U(\VV_n^+)\rs$ as follows.
   Suppose we write $\gamma$ in the format of \Cref{def:rs} and consider
-  \[ \Delta \coloneqq \left[ \vv^\top A^{i+j} \uu \right]_{i,j=1}^{n-1} \neq 0. \]
+  \[ \Delta \coloneqq \left[ \vv^\top A^{i+j-2} \uu \right]_{i,j=1}^{n-1} \neq 0. \]
   Then
   \begin{itemize}
-    \ii $\gamma$ matches an orbit in $\U(V_0)\rs$ if $v(\Delta)$ is even
-    \ii $\gamma$ matches an orbit in $\U(\VV_n)\rs$ if $v(\Delta)$ is odd.
+    \ii $\gamma$ matches an orbit in $\U(\VV_n^-)\rs$ if $v(\Delta)$ is even;
+    \ii $\gamma$ matches an orbit in $\U(\VV_n^+)\rs$ if $v(\Delta)$ is odd.
   \end{itemize}
 \end{proposition}
 In this paper, \Cref{conj:inhomog}
-specifies that $\gamma$ should match an element of $\U(\VV_n)$
+requires that $\gamma$ should match an element of $\U(\VV_n^+)\rs$
 and consequently we will usually only be interested in the latter case.
 
 \section{Matching in the semi-Lie version of the AFL}
@@ -148,7 +145,7 @@ For the semi-Lie version matching is defined analogously:
 \begin{definition}
   [{\cite[\S1.3]{ref:liuFJ}}]
   We say $(\gamma, \uu, \vv^\top) \in (S_n(F) \times V_n')\rs$
-  matches the element $(g, u) \in (\U(\VV_n) \times \VV_n)\rs$ if
+  matches the element $(g, u) \in (\U(\VV_n^\pm) \times \VV_n^\pm)\rs$ if
   their images under the embeddings \eqref{eq:embed_FJ_analytic}
   and \eqref{eq:embed_FJ_geometric} are conjugate by an element of $\GL_n(E)$.
   Unwrapping this with \Cref{rem:invariants},
@@ -157,27 +154,26 @@ For the semi-Lie version matching is defined analogously:
     \ii As elements of $\GL_n(E)$,
     both $g$ and $\gamma$ have the same characteristic polynomial.
     \ii We have $\vv^\top \gamma^i \uu = \left< g^i u, u \right>$ for all $0 \le i \le n-1$,
-    where $\left< -,- \right>$ is the Hermitian form on $\VV_n$.
+    where $\left< -,- \right>$ is the Hermitian form on $\VV_n^\pm$.
   \end{itemize}
-  The same definition applies verbatim for $V_0$ in place of $\VV_n$.
   \label{def:matching_semi_lie}
 \end{definition}
 We have the following analogous criteria for matching.
 \begin{proposition}
   [\cite{ref:liuFJ}]
   \label{prop:valuation_delta_matching_semilie}
-  This definition of matching gives
-  a bijection of regular semisimple orbits
-  \[ [S_n(F) \times V_n']\rs \xrightarrow{\simeq} [\U(V_0) \times V_0]\rs \amalg [\U(\VV_n) \times \VV_n]\rs. \]
+  This definition of matching gives a bijection of regular semisimple orbits
+  \[ [S_n(F) \times V_n']\rs \xrightarrow{\sim} [\U(\VV_n^-) \times \VV_n^-]\rs \amalg [\U(\VV_n^+) \times \VV_n^+]\rs. \]
   Moreover, we can detect whether $\guv \in S_n(F)\rs$ matches an orbit of
-  $\U(V_0)$ or $\U(\VV_n)$ as follows: consider the determinant
-  \[ \Delta \coloneqq \det \left[ \vv^\top \gamma^{i+j-2} \right]_{i,j=1}^n \neq 0. \]
+  $(\U(\VV_n^-) \times \VV_n^-)\rs$ or $(\U(\VV_n^+) \times \VV_n^+)\rs$ as follows:
+  consider the determinant
+  \[ \Delta \coloneqq \det \left[ \vv^\top \gamma^{i+j-2} \uu \right]_{i,j=1}^n \neq 0. \]
   Then
   \begin{itemize}
-    \ii $\gamma$ matches an orbit in $(\U(V_0) \times V_0)\rs$ if $v(\Delta)$ is even
-    \ii $\gamma$ matches an orbit in $(\U(\VV_n) \times \VV_n)\rs$ if $v(\Delta)$ is odd.
+    \ii $\gamma$ matches an orbit in $(\U(\VV_n^-) \times \VV_n^-)\rs$ if $v(\Delta)$ is even;
+    \ii $\gamma$ matches an orbit in $(\U(\VV_n^+) \times \VV_n^+)\rs$ if $v(\Delta)$ is odd.
   \end{itemize}
 \end{proposition}
 In this paper, \Cref{conj:semi_lie_spherical}
-specifies that $\guv$ should match an element of $\U(\VV_n) \times \VV_n$
+requires that $\guv$ should match an element of $(\U(\VV_n^+) \times \VV_n^+)\rs$
 and consequently we will usually only be interested in the latter case.
