@@ -40,6 +40,31 @@ we analogously define the weighted orbital integral as follows.
   \label{def:orbitalFJ}
 \end{definition}
 
+As before it seems this weighted orbital integral should be related to an ordinary one.
+To define it, fix a self-dual lattice $\Lambda_n$ in $V_0$ of full rank.
+First, if $(g,u) \in \U(V_0) \times V_0$ and $f \in \HH(G,K)$,
+then we define an orbital integral for $\U(V_0) \times V_0$ by
+\begin{equation}
+  \Orb^{\U(V_0) \times V_0}\left( (g,u), f \otimes \mathbf{1}_{\Lambda_n} \right)
+  \coloneqq \int_{\U(V_0)} f(x\inv g x) \mathbf{1}_{\Lambda_n}(x^{-1} u) \odif x.
+  \label{eq:unweighted_orbital_semi_lie}
+\end{equation}
+That is, in the spirit of \cite[Conjecture 1.9]{ref:liuFJ}
+and \Cref{thm:rel_fundamental_lemma}, we propose the following.
+\begin{conjecture}
+  \label{conj:rel_fundamental_lemma_semilie}
+  Let $\phi \in \HH(S_n(F), K')$ and $\guv \in (S_n(F) \times V_n')\rs$.
+  If $\guv$ matches an element of $(\U(\VV_n) \times \VV_n)\rs$, then
+  \[ \omega\guv \Orb(\phi \otimes \oneV, \guv, 0) = 0. \]
+  If $\guv$ instead matches an element $g \in (\U(V_0) \times V_0)\rs$, then
+  \[ \omega\guv \Orb(\phi \otimes \oneV, \guv, 0)
+    = \Orb^{\U(V_0) \times V_0}((g,u), \BC^{\eta^{n-1}}_{S_n}(\phi) \otimes \mathbf{1}_{\Lambda_n}) \]
+  where the transfer factor $\omega$ is defined in \Cref{ch:geo}.
+\end{conjecture}
+Wei Zhang suggests that this conjecture can be proven by similar means
+to \Cref{thm:rel_fundamental_lemma},
+but since it is not relevant to this paper we do not pursue this proof here.
+
 \section{Basis for the indicator functions in $\HH(S_2(F), K')$}
 From now on assume $n = 2$.
 This section is almost an exact analog of \Cref{ch:orbital0_hecke_basis},

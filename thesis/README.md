@@ -7,8 +7,8 @@
 3. [x] Work out the edge case $v(b) > 0$
 4. [ ] Work out the edge case $v(b) = v(d) < 0$.
 5. [ ] Write out the summation interchange in $S_3(F)$ case
-6. [ ] Write the relative fundamental lemma for group version
-7. [ ] Conjecture relative fundamental lemma for semi-Lie version
+6. [x] Write the relative fundamental lemma for group version
+7. [x] Conjecture relative fundamental lemma for semi-Lie version
 8. [ ] Write out the summation interchange in $S_2(F) \times V_2'$ case
 9. [ ] Get a draft of the geometric side for semi-Lie when $n = 2$
 10. [ ] Prove the large kernel conjecture

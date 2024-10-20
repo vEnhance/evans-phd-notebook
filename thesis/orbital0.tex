@@ -13,12 +13,31 @@ Then our weighted orbital integral is defined as follows.
 \begin{definition}
   For brevity let $\eta(h) \coloneqq \eta(\det h)$ for $h \in H$.
   For $\gamma \in S_n(F)$, $\phi \in \HH(S_n(F), K')$, and $s \in \CC$,
-  we define the weighted orbital integral by
+  we define the \emph{weighted orbital integral} by
   \[ \Orb(\gamma, \phi, s) \coloneqq
     \int_{h \in H} \phi(h\inv \gamma h) \eta(h)
     \left\lvert \det(h) \right\rvert_F^{-s} \odif h. \]
   \label{def:orbital0}
 \end{definition}
+
+We remark that this weighted orbital integral is related to
+a normal orbital integral on the unitary side
+by the so-called relative fundamental lemma.
+Specifically, for $g \in G = \U(V_0)$ and $f \in \HH(G,K)$,
+we define the normal orbital integral by
+\[ \Orb^{\U(V_0)}(g, f) \coloneqq \int_{\U(V_0)} \phi(x^{-1}gx) \odif x. \]
+Then the following result is true.
+\begin{theorem}
+  [Relative fundamental lemma; {\cite[Theorem 1.1]{ref:leslie}}]
+  \label{thm:rel_fundamental_lemma}
+  Let $\phi \in \HH(S_n(F), K')$ and $\gamma \in S_n(F)\rs$.
+  If $\gamma$ matches an element of $\U(\VV_n)\rs$, then
+  \[ \omega(\gamma) \Orb(\phi, \gamma, 0) = 0. \]
+  If $\gamma$ instead matches an element $g \in \U(V_0)\rs$, then
+  \[ \omega(\gamma) \Orb(\phi, \gamma, 0)
+    = \Orb^{\U(V_0)}(g, \BC^{\eta^{n-1}}_{S_n}(\phi)) \]
+  where the transfer factor $\omega$ is defined in \Cref{ch:geo}.
+\end{theorem}
 
 \section{Basis for the indicator functions in $\HH(S_3(F), K')$}
 \label{ch:orbital0_hecke_basis}
