@@ -1,0 +1,49 @@
+\chapter{Intersection numbers for $S_2(F) \times V_2'$}
+\todo{This whole section makes no sense}
+
+In the particular case $n = 2$,
+the Serre tensor construction produces an identification
+\[ \RZ_2 \xrightarrow{\sim} \MM_2 \]
+where $\MM_2$ denotes the Lubin-Tate space.
+
+If we consider the functions
+\[ f_m \coloneqq \mathbf{1}_{\varpi^{-m} \Mat_2(\OO_E) \cap G} \in \HH(G, K) \]
+these produce a basis for the Hecke algebra $\HH(G, K)$.
+Then as in the previous section we can define a space
+\begin{center}
+\begin{tikzcd}
+  & \ar[ld] \mathcal T_{\mathbf{1} \otimes f_m} \ar[rd] & \\
+  \RZ_{2} && \RZ_{2}
+\end{tikzcd}
+\end{center}
+attached to it.
+Under the identification above, we get a corresponding space $\mathcal T_{2m}$
+on $\MM_2$ with a corresponding diagram
+\begin{center}
+\begin{tikzcd}
+  & \ar[ld] \mathcal T_{2m} \ar[rd] & \\
+  \MM_{2} && \MM_{2}.
+\end{tikzcd}
+\end{center}
+If we view the product
+\[ \MM_2 \times \MM_2 \]
+as a Rapoport-Zink space on $\Orth(4)$, then we can consider a corresponding divisor
+\[ \ZO(\varpi^m) \text{ on } \MM_2 \times \MM_2. \]
+
+Meanwhile, for $u \in \VV_n^+$ the ``unitary'' special KR-divisor
+the special divisor $\ZD(u)$ can be written as
+\[ \ZD(u)
+  = \sum_{\substack{0 \le i \le v(u) \\ i \equiv v(u) \pmod 2}} \ZU(u/\varpi^i)^\circ
+\]
+as quasi-canonical divisors on $\MM_2$.
+
+Putting this together we find that the intersection number
+corresponding to the intersection of $\TT_{f_m}(\Delta_{\ZD(u)})$ with $\Gamma_g$
+can be described exactly as
+\[ \chi_{\RZ_{n,n}} \left(
+      \SO_{\TT_{\mathbf{1} \otimes f_m}(\Delta_{\ZD(u)})}
+      \jiao_{\SO_{\RZ_{n,n}}} \SO_{\Gamma_g} \right)
+  = \sum_{i=0}^{v(u)} \left< \ZO(u/p^i), \ZO(p^m g), \ZO(\mathbf{1}) \right>. \]
+However, the Gross-Keating formula actually lets us compute
+\[ \left< \ZO(x_1), \ZO(x_2), \ZO(x_3) \right> \]
+for any $x_1$, $x_2$, $x_3$.

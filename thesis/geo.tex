@@ -173,7 +173,7 @@ Here we reproduce the definition of the intersection number used in \Cref{conj:i
 
 We work here with $\RZ_{n,n}$ rather than $\RZ_{n-1,n}$.
 The change is that we need to incorporate the new $u \in \VV_n^+$ that was not present before.
-In order to do this one considers a certain relative Cartier divisor $\mathcal Z(u)$
+In order to do this one considers a certain relative Cartier divisor $\ZD(u)$
 on $\RZ_n$ for each nonzero $u \in \VV_n^+$.
 This divisor was defined by Kudala and Rapport in \cite{ref:KR}
 and accordingly we call it a \emph{KR-divisor} following \cite[\S4.3]{ref:survey}.
@@ -183,10 +183,10 @@ The definition is given as follows.
   whose Rosati involution has signature $(1,0)$.
   Then the formal $\OO_F$-module has a unique lifting called its \emph{canonical lifting},
   which we denote by the triple $(\mathcal{E}, \iota_{\mathcal{E}}, \lambda_{\mathcal E})$.
-  Then the KR-divisor $\mathcal Z(u)$ is the locus where the quasi-homomorphism
+  Then the KR-divisor $\ZD(u)$ is the locus where the quasi-homomorphism
   $\EE \to \XX_n$ lifts to a homomorphism from $\mathcal{E}$ to the universal object over $\RZ_n$.
 \end{definition}
-Colloquially, the KR-divisor $\mathcal Z(u)$ can be thought of as a
+Colloquially, the KR-divisor $\ZD(u)$ can be thought of as a
 moduli space parametrized by diagrams of the form
 \begin{center}
 \begin{tikzcd}
@@ -194,10 +194,10 @@ moduli space parametrized by diagrams of the form
   \EE \ar[r, "u"] & \XX_n.
 \end{tikzcd}
 \end{center}
-Note also by the definition that $g \mathcal Z(u) = \mathcal Z (gu)$.
+Note also by the definition that $g \ZD(u) = \ZD (gu)$.
 
-The main change is then that we can consider $\Delta_{\mathcal Z(u)}$ as the image of
-\[ \mathcal Z(u) \hookrightarrow \RZ_n \xrightarrow{\Delta} \RZ_{n,n} \]
+The main change is then that we can consider $\Delta_{\ZD(u)}$ as the image of
+\[ \ZD(u) \hookrightarrow \RZ_n \xrightarrow{\Delta} \RZ_{n,n} \]
 where $\Delta \colon \RZ_n \to \RZ_{n,n}$ now denotes the diagonal map.
 If one defines an appropriate space $\mathcal T_{\mathbf{1} \otimes f}$ for $f \in \HH(G, K)$ together with
 \begin{center}
@@ -209,21 +209,21 @@ If one defines an appropriate space $\mathcal T_{\mathbf{1} \otimes f}$ for $f \
 then one can then repeat the diagram from before:
 \begin{center}
 \begin{tikzcd}
-  & \pi_1^\ast(\Delta_{\mathcal Z(u)}) \ar[ld] \ar[r] \ar[rd]
+  & \pi_1^\ast(\Delta_{\ZD(u)}) \ar[ld] \ar[r] \ar[rd]
     & \ar["\pi_1" near end, ld] \mathcal T_{f}
       \ar["\pi_2" near end, rd] \\
-  \Delta_{\mathcal Z(u)} \ar[r, "\iota"', hook] & \RZ_{n,n}
-  & (\pi_2)_\ast(\pi_1^\ast(\Delta_{\mathcal Z(u)})) \ar[r] & \RZ_{n,n}.
+  \Delta_{\ZD(u)} \ar[r, "\iota"', hook] & \RZ_{n,n}
+  & (\pi_2)_\ast(\pi_1^\ast(\Delta_{\ZD(u)})) \ar[r] & \RZ_{n,n}.
 \end{tikzcd}
 \end{center}
 In other words, we again take a pullback followed by a pushforward
-but this time of $\Delta_{\mathcal Z(u)} \hookrightarrow \RZ_{n,n}$.
+but this time of $\Delta_{\ZD(u)} \hookrightarrow \RZ_{n,n}$.
 This lets us write an analogous definition:
 \begin{definition}
   Set
   \[
-    \TT_{\mathbf{1}_K \otimes f} (\Delta_{\mathcal Z(u)})
-    \coloneqq (\pi_2)_\ast(\pi_1^\ast(\Delta_{\mathcal Z(u)})).
+    \TT_{\mathbf{1}_K \otimes f} (\Delta_{\ZD(u)})
+    \coloneqq (\pi_2)_\ast(\pi_1^\ast(\Delta_{\ZD(u)})).
   \]
 \end{definition}
 Meanwhile to replace $(1,g) \Delta_{\RZ_{n,n-1}}$, we let
@@ -268,7 +268,7 @@ can be thought of as the intersection of three images in $\RZ_{n,n}$:
 \begin{itemize}
   \ii A ``diagonal'' object $\Delta$;
   \ii A ``graph'' object $\Gamma$;
-  \ii A third object $\mathcal Z(u)$, the KR-divisor, parametrized to diagrams
+  \ii A third object $\ZD(u)$, the KR-divisor, parametrized to diagrams
   \begin{center}
   \begin{tikzcd}
     \mathcal{E}\ar[r] \ar[d, dash] & \mathcal{X}_n \ar[d, dash] \\
@@ -319,10 +319,10 @@ Meanwhile, the term $h \cdot u$ plays a role analogous
 to the KR-divisor on the geometric side, giving the third intersection object.
 We have
 \[ h \cdot u \in \Lambda_0 \iff u \in h^{-1} \Lambda_0 \]
-and so the object corresponding to the KR-divisor $\mathcal Z(u)$
+and so the object corresponding to the KR-divisor $\ZD(u)$
 is the subset in $G/K$ of those lattices containing $u$, that is
 \[ \left\{ \Lambda' \mid \Lambda' \ni u \right\}. \]
-The analog to the earlier diagram that we described for $\mathcal Z(u)$ is then
+The analog to the earlier diagram that we described for $\ZD(u)$ is then
 \begin{align*}
   \OO_E &\to \Lambda' \\
   1 &\mapsto u.
@@ -333,5 +333,5 @@ In the general situation,
 if one replaces $\mathbf{1}_K$ in the above integral by a general $f$,
 then this corresponds to changing the analog of the fixed point locus;
 the idea of \cite{ref:AFLspherical} is that
-this should correspond to replacing $\Delta_{\mathcal Z(u)}$
-with $\TT_f(\Delta_{\mathcal Z(u)})$ on the geometric side.
+this should correspond to replacing $\Delta_{\ZD(u)}$
+with $\TT_f(\Delta_{\ZD(u)})$ on the geometric side.
