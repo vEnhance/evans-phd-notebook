@@ -12,6 +12,7 @@
 8. [ ] Write out the summation interchange in $S_2(F) \times V_2'$ case
 9. [ ] Get a draft of the geometric side for semi-Lie when $n = 2$
 10. [ ] Prove the large kernel conjecture
+11. [ ] Document transfer factors.
 
 ## Things to do if we have time
 
