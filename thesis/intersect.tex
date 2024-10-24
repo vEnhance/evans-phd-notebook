@@ -17,9 +17,12 @@ We also have an identification
 In any case, we will take an orthogonal decomposition of our quaternion division algebra as
 \[ \DD \simeq E \oplus E \Pi \]
 where $\Pi$ is a uniformizer selected so that $\Pi^2 = \varpi$.
+In general, for $u \in \DD$, we write $u = u_0 + u_-$ where $u_0 \in E$ and $u_- \in E \Pi$.
 We also define
-\[ \DT \coloneqq \left\{ \alpha \in \DD \mid \Tr \alpha = 0 \right\} \]
+\[ \DT \coloneqq \left\{ u \in \DD \mid \Tr u = 0 \right\} \]
 which has codimension $1$ inside $\DD$ (i.e.\ is three-dimensional).
+Since $\Tr(u) = \Tr_{E/F}(u_0)$,
+we could also write $\DT = \{ u \in \DD \mid \Tr_{E/F}(u_0) = 0 \}$.
 
 \subsection{The Rapoport-Zink space $\RZ_2$}
 For integers $m \ge 0$, if we consider the functions
@@ -55,7 +58,7 @@ on $\MM_2 \times \MM_2$ as follows.
 \begin{definition}
   Let $u \in \OO_\DD$.
   Then we define the divisor $\ZO4(u)$ to be
-  the pairs $(X', X) \in \MM_2 \times \MM_2$
+  the pairs $(X, X') \in \MM_2 \times \MM_2$
   for which we have a diagram\todo{Is there a better term than ``diagram'' here?}
   \begin{center}
   \begin{tikzcd}
@@ -112,7 +115,7 @@ Define $\ZO4(u)^\circ$ and $\ZO3(u)^\circ$ similarly.
   \[ \Serre^\ast \ZD(u)^\circ \simeq \ZO3(u_-)^\circ. \]
 \end{lemma}
 \begin{proof}
-  \todo{write this}
+  \todo{find a reference}
 \end{proof}
 
 
