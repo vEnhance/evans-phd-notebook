@@ -73,10 +73,13 @@
 \DeclareMathOperator{\Orb}{Orb}
 \DeclareMathOperator{\Orth}{O}
 \DeclareMathOperator{\SL}{SL}
+\DeclareMathOperator{\SO}{SO}
 \DeclareMathOperator{\Sat}{Sat}
+\DeclareMathOperator{\Serre}{Serre}
 \DeclareMathOperator{\Spec}{Spec}
 \DeclareMathOperator{\Spf}{Spf}
 \DeclareMathOperator{\Sym}{Sym}
+\DeclareMathOperator{\Tr}{Tr}
 \DeclareMathOperator{\U}{U}
 \DeclareMathOperator{\Vol}{Vol}
 \DeclareMathOperator{\antidiag}{antidiag}
@@ -88,6 +91,7 @@
 \newcommand{\nn}{\mathbf n}
 \newcommand{\uu}{\mathbf u}
 \newcommand{\vv}{\mathbf v}
+\newcommand{\DD}{\mathcal D}
 \newcommand{\HH}{\mathcal H}
 \newcommand{\MM}{\mathcal M}
 \newcommand{\EE}{\mathbb E}
@@ -97,10 +101,8 @@
 
 \newcommand{\RZ}{\mathcal N} % for RZ space
 \newcommand{\ZD}{\mathcal Z} % Cartier divisor
-\newcommand{\ZO}{\mathcal Z^{\dagger}}
-\newcommand{\ZU}{\mathcal Z^{\U}}
-\newcommand{\DO}{\mathcal D^{\Orth}}
-\newcommand{\DU}{\mathcal D^{\U}}
+\newcommand{\ZO}[1]{\mathcal Z^{\dagger}_{\SO(#1)}}
+\newcommand{\DT}{\mathcal D^{\Tr = 0}}
 
 \newcommand{\BG}{\mathbf{G}}
 \newcommand{\BK}{\mathbf{K}}
@@ -114,7 +116,7 @@
 \newcommand{\rs}{_{\mathrm{rs}}}
 
 \newcommand{\OO}{O} % to avoid confusion with structure sheaf I guess
-\newcommand{\SO}{\mathcal{O}} % sheaf O
+\newcommand{\Sheaf}{\mathcal{O}} % sheaf O
 
 \newcommand{\jiao}{\mathop{\otimes}^{\mathbf{L}}} % this is a cute macro name (交)
 % found in arXiv:2402.1767v1 while trying to search for where \mathbb{L} was defined

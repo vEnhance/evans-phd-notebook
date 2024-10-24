@@ -15,12 +15,12 @@ Then we can consider triples $(X, \iota, \lambda)$ consisting of the following d
 
   \ii $\iota \colon \OO_E \to \End(X)$ is an action of $\OO_E$
   such that the induced action of $\OO_F$ on $\Lie X$
-  is via the structure morphism $\OO_F \to \SO_S$.
+  is via the structure morphism $\OO_F \to \Sheaf_S$.
 
   We require that $\iota$ satisfies the Kottwitz condition of signature $(n-1,1)$,
   meaning that for all $a \in \OO_E$,
   the characteristic polynomial of $\iota(a)$ on $\Lie X$
-  is exactly \[ (T-a)^{n-1} (T-\bar a) \in \SO_S[T]. \]
+  is exactly \[ (T-a)^{n-1} (T-\bar a) \in \Sheaf_S[T]. \]
 
   \ii $\lambda \colon X \to X^\vee$ is a principal $\OO_F$-relative polarization.
 
@@ -153,14 +153,14 @@ of these two objects using the derived tensor product $\jiao$ of the structure s
   \[
     \Int((1,g), \mathbf{1}_{K^\flat} \otimes f)
     \coloneqq \chi_{\RZ_{n-1,n}} \left(
-      \SO_{\TT_{\mathbf{1}_{K^\flat} \otimes f} (\Delta_{\RZ_{n-1}})}
-      \jiao_{\SO_{\RZ_{n-1,n}}} \SO_{(1,g) \cdot \Delta_{\RZ_{n-1}}} \right).
+      \Sheaf_{\TT_{\mathbf{1}_{K^\flat} \otimes f} (\Delta_{\RZ_{n-1}})}
+      \jiao_{\Sheaf_{\RZ_{n-1,n}}} \Sheaf_{(1,g) \cdot \Delta_{\RZ_{n-1}}} \right).
   \]
   \label{def:intersection_number_inhomog}
 \end{definition}
 Here $\chi$ denotes the Euler-Poincar\'{e} characteristic,
 meaning that if $X$ is a formal scheme over $\Spf \OO_{\breve F}$
-then given a finite complex $\mathcal{F}$ of $\SO_X$-modules we set
+then given a finite complex $\mathcal{F}$ of $\Sheaf_X$-modules we set
 \[ \chi_X(\mathcal{F}) = \sum_i \sum_j (-1)^{i+j}
   \operatorname*{len}_{\OO_{\breve F}} H^j(X, H_i(\mathcal F)) \]
 provided all the lengths are finite.
@@ -194,15 +194,17 @@ moduli space parametrized by diagrams of the form
   \EE \ar[r, "u"] & \XX_n.
 \end{tikzcd}
 \end{center}
+That is, $\ZD(u)$ is the locus where $u$ lifts to a homomorphism $\mathcal{E} \to \mathcal{X}_n$.
 Note also by the definition that $g \ZD(u) = \ZD (gu)$.
+See \cite{ref:KR} for a full definition.
 
 The main change is then that we can consider $\Delta_{\ZD(u)}$ as the image of
 \[ \ZD(u) \hookrightarrow \RZ_n \xrightarrow{\Delta} \RZ_{n,n} \]
 where $\Delta \colon \RZ_n \to \RZ_{n,n}$ now denotes the diagonal map.
-If one defines an appropriate space $\mathcal T_{\mathbf{1} \otimes f}$ for $f \in \HH(G, K)$ together with
+If one defines an appropriate space $\mathcal T_{\mathbf{1}_K \otimes f}$ for $f \in \HH(G, K)$ together with
 \begin{center}
 \begin{tikzcd}
-  & \ar[ld] \mathcal T_{\mathbf{1} \otimes f} \ar[rd] & \\
+  & \ar[ld] \mathcal T_{\mathbf{1}_K \otimes f} \ar[rd] & \\
   \RZ_{n,n} && \RZ_{n,n}
 \end{tikzcd}
 \end{center}
@@ -235,8 +237,8 @@ This finally allows us to write a definition of the intersection number in the s
   \[
     \Int((g,u), f)
     \coloneqq \chi_{\RZ_{n,n}} \left(
-      \SO_{\TT_{\mathbf{1} \otimes f}(\Delta_{\ZD(u)})}
-      \jiao_{\SO_{\RZ_{n,n}}} \SO_{\Gamma_g} \right).
+      \Sheaf_{\TT_{\mathbf{1}_K \otimes f}(\Delta_{\ZD(u)})}
+      \jiao_{\Sheaf_{\RZ_{n,n}}} \Sheaf_{\Gamma_g} \right).
   \]
   \label{def:intersection_number_semi_lie_spherical}
 \end{definition}
@@ -268,7 +270,7 @@ can be thought of as the intersection of three images in $\RZ_{n,n}$:
 \begin{itemize}
   \ii A ``diagonal'' object $\Delta$;
   \ii A ``graph'' object $\Gamma$;
-  \ii A third object $\ZD(u)$, the KR-divisor, parametrized to diagrams
+  \ii A third object $\ZD(u)$, the KR-divisor, parametrized by diagrams
   \begin{center}
   \begin{tikzcd}
     \mathcal{E}\ar[r] \ar[d, dash] & \mathcal{X}_n \ar[d, dash] \\
@@ -281,7 +283,7 @@ are used together with some formalism to make this intersection idea precise.
 The intersection of the ``diagonal'' and ``graph'' is the \emph{fixed point locus},
 and in fact could be formally defined as the intersection
 \[ \Gamma_g \cap \Delta_{\RZ_n} \]
-viewed as a closed formal subscheme of $\RZ_{n,n}$;
+viewed as a closed formal subscheme of $\RZ_n$ (or $\RZ_{n,n}$);
 see \cite[equation (4.6)]{ref:survey}.
 
 \paragraph{The analytic side}

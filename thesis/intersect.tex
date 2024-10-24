@@ -1,49 +1,136 @@
-\chapter{Intersection numbers for $S_2(F) \times V_2'$}
-\todo{This whole section makes no sense}
+\chapter{Intersection numbers for $\Int((g,u), f)$ for $n = 2$}
+This chapter is dedicated to computing intersection numbers
+for the semi-Lie version of AFL in the special case $n = 2$.
 
-In the particular case $n = 2$,
-the Serre tensor construction produces an identification
-\[ \RZ_2 \xrightarrow{\sim} \MM_2 \]
-where $\MM_2$ denotes the Lubin-Tate space.
+\section{Background}
+\subsection{Notation}
+We continue using the notation $(\EE, \iota_\EE, \lambda_\EE)$ as the triple over $\FF$
+whose Rosati involution has signature $(1,0)$.
 
-If we consider the functions
+Moreover we let $\DD$ be a quaternion division algebra over $F$,
+with a fixed maximal order $\OO_\DD$ realized by
+\[ \End(\EE) \simeq \OO_\DD \]
+see \cite[Remark 2.5]{ref:KR}.
+We also have an identification
+\[ \VV_n^+ \simeq \DD. \]
+
+In any case, we will take an orthogonal decomposition of our quaternion division algebra as
+\[ \DD \simeq E \oplus E \Pi \]
+where $\Pi$ is a uniformizer selected so that $\Pi^2 = \varpi$.
+We also define
+\[ \DT \coloneqq \left\{ \alpha \in \DD \mid \Tr \alpha = 0 \right\} \]
+which has codimension $1$ inside $\DD$ (i.e.\ is three-dimensional).
+
+\subsection{The Rapoport-Zink space $\RZ_2$}
+For integers $m \ge 0$, if we consider the functions
 \[ f_m \coloneqq \mathbf{1}_{\varpi^{-m} \Mat_2(\OO_E) \cap G} \in \HH(G, K) \]
-these produce a basis for the Hecke algebra $\HH(G, K)$.
-Then as in the previous section we can define a space
+then these functions produce a basis for the Hecke algebra $\HH(G, K)$.
+Let us abbreviate
+\[ \mathcal{T}_m \coloneqq \mathcal{T}_{\mathbf{1}_K \otimes f_m} \]
+moving forward.
+Then as described in the previous section we have a diagram
 \begin{center}
 \begin{tikzcd}
-  & \ar[ld] \mathcal T_{\mathbf{1} \otimes f_m} \ar[rd] & \\
-  \RZ_{2} && \RZ_{2}
+  & \ar[ld] \mathcal{T}_m \ar[rd] & \\
+  \RZ_{2} && \RZ_{2}.
 \end{tikzcd}
 \end{center}
-attached to it.
-Under the identification above, we get a corresponding space $\mathcal T_{2m}$
-on $\MM_2$ with a corresponding diagram
+
+\subsection{The Lubin-Tate space $\MM_2$ and the divisor $\ZO4$ on $\MM_2 \times \MM_2$}
+We introduce the notation $\MM_2$ for the \emph{Lubin-Tate space} for $n = 2$.
+It's parametrized by tuples $(Y, \rho)$
+where $Y$ is a one-dimensional strict formal $\OO_F$-module of height $2$,
+and $\rho$ is a framing of a fixed Lubin-Tate module $\mathbb{Y}$.\todo{should this be $\EE$?}
+
+\begin{proposition}
+  [{\cite[Example 5.5.6]{ref:AFLspherical}}]
+  The Serre tensor construction produces an identification
+  \[ \Serre \colon \RZ_2 \xrightarrow{\sim} \MM_2. \]
+  By abuse of notation we will also use the same symbol for the map
+  \[ \Serre \colon \RZ_{2,2} \xrightarrow{\sim} \MM_2 \times \MM_2. \]
+\end{proposition}
+
+Now we define the special orthogonal divisor $\ZO4(u)$
+on $\MM_2 \times \MM_2$ as follows.
+\begin{definition}
+  Let $u \in \OO_\DD$.
+  Then we define the divisor $\ZO4(u)$ to be
+  the pairs $(X', X) \in \MM_2 \times \MM_2$
+  for which we have a diagram\todo{Is there a better term than ``diagram'' here?}
+  \begin{center}
+  \begin{tikzcd}
+    X \ar[r, "\varphi"] \ar[d, dash] & X' \ar[d, dash] \\
+    \EE \ar[r, "u"] & \EE.
+  \end{tikzcd}
+  \end{center}
+\end{definition}
+Then the Serre tensor construction gives an isomorphism
+\[ \mathcal{T}_m \simeq \ZO4(\varpi^m) \]
+such that we get an analogous diagram
 \begin{center}
 \begin{tikzcd}
-  & \ar[ld] \mathcal T_{2m} \ar[rd] & \\
+  & \ar[ld] \ZO4(\varpi^m) \ar[rd] & \\
   \MM_{2} && \MM_{2}.
 \end{tikzcd}
 \end{center}
-If we view the product
-\[ \MM_2 \times \MM_2 \]
-as a Rapoport-Zink space on $\Orth(4)$, then we can consider a corresponding divisor
-\[ \ZO(\varpi^m) \text{ on } \MM_2 \times \MM_2. \]
 
-Meanwhile, for $u \in \VV_n^+$ the ``unitary'' special KR-divisor
-the special divisor $\ZD(u)$ can be written as
-\[ \ZD(u)
-  = \sum_{\substack{0 \le i \le v(u) \\ i \equiv v(u) \pmod 2}} \ZU(u/\varpi^i)^\circ
-\]
-as quasi-canonical divisors on $\MM_2$.
+\subsection{The divisor $\ZO3$ on $\MM_2$}
+Turning to $\MM_2 \times \MM_2$, we will henceforth always identify $\MM_2$
+with its image under the diagonal map
+\begin{center}
+\begin{tikzcd}
+  \ZO4(1) \ar[r, "\sim"] & \MM_2 \ar[r, hook, "\Delta_{\MM_2}"] & \MM_2 \times \MM_2.
+\end{tikzcd}
+\end{center}
 
-Putting this together we find that the intersection number
-corresponding to the intersection of $\TT_{f_m}(\Delta_{\ZD(u)})$ with $\Gamma_g$
-can be described exactly as
+\begin{definition}
+  Suppose now $u \in \DT$.
+  Then we define the divisor $\ZO3(u)$ to be those $X \in \MM_2$
+  for which we have a diagram
+  \begin{center}
+  \begin{tikzcd}
+    X \ar[r, "\varphi"] \ar[d, dash] & X \ar[d, dash] \\
+    \EE \ar[r, "u"] & \EE.
+  \end{tikzcd}
+  \end{center}
+  Note that basically by definition, for $u \in \OO_\DD$ and $\Tr u = 0$ we have
+  \[ \ZO3(u) \simeq \ZO4(u) \cap \ZO4(1) \]
+  when we identify $\MM_2$ with its image in $\MM_2 \times \MM_2$.
+\end{definition}
+
+\section{Comparison of the unitary and orthogonal special divisors}
+We now relate $\ZD(u)$ to $\ZO3(u)$ through our
+isomorphism $\RZ_{2,2} \xrightarrow{\sim} \MM_2 \times \MM_2$.
+Recall that we have the notation
+\[ \ZD(u)^\circ \coloneqq \ZD(u) - \ZD\left( \frac{u}{\varpi} \right). \]
+Define $\ZO4(u)^\circ$ and $\ZO3(u)^\circ$ similarly.
+
+\begin{lemma}
+  Let $u \in \VV_n$, and consider it as an element $u \in \DD \simeq E \oplus E \Pi$.
+  Accordingly write $u = u_0 + u_-$, where $u_0 \in E$ and $u_- \in E \Pi$.
+  Then pullback along the Serre tensor construction identifies
+  \[ \Serre^\ast \ZD(u)^\circ \simeq \ZO3(u_-)^\circ. \]
+\end{lemma}
+\begin{proof}
+  \todo{write this}
+\end{proof}
+
+
+\section{The intersection number as a triple product}
+We return to the intersection number
 \[ \chi_{\RZ_{n,n}} \left(
-      \SO_{\TT_{\mathbf{1} \otimes f_m}(\Delta_{\ZD(u)})}
-      \jiao_{\SO_{\RZ_{n,n}}} \SO_{\Gamma_g} \right)
-  = \sum_{i=0}^{v(u)} \left< \ZO(u/p^i), \ZO(p^m g), \ZO(\mathbf{1}) \right>. \]
-However, the Gross-Keating formula actually lets us compute
-\[ \left< \ZO(x_1), \ZO(x_2), \ZO(x_3) \right> \]
-for any $x_1$, $x_2$, $x_3$.
+      \Sheaf_{\TT_{\mathbf{1} \otimes f_m}(\Delta_{\ZD(u)})}
+      \jiao_{\Sheaf_{\RZ_{n,n}}} \SO_{\Gamma_g} \right) \]
+which we will rewrite more succinctly using angle brackets as
+\[ \Big\langle (1,g) \cdot \mathcal{T}_m, \; \Delta(\ZD(u)) \Big\rangle_{\RZ_{2,2}} \]
+in analogy to \cite[\S6.1]{ref:AFLspherical}.
+(Note that $\Delta$ here is the diagonal map $\RZ_2 \to \RZ_{2,2}$.)
+For this calculation, it would be sufficient to split
+\[ \ZD(u) = \sum_{i \ge 0} \ZD(u/\varpi^i)^\circ. \]
+So, we proceed to compute
+\begin{align*}
+  \Big\langle (1,g) \cdot \mathcal{T}_m, \; \Delta(\ZD(u)^\circ) \Big\rangle_{\RZ_{2,2}}
+  &= \left< \ZO4(\varpi^m g), \; \Delta(\Serre^\ast(\ZD(u))^\circ) \right>_{\MM_2 \times \MM_2} \\
+  &= \left< \ZO4(\varpi^m g), \; \ZO3(u_-)^\circ \right>_{\MM_2 \times \MM_2} \\
+  &= \left< \ZO4(\varpi^m g), \; \ZO4(1)^\circ, \; \ZO4(u_-)^\circ \right>_{\MM_2 \times \MM_2}.
+\end{align*}
