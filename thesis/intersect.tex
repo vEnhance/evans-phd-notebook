@@ -3,26 +3,61 @@ This chapter is dedicated to computing intersection numbers
 for the semi-Lie version of AFL in the special case $n = 2$.
 
 \section{Background}
+\subsection{Quaternion division algebra}
+Through this section we let $\DD$ be a quaternion division algebra over $F$,
+with a fixed maximal order $\OO_\DD$.
+We will make $\DD$ explicit in the following way for our calculations to follow.
+
+\subsubsection{Structure as a noncommutative algebra}
+As $F$-vector spaces we will write
+\[ \DD = E \oplus E \Pi \]
+where $\Pi$ is selected so that $\Pi^2 = \varpi$.
+We endow $\DD$ with a noncommutative multiplication according to
+\[ \Pi t = \bar t \Pi \qquad \text{ for all } t \in E \]
+where $\ol{t}$ is the image of $t \in E$ under the nontrivial element of $\Gal(E/F)$.
+
+\subsubsection{Conjugation of elements of $\DD$}
+In general, if $x \in \DD$ is any element, we will write
+\[ x = x_0 + x_- \qquad x_0 \in E, \; x_- \in E \Pi. \]
+Then we denote by $x^\ast \in \DD$ the conjugate in $\DD$ defined by
+\[ x^\ast \coloneqq \ol{x_0} - x_- \]
+where, again, $\ol{x_0}$ is the image of $x_0 \in E$ under the nontrivial element of $\Gal(E/F)$.
+It is an anti-involution, meaning that $(x^\ast)^\ast = x$ and $(xy)^\ast = y^\ast x^\ast$.
+
+This allows us to define the (reduced) norm and trace in $\DD$.
+The reduced trace is given by
+\[ \tr x \coloneqq x + x^\ast = \Tr_{E/F}(x_0). \]
+This coincides with half the trace of the
+$F$-linear multiplication map $u \cdot - \colon \DD \to \DD$.
+We may thus define
+\[ \DT \coloneqq \left\{ u \in \DD \mid \tr u = 0 \right\} \]
+which has codimension $1$ inside $\DD$ (i.e.\ is three-dimensional as an $F$-vector space).
+Since $\tr(u) = \Tr_{E/F}(u_0)$,
+we could also write
+\[ \DT = \{ u \in \DD \mid \Tr_{E/F}(u_0) = 0 \}. \]
+
+The reduced norm is similarly defined by
+\[ \Nm x \coloneqq x x^\ast = \Norm_{E/F}(x_0) - \varpi x_-^2. \]
+This coincides with a square root of
+the determinant of the $F$-linear map $u \cdot - \colon \DD \to \DD$.
+
+\subsubsection{Inner form}
+We equip $\DD$ with a symmetric $F$-bilinear inner form
+$\left\langle \bullet, \bullet \right\rangle \colon \DD \times \DD \to F$ defined by
+\[ \left\langle x,y \right\rangle = \tr(xy^\ast) = xy^\ast + yx^\ast. \]
+It is easy to check that $\{1, \sqrt{\eps}, \Pi, \sqrt{\eps}\Pi\}$ is an orthogonal basis,
+and hence that we have a orthogonal decomposition
+\[ \DD = F \oplus F\sqrt\eps  \oplus F \Pi \oplus F\sqrt\eps\Pi. \]
+
 \subsection{Notation}
 We continue using the notation $(\EE, \iota_\EE, \lambda_\EE)$ as the triple over $\FF$
 whose Rosati involution has signature $(1,0)$.
 
-Moreover we let $\DD$ be a quaternion division algebra over $F$,
-with a fixed maximal order $\OO_\DD$ realized by
+Moreover, we will take the identification
 \[ \End(\EE) \simeq \OO_\DD \]
-see \cite[Remark 2.5]{ref:KR}.
-We also have an identification
+see \cite[Remark 2.5]{ref:KR},
+and hence the corresponding identification
 \[ \VV_n^+ \simeq \DD. \]
-
-In any case, we will take an orthogonal decomposition of our quaternion division algebra as
-\[ \DD \simeq E \oplus E \Pi \]
-where $\Pi$ is a uniformizer selected so that $\Pi^2 = \varpi$.
-In general, for $u \in \DD$, we write $u = u_0 + u_-$ where $u_0 \in E$ and $u_- \in E \Pi$.
-We also define
-\[ \DT \coloneqq \left\{ u \in \DD \mid \Tr u = 0 \right\} \]
-which has codimension $1$ inside $\DD$ (i.e.\ is three-dimensional).
-Since $\Tr(u) = \Tr_{E/F}(u_0)$,
-we could also write $\DT = \{ u \in \DD \mid \Tr_{E/F}(u_0) = 0 \}$.
 
 \subsection{The Rapoport-Zink space $\RZ_2$}
 For integers $m \ge 0$, if we consider the functions
@@ -135,5 +170,10 @@ So, we proceed to compute
   \Big\langle (1,g) \cdot \mathcal{T}_m, \; \Delta(\ZD(u)^\circ) \Big\rangle_{\RZ_{2,2}}
   &= \left< \ZO4(\varpi^m g), \; \Delta(\Serre^\ast(\ZD(u))^\circ) \right>_{\MM_2 \times \MM_2} \\
   &= \left< \ZO4(\varpi^m g), \; \ZO3(u_-)^\circ \right>_{\MM_2 \times \MM_2} \\
-  &= \left< \ZO4(\varpi^m g), \; \ZO4(1)^\circ, \; \ZO4(u_-)^\circ \right>_{\MM_2 \times \MM_2}.
+  &= \left< \ZO4(\varpi^m g), \; \ZO4(1)^\circ, \; \ZO4(u_-)^\circ \right>_{\MM_2 \times \MM_2} \\
+  &= \left< \ZO4(\varpi^m g), \; \ZO4(1), \; \ZO4(u_-)^\circ \right>_{\MM_2 \times \MM_2}.
 \end{align*}
+
+\section{The formula of Gross-Keating}
+\begin{theorem}
+\end{theorem}
