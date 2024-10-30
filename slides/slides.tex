@@ -1,6 +1,10 @@
 \documentclass[11pt]{beamer}
 \usepackage[nosetup]{evan}
+\usepackage{booktabs}
+\usepackage{multirow}
 \usetheme{Malaysia}
+
+\DeclareMathOperator{\U}{U}
 
 \title[Semi-Lie AFL for Hecke]{Semi-Lie Arithmetic Fundamental Lemma for Hecke Algebra}
 \subtitle{Mass Tech Learning Seminar}
@@ -10,7 +14,22 @@
 \begin{document}
 
 \begin{frame}
+  \maketitle
+\end{frame}
+
+
+\begin{frame}
   \frametitle{Overview}
+  \begin{tabular}{lp{12em}p{8em}}
+    \toprule
+    & \textbf{Lemma} & \textbf{Generalization} \\
+    \midrule
+    GGP & Fundamental lemma & Leslie (2023) \\ & (Jacquet-Rallis 2011) \\
+    \midrule
+    \multirow{2}{*}[-1em]{Arith GGP} & AFL for $\U(n) \times \U(n+1)$ (Zhang 2012) & Li-Rapoport-Zhang (2024) \\ \cline{2-3}
+    & $\iff$ AFL for $\U(n) \times \U(n)$ (Liu 2021) & ? \\
+    \bottomrule
+  \end{tabular}
 \end{frame}
 
 
