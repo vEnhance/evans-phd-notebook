@@ -49,7 +49,7 @@
 \newcommand{\vv}{\mathbf{v}}
 \newcommand{\oneV}{\mathbf{1}_{\OO_F^n \times (\OO_F^n)^\vee}}
 
-\title[Semi-Lie AFL for Hecke]{Semi-Lie Arithmetic Fundamental Lemma for full spherical Hecke Algebra}
+\title[Semi-Lie AFL for full Hecke algebra]{Semi-Lie Arithmetic Fundamental Lemma for full spherical Hecke Algebra}
 \subtitle{Mass Tech Learning Seminar}
 \author{Evan Chen}
 \date{4 November 2024}
@@ -105,28 +105,61 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{What GGP looks like, extremely roughly}
-  \begin{itemize}
-  \ii Started with Waldspurger 1985 formula
-    relating automorphic period to $L(1/2)$.
-  \ii Generalized by Gross-Prasad in 1992 and 1994,
-  \ii Generalized further to Gan-Gross-Prossad conjecture (GGP).
-  \end{itemize}
+  \frametitle{GGP/AAGP extremely rough statements}
+  %\begin{itemize}
+  %\ii Started with Waldspurger 1985 formula
+  %  relating automorphic period to $L(1/2)$.
+  %\ii Generalized by Gross-Prasad in 1992 and 1994,
+  %\ii Generalized further to Gan-Gross-Prossad conjecture (GGP).
+  %\end{itemize}
   %Let $k$ be a number field.
   \begin{exampleblock}{Global GGP conjecture, extremely roughly}
     Let $\H \subset \G$ be ``spherical'' pair of reductive groups,
     $\pi$ a cuspidal automorphic representation of $\G$.
-    Define the period integral
-    \[ \mathscr P(\phi) = \int_{\H(k) \backslash \H(\mathbb A_k)} \phi(h) \odif h \]
-    for automorphic forms $\phi \in \pi$.
     Then the following are equivalent:
     \begin{enumerate}
-      \ii $\mathscr P(\phi) \neq 0$ for some $\phi \in \pi$.
+      \ii $\mathscr P(\phi) \coloneqq \int_{\H(k) \backslash \H(\mathbb A_k)} \phi(h) \odif h$
+      is not identically zero for $\phi \in \pi$.
       \ii $\Hom_{\H(\mathbb A_k)}(\pi, \CC) \neq 0$ and $L(\half, \pi , R) \neq 0$
       for certain $R$.
     \end{enumerate}
   \end{exampleblock}
+  \begin{exampleblock}{Arithmetic GGP conjecture, extremely roughly}
+    Let $\pi$ be a tempered cuspidal automorphic representation of $\G(\mathbb A_k)$
+    appearing in the cohomology $H^\bullet(\Sh(\G))$.
+    The following are equivalent:
+    \begin{enumerate}
+      \ii A certain height pairing
+      $\mathscr{P}_{\Sh(\H)} \colon \opname{Ch}^{n-1}(\Sh(\G))_0 \to \CC$
+      does not vanish on $\pi_f$-isotypic component.
+      \ii $\Hom_{\H(\mathbb{A}_k)}(\pi_f, \CC) \neq 0$
+      and $L'(\half, \pi, R) \neq 0$ for certain $R$.
+    \end{enumerate}
+  \end{exampleblock}
 \end{frame}
+
+%\begin{frame}
+%  \frametitle{What Arithmetic GGP looks like, extremely roughly}
+%  \begin{itemize}
+%  \ii Started with Gross-Zagier (1986), relating height of Heegner point on modular curve to $L'(s)$ at $s = 1$
+%  \ii Yuan-Zhang-Zhang (2013) proved generalization to Shimura curve over totally real field.
+%  \ii Arith.~GGP further generalizes to higher dimensional Shimura variety.
+%  \end{itemize}
+%  %Beginning from a spherical pair $(\H,\G)$,
+%  %upgrade to Shimura data $(\H, X_\H) \to (\G, X_\G)$.
+%  \begin{exampleblock}{Arithmetic GGP conjecture, extremely roughly}
+%    Let $\pi$ be a tempered cuspidal automorphic representation of $\G(\mathbb A_k)$
+%    appearing in the cohomology $H^\bullet(\Sh(\G))$.
+%    The following are equivalent:
+%    \begin{enumerate}
+%      \ii A certain height pairing
+%      \[ \mathscr{P}_{\Sh(\H)} \colon \opname{Ch}^{n-1}(\Sh(\G))_0 \to \CC \]
+%      does not vanish on $\pi_f$-isotypic component.
+%      \ii $\Hom_{\H(\mathbb{A}_k)}(\pi_f, \CC) \neq 0$
+%      and $L'(\half, \pi, R) \neq 0$ for certain $R$.
+%    \end{enumerate}
+%  \end{exampleblock}
+%\end{frame}
 
 \begin{frame}
   \frametitle{Jacquet-Rallis fundamental lemma (2011)}
@@ -136,7 +169,7 @@
     $G^\flat \coloneqq \U((\VV_n^-)^\flat)(F)$, $G \coloneqq \U(\VV_n^-)(F)$.
   \ii $K'^\flat$, $K'$, $K^\flat$, $K$ maximal hyperspecial compact subgroups.
   \end{itemize}
-  \begin{block}{Fundamental lemma}
+  \begin{block}{Fundamental lemma, roughly}
     For certain ``matching''
     $\gamma \in G'^\flat \times G'$ and $g \in G^\flat \times G$
     we get
@@ -145,30 +178,6 @@
   Now proved completely; a local proof was given by Beuzart-Plessis (2021)
   while a global proof was given for large characteristic by W.\ Zhang (2021).
 \end{frame}
-
-\begin{frame}
-  \frametitle{What Arithmetic GGP looks like, extremely roughly}
-  \begin{itemize}
-  \ii Started with Gross-Zagier (1986), relating height of Heegner point on modular curve to $L'(s)$ at $s = 1$
-  \ii Yuan-Zhang-Zhang (2013) proved generalization to Shimura curve over totally real field.
-  \ii Arith.~GGP further generalizes to higher dimensional Shimura variety.
-  \end{itemize}
-  %Beginning from a spherical pair $(\H,\G)$,
-  %upgrade to Shimura data $(\H, X_\H) \to (\G, X_\G)$.
-  \begin{exampleblock}{Arithmetic GGP conjecture, extremely roughly}
-    Let $\pi$ be a tempered cuspidal automorphic representation of $\G(\mathbb A_k)$
-    appearing in the cohomology $H^\bullet(\Sh(\G))$.
-    The following are equivalent:
-    \begin{enumerate}
-      \ii A certain height pairing
-      \[ \mathscr{P}_{\Sh(\H)} \colon \opname{Ch}^{n-1}(\Sh(\G))_0 \to \CC \]
-      does not vanish on $\pi_f$-isotypic component.
-      \ii $\Hom_{\H(\mathbb{A}_k)}(\pi_f, \CC) \neq 0$
-      and $L'(\half, \pi, R) \neq 0$ for certain $R$.
-    \end{enumerate}
-  \end{exampleblock}
-\end{frame}
-
 \begin{frame}
   \frametitle{Arithmetic fundamental lemma (W.\ Zhang 2012)}
   Analogous statement to Jacquet-Rallis fundamental lemma.
@@ -182,9 +191,11 @@
     = -\omega(\gamma) \left. \pdv{}{s} \right\rvert_{s=0} \Orb(\gamma, \mathbf{1}_K, s).
   \]
   \end{theorem}
+  To understand this statement, I still need to define the following objects for you:
   \begin{itemize}
-  \ii I won't talk about $\Int$ or transfer factor $\omega(\gamma)$ in this talk.
-  \ii I'll tell you what matching and orbital look like.
+    \ii Regular matching and semisimple
+    \ii Intersection number $\Int$
+    \ii Weighted orbital integral
   \end{itemize}
 \end{frame}
 
@@ -241,12 +252,17 @@
     \[
       \omega \Orb(\phi, \gamma, 0)
       = \begin{cases}
-        0 & v(\Delta) \text{ odd} \\
+        0 & v(\Delta) \text{ odd (AFL case)} \\
         \Orb^{\U(\VV_n^-)}(g, f) & v(\Delta) \text{ even}.
       \end{cases}
     \]
   \end{theorem}
 \end{frame}
+
+\begin{frame}
+  \frametitle{Intersection number}
+\end{frame}
+
 
 \begin{frame}
   \frametitle{Semi-Lie version of AFL by Yifeng Liu (2021)}
@@ -281,13 +297,13 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{Weighted orbital integral (definition)}
+  \frametitle{Weighted orbital integral}
   For $\guv \in S_n(F) \times \OO_F^n \times (\OO_F^n)^\vee$,,
   $\phi \in \HH(S_n(F))$, and $s \in \CC$,
   \begin{align*}
     & \Orb((\gamma, \uu, \vv^\top), \phi \otimes \oneV, s) \\
     &\coloneqq \int_{h \in H} \phi(h\inv \gamma h) \oneV(h \uu, \vv^\top h^{-1})
-    \eta(h) \left\lvert \det(h) \right\rvert_F^{-s} \odif h.
+      (-1)^{v(\det h)} \left\lvert \det(h) \right\rvert_F^{-s} \odif h.
   \end{align*}
   Unweighted version, where $f \in \HH(\U(\VV_n^-))$,
   and $\Lambda_n$ is a self-dual lattice:
@@ -301,14 +317,17 @@
     \[ \omega\guv \Orb(\dots)
       =
       \begin{cases}
-        0 & v(\Delta) \text{ odd} \\
-        \Orb^{\U(\VV_n^-) \times \VV_n^-}\left( (g,u), f \otimes \mathbf{1}_{\Lambda_n} \right)
+        0 & v(\Delta) \text{ odd (AFL case)} \\
+        \Orb^{\U(\VV_n^-) \times \VV_n^-}\left( \dots \right)
         & v(\Delta) \text{ even}.
       \end{cases}
     \]
   \end{exampleblock}
 \end{frame}
 
+\begin{frame}
+  \frametitle{Intersection number}
+\end{frame}
 
 \begin{frame}
   \frametitle{Leslie's generalization of the fundamental lemma}
@@ -350,7 +369,7 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{An example of an orbital integral in the $n=3$ case}
+  \frametitle{An example of an AFL orbital integral ($n=3$)}
   TODO
 \end{frame}
 
@@ -371,7 +390,7 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{An example of an orbital integral in the $n=2$ case}
+  \frametitle{An example of semi-Lie orbital integral ($n=2$)}
   TODO
 \end{frame}
 
