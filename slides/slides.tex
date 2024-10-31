@@ -1,12 +1,55 @@
 \documentclass[11pt]{beamer}
 \usepackage[nosetup]{evan}
+\usepackage{derivative}
+\usepackage{mathrsfs}
 \usepackage{booktabs}
 \usepackage{multirow}
 \usetheme{Malaysia}
 
-\DeclareMathOperator{\U}{U}
+\usepackage{fontspec}
+\directlua{luaotfload.add_fallback
+  ("evans_fallbacks",
+    {
+      "NotoColorEmoji:mode=harf;",
+      "Source Han Sans TW:style=Regular;",
+      "Noto Serif CJK SC:style=Regular;",
+    }
+  )}
+\setmainfont{lmroman10-regular}[
+  BoldFont=lmroman10-bold,
+  ItalicFont=lmroman10-italic,
+  BoldItalicFont=lmroman10-bolditalic,
+  SlantedFont=lmromanslant10-regular,
+  BoldSlantedFont=lmromanslant10-bold,
+  SmallCapsFont=lmromancaps10-regular,
+  RawFeature={fallback=evans_fallbacks}
+]
+\setsansfont{lmsans10-regular}[
+  BoldFont=lmsans10-bold,
+  ItalicFont=lmsans10-oblique,
+  BoldItalicFont=lmsans10-boldoblique,
+  RawFeature={fallback=evans_fallbacks}
+]
 
-\title[Semi-Lie AFL for Hecke]{Semi-Lie Arithmetic Fundamental Lemma for Hecke Algebra}
+\setbeamercovered{transparent}
+
+\DeclareMathOperator{\BC}{BC}
+\DeclareMathOperator{\Int}{Int}
+\DeclareMathOperator{\Orb}{Orb}
+\DeclareMathOperator{\Sh}{Sh}
+\DeclareMathOperator{\U}{U}
+\newcommand{\HH}{\mathcal{H}}
+\newcommand{\VV}{\mathbb{V}}
+\newcommand{\G}{\mathrm{G}}
+\renewcommand{\H}{\mathrm{H}}
+\renewcommand{\OO}{O}
+\newcommand{\guv}{{(\gamma, \uu, \vv^\top)}}
+\newcommand{\rs}{_{\text{rs}}}
+\newcommand{\uu}{\mathbf{u}}
+\newcommand{\vv}{\mathbf{v}}
+\newcommand{\oneV}{\mathbf{1}_{\OO_F^n \times (\OO_F^n)^\vee}}
+
+\title[Semi-Lie AFL for Hecke]{Semi-Lie Arithmetic Fundamental Lemma for full spherical Hecke Algebra}
 \subtitle{Mass Tech Learning Seminar}
 \author{Evan Chen}
 \date{4 November 2024}
@@ -17,20 +60,276 @@
   \maketitle
 \end{frame}
 
+\begin{frame}
+  \frametitle{Notation}
+  \begin{itemize}
+  \ii $E/F$ a quadratic field extension of local fields
+  \ii $q$ residue characteristic of $F$.
+  \ii $\VV_n^-$ split $E/F$-Hermitian space of dimension $n$
+  \ii $\VV_n^+$ non-split $E/F$-Hermitian space of dimension $n$
+  \ii Symmetric space:
+  \[ S_n(F) \coloneqq \left\{ \gamma \in \GL_n(E) \mid \gamma\bar\gamma = 1_n \right\} . \]
+  \end{itemize}
+  Hecke algebras:
+  \begin{itemize}
+  \ii $\HH(\U(\VV_n^-)) \coloneqq \QQ[K \backslash \U(\VV_n^-) \slash K]$
+  is the Hecke algebra of compactly supported $K$-bi-invariant functions,
+  where $K \coloneqq \U(\VV_n^-) \cap \GL_n(\OO_E)$ is hyperspecial maximal compact subgroup.
+  \ii $\HH(\GL_n(E)) \coloneqq \QQ[K' \backslash \GL_n(E) \slash K']$, $K' \coloneqq \GL_n(\OO_E)$.
+  \ii $\HH(S_n(F)) \coloneqq \mathcal C^\infty_{\text{c}} (S_n(F))^{K'}$,
+  is an $\HH(\GL_n(E))$-module.
+  \end{itemize}
+\end{frame}
+
 
 \begin{frame}
   \frametitle{Overview}
+  \centering
   \begin{tabular}{lp{12em}p{8em}}
     \toprule
-    & \textbf{Lemma} & \textbf{Generalization} \\
+    \textbf{Conjecture} & \textbf{Lemma} & \textbf{Generalization} \\
     \midrule
     GGP & Fundamental lemma & Leslie (2023) \\ & (Jacquet-Rallis 2011) \\
     \midrule
     \multirow{2}{*}[-1em]{Arith GGP} & AFL for $\U(n) \times \U(n+1)$ (Zhang 2012) & Li-Rapoport-Zhang (2024) \\ \cline{2-3}
-    & $\iff$ AFL for $\U(n) \times \U(n)$ (Liu 2021) & ? \\
+    & $\iff$ AFL for $\U(n) \times \U(n)$ (Liu 2021) & 🤔 \\
     \bottomrule
   \end{tabular}
+  \begin{block}{Table of contents for talk}
+    \begin{itemize}
+    \ii Discuss first, second, third column, each from top to bottom.
+    \ii Things in first column and first row will be cursory historical overview,
+      not defined or made precise at all.
+    \end{itemize}
+  \end{block}
 \end{frame}
 
+\begin{frame}
+  \frametitle{What GGP looks like, extremely roughly}
+  \begin{itemize}
+  \ii Started with Waldspurger 1985 formula
+    relating automorphic period to $L(1/2)$.
+  \ii Generalized by Gross-Prasad in 1992 and 1994,
+  \ii Generalized further to Gan-Gross-Prossad conjecture (GGP).
+  \end{itemize}
+  %Let $k$ be a number field.
+  \begin{exampleblock}{Global GGP conjecture, extremely roughly}
+    Let $\H \subset \G$ be ``spherical'' pair of reductive groups,
+    $\pi$ a cuspidal automorphic representation of $G$.
+    Define the period integral
+    \[ \mathscr P(\phi) = \int_{\H(k) \backslash \H(\mathbb A_k)} \phi(h) \odif h \]
+    for automorphic forms $\phi \in \pi$.
+    Then the following are equivalent:
+    \begin{enumerate}
+      \ii $\mathscr P(\phi) \neq 0$ for some $\phi \in \pi$.
+      \ii $\Hom_{\H(\mathbb A_k)}(\pi, \CC) \neq 0$ and $L(\half, \pi , R) \neq 0$
+      for certain $R$.
+    \end{enumerate}
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Jacquet-Rallis fundamental lemma (2011)}
+  \begin{itemize}
+  \ii $(\VV_n^-)^\flat$ codimension one subspace in $\VV_n^-$.
+  \ii $G'^\flat \coloneqq \GL_{n-1}(E)$, $G' \coloneqq \GL_n(E)$,
+    $G^\flat \coloneqq \U((\VV_n^-)^\flat)(F)$, $G \coloneqq \U(\VV_n^-)(F)$.
+  \ii $K'^\flat$, $K'$, $K^\flat$, $K$ maximal hyperspecial compact subgroups.
+  \end{itemize}
+  \begin{block}{Fundamental lemma}
+    For certain ``matching''
+    $\gamma \in G'^\flat \times G'$ and $g \in G^\flat \times G$
+    we get
+   \[ \Orb(\gamma, \mathbf{1}_{K'^\flat \times K'}) = \omega(\gamma) \Orb(g, \mathbf{1}_{K^\flat \times K}) \]
+  \end{block}
+  Now proved completely; a local proof was given by Beuzart-Plessis (2021)
+  while a global proof was given for large characteristic by W.\ Zhang (2021).
+\end{frame}
+
+\begin{frame}
+  \frametitle{What Arithmetic GGP looks like, extremely roughly}
+  \begin{itemize}
+  \ii Started with Gross-Zagier (1986), relating height of Heegner point on modular curve to $L'(s)$ at $s = 1$
+  \ii Yuan-Zhang-Zhang (2013) proved generalization to Shimura curve over totally real field.
+  \ii Arith.~GGP further generalizes to higher dimensional Shimura variety.
+  \end{itemize}
+  %Beginning from a spherical pair $(\H,\G)$,
+  %upgrade to Shimura data $(\H, X_\H) \to (\G, X_\G)$.
+  \begin{exampleblock}{Arithmetic GGP conjecture, extremely roughly}
+    Let $\pi$ be a tempered cuspidal automorphic representation of $\G(\mathbb A_k)$
+    appearing in the cohomology $H^\bullet(\Sh(\G))$.
+    The following are equivalent:
+    \begin{enumerate}
+      \ii A certain height pairing
+      \[ \mathscr{P}_{\Sh(\H)} \colon \opname{Ch}^{n-1}(\Sh(\G))_0 \to \CC \]
+      does not vanish on $\pi_f$-isotypic component.
+      \ii $\Hom_{\H(\mathbb{A}_k)}(\pi_f, \CC) \neq 0$
+      and $L'(\half, \pi, R) \neq 0$ for certain $R$.
+    \end{enumerate}
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Arithmetic fundamental lemma (W.\ Zhang 2012)}
+  Analogous statement to Jacquet-Rallis fundamental lemma.
+  For simplicity, stating the inhomogeneous version (the full version is more general).
+  \begin{theorem}
+  [Inhomogeneous AFL]
+  For matching regular semisimple elements
+  $g \in \U(\VV_n^+)\rs \longleftrightarrow \gamma \in S_n(F)\rs$:
+  \[
+    \Int\left( (1,g), \mathbf{1}_{K'^\flat} \otimes \mathbf{1}_{K'} \right) \log q
+    = -\omega(\gamma) \left. \pdv{}{s} \right\rvert_{s=0} \Orb(\gamma, \mathbf{1}_K, s).
+  \]
+  \end{theorem}
+  \begin{itemize}
+  \ii I won't talk about $\Int$ or transfer factor $\omega(\gamma)$ in this talk.
+  \ii I'll tell you what matching and orbital look like.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Regular semisimple definition}
+  \[ \begin{bmatrix} A & \uu \\ \vv^\top & d \end{bmatrix} \in \GL_n(E) \]
+  is \textbf{regular semi-simple} if
+  $\left[ \vv^\top A^{i+j-2} \uu \right]_{i,j=1}^{n-1}$
+  is non-singular.
+  \begin{itemize}
+    % \ii The matrix $A$ is $(n-1) \times (n-1)$.
+    \ii Use ``rs'' subscript to denote semisimple elements.
+    \ii Equivalent to requiring that, under the action of conjugation by $\GL_{n-1}(E)$:
+    the matrix has trivial stabilizer; and
+    the $\GL_{n-1}(\ol E)$-orbit is a Zariski-closed subset of $\GL_n(\ol E)$.
+  \end{itemize}
+  Regular semisimple elements are acted on by conjugation under $\GL_{n-1}(E)$
+  (viewed as a subset of $\GL_n(E)$ by $g \mapsto \begin{bmatrix} g & 0 \\ & 1 \end{bmatrix}$.)
+\end{frame}
+
+\begin{frame}
+  \frametitle{Matching definition}
+  %Orbits are classified by the following invariants:
+  %\begin{itemize}
+  %  \ii The matrices $A_1$ and $A_2$ have the same characteristic polynomial;
+  %  \ii We have $\vv_1^\top A_1^i \uu_1 = \vv_2^\top A_2^i \uu_2$
+  %  for every $i = 0, 1, \dots, n-2$; and
+  %  \ii We have $d_1 = d_2$.
+  %\end{itemize}
+  We say $\gamma \in S_n(F)\rs$ \textbf{matches} the element $g \in \U(\VV_n^\pm)\rs$
+  if $g$ is conjugate to $\gamma$ by an element of $\GL_{n-1}(E)$.
+  \begin{block}{Matching}
+    \[ [S_n(F)]\rs \xrightarrow{\sim} [\U(\VV_n^-)]\rs \amalg [\U(\VV_n^+)]\rs. \]
+    For $\gamma \in S_n(F)$, we can tell which case we're in as follows.
+    Let
+    \[ \Delta \coloneqq \det \left[ \vv^\top A^{i+j-2} \uu \right]_{i,j=1}^{n-1} \neq 0. \]
+    Then $\gamma$ matches an orbit in $\U(\VV_n^-)\rs$ if $v(\Delta)$ is even;
+    $\gamma$ matches an orbit in $\U(\VV_n^+)\rs$ if $v(\Delta)$ is odd.
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Weighted orbital integral definition}
+  For $\gamma \in S_n(F)$, $\phi \in \HH(S_n(F))$, and $s \in \CC$:
+  \[ \Orb(\gamma, \phi, s) \coloneqq
+    \int_{h \in \GL_{n-1}(F)} \phi(h\inv \gamma h) -1^{v(\det h)}
+    \left\lvert \det(h) \right\rvert_F^{-s} \odif h. \]
+  For comparison, the unweighted orbital for $f \in \HH(\U(\VV_n^-))$ is:
+  \[ \Orb^{\U(\VV_n^-)}(g, f) \coloneqq \int_{\U(\VV_n^-)} f(x^{-1}gx) \odif x \]
+  \begin{theorem}
+    [Relative fundamental lemma; Leslie 2023]
+    Suppose $\phi$ and $f$ are related by base change.
+    If $\gamma$ matches in $\U(\VV_n^+)\rs$, then
+    \[ \omega(\gamma) \Orb(\phi, \gamma, 0) = 0. \]
+    If $\gamma$ instead matches an element $g \in \U(\VV_n^-)\rs$, then
+    \[ \omega(\gamma) \Orb(\phi, \gamma, 0)
+      = \Orb^{\U(\VV_n^-)}(g, f). \]
+  \end{theorem}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Semi-Lie version of AFL}
+  \begin{theorem}
+    [AFL, semi-Lie version]
+    For matching regular semisimple elements
+    \[ (g, u) \in (\U(\VV_n^+) \times \VV_n^+)\rs \longleftrightarrow
+      (\gamma, \uu, \vv^\top) \in (S_n(F) \times \OO_F^n \times (\OO_F^n)^\vee)\rs \]
+    we have
+    \begin{align*}
+      &\phantom= \Int\left( (g,u), \mathbf{1}_{K'} \right) \log q \\
+      &= -\omega\guv \left. \pdv{}{s} \right\rvert_{s=0}
+      \Orb(\guv, \mathbf{1}_K \otimes \oneV, s).
+    \end{align*}
+  \end{theorem}
+  Proposed by Yifeng Liu,
+  and equivalent to Zhang's proposed Bessel-period AFL for $\U(n) \times \U(n+1)$.
+  In fact the interplay is used in the induction proof of both.
+\end{frame}
+
+\begin{frame}
+  \frametitle{Leslie's generalization of the fundamental lemma}
+  As before $G'^\flat \coloneqq \GL_{n-1}(E)$, $G' \coloneqq \GL_n(E)$,
+  $G^\flat \coloneqq \U((\VV_n^-)^\flat)(F)$, $G \coloneqq \U(\VV_n^-)(F)$.
+  \begin{theorem}[Leslie 2023]
+    Suppose \alert{$\varphi'$ and $\varphi$ are related by a certain base change}; then still
+    for certain ``matching'' $\gamma \in G'^\flat \times G'$ and $g \in G^\flat \times G$:
+    \[ \Orb(\gamma, \alert{\varphi'}) = \omega(\gamma) \Orb(g, \alert{\varphi}). \]
+  \end{theorem}
+  The original Jacquet-Rallis fundamental lemma is the special case
+  \begin{align*}
+    \varphi' = \mathbf{1}_{K'^\flat \times K'} &\in \HH(\GL_{n-1}(E)) \otimes \HH(\GL_n(E)) \\
+    \varphi = \mathbf{1}_{K^\flat \times K} &\in \HH(\U((\VV_n^-)^\flat)) \otimes \HH(\U(\VV_n^-)).
+  \end{align*}
+\end{frame}
+
+\begin{frame}
+  \frametitle{AFL conjectured for the full spherical Hecke algebra}
+  \begin{exampleblock}{Conjecture (Li-Rapoport-Zhang 2024)}
+    Let \alert{$f \in \HH(\U(\VV_n^-))$} and \alert{$\phi \in \HH(S_n(F))$}.
+    Suppose \alert{$f$ and $\phi$ are related by base change}.
+    Then for matching $g \in \U(\VV_n^+)\rs \longleftrightarrow \gamma \in S_n(F)\rs$:
+    we have
+    \[ \Int\left( (1,g), \mathbf{1}_{K'^\flat} \otimes \alert{f} \right) \log q
+    = -\omega(\gamma) \left. \pdv{}{s} \right\rvert_{s=0} \Orb(\gamma, \alert{\phi}, s). \]
+  \end{exampleblock}
+  AFL is special case $f = \mathbf{1}_{K'}$ and $\phi = \mathbf{1}_K$.
+  \begin{theorem}
+    [Li-Rapoport-Zhang  2024]
+    True for $n = 2$.
+  \end{theorem}
+  Tried to mimic the proof for $n = 3$ of original AFL from W.\ Zhang 2012.
+  \begin{itemize}
+  \ii Was able to make the base change explicit enough to use for $n = 3$.
+  \ii Was able to compute the orbital integral (surprisingly nice).
+  \ii However, didn't understand geometric side enough to compute it.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{An example of an orbital integral in the $n=3$ case}
+  TODO
+\end{frame}
+
+\begin{frame}
+  \frametitle{Semi-Lie version of AFL conjecture}
+  \begin{exampleblock}{Conjecture}
+    Let \alert{$f \in \HH(\U(\VV_n^-))$} and \alert{$\phi \in \HH(S_n(F))$}.
+    Suppose \alert{$f$ and $\phi$ are related by base change}.
+    Then for matching regular semisimple elements
+    \[ (g, u) \in (\U(\VV_n^+) \times \VV_n^+)\rs \longleftrightarrow
+      \guv \in (S_n(F) \times \OO_F^n \times (\OO_F^n)^\vee)\rs \]
+    we have
+    \begin{align*}
+      &\phantom= \Int\left( (g,u), \alert{f} \right) \log q \\
+      &= -\omega\guv \left. \pdv{}{s} \right\rvert_{s=0}
+      \Orb(\guv, \alert{\phi} \otimes \oneV, s).
+    \end{align*}
+  \end{exampleblock}
+  ($(g,u) \mapsto \begin{bmatrix} g & u \\ u^\ast & 0 \end{bmatrix} \in \GL_{n+1}(E)$,
+  $\guv \mapsto \begin{bmatrix} \gamma & \uu \\ \vv^\top & 0 \end{bmatrix} \in \GL_{n+1}(E)$.)
+\end{frame}
+
+\begin{frame}
+  \frametitle{An example of an orbital integral in the $n=2$ case}
+  TODO
+\end{frame}
 
 \end{document}
