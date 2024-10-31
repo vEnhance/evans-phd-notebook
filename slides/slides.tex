@@ -196,7 +196,7 @@
   is non-singular.
   \begin{itemize}
     % \ii The matrix $A$ is $(n-1) \times (n-1)$.
-    \ii Use ``rs'' subscript to denote semisimple elements.
+    \ii Write $\GL_n(E)\rs$ to denote semisimple elements.
     \ii Equivalent to requiring that, under the action of conjugation by $\GL_{n-1}(E)$:
     the matrix has trivial stabilizer; and
     the $\GL_{n-1}(\ol E)$-orbit is a Zariski-closed subset of $\GL_n(\ol E)$.
@@ -216,13 +216,14 @@
   %\end{itemize}
   We say $\gamma \in S_n(F)\rs$ \textbf{matches} the element $g \in \U(\VV_n^\pm)\rs$
   if $g$ is conjugate to $\gamma$ by an element of $\GL_{n-1}(E)$.
+  Write this as
+  \[ g \in \U(\VV_n^\pm)\rs \longleftrightarrow \gamma \in S_n(F)\rs. \]
   \begin{block}{Matching}
     \[ [S_n(F)]\rs \xrightarrow{\sim} [\U(\VV_n^-)]\rs \amalg [\U(\VV_n^+)]\rs. \]
-    For $\gamma \in S_n(F)$, we can tell which case we're in as follows.
-    Let
+    For $\gamma \in S_n(F)$, to tell which case we're in, let
     \[ \Delta \coloneqq \det \left[ \vv^\top A^{i+j-2} \uu \right]_{i,j=1}^{n-1} \neq 0. \]
-    Then $\gamma$ matches an orbit in $\U(\VV_n^-)\rs$ if $v(\Delta)$ is even;
-    $\gamma$ matches an orbit in $\U(\VV_n^+)\rs$ if $v(\Delta)$ is odd.
+    We get $-$ if $v(\Delta)$ is even
+    and $+$ if $v(\Delta)$ is odd.
   \end{block}
 \end{frame}
 
@@ -230,39 +231,84 @@
   \frametitle{Weighted orbital integral definition}
   For $\gamma \in S_n(F)$, $\phi \in \HH(S_n(F))$, and $s \in \CC$:
   \[ \Orb(\gamma, \phi, s) \coloneqq
-    \int_{h \in \GL_{n-1}(F)} \phi(h\inv \gamma h) -1^{v(\det h)}
+    \int_{h \in \GL_{n-1}(F)} \phi(h\inv \gamma h) (-1)^{v(\det h)}
     \left\lvert \det(h) \right\rvert_F^{-s} \odif h. \]
   For comparison, the unweighted orbital for $f \in \HH(\U(\VV_n^-))$ is:
   \[ \Orb^{\U(\VV_n^-)}(g, f) \coloneqq \int_{\U(\VV_n^-)} f(x^{-1}gx) \odif x \]
   \begin{theorem}
     [Relative fundamental lemma; Leslie 2023]
-    Suppose $\phi$ and $f$ are related by base change.
-    If $\gamma$ matches in $\U(\VV_n^+)\rs$, then
-    \[ \omega(\gamma) \Orb(\phi, \gamma, 0) = 0. \]
-    If $\gamma$ instead matches an element $g \in \U(\VV_n^-)\rs$, then
-    \[ \omega(\gamma) \Orb(\phi, \gamma, 0)
-      = \Orb^{\U(\VV_n^-)}(g, f). \]
+    Suppose $\phi$ and $f$ are related by base change, and $\gamma \longleftrightarrow g$, then:
+    \[
+      \omega \Orb(\phi, \gamma, 0)
+      = \begin{cases}
+        0 & v(\Delta) \text{ odd} \\
+        \Orb^{\U(\VV_n^-)}(g, f) & v(\Delta) \text{ even}.
+      \end{cases}
+    \]
   \end{theorem}
 \end{frame}
 
 \begin{frame}
-  \frametitle{Semi-Lie version of AFL}
+  \frametitle{Semi-Lie version of AFL by Yifeng Liu (2021)}
   \begin{theorem}
     [AFL, semi-Lie version]
-    For matching regular semisimple elements
-    \[ (g, u) \in (\U(\VV_n^+) \times \VV_n^+)\rs \longleftrightarrow
-      (\gamma, \uu, \vv^\top) \in (S_n(F) \times \OO_F^n \times (\OO_F^n)^\vee)\rs \]
-    we have
+    If $(g, u) \in (\U(\VV_n^+) \times \VV_n^+)\rs \longleftrightarrow
+      (\gamma, \uu, \vv^\top) \in (S_n(F) \times \OO_F^n \times (\OO_F^n)^\vee)\rs$
+    then
     \begin{align*}
       &\phantom= \Int\left( (g,u), \mathbf{1}_{K'} \right) \log q \\
       &= -\omega\guv \left. \pdv{}{s} \right\rvert_{s=0}
       \Orb(\guv, \mathbf{1}_K \otimes \oneV, s).
     \end{align*}
   \end{theorem}
-  Proposed by Yifeng Liu,
-  and equivalent to Zhang's proposed Bessel-period AFL for $\U(n) \times \U(n+1)$.
-  In fact the interplay is used in the induction proof of both.
+  Equivalent to Zhang's proposed Bessel-period AFL for $\U(n) \times \U(n+1)$;
+  in fact the interplay is used in the induction proof of both.
 \end{frame}
+
+\begin{frame}
+  \frametitle{Matching (analogous)}
+  Matching is defined in the same way via
+  $(g,u) \mapsto \begin{bmatrix} g & u \\ u^\ast & 0 \end{bmatrix} \in \GL_{n+1}(E)$
+  and $\guv \mapsto \begin{bmatrix} \gamma & \uu \\ \vv^\top & 0 \end{bmatrix} \in \GL_{n+1}(E)$.
+
+  \begin{block}{Matching in semi-Lie case}
+  \[ [S_n(F) \times \OO_F^n \times (\OO_F^n)^\vee]\rs \xrightarrow{\sim} [\U(\VV_n^-) \times \VV_n^-]\rs \amalg [\U(\VV_n^+) \times \VV_n^+]\rs. \]
+  To see which one, define
+  \[ \Delta \coloneqq \det \left[ \vv^\top \gamma^{i+j-2} \uu \right]_{i,j=1}^n \neq 0. \]
+  We get $-$ if $v(\Delta)$ is even
+  and $+$ if $v(\Delta)$ is odd.
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Weighted orbital integral (definition)}
+  For $\guv \in S_n(F) \times \OO_F^n \times (\OO_F^n)^\vee$,,
+  $\phi \in \HH(S_n(F))$, and $s \in \CC$,
+  \begin{align*}
+    & \Orb((\gamma, \uu, \vv^\top), \phi \otimes \oneV, s) \\
+    &\coloneqq \int_{h \in H} \phi(h\inv \gamma h) \oneV(h \uu, \vv^\top h^{-1})
+    \eta(h) \left\lvert \det(h) \right\rvert_F^{-s} \odif h.
+  \end{align*}
+  Unweighted version, where $f \in \HH(\U(\VV_n^-))$,
+  and $\Lambda_n$ is a self-dual lattice:
+  \[
+    \Orb^{\U(\VV_n^-) \times \VV_n^-}\left( (g,u), f \otimes \mathbf{1}_{\Lambda_n} \right)
+    \coloneqq \int_{\U(\VV_n^-)} f(x\inv g x) \mathbf{1}_{\Lambda_n}(x^{-1} u) \odif x.
+  \]
+  \begin{exampleblock}{Conjecture}
+    If $\phi$ and $f$ are related by base change,
+    $\guv \longleftrightarrow (g,u)$, then:
+    \[ \omega\guv \Orb(\dots)
+      =
+      \begin{cases}
+        0 & v(\Delta) \text{ odd} \\
+        \Orb^{\U(\VV_n^-) \times \VV_n^-}\left( (g,u), f \otimes \mathbf{1}_{\Lambda_n} \right)
+        & v(\Delta) \text{ even}.
+      \end{cases}
+    \]
+  \end{exampleblock}
+\end{frame}
+
 
 \begin{frame}
   \frametitle{Leslie's generalization of the fundamental lemma}
@@ -310,15 +356,12 @@
 
 \begin{frame}
   \frametitle{Semi-Lie version of AFL conjecture}
-  $(g,u) \mapsto \begin{bmatrix} g & u \\ u^\ast & 0 \end{bmatrix} \in \GL_{n+1}(E)$,
-  $\guv \mapsto \begin{bmatrix} \gamma & \uu \\ \vv^\top & 0 \end{bmatrix} \in \GL_{n+1}(E)$.
   \begin{exampleblock}{Conjecture}
     Let \alert{$f \in \HH(\U(\VV_n^-))$} and \alert{$\phi \in \HH(S_n(F))$}.
     Suppose \alert{$f$ and $\phi$ are related by base change}.
-    Then for matching regular semisimple elements
-    \[ (g, u) \in (\U(\VV_n^+) \times \VV_n^+)\rs \longleftrightarrow
-      \guv \in (S_n(F) \times \OO_F^n \times (\OO_F^n)^\vee)\rs \]
-    we have
+    If $(g, u) \in (\U(\VV_n^+) \times \VV_n^+)\rs \longleftrightarrow
+      (\gamma, \uu, \vv^\top) \in (S_n(F) \times \OO_F^n \times (\OO_F^n)^\vee)\rs$
+    then
     \begin{align*}
       &\phantom= \Int\left( (g,u), \alert{f} \right) \log q \\
       &= -\omega\guv \left. \pdv{}{s} \right\rvert_{s=0}
