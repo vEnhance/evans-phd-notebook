@@ -17,11 +17,11 @@ We endow $\DD$ with a noncommutative multiplication according to
 where $\ol{t}$ is the image of $t \in E$ under the nontrivial element of $\Gal(E/F)$.
 
 \subsubsection{Conjugation of elements of $\DD$}
-In general, if $x \in \DD$ is any element, we will write
-\[ x = x_0 + x_- \qquad x_0 \in E, \; x_- \in E \Pi. \]
+In general, suppose $x \in \DD$ is any element
+decomposed as $x = a + b \Pi$ for $a,b \in E$.
 Then we denote by $x^\ast \in \DD$ the conjugate in $\DD$ defined by
-\[ x^\ast \coloneqq \ol{x_0} - x_- \]
-where, again, $\ol{x_0}$ is the image of $x_0 \in E$ under the nontrivial element of $\Gal(E/F)$.
+\[ x^\ast \coloneqq \ol{a} - b \]
+where, again, $a$ is the image of $a \in E$ under the nontrivial element of $\Gal(E/F)$.
 It is an anti-involution, meaning that $(x^\ast)^\ast = x$ and $(xy)^\ast = y^\ast x^\ast$.
 
 This allows us to define the (reduced) norm and trace in $\DD$.
@@ -32,12 +32,13 @@ $F$-linear multiplication map $u \cdot - \colon \DD \to \DD$.
 We may thus define
 \[ \DT \coloneqq \left\{ u \in \DD \mid \tr u = 0 \right\} \]
 which has codimension $1$ inside $\DD$ (i.e.\ is three-dimensional as an $F$-vector space).
-Since $\tr(u) = \Tr_{E/F}(u_0)$,
+Since $\tr(a+b\Pi) = \Tr_{E/F}(a)$,
 we could also write
-\[ \DT = \{ u \in \DD \mid \Tr_{E/F}(u_0) = 0 \}. \]
+\[ \DT = \{ a+b\Pi \mid a,b \in E \Tr_{E/F}(a) = 0 \}. \]
+
 
 The reduced norm is similarly defined by
-\[ \Nm x \coloneqq x x^\ast = \Norm_{E/F}(x_0) - \varpi x_-^2. \]
+\[ \Nm x \coloneqq x x^\ast = \Norm_{E/F}(a) - \varpi b^2. \]
 This coincides with a square root of
 the determinant of the $F$-linear map $u \cdot - \colon \DD \to \DD$.
 
@@ -47,7 +48,14 @@ $\left\langle \bullet, \bullet \right\rangle \colon \DD \times \DD \to F$ define
 \[ \left\langle x,y \right\rangle = \tr(xy^\ast) = xy^\ast + yx^\ast. \]
 It is easy to check that $\{1, \sqrt{\eps}, \Pi, \sqrt{\eps}\Pi\}$ is an orthogonal basis,
 and hence that we have a orthogonal decomposition
-\[ \DD = F \oplus F\sqrt\eps  \oplus F \Pi \oplus F\sqrt\eps\Pi. \]
+\[ \DD = F \oplus F\sqrt\eps \oplus F \Pi \oplus F\sqrt\eps\Pi. \]
+
+For $x \in \DD$, we introduce the notation $x_0$ and $x_-$ to mean
+\begin{itemize}
+  \ii $x_0$ is the projection into the first component $F$; and
+  \ii $x_- = x - x_0$ is the projection into
+  $\DT = F\sqrt\eps \oplus F \Pi \oplus F\sqrt\eps\Pi$.
+\end{itemize}
 
 \subsection{Notation}
 We continue using the notation $(\EE, \iota_\EE, \lambda_\EE)$ as the triple over $\FF$
