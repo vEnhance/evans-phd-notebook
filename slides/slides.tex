@@ -6,6 +6,9 @@
 \usepackage{multirow}
 \usetheme{Malaysia}
 
+\usepackage{tikz-cd}
+\usetikzlibrary{decorations.pathmorphing}
+
 \usepackage{fontspec}
 \directlua{luaotfload.add_fallback
   ("evans_fallbacks",
@@ -36,18 +39,28 @@
 \DeclareMathOperator{\BC}{BC}
 \DeclareMathOperator{\Int}{Int}
 \DeclareMathOperator{\Orb}{Orb}
+\DeclareMathOperator{\Sat}{Satake}
 \DeclareMathOperator{\Sh}{Sh}
+\DeclareMathOperator{\Spf}{Spf}
 \DeclareMathOperator{\U}{U}
+\DeclareMathOperator{\rproj}{proj}
+
+\newcommand{\G}{\mathrm{G}}
 \newcommand{\HH}{\mathcal{H}}
 \newcommand{\VV}{\mathbb{V}}
-\newcommand{\G}{\mathrm{G}}
+\newcommand{\TT}{\mathbb{T}}
 \renewcommand{\H}{\mathrm{H}}
 \renewcommand{\OO}{O}
+
+\newcommand{\RZ}{\mathcal{N}}
+\newcommand{\Sheaf}{\mathcal O}
+\newcommand{\ZD}{\mathcal{Z}}
 \newcommand{\guv}{{(\gamma, \uu, \vv^\top)}}
+\newcommand{\jiao}{\mathop{\otimes}^{\mathbf{L}}} % this is a cute macro name (交)
+\newcommand{\oneV}{\mathbf{1}_{\OO_F^n \times (\OO_F^n)^\vee}}
 \newcommand{\rs}{_{\text{rs}}}
 \newcommand{\uu}{\mathbf{u}}
 \newcommand{\vv}{\mathbf{v}}
-\newcommand{\oneV}{\mathbf{1}_{\OO_F^n \times (\OO_F^n)^\vee}}
 
 \title[Semi-Lie AFL for full Hecke algebra]{Semi-Lie Arithmetic Fundamental Lemma for full spherical Hecke Algebra}
 \subtitle{Mass Tech Learning Seminar}
@@ -191,12 +204,13 @@
     = -\omega(\gamma) \left. \pdv{}{s} \right\rvert_{s=0} \Orb(\gamma, \mathbf{1}_K, s).
   \]
   \end{theorem}
-  To understand this statement, I still need to define the following objects for you:
+  \begin{exampleblock}{Terms to define in this statement}
   \begin{itemize}
     \ii Regular matching and semisimple
     \ii Intersection number $\Int$
     \ii Weighted orbital integral
   \end{itemize}
+  \end{exampleblock}
 \end{frame}
 
 \begin{frame}
@@ -213,7 +227,7 @@
     the $\GL_{n-1}(\ol E)$-orbit is a Zariski-closed subset of $\GL_n(\ol E)$.
   \end{itemize}
   Regular semisimple elements are acted on by conjugation under $\GL_{n-1}(E)$
-  (viewed as a subset of $\GL_n(E)$ by $g \mapsto \begin{bmatrix} g & 0 \\ & 1 \end{bmatrix}$.)
+  (viewed as a subset of $\GL_n(E)$ by $g \mapsto \begin{bmatrix} g & 0 \\ 0 & 1 \end{bmatrix}$.)
 \end{frame}
 
 \begin{frame}
@@ -260,9 +274,25 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{Intersection number}
+  \frametitle{Intersection number (briefly)}
+  This is more technical, so we won't give all details, just the basic sketch.
+  \begin{itemize}
+    \ii $\RZ_n$ denotes a Rapoport-Zink space of dimension $n$.
+    \ii $\RZ_{m,n} \coloneqq \RZ_m \times \RZ_n$.
+    \ii Let $\Delta: \RZ_{n-1} \to \RZ_{n-1,n}$
+    be the graph morphism of $\delta \colon \RZ_{n-1} \to \RZ_n$,
+    with image $\Delta_{\RZ{n-1}}$.
+  \end{itemize}
+  \begin{definition}
+    \begin{align*}
+      \Int((1,g), \mathbf{1}_{K'^\flat} \otimes \mathbf{1}_{K'})
+      &\coloneqq \left( \Delta_{\RZ_{n-1}}, (1,g) \cdot \Delta_{\RZ_{n-1}} \right)_{\RZ_{n-1,n}} \\
+      &\coloneqq \chi_{\RZ_{n-1,n}}
+      \left( \Sheaf_{\Delta_{\RZ_{n-1}}} \jiao_{\Sheaf_{\RZ_{n-1,n}}} \Sheaf_{(1,g) \cdot \Delta_{\RZ_{n-1}}} \right) .
+    \end{align*}
+    ($\jiao$ is derived tensor product, $\chi$ is Euler-Poincare characteristic)
+  \end{definition}
 \end{frame}
-
 
 \begin{frame}
   \frametitle{Semi-Lie version of AFL by Yifeng Liu (2021)}
@@ -326,18 +356,58 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{Intersection number}
+  \frametitle{Intersection number (briefly)}
+  \begin{itemize}
+    \ii New object: the \alert{Kudla-Rapoport divisor $\ZD(u)$} in $\RZ_n$.
+    \ii Let $\Delta_{\ZD(u)}$ be the image of $\ZD(u) \to \RZ_n \to \RZ_{n,n}$,
+    where the last arrow is diagonal morphism.
+    \ii $\Gamma_g$ is the graph of the automorphism of $\RZ_n$ induced by $g$,
+    viewed inside $\RZ_{n,n}$
+  \end{itemize}
+  \begin{definition}
+    \begin{align*}
+      \Int((g,u), \mathbf{1}_{K'})
+      &\coloneqq \left( \Delta_{\ZD(u)}, \Gamma_g \right)_{\RZ_{n,n}} \\
+      &\coloneqq \chi_{\RZ_{n,n}}
+      \left( \Sheaf_{\Delta_{\ZD(u)}} \jiao_{\Sheaf_{\RZ_{n,n}}} \Sheaf_{\Gamma_g}  \right).
+    \end{align*}
+  \end{definition}
 \end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Base change}
+  Denote by $\rproj \colon \GL_n(E) \surjto S_n(F)$ the map $\rproj(g) \coloneqq g \bar{g}\inv$.
+  \begin{align*}
+    \rproj_\ast \colon \HH(\GL_n(E)) &\to \HH(S_n(F)) \\
+    \rproj_\ast(f')\left( g\bar{g}\inv \right) &= \int_{\GL_n(F)} f'(gh) \odif h
+  \end{align*}
+  And let $\eta(g) = (-1)^{v(\det g)}$ be the nontrivial quadratic character for $E/F$.
+  \begin{center}
+  \begin{tikzcd}
+    & \HH(\GL_n(E)) \ar[ld, "\rproj_\ast^{\eta^{n-1}}"'] \ar[r, "\sim"', "\Sat"] \ar[d, "\BC"]
+      & \QQ[X_1^\pm, \dots, X_n^\pm]^{\opname{Sym}(n)} \ar[d, "\BC"] \\
+    \HH(S_n(F)) \ar[r, "\sim", "\BC_{S_n}^{\eta^{n-1}}"'] & \HH(\U(\VV_n^-)) \ar[r, "\sim"', "\Sat"]
+      & \QQ[Y_1^\pm, \dots, Y_m^\pm]^{W_m} \\
+  \end{tikzcd}
+  \end{center}
+  \begin{theorem}
+    [Leslie 2023]
+    The map $\BC_{S_n}^{\eta^{n-1}}$ above is an isomorphism.
+  \end{theorem}
+\end{frame}
+
 
 \begin{frame}
   \frametitle{Leslie's generalization of the fundamental lemma}
   As before $G'^\flat \coloneqq \GL_{n-1}(E)$, $G' \coloneqq \GL_n(E)$,
   $G^\flat \coloneqq \U((\VV_n^-)^\flat)(F)$, $G \coloneqq \U(\VV_n^-)(F)$.
+
   \begin{theorem}[Leslie 2023]
     Suppose \alert{$\varphi'$ and $\varphi$ are related by base change}; then still
     for certain ``matching'' $\gamma \in G'^\flat \times G'$ and $g \in G^\flat \times G$:
     \[ \Orb(\gamma, \alert{\varphi'}) = \omega(\gamma) \Orb(g, \alert{\varphi}). \]
   \end{theorem}
+
   The original Jacquet-Rallis fundamental lemma is the special case
   \begin{align*}
     \varphi' = \mathbf{1}_{K'^\flat \times K'} &\in \HH(\GL_{n-1}(E)) \otimes \HH(\GL_n(E)) \\
@@ -356,8 +426,29 @@
     = -\omega(\gamma) \left. \pdv{}{s} \right\rvert_{s=0} \Orb(\gamma, \alert{\phi}, s). \]
   \end{exampleblock}
   AFL is special case $f = \mathbf{1}_{K'}$ and $\phi = \mathbf{1}_K$.
+  \begin{block}{Updated intersection number}
+    New Hecke operator $\TT_{\mathbf{1}_{K^\flat} \otimes f}$.
+    \[
+      \Int((1,g), \mathbf{1}_{K^\flat} \otimes f)
+      \coloneqq \chi_{\RZ_{n-1,n}} \left(
+        \Sheaf_{\alert{\TT_{\mathbf{1}_{K^\flat} \otimes f}} (\Delta_{\RZ_{n-1}})}
+        \jiao_{\Sheaf_{\RZ_{n-1,n}}} \Sheaf_{(1,g) \cdot \Delta_{\RZ_{n-1}}} \right).
+    \]
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{AFL conjectured for the full spherical Hecke algebra}
+  \begin{exampleblock}{Conjecture (Li-Rapoport-Zhang 2024)}
+    Let \alert{$f \in \HH(\U(\VV_n^-))$} and \alert{$\phi \in \HH(S_n(F))$}
+    are \alert{related by base change}.
+    Then for matching $g \in \U(\VV_n^+)\rs \longleftrightarrow \gamma \in S_n(F)\rs$:
+    we have
+    \[ \Int\left( (1,g), \mathbf{1}_{K'^\flat} \otimes \alert{f} \right) \log q
+    = -\omega(\gamma) \left. \pdv{}{s} \right\rvert_{s=0} \Orb(\gamma, \alert{\phi}, s). \]
+  \end{exampleblock}
   \begin{theorem}
-    [Li-Rapoport-Zhang  2024]
+    [Li-Rapoport-Zhang 2024]
     True for $n = 2$.
   \end{theorem}
   Tried to mimic the proof for $n = 3$ of original AFL from W.\ Zhang 2012.
@@ -376,17 +467,25 @@
 \begin{frame}
   \frametitle{Semi-Lie version of AFL conjecture}
   \begin{exampleblock}{Conjecture}
-    Let \alert{$f \in \HH(\U(\VV_n^-))$} and \alert{$\phi \in \HH(S_n(F))$}.
-    Suppose \alert{$f$ and $\phi$ are related by base change}.
-    If $(g, u) \in (\U(\VV_n^+) \times \VV_n^+)\rs \longleftrightarrow
-      (\gamma, \uu, \vv^\top) \in (S_n(F) \times \OO_F^n \times (\OO_F^n)^\vee)\rs$
-    then
+    Let \alert{$f \in \HH(\U(\VV_n^-))$} and \alert{$\phi \in \HH(S_n(F))$}
+    are \alert{related by base change}, and
+    \[ (g, u) \in (\U(\VV_n^+) \times \VV_n^+)\rs \longleftrightarrow
+    (\gamma, \uu, \vv^\top) \in (S_n(F) \times \OO_F^n \times (\OO_F^n)^\vee)\rs. \]
+    Then
     \begin{align*}
       &\phantom= \Int\left( (g,u), \alert{f} \right) \log q \\
       &= -\omega\guv \left. \pdv{}{s} \right\rvert_{s=0}
       \Orb(\guv, \alert{\phi} \otimes \oneV, s).
     \end{align*}
   \end{exampleblock}
+  \begin{block}{Updated definition of intersection number}
+    \[
+      \Int((g,u), f)
+      \coloneqq \chi_{\RZ_{n,n}} \left(
+      \Sheaf_{\alert{\TT_{\mathbf{1}_K \otimes f}}(\Delta_{\ZD(u)})}
+      \jiao_{\Sheaf_{\RZ_{n,n}}} \Sheaf_{\Gamma_g} \right).
+    \]
+  \end{block}
 \end{frame}
 
 \begin{frame}
