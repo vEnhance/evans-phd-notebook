@@ -258,19 +258,19 @@
   \[ \Orb(\gamma, \phi, s) \coloneqq
     \int_{h \in \GL_{n-1}(F)} \phi(h\inv \gamma h) (-1)^{v(\det h)}
     \left\lvert \det(h) \right\rvert_F^{-s} \odif h. \]
-  For comparison, the unweighted orbital for $f \in \HH(\U(\VV_n^-))$ is:
-  \[ \Orb^{\U(\VV_n^-)}(g, f) \coloneqq \int_{\U(\VV_n^-)} f(x^{-1}gx) \odif x \]
-  \begin{theorem}
-    [Relative fundamental lemma; Leslie 2023]
-    Suppose $\phi$ and $f$ are related by \emph{base change}, and $\gamma \longleftrightarrow g$, then:
-    \[
-      \omega \Orb(\phi, \gamma, 0)
-      = \begin{cases}
-        0 & v(\Delta) \text{ odd (AFL case)} \\
-        \Orb^{\U(\VV_n^-)}(g, f) & v(\Delta) \text{ even}.
-      \end{cases}
-    \]
-  \end{theorem}
+%  For comparison, the unweighted orbital for $f \in \HH(\U(\VV_n^-))$ is:
+%  \[ \Orb^{\U(\VV_n^-)}(g, f) \coloneqq \int_{\U(\VV_n^-)} f(x^{-1}gx) \odif x \]
+%  \begin{theorem}
+%    [Relative fundamental lemma; Leslie 2023]
+%    Suppose $\phi$ and $f$ are related by \emph{base change}, and $\gamma \longleftrightarrow g$, then:
+%    \[
+%      \pm \Orb(\phi, \gamma, 0)
+%      = \begin{cases}
+%        0 & v(\Delta) \text{ odd (AFL case)} \\
+%        \Orb^{\U(\VV_n^-)}(g, f) & v(\Delta) \text{ even}.
+%      \end{cases}
+%    \]
+%  \end{theorem}
 \end{frame}
 
 \begin{frame}
@@ -335,24 +335,24 @@
     &\coloneqq \int_{h \in \GL_n(F)} \phi(h\inv \gamma h) \oneV(h \uu, \vv^\top h^{-1})
       (-1)^{v(\det h)} \left\lvert \det(h) \right\rvert_F^{-s} \odif h.
   \end{align*}
-  Unweighted version, where $f \in \HH(\U(\VV_n^-))$,
-  and $\Lambda_n$ is a self-dual lattice:
-  \[
-    \Orb^{\U(\VV_n^-) \times \VV_n^-}\left( (g,u), f \otimes \mathbf{1}_{\Lambda_n} \right)
-    \coloneqq \int_{\U(\VV_n^-)} f(x\inv g x) \mathbf{1}_{\Lambda_n}(x^{-1} u) \odif x.
-  \]
-  \begin{exampleblock}{Conjecture}
-    If $\phi$ and $f$ are related by \emph{base change},
-    $\guv \longleftrightarrow (g,u)$, then:
-    \[ \omega\guv \Orb(\dots)
-      =
-      \begin{cases}
-        0 & v(\Delta) \text{ odd (AFL case)} \\
-        \Orb^{\U(\VV_n^-) \times \VV_n^-}\left( \dots \right)
-        & v(\Delta) \text{ even}.
-      \end{cases}
-    \]
-  \end{exampleblock}
+%  Unweighted version, where $f \in \HH(\U(\VV_n^-))$,
+%  and $\Lambda_n$ is a self-dual lattice:
+%  \[
+%    \Orb^{\U(\VV_n^-) \times \VV_n^-}\left( (g,u), f \otimes \mathbf{1}_{\Lambda_n} \right)
+%    \coloneqq \int_{\U(\VV_n^-)} f(x\inv g x) \mathbf{1}_{\Lambda_n}(x^{-1} u) \odif x.
+%  \]
+%  \begin{exampleblock}{Conjecture}
+%    If $\phi$ and $f$ are related by \emph{base change},
+%    $\guv \longleftrightarrow (g,u)$, then:
+%    \[ \pm \Orb(\dots)
+%      =
+%      \begin{cases}
+%        0 & v(\Delta) \text{ odd (AFL case)} \\
+%        \Orb^{\U(\VV_n^-) \times \VV_n^-}\left( \dots \right)
+%        & v(\Delta) \text{ even}.
+%      \end{cases}
+%    \]
+%  \end{exampleblock}
 \end{frame}
 
 \begin{frame}
