@@ -1,4 +1,4 @@
-\chapter{Synopsis of the weighted orbital integral $\Orb(\gamma, \phi, s)$ for $\gamma \in S_3(F)\rs$ and $\phi \in \HH(S_3(F), K')$}
+\chapter{Synopsis of the weighted orbital integral $\Orb(\gamma, \phi, s)$ for $\gamma \in S_3(F)\rs$ and $\phi \in \HH(S_3(F))$}
 \label{ch:orbital0}
 
 This section defines the weighted orbital integral
@@ -6,13 +6,13 @@ and describes the parameters which we will use to express our answer.
 
 \section{Initial definition of the weighted orbital integral for general $S_n(F)$}
 Let $H = \GL_{n-1}(F)$.
-Then $H$ has a natural embedding into $G = \GL_n(E)$ by
+Then $H$ has a natural embedding into $\GL_n(E)$ by
 \[ h \mapsto \begin{bmatrix} h & 0 \\ 0 & 1 \end{bmatrix} \]
-which endows it with an action $S_n(E)$.
+which endows it with an action $S_n(F)$.
 Then our weighted orbital integral is defined as follows.
 \begin{definition}
   For brevity let $\eta(h) \coloneqq \eta(\det h)$ for $h \in H$.
-  For $\gamma \in S_n(F)$, $\phi \in \HH(S_n(F), K')$, and $s \in \CC$,
+  For $\gamma \in S_n(F)$, $\phi \in \HH(S_n(F))$, and $s \in \CC$,
   we define the \emph{weighted orbital integral} by
   \[ \Orb(\gamma, \phi, s) \coloneqq
     \int_{h \in H} \phi(h\inv \gamma h) \eta(h)
@@ -23,14 +23,14 @@ Then our weighted orbital integral is defined as follows.
 We remark that this weighted orbital integral is related to
 a normal orbital integral on the unitary side
 by the so-called relative fundamental lemma.
-Specifically, for $g \in G = \U(\VV_n^-)$ and $f \in \HH(G,K)$,
+Specifically, for $g \in \U(\VV_n^-)$ and $f \in \HH(\U(\VV_n^-))$,
 we define the normal orbital integral by
 \[ \Orb^{\U(\VV_n^-)}(g, f) \coloneqq \int_{\U(\VV_n^-)} f(x^{-1}gx) \odif x. \]
 Then the following result is true.
 \begin{theorem}
   [Relative fundamental lemma; {\cite[Theorem 1.1]{ref:leslie}}]
   \label{thm:rel_fundamental_lemma}
-  Let $\phi \in \HH(S_n(F), K')$ and $\gamma \in S_n(F)\rs$.
+  Let $\phi \in \HH(S_n(F))$ and $\gamma \in S_n(F)\rs$.
   If $\gamma$ matches an element of $\U(\VV_n^+)\rs$, then
   \[ \omega(\gamma) \Orb(\phi, \gamma, 0) = 0. \]
   If $\gamma$ instead matches an element $g \in \U(\VV_n^-)\rs$, then
@@ -39,7 +39,7 @@ Then the following result is true.
   where the transfer factor $\omega$ is defined in \Cref{ch:geo}.
 \end{theorem}
 
-\section{Basis for the indicator functions in $\HH(S_3(F), K')$}
+\section{Basis for the indicator functions in $\HH(S_3(F))$}
 \label{ch:orbital0_hecke_basis}
 From now on assume $n = 3$.
 We have the symmetric space
@@ -77,9 +77,8 @@ We can re-parametrize the problem according to the following.
 Then an integral over each $K'_{S, \le r}$ lets us extract the integrals over $K'_{S,r}$.
 \begin{proposition}
   For $r \ge 0$, the indicator functions $\mathbf{1}_{K'_{S, \le r}}$
-  form a basis of $\HH(S_3(F), K')$.
+  form a basis of $\HH(S_3(F))$.
 \end{proposition}
-\todo{this is like an $\HH(G', K')$-basis I think? double check this}
 
 Then, our goal is to compute for
 \begin{equation}
@@ -109,7 +108,7 @@ Define
     \mid t_1, t_2 \in E \right\}
 \]
 which is indeed a four-dimensional $F$-algebra.
-As before $H' \hookrightarrow G$ according to the same embedding
+As before $H' \hookrightarrow \U(\VV_n^-)$ according to the same embedding
 $\GL_2(E) \hookrightarrow \GL_(3)$
 and so $H'$ also acts on $S_n(E)$ by conjugation.
 
@@ -132,7 +131,7 @@ then the following integral formula is obtained.
   [{\cite[\S4.2]{ref:AFL}}]
   \label{prop:orbital_over_H_prime}
   For brevity let $\eta(h') \coloneqq \eta(\det h')$ for $h' \in H'$.
-  For $\gamma \in S_3(F)$, $\phi \in \HH(S_3(F), K')$, and $s \in \CC$,
+  For $\gamma \in S_3(F)$, $\phi \in \HH(S_3(F))$, and $s \in \CC$,
   the weighted orbital integral can instead be written as
   \[ \Orb(\gamma, \phi, s) =
     \int_{h' \in H'} \phi(\bar{h'}\inv \gamma h') \eta(h')

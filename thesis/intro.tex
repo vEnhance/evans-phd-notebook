@@ -179,7 +179,9 @@ For concreteness, we focus on the inhomogeneous version
 of the arithmetic fundamental lemma, which is \cite[Conjecture 6.2.1]{ref:AFLspherical}.
 This allows us to deal with just $G'$ instead of $G'^\flat \times G'$, etc.,
 so that the Hecke algebra $\HH(G'^\flat \times G', K'^\flat \times K')$
-can be replaced by the simpler one $\HH(G', K')$.
+can be replaced by the simpler one $\HH(\GL_n(E)) \coloneqq \HH(G', K')$.
+Similarly, $\HH(G^\flat \times G, K^\flat \times K)$
+can be replaced by the simpler $\HH(\U(\VV_n^-)) \coloneqq \HH(G, K)$.
 
 The AFL conjecture provides a bridge between a geometric left-hand side
 (given by an intersection number)
@@ -193,7 +195,7 @@ We only mention these pieces by name here, with definitions given later:
     \ii We choose a regular semisimple element $g \in \U(\VV_n^+)\rs$.
     (The notation $\U(\VV_n^+)\rs$ denotes the regular semisimple elements of $\U(\VV_n^+)$, etc.
     The notion of regular semisimple is defined in \Cref{def:regular}.)
-    \ii We choose a function $f \in \HH(G, K)$ from the spherical Hecke algebra,
+    \ii We choose a function $f \in \HH(\GL_n(E))$ from the spherical Hecke algebra,
     defined in \Cref{ch:background}.
     \ii We define a certain \emph{intersection number} $\Int((g,u), f)$
     in \Cref{def:intersection_number_inhomog}.
@@ -206,8 +208,8 @@ We only mention these pieces by name here, with definitions given later:
   \begin{itemize}
     \ii We choose a regular semisimple element $\gamma \in S_n(F)\rs$.
     \ii We choose a test function $\phi$ which comes
-    from a certain $\HH(G',K')$-module that we will denote $\HH(S_n(F), K')$.
-    This module $\HH(S_n(F), K')$ is defined in \Cref{ch:background}.
+    from a certain $\HH(\GL_n(E))$-module that we will denote $\HH(S_n(F))$.
+    This module $\HH(S_n(F))$ is defined in \Cref{ch:background}.
     \ii The weighted orbital integral $\Orb(\gamma, \phi, s)$
     is itself defined in \Cref{def:orbital0}.
     (It is connected to an unweighted orbital integral on the unitary group
@@ -226,7 +228,7 @@ We only mention these pieces by name here, with definitions given later:
     it turns out $\gamma$ will match an element of $\U(\VV_n^\pm)\rs$ is general,
     and the conjecture is only formulated in the case where $g \in \U(\VV_n^+)$).
 
-    \ii Once $f \in \HH(G,K)$ is chosen, we select
+    \ii Once $f \in \HH(\U(\VV_n^-))$ is chosen, we select
     \[ \phi = (\BC_{S_n}^{\eta^{n-1}})^{-1}(f) \]
     to be the image of $f$ under a \emph{base change}.
     This base change is defined and then calculated explicitly for $n = 3$ in \Cref{ch:satake}.
@@ -238,8 +240,8 @@ we can now state the conjecture proposed in \cite{ref:AFLspherical}.
   [Inhomogeneous version of the AFL for the full spherical Hecke algebra,
   {\cite[Conjecture 6.2.1]{ref:AFLspherical}}]
   \label{conj:inhomog}
-  Let $f \in \HH(G, K)$ be any element of the Hecke algebra,
-  and let $\phi = (\BC_{S_n}^{\eta^{n-1}})^{-1}(f) \in \HH(S_n(F), K')$ be its image
+  Let $f \in \HH(\U(\VV_n^-))$ be any element of the Hecke algebra,
+  and let $\phi = (\BC_{S_n}^{\eta^{n-1}})^{-1}(f) \in \HH(S_n(F))$ be its image
   under base change as defined in \Cref{ch:satake}.
   Then for matching (as defined in \Cref{def:matching_inhomog}) regular semisimple elements
   \[ g \in \U(\VV_n^+)\rs \longleftrightarrow \gamma \in S_n(F)\rs \]
@@ -273,7 +275,7 @@ The part of the calculation involving weighted orbital integral has two parts:
 
   \ii The calculation makes explicit the value of the weighted orbital integral
   \[ \Orb(\gamma, \phi) \]
-  for any $\gamma \in S_n(F)\rs$ and $\phi \in \HH(S_n(F), K')$,
+  for any $\gamma \in S_n(F)\rs$ and $\phi \in \HH(S_n(F))$,
   in terms of invariants of $\gamma$ and a decomposition of $\phi$ in a natural basis.
   The result is \cite[Proposition 7.3.2]{ref:AFLspherical}.
 \end{itemize}
@@ -322,8 +324,8 @@ to accommodate the new term $u$ in \Cref{def:intersection_number_semi_lie_spheri
 
 \begin{conjecture}
   [Semi-Lie version of the AFL for the full spherical Hecke algebra]
-  Let $f \in \HH(G, K)$ be any element of the Hecke algebra,
-  and let $\phi = (\BC_{S_n}^{\eta^{n-1}})^{-1}(f) \in \HH(S_n(F), K')$ be its image
+  Let $f \in \HH(\U(\VV_n^-))$ be any element of the Hecke algebra,
+  and let $\phi = (\BC_{S_n}^{\eta^{n-1}})^{-1}(f) \in \HH(S_n(F))$ be its image
   under base change defined in \Cref{ch:satake}.
   Then for matching (as defined in \Cref{def:matching_semi_lie}) regular semisimple elements
   \[ (g, u) \in (\U(\VV_n^+) \times \VV_n^+)\rs \longleftrightarrow
@@ -350,7 +352,7 @@ predicts that $\Orb(\guv, \phi \otimes \oneV, 0) = 0$ in the case of interest,
 which in this case can be checked independently.
 
 \begin{remark}
-  For $n = 1$, the Hecke algebra $\HH(S_n(F), K')$ is trivial
+  For $n = 1$, the Hecke algebra $\HH(S_n(F))$ is trivial
   and therefore \Cref{conj:semi_lie_spherical}
   becomes a special case of the known \cite{ref:liuFJ}.
   Therefore $n=2$ is the first case of \Cref{conj:semi_lie_spherical} worth examining.
@@ -379,8 +381,8 @@ We were able to successfully calculate this weighted orbital integral for all th
 The result is too involved to state in the introduction,
 but we give the following summary.
 \begin{theorem}
-  Let $\gamma \in S_3(F)\rs$ and $\phi \in \HH(S_3(F), K')$
-  (resp.\ $\guv \in (S_2(F) \times V'_2(F))\rs$ and $\phi \in \HH(S_3(F), K')$).
+  Let $\gamma \in S_3(F)\rs$ and $\phi \in \HH(S_3(F))$
+  (resp.\ $\guv \in (S_2(F) \times V'_2(F))\rs$ and $\phi \in \HH(S_3(F))$).
   Assume that $\gamma$ (resp.\ $\guv$)
   matches an element in $\U(\VV_3)\rs$ (resp.\ $(\U(\VV_2) \times \VV_2)\rs$).
   Then the weighted orbital integral $\Orb(\gamma, \phi, s)$
@@ -400,10 +402,10 @@ but we give the following summary.
   can be written explicitly in terms of a particular representative in the orbit $\phi$.
 \end{theorem}
 For the weighted orbital integral $\Orb(\gamma, \phi, s)$
-with $\gamma \in S_3(F)\rs$ and $\phi \in \HH(S_3(F), K')$,
+with $\gamma \in S_3(F)\rs$ and $\phi \in \HH(S_3(F))$,
 the theorems \todo{list theorems} together all the cases that can arise.
 For the weighted orbital integral $\Orb(\guv, \phi \otimes \oneV, s)$
-with $\guv \in (S_2(F) \times V'_2(F))\rs$ and $\phi \in \HH(S_3(F), K')$
+with $\guv \in (S_2(F) \times V'_2(F))\rs$ and $\phi \in \HH(S_3(F))$
 the final formula is the single theorem \Cref{thm:semi_lie_formula}.
 
 Besides providing evidence for \Cref{conj:inhomog} and \Cref{conj:semi_lie_spherical},

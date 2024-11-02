@@ -2,7 +2,7 @@
 \label{ch:satake}
 
 The goal of this section is to make completely explicit the base change
-\[ \BC_{S_n}^{\eta^{n-1}} \colon \HH(S_n(F), K') \to \HH(G, K') \]
+\[ \BC_{S_n}^{\eta^{n-1}} \colon \HH(S_n(F)) \to \HH(\U(\VV_n^-)) \]
 in the special case $n = 3$ (in which case $\BC_{S_n}^{\eta^{n-1}} = \BC_{S_n}$ as $\eta^2 = 1$).
 Note that the case $n = 2$ was already done in \cite[\S7.1]{ref:AFLspherical}.
 When it is not more difficult, some of the results will be stated for all $n$,
@@ -10,7 +10,7 @@ rather than $n = 3$ specifically.
 
 Throughout this section we have the following additional notation.
 \begin{definition}
-  Denote by $\rproj \colon G' \surjto S_n(F)$ the projection defined by
+  Denote by $\rproj \colon \GL_n(E) \surjto S_n(F)$ the projection defined by
   \[ \rproj(g) \coloneqq g \bar{g}\inv. \]
 \end{definition}
 We also let $\Sym(n)$ denotes the symmetric group in $n$ variables with order $n!$
@@ -57,8 +57,8 @@ once when $G$ is the general linear group (which is split),
 and once when $G$ is a unitary group.
 
 
-\section{The Satake transformation for $\HH(G',K')$ and $\HH(G,K)$}
-To take the Satake transform of $\HH(G', K')$, we define the following abbreviations.
+\section{The Satake transformation for $\HH(\GL_n(E))$ and $\HH(\U(\VV_n^-))$}
+To take the Satake transform of $\HH(\U(\VV_n^-))$, we define the following abbreviations.
 \begin{itemize}
   \ii Let $T$ denote the split diagonal torus of $\GL_n$.
   \ii Let
@@ -66,16 +66,16 @@ To take the Satake transform of $\HH(G', K')$, we define the following abbreviat
       1 & \ast & \dots & \ast \\
         & 1 & \dots & \ast \\
         &   & \ddots & \vdots \\
-        &   &   & 1 \end{bmatrix}\right\} \subseteq G' \]
+        &   &   & 1 \end{bmatrix}\right\} \subseteq \GL_n(E) \]
   denote the unipotent upper-triangular matrices.
 \end{itemize}
-Similarly for $\HH(G, K)$:
+Similarly for $\HH(\U(\VV_n^-))$:
 \begin{itemize}
   \ii Set $m \coloneqq \left\lfloor n/2 \right\rfloor$ for brevity.
   \ii Let
   \[ A \coloneqq \left\{
     \diag(x_1, \dots, x_m, 1_{n-2m}, x_m\inv, \dots, x_1\inv) \right\} \]
-  so that $A(F)$ is a maximal $F$-split torus of $G$.
+  so that $A(F)$ is a maximal $F$-split torus of $\U(\VV_n^-)$.
   \ii Let $N \coloneqq N' \cap G$ denote the unipotent upper triangular matrices
   which are also unitary.
   \ii For brevity, let $W_m \coloneqq (\ZZ/2\ZZ)^m \rtimes \Sym(m)$
@@ -108,8 +108,8 @@ We can now introduce the Satake transform for our two
 
 Hence, the Satake transformations obtained can be viewed as
 \begin{align*}
-  \Sat &\colon \HH(G', K') \xrightarrow{\sim} \QQ[T(E) / T(\OO_E)]^{\Sym(n)} \\
-  \Sat &\colon \HH(G, K)\xrightarrow{\sim} \QQ[A(F) / A(\OO_F)]^{W_m}
+  \Sat &\colon \HH(\GL_n(E)) \xrightarrow{\sim} \QQ[T(E) / T(\OO_E)]^{\Sym(n)} \\
+  \Sat &\colon \HH(\U(\VV_n^-))\xrightarrow{\sim} \QQ[A(F) / A(\OO_F)]^{W_m}
 \end{align*}
 (In both cases, the modular character $\delta^{1/2}$ gives rational values,
 so it is okay to work over $\QQ$.)
@@ -135,13 +135,13 @@ denotes the ring of symmetric polynomials in $Y_i + Y_i^{-1}$.
 
 So, henceforth, we will consider
 \begin{align*}
-  \Sat &\colon \HH(G', K') \xrightarrow{\sim} \QQ[X_1^\pm, \dots, X_n^\pm]^{\Sym(n)} \\
-  \Sat &\colon \HH(G, K) \xrightarrow{\sim} \QQ[Y_1^{\pm}, \dots, Y_m^{\pm}]^{W_m}.
+  \Sat &\colon \HH(\GL_n(E)) \xrightarrow{\sim} \QQ[X_1^\pm, \dots, X_n^\pm]^{\Sym(n)} \\
+  \Sat &\colon \HH(\U(\VV_n^-)) \xrightarrow{\sim} \QQ[Y_1^{\pm}, \dots, Y_m^{\pm}]^{W_m}.
 \end{align*}
 
 \section{Relation of Satake transformation to base change}
 Let
-\[ \BC \colon \HH(G', K') \to \HH(G, K) \]
+\[ \BC \colon \HH(\GL_n(E)) \to \HH(\U(\VV_n^-)) \]
 denote the stable base change morphism from $\GL_n(E)$ to the unitary group $\U$.
 The relevance of the Satake transformation is that
 (see e.g.\ \cite[Proposition 3.4]{ref:leslie})
@@ -149,9 +149,9 @@ it gives a way to make this $\BC$ completely explicit:
 we have a commutative diagram
 \begin{center}
 \begin{tikzcd}
-  \HH(G',K')  \ar[r, "\sim"', "\Sat"] \ar[d, "\BC"]
+  \HH(\GL_n(E))  \ar[r, "\sim"', "\Sat"] \ar[d, "\BC"]
     & \QQ[X_1^\pm, \dots, X_n^\pm]^{\Sym(n)} \ar[d, "\BC"] \\
-  \HH(G,K) \ar[r, "\sim"', "\Sat"]
+  \HH(\U(\VV_n^-)) \ar[r, "\sim"', "\Sat"]
     & \QQ[Y_1^\pm, \dots, Y_m^\pm]^{W_m}
 \end{tikzcd}
 \end{center}
@@ -163,15 +163,15 @@ in some situations.
 \section{The map $\BC^{\eta^{n-1}}_{S_n}$}
 Before we can define the map $\BC^{\eta^{n-1}}_{S_n}$
 we need one more piece of notation.
-Our prior map $\rproj \colon G' \surjto S_n(F)$ induces a map
+Our prior map $\rproj \colon \GL_n(E) \surjto S_n(F)$ induces a map
 \begin{align*}
-  \rproj_\ast \colon \HH(G', K') &\to \HH(S_n(F), K') \\
+  \rproj_\ast \colon \HH(\GL_n(E)) &\to \HH(S_n(F)) \\
   \rproj_\ast(f')\left( g\bar{g}\inv \right) &= \int_{\GL_n(F)} f'(gh) \odif h
 \end{align*}
 by integration on the fibers.
 A similar twisted version by $\eta$
 \begin{align*}
-  \rproj_\ast^\eta \colon \HH(G', K') &\to \HH(S_n(F), K') \\
+  \rproj_\ast^\eta \colon \HH(\GL_n(E)) &\to \HH(S_n(F)) \\
   \rproj_\ast^\eta(f')\left( g\bar{g}\inv \right) &= \int_{\GL_n(F)} f'(gh) \eta(gh) \odif h
 \end{align*}
 is defined analogously,
@@ -182,8 +182,8 @@ Then Leslie \cite{ref:leslie} shows the following result.
   [{\cite[Theorem 3.2 and Proposition 3.4]{ref:leslie}}]
   Both maps $\rproj_\ast$ and $\rproj_\ast^\eta$ induce isomorphisms
   \begin{align*}
-    \BC_{S_n} \colon \HH(S_n(F), K') &\xrightarrow{\sim} \HH(G', K') \\
-    \BC^{\eta^{n-1}}_{S_n} \colon \HH(S_n(F), K') &\xrightarrow{\sim} \HH(G', K')
+    \BC_{S_n} \colon \HH(S_n(F)) &\xrightarrow{\sim} \HH(\GL_n(E)) \\
+    \BC^{\eta^{n-1}}_{S_n} \colon \HH(S_n(F)) &\xrightarrow{\sim} \HH(\GL_n(E))
   \end{align*}
   such that
   \begin{align*}
@@ -198,11 +198,11 @@ as the definition of $\BC_{S_n}$ and $\BC^{\eta^{n-1}}_{S_n}$ in our conjectures
 When combined with the Satake information we have, we get the following diagram.
 \begin{center}
 \begin{tikzcd}
-  \HH(G',K') \ar[dd, "\rproj_\ast^{\eta^{n-1}}"', bend right = 60] \ar[r, "\sim"', "\Sat"] \ar[d, "\BC"]
+  \HH(\GL_n(E)) \ar[dd, "\rproj_\ast^{\eta^{n-1}}"', bend right = 60] \ar[r, "\sim"', "\Sat"] \ar[d, "\BC"]
     & \QQ[X_1^\pm, \dots, X_n^\pm]^{\Sym(n)} \ar[d, "\BC"] \\
-  \HH(G,K) \ar[r, "\sim"', "\Sat"]
+  \HH(\U(\VV_n^-)) \ar[r, "\sim"', "\Sat"]
     & \QQ[Y_1^\pm, \dots, Y_m^\pm]^{W_m} \\
-    \HH(S_n(F), K') \ar[u, "\sim", "\BC_{S_n}^{\eta^{n-1}}"']
+    \HH(S_n(F)) \ar[u, "\sim", "\BC_{S_n}^{\eta^{n-1}}"']
 \end{tikzcd}
 \end{center}
 
@@ -215,15 +215,15 @@ The completed result is \Cref{prop:BC_S3}.
 \subsection{Overview}
 Throughout this subsection, we use the shorthand
 \[ \varpi^{(n_1, n_2, n_3)} \coloneqq \diag(\varpi^{n_1}, \varpi^{n_2}, \varpi^{n_3}). \]
-As a $\QQ$-module, the spaces $\HH(G,K)$ and $\HH(S_n(F), K')$
+As a $\QQ$-module, the spaces $\HH(\U(\VV_n^-))$ and $\HH(S_n(F))$
 have a canonical basis of indicator functions indexed by $\ZZ$:
 \begin{itemize}
-  \ii $\HH(S_n(F), K')$ has $\QQ$-module basis $\mathbf{1}_{K'_{S,j}}$ for $j \ge 0$.
-  \ii $\HH(G,K)$ has a $\QQ$-module basis given by the indicator functions
-  \[ \mathbf{1}_{\varpi^{-r} \Mat(\OO_E) \cap G} \]
+  \ii $\HH(S_n(F))$ has $\QQ$-module basis $\mathbf{1}_{K'_{S,j}}$ for $j \ge 0$.
+  \ii $\HH(\U(\VV_n^-))$ has a $\QQ$-module basis given by the indicator functions
+  \[ \mathbf{1}_{\varpi^{-r} \Mat(\OO_E) \cap \U(\VV_n^-)} \]
   for $r \ge 0$.
 \end{itemize}
-On the other hand, the natural $\QQ$-module basis for $\HH(G', K')$, namely
+On the other hand, the natural $\QQ$-module basis for $\HH(\GL_n(E))$, namely
 \[ \mathbf{1}_{K'\varpi^{(n_1, n_2, n_3)}K'} \]
 is given by triples of integers $n_1 \ge n_2 \ge n_3 \ge 0$, and is much larger.
 So explicit calculations for the $\rproj_\ast$ or the Satake transforms viewed in
@@ -234,7 +234,7 @@ is to focus on only the $\ZZ$-indexed elements
 \[
   \mathbf{1}_{\Mat_3(\OO_E), v\circ\det=r}
   = \sum_{\substack{n_1 \ge n_2 \ge n_3 \\ n_1 + n_2 + n_3 = r}}
-  \mathbf{1}_{K'\varpi^{(n_1, n_2, n_3)}K'} \in \HH(G', K').
+  \mathbf{1}_{K'\varpi^{(n_1, n_2, n_3)}K'} \in \HH(\GL_n(E)).
 \]
 This aggregated indicator function is easier to compute,
 because given an explicit matrix it is somewhat easier
@@ -268,8 +268,8 @@ This is the easiest calculation, and we do it for all $n$ rather than just $n = 
       \end{bmatrix}
     \mid y_{12}, \dots, y_{(n-1)n}\in E \right\} \]
   and with additive Haar measure is $\odif{y_{12}, y_{23} \dotso, y_{(n-1)n}}$.
-  Recall also the Weyl vector for $G' = \GL_n(\OO_E)$ is just
-  \[ \rho_{G'} = \left< \frac{n-1}{2}, \frac{n-3}{2}, \dots, -\frac{n-1}{2} \right>. \]
+  Recall also the Weyl vector for $\GL_n(E)$ is just
+  \[ \rho_{\GL_n(E)} = \left< \frac{n-1}{2}, \frac{n-3}{2}, \dots, -\frac{n-1}{2} \right>. \]
   Compute
   \begin{align*}
     &\Sat(\mathbf{1}_{\Mat_n(\OO_E), v\circ\det=r})(\mu(\varpi)) \\
@@ -309,7 +309,7 @@ This is the easiest calculation, and we do it for all $n$ rather than just $n = 
 \subsection{Satake transform of the indicator on the bottom arrow}
 \begin{proposition}
   For each $r \ge 0$ we have
-  \[ \Sat\left(\mathbf{1}_{\varpi^{-r} \Mat_3(\OO_E) \cap G}\right)
+  \[ \Sat\left(\mathbf{1}_{\varpi^{-r} \Mat_3(\OO_E) \cap \U(\VV_3^-)}\right)
     = \sum_{i=0}^r q^{2r - \mathbf{1}_{r \equiv i \bmod 2}} Y_1^{\pm i} \]
   where we adopt the shorthand
   \[
@@ -321,7 +321,7 @@ This is the easiest calculation, and we do it for all $n$ rather than just $n = 
   \]
 \end{proposition}
 \begin{proof}
-  We first need to describe \[ N = N' \cap G \] a little more carefully.
+  We first need to describe \[ N = N' \cap \U(\VV_3^-) \] a little more carefully.
   For $n \in N'$ we have
   \[
     n^\ast \beta n
@@ -352,18 +352,18 @@ This is the easiest calculation, and we do it for all $n$ rather than just $n = 
   $\nu(\varpi) = \diag(\varpi^i, 1, \varpi^{-i})$, for the cocharacter $\nu$
   corresponding to $Y_1^i + Y_1^{-i}$:
   \begin{align*}
-    &\Sat\left( \mathbf{1}_{\varpi^{-r} \Mat_3(\OO_E) \cap G}\right)
+    &\Sat\left( \mathbf{1}_{\varpi^{-r} \Mat_3(\OO_E) \cap \U(\VV_3^-)}\right)
       \left( \nu(\varpi)  \right) \\
     &= \delta(\nu(\varpi))^\half \int_{n \in N}
-      \mathbf{1}_{\varpi^{-r} \Mat_3(\OO_E) \cap G}
+      \mathbf{1}_{\varpi^{-r} \Mat_3(\OO_E) \cap \U(\VV_3^-)}
       \left( \nu(\varpi) n' \right) \odif n \\
     &= \delta(\nu(\varpi))^\half \int_{n \in N}
-      \mathbf{1}_{{\varpi^{-r}} \Mat_3(\OO_E) \cap G}
+      \mathbf{1}_{{\varpi^{-r}} \Mat_3(\OO_E) \cap \U(\VV_3^-)}
       \left( \begin{bmatrix} \varpi^i & \varpi^i y_1 & \varpi^i y_2 \\
                & 1 & y_3 \\
                & & \varpi^{-i} \end{bmatrix} \right) \odif n
   \end{align*}
-  The matrix itself is always in $G$, because it's the product of two unitary matrices.
+  The matrix itself is always in $\U(\VV_3^-)$, because it's the product of two unitary matrices.
   So the indicator needs to check whether all the entries have valuation at least $-r$.
   If we switch characterization to the coordinates $z_1$, $z_2$, $z_3$ we described earlier,
   we see that the conditions are
@@ -392,7 +392,7 @@ This is the easiest calculation, and we do it for all $n$ rather than just $n = 
   Meanwhile, $\delta(\nu(\varpi))^{\half} = q^{-2i}$.
   In summary,
   \[
-    \Sat\left( \mathbf{1}_{\varpi^{-r} \Mat_3(\OO_E) \cap G}\right) \left( \nu(\varpi) \right)
+    \Sat\left( \mathbf{1}_{\varpi^{-r} \Mat_3(\OO_E) \cap \U(\VV_3^-)}\right) \left( \nu(\varpi) \right)
     =
     \begin{cases}
       q^{2\left\lfloor \frac{r+i}{2} \right\rfloor - i + r} & i \le r \\
@@ -525,15 +525,15 @@ This is the easiest calculation, and we do it for all $n$ rather than just $n = 
   as desired.
 \end{proof}
 
-\subsection{Base change from $\HH(G,K)$ to $\HH(S_3(F), K')$}
-We first need to determine an element of $\HH(G,K)$
+\subsection{Base change from $\HH(\U(\VV_3^-))$ to $\HH(S_3(F))$}
+We first need to determine an element of $\HH(\U(\VV_n^-))$
 which is in the pre-image of
-\[ \mathbf{1}_{\varpi^{-r} \Mat_3(\OO_E) \cap G} \]
-under $\BC \colon \HH(G', K') \to \HH(G, K)$.
+\[ \mathbf{1}_{\varpi^{-r} \Mat_3(\OO_E) \cap \U(\VV_3^-)} \]
+under $\BC \colon \HH(\GL_3(E)) \to \HH(\U(\VV_3^-))$.
 
 For convenience, we define the shorthand
 \[
-  \HH(G',K') \ni
+  \HH(\GL_3(E)) \ni
   f'_r \coloneqq \begin{cases}
     \mathbf{1}_{\Mat_3(\OO_E), v \circ \det = r} & r \ge 0 \\
     0 & r < 0
@@ -556,13 +556,13 @@ We start with the following intermediate calculation.
   &\BC\left( \Sat\left( f'_r + (q-q^2) f'_{r-1} - q^3 f'_{r-2} \right) \right) \\
   &= q^{2r} \left( Y_1^r + Y_1^{r-2} + \dots + Y_1^{-r} \right)
   + q^{2r-1} \left( Y_1^{r-1} + Y_1^{r-3} + \dots + Y_1^{-(r-1)} \right) \\
-  &= \Sat(\mathbf{1}_{\varpi^{-r} \Mat_3(\OO_E) \cap G}).
+  &= \Sat(\mathbf{1}_{\varpi^{-r} \Mat_3(\OO_E) \cap \U(\VV_3^-)}).
 \end{align*}
 This shows that
 \[ \BC(f'_r + (q-q^2) f'_{r-1} - q^3 f'_{r-2}) =
-  \mathbf{1}_{\varpi^{-r} \Mat_3(\OO_E) \cap G} \]
+  \mathbf{1}_{\varpi^{-r} \Mat_3(\OO_E) \cap \U(\VV_3^-)} \]
 so indeed $f'_r + (q-q^2) f'_{r-1} - q^3 f'_{r-2}$
-lies in the desired pre-image of the map $\BC \colon \HH(G', K') \to \HH(G,K)$.
+lies in the desired pre-image of the map $\BC \colon \HH(\GL_3(E)) \to \HH(\U(\VV_3^-))$.
 
 On the other hand, it is easy to check that
 \begin{align*}
@@ -582,11 +582,11 @@ On the other hand, it is easy to check that
 To summarize, the completed commutative diagram can be written in full as
 \begin{center}
 \begin{tikzcd}
-  \begin{tabular}{c} $f'_r + (q-q^2) f'_{r-1}$ \\ $- q^3 f'_{r-2} \in \HH(G',K')$ \end{tabular}
+  \begin{tabular}{c} $f'_r + (q-q^2) f'_{r-1}$ \\ $- q^3 f'_{r-2} \in \HH(\GL_3(E))$ \end{tabular}
     \ar[dd, "\rproj_\ast"', mapsto, bend right = 50]
     \ar[r, "\Sat", mapsto] \ar[d, "\BC", mapsto]
     & \dots \in \QQ[X_1^\pm, X_2^\pm, X_3^\pm]^{\Sym(3)} \ar[d, "\BC", mapsto] \\
-  \begin{tabular}{c} $\mathbf{1}_{\varpi{^-r} \Mat_3(\OO_E) \cap G}$ \\ $\in \HH(G,K)$ \end{tabular}
+  \begin{tabular}{c} $\mathbf{1}_{\varpi{^-r} \Mat_3(\OO_E) \cap \U(\VV_3^-)}$ \\ $\in \HH(\U(\VV_3^-))$ \end{tabular}
     \ar[r, "\Sat", mapsto]
     & \begin{tabular}{l}
       $q^{2r} \left( Y_1^{\pm r} + \dotsb + Y_1^{\mp r} \right)$ \\
@@ -596,8 +596,8 @@ To summarize, the completed commutative diagram can be written in full as
   \begin{tabular}{c}
     $\sum_{j=0}^r \big[ 1 + 2q + 2q^2$ \\
     $+ \dots + 2q^{r-j} \big] \mathbf{1}_{K'_{S,j}}$ \\
-    $\in \HH(S_n(F), K')$
-  \end{tabular} \ar[u, "\sim", "\BC_{S_n}"', mapsto]
+    $\in \HH(S_3(F))$
+  \end{tabular} \ar[u, "\sim", "\BC_{S_3}"', mapsto]
 \end{tikzcd}
 \end{center}
 
@@ -606,10 +606,10 @@ Thus, we arrive at the following:
   \label{prop:BC_S3}
   For $n = 3$, we have
   \begin{align*}
-    \BC_{S_n} \left( \sum_{j=0}^r \left[ 1 + 2q + 2q^2 + \dots + 2q^{r-j} \right]
+    \BC_{S_3} \left( \sum_{j=0}^r \left[ 1 + 2q + 2q^2 + \dots + 2q^{r-j} \right]
     \mathbf{1}_{K'_{S,j}} \right)
-    &= \mathbf{1}_{\varpi^{-r} \Mat_3(\OO_E) \cap G} \\
-    \BC_{S_n} \left( \mathbf{1}_{K'_{S,r}}
+    &= \mathbf{1}_{\varpi^{-r} \Mat_3(\OO_E) \cap \U(\VV_3^-)} \\
+    \BC_{S_3} \left( \mathbf{1}_{K'_{S,r}}
     + \sum_{j=0}^{r-1} 2q^{r-j} \mathbf{1}_{K'_{S,j}} \right)
     &= \mathbf{1}_{K\varpi^{(r,0,-r)}K}
   \end{align*}
@@ -620,8 +620,8 @@ Thus, we arrive at the following:
   The second one follows by noting that
   \[
     \mathbf{1}_{K\varpi^{(r,0,-r)}K}
-    = \mathbf{1}_{\varpi^{-r} \Mat_3(\OO_E) \cap G}
-    - \mathbf{1}_{\varpi^{-(r-1)} \Mat_3(\OO_E) \cap G}
+    = \mathbf{1}_{\varpi^{-r} \Mat_3(\OO_E) \cap \U(\VV_3^-)}
+    - \mathbf{1}_{\varpi^{-(r-1)} \Mat_3(\OO_E) \cap \U(\VV_3^-)}
   \]
   so one merely subtracts the left-hand sides evaluated at $r$ and $r-1$ for $r \ge 1$
   to get

@@ -1,7 +1,7 @@
 \chapter{Synopsis of the weighted orbital integral
   $\Orb((\gamma, \uu, \vv^\top), \phi \otimes \oneV, s)$
   for $(\gamma, \uu, \vv^\top) \in (S_2(F) \times V'_2(F))\rs$
-  and $\phi \in \HH(S_2(F), K')$}
+  and $\phi \in \HH(S_2(F))$}
 \label{ch:orbitalFJ0}
 
 Throughout this section, $H = \GL_n(F)$ (rather than $H = \GL_{n-1}(F)$)
@@ -13,7 +13,7 @@ We will not work in the generality of a function on all of $S_n(F) \times V_n'(F
 Instead, for our conjecture, it will be enough to define the weighted orbital integral
 in the case where our function is of the form
 \[ \phi \otimes \oneV \]
-where $\phi \in \HH(S_n(F), K')$ is the left component, and
+where $\phi \in \HH(S_n(F))$ is the left component, and
 the right component is the indicator function defined in the obvious way:
 \begin{align*}
   \mathbf{1}_{\OO_F^n \times (\OO_F^n)^\vee} \colon V'_n(F) &\to \{0,1\} \\
@@ -30,7 +30,7 @@ we analogously define the weighted orbital integral as follows.
 \begin{definition}
   For brevity let $\eta(h) \coloneqq \eta(\det h)$ for $h \in H$.
   For $\guv \in S_n(F) \times V'_n(F)$,
-  $\phi \in \HH(S_n(F), K')$, and $s \in \CC$,
+  $\phi \in \HH(S_n(F))$, and $s \in \CC$,
   we define the weighted orbital integral by
   \begin{align*}
     & \Orb((\gamma, \uu, \vv^\top), \phi \otimes \oneV, s) \\
@@ -42,7 +42,7 @@ we analogously define the weighted orbital integral as follows.
 
 As before it seems this weighted orbital integral should be related to an ordinary one.
 To define it, fix a self-dual lattice $\Lambda_n$ in $\VV_n^-$ of full rank.
-First, if $(g,u) \in \U(\VV_n^-) \times \VV_n^-$ and $f \in \HH(G,K)$,
+First, if $(g,u) \in \U(\VV_n^-) \times \VV_n^-$ and $f \in \HH(\U(\VV_n^-))$,
 then we define an orbital integral for $\U(\VV_n^-) \times \VV_n^-$ by
 \begin{equation}
   \Orb^{\U(\VV_n^-) \times \VV_n^-}\left( (g,u), f \otimes \mathbf{1}_{\Lambda_n} \right)
@@ -53,7 +53,7 @@ Then in the spirit of \cite[Conjecture 1.9]{ref:liuFJ}
 and \Cref{thm:rel_fundamental_lemma}, we propose the following.
 \begin{conjecture}
   \label{conj:rel_fundamental_lemma_semilie}
-  Let $\phi \in \HH(S_n(F), K')$ and $\guv \in (S_n(F) \times V_n')\rs$.
+  Let $\phi \in \HH(S_n(F))$ and $\guv \in (S_n(F) \times V_n')\rs$.
   If $\guv$ matches an element of $(\U(\VV_n^+) \times \VV_n^+)\rs$, then
   \[ \omega\guv \Orb(\phi \otimes \oneV, \guv, 0) = 0. \]
   If $\guv$ instead matches an element $g \in (\U(\VV_n^-) \times \VV_n^-)\rs$, then
@@ -65,7 +65,7 @@ Wei Zhang suggests that this conjecture can be proven by similar means
 to \Cref{thm:rel_fundamental_lemma},
 but since it is not necessary for this paper we do not pursue this proof here.
 
-\section{Basis for the indicator functions in $\HH(S_2(F), K')$}
+\section{Basis for the indicator functions in $\HH(S_2(F))$}
 From now on assume $n = 2$.
 This section is almost an exact analog of \Cref{ch:orbital0_hecke_basis},
 so we will be slightly terser.
@@ -96,10 +96,10 @@ And as before we abbreviate the $r = 0$ term specifically:
 Repeating the definition
 \[ K'_{S, \le r} \coloneqq S_2(F) \cap \varpi^{-r} \GL_2(\OO_E)
   = K'_{S,0} \sqcup K'_{S,1} \sqcup \dots \sqcup K'_{S,r} \]
-we get a basis of indicator functions for the Hecke algebra $\HH(S_2(F), K')$:
+we get a basis of indicator functions for the Hecke algebra $\HH(S_2(F))$:
 \begin{proposition}
   For $r \ge 0$, the indicator functions $\mathbf{1}_{K'_{S, \le r}}$
-  form a basis of $\HH(S_2(F), K')$.
+  form a basis of $\HH(S_2(F))$.
 \end{proposition}
 
 \section{Parametrization of $\gamma$}
