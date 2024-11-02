@@ -195,6 +195,12 @@
   \frametitle{Arithmetic fundamental lemma (W.\ Zhang 2012)}
   Analogous statement to Jacquet-Rallis fundamental lemma.
   For simplicity, stating the inhomogeneous version (the full version is more general).
+  \begin{definition}
+  For $\gamma \in S_n(F)$, $\phi \in \HH(S_n(F))$, and $s \in \CC$:
+  \[ \Orb(\gamma, \phi, s) \coloneqq
+    \int_{h \in \GL_{n-1}(F)} \phi(h\inv \gamma h) (-1)^{v(\det h)}
+    \left\lvert \det(h) \right\rvert_F^{-s} \odif h. \]
+  \end{definition}
   \begin{theorem}
   [Inhomogeneous AFL]
   For matching regular semisimple elements
@@ -204,31 +210,20 @@
     = \pm \left. \pdv{}{s} \right\rvert_{s=0} \Orb(\gamma, \mathbf{1}_K, s).
   \]
   \end{theorem}
-  \begin{exampleblock}{Terms to define in this statement}
-  \begin{itemize}
-    \ii Regular matching and semisimple
-    \ii Intersection number $\Int$
-    \ii Weighted orbital integral
-  \end{itemize}
-  \end{exampleblock}
 \end{frame}
 
-\begin{frame}
-  \frametitle{Regular semisimple definition}
-  \[ \begin{bmatrix} A & \uu \\ \vv^\top & d \end{bmatrix} \in \GL_n(E) \]
-  is \textbf{regular semi-simple} if
-  $\left[ \vv^\top A^{i+j-2} \uu \right]_{i,j=1}^{n-1}$
-  is non-singular.
-  \begin{itemize}
-    % \ii The matrix $A$ is $(n-1) \times (n-1)$.
-    \ii Write $\GL_n(E)\rs$ to denote semisimple elements.
-    \ii Equivalent to requiring that, under the action of conjugation by $\GL_{n-1}(E)$:
-    the matrix has trivial stabilizer; and
-    the $\GL_{n-1}(\ol E)$-orbit is a Zariski-closed subset of $\GL_n(\ol E)$.
-  \end{itemize}
-  Regular semisimple elements are acted on by conjugation under $\GL_{n-1}(E)$
-  (viewed as a subset of $\GL_n(E)$ by $g \mapsto \begin{bmatrix} g & 0 \\ 0 & 1 \end{bmatrix}$.)
-\end{frame}
+%\begin{frame}
+%  \frametitle{Regular semisimple definition}
+%  \begin{itemize}
+%    % \ii The matrix $A$ is $(n-1) \times (n-1)$.
+%    \ii Write $\GL_n(E)\rs$ to denote semisimple elements.
+%    \ii Equivalent to requiring that, under the action of conjugation by $\GL_{n-1}(E)$:
+%    the matrix has trivial stabilizer; and
+%    the $\GL_{n-1}(\ol E)$-orbit is a Zariski-closed subset of $\GL_n(\ol E)$.
+%  \end{itemize}
+%  Regular semisimple elements are acted on by conjugation under $\GL_{n-1}(E)$
+%  (viewed as a subset of $\GL_n(E)$ by $g \mapsto \begin{bmatrix} g & 0 \\ 0 & 1 \end{bmatrix}$.)
+%\end{frame}
 
 \begin{frame}
   \frametitle{Matching definition}
@@ -239,25 +234,25 @@
   %  for every $i = 0, 1, \dots, n-2$; and
   %  \ii We have $d_1 = d_2$.
   %\end{itemize}
+  \begin{definition}
+  $\begin{bmatrix} A & \uu \\ \vv^\top & d \end{bmatrix} \in \GL_n(E)$
+  is \textbf{regular semisimple} if
+  $\det \left[ \vv^\top A^{i+j-2} \uu \right]_{i,j=1}^{n-1} \neq 0$.
   We say $\gamma \in S_n(F)\rs$ \textbf{matches} the element $g \in \U(\VV_n^\pm)\rs$
-  if $g$ is conjugate to $\gamma$ by an element of $\GL_{n-1}(E)$.
-  Write this as
-  \[ g \in \U(\VV_n^\pm)\rs \longleftrightarrow \gamma \in S_n(F)\rs. \]
-  \begin{block}{Matching}
+  if $g$ is conjugate to $\gamma$ by an element of $\GL_{n-1}(E)$; write
+  $g \in \U(\VV_n^\pm)\rs \longleftrightarrow \gamma \in S_n(F)\rs$.
+  \end{definition}
+  \begin{block}{Matching criteria}
     \[ [S_n(F)]\rs \xrightarrow{\sim} [\U(\VV_n^-)]\rs \amalg [\U(\VV_n^+)]\rs. \]
     For $\gamma \in S_n(F)$, to tell which case we're in, let
     \[ \Delta \coloneqq \det \left[ \vv^\top A^{i+j-2} \uu \right]_{i,j=1}^{n-1} \neq 0. \]
-    We get $-$ if $v(\Delta)$ is even
-    and $+$ if $v(\Delta)$ is odd.
+    We get $\VV_n^-$ if $v(\Delta)$ is even
+    and $\VV_n^+$ if $v(\Delta)$ is odd.
   \end{block}
 \end{frame}
 
-\begin{frame}
-  \frametitle{Weighted orbital integral definition}
-  For $\gamma \in S_n(F)$, $\phi \in \HH(S_n(F))$, and $s \in \CC$:
-  \[ \Orb(\gamma, \phi, s) \coloneqq
-    \int_{h \in \GL_{n-1}(F)} \phi(h\inv \gamma h) (-1)^{v(\det h)}
-    \left\lvert \det(h) \right\rvert_F^{-s} \odif h. \]
+%\begin{frame}
+%  \frametitle{Weighted orbital integral definition}
 %  For comparison, the unweighted orbital for $f \in \HH(\U(\VV_n^-))$ is:
 %  \[ \Orb^{\U(\VV_n^-)}(g, f) \coloneqq \int_{\U(\VV_n^-)} f(x^{-1}gx) \odif x \]
 %  \begin{theorem}
@@ -271,7 +266,7 @@
 %      \end{cases}
 %    \]
 %  \end{theorem}
-\end{frame}
+%\end{frame}
 
 \begin{frame}
   \frametitle{Intersection number (briefly)}
@@ -296,19 +291,27 @@
 
 \begin{frame}
   \frametitle{Semi-Lie version of AFL by Yifeng Liu (2021)}
+  \begin{definition}
+  For $\guv \in S_n(F) \times \OO_F^n \times (\OO_F^n)^\vee$,
+  $\phi \in \HH(S_n(F))$, and $s \in \CC$,
+  \begin{align*}
+    & \Orb((\gamma, \uu, \vv^\top), \phi \otimes \oneV, s) \\
+    &\coloneqq \int_{h \in \GL_n(F)} \phi(h\inv \gamma h) \oneV(h \uu, \vv^\top h^{-1})
+      (-1)^{v(\det h)} \left\lvert \det(h) \right\rvert_F^{-s} \odif h.
+  \end{align*}
+  \end{definition}
+
   \begin{theorem}
     [AFL, semi-Lie version]
     If $(g, u) \in (\U(\VV_n^+) \times \VV_n^+)\rs \longleftrightarrow
-      (\gamma, \uu, \vv^\top) \in (S_n(F) \times \OO_F^n \times (\OO_F^n)^\vee)\rs$
-    then
+      (\gamma, \uu, \vv^\top) \in (S_n(F) \times \OO_F^n \times (\OO_F^n)^\vee)\rs$:
     \[
       \Int\left( (g,u), \mathbf{1}_{K'} \right) \log q
       = \pm \left. \pdv{}{s} \right\rvert_{s=0}
       \Orb(\guv, \mathbf{1}_K \otimes \oneV, s).
     \]
   \end{theorem}
-  Equivalent to Zhang's proposed Bessel-period AFL for $\U(n) \times \U(n+1)$;
-  in fact the interplay is used in the induction proof of both.
+  Equivalent to Zhang's Bessel-period AFL; induction uses both!
 \end{frame}
 
 \begin{frame}
@@ -317,24 +320,17 @@
   $(g,u) \mapsto \begin{bmatrix} g & u \\ u^\ast & 0 \end{bmatrix} \in \GL_{n+1}(E)$
   and $\guv \mapsto \begin{bmatrix} \gamma & \uu \\ \vv^\top & 0 \end{bmatrix} \in \GL_{n+1}(E)$.
 
-  \begin{block}{Matching in semi-Lie case}
+  \begin{block}{Matching criteria in semi-Lie case}
   \[ [S_n(F) \times \OO_F^n \times (\OO_F^n)^\vee]\rs \xrightarrow{\sim} [\U(\VV_n^-) \times \VV_n^-]\rs \amalg [\U(\VV_n^+) \times \VV_n^+]\rs. \]
   To see which one, define
   \[ \Delta \coloneqq \det \left[ \vv^\top \gamma^{i+j-2} \uu \right]_{i,j=1}^n \neq 0. \]
-  We get $-$ if $v(\Delta)$ is even
-  and $+$ if $v(\Delta)$ is odd.
+  We get $\VV_n^-$ if $v(\Delta)$ is even
+  and $\VV_n^+$ if $v(\Delta)$ is odd.
   \end{block}
 \end{frame}
 
-\begin{frame}
-  \frametitle{Weighted orbital integral}
-  For $\guv \in S_n(F) \times \OO_F^n \times (\OO_F^n)^\vee$,,
-  $\phi \in \HH(S_n(F))$, and $s \in \CC$,
-  \begin{align*}
-    & \Orb((\gamma, \uu, \vv^\top), \phi \otimes \oneV, s) \\
-    &\coloneqq \int_{h \in \GL_n(F)} \phi(h\inv \gamma h) \oneV(h \uu, \vv^\top h^{-1})
-      (-1)^{v(\det h)} \left\lvert \det(h) \right\rvert_F^{-s} \odif h.
-  \end{align*}
+%\begin{frame}
+%  \frametitle{Weighted orbital integral}
 %  Unweighted version, where $f \in \HH(\U(\VV_n^-))$,
 %  and $\Lambda_n$ is a self-dual lattice:
 %  \[
@@ -353,7 +349,7 @@
 %      \end{cases}
 %    \]
 %  \end{exampleblock}
-\end{frame}
+%\end{frame}
 
 \begin{frame}
   \frametitle{Intersection number (briefly)}
@@ -362,7 +358,7 @@
     \ii Let $\Delta_{\ZD(u)}$ be the image of $\ZD(u) \to \RZ_n \to \RZ_{n,n}$,
     where the last arrow is diagonal morphism.
     \ii $\Gamma_g$ is the graph of the automorphism of $\RZ_n$ induced by $g$,
-    viewed inside $\RZ_{n,n}$
+    viewed inside $\RZ_{n,n}$.
   \end{itemize}
   \begin{definition}
     \begin{align*}
@@ -398,7 +394,7 @@
 
 
 \begin{frame}
-  \frametitle{Leslie's generalization of the fundamental lemma}
+  \frametitle{Leslie's generalization of Jacquet-Rallis fundamental lemma}
   As before $G'^\flat \coloneqq \GL_{n-1}(E)$, $G' \coloneqq \GL_n(E)$,
   $G^\flat \coloneqq \U((\VV_n^-)^\flat)(F)$, $G \coloneqq \U(\VV_n^-)(F)$.
 
@@ -418,13 +414,13 @@
 \begin{frame}
   \frametitle{AFL conjectured for the full spherical Hecke algebra}
   \begin{exampleblock}{Conjecture (Li-Rapoport-Zhang 2024)}
-    Let \alert{$f \in \HH(\U(\VV_n^-))$} and \alert{$\phi \in \HH(S_n(F))$}.
-    Suppose \alert{$f$ and $\phi$ are related by base change}.
+    Let \alert{$f \in \HH(\U(\VV_n^-))$} and \alert{$\phi \in \HH(S_n(F))$}
+    be \alert{related by base change}.
     Then for matching $g \in \U(\VV_n^+)\rs \longleftrightarrow \gamma \in S_n(F)\rs$:
-    we have
     \[ \Int\left( (1,g), \mathbf{1}_{K'^\flat} \otimes \alert{f} \right) \log q
     = \pm \left. \pdv{}{s} \right\rvert_{s=0} \Orb(\gamma, \alert{\phi}, s). \]
   \end{exampleblock}
+  \only<1>{
   AFL is special case $f = \mathbf{1}_{K'}$ and $\phi = \mathbf{1}_K$.
   \begin{block}{Updated intersection number}
     New Hecke operator $\TT_{\mathbf{1}_{K^\flat} \otimes f}$.
@@ -435,17 +431,8 @@
         \jiao_{\Sheaf_{\RZ_{n-1,n}}} \Sheaf_{(1,g) \cdot \Delta_{\RZ_{n-1}}} \right).
     \]
   \end{block}
-\end{frame}
-
-\begin{frame}
-  \frametitle{AFL conjectured for the full spherical Hecke algebra}
-  \begin{exampleblock}{Conjecture (Li-Rapoport-Zhang 2024)}
-    Let \alert{$f \in \HH(\U(\VV_n^-))$} and \alert{$\phi \in \HH(S_n(F))$}
-    be \alert{related by base change}.
-    Then for matching $g \in \U(\VV_n^+)\rs \longleftrightarrow \gamma \in S_n(F)\rs$:
-    \[ \Int\left( (1,g), \mathbf{1}_{K'^\flat} \otimes \alert{f} \right) \log q
-    = \pm \left. \pdv{}{s} \right\rvert_{s=0} \Orb(\gamma, \alert{\phi}, s). \]
-  \end{exampleblock}
+  }
+  \only<2>{
   \begin{theorem}
     [Li-Rapoport-Zhang 2024]
     True for $n = 2$.
@@ -456,6 +443,7 @@
   \ii Was able to compute the orbital integral (surprisingly nice).
   \ii However, didn't understand geometric side enough to compute it.
   \end{itemize}
+  }
 \end{frame}
 
 \begin{frame}
