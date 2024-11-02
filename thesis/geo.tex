@@ -115,21 +115,20 @@ Now, take the natural closed embedding
 \[ \RZ_{n-1} \to \RZ_n \]
 and let
 \[ \Delta \colon \RZ_{n-1} \hookrightarrow \RZ_{n-1,n} \]
-be the associated graph morphism.
-Then we denote by $\iota \colon \Delta(\RZ_n) \hookrightarrow \RZ_{n-1,n}$
-the inclusion mapping of $\Delta$.
+be the associated graph morphism; let $\Delta_{\RZ_{n-1}}$ denote the image,
+with an inclusion $\iota \colon \Delta_{\RZ_{n-1}} \hookrightarrow \RZ_{n-1,n}$.
 Once this is done, consider then the diagram
 \begin{center}
 \begin{tikzcd}
-  & \pi_1^\ast(\Delta_{\RZ_{n-1,n}}) \ar[ld] \ar[r] \ar[rd]
+  & \pi_1^\ast(\Delta_{\RZ_{n-1}}) \ar[ld] \ar[r] \ar[rd]
     & \ar["\pi_1" near end, ld] \mathcal T_{\mathbf{1}_{K^\flat} \otimes f}
       \ar["\pi_2" near end, rd] \\
-  \Delta_{\RZ_{n-1,n}} \ar[r, "\iota"', hook] & \RZ_{n-1,n}
+  \Delta_{\RZ_{n-1}} \ar[r, "\iota"', hook] & \RZ_{n-1,n}
   & (\pi_2)_\ast(\pi_1^\ast(\Delta_{\RZ_{n-1,n}})) \ar[r] & \RZ_{n-1,n}.
 \end{tikzcd}
 \end{center}
 That is, one takes the pullback of
-$\Delta_{\RZ_{n-1,n}} \xhookrightarrow{\iota} \RZ_{n-1,n}$
+$\Delta_{\RZ_{n-1}} \xhookrightarrow{\iota} \RZ_{n-1,n}$
 along the projection
 \[ \RZ_{n-1,n} \xleftarrow{\pi_1} \mathcal{T}_{\mathbf{1}_{K^\flat} \otimes f} \]
 and then takes the pushforward along the other projection
@@ -137,14 +136,14 @@ and then takes the pushforward along the other projection
 \begin{definition}
   Set
   \[
-    \TT_{\mathbf{1}_{K^\flat} \otimes f} (\Delta_{\RZ_{n-1,n}})
-    \coloneqq (\pi_2)_\ast(\pi_1^\ast(\Delta_{\RZ_{n-1,n}})).
+    \TT_{\mathbf{1}_{K^\flat} \otimes f} (\Delta_{\RZ_{n-1}})
+    \coloneqq (\pi_2)_\ast(\pi_1^\ast(\Delta_{\RZ_{n-1}})).
   \]
 \end{definition}
 This is the part of the intersection number depending on $f$
 (or rather $\TT_{\mathbf{1}_{K^\flat} \otimes f}$).
 As for our $g \in \U(\VV_n^+)\rs$,
-consider the translation $(1,g) \cdot \Delta_{\RZ_{n-1,n}}$.
+consider the translation $(1,g) \cdot \Delta_{\RZ_{n-1}}$.
 The intersection number is then defined as by taking the intersection
 of these two objects using the derived tensor product $\jiao$ of the structure sheaves.
 \begin{definition}
