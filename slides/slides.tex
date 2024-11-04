@@ -175,7 +175,7 @@
 %\end{frame}
 
 \begin{frame}
-  \frametitle{Jacquet-Rallis fundamental lemma (2011)}
+  \frametitle{Jacquet-Rallis fundamental lemma}
   \begin{itemize}
   \ii $(\VV_n^-)^\flat$ codimension one subspace in $\VV_n^-$.
   \ii $G'^\flat \coloneqq \GL_{n-1}(E)$, $G' \coloneqq \GL_n(E)$,
@@ -188,11 +188,11 @@
     we get
    \[ \Orb(\gamma, \mathbf{1}_{K'^\flat \times K'}) = \pm \Orb(g, \mathbf{1}_{K^\flat \times K}) \]
   \end{block}
-  Now proved completely; a local proof was given by Beuzart-Plessis (2021)
-  while a global proof was given for large characteristic by W.\ Zhang (2021).
+  %Now proved completely; a local proof was given by Beuzart-Plessis (2021)
+  %while a global proof was given for large characteristic by W.\ Zhang (2021).
 \end{frame}
 \begin{frame}
-  \frametitle{Arithmetic fundamental lemma (W.\ Zhang 2012)}
+  \frametitle{Arithmetic fundamental lemma}
   Analogous statement to Jacquet-Rallis fundamental lemma.
   For simplicity, stating the inhomogeneous version (the full version is more general).
   \begin{definition}
@@ -439,8 +439,8 @@
   \end{theorem}
   Tried to mimic the proof for $n = 3$ of original AFL from W.\ Zhang 2012.
   \begin{itemize}
-  \ii Was able to make the base change explicit enough to use for $n = 3$.
-  \ii Was able to compute the orbital integral (surprisingly nice).
+  \ii Was able to compute the base change for $n = 3$.
+  \ii Was able to compute the orbital integral too.
   \ii However, didn't understand geometric side enough to compute it.
   \end{itemize}
   }
@@ -448,7 +448,17 @@
 
 \begin{frame}
   \frametitle{An example of an AFL orbital integral ($n=3$)}
-  TODO
+  \begin{align*}
+    \Orb(\dots) &= q^{-4s} &&- (3q^3+q^2+q+1) q^{5s} \\
+    &- (q+1)q^{-3s} &&+ (3q^3+q^2+q+1) q^{6s} \\
+    &+ (q^2+q+1) q^{-2s} &&- (2q^3+q^2+q+1) q^{7s} \\
+    &- (q^2+q+1) q^{-s} &&+ (2q^3+q^2+q+1) q^{8s} \\
+    &+ (q^3+q^2+q+1) &&- (q^3+q^2+q+1) q^{9s} \\
+    &- (2q^3+q^2+q+1) q^s &&+ (q^2+q+1) q^{10s}\\
+    &+ (2q^3+q^2+q+1) q^{2s} &&- (q^2+q+1)q^{11s} \\
+    &- (3q^3+q^2+q+1) q^{3s} &&+ (q+1) q^{12s} \\
+    &+ (3q^3+q^2+q+1) q^{4s} &&- q^{13s}. \\
+  \end{align*}
 \end{frame}
 
 \begin{frame}
@@ -476,8 +486,19 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{An example of semi-Lie orbital integral ($n=2$)}
-  TODO
+  \frametitle{An example of a semi-Lie orbital integral ($n=2$)}
+  For $n=1$, the Hecke algebra is trivial, so $n = 2$ is the first case to examine.
+  \begin{align*}
+    \Orb(\dots) &= -q^{-5s} &&+ (3q^3+q^2+q+1) q^{4s} \\
+    &+ q^{-4s} &&- (2q^3+q^2+q+1) q^{5s} \\
+    &- (q+1) q^{-3s} &&+ (q^3+q^2+q+1) q^{6s} \\
+    &+ (q+1) q^{-2s} &&- (q^2+q+1) q^{7s} \\
+    &- (q^2+q+1) q^{-s} &&+ (q^2+q+1) q^{8s} \\
+    &+ (q^2+q+1) &&- (q+1) q^{9s}\\
+    &- (q^3+q^2+q+1) q^{s} &&+ (q+1)q^{10s} \\
+    &+ (2q^3+q^2+q+1) q^{2s} &&- q^{11s} \\
+    &- (3q^3+q^2+q+1) q^{3s} &&+ q^{12s}. \\
+  \end{align*}
 \end{frame}
 
 \end{document}
