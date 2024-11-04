@@ -152,15 +152,13 @@ Recall that we have the notation
 Define $\ZO4(u)^\circ$ and $\ZO3(u)^\circ$ similarly.
 
 \begin{lemma}
-  Let $u \in \VV_n^-$, and consider it as an element $u \in \DD \simeq E \oplus E \Pi$.
-  Accordingly write $u = u_0 + u_-$, where $u_0 \in E$ and $u_- \in E \Pi$.
+  Let $u \in \VV_n^-$, and consider it as an element $u \in \DD$.
   Then pullback along the Serre tensor construction identifies
-  \[ \Serre^\ast \ZD(u)^\circ \simeq \ZO3(u_-)^\circ. \]
+  \[ \Serre^\ast \ZD(u)^\circ \simeq \ZO3(u^\ast \sqrt{\eps} u)^\circ. \]
 \end{lemma}
 \begin{proof}
   \todo{find a reference}
 \end{proof}
-
 
 \section{The intersection number as a triple product}
 We return to the intersection number
@@ -177,9 +175,9 @@ So, we proceed to compute
 \begin{align*}
   \Big\langle (1,g) \cdot \mathcal{T}_m, \; \Delta(\ZD(u)^\circ) \Big\rangle_{\RZ_{2,2}}
   &= \left< \ZO4(\varpi^m g), \; \Delta(\Serre^\ast(\ZD(u))^\circ) \right>_{\MM_2 \times \MM_2} \\
-  &= \left< \ZO4(\varpi^m g), \; \ZO3(u_-)^\circ \right>_{\MM_2 \times \MM_2} \\
-  &= \left< \ZO4(\varpi^m g), \; \ZO4(1)^\circ, \; \ZO4(u_-)^\circ \right>_{\MM_2 \times \MM_2} \\
-  &= \left< \ZO4(\varpi^m g), \; \ZO4(1), \; \ZO4(u_-)^\circ \right>_{\MM_2 \times \MM_2}.
+  &= \left< \ZO4(\varpi^m g), \; \ZO3(u^\ast \sqrt{\eps} u)^\circ \right>_{\MM_2 \times \MM_2} \\
+  &= \left< \ZO4(\varpi^m g), \; \ZO4(1)^\circ, \; \ZO4(u^\ast \sqrt{\eps} u)^\circ \right>_{\MM_2 \times \MM_2} \\
+  &= \left< \ZO4(\varpi^m g), \; \ZO4(1), \; \ZO4(u^\ast \sqrt{\eps} u)^\circ \right>_{\MM_2 \times \MM_2}.
 \end{align*}
 
 \section{The formula of Gross-Keating}
@@ -191,8 +189,6 @@ We specialize to the situation where $u \in \OO_\DD$,
 and we have
 \[ g \in \SU(\VV_n^-) = \left\{
     \begin{bmatrix} \alpha & \beta \\ \varpi\bar\beta & \bar\alpha \end{bmatrix}
-    \mid \alpha, \beta \in E
-  \right\}.
-\]
+    \mid \alpha, \beta \in E \right\}. \]
 Under the identification with $\DD$ this becomes simply
 \[ g = \alpha + \beta \Pi \in \OO_\DD. \]
