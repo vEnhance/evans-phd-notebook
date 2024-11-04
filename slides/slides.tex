@@ -394,7 +394,7 @@
 
 
 \begin{frame}
-  \frametitle{Leslie's generalization of Jacquet-Rallis fundamental lemma}
+  \frametitle{Leslie's generalization of Jacquet-Rallis fundamental lemma to the full spherical Hecke algebra}
   As before $G'^\flat \coloneqq \GL_{n-1}(E)$, $G' \coloneqq \GL_n(E)$,
   $G^\flat \coloneqq \U((\VV_n^-)^\flat)(F)$, $G \coloneqq \U(\VV_n^-)(F)$.
 
@@ -462,8 +462,8 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{Semi-Lie version of AFL conjecture}
-  \begin{exampleblock}{Conjecture}
+  \frametitle{Semi-Lie AFL conjectured for full spherical Hecke algebra}
+  \begin{exampleblock}{Conjecture (October 2024)}
     Let \alert{$f \in \HH(\U(\VV_n^-))$} and \alert{$\phi \in \HH(S_n(F))$}
     be \alert{related by base change}, and
     \[ (g, u) \in (\U(\VV_n^+) \times \VV_n^+)\rs \longleftrightarrow
@@ -475,6 +475,7 @@
       \Orb(\guv, \alert{\phi} \otimes \oneV, s).
     \]
   \end{exampleblock}
+  \only<1>{
   \begin{block}{Updated definition of intersection number}
     \[
       \Int((g,u), f)
@@ -483,11 +484,20 @@
       \jiao_{\Sheaf_{\RZ_{n,n}}} \Sheaf_{\Gamma_g} \right).
     \]
   \end{block}
+  }
+  \only<2>{
+  \begin{exampleblock}{Current status of work on $n = 2$ case}
+  \begin{itemize}
+    \ii Orbital is computed, and base change is easy.
+    \ii $\Int(\dots)$ easier to work with here because one gets a
+    Lubin-Tate space $\mathcal{M}_2$, and can use \alert{Gross-Keating}.
+  \end{itemize}
+  \end{exampleblock}
+  }
 \end{frame}
 
 \begin{frame}
   \frametitle{An example of a semi-Lie orbital integral ($n=2$)}
-  For $n=1$, the Hecke algebra is trivial, so $n = 2$ is the first case to examine.
   \begin{align*}
     \Orb(\dots) &= -q^{-5s} &&+ (3q^3+q^2+q+1) q^{4s} \\
     &+ q^{-4s} &&- (2q^3+q^2+q+1) q^{5s} \\
@@ -499,6 +509,14 @@
     &+ (2q^3+q^2+q+1) q^{2s} &&- q^{11s} \\
     &- (3q^3+q^2+q+1) q^{3s} &&+ q^{12s}. \\
   \end{align*}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Links}
+  \begin{itemize}
+    \ii \url{https://web.evanchen.cc/upload/thesis-draft.pdf}
+    \ii \url{https://github.com/vEnhance/evans-phd-notebook}
+  \end{itemize}
 \end{frame}
 
 \end{document}
