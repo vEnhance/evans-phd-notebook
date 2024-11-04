@@ -62,11 +62,11 @@ which links values of certain orbital integrals
 over two reductive groups over a non-Archimedean local field.
 
 Let's be a bit more precise about what this fundamental lemma says.
-Let $\VV_n^-$ denote the split $E/F$-Hermitian space of dimension $n$ (unique up to isomorphism),
+Let $\VV_n^+$ denote the split $E/F$-Hermitian space of dimension $n$ (unique up to isomorphism),
 fix a unit vector $w_0$ in it,
-and let $(\VV_n^-)^\flat$ be the orthogonal complement of the span of $w_0$.
+and let $(\VV_n^+)^\flat$ be the orthogonal complement of the span of $w_0$.
 Let $G'^\flat \coloneqq \GL_{n-1}(E)$, $G' \coloneqq \GL_n(E)$,
-$G^\flat \coloneqq \U((\VV_n^-)^\flat)(F)$ and $G \coloneqq \U(\VV_n^-)(F)$.
+$G^\flat \coloneqq \U((\VV_n^+)^\flat)(F)$ and $G \coloneqq \U(\VV_n^+)(F)$.
 For certain
 \[ \gamma \in G'^\flat \times G', \qquad g \in G^\flat \times G \]
 the Jacquet-Rallis fundamental lemma proposes a relation between two orbital integrals.
@@ -80,7 +80,7 @@ Specifically, it supplies a relation between
 \item the orbital integral of $g$ with respect to
   the indicator function $\mathbf{1}_{K^\flat \times K}$
   of the natural hyperspecial compact subgroup
-  \[ K^\flat \times K \subset G^\flat \times G = \U((\VV_n^-)^\flat)(F) \times \U(\VV_n^-)(F). \]
+  \[ K^\flat \times K \subset G^\flat \times G = \U((\VV_n^+)^\flat)(F) \times \U(\VV_n^+)(F). \]
 \end{itemize}
 In other words, it states that
 \begin{equation}
@@ -165,15 +165,15 @@ In contrast to the vague motivational cheerleading in the previous section,
 starting in this section we will give more precise statements,
 even though we will necessarily need to reference definitions appearing in later sections.
 
-Retain the notation $G' \coloneqq \GL_n(E)$, and $G \coloneqq \U(\VV_n^-)(F)$,
+Retain the notation $G' \coloneqq \GL_n(E)$, and $G \coloneqq \U(\VV_n^+)(F)$,
 with $K' \subset G'$ and $K \subset G$ the natural hyperspecial compact subgroups.
 Also, let $q$ denote the residue characteristic of $F$.
 Moreover, define the symmetric space
 \[ S_n(F) \coloneqq \left\{ g \in \GL_n(E) \mid g \bar{g} = \id_n \right\}. \]
-Finally, let $\VV_n^+$ be the non-split Hermitian space of dimension $n$
+Finally, let $\VV_n^-$ be the non-split Hermitian space of dimension $n$
 (unique up to isomorphism),
-and let $\VV_n^-$ be the split one (again unique up to isomorphism).
-Denote by $\U(\VV_n^+)$ the corresponding unitary groups.
+and let $\VV_n^+$ be the split one (again unique up to isomorphism).
+Denote by $\U(\VV_n^-)$ the corresponding unitary groups.
 
 For concreteness, we focus on the inhomogeneous version
 of the arithmetic fundamental lemma, which is \cite[Conjecture 6.2.1]{ref:AFLspherical}.
@@ -181,7 +181,7 @@ This allows us to deal with just $G'$ instead of $G'^\flat \times G'$, etc.,
 so that the Hecke algebra $\HH(G'^\flat \times G', K'^\flat \times K')$
 can be replaced by the simpler one $\HH(\GL_n(E)) \coloneqq \HH(G', K')$.
 Similarly, $\HH(G^\flat \times G, K^\flat \times K)$
-can be replaced by the simpler $\HH(\U(\VV_n^-)) \coloneqq \HH(G, K)$.
+can be replaced by the simpler $\HH(\U(\VV_n^+)) \coloneqq \HH(G, K)$.
 
 The AFL conjecture provides a bridge between a geometric left-hand side
 (given by an intersection number)
@@ -192,8 +192,8 @@ We only mention these pieces by name here, with definitions given later:
   \ii On the geometric side, we have an intersection number.
   It uses the following ingredients.
   \begin{itemize}
-    \ii We choose a regular semisimple element $g \in \U(\VV_n^+)\rs$.
-    (The notation $\U(\VV_n^+)\rs$ denotes the regular semisimple elements of $\U(\VV_n^+)$, etc.
+    \ii We choose a regular semisimple element $g \in \U(\VV_n^-)\rs$.
+    (The notation $\U(\VV_n^-)\rs$ denotes the regular semisimple elements of $\U(\VV_n^-)$, etc.
     The notion of regular semisimple is defined in \Cref{def:regular}.)
     \ii We choose a function $f \in \HH(\GL_n(E))$ from the spherical Hecke algebra,
     defined in \Cref{ch:background}.
@@ -220,15 +220,15 @@ We only mention these pieces by name here, with definitions given later:
   Specifically, $f$ and $\phi$ need to be linked, and $g$ and $\gamma$ need to be linked.
   This is done as follows.
   \begin{itemize}
-    \ii Once the regular semisimple element $g \in \U(\VV_n^+)\rs$ is chosen,
+    \ii Once the regular semisimple element $g \in \U(\VV_n^-)\rs$ is chosen,
     we require $\gamma \in S_n(F)\rs$ to be a \emph{matching} element.
     This matching is defined in \Cref{def:matching_inhomog}.
     (Alternatively, one could imagine picking $\gamma \in S_n(F)\rs$ first
     and finding corresponding $g$;
     it turns out $\gamma$ will match an element of $\U(\VV_n^\pm)\rs$ is general,
-    and the conjecture is only formulated in the case where $g \in \U(\VV_n^+)$).
+    and the conjecture is only formulated in the case where $g \in \U(\VV_n^-)$).
 
-    \ii Once $f \in \HH(\U(\VV_n^-))$ is chosen, we select
+    \ii Once $f \in \HH(\U(\VV_n^+))$ is chosen, we select
     \[ \phi = (\BC_{S_n}^{\eta^{n-1}})^{-1}(f) \]
     to be the image of $f$ under a \emph{base change}.
     This base change is defined and then calculated explicitly for $n = 3$ in \Cref{ch:satake}.
@@ -240,11 +240,11 @@ we can now state the conjecture proposed in \cite{ref:AFLspherical}.
   [Inhomogeneous version of the AFL for the full spherical Hecke algebra,
   {\cite[Conjecture 6.2.1]{ref:AFLspherical}}]
   \label{conj:inhomog}
-  Let $f \in \HH(\U(\VV_n^-))$ be any element of the Hecke algebra,
+  Let $f \in \HH(\U(\VV_n^+))$ be any element of the Hecke algebra,
   and let $\phi = (\BC_{S_n}^{\eta^{n-1}})^{-1}(f) \in \HH(S_n(F))$ be its image
   under base change as defined in \Cref{ch:satake}.
   Then for matching (as defined in \Cref{def:matching_inhomog}) regular semisimple elements
-  \[ g \in \U(\VV_n^+)\rs \longleftrightarrow \gamma \in S_n(F)\rs \]
+  \[ g \in \U(\VV_n^-)\rs \longleftrightarrow \gamma \in S_n(F)\rs \]
   we have
   \begin{equation}
     \Int\left( (1,g), \mathbf{1}_{K'^\flat} \otimes f \right) \log q
@@ -259,7 +259,7 @@ we can now state the conjecture proposed in \cite{ref:AFLspherical}.
 At present, the (inhomogeneous) AFL is the case where $f = \mathbf{1}_K$,
 and is thus proven.
 Note that in the case of interest where $\gamma \in S_n(F)\rs$
-matches an element of $\U(\VV_n^+)\rs$ (rather than $\U(\VV_n^-)\rs$),
+matches an element of $\U(\VV_n^-)\rs$ (rather than $\U(\VV_n^+)\rs$),
 the actual value of $\Orb(\gamma, \phi, s)$ at $s = 0$ is always zero
 by \Cref{thm:rel_fundamental_lemma};
 so the conjecture instead looks at the first derivative at $s = 0$.
@@ -308,14 +308,14 @@ It serves to complete the analogy given in \Cref{tab:semi_lie_analogy}.
 \end{table}
 
 In this variation, as in \cite{ref:liuFJ},
-rather than matching $g \in \U(\VV_n^+)\rs$ to $\gamma \in S_n(F)\rs$,
-we consider an augmented space larger than $\U(\VV_n^+)$ and $S_n(F)$.
+rather than matching $g \in \U(\VV_n^-)\rs$ to $\gamma \in S_n(F)\rs$,
+we consider an augmented space larger than $\U(\VV_n^-)$ and $S_n(F)$.
 Specifically, one considers a matching between tuples of regular semisimple elements
-\[ (g, u) \in (\U(\VV_n^+) \times \VV_n^+)\rs
+\[ (g, u) \in (\U(\VV_n^-) \times \VV_n^-)\rs
   \longleftrightarrow (\gamma, \uu, \vv^\top) \in (S_n(F) \times V_n'(F))\rs \]
 where $V_n'(F)$ (defined in \Cref{def:matching_semi_lie})
 consists of pairs of column vectors and row vectors of length $n$,
-and the space $\VV_n^+$ is defined in \Cref{def:VV_n_nonsplit}.
+and the space $\VV_n^-$ is defined in \Cref{def:VV_n_nonsplit}.
 The notion of \emph{matching} is defined in \Cref{def:matching_semi_lie} as well.
 Meanwhile, we still use the same test functions $f$ and $\phi$,
 as we did for \cite[Conjecture 6.2.1]{ref:AFLspherical}.
@@ -324,11 +324,11 @@ to accommodate the new term $u$ in \Cref{def:intersection_number_semi_lie_spheri
 
 \begin{conjecture}
   [Semi-Lie version of the AFL for the full spherical Hecke algebra]
-  Let $f \in \HH(\U(\VV_n^-))$ be any element of the Hecke algebra,
+  Let $f \in \HH(\U(\VV_n^+))$ be any element of the Hecke algebra,
   and let $\phi = (\BC_{S_n}^{\eta^{n-1}})^{-1}(f) \in \HH(S_n(F))$ be its image
   under base change defined in \Cref{ch:satake}.
   Then for matching (as defined in \Cref{def:matching_semi_lie}) regular semisimple elements
-  \[ (g, u) \in (\U(\VV_n^+) \times \VV_n^+)\rs \longleftrightarrow
+  \[ (g, u) \in (\U(\VV_n^-) \times \VV_n^-)\rs \longleftrightarrow
     \guv \in (S_n(F) \times V_n')\rs \]
   we have
   \begin{equation}

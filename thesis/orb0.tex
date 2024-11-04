@@ -23,19 +23,19 @@ Then our weighted orbital integral is defined as follows.
 We remark that this weighted orbital integral is related to
 a normal orbital integral on the unitary side
 by the so-called relative fundamental lemma.
-Specifically, for $g \in \U(\VV_n^-)$ and $f \in \HH(\U(\VV_n^-))$,
+Specifically, for $g \in \U(\VV_n^+)$ and $f \in \HH(\U(\VV_n^+))$,
 we define the normal orbital integral by
-\[ \Orb^{\U(\VV_n^-)}(g, f) \coloneqq \int_{\U(\VV_n^-)} f(x^{-1}gx) \odif x. \]
+\[ \Orb^{\U(\VV_n^+)}(g, f) \coloneqq \int_{\U(\VV_n^+)} f(x^{-1}gx) \odif x. \]
 Then the following result is true.
 \begin{theorem}
   [Relative fundamental lemma; {\cite[Theorem 1.1]{ref:leslie}}]
   \label{thm:rel_fundamental_lemma}
   Let $\phi \in \HH(S_n(F))$ and $\gamma \in S_n(F)\rs$.
-  If $\gamma$ matches an element of $\U(\VV_n^+)\rs$, then
+  If $\gamma$ matches an element of $\U(\VV_n^-)\rs$, then
   \[ \omega(\gamma) \Orb(\phi, \gamma, 0) = 0. \]
-  If $\gamma$ instead matches an element $g \in \U(\VV_n^-)\rs$, then
+  If $\gamma$ instead matches an element $g \in \U(\VV_n^+)\rs$, then
   \[ \omega(\gamma) \Orb(\phi, \gamma, 0)
-    = \Orb^{\U(\VV_n^-)}(g, \BC^{\eta^{n-1}}_{S_n}(\phi)) \]
+    = \Orb^{\U(\VV_n^+)}(g, \BC^{\eta^{n-1}}_{S_n}(\phi)) \]
   where the transfer factor $\omega$ is defined in \Cref{ch:geo}.
 \end{theorem}
 
@@ -108,7 +108,7 @@ Define
     \mid t_1, t_2 \in E \right\}
 \]
 which is indeed a four-dimensional $F$-algebra.
-As before $H' \hookrightarrow \U(\VV_n^-)$ according to the same embedding
+As before $H' \hookrightarrow \U(\VV_n^+)$ according to the same embedding
 $\GL_2(E) \hookrightarrow \GL_(3)$
 and so $H'$ also acts on $S_n(E)$ by conjugation.
 
@@ -164,8 +164,8 @@ In other words, the representatives described here cover all the regular orbits 
 
 \subsection{Simplification due to the matching of non-quasi-split unitary group}
 In this calculation, we restrict attention to the case where our regular $\gamma$
-matches an element in the non-quasi-split unitary group $\U(\VV_n^+)\rs$
-(rather than $\U(\VV_n^-)\rs$).
+matches an element in the non-quasi-split unitary group $\U(\VV_n^-)\rs$
+(rather than $\U(\VV_n^+)\rs$).
 As we described in \Cref{prop:valuation_delta_matching_group},
 this is controlled by the parity of the invariant
 \[ v\left( (1-d\bar d)^2 - c \bar c\right) \]

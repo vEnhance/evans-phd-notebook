@@ -78,16 +78,16 @@
   \begin{itemize}
   \ii $E/F$ a quadratic field extension of local fields
   \ii $q$ residue characteristic of $F$.
-  \ii $\VV_n^-$ split $E/F$-Hermitian space of dimension $n$
-  \ii $\VV_n^+$ non-split $E/F$-Hermitian space of dimension $n$
+  \ii $\VV_n^+$ split $E/F$-Hermitian space of dimension $n$
+  \ii $\VV_n^-$ non-split $E/F$-Hermitian space of dimension $n$
   \ii Symmetric space:
   \[ S_n(F) \coloneqq \left\{ \gamma \in \GL_n(E) \mid \gamma\bar\gamma = 1_n \right\} . \]
   \end{itemize}
   Hecke algebras:
   \begin{itemize}
-  \ii $\HH(\U(\VV_n^-)) \coloneqq \QQ[K \backslash \U(\VV_n^-) \slash K]$
+  \ii $\HH(\U(\VV_n^+)) \coloneqq \QQ[K \backslash \U(\VV_n^+) \slash K]$
   is the Hecke algebra of compactly supported $K$-bi-invariant functions,
-  where $K \coloneqq \U(\VV_n^-) \cap \GL_n(\OO_E)$ is hyperspecial maximal compact subgroup.
+  where $K \coloneqq \U(\VV_n^+) \cap \GL_n(\OO_E)$ is hyperspecial maximal compact subgroup.
   \ii $\HH(\GL_n(E)) \coloneqq \QQ[K' \backslash \GL_n(E) \slash K']$, $K' \coloneqq \GL_n(\OO_E)$.
   \ii $\HH(S_n(F)) \coloneqq \mathcal C^\infty_{\text{c}} (S_n(F))^{K'}$,
   is an $\HH(\GL_n(E))$-module.
@@ -177,9 +177,9 @@
 \begin{frame}
   \frametitle{Jacquet-Rallis fundamental lemma}
   \begin{itemize}
-  \ii $(\VV_n^-)^\flat$ codimension one subspace in $\VV_n^-$.
+  \ii $(\VV_n^+)^\flat$ codimension one subspace in $\VV_n^+$.
   \ii $G'^\flat \coloneqq \GL_{n-1}(E)$, $G' \coloneqq \GL_n(E)$,
-    $G^\flat \coloneqq \U((\VV_n^-)^\flat)(F)$, $G \coloneqq \U(\VV_n^-)(F)$.
+    $G^\flat \coloneqq \U((\VV_n^+)^\flat)(F)$, $G \coloneqq \U(\VV_n^+)(F)$.
   \ii $K'^\flat$, $K'$, $K^\flat$, $K$ maximal hyperspecial compact subgroups.
   \end{itemize}
   \begin{block}{Fundamental lemma, roughly}
@@ -204,7 +204,7 @@
   \begin{theorem}
   [Inhomogeneous AFL]
   For matching regular semisimple elements
-  $g \in \U(\VV_n^+)\rs \longleftrightarrow \gamma \in S_n(F)\rs$:
+  $g \in \U(\VV_n^-)\rs \longleftrightarrow \gamma \in S_n(F)\rs$:
   \[
     \Int\left( (1,g), \mathbf{1}_{K'^\flat} \otimes \mathbf{1}_{K'} \right) \log q
     = \pm \left. \pdv{}{s} \right\rvert_{s=0} \Orb(\gamma, \mathbf{1}_K, s).
@@ -243,18 +243,18 @@
   $g \in \U(\VV_n^\pm)\rs \longleftrightarrow \gamma \in S_n(F)\rs$.
   \end{definition}
   \begin{block}{Matching criteria}
-    \[ [S_n(F)]\rs \xrightarrow{\sim} [\U(\VV_n^-)]\rs \amalg [\U(\VV_n^+)]\rs. \]
+    \[ [S_n(F)]\rs \xrightarrow{\sim} [\U(\VV_n^+)]\rs \amalg [\U(\VV_n^-)]\rs. \]
     For $\gamma \in S_n(F)$, to tell which case we're in, let
     \[ \Delta \coloneqq \det \left[ \vv^\top A^{i+j-2} \uu \right]_{i,j=1}^{n-1} \neq 0. \]
-    We get $\VV_n^-$ if $v(\Delta)$ is even
-    and $\VV_n^+$ if $v(\Delta)$ is odd.
+    We get $\VV_n^+$ if $v(\Delta)$ is even
+    and $\VV_n^-$ if $v(\Delta)$ is odd.
   \end{block}
 \end{frame}
 
 %\begin{frame}
 %  \frametitle{Weighted orbital integral definition}
-%  For comparison, the unweighted orbital for $f \in \HH(\U(\VV_n^-))$ is:
-%  \[ \Orb^{\U(\VV_n^-)}(g, f) \coloneqq \int_{\U(\VV_n^-)} f(x^{-1}gx) \odif x \]
+%  For comparison, the unweighted orbital for $f \in \HH(\U(\VV_n^+))$ is:
+%  \[ \Orb^{\U(\VV_n^+)}(g, f) \coloneqq \int_{\U(\VV_n^+)} f(x^{-1}gx) \odif x \]
 %  \begin{theorem}
 %    [Relative fundamental lemma; Leslie 2023]
 %    Suppose $\phi$ and $f$ are related by \emph{base change}, and $\gamma \longleftrightarrow g$, then:
@@ -262,7 +262,7 @@
 %      \pm \Orb(\phi, \gamma, 0)
 %      = \begin{cases}
 %        0 & v(\Delta) \text{ odd (AFL case)} \\
-%        \Orb^{\U(\VV_n^-)}(g, f) & v(\Delta) \text{ even}.
+%        \Orb^{\U(\VV_n^+)}(g, f) & v(\Delta) \text{ even}.
 %      \end{cases}
 %    \]
 %  \end{theorem}
@@ -303,7 +303,7 @@
 
   \begin{theorem}
     [AFL, semi-Lie version]
-    If $(g, u) \in (\U(\VV_n^+) \times \VV_n^+)\rs \longleftrightarrow
+    If $(g, u) \in (\U(\VV_n^-) \times \VV_n^-)\rs \longleftrightarrow
       (\gamma, \uu, \vv^\top) \in (S_n(F) \times \OO_F^n \times (\OO_F^n)^\vee)\rs$:
     \[
       \Int\left( (g,u), \mathbf{1}_{K'} \right) \log q
@@ -321,21 +321,21 @@
   and $\guv \mapsto \begin{bmatrix} \gamma & \uu \\ \vv^\top & 0 \end{bmatrix} \in \GL_{n+1}(E)$.
 
   \begin{block}{Matching criteria in semi-Lie case}
-  \[ [S_n(F) \times \OO_F^n \times (\OO_F^n)^\vee]\rs \xrightarrow{\sim} [\U(\VV_n^-) \times \VV_n^-]\rs \amalg [\U(\VV_n^+) \times \VV_n^+]\rs. \]
+  \[ [S_n(F) \times \OO_F^n \times (\OO_F^n)^\vee]\rs \xrightarrow{\sim} [\U(\VV_n^+) \times \VV_n^+]\rs \amalg [\U(\VV_n^-) \times \VV_n^-]\rs. \]
   To see which one, define
   \[ \Delta \coloneqq \det \left[ \vv^\top \gamma^{i+j-2} \uu \right]_{i,j=1}^n \neq 0. \]
-  We get $\VV_n^-$ if $v(\Delta)$ is even
-  and $\VV_n^+$ if $v(\Delta)$ is odd.
+  We get $\VV_n^+$ if $v(\Delta)$ is even
+  and $\VV_n^-$ if $v(\Delta)$ is odd.
   \end{block}
 \end{frame}
 
 %\begin{frame}
 %  \frametitle{Weighted orbital integral}
-%  Unweighted version, where $f \in \HH(\U(\VV_n^-))$,
+%  Unweighted version, where $f \in \HH(\U(\VV_n^+))$,
 %  and $\Lambda_n$ is a self-dual lattice:
 %  \[
-%    \Orb^{\U(\VV_n^-) \times \VV_n^-}\left( (g,u), f \otimes \mathbf{1}_{\Lambda_n} \right)
-%    \coloneqq \int_{\U(\VV_n^-)} f(x\inv g x) \mathbf{1}_{\Lambda_n}(x^{-1} u) \odif x.
+%    \Orb^{\U(\VV_n^+) \times \VV_n^+}\left( (g,u), f \otimes \mathbf{1}_{\Lambda_n} \right)
+%    \coloneqq \int_{\U(\VV_n^+)} f(x\inv g x) \mathbf{1}_{\Lambda_n}(x^{-1} u) \odif x.
 %  \]
 %  \begin{exampleblock}{Conjecture}
 %    If $\phi$ and $f$ are related by \emph{base change},
@@ -344,7 +344,7 @@
 %      =
 %      \begin{cases}
 %        0 & v(\Delta) \text{ odd (AFL case)} \\
-%        \Orb^{\U(\VV_n^-) \times \VV_n^-}\left( \dots \right)
+%        \Orb^{\U(\VV_n^+) \times \VV_n^+}\left( \dots \right)
 %        & v(\Delta) \text{ even}.
 %      \end{cases}
 %    \]
@@ -382,7 +382,7 @@
   \begin{tikzcd}
     & \HH(\GL_n(E)) \ar[ld, "\rproj_\ast^{\eta^{n-1}}"'] \ar[r, "\sim"', "\Sat"] \ar[d, "\BC"]
       & \QQ[X_1^\pm, \dots, X_n^\pm]^{\opname{Sym}(n)} \ar[d, "\BC"] \\
-    \HH(S_n(F)) \ar[r, "\sim", "\BC_{S_n}^{\eta^{n-1}}"'] & \HH(\U(\VV_n^-)) \ar[r, "\sim"', "\Sat"]
+    \HH(S_n(F)) \ar[r, "\sim", "\BC_{S_n}^{\eta^{n-1}}"'] & \HH(\U(\VV_n^+)) \ar[r, "\sim"', "\Sat"]
       & \QQ[Y_1^\pm, \dots, Y_m^\pm]^{W_m} \\
   \end{tikzcd}
   \end{center}
@@ -396,7 +396,7 @@
 \begin{frame}
   \frametitle{Leslie's generalization of Jacquet-Rallis fundamental lemma to the full spherical Hecke algebra}
   As before $G'^\flat \coloneqq \GL_{n-1}(E)$, $G' \coloneqq \GL_n(E)$,
-  $G^\flat \coloneqq \U((\VV_n^-)^\flat)(F)$, $G \coloneqq \U(\VV_n^-)(F)$.
+  $G^\flat \coloneqq \U((\VV_n^+)^\flat)(F)$, $G \coloneqq \U(\VV_n^+)(F)$.
 
   \begin{theorem}[Leslie 2023]
     Suppose \alert{$\varphi'$ and $\varphi$ are related by base change}; then still
@@ -407,16 +407,16 @@
   The original Jacquet-Rallis fundamental lemma is the special case
   \begin{align*}
     \varphi' = \mathbf{1}_{K'^\flat \times K'} &\in \HH(\GL_{n-1}(E)) \otimes \HH(\GL_n(E)) \\
-    \varphi = \mathbf{1}_{K^\flat \times K} &\in \HH(\U((\VV_n^-)^\flat)) \otimes \HH(\U(\VV_n^-)).
+    \varphi = \mathbf{1}_{K^\flat \times K} &\in \HH(\U((\VV_n^+)^\flat)) \otimes \HH(\U(\VV_n^+)).
   \end{align*}
 \end{frame}
 
 \begin{frame}
   \frametitle{AFL conjectured for the full spherical Hecke algebra}
   \begin{exampleblock}{Conjecture (Li-Rapoport-Zhang 2024)}
-    Let \alert{$f \in \HH(\U(\VV_n^-))$} and \alert{$\phi \in \HH(S_n(F))$}
+    Let \alert{$f \in \HH(\U(\VV_n^+))$} and \alert{$\phi \in \HH(S_n(F))$}
     be \alert{related by base change}.
-    Then for matching $g \in \U(\VV_n^+)\rs \longleftrightarrow \gamma \in S_n(F)\rs$:
+    Then for matching $g \in \U(\VV_n^-)\rs \longleftrightarrow \gamma \in S_n(F)\rs$:
     \[ \Int\left( (1,g), \mathbf{1}_{K'^\flat} \otimes \alert{f} \right) \log q
     = \pm \left. \pdv{}{s} \right\rvert_{s=0} \Orb(\gamma, \alert{\phi}, s). \]
   \end{exampleblock}
@@ -464,9 +464,9 @@
 \begin{frame}
   \frametitle{Semi-Lie AFL conjectured for full spherical Hecke algebra}
   \begin{exampleblock}{Conjecture (October 2024)}
-    Let \alert{$f \in \HH(\U(\VV_n^-))$} and \alert{$\phi \in \HH(S_n(F))$}
+    Let \alert{$f \in \HH(\U(\VV_n^+))$} and \alert{$\phi \in \HH(S_n(F))$}
     be \alert{related by base change}, and
-    \[ (g, u) \in (\U(\VV_n^+) \times \VV_n^+)\rs \longleftrightarrow
+    \[ (g, u) \in (\U(\VV_n^-) \times \VV_n^-)\rs \longleftrightarrow
     (\gamma, \uu, \vv^\top) \in (S_n(F) \times \OO_F^n \times (\OO_F^n)^\vee)\rs. \]
     Then
     \[

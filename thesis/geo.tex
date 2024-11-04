@@ -57,7 +57,7 @@ Henceforth, we also make the following abbreviation.
   \[ \RZ_{m,n} \coloneq \RZ_{m} \times_{\Spf \OO_{\breve F}} \RZ_n. \]
 \end{definition}
 
-\section{A realization of the non-split Hermitian space $\VV_n^+$ of dimension $n$}
+\section{A realization of the non-split Hermitian space $\VV_n^-$ of dimension $n$}
 For the following definition (and later on), we need a variation of $\RZ_1$:
 \begin{definition}
   Let $(\EE, \iota_\EE, \lambda_\EE)$ be the unique triple over $\FF$
@@ -68,7 +68,7 @@ For the following definition (and later on), we need a variation of $\RZ_1$:
 At the same time, we can define the following Hermitian space.
 \begin{definition}
   For each $n \ge 1$, let
-  \[ \VV_n^+ \coloneqq \Hom_{\OO_E}^\circ (\EE, \XX_n) \]
+  \[ \VV_n^- \coloneqq \Hom_{\OO_E}^\circ (\EE, \XX_n) \]
   which we call the space of special homomorphisms.
   When endowed with the form
   \[ \left< x,y \right> = \lambda_{\EE}^{-1} \circ y^\vee \circ \lambda_{\XX_n} \circ x
@@ -77,7 +77,7 @@ At the same time, we can define the following Hermitian space.
   \label{def:VV_n_nonsplit}
 \end{definition}
 \begin{proposition}
-  Up to isomorphism, $\VV_n^+$ is the unique $n$-dimensional
+  Up to isomorphism, $\VV_n^-$ is the unique $n$-dimensional
   nondegenerate non-split $E/F$-Hermitian space.
 \end{proposition}
 \begin{proof}
@@ -95,7 +95,7 @@ as introduced in \cite{ref:AFLspherical}.
 This definition is too involved to reproduce here in its entirety,
 we give a summary for this special cases in which we need.
 
-First consider the given $f \in \HH(\U(\VV_n^-))$.
+First consider the given $f \in \HH(\U(\VV_n^+))$.
 The main work of the construction is to define another
 derived formal scheme $\mathcal{T}_{\mathbf{1}_{K^\flat} \otimes f}$
 (see \cite[\S6.1]{ref:AFLspherical}) together with two projection maps
@@ -142,7 +142,7 @@ and then takes the pushforward along the other projection
 \end{definition}
 This is the part of the intersection number depending on $f$
 (or rather $\TT_{\mathbf{1}_{K^\flat} \otimes f}$).
-As for our $g \in \U(\VV_n^+)\rs$,
+As for our $g \in \U(\VV_n^-)\rs$,
 consider the translation $(1,g) \cdot \Delta_{\RZ_{n-1}}$.
 The intersection number is then defined as by taking the intersection
 of these two objects using the derived tensor product $\jiao$ of the structure sheaves.
@@ -171,9 +171,9 @@ The definition mirrors the one given in the last section.
 Here we reproduce the definition of the intersection number used in \Cref{conj:inhomog}.
 
 We work here with $\RZ_{n,n}$ rather than $\RZ_{n-1,n}$.
-The change is that we need to incorporate the new $u \in \VV_n^+$ that was not present before.
+The change is that we need to incorporate the new $u \in \VV_n^-$ that was not present before.
 In order to do this one considers a certain relative Cartier divisor $\ZD(u)$
-on $\RZ_n$ for each nonzero $u \in \VV_n^+$.
+on $\RZ_n$ for each nonzero $u \in \VV_n^-$.
 This divisor was defined by Kudala and Rapport in \cite{ref:KR}
 and accordingly we call it a \emph{KR-divisor} following \cite[\S4.3]{ref:survey}.
 The definition is given as follows.
@@ -200,7 +200,7 @@ See \cite{ref:KR} for a full definition.
 The main change is then that we can consider $\Delta_{\ZD(u)}$ as the image of
 \[ \ZD(u) \hookrightarrow \RZ_n \xrightarrow{\Delta} \RZ_{n,n} \]
 where $\Delta \colon \RZ_n \to \RZ_{n,n}$ now denotes the diagonal map.
-If one defines an appropriate space $\mathcal T_{\mathbf{1}_K \otimes f}$ for $f \in \HH(\U(\VV_n^-))$ together with
+If one defines an appropriate space $\mathcal T_{\mathbf{1}_K \otimes f}$ for $f \in \HH(\U(\VV_n^+))$ together with
 \begin{center}
 \begin{tikzcd}
   & \ar[ld] \mathcal T_{\mathbf{1}_K \otimes f} \ar[rd] & \\
@@ -257,12 +257,12 @@ which is the special case of \Cref{conj:semi_lie_spherical}
 when $f = \mathbf{1}_K$ and $\phi = \mathbf{1}_{K'}$.
 
 \paragraph{The geometric side}
-On the geometric side, $\RZ_n$ is the RZ-space acted on by $\U(\VV_n^+)$,
-and hence $\U(\VV_n^+) \times \U(\VV_n^+)$ acts on $\RZ_{n,n}$.
+On the geometric side, $\RZ_n$ is the RZ-space acted on by $\U(\VV_n^-)$,
+and hence $\U(\VV_n^-) \times \U(\VV_n^-)$ acts on $\RZ_{n,n}$.
 Roughly speaking, we are considering the two morphisms
 \[ \RZ_n \xrightarrow{\Delta} \RZ_{n,n} \xleftarrow{\Gamma_g} \RZ_n \]
 with $\Delta$ being thought of as the diagonal morphism
-and $\Gamma_g$ as the graph under multiplication by $g \in \U(\VV_n^+)\rs$.
+and $\Gamma_g$ as the graph under multiplication by $g \in \U(\VV_n^-)\rs$.
 
 Hence loosely speaking, the intersection $\Int\left( (g,u), \mathbf{1}_K \right)$
 can be thought of as the intersection of three images in $\RZ_{n,n}$:
@@ -290,10 +290,10 @@ On the other hand, consider the analytic side.
 We will try to explain how the weighted orbital integral in \Cref{def:orbitalFJ}
 can be thought of as some weighted intersection of analogous objects.
 
-For this section write $G \coloneqq \U(\VV_n^-)$ and $K \coloneqq G \cap \GL_n(\OO_E)$
+For this section write $G \coloneqq \U(\VV_n^+)$ and $K \coloneqq G \cap \GL_n(\OO_E)$
 the hyperspecial maximal compact subgroup of $G$.
 In that case the quotient $G/K$ can be identified as
-\[ G/K \simeq \left\{ \Lambda \subseteq \VV_n^- \mid \Lambda^\vee = \Lambda \right\} \]
+\[ G/K \simeq \left\{ \Lambda \subseteq \VV_n^+ \mid \Lambda^\vee = \Lambda \right\} \]
 that is, the set of self-dual lattices $\Lambda$ of full rank,
 which thus has a natural action of $G$.
 Henceforth we denote elements of $G/K$ by $h$,
@@ -304,7 +304,7 @@ Hence $G/K$ can be thought of as
 Recall from \eqref{eq:unweighted_orbital_semi_lie}
 that we have an orbital integral on the unitary side of the shape
 \[ \int_{h \in G/K} \mathbf{1}_K(h^{-1} g h) \mathbf{1}_{\Lambda_0}(h \cdot u) \odif h \]
-where $u \in \VV_n^-$, and $\Lambda_0$ is a fixed particular lattice in $G/K$.
+where $u \in \VV_n^+$, and $\Lambda_0$ is a fixed particular lattice in $G/K$.
 See for example the ``relative fundamental lemma''
 stated as \cite[Conjecture 1.9]{ref:liuFJ}.
 

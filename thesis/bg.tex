@@ -18,21 +18,21 @@ and $E/F$ is an unramified quadratic field extension.
   \ii Let $v$ be the associated valuation for $\varpi$.
   \ii Let $\eta$ be the quadratic character attached to $E/F$ by class field theory,
   so that $\eta(x) = -1^{v(x)}$.
-  \ii $\VV_n^-$ denotes a split $E/F$-Hermitian space of dimension $n$ (unique up to isomorphism).
+  \ii $\VV_n^+$ denotes a split $E/F$-Hermitian space of dimension $n$ (unique up to isomorphism).
   \ii Let $\beta$ denote the $n \times n$ antidiagonal matrix
   \[ \beta \coloneqq \begin{bmatrix} && 1 \\ & \iddots \\ 1 \end{bmatrix} \]
-  and pick the basis of $\VV_n^-$ such that the Hermitian form on $\VV_n^-$ is given by
-  \[ \VV_n^- \times \VV_n^- \to E \qquad (x,y) \mapsto x^\ast \beta y. \]
+  and pick the basis of $\VV_n^+$ such that the Hermitian form on $\VV_n^+$ is given by
+  \[ \VV_n^+ \times \VV_n^+ \to E \qquad (x,y) \mapsto x^\ast \beta y. \]
   \ii Set
-  \[ \U(\VV_n^-) = \{ g \in \GL_n(\OO_E) \mid g^\ast \beta g = \beta\} \]
-  the unitary group over $\VV_n^-$.
+  \[ \U(\VV_n^+) = \{ g \in \GL_n(\OO_E) \mid g^\ast \beta g = \beta\} \]
+  the unitary group over $\VV_n^+$.
   Note that $\beta$ is \emph{antidiagonal}, in contrast to the convention $\beta = \id_n$
   that is often used for unitary matrices with entries in $\CC$.
   The natural hyperspecial maximal compact subgroup
-  is \[ \U(\VV_n^-) \cap \GL_n(\OO_E). \]
+  is \[ \U(\VV_n^+) \cap \GL_n(\OO_E). \]
   \ii Let $K' = \GL_n(\OO_E)$ denote the hyperspecial maximal compact subgroup of $G' \coloneqq \GL_n(E)$.
-  \ii Let $\VV_n^+$ denote the non-split $E/F$-Hermitian space of dimension $n$
-  (unique up to isomorphism), and $\U(\VV_n^+)$ the corresponding unitary group.
+  \ii Let $\VV_n^-$ denote the non-split $E/F$-Hermitian space of dimension $n$
+  (unique up to isomorphism), and $\U(\VV_n^-)$ the corresponding unitary group.
   This space will be realized in \Cref{ch:geo}.
 \end{itemize}
 
@@ -110,15 +110,15 @@ $K$ is the maximal compact subgroup
 (or more generally whenever $(G,K)$ is a Gelfand pair),
 this Hecke algebra is actually commutative.
 
-\section{The specific Hecke algebras $\HH(\GL_n(E))$ and $\HH(\U(\VV_n^-))$ and the module $\HH(S_n(F))$}
+\section{The specific Hecke algebras $\HH(\GL_n(E))$ and $\HH(\U(\VV_n^+))$ and the module $\HH(S_n(F))$}
 For our purposes, we define shorthands for two specific Hecke algebras
 that will come up consistently:
 \begin{align*}
   \HH(\GL_n(E)) &\coloneqq \HH(\GL_n(E), \GL_n(\OO_E)) \\
-  \HH(\U(\VV_n^-)) &\coloneqq \HH(\U(\VV_n^-), \U(\VV_n^-) \cap \GL_n(\OO_E))
+  \HH(\U(\VV_n^+)) &\coloneqq \HH(\U(\VV_n^+), \U(\VV_n^+) \cap \GL_n(\OO_E))
 \end{align*}
-Note that $\GL_n(\OO_E)$ and $\U(\VV_n^-) \cap \GL_n(\OO_E)$
-are the natural hyperspecial maximal compact subgroups of $\GL_n(E)$ and $\U(\VV_n^-$),
+Note that $\GL_n(\OO_E)$ and $\U(\VV_n^+) \cap \GL_n(\OO_E)$
+are the natural hyperspecial maximal compact subgroups of $\GL_n(E)$ and $\U(\VV_n^+$),
 respectively.
 
 Now the symmetric space $S_n(F)$ is not a group,
@@ -135,7 +135,7 @@ This does \textbf{not} have a multiplication structure at the moment, \emph{a pr
 
 Throughout this paper, to be consistent with the notation, we denote
 \begin{itemize}
-  \ii elements of $\HH(\U(\VV_n^-))$ using $f$ or $f_i$ or similar
+  \ii elements of $\HH(\U(\VV_n^+))$ using $f$ or $f_i$ or similar
     (i.e.\ lowercase Roman letters);
   \ii elements of $\HH(\GL_n(E))$ by $f'$ or $f'_i$ or similar
     (i.e.\ lowercase Roman letters with apostrophes);
