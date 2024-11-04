@@ -1,4 +1,6 @@
 #!/bin/bash
 
 set -euxo pipefail
-codespell ./content/*.tex
+codespell ./notes/*.tex
+codespell ./thesis/*.tex
+codespell ./slides/*.tex
