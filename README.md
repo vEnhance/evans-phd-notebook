@@ -8,9 +8,15 @@ learning for the first time. The content is therefore likely to be riddled with
 errors, inaccuracies, and is generally in a really rough state. There are more
 holes than Swiss cheese.
 
-## Where can I get the compiled PDF?
+## What are the relevant files?
 
-Use the URL https://web.evanchen.cc/upload/evans-phd-notebook.pdf
+- `notes/` contains some scattered notes on things that I did in the first few years of study
+- `thesis/` contains the thesis itself
+- `slides/` contains slides from talks I gave about the thesis
+
+Compiled PDF's will be uploaded starting around 2025 or so.
+(I'm pausing the PDF uploading for the home stretch while I tidy things up.
+Build them yourself if you really want to see them.)
 
 ## Why did you post this?
 
