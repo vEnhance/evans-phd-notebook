@@ -123,7 +123,7 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{GGP/AAGP extremely rough statements}
+  \frametitle{GGP/AGGP extremely rough statements}
   %\begin{itemize}
   %\ii Started with Waldspurger 1985 formula
   %  relating automorphic period to $L(1/2)$.
@@ -324,6 +324,7 @@
     \ii Let $\Delta \colon \RZ_{n-1} \to \RZ_{n-1,n}$
     be the graph morphism of $\delta \colon \RZ_{n-1} \to \RZ_n$,
     with image $\Delta_{\RZ{n-1}}$.
+    \ii Realize $\VV_n^- = \Hom_{\OO_E}^\circ(\EE, \XX_n)$.
   \end{itemize}
 
   \begin{definition}
@@ -428,8 +429,8 @@
   \frametitle{Base change}
   Denote by $\rproj \colon \GL_n(E) \surjto S_n(F)$ the map $\rproj(g) \coloneqq g \bar{g}\inv$.
   \begin{align*}
-    \rproj_\ast \colon \HH(\GL_n(E)) &\to \HH(S_n(F)) \\
-    \rproj_\ast(f')\left( g\bar{g}\inv \right) &= \int_{\GL_n(F)} f'(gh) \odif h
+    \rproj^{\eta^{n-1}}_\ast \colon \HH(\GL_n(E)) &\to \HH(S_n(F)) \\
+    \rproj^{\eta^{n-1}}_\ast(f')\left( g\bar{g}\inv \right) &= \int_{\GL_n(F)} f'(gh) \eta^{n-1}(gh) \odif h
   \end{align*}
   And let $\eta(g) = (-1)^{v(\det g)}$ be the nontrivial quadratic character for $E/F$.
   \begin{center}
@@ -442,7 +443,8 @@
   \end{center}
   \begin{theorem}
     [Leslie 2023]
-    The map $\BC_{S_n}^{\eta^{n-1}}$ above is an isomorphism.
+    $\BC$ factors through $\rproj_\ast^{\eta^{n-1}}$
+    and gives an isomorphism $\BC_{S_n}^{\eta^{n-1}}$.
   \end{theorem}
 \end{frame}
 
@@ -521,13 +523,13 @@
     Let $\gamma \in S_3(F)\rs$ and $\phi \in \HH(S_3(F))$,
     where $\gamma$ matches in $\U(\VV_3^-)\rs$.
     Then
-    \[ \Orb(\gamma, \phi, s) = \sum_k P_k(s) (-q^s)^k \]
-    for some polynomials $P_k(s) \in \ZZ[x]$, where
+    \[ \Orb(\gamma, \phi, s) = \sum_k P_k(q) (-q^s)^k \]
+    for some polynomials $P_k(q) \in \ZZ[q]$, where
     \begin{itemize}
       \ii the summation variable $k$ is a some contiguous range of integers,
 
-      \ii the polynomials $P_k \in \ZZ[x]$ are nonzero and satisfy the property
-      that every coefficient of $P_k$ besides possibly the leading coefficient is $1$;
+      \ii the polynomials $P_k(q) \in \ZZ[q]$ are nonzero and
+      every coefficient of $P_k$ besides possibly the leading coefficient is $1$;
 
       \ii both $\deg P_k$ and leading coefficient of $P_k$ are the integer parts
       of piecewise linear functions in $k$ with slopes in $\{0, \pm\half, 1\}$.
@@ -551,7 +553,7 @@
       - 2q \partial \Orb(\gamma, \phi_{r-1})
       + q^2 \partial \Orb(\gamma, \phi_{r-2}) = -2q-2. \]
   \end{exampleblock}
-  So the map $\phi \mapsto \Orb(-, \phi)$ has finite codimension kernel.
+  So the map $\phi \mapsto \partial \Orb(-, \phi)$ has finite codimension kernel.
   This verifies a conjecture of LRZ for $n = 3$.
 \end{frame}
 
@@ -614,8 +616,8 @@
     Let $\guv \in (S_2(F) \times V'_2(F))\rs$ and $\phi \in \HH(S_3(F))$,
     where $\guv$ matches in $(\U(\VV_2^-) \times \VV_2^-)\rs$.
     Then
-    \[ \Orb(\guv, \phi \otimes \oneV, s) = \sum_k P_k(s) (-q^s)^k \]
-    for some polynomials $P_k(s) \in \ZZ[x]$, satisfying the same conditions;
+    \[ \Orb(\guv, \phi \otimes \oneV, s) = \sum_k P_k(q) (-q^s)^k \]
+    for some polynomials $P_k(q) \in \ZZ[q]$, satisfying the same conditions;
     and these can made explicit in terms of a particular representative in the orbit $\guv$.
   \end{theorem}
   There should be an analogous large kernel result,
