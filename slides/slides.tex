@@ -1,4 +1,6 @@
 \documentclass[11pt]{beamer}
+\newtheorem{proposition}{Proposition}
+
 \usepackage[nosetup]{evan}
 \usepackage{derivative}
 \usepackage{mathrsfs}
@@ -37,6 +39,7 @@
 \setbeamercovered{transparent}
 
 \DeclareMathOperator{\BC}{BC}
+\DeclareMathOperator{\Lie}{Lie}
 \DeclareMathOperator{\Int}{Int}
 \DeclareMathOperator{\Orb}{Orb}
 \DeclareMathOperator{\Sat}{Satake}
@@ -46,9 +49,11 @@
 \DeclareMathOperator{\rproj}{proj}
 
 \newcommand{\G}{\mathrm{G}}
+\newcommand{\EE}{\mathbb{E}}
 \newcommand{\HH}{\mathcal{H}}
 \newcommand{\VV}{\mathbb{V}}
 \newcommand{\TT}{\mathbb{T}}
+\newcommand{\XX}{\mathbb{X}}
 \renewcommand{\H}{\mathrm{H}}
 \renewcommand{\OO}{O}
 
@@ -269,15 +274,58 @@
 %\end{frame}
 
 \begin{frame}
-  \frametitle{Intersection number (briefly)}
-  This is more technical, so we won't give all details, just the basic sketch.
+  \frametitle{Rapoport-Zink space}
   \begin{itemize}
-    \ii $\RZ_n$ denotes a Rapoport-Zink space of dimension $n$.
+    \ii Let $\breve F$ denote the completion of a maximal unramified extension of $F$,
+    and let $\FF$ denote the residue field of $\OO_{\breve F}$.
+    \ii Suppose $S$ is a $\Spf \OO_{\breve F}$-scheme.
+  \end{itemize}
+  \begin{definition}
+  Consider triples $(X, \iota, \lambda)$ where:
+  \begin{itemize}
+    \ii $X$ is a formal $\varpi$-divisible $n$-dimensional $\OO_F$-module over $S$
+    whose relative height is $2n$.
+
+    \ii $\iota \colon \OO_E \to \End(X)$ is an action of $\OO_E$
+    such that the induced action of $\OO_F$ on $\Lie X$
+    is via the structure morphism $\OO_F \to \Sheaf_S$,
+    satisfying the Kottwitz condition of signature $(n-1,1)$,
+
+    \ii $\lambda \colon X \to X^\vee$ is a principal $\OO_F$-relative polarization
+    whose Rosati involution induces $a \mapsto \bar a$ on $\OO_F$.
+   \end{itemize}
+  \end{definition}
+  The triple is called supersingular if $X$ is a supersingular strict $\OO_F$-module.
+\end{frame}
+
+\begin{frame}
+  \frametitle{Rapoport-Zink space, continued}
+  Choose a supersingular triple $(\XX_n, \iota_{\XX_n}, \lambda_{\XX_n})$
+  called the \emph{framing object}.
+  \begin{definition}
+    For each $n \ge 1$, we let $\RZ_n$ denote the
+    functor over $\Spf \OO_{\breve F}$ defined as follows.
+    Let $S$ be an $\Spf \OO_{\breve F}$ scheme,
+    $\ol S \coloneqq S \times_{\Spf \OO_{\breve F}} \Spec \FF$.
+    We let $\RZ_n(S)$ be the set of isomorphism classes of quadruples
+    $(X, \iota, \lambda, \rho)$
+    where $(X, \iota, \lambda)$ is one of the triples as we described, and
+    \[ \rho \colon X \times_S \ol S \to \XX_n \times_{\Spec \FF} \ol S \]
+    is a \emph{framing}, meaning it is an height zero $\OO_F$-linear quasi-isogeny
+    and satisfies $\rho^\ast((\lambda_{\XX_n})_{\ol S}) = \lambda_{\ol S}$.
+  \end{definition}
+  Then $\RZ_n$ is formally smooth over $\OO_{\breve F}$ of relative dimension $n-1$.
+
+\end{frame}
+\begin{frame}
+  \frametitle{Intersection number}
+  \begin{itemize}
     \ii $\RZ_{m,n} \coloneqq \RZ_m \times \RZ_n$.
-    \ii Let $\Delta: \RZ_{n-1} \to \RZ_{n-1,n}$
+    \ii Let $\Delta \colon \RZ_{n-1} \to \RZ_{n-1,n}$
     be the graph morphism of $\delta \colon \RZ_{n-1} \to \RZ_n$,
     with image $\Delta_{\RZ{n-1}}$.
   \end{itemize}
+
   \begin{definition}
     \begin{align*}
       \Int((1,g), \mathbf{1}_{K'^\flat} \otimes \mathbf{1}_{K'})
@@ -287,7 +335,9 @@
     \end{align*}
     ($\jiao$ is derived tensor product, $\chi$ is Euler-Poincare characteristic)
   \end{definition}
+
 \end{frame}
+
 
 \begin{frame}
   \frametitle{Semi-Lie version of AFL by Yifeng Liu (2021)}
@@ -353,20 +403,24 @@
 
 \begin{frame}
   \frametitle{Intersection number (briefly)}
-  \begin{itemize}
-    \ii New object: the \alert{Kudla-Rapoport divisor $\ZD(u)$} in $\RZ_n$.
-    \ii Let $\Delta_{\ZD(u)}$ be the image of $\ZD(u) \to \RZ_n \to \RZ_{n,n}$,
-    where the last arrow is diagonal morphism.
-    \ii $\Gamma_g$ is the graph of the automorphism of $\RZ_n$ induced by $g$,
-    viewed inside $\RZ_{n,n}$.
-  \end{itemize}
   \begin{definition}
-    \begin{align*}
+    Let $(\EE, \iota_\EE, \lambda_\EE)$ be the unique triple over $\FF$
+    whose Rosati involution has signature $(1,0)$.
+    Then the formal $\OO_F$-module has a unique lifting called its \emph{canonical lifting},
+    denoted $(\mathcal{E}, \iota_{\mathcal{E}}, \lambda_{\mathcal E})$.
+    The \alert{Kudla-Rapoport divisor $\ZD(u)$}
+    is the locus where the quasi-homomorphism $\EE \to \XX_n$ lifts to a homomorphism
+    from $\mathcal{E}$ to the universal object over $\RZ_n$.
+  \end{definition}
+  Let $\Delta_{\ZD(u)}$ be the image of $\ZD(u) \to \RZ_n \to \RZ_{n,n}$;
+  let $\Gamma_g \subseteq \RZ_{n,n}$ be the graph of the automorphism of $\RZ_n$ induced by $g$.
+  \begin{definition}
+    \[
       \Int((g,u), \mathbf{1}_{K'})
-      &\coloneqq \left( \Delta_{\ZD(u)}, \Gamma_g \right)_{\RZ_{n,n}} \\
-      &\coloneqq \chi_{\RZ_{n,n}}
+      \coloneqq \left( \Delta_{\ZD(u)}, \Gamma_g \right)_{\RZ_{n,n}}
+      \coloneqq \chi_{\RZ_{n,n}}
       \left( \Sheaf_{\Delta_{\ZD(u)}} \jiao_{\Sheaf_{\RZ_{n,n}}} \Sheaf_{\Gamma_g}  \right).
-    \end{align*}
+    \]
   \end{definition}
 \end{frame}
 
@@ -447,7 +501,7 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{An example of an AFL orbital integral ($n=3$)}
+  \frametitle{An example of a group AFL orbital integral ($n=3$)}
   \begin{align*}
     \Orb(\dots) &= q^{-4s} &&- (3q^3+q^2+q+1) q^{5s} \\
     &- (q+1)q^{-3s} &&+ (3q^3+q^2+q+1) q^{6s} \\
@@ -462,8 +516,49 @@
 \end{frame}
 
 \begin{frame}
+  \frametitle{Summary for a group AFL orbital integral}
+  \begin{theorem}[C.]
+    Let $\gamma \in S_3(F)\rs$ and $\phi \in \HH(S_3(F))$,
+    where $\gamma$ matches in $\U(\VV_3^-)\rs$.
+    Then
+    \[ \Orb(\gamma, \phi, s) = \sum_k P_k(s) (-q^s)^k \]
+    for some polynomials $P_k(s) \in \ZZ[x]$, where
+    \begin{itemize}
+      \ii the summation variable $k$ is a some contiguous range of integers,
+
+      \ii the polynomials $P_k \in \ZZ[x]$ are nonzero and satisfy the property
+      that every coefficient of $P_k$ besides possibly the leading coefficient is $1$;
+
+      \ii both $\deg P_k$ and leading coefficient of $P_k$ are the integer parts
+      of piecewise linear functions in $k$ with slopes in $\{0, \pm\half, 1\}$.
+    \end{itemize}
+    And these can made explicit in terms of a particular representative in the orbit $\guv$.
+  \end{theorem}
+\end{frame}
+
+\begin{frame}
+  \frametitle{The derivatives at $s = 0$ have large kernel}
+  \begin{itemize}
+    \ii Let $K' = \GL_3(\OO_E)$ again.
+    \ii The space $S_3(F)$ has a \alert{Cartan decomposition}: if we let
+    \[ K'_{S,r} \coloneqq \GL_3(\OO_E) \cdot \begin{bmatrix} 0 & 0 & \varpi^r \\ 0 & 1 & 0 \\ \varpi^{-r} & 0 & 0 \end{bmatrix}
+      \implies S_3(F) = \coprod_{r \geq 0} K'_{S,r}. \]
+    \ii So $\HH(S_3(F))$ has a basis of indicators functions $\phi_r \coloneqq \mathbf{1}_{K'_{S, r}}. $
+  \end{itemize}
+  \begin{exampleblock}{Observation}
+    For $r \ge 3$ the following holds \emph{identically} in $\gamma$:
+    \[ \partial \Orb(\gamma, \phi_r)
+      - 2q \partial \Orb(\gamma, \phi_{r-1})
+      + q^2 \partial \Orb(\gamma, \phi_{r-2}) = -2q-2. \]
+  \end{exampleblock}
+  So the map $\phi \mapsto \Orb(-, \phi)$ has finite codimension kernel.
+  This verifies a conjecture of LRZ for $n = 3$.
+\end{frame}
+
+
+\begin{frame}
   \frametitle{Semi-Lie AFL conjectured for full spherical Hecke algebra}
-  \begin{exampleblock}{Conjecture (October 2024)}
+  \begin{exampleblock}{Conjecture (C., October 2024)}
     Let \alert{$f \in \HH(\U(\VV_n^+))$} and \alert{$\phi \in \HH(S_n(F))$}
     be \alert{related by base change}, and
     \[ (g, u) \in (\U(\VV_n^-) \times \VV_n^-)\rs \longleftrightarrow
@@ -491,10 +586,12 @@
     \ii Orbital is computed, and base change is easy.
     \ii $\Int(\dots)$ easier to work with here because one gets a
     Lubin-Tate space $\mathcal{M}_2$, and can use \alert{Gross-Keating}.
+    WIP.
   \end{itemize}
   \end{exampleblock}
   }
 \end{frame}
+
 
 \begin{frame}
   \frametitle{An example of a semi-Lie orbital integral ($n=2$)}
@@ -509,6 +606,20 @@
     &+ (2q^3+q^2+q+1) q^{2s} &&- q^{11s} \\
     &- (3q^3+q^2+q+1) q^{3s} &&+ q^{12s}. \\
   \end{align*}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Summary for a semi-Lie AFL orbital integral}
+  \begin{theorem}[C.]
+    Let $\guv \in (S_2(F) \times V'_2(F))\rs$ and $\phi \in \HH(S_3(F))$,
+    where $\guv$ matches in $(\U(\VV_2^-) \times \VV_2^-)\rs$.
+    Then
+    \[ \Orb(\guv, \phi \otimes \oneV, s) = \sum_k P_k(s) (-q^s)^k \]
+    for some polynomials $P_k(s) \in \ZZ[x]$, satisfying the same conditions;
+    and these can made explicit in terms of a particular representative in the orbit $\guv$.
+  \end{theorem}
+  There should be an analogous large kernel result,
+  but I haven't worked out the coefficients yet.
 \end{frame}
 
 \begin{frame}
