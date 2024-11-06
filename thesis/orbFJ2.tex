@@ -42,52 +42,25 @@ Hence, the total contribution for Case 5 is
     \in (S_2(F) \times V_2'(F))\rs.
   \]
   be paired with an element of $(\U(\VV_2) \times \VV_2)\rs$.
-  Then
-  \[ \Orb(\guv, \mathbf{1}_{K'_{S, \le r}} \otimes \oneV, s) \]
-  is nonzero if and only if
-  \[ r \ge -v(e) - \frac{v(b)+v(c)}{2}. \]
-  In that case, one of two formulas holds.
-
-  If $v(d-a) \ge v(e) - r$ then we define
-  \[ \nn_\guv(k) = \Arch_{[-(v(b)+r), 2v(e)+v(c)+r]}(0, 2v(e)). \]
-  Then
+  Define
+  \[ \nn_\guv(k) \coloneqq \min\left( \left\lfloor \tfrac{k + (v(b)+r)}{2} \right\rfloor,
+      \left\lfloor \tfrac{(2v(e)+v(c)+r)-k}{2} \right\rfloor,
+      v(e), \left\lfloor \tfrac{v(b)+v(c)}{2} \right\rfloor + r,
+      v(d-a) + r \right). \]
+  Also, if $v(d-a) < v(e) - r$ and $v(b) + v(c) > 2v(d-a)$, then additionally define
   \begin{align*}
-    &\phantom= \Orb(\guv, \mathbf{1}_{K'_{S, \le r}} \otimes \oneV, s) \\
-    &= \sum_{k = -(v(b)+r)}^{2v(e)+v(c)+r} (-1)^k
-    \left( 1 + q + q^2 + \dots + q^{\nn_\guv(k)} \right) (q^s)^k.
+    \cc_\guv(k) &= \min\big( k - (2v(d-a)-v(b)+r), \\
+      &\qquad (2v(e)+v(c)-2v(d-a)-r)-k, v(e)-v(d-a)-r \big).
   \end{align*}
-
-  If instead $v(d-a) < v(e) - r$, then we define
-  \begin{align*}
-    \nn_\guv(k)
-      &= \Arch_{[-(v(b)+r), 2v(e)+v(c)+r]}(0, 2v(d-a) + 2r), \\
-    \cc_\guv(k) &=
-      \Arch_{[2v(d-a)-v(b)+r, 2v(e)+v(c)-2v(d-a)-r]}\left( v(e) - v(d-a) + r, 0 \right).
-  \end{align*}
+  Otherwise define $\cc_\guv(k) = 0$.
   Then we have
   \begin{align*}
     &\phantom= \Orb(\guv, \mathbf{1}_{K'_{S, \le r}} \otimes \oneV, s) \\
     &= \sum_{k = -(v(b)+r)}^{2v(e)+v(c)+r} (-1)^k
     \left( 1 + q + q^2 + \dots + q^{\nn_\guv(k)} \right) (q^s)^k \\
-    &+ \sum_{k = 2v(d-a)-v(b)+r}^{2v(e)+v(c)-\theta-r} (-1)^k \cc_\guv(k) q^{2v(d-a) + 2r}
+    &+ \sum_{k = 2v(d-a)-v(b)+r}^{2v(e)+v(c)-2v(d-a)-r} (-1)^k \cc_\guv(k) q^{v(d-a) + r} (q^s)^k.
   \end{align*}
 \end{theorem}
-
-\begin{remark}
-  In the first case $v(d-a) \ge v(e) - r$,
-  the ARCH notation can be written explicitly as
-  \[ \nn_\guv(k) = \min\left( \left\lfloor \tfrac{k + (v(b)+r)}{2} \right\rfloor,
-    \left\lfloor \tfrac{(2v(e)+v(c)+r)-k}{2} \right\rfloor, v(e) \right). \]
-  It has only three cases in the piecewise definition.
-  Similarly, in the second case we could write
-  \begin{align*}
-    \nn_\guv(k) &= \min\left( \left\lfloor \tfrac{k + (v(b)+r)}{2} \right\rfloor,
-      \left\lfloor \tfrac{(2v(e)+v(c)+r)-k}{2} \right\rfloor, v(d-a)+r \right) \\
-    \cc_\guv(k) &= \min\big( \left\lfloor k - (2v(d-a)-v(b)+r) \right\rfloor, \\
-      &\qquad \left\lfloor(2v(e)+v(c)-2v(d-a)-r)-k \right\rfloor, v(e)-v(d-a)+r \big).
-  \end{align*}
-\end{remark}
-
 \begin{example}
   When $v(e) = 0$ the expression is particularly simple.
   The assumption $v(d-a) \ge v(e)-r$ is automatically true, and
@@ -98,7 +71,7 @@ Hence, the total contribution for Case 5 is
 
 \begin{example}
   Suppose $r = 14$, $v(b) = -5$, $v(c) = 100$, $v(e) = 3$.
-  We always have $v(d-a) \ge 0 > -11 = v(e) - r$.
+  We have $v(d-a) \ge 0 > -11 = v(e) - r$.
   Hence the above formula reads
   \begin{align*}
     \Orb(\guv, \mathbf{1}_{K'_{S, \le 14}} \otimes \oneV, s)
