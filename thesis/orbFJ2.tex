@@ -31,7 +31,7 @@ Hence, the total contribution for Case 5 is
 \]
 \todo{should sum based on exponent}
 
-\section{Final formula}
+\section{Final formula for the overall orbital integral}
 \begin{theorem}
   \label{thm:semi_lie_formula}
   Let the representative
@@ -42,7 +42,8 @@ Hence, the total contribution for Case 5 is
     \in (S_2(F) \times V_2'(F))\rs.
   \]
   be paired with an element of $(\U(\VV_2) \times \VV_2)\rs$.
-  Define
+  If $v(e) < 0$, the orbital integral is $0$.
+  Assume $v(e) \ge 0$, and define
   \[ \nn_\guv(k) \coloneqq \min\left( \left\lfloor \tfrac{k + (v(b)+r)}{2} \right\rfloor,
       \left\lfloor \tfrac{(2v(e)+v(c)+r)-k}{2} \right\rfloor,
       v(e), \left\lfloor \tfrac{v(b)+v(c)}{2} \right\rfloor + r,
@@ -66,7 +67,7 @@ Hence, the total contribution for Case 5 is
   The assumption $v(d-a) \ge v(e)-r$ is automatically true, and
   $\nn_{\guv}$ is identically zero, so
   \[ \Orb(\guv, \mathbf{1}_{K'_{S, \le r}} \otimes \oneV, s)
-    = \sum_{k=-(v(b)+r)}^{2v(e)+v(c)+r} (-q^s)^k. \]
+    = \sum_{k=-(v(b)+r)}^{v(c)+r} (-q^s)^k. \]
 \end{example}
 
 \begin{example}
