@@ -322,9 +322,44 @@ Then we can compute
     (\bar\alpha - \alpha)(s \bar s + t \bar t \varpi)
     + 2\varpi(\beta s \bar t - \bar\beta \bar s t)
   \right) \sqrt{\eps} \\
-  \left\langle y,y \right\rangle &= 2 \Nm g = 2\varpi^{2r} (\alpha \bar\alpha - \beta\bar\beta \varpi).
+  \left\langle y,y \right\rangle &= 2 \Nm (\varpi^r g)
+  = 2\varpi^{2r} (\alpha \bar\alpha - \beta\bar\beta \varpi).
 \end{align*}
-The determinant is then
+For the valuations of $\left\langle x,x \right\rangle$ and $\left\langle y,y \right\rangle$,
+we are able to calculate these exactly:
+\begin{align*}
+  v(\left\langle x,x \right\rangle)
+  &= v\left( s \bar s - t \bar t \varpi \right)
+  = \min\left( 2v(s), 2v(t) +1 \right) \\
+  v\left( \left\langle y,y \right\rangle \right)
+  &= 2r + v\left( \alpha \bar \alpha - \beta \bar \beta \varpi \right)
+  = 2r + \min\left( 2v(\alpha), 2v(\beta) + 1 \right).
+\end{align*}
+
+We now prove the following.
+\begin{lemma}
+  We always have
+  \[
+    v\left( \left\langle x,y \right\rangle \right) \ge
+    \frac{v\left( \left\langle x,x \right\rangle \right)
+      + v\left( \left\langle y,y \right\rangle \right)}{2}.
+  \]
+\end{lemma}
+\begin{proof}
+  We use the estimate
+  \begin{align*}
+    v\left( \left\langle x,y \right\rangle  \right)
+    &= r + v\left(
+      (\bar\alpha - \alpha)(s \bar s + t \bar t \varpi)
+      + 2\varpi(\beta s \bar t - \bar\beta \bar s t) \right) \\
+    &\ge r + \min(
+      v(\alpha) + \min(2v(s), 2v(t)+1),
+      v(\beta) + v(s) + v(t)
+    ).
+  \end{align*}
+\end{proof}
+
+For the determinant, we compute
 \begin{align*}
   \left\langle x,x \right\rangle \left\langle y,y \right\rangle
   - \left\langle x,y \right\rangle^2
