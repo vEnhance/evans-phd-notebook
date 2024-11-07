@@ -35,7 +35,12 @@ Since $\tr(a+b\Pi) = \Tr_{E/F}(a)$, we could also write
 \[ \DT = \{ a+b\Pi \mid a,b \in E \text{ and } \Tr_{E/F}(a) = 0 \}. \]
 
 The reduced norm is similarly defined by
-\[ \Nm x \coloneqq x x^\ast = \Norm_{E/F}(a) - \varpi \Norm_{E/F}(b). \]
+\begin{align*}
+  \Nm x &= x x^\ast = (a + b \Pi)(\bar a - b \Pi) \\
+  &= a \bar a + b \Pi \bar a - a b \Pi - b \Pi b \Pi \\
+  &= a \bar a - b \bar b \varpi \\
+  &= \Norm_{E/F}(a) - \Norm_{E/F}(b) \varpi .
+\end{align*}
 This coincides with a square root of
 the determinant of the $F$-linear map $u \cdot - \colon \DD \to \DD$.
 
@@ -74,7 +79,7 @@ symmetric form on $\DD$ in the obvious way:
 \[ \left\langle u_1, u_2 \right\rangle_{\VV_n^-}
   = \left\langle u_1, u_2^\ast \right\rangle_{\DD}. \]
 
-\section{Matching of invariants}
+\section{Setup for $\guv$ and $(g,u)$, and the invariants for the matching}
 \subsection{The invariants for the orbit of $\guv$}
 From \Cref{ch:orbitalFJ0}, recall that we considered
 \[
@@ -119,12 +124,7 @@ Hence the four corresponding invariants of \Cref{def:matching_semi_lie} are:
   \ii $\Tr g = \alpha + \bar\alpha$
   \ii $\det g = \alpha \bar \alpha - \beta \bar\beta \varpi = 1$
   \ii The quantity
-  \begin{align*}
-    \left\langle u, u \right\rangle &= 2\Nm u = \tr [(s + t \Pi)(\bar s - t \Pi)] \\
-    &= \tr (s \bar s + t \Pi \bar s - s t \Pi - t \Pi t \Pi) \\
-    &= \tr (s \bar s - t \bar t \varpi) \\
-    &= 2(s \bar s + t \bar t \varpi);
-  \end{align*}
+  \[ \left\langle u,u \right\rangle = 2 \Nm u = 2(s \bar s - t \bar t \varpi) \]
   \ii The quantity
   \begin{align*}
     \left\langle gu, u \right\rangle
@@ -259,6 +259,16 @@ So, we proceed to compute
   &= \left< \ZO4(\varpi^r g), \; \ZO4(1)^\circ, \; \ZO4(u^\ast \sqrt{\eps} u)^\circ \right>_{\MM_2 \times \MM_2} \\
   &= \left< \ZO4(\varpi^r g), \; \ZO4(1), \; \ZO4(u^\ast \sqrt{\eps} u)^\circ \right>_{\MM_2 \times \MM_2}.
 \end{align*}
+We know that
+\[ \varpi^r g = \varpi^r \alpha + \varpi^r \beta \Pi. \]
+We can also compute:
+\begin{align*}
+  u^\ast \sqrt{\eps} u
+  &= (\ol s - t \Pi) \sqrt{\eps} (s + t \Pi) \\
+  &= (\ol s - t \Pi) (s \sqrt{\eps} + t \sqrt{\eps} \Pi) \\
+  &= s \ol s \sqrt{\eps} - t \ol{s\sqrt{\eps}} \Pi + \ol s t \sqrt{\eps} \Pi - t \ol{t \sqrt{\eps}} \varpi \\
+  &= (s \ol s + t \ol t \varpi) \sqrt{\eps} + 2 \ol s t \sqrt{\eps} \Pi.
+\end{align*}
 
 \section{The formula of Gross-Keating}
 \begin{proposition}
@@ -282,3 +292,51 @@ So, we proceed to compute
   This is a rewriting of \cite[Proposition 14.6]{ref:Kudla1997}
   which is itself a special case of \cite[Proposition 5.4]{ref:GK}.
 \end{proof}
+From now on, we use the notation
+\begin{align*}
+  x &\coloneqq u^\ast \sqrt{\eps} u = (s \bar s + t \bar t \varpi) \sqrt{\eps} + 2 \bar s t \sqrt{\eps} \Pi \in \OO_\DD \\
+  y &\coloneqq \varpi^r g \in \OO_\DD.
+\end{align*}
+Then we can compute
+\begin{align*}
+  \left\langle x,x \right\rangle &= 2 \Nm x \\
+  &= 2 (\Norm_{E/F}((s \bar s + t \bar t \varpi)\sqrt{\eps})
+    - \Norm_{E/F}(2 \bar s t \sqrt{\eps}) \varpi) \\
+  &= 2\left( -\eps(s \bar s + t \bar t \varpi)^2
+    - (2\bar s t \sqrt{\eps})(-2s \bar t \sqrt{\eps}) \varpi \right) \\
+  &= 2\left( -\eps(s \bar s + t \bar t \varpi)^2
+    + 4s\bar s t \bar t \eps \varpi \right) \\
+  &= -2\eps\left( (s \bar s - t \bar t \varpi)^2 \right) = -2\eps (\Nm u)^2. \\
+  \left\langle x,y \right\rangle &= \tr(x y^\ast) \\
+  &= \tr \left[
+    \left( (s \bar s + t \bar t \varpi) \sqrt{\eps} + 2 \bar s t \sqrt{\eps} \Pi \right)
+    \cdot \varpi^{r} (\bar\alpha - \beta \Pi)
+  \right] \\
+  &= \varpi^r \tr \left[
+    \bar\alpha (s \bar s + t \bar t \varpi) \sqrt{\eps}
+    + 2 \alpha \bar s t \sqrt{\eps} \Pi
+    - \beta (s \bar s + t \bar t \varpi) \sqrt{\eps} \Pi
+    - \bar\beta 2 \bar s t \varpi \sqrt{\eps}
+  \right] \\
+  &= \varpi^r \left(
+    (\bar\alpha - \alpha)(s \bar s + t \bar t \varpi)
+    + 2\varpi(\beta s \bar t - \bar\beta \bar s t)
+  \right) \sqrt{\eps} \\
+  \left\langle y,y \right\rangle &= 2 \Nm g = 2\varpi^{2r} (\alpha \bar\alpha - \beta\bar\beta \varpi).
+\end{align*}
+The determinant is then
+\begin{align*}
+  \left\langle x,x \right\rangle \left\langle y,y \right\rangle
+  - \left\langle x,y \right\rangle^2
+  &= -2\eps\left( (s \bar s - t \bar t \varpi)^2 \right)
+    \cdot 2\varpi^{2r} (\alpha \bar\alpha - \beta\bar\beta \varpi) \\
+  &\qquad- \varpi^{2r} \eps \left(
+    (\bar\alpha - \alpha)(s \bar s + t \bar t \varpi)
+    + 2\varpi(\beta s \bar t - \bar\beta \bar s t) \right)^2 \\
+  &= -\varpi^{2r}\eps \Big[
+    4 (s \bar s - t \bar t \varpi)^2 (\alpha \bar \alpha - \beta \bar\beta \varpi) \\
+    &\qquad+ \left( (\bar\alpha - \alpha)(s \bar s + t \bar t \varpi)
+    + 2\varpi(\beta s \bar t - \bar\beta \bar s t) \right)^2
+    \Big] \\
+  &=
+\end{align*}
