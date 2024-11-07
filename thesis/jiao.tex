@@ -32,9 +32,8 @@ $F$-linear multiplication map $u \cdot - \colon \DD \to \DD$.
 We may thus define
 \[ \DT \coloneqq \left\{ u \in \DD \mid \tr u = 0 \right\} \]
 which has codimension $1$ inside $\DD$ (i.e.\ is three-dimensional as an $F$-vector space).
-Since $\tr(a+b\Pi) = \Tr_{E/F}(a)$,
-we could also write
-\[ \DT = \{ a+b\Pi \mid a,b \in E \Tr_{E/F}(a) = 0 \}. \]
+Since $\tr(a+b\Pi) = \Tr_{E/F}(a)$, we could also write
+\[ \DT = \{ a+b\Pi \mid a,b \in E \text{ and } \Tr_{E/F}(a) = 0 \}. \]
 
 
 The reduced norm is similarly defined by
@@ -66,6 +65,11 @@ Moreover, we will take the identification
 see \cite[Remark 2.5]{ref:KR},
 and hence the corresponding identification
 \[ \VV_n^- \simeq \DD. \]
+Under this identification
+the Hermitian form on $\VV_n^-$ then corresponds to the
+symmetric form on $\DD$ in the obvious way:
+\[ \left\langle u_1, u_2 \right\rangle_{\VV_n^-}
+  = \left\langle u_1, u_2^\ast \right\rangle_{\DD}. \]
 
 \subsection{The Rapoport-Zink space $\RZ_2$}
 For integers $m \ge 0$, if we consider the functions
@@ -110,15 +114,17 @@ on $\MM_2 \times \MM_2$ as follows.
   \end{tikzcd}
   \end{center}
 \end{definition}
-Then the Serre tensor construction gives an isomorphism
-\[ \mathcal{T}_m \simeq \ZO4(\varpi^m) \]
-such that we get an analogous diagram
-\begin{center}
-\begin{tikzcd}
-  & \ar[ld] \ZO4(\varpi^m) \ar[rd] & \\
-  \MM_{2} && \MM_{2}.
-\end{tikzcd}
-\end{center}
+\begin{conjecture}
+  The Serre tensor construction gives an isomorphism
+  \[ \mathcal{T}_m \simeq \ZO4(\varpi^m) \]
+  such that we get an analogous diagram
+  \begin{center}
+  \begin{tikzcd}
+    & \ar[ld] \ZO4(\varpi^m) \ar[rd] & \\
+    \MM_{2} && \MM_{2}.
+  \end{tikzcd}
+  \end{center}
+\end{conjecture}
 
 \subsection{The divisor $\ZO3$ on $\MM_2$}
 Turning to $\MM_2 \times \MM_2$, we will henceforth always identify $\MM_2$
@@ -151,14 +157,11 @@ Recall that we have the notation
 \[ \ZD(u)^\circ \coloneqq \ZD(u) - \ZD\left( \frac{u}{\varpi} \right). \]
 Define $\ZO4(u)^\circ$ and $\ZO3(u)^\circ$ similarly.
 
-\begin{lemma}
+\begin{conjecture}
   Let $u \in \VV_n^-$, and consider it as an element $u \in \DD$.
   Then pullback along the Serre tensor construction identifies
   \[ \Serre^\ast \ZD(u)^\circ \simeq \ZO3(u^\ast \sqrt{\eps} u)^\circ. \]
-\end{lemma}
-\begin{proof}
-  \todo{find a reference}
-\end{proof}
+\end{conjecture}
 
 \section{The intersection number as a triple product}
 We return to the intersection number
@@ -181,14 +184,70 @@ So, we proceed to compute
 \end{align*}
 
 \section{The formula of Gross-Keating}
-\begin{theorem}
-\end{theorem}
+\begin{proposition}
+  Let $x,y \in \OO_\DD$ and let
+  \begin{align*}
+    n_1 &= \min\left( v(\left\langle x,x \right\rangle), v(\left\langle x,y \right\rangle), v(\left\langle y,y \right\rangle) \right) \\
+    n_2 &= v\left( \left\langle x,x \right\rangle \left\langle y,y \right\rangle - \left\langle x,y \right\rangle^2 \right)
+  \end{align*}
+  so that $0 \le n_1 \le n_2$.
+  Then
+  \begin{align*}
+    &\left< \ZO4(1), \; \ZO4(x)^\circ, \; \ZO4(y)^\circ \right>_{\MM_2 \times \MM_2} \\
+    &=
+    \begin{cases}
+      \sum_{j=0}^{\frac{n_1-1}{2}} (n_1+n_2-4j) p^j & \text{if } n_1 \equiv 1 \pmod 2 \\
+      \frac{n_2-n_1+1}{2} p^{n_1/2} + \sum_{j=0}^{n_1/2-1} (n_1+n_2-4j) p^j & \text{if } n_1 \equiv 0 \pmod 2.
+    \end{cases}
+  \end{align*}
+\end{proposition}
+\begin{proof}
+  This is a rewriting of \cite[Proposition 14.6]{ref:Kudla1997}
+  which is itself a special case of \cite[Proposition 5.4]{ref:GK}.
+\end{proof}
 
-\section{Calculation of the triple product}
-We specialize to the situation where $u \in \OO_\DD$,
-and we have
+\section{Matching of invariants}
+\subsection{The invariants for the orbit of $\guv$}
+From \Cref{ch:orbitalFJ0}, recall that we considered
+\[
+  (\gamma, \uu, \vv^\top)
+  =
+  \left( \begin{bmatrix} a & b \\ c & d \end{bmatrix}
+    \begin{bmatrix} 0 \\ 1 \end{bmatrix}, \begin{bmatrix} 0 & e \end{bmatrix} \right)
+\]
+subject to the conditions
+\begin{align*}
+  \bar b c = b \bar c &= 1 - a \bar a = 1 - d \bar d \\
+  \text{and } d &= - \bar a c / \bar c = -\bar a b / \bar b.
+\end{align*}
+It will again be enough to consider the situation in which $\det \gamma = 1$.
+The invariants in this case as described in \Cref{def:matching_semi_lie} are:
+\begin{itemize}
+  \ii $\Tr \gamma = a + d$
+  \ii $\det \gamma = 1$
+  \ii $\vv^\top \uu = e$
+  \ii $\vv^\top \gamma \uu = \begin{bmatrix} 0 & e \end{bmatrix}
+  \begin{bmatrix} a & b \\ c & d \end{bmatrix} \begin{bmatrix} 0 \\ 1 \end{bmatrix} = de$.
+\end{itemize}
+Note that the parameters $b$ and $c$ are absent; but we have
+\[ v(b) + v(c) = v(1 - a \bar a). \]
+
+\subsection{The invariants for the orbit of $(g,u)$}
+We specialize to the situation where $u \in \OO_\DD$, and we have
 \[ g \in \SU(\VV_n^-) = \left\{
     \begin{bmatrix} \alpha & \beta \\ \varpi\bar\beta & \bar\alpha \end{bmatrix}
     \mid \alpha, \beta \in E \right\}. \]
-Under the identification with $\DD$ this becomes simply
+Under the identification with $\DD$ multiplication by $g$ corresponds to the map
+\begin{align*}
+  g \cdot - \colon \DD &\to \DD \\
+  & u \mapsto (\alpha + \beta \Pi) u.
+\end{align*}
+By abuse of notation we will write $g$ by simply an element of $\OO_\DD$ as well:
 \[ g = \alpha + \beta \Pi \in \OO_\DD. \]
+Hence the four corresponding invariants of \Cref{def:matching_semi_lie} are:
+\begin{itemize}
+  \ii $\Tr g = \alpha + \bar\alpha$
+  \ii $\det g = \alpha \bar \alpha - \beta \bar\beta \varpi = 1$
+  \ii $\left\langle u, u^\ast \right\rangle$
+  \ii $\left\langle gu, u^\ast \right\rangle = $
+\end{itemize}
