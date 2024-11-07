@@ -149,16 +149,16 @@ Hence the four corresponding invariants of \Cref{def:matching_semi_lie} are:
 \end{itemize}
 \section{Background on special divisors for $n = 2$}
 \subsection{The Rapoport-Zink space $\RZ_2$}
-For integers $m \ge 0$, if we consider the functions
-\[ f_m \coloneqq \mathbf{1}_{\varpi^{-m} \Mat_2(\OO_E) \cap \U(\VV_n^+)} \in \HH(\U(\VV_n^+)) \]
+For integers $r \ge 0$, if we consider the functions
+\[ f_r \coloneqq \mathbf{1}_{\varpi^{-r} \Mat_2(\OO_E) \cap \U(\VV_n^+)} \in \HH(\U(\VV_n^+)) \]
 then these functions produce a basis for the Hecke algebra $\HH(\U(\VV_n^+))$.
 Let us abbreviate
-\[ \mathcal{T}_m \coloneqq \mathcal{T}_{\mathbf{1}_K \otimes f_m} \]
+\[ \mathcal{T}_r \coloneqq \mathcal{T}_{\mathbf{1}_K \otimes f_r} \]
 moving forward.
 Then as described in the previous section we have a diagram
 \begin{center}
 \begin{tikzcd}
-  & \ar[ld] \mathcal{T}_m \ar[rd] & \\
+  & \ar[ld] \mathcal{T}_r \ar[rd] & \\
   \RZ_{2} && \RZ_{2}.
 \end{tikzcd}
 \end{center}
@@ -193,11 +193,11 @@ on $\MM_2 \times \MM_2$ as follows.
 \end{definition}
 \begin{conjecture}
   The Serre tensor construction gives an isomorphism
-  \[ \mathcal{T}_m \simeq \ZO4(\varpi^m) \]
+  \[ \mathcal{T}_r \simeq \ZO4(\varpi^r) \]
   such that we get an analogous diagram
   \begin{center}
   \begin{tikzcd}
-    & \ar[ld] \ZO4(\varpi^m) \ar[rd] & \\
+    & \ar[ld] \ZO4(\varpi^r) \ar[rd] & \\
     \MM_{2} && \MM_{2}.
   \end{tikzcd}
   \end{center}
@@ -243,21 +243,21 @@ Define $\ZO4(u)^\circ$ and $\ZO3(u)^\circ$ similarly.
 \section{The intersection number as a triple product}
 We return to the intersection number
 \[ \chi_{\RZ_{n,n}} \left(
-      \Sheaf_{\TT_{\mathbf{1} \otimes f_m}(\Delta_{\ZD(u)})}
+      \Sheaf_{\TT_{\mathbf{1} \otimes f_r}(\Delta_{\ZD(u)})}
       \jiao_{\Sheaf_{\RZ_{n,n}}} \SO_{\Gamma_g} \right) \]
 which we will rewrite more succinctly using angle brackets as
-\[ \Big\langle (1,g) \cdot \mathcal{T}_m, \; \Delta(\ZD(u)) \Big\rangle_{\RZ_{2,2}} \]
+\[ \Big\langle (1,g) \cdot \mathcal{T}_r, \; \Delta(\ZD(u)) \Big\rangle_{\RZ_{2,2}} \]
 in analogy to \cite[\S6.1]{ref:AFLspherical}.
 (Note that $\Delta$ here is the diagonal map $\RZ_2 \to \RZ_{2,2}$.)
 For this calculation, it would be sufficient to split
 \[ \ZD(u) = \sum_{i \ge 0} \ZD(u/\varpi^i)^\circ. \]
 So, we proceed to compute
 \begin{align*}
-  \Big\langle (1,g) \cdot \mathcal{T}_m, \; \Delta(\ZD(u)^\circ) \Big\rangle_{\RZ_{2,2}}
-  &= \left< \ZO4(\varpi^m g), \; \Delta(\Serre^\ast(\ZD(u))^\circ) \right>_{\MM_2 \times \MM_2} \\
-  &= \left< \ZO4(\varpi^m g), \; \ZO3(u^\ast \sqrt{\eps} u)^\circ \right>_{\MM_2 \times \MM_2} \\
-  &= \left< \ZO4(\varpi^m g), \; \ZO4(1)^\circ, \; \ZO4(u^\ast \sqrt{\eps} u)^\circ \right>_{\MM_2 \times \MM_2} \\
-  &= \left< \ZO4(\varpi^m g), \; \ZO4(1), \; \ZO4(u^\ast \sqrt{\eps} u)^\circ \right>_{\MM_2 \times \MM_2}.
+  \Big\langle (1,g) \cdot \mathcal{T}_r, \; \Delta(\ZD(u)^\circ) \Big\rangle_{\RZ_{2,2}}
+  &= \left< \ZO4(\varpi^r g), \; \Delta(\Serre^\ast(\ZD(u))^\circ) \right>_{\MM_2 \times \MM_2} \\
+  &= \left< \ZO4(\varpi^r g), \; \ZO3(u^\ast \sqrt{\eps} u)^\circ \right>_{\MM_2 \times \MM_2} \\
+  &= \left< \ZO4(\varpi^r g), \; \ZO4(1)^\circ, \; \ZO4(u^\ast \sqrt{\eps} u)^\circ \right>_{\MM_2 \times \MM_2} \\
+  &= \left< \ZO4(\varpi^r g), \; \ZO4(1), \; \ZO4(u^\ast \sqrt{\eps} u)^\circ \right>_{\MM_2 \times \MM_2}.
 \end{align*}
 
 \section{The formula of Gross-Keating}
