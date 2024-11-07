@@ -2,13 +2,12 @@
 This chapter is dedicated to computing intersection numbers
 for the semi-Lie version of AFL in the special case $n = 2$.
 
-\section{Background}
-\subsection{Quaternion division algebra}
+\section{Background on quaternion division algebra}
 Through this section we let $\DD$ be a quaternion division algebra over $F$,
 with a fixed maximal order $\OO_\DD$.
 We will make $\DD$ explicit in the following way for our calculations to follow.
 
-\subsubsection{Structure as a noncommutative algebra}
+\subsection{Structure as a noncommutative algebra}
 As $F$-vector spaces we will write
 \[ \DD = E \oplus E \Pi \]
 where $\Pi$ is selected so that $\Pi^2 = \varpi$.
@@ -16,7 +15,7 @@ We endow $\DD$ with a noncommutative multiplication according to
 \[ \Pi t = \bar t \Pi \qquad \text{ for all } t \in E \]
 where $\ol{t}$ is the image of $t \in E$ under the nontrivial element of $\Gal(E/F)$.
 
-\subsubsection{Conjugation of elements of $\DD$}
+\subsection{Conjugation of elements of $\DD$}
 In general, suppose $x \in \DD$ is any element
 decomposed as $x = a + b \Pi$ for $a,b \in E$.
 Then we denote by $x^\ast \in \DD$ the conjugate in $\DD$ defined by
@@ -40,7 +39,7 @@ The reduced norm is similarly defined by
 This coincides with a square root of
 the determinant of the $F$-linear map $u \cdot - \colon \DD \to \DD$.
 
-\subsubsection{Inner form}
+\subsection{Inner form}
 We equip $\DD$ with a symmetric $F$-bilinear inner form
 $\left\langle \bullet, \bullet \right\rangle \colon \DD \times \DD \to F$ defined by
 \[ \left\langle x,y \right\rangle = \tr(xy^\ast) = xy^\ast + yx^\ast. \]
@@ -48,14 +47,19 @@ It is easy to check that $\{1, \sqrt{\eps}, \Pi, \sqrt{\eps}\Pi\}$ is an orthogo
 and hence that we have a orthogonal decomposition
 \[ \DD = F \oplus F\sqrt\eps \oplus F \Pi \oplus F\sqrt\eps\Pi. \]
 
-For $x \in \DD$, we introduce the notation $x_0$ and $x_-$ to mean
-\begin{itemize}
-  \ii $x_0$ is the projection into the first component $F$; and
-  \ii $x_- = x - x_0$ is the projection into
-  $\DT = F\sqrt\eps \oplus F \Pi \oplus F\sqrt\eps\Pi$.
-\end{itemize}
+It will be convenient to introduce the following notation:
+\begin{definition}
+  For $x \in \DD$, we introduce the notation $x_0$ and $x_-$ to mean
+  \begin{itemize}
+    \ii $x_0$ is the projection into the first component $F$; and
+    \ii $x_- = x - x_0$ is the projection into
+    $\DT = F\sqrt\eps \oplus F \Pi \oplus F\sqrt\eps\Pi$.
+  \end{itemize}
+\end{definition}
+In particular, the formula for conjugation then reads as the simpler
+\[ x^\ast = x_0 - x_-. \]
 
-\subsection{Notation}
+\subsection{Identification of $\VV_n^-$ with $\DD$}
 We continue using the notation $(\EE, \iota_\EE, \lambda_\EE)$ as the triple over $\FF$
 whose Rosati involution has signature $(1,0)$.
 
@@ -70,6 +74,80 @@ symmetric form on $\DD$ in the obvious way:
 \[ \left\langle u_1, u_2 \right\rangle_{\VV_n^-}
   = \left\langle u_1, u_2^\ast \right\rangle_{\DD}. \]
 
+\section{Matching of invariants}
+\subsection{The invariants for the orbit of $\guv$}
+From \Cref{ch:orbitalFJ0}, recall that we considered
+\[
+  (\gamma, \uu, \vv^\top)
+  =
+  \left( \begin{bmatrix} a & b \\ c & d \end{bmatrix}
+    \begin{bmatrix} 0 \\ 1 \end{bmatrix}, \begin{bmatrix} 0 & e \end{bmatrix} \right)
+\]
+subject to the conditions
+\begin{align*}
+  \bar b c = b \bar c &= 1 - a \bar a = 1 - d \bar d \\
+  \text{and } d &= - \bar a c / \bar c = -\bar a b / \bar b.
+\end{align*}
+It will again be enough to consider the situation in which $\det \gamma = 1$.
+The invariants in this case as described in \Cref{def:matching_semi_lie} are:
+\begin{itemize}
+  \ii $\Tr \gamma = a + d$
+  \ii $\det \gamma = 1$
+  \ii $\vv^\top \uu = e$
+  \ii $\vv^\top \gamma \uu = \begin{bmatrix} 0 & e \end{bmatrix}
+  \begin{bmatrix} a & b \\ c & d \end{bmatrix} \begin{bmatrix} 0 \\ 1 \end{bmatrix} = de$.
+\end{itemize}
+Note that the parameters $b$ and $c$ are absent; but we have
+\[ v(b) + v(c) = v(1 - a \bar a). \]
+
+\subsection{The invariants for the orbit of $(g,u)$}
+We specialize to the situation where $u \in \OO_\DD$, and we have
+\[ g \in \SU(\VV_n^-) = \left\{
+    \begin{bmatrix} \alpha & \beta \\ \varpi\bar\beta & \bar\alpha \end{bmatrix}
+    \mid \alpha, \beta \in E \right\}. \]
+Under the identification with $\DD$ multiplication by $g$ corresponds to the map
+\begin{align*}
+  g \cdot - \colon \DD &\to \DD \\
+  & x \mapsto (\alpha + \beta \Pi) x.
+\end{align*}
+By abuse of notation we will write $g$ by simply an element of $\OO_\DD$ as well:
+\[ g = \alpha + \beta \Pi \in \OO_\DD \qquad \alpha, \beta \in E. \]
+we also impose coordinates for $u$ according to
+\[ u = s + t \Pi \in \OO_\DD \qquad s, t \in E. \]
+Hence the four corresponding invariants of \Cref{def:matching_semi_lie} are:
+\begin{itemize}
+  \ii $\Tr g = \alpha + \bar\alpha$
+  \ii $\det g = \alpha \bar \alpha - \beta \bar\beta \varpi = 1$
+  \ii The quantity
+  \begin{align*}
+    \left\langle u, u \right\rangle &= 2\Nm u = \tr [(s + t \Pi)(\bar s - t \Pi)] \\
+    &= \tr (s \bar s + t \Pi \bar s - s t \Pi - t \Pi t \Pi) \\
+    &= \tr (s \bar s - t \bar t \varpi) \\
+    &= 2(s \bar s + t \bar t \varpi);
+  \end{align*}
+  \ii The quantity
+  \begin{align*}
+    \left\langle gu, u \right\rangle
+    &= \left\langle (\alpha + \beta \Pi)(s + t \Pi), s + t \Pi \right\rangle \\
+    &= \left\langle (\alpha s + \beta \bar t \varpi) + (\alpha t + \beta \bar s) \Pi,
+      s + t \Pi \right\rangle \\
+    &= \tr [((\alpha s + \beta \bar t \varpi) + (\alpha t + \beta \bar s) \Pi) (\bar s - t \Pi)] \\
+    &= \tr\left[
+      (\alpha s \bar s + \beta \bar s \bar t \varpi
+      - (\alpha t \bar t + \beta \bar s \bar t) \varpi)
+      + (-\alpha s t - \beta t \bar t + \alpha s t + \beta s \bar s) \Pi
+    \right] \\
+    &= \tr\left[
+      \alpha (s \bar s - t \bar t \varpi)
+      + \beta(s \bar s - t \bar t) \Pi
+    \right] \\
+    &= (\alpha + \bar\alpha) (s \bar s - t \bar t \varpi) \\
+    &= 2\alpha_0 \Nm u.
+  \end{align*}
+  Here we consider $\alpha \in E$ as $\alpha + 0 \Pi \in \DD$ in the obvious way,
+  so that we may use the notation $\alpha_0$.
+\end{itemize}
+\section{Background on special divisors for $n = 2$}
 \subsection{The Rapoport-Zink space $\RZ_2$}
 For integers $m \ge 0$, if we consider the functions
 \[ f_m \coloneqq \mathbf{1}_{\varpi^{-m} \Mat_2(\OO_E) \cap \U(\VV_n^+)} \in \HH(\U(\VV_n^+)) \]
@@ -204,74 +282,3 @@ So, we proceed to compute
   This is a rewriting of \cite[Proposition 14.6]{ref:Kudla1997}
   which is itself a special case of \cite[Proposition 5.4]{ref:GK}.
 \end{proof}
-
-\section{Matching of invariants}
-\subsection{The invariants for the orbit of $\guv$}
-From \Cref{ch:orbitalFJ0}, recall that we considered
-\[
-  (\gamma, \uu, \vv^\top)
-  =
-  \left( \begin{bmatrix} a & b \\ c & d \end{bmatrix}
-    \begin{bmatrix} 0 \\ 1 \end{bmatrix}, \begin{bmatrix} 0 & e \end{bmatrix} \right)
-\]
-subject to the conditions
-\begin{align*}
-  \bar b c = b \bar c &= 1 - a \bar a = 1 - d \bar d \\
-  \text{and } d &= - \bar a c / \bar c = -\bar a b / \bar b.
-\end{align*}
-It will again be enough to consider the situation in which $\det \gamma = 1$.
-The invariants in this case as described in \Cref{def:matching_semi_lie} are:
-\begin{itemize}
-  \ii $\Tr \gamma = a + d$
-  \ii $\det \gamma = 1$
-  \ii $\vv^\top \uu = e$
-  \ii $\vv^\top \gamma \uu = \begin{bmatrix} 0 & e \end{bmatrix}
-  \begin{bmatrix} a & b \\ c & d \end{bmatrix} \begin{bmatrix} 0 \\ 1 \end{bmatrix} = de$.
-\end{itemize}
-Note that the parameters $b$ and $c$ are absent; but we have
-\[ v(b) + v(c) = v(1 - a \bar a). \]
-
-\subsection{The invariants for the orbit of $(g,u)$}
-We specialize to the situation where $u \in \OO_\DD$, and we have
-\[ g \in \SU(\VV_n^-) = \left\{
-    \begin{bmatrix} \alpha & \beta \\ \varpi\bar\beta & \bar\alpha \end{bmatrix}
-    \mid \alpha, \beta \in E \right\}. \]
-Under the identification with $\DD$ multiplication by $g$ corresponds to the map
-\begin{align*}
-  g \cdot - \colon \DD &\to \DD \\
-  & x \mapsto (\alpha + \beta \Pi) x.
-\end{align*}
-By abuse of notation we will write $g$ by simply an element of $\OO_\DD$ as well:
-\[ g = \alpha + \beta \Pi \in \OO_\DD \qquad \alpha, \beta \in E. \]
-we also impose coordinates for $u$ according to
-\[ u = s + t \Pi \in \OO_\DD \qquad s, t \in E. \]
-Hence the four corresponding invariants of \Cref{def:matching_semi_lie} are:
-\begin{itemize}
-  \ii $\Tr g = \alpha + \bar\alpha$
-  \ii $\det g = \alpha \bar \alpha - \beta \bar\beta \varpi = 1$
-  \ii The quantity
-  \begin{align*}
-    \left\langle u, u \right\rangle &= 2\Nm u = \tr [(s + t \Pi)(\bar s - t \Pi)] \\
-    &= \tr (s \bar s + t \Pi \bar s - s t \Pi - t \Pi t \Pi) \\
-    &= \tr (s \bar s - t \bar t \varpi) \\
-    &= 2(s \bar s + t \bar t \varpi);
-  \end{align*}
-  \ii The quantity
-  \begin{align*}
-    \left\langle gu, u \right\rangle
-    &= \left\langle (\alpha + \beta \Pi)(s + t \Pi), s + t \Pi \right\rangle \\
-    &= \left\langle (\alpha s + \beta \bar t \varpi) + (\alpha t + \beta \bar s) \Pi,
-      s + t \Pi \right\rangle \\
-    &= \tr [((\alpha s + \beta \bar t \varpi) + (\alpha t + \beta \bar s) \Pi) (\bar s - t \Pi)] \\
-    &= \tr\left[
-      (\alpha s \bar s + \beta \bar s \bar t \varpi
-      - (\alpha t \bar t + \beta \bar s \bar t) \varpi)
-      + (-\alpha s t - \beta t \bar t + \alpha s t + \beta s \bar s) \Pi
-    \right] \\
-    &= \tr\left[
-      \alpha (s \bar s - t \bar t \varpi)
-      + \beta(s \bar s - t \bar t) \Pi
-    \right] \\
-    &= (\alpha + \bar\alpha) (s \bar s - t \bar t \varpi);
-  \end{align*}
-\end{itemize}
