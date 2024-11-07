@@ -26,7 +26,7 @@ It is an anti-involution, meaning that $(x^\ast)^\ast = x$ and $(xy)^\ast = y^\a
 
 This allows us to define the (reduced) norm and trace in $\DD$.
 The reduced trace is given by
-\[ \tr x \coloneqq x + x^\ast = \Tr_{E/F}(x_0). \]
+\[ \tr x \coloneqq x + x^\ast = \Tr{E/F}(a) = 2x_0. \]
 This coincides with half the trace of the
 $F$-linear multiplication map $u \cdot - \colon \DD \to \DD$.
 We may thus define
@@ -35,9 +35,8 @@ which has codimension $1$ inside $\DD$ (i.e.\ is three-dimensional as an $F$-vec
 Since $\tr(a+b\Pi) = \Tr_{E/F}(a)$, we could also write
 \[ \DT = \{ a+b\Pi \mid a,b \in E \text{ and } \Tr_{E/F}(a) = 0 \}. \]
 
-
 The reduced norm is similarly defined by
-\[ \Nm x \coloneqq x x^\ast = \Norm_{E/F}(a) - \varpi b^2. \]
+\[ \Nm x \coloneqq x x^\ast = \Norm_{E/F}(a) - \varpi \Norm_{E/F}(b). \]
 This coincides with a square root of
 the determinant of the $F$-linear map $u \cdot - \colon \DD \to \DD$.
 
@@ -240,14 +239,39 @@ We specialize to the situation where $u \in \OO_\DD$, and we have
 Under the identification with $\DD$ multiplication by $g$ corresponds to the map
 \begin{align*}
   g \cdot - \colon \DD &\to \DD \\
-  & u \mapsto (\alpha + \beta \Pi) u.
+  & x \mapsto (\alpha + \beta \Pi) x.
 \end{align*}
 By abuse of notation we will write $g$ by simply an element of $\OO_\DD$ as well:
-\[ g = \alpha + \beta \Pi \in \OO_\DD. \]
+\[ g = \alpha + \beta \Pi \in \OO_\DD \qquad \alpha, \beta \in E. \]
+we also impose coordinates for $u$ according to
+\[ u = s + t \Pi \in \OO_\DD \qquad s, t \in E. \]
 Hence the four corresponding invariants of \Cref{def:matching_semi_lie} are:
 \begin{itemize}
   \ii $\Tr g = \alpha + \bar\alpha$
   \ii $\det g = \alpha \bar \alpha - \beta \bar\beta \varpi = 1$
-  \ii $\left\langle u, u^\ast \right\rangle$
-  \ii $\left\langle gu, u^\ast \right\rangle = $
+  \ii The quantity
+  \begin{align*}
+    \left\langle u, u \right\rangle &= 2\Nm u = \tr [(s + t \Pi)(\bar s - t \Pi)] \\
+    &= \tr (s \bar s + t \Pi \bar s - s t \Pi - t \Pi t \Pi) \\
+    &= \tr (s \bar s - t \bar t \varpi) \\
+    &= 2(s \bar s + t \bar t \varpi);
+  \end{align*}
+  \ii The quantity
+  \begin{align*}
+    \left\langle gu, u \right\rangle
+    &= \left\langle (\alpha + \beta \Pi)(s + t \Pi), s + t \Pi \right\rangle \\
+    &= \left\langle (\alpha s + \beta \bar t \varpi) + (\alpha t + \beta \bar s) \Pi,
+      s + t \Pi \right\rangle \\
+    &= \tr [((\alpha s + \beta \bar t \varpi) + (\alpha t + \beta \bar s) \Pi) (\bar s - t \Pi)] \\
+    &= \tr\left[
+      (\alpha s \bar s + \beta \bar s \bar t \varpi
+      - (\alpha t \bar t + \beta \bar s \bar t) \varpi)
+      + (-\alpha s t - \beta t \bar t + \alpha s t + \beta s \bar s) \Pi
+    \right] \\
+    &= \tr\left[
+      \alpha (s \bar s - t \bar t \varpi)
+      + \beta(s \bar s - t \bar t) \Pi
+    \right] \\
+    &= (\alpha + \bar\alpha) (s \bar s - t \bar t \varpi);
+  \end{align*}
 \end{itemize}
