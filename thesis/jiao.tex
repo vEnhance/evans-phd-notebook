@@ -34,24 +34,9 @@ which has codimension $1$ inside $\DD$ (i.e.\ is three-dimensional as an $F$-vec
 Since $\tr(a+b\Pi) = \Tr_{E/F}(a)$, we could also write
 \[ \DT = \{ a+b\Pi \mid a,b \in E \text{ and } \Tr_{E/F}(a) = 0 \}. \]
 
-The reduced norm is similarly defined by
-\begin{align*}
-  \Nm x &= x x^\ast = (a + b \Pi)(\bar a - b \Pi) \\
-  &= a \bar a + b \Pi \bar a - a b \Pi - b \Pi b \Pi \\
-  &= a \bar a - b \bar b \varpi \\
-  &= \Norm_{E/F}(a) - \Norm_{E/F}(b) \varpi .
-\end{align*}
-This coincides with a square root of
-the determinant of the $F$-linear map $u \cdot - \colon \DD \to \DD$.
-
-\subsection{Inner form}
-We equip $\DD$ with a symmetric $F$-bilinear inner form
-$\left\langle \bullet, \bullet \right\rangle \colon \DD \times \DD \to F$ defined by
-\[ \left\langle x,y \right\rangle = \tr(xy^\ast) = xy^\ast + yx^\ast. \]
-It is easy to check that $\{1, \sqrt{\eps}, \Pi, \sqrt{\eps}\Pi\}$ is an orthogonal basis,
-and hence that we have a orthogonal decomposition
+As an $F$-vector space, $\DD$ has a basis given by
+$\{1, \sqrt{\eps}, \Pi, \sqrt{\eps}\Pi\}$, that is
 \[ \DD = F \oplus F\sqrt\eps \oplus F \Pi \oplus F\sqrt\eps\Pi. \]
-
 It will be convenient to introduce the following notation:
 \begin{definition}
   For $x \in \DD$, we introduce the notation $x_0$ and $x_-$ to mean
@@ -64,6 +49,16 @@ It will be convenient to introduce the following notation:
 In particular, the formula for conjugation then reads as the simpler
 \[ x^\ast = x_0 - x_-. \]
 
+The reduced norm is similarly defined by
+\begin{align*}
+  \Nm x &= x x^\ast = (a + b \Pi)(\bar a - b \Pi) \\
+  &= a \bar a + b \Pi \bar a - a b \Pi - b \Pi b \Pi \\
+  &= a \bar a - b \bar b \varpi \\
+  &= \Norm_{E/F}(a) - \Norm_{E/F}(b) \varpi .
+\end{align*}
+This coincides with a square root of
+the determinant of the $F$-linear map $u \cdot - \colon \DD \to \DD$.
+
 \subsection{Identification of $\VV_n^-$ with $\DD$}
 We continue using the notation $(\EE, \iota_\EE, \lambda_\EE)$ as the triple over $\FF$
 whose Rosati involution has signature $(1,0)$.
@@ -72,12 +67,12 @@ Moreover, we will take the identification
 \[ \End(\EE) \simeq \OO_\DD \]
 see \cite[Remark 2.5]{ref:KR},
 and hence the corresponding identification
-\[ \VV_n^- \simeq \DD. \]
-Under this identification
-the Hermitian form on $\VV_n^-$ then corresponds to the
-symmetric form on $\DD$ in the obvious way:
-\[ \left\langle u_1, u_2 \right\rangle_{\VV_n^-}
-  = \left\langle u_1, u_2^\ast \right\rangle_{\DD}. \]
+\[ \VV_n^- \simeq \DD \]
+where we  now equip $\DD$ with a $E/F$-Hermitian form
+$\left\langle \bullet, \bullet \right\rangle \colon \DD \times \DD \to E$
+defined by
+\[ \left\langle x,y \right\rangle = \half \Tr_{\DD/E}(xy^\ast) \]
+i.e.\. the projection of $xy^\ast \in \DD = E \oplus E\Pi$ onto the first component.
 
 \section{Setup for $\guv$ and $(g,u)$, and the invariants for the matching}
 \subsection{The invariants for the orbit of $\guv$}
