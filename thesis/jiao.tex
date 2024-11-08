@@ -110,18 +110,14 @@ We specialize to the situation where $u \in \OO_\DD$, and we have
 \[ g \in \SU(\VV_n^-) = \left\{
     \begin{bmatrix} \alpha & \beta \\ \varpi\bar\beta & \bar\alpha \end{bmatrix}
     \mid \alpha, \beta \in E \right\}. \]
-Under the identification with $\DD$ multiplication by $g$ corresponds to the map
-\begin{align*}
-  g \cdot - \colon \DD &\to \DD \\
-  & x \mapsto (\alpha + \beta \Pi) x.
-\end{align*}
+\todo{what is the correspondence here?}
 By abuse of notation we will write $g$ by simply an element of $\OO_\DD$ as well:
 \[ g = \alpha + \beta \Pi \in \OO_\DD \qquad \alpha, \beta \in E. \]
 we also impose coordinates for $u$ according to
 \[ u = s + t \Pi \in \OO_\DD \qquad s, t \in E. \]
 Hence the four corresponding invariants of \Cref{def:matching_semi_lie} are:
 \begin{itemize}
-  \ii $\Tr g = \alpha + \bar\alpha$
+  \ii $\tr g = \alpha + \bar\alpha$
   \ii $\det g = \alpha \bar \alpha - \beta \bar\beta \varpi = 1$
   \ii The quantity
   \[ \left\langle u,u \right\rangle = 2 \Nm u = 2(s \bar s - t \bar t \varpi) \]
@@ -329,8 +325,8 @@ For the valuations of $\left\langle x,x \right\rangle$ and $\left\langle y,y \ri
 we are able to calculate these exactly:
 \begin{align*}
   v(\left\langle x,x \right\rangle)
-  &= v\left( s \bar s - t \bar t \varpi \right)
-  = \min\left( 2v(s), 2v(t) +1 \right) \\
+  &= 2v\left( s \bar s - t \bar t \varpi \right)
+  = 2\min\left( 2v(s), 2v(t) +1 \right) \\
   v\left( \left\langle y,y \right\rangle \right)
   &= 2r + v\left( \alpha \bar \alpha - \beta \bar \beta \varpi \right)
   = 2r + \min\left( 2v(\alpha), 2v(\beta) + 1 \right).
@@ -344,6 +340,7 @@ We now prove the following.
     \frac{v\left( \left\langle x,x \right\rangle \right)
       + v\left( \left\langle y,y \right\rangle \right)}{2}.
   \]
+  Moreover, equality holds if and only if $v(\alpha) \le v(\beta)$.
 \end{lemma}
 \begin{proof}
   We use the estimate
@@ -357,21 +354,62 @@ We now prove the following.
       v(\beta) + v(s) + v(t) + 1
     ).
   \end{align*}
+  Meanwhile,
+  \begin{align*}
+    \frac{v\left( \left\langle x,x \right\rangle \right) + v \left( \left\langle y,y \right\rangle \right)}{2}
+    &= r + \min(2v(s), 2v(t)+1) + \half \min\left( 2v(\alpha), 2v(\beta) + 1 \right).
+  \end{align*}
+  Notice we obviously have the strict inequality
+  \[ v(\beta) + v(s) + v(t) + 1 > \min(2v(s), 2v(t)+1)
+    + \half \min(2v(\alpha), 2v(\beta)+1) \]
+  while we
+  \[ v(\alpha) + \min(2v(s), 2v(t)+1)
+    \ge \min(2v(s), 2v(t)+1) + \half \min(2v(\alpha), 2v(\beta)+1) \]
+  holds exactly for $v(\alpha) \le v(\beta)$, and is otherwise strict.
+  Conversely, if $v(\alpha) \le v(\beta)$ then indeed
+  \[ v(\alpha) + \min(2v(s), 2v(t)+1) < v(\beta) + v(s) + v(t) + 1. \]
+  Hence the lemma is proved.
 \end{proof}
 
-For the determinant, we compute
-\begin{align*}
-  \left\langle x,x \right\rangle \left\langle y,y \right\rangle
-  - \left\langle x,y \right\rangle^2
-  &= -2\eps\left( (s \bar s - t \bar t \varpi)^2 \right)
-    \cdot 2\varpi^{2r} (\alpha \bar\alpha - \beta\bar\beta \varpi) \\
-  &\qquad- \varpi^{2r} \eps \left(
-    (\bar\alpha - \alpha)(s \bar s + t \bar t \varpi)
-    + 2\varpi(\beta s \bar t - \bar\beta \bar s t) \right)^2 \\
-  &= -\varpi^{2r}\eps \Big[
-    4 (s \bar s - t \bar t \varpi)^2 (\alpha \bar \alpha - \beta \bar\beta \varpi) \\
-    &\qquad+ \left( (\bar\alpha - \alpha)(s \bar s + t \bar t \varpi)
-    + 2\varpi(\beta s \bar t - \bar\beta \bar s t) \right)^2
-    \Big] \\
-  &=
-\end{align*}
+\begin{lemma}
+  We have
+  \[ v( \left\langle x,x \right\rangle \left\langle y,y \right\rangle - \left\langle x,y \right\rangle^2)
+    =
+    2r + 2\min\left( 2v(s), 2v(t) +1 \right)
+    +
+    \begin{cases}
+      \min\left( 2v(\alpha), 2v(\beta) + 1 \right).
+      & \text{if } v(\alpha) < v(\beta) \\
+      2v\left( \alpha_0 \right) & \text{otherwise}
+    \end{cases}
+  \]
+  I hope.
+\end{lemma}
+\begin{proof}
+  If $v(\alpha) > v(\beta)$
+  then the preceding lemma implies that
+  $ v( \left\langle x,x \right\rangle \left\langle y,y \right\rangle - \left\langle x,y \right\rangle^2)
+  = v\left( \left\langle x,x \right\rangle \right) + v\left( \left\langle y,y \right\rangle \right)$
+  and we're done.
+
+  If $v(\alpha) \le v(\beta)$, we calculate the determinant
+  \begin{align*}
+    \left\langle x,x \right\rangle \left\langle y,y \right\rangle
+    - \left\langle x,y \right\rangle^2
+    &= -2\eps\left( (s \bar s - t \bar t \varpi)^2 \right)
+      \cdot 2\varpi^{2r} (\alpha \bar\alpha - \beta\bar\beta \varpi) \\
+    &\qquad- \varpi^{2r} \eps \left(
+      (\bar\alpha - \alpha)(s \bar s + t \bar t \varpi)
+      + 2\varpi(\beta s \bar t - \bar\beta \bar s t) \right)^2 \\
+    &= -\varpi^{2r}\eps \Big[
+      4 (s \bar s - t \bar t \varpi)^2 (\alpha \bar \alpha - \beta \bar\beta \varpi) \\
+      &\qquad+ \left( (\bar\alpha - \alpha)(s \bar s + t \bar t \varpi)
+      + 2\varpi(\beta s \bar t - \bar\beta \bar s t) \right)^2 \Big].
+  \end{align*}
+  The conclusion is equivalent to proving the bracketed term is nonzero modulo
+  \[ \varpi^{v(\left\langle x,x \right\rangle) + v(\left\langle y,y \right\rangle) - 2r}
+    = \varpi^{2v(\alpha)+2\min(2v(s), 2v(t)+1)+1}. \]
+  Reducing the bracketed term modulo this power of $\varpi$ leaves just
+  \[ 4 (s \bar s - t \bar t \varpi)^2 \alpha \bar \alpha
+      + \left( (\bar\alpha - \alpha)(s \bar s + t \bar t \varpi) \right)^2 \]
+\end{proof}
