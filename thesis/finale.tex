@@ -1,0 +1,132 @@
+\chapter{Proof of \Cref{conj:semi_lie_spherical} for $n = 2$}
+We now put together all the results from the previous chapters to
+prove \Cref{conj:semi_lie_spherical} is true for $n = 2$.
+
+\section{Matching $\guv$ and $(g,u)$, and the invariants for the matching}
+\subsection{The invariants for the orbit of $\guv$}
+From \Cref{ch:orbitalFJ0}, recall that we considered
+\[
+  (\gamma, \uu, \vv^\top)
+  =
+  \left( \begin{bmatrix} a & b \\ c & d \end{bmatrix}
+    \begin{bmatrix} 0 \\ 1 \end{bmatrix}, \begin{bmatrix} 0 & e \end{bmatrix} \right)
+  \in (S_2(F) \times V'_2(F))\rs
+\]
+subject to the conditions
+\begin{align*}
+  \bar b c = b \bar c &= 1 - a \bar a = 1 - d \bar d \\
+  \text{and } d &= - \bar a c / \bar c = -\bar a b / \bar b.
+\end{align*}
+It will again be enough to consider the situation in which $\det \gamma = 1$.
+The invariants in this case as described in \Cref{def:matching_semi_lie} are:
+\begin{itemize}
+  \ii $\Tr \gamma = a + d$
+  \ii $\det \gamma = ad - bc$
+  \ii $\vv^\top \uu = e$
+  \ii $\vv^\top \gamma \uu = \begin{bmatrix} 0 & e \end{bmatrix}
+  \begin{bmatrix} a & b \\ c & d \end{bmatrix} \begin{bmatrix} 0 \\ 1 \end{bmatrix} = de$.
+\end{itemize}
+Note that the parameters $b$ and $c$ are absent; but we have
+\[ v(b) + v(c) = v(\det \gamma - a d). \]
+
+\subsection{Matching}
+We now take these results and line them up with \Cref{sec:g_u_invariants}.
+
+\begin{lemma}
+  \label{lem:finale_match}
+  Let $g = \alpha + \beta \Pi$ and $u = s + t \Pi$ as above
+  and suppose $(g,u)$ matches with
+  \[ (\gamma, \uu, \vv^\top) = \left( \begin{bmatrix} a & b \\ c & d \end{bmatrix}
+    \begin{bmatrix} 0 \\ 1 \end{bmatrix}, \begin{bmatrix} 0 & e \end{bmatrix} \right)
+    \in (S_2(F) \times V'_2(F))\rs. \]
+  Then we have
+  \begin{align*}
+    \alpha_1 &= \frac{d-a}{2} \\
+    \Nm u &= e \\
+    \det g - \alpha \bar \alpha &= -bc.
+  \end{align*}
+\end{lemma}
+\begin{proof}
+  Setting the invariants above equal we obtain
+  \begin{align*}
+    a + d &= \alpha + \bar\alpha \\
+    \det \gamma = ad - bc &= \det g \\
+    e &= \Nm u \\
+    de &= \alpha \Nm u.
+  \end{align*}
+  Hence it follows $d = \alpha$ and $a = \bar\alpha$.
+  In particular
+  \[ \alpha_1 = \frac{\alpha - \bar\alpha}{2\sqrt\eps} = \frac{d-a}{2\sqrt\eps}. \]
+  The lemma follows directly from this.
+\end{proof}
+
+\section{Translation of the Gross-Keating data to the orbital side}
+We combine the results of \Cref{sec:GK} with \Cref{lem:finale_match}.
+Retaining the notation
+\begin{align*}
+  x &\coloneqq u^\ast \sqrt{\eps} u = (s \bar s + t \bar t \varpi) \sqrt{\eps} \in \ODT \\
+  y &\coloneqq \varpi^r g_- = (\alpha_1\sqrt\eps + \beta \Pi) \in \ODT
+\end{align*}
+from \Cref{sec:GK}, we obtain the following:
+\begin{align*}
+  v(\left\langle x,x \right\rangle _0)
+    &= 2 v(\Nm u) \\
+    &= 2v(e) \\
+  v\left( \left\langle x,y \right\rangle _0 \right)
+    &= r + v(\alpha_1) + v(\Nm u) \\
+    &= r + v(d-a) + v(e) \\
+  v(
+    \left\langle x,x \right\rangle _0 \left\langle y,y \right\rangle _0
+    - \left\langle x,y \right\rangle^2_0
+  )
+    &= 2r + 2 v(\Nm u) + v(\det g - \alpha \bar \alpha) \\
+    &= 2r + 2v(e) + v(b) + v(c).
+\end{align*}
+Notice that the last valuation is odd.
+Therefore we can always extract $v(\left\langle y,y \right\rangle _0)$ by writing
+\begin{align*}
+  v\left(\left\langle x,x \right\rangle _0\right) + v\left(\left\langle y,y \right\rangle _0\right)
+  &= \min \left( v\left( \left\langle x,x \right\rangle _0 \left\langle y,y \right\rangle _0 - \left\langle x,y \right\rangle^2_0 \right),
+    v(\left\langle x,y \right\rangle^2_0) \right) \\
+  \implies  v\left(\left\langle y,y \right\rangle _0\right)
+  &= \min(2r + 2v(e) + v(b) + v(c), 2r + 2v(d-a) + 2v(e)) - 2v(e) \\
+  &= 2r + \min(v(b) + v(c), 2v(d-a)).
+\end{align*}
+
+For brevity, let us write
+\[
+  \GK_{n_1, n_2}
+  \coloneqq \begin{cases}
+      \sum_{j=0}^{\frac{n_1-1}{2}} (n_1+n_2-4j) p^j & \text{if } n_1 \equiv 1 \pmod 2 \\
+      \frac{n_2-n_1+1}{2} p^{n_1/2} + \sum_{j=0}^{n_1/2-1} (n_1+n_2-4j) p^j & \text{if } n_1 \equiv 0 \pmod 2.
+    \end{cases}
+\]
+for $0 \le n_1 \le n_2$.
+Apply \Cref{prop:GK} to obtain
+\begin{align*}
+  &\left< \ZO4(1), \; \ZO4(x)^\circ, \; \ZO4(y)^\circ \right>_{\MM_2 \times \MM_2} \\
+  &= \GK_{
+    \min(2v(e), r+v(d-a)+v(e), 2r+\min(v(b)+v(c)), 2v(d-a)),
+    2r + 2v(e) + v(b) + v(c)
+  }.
+\end{align*}
+
+\section{Base change}
+The base change for $n=2$ was already calculated in \cite{ref:AFLspherical}
+and we simply recall the result here.
+
+As in \Cref{ch:jiao}, we define
+\[ f_r \coloneqq \mathbf{1}_{\varpi^{-r} \Mat_2(\OO_E) \cap \U(\VV_n^+)} \in \HH(\U(\VV_n^+)) \]
+\begin{lemma}
+  [{\cite[Lemma 7.1.1]{ref:AFLspherical}}]
+  For $n = 2$ and $r \ge 1$ we have
+  \[
+    \BC_S^{\eta}(
+      \mathbf{1}_{K'_{S, \le r}}
+      + \mathbf{1}_{K'_{S, \le (r-1)}}
+    ) = f_r.
+  \]
+\end{lemma}
+\begin{proof}
+  This follows directly from \cite[equation (7.1.9)]{ref:AFLspherical}.
+\end{proof}

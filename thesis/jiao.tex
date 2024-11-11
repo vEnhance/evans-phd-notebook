@@ -1,4 +1,5 @@
 \chapter{Intersection numbers for $\Int((g,u), f)$ for $n = 2$}
+\label{ch:jiao}
 This chapter is dedicated to computing intersection numbers
 for the semi-Lie version of AFL in the special case $n = 2$.
 
@@ -78,34 +79,8 @@ see \cite[Remark 2.5]{ref:KR},
 and hence the corresponding identification
 \[ \VV_n^- \simeq \DD. \]
 
-\section{Setup for $\guv$ and $(g,u)$, and the invariants for the matching}
-\subsection{The invariants for the orbit of $\guv$}
-From \Cref{ch:orbitalFJ0}, recall that we considered
-\[
-  (\gamma, \uu, \vv^\top)
-  =
-  \left( \begin{bmatrix} a & b \\ c & d \end{bmatrix}
-    \begin{bmatrix} 0 \\ 1 \end{bmatrix}, \begin{bmatrix} 0 & e \end{bmatrix} \right)
-  \in (S_2(F) \times V'_2(F))\rs
-\]
-subject to the conditions
-\begin{align*}
-  \bar b c = b \bar c &= 1 - a \bar a = 1 - d \bar d \\
-  \text{and } d &= - \bar a c / \bar c = -\bar a b / \bar b.
-\end{align*}
-It will again be enough to consider the situation in which $\det \gamma = 1$.
-The invariants in this case as described in \Cref{def:matching_semi_lie} are:
-\begin{itemize}
-  \ii $\Tr \gamma = a + d$
-  \ii $\det \gamma = ad - bc$
-  \ii $\vv^\top \uu = e$
-  \ii $\vv^\top \gamma \uu = \begin{bmatrix} 0 & e \end{bmatrix}
-  \begin{bmatrix} a & b \\ c & d \end{bmatrix} \begin{bmatrix} 0 \\ 1 \end{bmatrix} = de$.
-\end{itemize}
-Note that the parameters $b$ and $c$ are absent; but we have
-\[ v(b) + v(c) = v(1 - a \bar a). \]
-
-\subsection{The invariants for the orbit of $(g,u)$}
+\section{The invariants for the orbit of $(g,u)$}
+\label{sec:g_u_invariants}
 We specialize to the situation where $u \in \OO_\DD$, and we have
 \[ g \in \U(\VV_n^-) = \left\{
     \begin{bmatrix} \alpha & \beta \\ \varpi\bar\beta & \bar\alpha \end{bmatrix}
@@ -154,33 +129,6 @@ on the $\SU(2)$-orbit of the pair $(g,u)$,
 and any element $u \in \DD^\times$ can be mapped under an element of $\SU(2)$
 into a pair for which $u \in E$ or $u \in E \Pi$.
 
-\subsection{Matching}
-\begin{lemma}
-  Let $g = \alpha + \beta \Pi$ and $u = s + t \Pi$ as above
-  and suppose $(g,u)$ matches with
-  \[ (\gamma, \uu, \vv^\top) = \left( \begin{bmatrix} a & b \\ c & d \end{bmatrix}
-    \begin{bmatrix} 0 \\ 1 \end{bmatrix}, \begin{bmatrix} 0 & e \end{bmatrix} \right)
-    \in (S_2(F) \times V'_2(F))\rs. \]
-  Then we have
-  \begin{align*}
-    \alpha_1 &= \frac{d-a}{2} \\
-    \Nm u &= e \\
-    \det g - \alpha \bar \alpha &= -bc.
-  \end{align*}
-\end{lemma}
-\begin{proof}
-  Setting the invariants above equal we obtain
-  \begin{align*}
-    a + d &= \alpha + \bar\alpha \\
-    \det \gamma = ad - bc &= \det g \\
-    e &= \Nm u \\
-    de &= \alpha \Nm u.
-  \end{align*}
-  Hence it follows $d = \alpha$ and $a = \bar\alpha$.
-  In particular
-  \[ \alpha_1 = \frac{\alpha - \bar\alpha}{2\sqrt\eps} = \frac{d-a}{2\sqrt\eps}. \]
-  The lemma follows directly from this.
-\end{proof}
 
 \section{Background on special divisors for $n = 2$}
 \subsection{The Rapoport-Zink space $\RZ_2$}
@@ -277,7 +225,7 @@ Define $\ZO4(u)^\circ$ and $\ZO3(u)^\circ$ similarly.
 
 \section{The intersection number as a triple product}
 We return to the intersection number
-\[ \chi_{\RZ_{n,n}} \left(
+\[ \Int((g,u), f_r) = \chi_{\RZ_{n,n}} \left(
       \Sheaf_{\TT_{\mathbf{1} \otimes f_r}(\Delta_{\ZD(u)})}
       \jiao_{\Sheaf_{\RZ_{n,n}}} \SO_{\Gamma_g} \right) \]
 which we will rewrite more succinctly using angle brackets as
@@ -297,6 +245,7 @@ So, we proceed to compute
 We know that
 \[ \varpi^r g = \varpi^r \alpha + \varpi^r \beta \Pi. \]
 \section{The formula of Gross-Keating}
+\label{sec:GK}
 In what follows, we let
 \[ \left\langle x, y \right\rangle _0
   = \frac{\left\langle x,y \right\rangle + \ol{\left\langle x,y \right\rangle}}{2} \]
@@ -305,10 +254,11 @@ Let $\ODT \coloneqq \OO_\DD \cap \DT$.
 
 \begin{proposition}
   [Gross-Keating]
+  \label{prop:GK}
   Let $x,y \in \ODT$ and let
   \begin{align*}
     n_1 &= \min\left( v(\left\langle x,x \right\rangle _0), v(\left\langle x,y \right\rangle _0), v(\left\langle y,y \right\rangle _0) \right) \\
-    n_2 &= v\left( \left\langle x,x \right\rangle _0 \left\langle y,y \right\rangle _0 - \left\langle x,y \right\rangle^2_0 \right)
+    n_2 &= v\left( \left\langle x,x \right\rangle _0 \left\langle y,y \right\rangle _0 - \left\langle x,y \right\rangle^2_0 \right) - n_1
   \end{align*}
   so that $0 \le n_1 \le n_2$.
   Then
