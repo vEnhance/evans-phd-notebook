@@ -138,6 +138,20 @@ Hence the four corresponding invariants of \Cref{def:matching_semi_lie} are:
   \end{align*}
 \end{itemize}
 
+For simplicity, we are going to make the following assumption on $u$,
+although it will not be used until we use the Gross-Keating formula.
+\begin{assume}
+  We have $u \in E$ or $u \in E \Pi$.
+  That is, either $s = 0$ or $t = 0$.
+  \label{assume:st_zero}
+\end{assume}
+
+This assumption can be made without loss of generality because
+the invariants above and the intersection only depend
+on the $\SU(2)$-orbit of the pair $(g,u)$,
+and any element $u \in \DD^\times$ can be mapped under an element of $\SU(2)$
+into a pair for which $u \in E$ or $u \in E \Pi$.
+
 \section{Background on special divisors for $n = 2$}
 \subsection{The Rapoport-Zink space $\RZ_2$}
 For integers $r \ge 0$, if we consider the functions
@@ -252,21 +266,18 @@ So, we proceed to compute
 \end{align*}
 We know that
 \[ \varpi^r g = \varpi^r \alpha + \varpi^r \beta \Pi. \]
-We can also compute:
-\begin{align*}
-  u^\ast \sqrt{\eps} u
-  &= (\ol s - t \Pi) \sqrt{\eps} (s + t \Pi) \\
-  &= (\ol s - t \Pi) (s \sqrt{\eps} + t \sqrt{\eps} \Pi) \\
-  &= s \ol s \sqrt{\eps} - t \ol{s\sqrt{\eps}} \Pi + \ol s t \sqrt{\eps} \Pi - t \ol{t \sqrt{\eps}} \varpi \\
-  &= (s \ol s + t \ol t \varpi) \sqrt{\eps} + 2 \ol s t \sqrt{\eps} \Pi.
-\end{align*}
-
 \section{The formula of Gross-Keating}
+In what follows, we let
+\[ \left\langle x, y \right\rangle _0
+  = \frac{\left\langle x,y \right\rangle + \ol{\left\langle x,y \right\rangle}}{2} \]
+denote half the $E/F$-trace of the $\left\langle x,y \right\rangle$.
+Let $\ODT \coloneqq \OO_\DD \cap \DT$.
+
 \begin{proposition}
-  Let $x,y \in \OO_\DD$ and let
+  Let $x,y \in \ODT$ and let
   \begin{align*}
-    n_1 &= \min\left( v(\left\langle x,x \right\rangle), v(\left\langle x,y \right\rangle), v(\left\langle y,y \right\rangle) \right) \\
-    n_2 &= v\left( \left\langle x,x \right\rangle \left\langle y,y \right\rangle - \left\langle x,y \right\rangle^2 \right)
+    n_1 &= \min\left( v(\left\langle x,x \right\rangle _0), v(\left\langle x,y \right\rangle _0), v(\left\langle y,y \right\rangle _0) \right) \\
+    n_2 &= v\left( \left\langle x,x \right\rangle _0 \left\langle y,y \right\rangle _0 - \left\langle x,y \right\rangle^2_0 \right)
   \end{align*}
   so that $0 \le n_1 \le n_2$.
   Then
@@ -283,127 +294,52 @@ We can also compute:
   This is a rewriting of \cite[Proposition 14.6]{ref:Kudla1997}
   which is itself a special case of \cite[Proposition 5.4]{ref:GK}.
 \end{proof}
-From now on, we use the notation
+
+We now compute all the quantities needed to invoke the Gross-Keating formula.
+We start by writing
 \begin{align*}
-  x &\coloneqq u^\ast \sqrt{\eps} u = (s \bar s + t \bar t \varpi) \sqrt{\eps} + 2 \bar s t \sqrt{\eps} \Pi \in \OO_\DD \\
-  y &\coloneqq \varpi^r g \in \OO_\DD.
+  u^\ast \sqrt{\eps} u
+  &= (\ol s - t \Pi) \sqrt{\eps} (s + t \Pi) \\
+  &= (\ol s - t \Pi) (s \sqrt{\eps} + t \sqrt{\eps} \Pi) \\
+  &= s \ol s \sqrt{\eps} - t \ol{s\sqrt{\eps}} \Pi + \ol s t \sqrt{\eps} \Pi - t \ol{t \sqrt{\eps}} \varpi \\
+  &= (s \ol s + t \ol t \varpi) \sqrt{\eps} + 2 \ol s t \sqrt{\eps} \Pi.
 \end{align*}
+We now invoke \Cref{assume:st_zero} for the first time to simplify this to just
+\[ u^\ast \sqrt{\eps} u = (s \ol s + t \ol t \varpi) \sqrt{\eps}. \]
+This assumption will also let us write
+\[ (s \ol s + t \ol t \varpi)^2 = (s \ol s - t \ol t \varpi)^2 = (\Nm u)^2. \]
+
+From now on, we will write
+\[ \alpha = \alpha_0 + \alpha_1 \sqrt{\eps} \qquad \alpha_0, \alpha_1 \in F \]
+and use the notation
+\begin{align*}
+  x &\coloneqq u^\ast \sqrt{\eps} u = (s \bar s + t \bar t \varpi) \sqrt{\eps} \in \ODT \\
+  y &\coloneqq \varpi^r g_- = (\alpha_1\sqrt\eps + \beta \Pi) \in \ODT.
+\end{align*}
+
 Then we can compute
 \begin{align*}
-  \left\langle x,x \right\rangle &= \Nm x \\
-  &= (\Norm_{E/F}((s \bar s + t \bar t \varpi)\sqrt{\eps})
-    - \Norm_{E/F}(2 \bar s t \sqrt{\eps}) \varpi) \\
-  &= \left( -\eps(s \bar s + t \bar t \varpi)^2
-    - (2\bar s t \sqrt{\eps})(-2s \bar t \sqrt{\eps}) \varpi \right) \\
-  &= \left( -\eps(s \bar s + t \bar t \varpi)^2
-    + 4s\bar s t \bar t \eps \varpi \right) \\
-  &= -\eps\left( (s \bar s - t \bar t \varpi)^2 \right) = -\eps (\Nm u)^2. \\
-  \left\langle x,y \right\rangle &= \half \Tr_{\DD/E} (x y^\ast) \\
-  &= \half \Tr_{\DD/E} \left[
-    \left( (s \bar s + t \bar t \varpi) \sqrt{\eps} + 2 \bar s t \sqrt{\eps} \Pi \right)
-    \cdot \varpi^{r} (\bar\alpha - \beta \Pi)
-  \right] \\
-  &= \varpi^r \half \Tr_{\DD/E} \left[
-    \bar\alpha (s \bar s + t \bar t \varpi) \sqrt{\eps}
-    + 2 \alpha \bar s t \sqrt{\eps} \Pi
-    - \beta (s \bar s + t \bar t \varpi) \sqrt{\eps} \Pi
-    - \bar\beta 2 \bar s t \varpi \sqrt{\eps}
-  \right] \\
-  &= \varpi^r \left[
-    \bar\alpha (s \bar s + t \bar t \varpi) \sqrt{\eps}
-    - \bar\beta 2 \bar s t \varpi \sqrt{\eps} \right] \\
-  \left\langle y,y \right\rangle &= \Nm (\varpi^r g)
-  = \varpi^{2r} (\alpha \bar\alpha - \beta\bar\beta \varpi).
+  \left\langle x,x \right\rangle _0 &= \Nm x \\
+  &= \Norm_{E/F}((s \bar s + t \bar t \varpi)\sqrt{\eps}) \\
+  &= -\eps(s \bar s + t \bar t \varpi)^2 = -\eps (\Nm u)^2 \\
+  \left\langle y,y \right\rangle _0 &= \Nm (\varpi^r g_-) \\
+  &= \varpi^{2r} (-\alpha_1^2 \eps - \beta\bar\beta \varpi) \\
+  &= \varpi^{2r} (\alpha\bar\alpha - \beta\bar\beta \varpi - \alpha_0^2) \\
+  &= \varpi^{2r}(\det g - \alpha_0^2) \\
+  \left\langle x,y \right\rangle _0 &= (x y^\ast)_0 \\
+  &= \left( \left( (s \bar s + t \bar t \varpi) \sqrt{\eps} \right)
+    \cdot \varpi^{r} (-\alpha_1\sqrt{\eps} - \beta \Pi) \right)_0 \\
+  &= \varpi^r \left( -\alpha_1 (s \bar s + t \bar t \varpi) \eps
+    - \beta (s \bar s + t \bar t \varpi) \sqrt{\eps} \Pi \right)_0 \\
+  &= - \varpi^r \alpha_1 \eps (s \bar s + t \bar t \varpi).
 \end{align*}
-For the valuations of $\left\langle x,x \right\rangle$ and $\left\langle y,y \right\rangle$,
-we are able to calculate these exactly:
+This lets us compute the determinant
 \begin{align*}
-  v(\left\langle x,x \right\rangle)
-  &= 2v\left( s \bar s - t \bar t \varpi \right)
-  = 2\min\left( 2v(s), 2v(t) +1 \right) \\
-  v\left( \left\langle y,y \right\rangle \right)
-  &= 2r + v\left( \alpha \bar \alpha - \beta \bar \beta \varpi \right)
-  = 2r + \min\left( 2v(\alpha), 2v(\beta) + 1 \right).
+  \left\langle x,x \right\rangle _0 \left\langle y,y \right\rangle _0 - \left\langle x,y \right\rangle^2_0
+  &= - \eps (\Nm u)^2\cdot \varpi^{2r} (\det g - \alpha_0^2)
+  - (\varpi^r \alpha_1 \eps (s \bar s + t \bar t \varpi))^2 \\
+  &= - \eps (\Nm u)^2\cdot \varpi^{2r} (\det g - \alpha_0^2)
+  - (\varpi^r \alpha_1 \eps)^2 (\Nm u)^2 \\
+  &= -\varpi^{2r} \eps (\Nm u)^2  \left( \det g - \alpha_0^2 + \eps \alpha_1^2 \right) \\
+  &= -\varpi^{2r} \eps (\Nm u)^2  \left( \det g - \alpha \bar\alpha \right).
 \end{align*}
-
-We now prove the following.
-\begin{lemma}
-  We always have
-  \[
-    v\left( \left\langle x,y \right\rangle \right) \ge
-    \frac{v\left( \left\langle x,x \right\rangle \right)
-      + v\left( \left\langle y,y \right\rangle \right)}{2}.
-  \]
-  Moreover, equality holds if and only if $v(\alpha) \le v(\beta)$.
-\end{lemma}
-\begin{proof}
-  We use the estimate
-  \begin{align*}
-    v\left( \left\langle x,y \right\rangle  \right)
-    &= r + v\left(
-      (\bar\alpha - \alpha)(s \bar s + t \bar t \varpi)
-      + 2\varpi(\beta s \bar t - \bar\beta \bar s t) \right) \\
-    &\ge r + \min(
-      v(\alpha) + \min(2v(s), 2v(t)+1),
-      v(\beta) + v(s) + v(t) + 1
-    ).
-  \end{align*}
-  Meanwhile,
-  \begin{align*}
-    \frac{v\left( \left\langle x,x \right\rangle \right) + v \left( \left\langle y,y \right\rangle \right)}{2}
-    &= r + \min(2v(s), 2v(t)+1) + \half \min\left( 2v(\alpha), 2v(\beta) + 1 \right).
-  \end{align*}
-  Notice we obviously have the strict inequality
-  \[ v(\beta) + v(s) + v(t) + 1 > \min(2v(s), 2v(t)+1)
-    + \half \min(2v(\alpha), 2v(\beta)+1) \]
-  while we
-  \[ v(\alpha) + \min(2v(s), 2v(t)+1)
-    \ge \min(2v(s), 2v(t)+1) + \half \min(2v(\alpha), 2v(\beta)+1) \]
-  holds exactly for $v(\alpha) \le v(\beta)$, and is otherwise strict.
-  Conversely, if $v(\alpha) \le v(\beta)$ then indeed
-  \[ v(\alpha) + \min(2v(s), 2v(t)+1) < v(\beta) + v(s) + v(t) + 1. \]
-  Hence the lemma is proved.
-\end{proof}
-
-\begin{lemma}
-  We have
-  \[ v( \left\langle x,x \right\rangle \left\langle y,y \right\rangle - \left\langle x,y \right\rangle^2)
-    =
-    2r + 2\min\left( 2v(s), 2v(t) +1 \right)
-    +
-    \begin{cases}
-      \min\left( 2v(\alpha), 2v(\beta) + 1 \right).
-      & \text{if } v(\alpha) < v(\beta) \\
-      2v\left( \alpha_0 \right) & \text{otherwise}
-    \end{cases}
-  \]
-  I hope.
-\end{lemma}
-\begin{proof}
-  If $v(\alpha) > v(\beta)$
-  then the preceding lemma implies that
-  $ v( \left\langle x,x \right\rangle \left\langle y,y \right\rangle - \left\langle x,y \right\rangle^2)
-  = v\left( \left\langle x,x \right\rangle \right) + v\left( \left\langle y,y \right\rangle \right)$
-  and we're done.
-
-  If $v(\alpha) \le v(\beta)$, we calculate the determinant
-  \begin{align*}
-    \left\langle x,x \right\rangle \left\langle y,y \right\rangle
-    - \left\langle x,y \right\rangle^2
-    &= -2\eps\left( (s \bar s - t \bar t \varpi)^2 \right)
-      \cdot 2\varpi^{2r} (\alpha \bar\alpha - \beta\bar\beta \varpi) \\
-    &\qquad- \varpi^{2r} \eps \left(
-      (\bar\alpha - \alpha)(s \bar s + t \bar t \varpi)
-      + 2\varpi(\beta s \bar t - \bar\beta \bar s t) \right)^2 \\
-    &= -\varpi^{2r}\eps \Big[
-      4 (s \bar s - t \bar t \varpi)^2 (\alpha \bar \alpha - \beta \bar\beta \varpi) \\
-      &\qquad+ \left( (\bar\alpha - \alpha)(s \bar s + t \bar t \varpi)
-      + 2\varpi(\beta s \bar t - \bar\beta \bar s t) \right)^2 \Big].
-  \end{align*}
-  The conclusion is equivalent to proving the bracketed term is nonzero modulo
-  \[ \varpi^{v(\left\langle x,x \right\rangle) + v(\left\langle y,y \right\rangle) - 2r}
-    = \varpi^{2v(\alpha)+2\min(2v(s), 2v(t)+1)+1}. \]
-  Reducing the bracketed term modulo this power of $\varpi$ leaves just
-  \[ 4 (s \bar s - t \bar t \varpi)^2 \alpha \bar \alpha
-      + \left( (\bar\alpha - \alpha)(s \bar s + t \bar t \varpi) \right)^2 \]
-\end{proof}
