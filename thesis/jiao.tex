@@ -59,22 +59,24 @@ It will be convenient to introduce the following notation:
 In particular, the formula for conjugation then reads as the simpler
 \[ x^\ast = x_0 - x_-. \]
 
-\subsection{Identification of $\VV_n^-$ with $\DD$}
-We continue using the notation $(\EE, \iota_\EE, \lambda_\EE)$ as the triple over $\FF$
-whose Rosati involution has signature $(1,0)$.
-
-Moreover, we will take the identification
-\[ \End(\EE) \simeq \OO_\DD \]
-see \cite[Remark 2.5]{ref:KR},
-and hence the corresponding identification
-\[ \VV_n^- \simeq \DD \]
-where we  now equip $\DD$ with a $E/F$-Hermitian form
+\subsection{Hermitian structure}
+We view $\DD$ as an $E/F$-Hermitian space under \emph{right} multiplication by $E$,
+and equip $\DD$ with a $E/F$-Hermitian form
 $\left\langle \bullet, \bullet \right\rangle \colon \DD \times \DD \to E$
 defined by
 \[ \left\langle x,y \right\rangle = \half \Tr_{\DD/E}(xy^\ast) \]
 i.e.\. the projection of $xy^\ast \in \DD = E \oplus E\Pi$ onto the first component.
 In particular, note that
 \[ \left\langle x,x \right\rangle  = x x^\ast = \Nm x. \]
+
+\subsection{Identification of $\VV_n^-$ with $\DD$}
+We continue using the notation $(\EE, \iota_\EE, \lambda_\EE)$ as the triple over $\FF$
+whose Rosati involution has signature $(1,0)$.
+Moreover, we will take the identification
+\[ \End(\EE) \simeq \OO_\DD \]
+see \cite[Remark 2.5]{ref:KR},
+and hence the corresponding identification
+\[ \VV_n^- \simeq \DD. \]
 
 \section{Setup for $\guv$ and $(g,u)$, and the invariants for the matching}
 \subsection{The invariants for the orbit of $\guv$}
@@ -84,6 +86,7 @@ From \Cref{ch:orbitalFJ0}, recall that we considered
   =
   \left( \begin{bmatrix} a & b \\ c & d \end{bmatrix}
     \begin{bmatrix} 0 \\ 1 \end{bmatrix}, \begin{bmatrix} 0 & e \end{bmatrix} \right)
+  \in (S_2(F) \times V'_2(F))\rs
 \]
 subject to the conditions
 \begin{align*}
@@ -107,7 +110,6 @@ We specialize to the situation where $u \in \OO_\DD$, and we have
 \[ g \in \U(\VV_n^-) = \left\{
     \begin{bmatrix} \alpha & \beta \\ \varpi\bar\beta & \bar\alpha \end{bmatrix}
     \mid \alpha, \beta \in E \right\}. \]
-\todo{what is the correspondence here?}
 By abuse of notation we will write $g$ by simply an element of $\OO_\DD$ as well:
 \[ g = \alpha + \beta \Pi \in \OO_\DD \qquad \alpha, \beta \in E. \]
 we also impose coordinates for $u$ according to
@@ -151,6 +153,34 @@ the invariants above and the intersection only depend
 on the $\SU(2)$-orbit of the pair $(g,u)$,
 and any element $u \in \DD^\times$ can be mapped under an element of $\SU(2)$
 into a pair for which $u \in E$ or $u \in E \Pi$.
+
+\subsection{Matching}
+\begin{lemma}
+  Let $g = \alpha + \beta \Pi$ and $u = s + t \Pi$ as above
+  and suppose $(g,u)$ matches with
+  \[ (\gamma, \uu, \vv^\top) = \left( \begin{bmatrix} a & b \\ c & d \end{bmatrix}
+    \begin{bmatrix} 0 \\ 1 \end{bmatrix}, \begin{bmatrix} 0 & e \end{bmatrix} \right)
+    \in (S_2(F) \times V'_2(F))\rs. \]
+  Then we have
+  \begin{align*}
+    \alpha_1 &= \frac{d-a}{2} \\
+    \Nm u &= e \\
+    \det g - \alpha \bar \alpha &= -bc.
+  \end{align*}
+\end{lemma}
+\begin{proof}
+  Setting the invariants above equal we obtain
+  \begin{align*}
+    a + d &= \alpha + \bar\alpha \\
+    \det \gamma = ad - bc &= \det g \\
+    e &= \Nm u \\
+    de &= \alpha \Nm u.
+  \end{align*}
+  Hence it follows $d = \alpha$ and $a = \bar\alpha$.
+  In particular
+  \[ \alpha_1 = \frac{\alpha - \bar\alpha}{2\sqrt\eps} = \frac{d-a}{2\sqrt\eps}. \]
+  The lemma follows directly from this.
+\end{proof}
 
 \section{Background on special divisors for $n = 2$}
 \subsection{The Rapoport-Zink space $\RZ_2$}
@@ -274,6 +304,7 @@ denote half the $E/F$-trace of the $\left\langle x,y \right\rangle$.
 Let $\ODT \coloneqq \OO_\DD \cap \DT$.
 
 \begin{proposition}
+  [Gross-Keating]
   Let $x,y \in \ODT$ and let
   \begin{align*}
     n_1 &= \min\left( v(\left\langle x,x \right\rangle _0), v(\left\langle x,y \right\rangle _0), v(\left\langle y,y \right\rangle _0) \right) \\
