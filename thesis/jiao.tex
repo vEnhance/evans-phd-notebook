@@ -23,7 +23,7 @@ Then we denote by $x^\ast \in \DD$ the conjugate in $\DD$ defined by
 where, again, $a$ is the image of $a \in E$ under the nontrivial element of $\Gal(E/F)$.
 It is an anti-involution, meaning that $(x^\ast)^\ast = x$ and $(xy)^\ast = y^\ast x^\ast$.
 
-This allows us to define the (reduced) norm and trace in $\DD$.
+This allows us to define the reduced norm and trace in $\DD$.
 The reduced trace is given by
 \[ \tr x \coloneqq x + x^\ast = \Tr{E/F}(a) = 2x_0. \]
 This coincides with half the trace of the
@@ -33,6 +33,16 @@ We may thus define
 which has codimension $1$ inside $\DD$ (i.e.\ is three-dimensional as an $F$-vector space).
 Since $\tr(a+b\Pi) = \Tr_{E/F}(a)$, we could also write
 \[ \DT = \{ a+b\Pi \mid a,b \in E \text{ and } \Tr_{E/F}(a) = 0 \}. \]
+
+The reduced norm is similarly defined by
+\begin{align*}
+  \Nm x &= x x^\ast = (a + b \Pi)(\bar a - b \Pi) \\
+  &= a \bar a + b \Pi \bar a - a b \Pi - b \Pi b \Pi \\
+  &= a \bar a - b \bar b \varpi \\
+  &= \Norm_{E/F}(a) - \Norm_{E/F}(b) \varpi .
+\end{align*}
+This coincides with a square root of
+the determinant of the $F$-linear map $u \cdot - \colon \DD \to \DD$.
 
 As an $F$-vector space, $\DD$ has a basis given by
 $\{1, \sqrt{\eps}, \Pi, \sqrt{\eps}\Pi\}$, that is
@@ -49,16 +59,6 @@ It will be convenient to introduce the following notation:
 In particular, the formula for conjugation then reads as the simpler
 \[ x^\ast = x_0 - x_-. \]
 
-The reduced norm is similarly defined by
-\begin{align*}
-  \Nm x &= x x^\ast = (a + b \Pi)(\bar a - b \Pi) \\
-  &= a \bar a + b \Pi \bar a - a b \Pi - b \Pi b \Pi \\
-  &= a \bar a - b \bar b \varpi \\
-  &= \Norm_{E/F}(a) - \Norm_{E/F}(b) \varpi .
-\end{align*}
-This coincides with a square root of
-the determinant of the $F$-linear map $u \cdot - \colon \DD \to \DD$.
-
 \subsection{Identification of $\VV_n^-$ with $\DD$}
 We continue using the notation $(\EE, \iota_\EE, \lambda_\EE)$ as the triple over $\FF$
 whose Rosati involution has signature $(1,0)$.
@@ -73,6 +73,8 @@ $\left\langle \bullet, \bullet \right\rangle \colon \DD \times \DD \to E$
 defined by
 \[ \left\langle x,y \right\rangle = \half \Tr_{\DD/E}(xy^\ast) \]
 i.e.\. the projection of $xy^\ast \in \DD = E \oplus E\Pi$ onto the first component.
+In particular, note that
+\[ \left\langle x,x \right\rangle  = x x^\ast = \Nm x. \]
 
 \section{Setup for $\guv$ and $(g,u)$, and the invariants for the matching}
 \subsection{The invariants for the orbit of $\guv$}
@@ -122,22 +124,20 @@ Hence the four corresponding invariants of \Cref{def:matching_semi_lie} are:
     &= \left\langle (\alpha + \beta \Pi)(s + t \Pi), s + t \Pi \right\rangle \\
     &= \left\langle (\alpha s + \beta \bar t \varpi) + (\alpha t + \beta \bar s) \Pi,
       s + t \Pi \right\rangle \\
-    &= \tr [((\alpha s + \beta \bar t \varpi) + (\alpha t + \beta \bar s) \Pi) (\bar s - t \Pi)] \\
-    &= \tr\left[
+    &= \half \Tr_{\DD/E} [((\alpha s + \beta \bar t \varpi) + (\alpha t + \beta \bar s) \Pi) (\bar s - t \Pi)] \\
+    &= \half \Tr_{\DD/E} \left[
       (\alpha s \bar s + \beta \bar s \bar t \varpi
       - (\alpha t \bar t + \beta \bar s \bar t) \varpi)
-      + (-\alpha s t - \beta t \bar t + \alpha s t + \beta s \bar s) \Pi
+      + (-\alpha s t - \beta t \bar t \varpi + \alpha s t + \beta s \bar s) \Pi
     \right] \\
-    &= \tr\left[
+    &= \half \Tr_{\DD/E} \left[
       \alpha (s \bar s - t \bar t \varpi)
-      + \beta(s \bar s - t \bar t) \Pi
-    \right] \\
-    &= (\alpha + \bar\alpha) (s \bar s - t \bar t \varpi) \\
-    &= 2\alpha_0 \Nm u.
+      + \beta(s \bar s - t \bar t) \Pi \right] \\
+    &= \alpha (s \bar s - t \bar t \varpi) \\
+    &= \alpha \left\langle u,u \right\rangle.
   \end{align*}
-  Here we consider $\alpha \in E$ as $\alpha + 0 \Pi \in \DD$ in the obvious way,
-  so that we may use the notation $\alpha_0$.
 \end{itemize}
+
 \section{Background on special divisors for $n = 2$}
 \subsection{The Rapoport-Zink space $\RZ_2$}
 For integers $r \ge 0$, if we consider the functions
@@ -290,31 +290,30 @@ From now on, we use the notation
 \end{align*}
 Then we can compute
 \begin{align*}
-  \left\langle x,x \right\rangle &= 2 \Nm x \\
-  &= 2 (\Norm_{E/F}((s \bar s + t \bar t \varpi)\sqrt{\eps})
+  \left\langle x,x \right\rangle &= \Nm x \\
+  &= (\Norm_{E/F}((s \bar s + t \bar t \varpi)\sqrt{\eps})
     - \Norm_{E/F}(2 \bar s t \sqrt{\eps}) \varpi) \\
-  &= 2\left( -\eps(s \bar s + t \bar t \varpi)^2
+  &= \left( -\eps(s \bar s + t \bar t \varpi)^2
     - (2\bar s t \sqrt{\eps})(-2s \bar t \sqrt{\eps}) \varpi \right) \\
-  &= 2\left( -\eps(s \bar s + t \bar t \varpi)^2
+  &= \left( -\eps(s \bar s + t \bar t \varpi)^2
     + 4s\bar s t \bar t \eps \varpi \right) \\
-  &= -2\eps\left( (s \bar s - t \bar t \varpi)^2 \right) = -2\eps (\Nm u)^2. \\
-  \left\langle x,y \right\rangle &= \tr(x y^\ast) \\
-  &= \tr \left[
+  &= -\eps\left( (s \bar s - t \bar t \varpi)^2 \right) = -\eps (\Nm u)^2. \\
+  \left\langle x,y \right\rangle &= \half \Tr_{\DD/E} (x y^\ast) \\
+  &= \half \Tr_{\DD/E} \left[
     \left( (s \bar s + t \bar t \varpi) \sqrt{\eps} + 2 \bar s t \sqrt{\eps} \Pi \right)
     \cdot \varpi^{r} (\bar\alpha - \beta \Pi)
   \right] \\
-  &= \varpi^r \tr \left[
+  &= \varpi^r \half \Tr_{\DD/E} \left[
     \bar\alpha (s \bar s + t \bar t \varpi) \sqrt{\eps}
     + 2 \alpha \bar s t \sqrt{\eps} \Pi
     - \beta (s \bar s + t \bar t \varpi) \sqrt{\eps} \Pi
     - \bar\beta 2 \bar s t \varpi \sqrt{\eps}
   \right] \\
-  &= \varpi^r \left(
-    (\bar\alpha - \alpha)(s \bar s + t \bar t \varpi)
-    + 2\varpi(\beta s \bar t - \bar\beta \bar s t)
-  \right) \sqrt{\eps} \\
-  \left\langle y,y \right\rangle &= 2 \Nm (\varpi^r g)
-  = 2\varpi^{2r} (\alpha \bar\alpha - \beta\bar\beta \varpi).
+  &= \varpi^r \left[
+    \bar\alpha (s \bar s + t \bar t \varpi) \sqrt{\eps}
+    - \bar\beta 2 \bar s t \varpi \sqrt{\eps} \right] \\
+  \left\langle y,y \right\rangle &= \Nm (\varpi^r g)
+  = \varpi^{2r} (\alpha \bar\alpha - \beta\bar\beta \varpi).
 \end{align*}
 For the valuations of $\left\langle x,x \right\rangle$ and $\left\langle y,y \right\rangle$,
 we are able to calculate these exactly:
