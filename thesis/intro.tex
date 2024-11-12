@@ -359,9 +359,11 @@ which in this case can be checked independently.
 \end{remark}
 
 \section{Large kernel}
+\label{sec:intro_large_kernel}
 \todo{large kernel}
 
 \section{Results}
+\subsection{Explicit formulas for orbital integrals}
 One primary objective of this paper is to fully determine the weighted orbital integral
 in the next situations for which the AFL for the full spherical Hecke algebra
 was not previously known:
@@ -409,16 +411,35 @@ For the weighted orbital integral $\Orb(\guv, \phi \otimes \oneV, s)$
 with $\guv \in (S_2(F) \times V'_2(F))\rs$ and $\phi \in \HH(S_3(F))$
 the final formula is the single theorem \Cref{thm:semi_lie_formula}.
 
+\subsection{Large kernel}
 Besides providing evidence for \Cref{conj:inhomog} and \Cref{conj:semi_lie_spherical},
 these weighted orbital integral formulas also establish some other results.
 For example, the formula above
 proves the $n = 3$ case of \cite[Conjecture 8.2.1]{ref:AFLspherical}
 and an analogous version; we state this below.
-
 \begin{theorem}
   \todo{kernel thingy}
 \end{theorem}
-\todo{need to figure out why there are all these semisimple restrictions}
+
+\todo{more large kernel}
+
+\subsection{Arithmetic fundamental lemmas}
+For the group AFL, we were also able to determine the
+relevant base changes in \Cref{ch:satake}.
+However, we did not complete the comparison on the geometric side in this situation.
+Thus we do not claim a proof of $n = 3$ of \Cref{conj:inhomog},
+although we imagine such a proof could be completed
+once a method for determining the intersection numbers explicitly is devised.
+
+For the semi-Lie AFL conjectured in \Cref{conj:semi_lie_spherical},
+we are able to show the following result.
+\begin{theorem}
+  \label{thm:semi_lie_n_equals_2}
+  Conditional on \todo{geometric},
+  \Cref{conj:semi_lie_spherical} holds for $n = 2$.
+\end{theorem}
+The idea of the proof is to use the Gross-Keating formula \cite{ref:GK}
+to provide the formula on the geometric side.
 
 \section{Roadmap}
 The rest of the paper is organized as follows.

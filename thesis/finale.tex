@@ -1,6 +1,6 @@
-\chapter{Proof of \Cref{conj:semi_lie_spherical} for $n = 2$}
+\chapter{Proof of \Cref{thm:semi_lie_n_equals_2}}
 We now put together all the results from the previous chapters to
-prove \Cref{conj:semi_lie_spherical} is true for $n = 2$.
+prove \Cref{thm:semi_lie_n_equals_2}.
 
 \section{Matching $\guv$ and $(g,u)$, and the invariants for the matching}
 \subsection{The invariants for the orbit of $\guv$}
@@ -93,23 +93,25 @@ Therefore we can always extract $v(\left\langle y,y \right\rangle _0)$ by writin
   &= 2r + \min(v(b) + v(c), 2v(d-a)).
 \end{align*}
 
-For brevity, let us write
+Recall the right-hand side of
 \[
-  \GK_{n_1, n_2}
-  \coloneqq \begin{cases}
-      \sum_{j=0}^{\frac{n_1-1}{2}} (n_1+n_2-4j) p^j & \text{if } n_1 \equiv 1 \pmod 2 \\
-      \frac{n_2-n_1+1}{2} p^{n_1/2} + \sum_{j=0}^{n_1/2-1} (n_1+n_2-4j) p^j & \text{if } n_1 \equiv 0 \pmod 2.
-    \end{cases}
+  \begin{cases}
+    \sum_{j=0}^{\frac{n_1-1}{2}} (n_1+n_2-4j) p^j & \text{if } n_1 \equiv 1 \pmod 2 \\
+    \frac{n_2-n_1+1}{2} p^{n_1/2} + \sum_{j=0}^{n_1/2-1} (n_1+n_2-4j) p^j & \text{if } n_1 \equiv 0 \pmod 2.
+  \end{cases}
 \]
 for $0 \le n_1 \le n_2$.
-Apply \Cref{prop:GK} to obtain
+Then apply \Cref{prop:GK} to obtain that
+\[
+  \left< \ZO4(1), \; \ZO4(x)^\circ, \; \ZO4(y)^\circ \right>_{\MM_2 \times \MM_2}
+\]
+is equal to the above formula applied at
 \begin{align*}
-  &\left< \ZO4(1), \; \ZO4(x)^\circ, \; \ZO4(y)^\circ \right>_{\MM_2 \times \MM_2} \\
-  &= \GK_{
-    \min(2v(e), r+v(d-a)+v(e), 2r+\min(v(b)+v(c)), 2v(d-a)),
-    2r + 2v(e) + v(b) + v(c)
-  }.
+  n_1 &\coloneqq \min(2v(e), r+v(d-a)+v(e), 2r+\min(v(b)+v(c)), 2v(d-a)) \\
+  n_2 &\coloneqq 2r + 2v(e) + v(b) + v(c) - n_1.
 \end{align*}
+For brevity, we henceforth denote the above sum by
+\[ \GK(r, v(b), v(c), v(e), v(d-a)). \]
 
 \section{Base change}
 The base change for $n=2$ was already calculated in \cite{ref:AFLspherical}
@@ -130,3 +132,44 @@ As in \Cref{ch:jiao}, we define
 \begin{proof}
   This follows directly from \cite[equation (7.1.9)]{ref:AFLspherical}.
 \end{proof}
+
+\section{Comparison to orbital formula}
+In what follows, we denote
+\[ \partial\Orb(r, v(b), v(c), v(e), v(d-a)) \]
+as the value of the orbital integral described in \Cref{thm:semi_lie_combo}; that is,
+it represents the value of
+\[ \left. \pdv{}{s} \right\rvert_{s=0}
+  \Orb(\guv, (\mathbf{1}_{K'_{S, \le r}} + \mathbf{1}_{K'_{S, \le (r-1)}}) \otimes \oneV, s) \]
+as a function of the parameters in $\guv$.
+We tacitly assume $r \ge 1$ in what follows.
+
+The main claim is that the following formula holds:
+\begin{proposition}
+  \label{prop:finale_by_one}
+  We have
+  \begin{align*}
+    &\frac{\pm1}{\log q}\Big(\partial\Orb(r, v(b), v(c), v(e), v(d-a))
+      + \partial\Orb(r, v(b), v(c), v(e)-1, v(d-a))\Big) \\
+    &= \GK(r, v(b), v(c), v(e), v(d-a)) - \GK(r-1, v(b), v(c), v(e), v(d-a)).
+  \end{align*}
+\end{proposition}
+\begin{proof}
+  \todo{write this up}
+\end{proof}
+
+This proposition immediately implies the following.
+\begin{corollary}
+  \label{cor:finale_by_two}
+  We have
+  \begin{align*}
+    &\frac{\pm1}{\log q}\Big(\partial\Orb(r, v(b), v(c), v(e), v(d-a)) - \partial\Orb(r, v(b), v(c), v(e)-2, v(d-a))\Big) \\
+    &= \GK(r, v(b), v(c), v(e), v(d-a)) - \GK(r-1, v(b), v(c), v(e), v(d-a)) \\
+    &- \GK(r, v(b), v(c), v(e)-1, v(d-a)) + \GK(r-1, v(b), v(c), v(e)-1, v(d-a)).
+  \end{align*}
+\end{corollary}
+\begin{proof}
+  This is obtained by subtracting \Cref{prop:finale_by_one} from itself,
+  with $v(e)$ decremented by one.
+\end{proof}
+
+\section{Finishing touches}
