@@ -19,16 +19,26 @@ where $\ol{t}$ is the image of $t \in E$ under the nontrivial element of $\Gal(E
 \subsection{Conjugation of elements of $\DD$}
 In general, suppose $x \in \DD$ is any element
 decomposed as $x = a + b \Pi$ for $a,b \in E$.
-Then we denote by $x^\ast \in \DD$ the conjugate in $\DD$ defined by
-\[ x^\ast \coloneqq \ol{a} - b \]
-where, again, $a$ is the image of $a \in E$ under the nontrivial element of $\Gal(E/F)$.
-It is an anti-involution, meaning that $(x^\ast)^\ast = x$ and $(xy)^\ast = y^\ast x^\ast$.
+Then we denote by $\bar x \in \DD$ the conjugate in $\DD$ defined by
+\[ \bar x \coloneqq \bar a - b \Pi \]
+where, again, $\bar a$ is the image of $a \in E$ under the nontrivial element of $\Gal(E/F)$.
+It is an anti-involution, meaning that $\ol{\bar x} = x$ and $\ol{xy} = \bar y \bar x$.
+
+(Notice that we have a slight abuse of notation here in that we have
+used the same notation to denote both conjugation under the Galois action of $\Gal(E/F)$
+as well as the conjugation in $\DD$.
+However, there is no ambiguity resulting because when $E$ is viewed as a subset of $\DD$,
+the two symbols denote the same element of $E$:
+that is we have
+\[ \ol{a + 0 \Pi} = \bar{a} + 0 \Pi \]
+in any event.
+In other words, the restriction of the quaternion conjugation to $E$
+coincides with the nontrivial element of $\Gal(E/F)$,
+so we do not need to introduce a separate notation for it.)
 
 This allows us to define the reduced norm and trace in $\DD$.
 The reduced trace is given by
-\[ \tr x \coloneqq x + x^\ast = \Tr{E/F}(a) = 2x_0. \]
-This coincides with half the trace of the
-$F$-linear multiplication map $u \cdot - \colon \DD \to \DD$.
+\[ \tr x \coloneqq x + \bar x = \Tr{E/F}(a) = 2x_0 \in F. \]
 We may thus define
 \[ \DT \coloneqq \left\{ u \in \DD \mid \tr u = 0 \right\} \]
 which has codimension $1$ inside $\DD$ (i.e.\ is three-dimensional as an $F$-vector space).
@@ -37,13 +47,11 @@ Since $\tr(a+b\Pi) = \Tr_{E/F}(a)$, we could also write
 
 The reduced norm is similarly defined by
 \begin{align*}
-  \Nm x &= x x^\ast = (a + b \Pi)(\bar a - b \Pi) \\
+  \Nm x &= x \bar x = (a + b \Pi)(\bar a - b \Pi) \\
   &= a \bar a + b \Pi \bar a - a b \Pi - b \Pi b \Pi \\
   &= a \bar a - b \bar b \varpi \\
-  &= \Norm_{E/F}(a) - \Norm_{E/F}(b) \varpi .
+  &= \Norm_{E/F}(a) - \Norm_{E/F}(b) \varpi \in F.
 \end{align*}
-This coincides with a square root of
-the determinant of the $F$-linear map $u \cdot - \colon \DD \to \DD$.
 
 As an $F$-vector space, $\DD$ has a basis given by
 $\{1, \sqrt{\eps}, \Pi, \sqrt{\eps}\Pi\}$, that is
@@ -58,17 +66,17 @@ It will be convenient to introduce the following notation:
   \end{itemize}
 \end{definition}
 In particular, the formula for conjugation then reads as the simpler
-\[ x^\ast = x_0 - x_-. \]
+\[ \bar x = x_0 - x_-. \]
 
 \subsection{Hermitian structure}
 We view $\DD$ as an $E/F$-Hermitian space under \emph{right} multiplication by $E$,
 and equip $\DD$ with a $E/F$-Hermitian form
 $\left\langle \bullet, \bullet \right\rangle \colon \DD \times \DD \to E$
 defined by
-\[ \left\langle x,y \right\rangle = \half \Tr_{\DD/E}(xy^\ast) \]
-i.e.\. the projection of $xy^\ast \in \DD = E \oplus E\Pi$ onto the first component.
+\[ \left\langle x,y \right\rangle = \half \Tr_{\DD/E}(x\bar y) \]
+i.e.\. the projection of $x\bar y \in \DD = E \oplus E\Pi$ onto the first component.
 In particular, note that
-\[ \left\langle x,x \right\rangle  = x x^\ast = \Nm x. \]
+\[ \left\langle x,x \right\rangle  = x \bar x = \Nm x. \]
 
 \subsection{Identification of $\VV_n^-$ with $\DD$}
 We continue using the notation $(\EE, \iota_\EE, \lambda_\EE)$ as the triple over $\FF$
@@ -91,7 +99,7 @@ we also impose coordinates for $u$ according to
 \[ u = s + t \Pi \in \OO_\DD \qquad s, t \in E. \]
 Hence the four corresponding invariants of \Cref{def:matching_semi_lie} are:
 \begin{itemize}
-  \ii $\tr g = \alpha + \bar\alpha$
+  \ii $\Tr g = \alpha + \bar\alpha$
   \ii $\det g = \alpha \bar \alpha - \beta \bar\beta \varpi$
   \ii The quantity
   \[ \left\langle u,u \right\rangle = 2 \Nm u = 2(s \bar s - t \bar t \varpi) \]
@@ -205,7 +213,7 @@ with its image under the diagonal map
     \EE \ar[r, "u"] & \EE.
   \end{tikzcd}
   \end{center}
-  Note that basically by definition, for $u \in \OO_\DD$ and $\Tr u = 0$ we have
+  Note that basically by definition, for $u \in \OO_\DD$ and $\tr u = 0$ we have
   \[ \ZO3(u) \simeq \ZO4(u) \cap \ZO4(1) \]
   when we identify $\MM_2$ with its image in $\MM_2 \times \MM_2$.
 \end{definition}
@@ -220,7 +228,7 @@ Define $\ZO4(u)^\circ$ and $\ZO3(u)^\circ$ similarly.
 \begin{conjecture}
   Let $u \in \VV_n^-$, and consider it as an element $u \in \DD$.
   Then pullback along the Serre tensor construction identifies
-  \[ \Serre^\ast \ZD(u)^\circ \simeq \ZO3(u^\ast \sqrt{\eps} u)^\circ. \]
+  \[ \Serre^\ast \ZD(u)^\circ \simeq \ZO3(\bar u \sqrt{\eps} u)^\circ. \]
 \end{conjecture}
 
 \section{The intersection number as a triple product}
@@ -238,9 +246,9 @@ So, we proceed to compute
 \begin{align*}
   \Big\langle (1,g) \cdot \mathcal{T}_r, \; \Delta(\ZD(u)^\circ) \Big\rangle_{\RZ_{2,2}}
   &= \left< \ZO4(\varpi^r g), \; \Delta(\Serre^\ast(\ZD(u))^\circ) \right>_{\MM_2 \times \MM_2} \\
-  &= \left< \ZO4(\varpi^r g), \; \ZO3(u^\ast \sqrt{\eps} u)^\circ \right>_{\MM_2 \times \MM_2} \\
-  &= \left< \ZO4(\varpi^r g), \; \ZO4(1)^\circ, \; \ZO4(u^\ast \sqrt{\eps} u)^\circ \right>_{\MM_2 \times \MM_2} \\
-  &= \left< \ZO4(\varpi^r g), \; \ZO4(1), \; \ZO4(u^\ast \sqrt{\eps} u)^\circ \right>_{\MM_2 \times \MM_2}.
+  &= \left< \ZO4(\varpi^r g), \; \ZO3(\bar u \sqrt{\eps} u)^\circ \right>_{\MM_2 \times \MM_2} \\
+  &= \left< \ZO4(\varpi^r g), \; \ZO4(1)^\circ, \; \ZO4(\bar u \sqrt{\eps} u)^\circ \right>_{\MM_2 \times \MM_2} \\
+  &= \left< \ZO4(\varpi^r g), \; \ZO4(1), \; \ZO4(\bar u \sqrt{\eps} u)^\circ \right>_{\MM_2 \times \MM_2}.
 \end{align*}
 We know that
 \[ \varpi^r g = \varpi^r \alpha + \varpi^r \beta \Pi. \]
@@ -249,7 +257,7 @@ We know that
 In what follows, we let
 \[ \left\langle x, y \right\rangle _0
   = \frac{\left\langle x,y \right\rangle + \ol{\left\langle x,y \right\rangle}}{2} \]
-denote half the $E/F$-trace of the $\left\langle x,y \right\rangle$.
+denote half the $E/F$-trace of $\left\langle x,y \right\rangle \in E$.
 Let $\ODT \coloneqq \OO_\DD \cap \DT$.
 
 \begin{proposition}
@@ -279,14 +287,14 @@ Let $\ODT \coloneqq \OO_\DD \cap \DT$.
 We now compute all the quantities needed to invoke the Gross-Keating formula.
 We start by writing
 \begin{align*}
-  u^\ast \sqrt{\eps} u
+  \bar u \sqrt{\eps} u
   &= (\ol s - t \Pi) \sqrt{\eps} (s + t \Pi) \\
   &= (\ol s - t \Pi) (s \sqrt{\eps} + t \sqrt{\eps} \Pi) \\
   &= s \ol s \sqrt{\eps} - t \ol{s\sqrt{\eps}} \Pi + \ol s t \sqrt{\eps} \Pi - t \ol{t \sqrt{\eps}} \varpi \\
   &= (s \ol s + t \ol t \varpi) \sqrt{\eps} + 2 \ol s t \sqrt{\eps} \Pi.
 \end{align*}
 We now invoke \Cref{assume:st_zero} for the first time to simplify this to just
-\[ u^\ast \sqrt{\eps} u = (s \ol s + t \ol t \varpi) \sqrt{\eps}. \]
+\[ \bar u \sqrt{\eps} u = (s \ol s + t \ol t \varpi) \sqrt{\eps}. \]
 This assumption will also let us write
 \[ (s \ol s + t \ol t \varpi)^2 = (s \ol s - t \ol t \varpi)^2 = (\Nm u)^2. \]
 
@@ -294,7 +302,7 @@ From now on, we will write
 \[ \alpha = \alpha_0 + \alpha_1 \sqrt{\eps} \qquad \alpha_0, \alpha_1 \in F \]
 and use the notation
 \begin{align*}
-  x &\coloneqq u^\ast \sqrt{\eps} u = (s \bar s + t \bar t \varpi) \sqrt{\eps} \in \ODT \\
+  x &\coloneqq \bar u \sqrt{\eps} u = (s \bar s + t \bar t \varpi) \sqrt{\eps} \in \ODT \\
   y &\coloneqq \varpi^r g_- = (\alpha_1\sqrt\eps + \beta \Pi) \in \ODT.
 \end{align*}
 
@@ -307,7 +315,7 @@ Then we can compute
   &= \varpi^{2r} (-\alpha_1^2 \eps - \beta\bar\beta \varpi) \\
   &= \varpi^{2r} (\alpha\bar\alpha - \beta\bar\beta \varpi - \alpha_0^2) \\
   &= \varpi^{2r}(\det g - \alpha_0^2) \\
-  \left\langle x,y \right\rangle _0 &= (x y^\ast)_0 \\
+  \left\langle x,y \right\rangle _0 &= (x \bar y)_0 \\
   &= \left( \left( (s \bar s + t \bar t \varpi) \sqrt{\eps} \right)
     \cdot \varpi^{r} (-\alpha_1\sqrt{\eps} - \beta \Pi) \right)_0 \\
   &= \varpi^r \left( -\alpha_1 (s \bar s + t \bar t \varpi) \eps
