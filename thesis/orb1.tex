@@ -857,8 +857,29 @@ match the above range, with the same volume contributions.
 This means that the same expression can be used for the case $v(b) = v(d) < 0$ as well.
 
 \subsection{Analysis of Case 3\ts+ and Case 4\ts+ assuming $v(b) = v(d) < 0$}
+Now suppose $n > \ell + r$ and $v(b) = v(d) < 0$.
+In this situation, we have $\frac{b+\tau}{2a}$ is a unit, and
+\[ \lambda =v\left( 1 - u \bar u \right) =  v\left( 1 - \frac{\Norm(b+\tau)}{4} \right). \]
+Hence when we apply \Cref{lem:quadruple_ineq} we see that we are simply requiring that
+\[ \lambda \ge \max\left( n - \frac{\ell}{2} - r, m - \delta - r \right) \]
+with \textbf{Case 3\ts+} corresponding to
+$n - \frac{\ell}{2} - r > m - \delta - r$
+and \textbf{Case 4\ts+} corresponding to
+$n - \frac{\ell}{2} - r \ge m - \delta - r$;
+however there is no need to distinguish between them.
+
+Consequently, we will need to sum over the range
+\begin{equation}
+  \begin{aligned}
+    \max(1, \ell + r + 1) &\leq n \leq \lambda + \frac{\ell}{2} + r \\
+    n - r &\leq m \leq \min(n, \lambda) + \delta + r.
+  \end{aligned}
+  \label{eq:even_ell_neg}
+\end{equation}
+
 
 \subsection{Analysis of Case 3\ts- and Case 4\ts+ assuming $v(b) = v(d) < 0$}
+Again suppose $n > \ell + r$ and $v(b) = v(d) < 0$.
 In this case, \eqref{eq:t_disk_minus_case} becomes simply
 \[ \frac{\ell}{2} = v\left( t - \frac{b-\tau}{2a} \right) \ge n - \frac{\ell}{2} - r \]
 which implies $n \le \ell + r$.
