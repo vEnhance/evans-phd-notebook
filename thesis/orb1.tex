@@ -460,8 +460,8 @@ This gives \Cref{tab:orbital_cases}.
       & $\begin{aligned}
         \xi_1 &= \tfrac{b}{2a} \\
         \xi_2 &= -u \\
-        v(\xi_1 - \xi_2) &= v(au - \bar d \bar u) \\
-        v(1-\xi_1 \bar{\xi_1}) &= v(4-b\bar{b})
+        v(1-\xi_1 \bar{\xi_1}) &= v(4-b\bar{b}) \\
+        v(\xi_1 - \xi_2) &= v(au - \bar d \bar u)
         \end{aligned}$
       & $\begin{aligned}
         &\phantom{\ge} \left\lceil \tfrac{n-r}{2} \right\rceil \\
@@ -473,8 +473,8 @@ This gives \Cref{tab:orbital_cases}.
       & $\begin{aligned}
         \xi_1 &= -u \\
         \xi_2 &= \tfrac{b}{2a} \\
-        v(\xi_1-\xi_2) &= v(au- \bar d \bar u) \\
-        v(1-\xi_1 \bar{\xi_1}) &= \lambda
+        v(1-\xi_1 \bar{\xi_1}) &= \lambda \\
+        v(\xi_1-\xi_2) &= v(au- \bar d \bar u)
       \end{aligned}$
       & $\begin{aligned}
         &\phantom> m-\delta-r \\
@@ -485,8 +485,10 @@ This gives \Cref{tab:orbital_cases}.
       & $\begin{aligned}
         \xi_1 &= \tfrac{b+\tau}{2a} \\
         \xi_2 &= -u \\
+        v(1 - \xi_1 \bar{\xi_1}) &= v(1-\tfrac{\Norm(b+\tau)}{4}) \\
+          &= \lambda + \delta - \ell \\
         v(\xi_1-\xi_2) &= v(au - \bar d \bar u + \tau) \\
-        v(1 - \xi_1 \bar{\xi_1}) &= v(1-\tfrac{\Norm(b+\tau)}{4})
+          &= \lambda + v(d) - \tfrac{\ell}{2}
       \end{aligned}$
       & $\begin{aligned}
         &\phantom> n-\frac{\ell}{2}-r \\
@@ -497,8 +499,10 @@ This gives \Cref{tab:orbital_cases}.
       & $\begin{aligned}
         \xi_1 &= \tfrac{b-\tau}{2a} \\
         \xi_2 &= -u \\
+        v(1 - \xi_1 \bar{\xi_1}) &= v(1-\tfrac{\Norm(b-\tau)}{4}) \\
+          &= \delta \\
         v(\xi_1-\xi_2) &= v(au-\bar d \bar u-\tau) \\
-        v(1 - \xi_1 \bar{\xi_1}) &= v(1-\tfrac{\Norm(b-\tau)}{4})
+          &= \tfrac{\ell}{2}
       \end{aligned}$
       & $\begin{aligned}
         &\phantom> n-\frac{\ell}{2}-r \\
@@ -509,8 +513,9 @@ This gives \Cref{tab:orbital_cases}.
       & $\begin{aligned}
         \xi_1 &= -u \\
         \xi_2 &= \tfrac{b+\tau}{2a} \\
+        v(1 - \xi_1 \bar{\xi_1}) &= \lambda \\
         v(\xi_1-\xi_2) &= v(au-\bar d \bar u+\tau) \\
-        v(1 - \xi_1 \bar{\xi_1}) &= \lambda
+          &= \lambda + v(d) - \tfrac{\ell}{2}
         \end{aligned}$
       & $\begin{aligned}
         &\phantom\ge m-\delta-r \\
@@ -521,8 +526,9 @@ This gives \Cref{tab:orbital_cases}.
       & $\begin{aligned}
         \xi_1 &= -u \\
         \xi_2 &= \tfrac{b-\tau}{2a} \\
+        v(1 - \xi_1 \bar{\xi_1}) &= \lambda \\
         v(\xi_1-\xi_2) &= v(au-\bar d \bar u-\tau) \\
-        v(1 - \xi_1 \bar{\xi_1}) &= \lambda
+          &= \tfrac{\ell}{2}
         \end{aligned}$
       & $\begin{aligned}
         &\phantom\ge m-\delta-r \\
