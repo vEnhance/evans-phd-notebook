@@ -256,7 +256,7 @@ The following two lemmas will be useful.
 We also comment on the well-known fact that in an ultrametric space,
 any two disks are either disjoint or one is contained in the other.
 (In other words, the Mastercard logo cannot be drawn. See \Cref{fig:no_mastercard}.)
-\begin{proposition}
+\begin{lemma}
   Choose $\xi_1, \xi_2 \in E$ and $\rho_1 \geq \rho_2$.
   Consider the two disks:
   \begin{align*}
@@ -265,8 +265,8 @@ any two disks are either disjoint or one is contained in the other.
   \end{align*}
   Then, if $v(\xi_1-\xi_2) \geq \rho_2$, we have $D_1 \subseteq D_2$.
   If not, instead $D_1 \cap D_2 = \varnothing$.
-  \label{prop:no_mastercard}
-\end{proposition}
+  \label{lem:no_mastercard}
+\end{lemma}
 \begin{proof}
   Because $E$ is an ultrametric space and $\Vol(D_1) \leq \Vol(D_2)$,
   we either have $D_1 \subseteq D_2$ or $D_1 \cap D_2 = \varnothing$.
@@ -294,7 +294,7 @@ any two disks are either disjoint or one is contained in the other.
   label("$q^{-\rho_1}$", midpoint(O1--P1), dir(P1-O1)*dir(90));
   label("$q^{-\rho_2}$", midpoint(O2--P2), dir(P2-O2)*dir(90));
 \end{asy}
-\caption{Figure corresponding to \Cref{prop:no_mastercard}.}
+\caption{Figure corresponding to \Cref{lem:no_mastercard}.}
 \label{fig:no_mastercard}
 \end{figure}
 
