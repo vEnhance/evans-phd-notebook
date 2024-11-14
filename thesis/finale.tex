@@ -103,7 +103,9 @@ Recall the right-hand side of
 for $0 \le n_1 \le n_2$.
 Then apply \Cref{prop:GK} to obtain that
 \[
-  \left< \ZO4(1), \; \ZO4(x)^\circ, \; \ZO4(y)^\circ \right>_{\MM_2 \times \MM_2}
+  \left< \ZO4(1), \;
+    \ZO4(\bar u \sqrt{\eps} u), \;
+    \ZO4(\varpi^r g_-) \right>_{\MM_2 \times \MM_2}
 \]
 is equal to the above formula applied at
 \begin{align*}
@@ -111,22 +113,40 @@ is equal to the above formula applied at
   n_2 &\coloneqq 2r + 2v(e) + v(b) + v(c) - n_1.
 \end{align*}
 For brevity, we henceforth denote the above sum by
-\[ \GK(r, v(b), v(c), v(e), v(d-a)). \]
+\[ \left< \ZO4(1), \;
+    \ZO4(\bar u \sqrt{\eps} u), \;
+    \ZO4(\varpi^r g_-) \right>_{\MM_2 \times \MM_2}
+  = \GK(r, v(b), v(c), v(e), v(d-a)). \]
+In that case we also have
+\[ \left< \ZO4(1), \;
+    \ZO4\left(\frac{\bar u \sqrt{\eps} u}{\varpi}\right), \;
+    \ZO4(\varpi^r g_-) \right>_{\MM_2 \times \MM_2}
+  = \GK(r, v(b), v(c), v(e)-1, v(d-a)). \]
+Subtracting the two gives
+\begin{align*}
+  \Int^\circ((g,u), \fr) &=
+    \left< \ZO4(1), \;
+      \ZO4(\bar u \sqrt{\eps} u)^\circ, \;
+      \ZO4(\varpi^r g_-) \right>_{\MM_2 \times \MM_2} \\
+  &= \GK(r, v(b), v(c), v(e), v(d-a)) \\
+  &\qquad- \GK(r, v(b), v(c), v(e)-1, v(d-a)).
+\end{align*}
 
 \section{Base change}
 The base change for $n=2$ was already calculated in \cite{ref:AFLspherical}
 and we simply recall the result here.
 
 As in \Cref{ch:jiao}, we define
-\[ f_r \coloneqq \mathbf{1}_{\varpi^{-r} \Mat_2(\OO_E) \cap \U(\VV_n^+)} \in \HH(\U(\VV_n^+)) \]
+\[ \fr \coloneqq \mathbf{1}_{\varpi^{-r} \Mat_2(\OO_E) \cap \U(\VV_n^+)} \in \HH(\U(\VV_n^+)) \]
 \begin{lemma}
   [{\cite[Lemma 7.1.1]{ref:AFLspherical}}]
+  \label{lem:finale_base_change}
   For $n = 2$ and $r \ge 1$ we have
   \[
     \BC_S^{\eta}(
       \mathbf{1}_{K'_{S, \le r}}
       + \mathbf{1}_{K'_{S, \le (r-1)}}
-    ) = f_r.
+      ) = \mathbf{1}_{K, \le r} - \mathbf{1}_{K, \le (r-1)}
   \]
 \end{lemma}
 \begin{proof}
@@ -172,4 +192,23 @@ This proposition immediately implies the following.
   with $v(e)$ decremented by one.
 \end{proof}
 
-\section{Finishing touches}
+\section{Conclusion}
+We now show that \Cref{cor:finale_by_two} implies \Cref{thm:semi_lie_n_equals_2}.
+Because $r = 0$ is known already, it suffices to verify for $r > 0$.
+
+The point is that the right-hand side of \Cref{cor:finale_by_two} is exactly
+\[ \Int^\circ((g,u), \mathbf{1}_{K, \le r}) - \Int^\circ((g,u) \mathbf{1}_{K, \le r-1})
+  = \Int^\circ((g,u), \mathbf{1}_{K, \le r} - \mathbf{1}_{K, \le (r-1)}). \]
+Now suppose we sum \Cref{cor:finale_by_two} with $u$ replaced by
+$u/\varpi^i$ for $i = 0, 1, \dots$.
+On the left-hand side this has the effect of decreasing $v(e)$ by $2$ since $e = \Nm u$.
+Hence the sum of the left-hand sides telescopes and we are left with
+$\frac{\pm1}{\log q}\partial\Orb(r, v(b), v(c), v(e), v(d-a))$
+which is
+\[ \frac{\pm 1}{\log q}\left. \pdv{}{s} \right\rvert_{s=0}
+  \Orb(\guv, (\mathbf{1}_{K'_{S, \le r}} + \mathbf{1}_{K'_{S, \le (r-1)}}) \otimes \oneV, s). \]
+Meanwhile on the right-hand side we obtain by definition
+\[ \Int\left((g,u), \mathbf{1}_{K, \le r} - \mathbf{1}_{K, \le (r-1)}\right). \]
+This matches with \Cref{lem:finale_base_change}.
+And hence from the $r = 0$ case we can inductively conclude
+\Cref{thm:semi_lie_n_equals_2} for $r > 0$, completing the proof.

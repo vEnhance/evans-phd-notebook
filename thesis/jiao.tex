@@ -141,15 +141,12 @@ into a pair for which $u \in E$ or $u \in E \Pi$.
 \section{Background on special divisors for $n = 2$}
 \subsection{The Rapoport-Zink space $\RZ_2$}
 For integers $r \ge 0$, if we consider the functions
-\[ f_r \coloneqq \mathbf{1}_{\varpi^{-r} \Mat_2(\OO_E) \cap \U(\VV_n^+)} \in \HH(\U(\VV_n^+)) \]
+\[ \mathbf{1}_{K, \le r} \coloneqq \mathbf{1}_{\varpi^{-r} \Mat_2(\OO_E) \cap \U(\VV_n^+)} \in \HH(\U(\VV_n^+)) \]
 then these functions produce a basis for the Hecke algebra $\HH(\U(\VV_n^+))$.
-Let us abbreviate
-\[ \mathcal{T}_r \coloneqq \mathcal{T}_{\mathbf{1}_K \otimes f_r} \]
-moving forward.
 Then as described in the previous section we have a diagram
 \begin{center}
 \begin{tikzcd}
-  & \ar[ld] \mathcal{T}_r \ar[rd] & \\
+  & \ar[ld] \TTr \ar[rd] & \\
   \RZ_{2} && \RZ_{2}.
 \end{tikzcd}
 \end{center}
@@ -182,9 +179,11 @@ on $\MM_2 \times \MM_2$ as follows.
   \end{tikzcd}
   \end{center}
 \end{definition}
+We propose that the Serre tensor construction identifies $\TTr$ with this divisor:
 \begin{conjecture}
+  \label{conj:serre_pullback_space}
   The Serre tensor construction gives an isomorphism
-  \[ \mathcal{T}_r \simeq \ZO4(\varpi^r) \]
+  \[ \TTr \simeq \ZO4(\varpi^r) \]
   such that we get an analogous diagram
   \begin{center}
   \begin{tikzcd}
@@ -193,6 +192,7 @@ on $\MM_2 \times \MM_2$ as follows.
   \end{tikzcd}
   \end{center}
 \end{conjecture}
+We assume this conjecture henceforth.
 
 \subsection{The divisor $\ZO3$ on $\MM_2$}
 Turning to $\MM_2 \times \MM_2$, we will henceforth always identify $\MM_2$
@@ -226,32 +226,45 @@ Recall that we have the notation
 Define $\ZO4(u)^\circ$ and $\ZO3(u)^\circ$ similarly.
 
 \begin{conjecture}
+  \label{conj:serre_pullback_divisor}
   Let $u \in \VV_n^-$, and consider it as an element $u \in \DD$.
   Then pullback along the Serre tensor construction identifies
   \[ \Serre^\ast \ZD(u)^\circ \simeq \ZO3(\bar u \sqrt{\eps} u)^\circ. \]
 \end{conjecture}
+We also assume this conjecture henceforth.
 
 \section{The intersection number as a triple product}
 We return to the intersection number
-\[ \Int((g,u), f_r) = \chi_{\RZ_{n,n}} \left(
-      \Sheaf_{\TT_{\mathbf{1} \otimes f_r}(\Delta_{\ZD(u)})}
+\[ \Int((g,u), \fr) = \chi_{\RZ_{n,n}} \left(
+      \Sheaf_{\TT_{\mathbf{1} \otimes \fr}(\Delta_{\ZD(u)})}
       \jiao_{\Sheaf_{\RZ_{n,n}}} \SO_{\Gamma_g} \right) \]
 which we will rewrite more succinctly using angle brackets as
-\[ \Big\langle (1,g) \cdot \mathcal{T}_r, \; \Delta(\ZD(u)) \Big\rangle_{\RZ_{2,2}} \]
+\[ \Int((g,u), \fr) = \Big\langle (1,g) \cdot \TTr \; \Delta(\ZD(u)) \Big\rangle_{\RZ_{2,2}} \]
 in analogy to \cite[\S6.1]{ref:AFLspherical}.
 (Note that $\Delta$ here is the diagonal map $\RZ_2 \to \RZ_{2,2}$.)
 For this calculation, it would be sufficient to split
 \[ \ZD(u) = \sum_{i \ge 0} \ZD(u/\varpi^i)^\circ. \]
-So, we proceed to compute
+Accordingly, let us introduce the notation
 \begin{align*}
-  \Big\langle (1,g) \cdot \mathcal{T}_r, \; \Delta(\ZD(u)^\circ) \Big\rangle_{\RZ_{2,2}}
+  \Int^\circ((g,u), \fr)
+  &\coloneqq \Int((g,u), \fr) - \Int\left( \left( g, \frac{u}{\varpi} \right), \fr \right) \\
+  &= \Big\langle (1,g) \cdot \TTr \; \Delta(\ZD(u)^\circ) \Big\rangle_{\RZ_{2,2}}.
+\end{align*}
+Assuming \Cref{conj:serre_pullback_divisor} we get
+\begin{align*}
+  \Int^\circ((g,u), \fr)
   &= \left< \ZO4(\varpi^r g), \; \Delta(\Serre^\ast(\ZD(u))^\circ) \right>_{\MM_2 \times \MM_2} \\
   &= \left< \ZO4(\varpi^r g), \; \ZO3(\bar u \sqrt{\eps} u)^\circ \right>_{\MM_2 \times \MM_2} \\
   &= \left< \ZO4(\varpi^r g), \; \ZO4(1)^\circ, \; \ZO4(\bar u \sqrt{\eps} u)^\circ \right>_{\MM_2 \times \MM_2} \\
-  &= \left< \ZO4(\varpi^r g), \; \ZO4(1), \; \ZO4(\bar u \sqrt{\eps} u)^\circ \right>_{\MM_2 \times \MM_2}.
+  &= \left< \ZO4(\varpi^r g), \; \ZO4(1), \; \ZO4(\bar u \sqrt{\eps} u) \right>_{\MM_2 \times \MM_2} \\
+  &\qquad- \left< \ZO4(\varpi^r g), \; \ZO4(1), \; \ZO4\left( \frac{\bar u \sqrt{\eps} u}{\varpi} \right) \right>_{\MM_2 \times \MM_2}.
 \end{align*}
-We know that
-\[ \varpi^r g = \varpi^r \alpha + \varpi^r \beta \Pi. \]
+In that case we have
+\[
+  \Int((g,u), \fr)
+  = \sum_{i \ge 0} \Int^\circ\left( \left( g, \frac{u}{\varpi^i} \right), \fr \right).
+\]
+
 \section{The formula of Gross-Keating}
 \label{sec:GK}
 In what follows, we let
@@ -271,7 +284,7 @@ Let $\ODT \coloneqq \OO_\DD \cap \DT$.
   so that $0 \le n_1 \le n_2$.
   Then
   \begin{align*}
-    &\left< \ZO4(1), \; \ZO4(x)^\circ, \; \ZO4(y)^\circ \right>_{\MM_2 \times \MM_2} \\
+    &\left< \ZO4(1), \; \ZO4(x), \; \ZO4(y) \right>_{\MM_2 \times \MM_2} \\
     &=
     \begin{cases}
       \sum_{j=0}^{\frac{n_1-1}{2}} (n_1+n_2-4j) p^j & \text{if } n_1 \equiv 1 \pmod 2 \\
@@ -334,5 +347,7 @@ This lets us compute the determinant
 \end{align*}
 
 Hence we arrive at an exact formula for
-\[ \left< \ZO4(1), \; \ZO4(x)^\circ, \; \ZO4(y)^\circ \right>_{\MM_2 \times \MM_2} \]
-in terms of the valuations of the above formulas.
+\[ \left< \ZO4(1), \; \ZO4(x), \; \ZO4(y) \right>_{\MM_2 \times \MM_2} \]
+in terms of the valuations of the above formulas,
+which we will explicate in the next section after matching $(g,u)$
+to the corresponding element in $(S_2(F) \times V_2'(F))\rs$
