@@ -795,3 +795,31 @@ and put $\Vol(t_1:-v(t_1)=m) = q^{2m} (1-q^{-2})$ to get:
     &- q^{27s}.
   \end{align*}
 \end{example}
+
+\section{Full explicit weighted orbital integral for the case where $\ell = \delta = 2v(b) = 2v(d) < 0$}
+\begin{theorem}
+  Let the representative
+  \[ \gamma = \begin{bmatrix}
+      a & 0 & 0 \\
+      b & - \bar d & 1 \\
+      -a \bar b + b d & 1 - d \bar d & d
+    \end{bmatrix} \in S_3(F)\rs \]
+  be paired to an element in $\U(\VV_n^-)$.
+  Assume that $v(b) = v(d) < 0$ and let
+  $\lambda = v((1 - d \bar d)^2 - c \bar c) + 2|v(d)|$
+
+  If $|v(d)| > r$, the entire orbital integral is zero.
+
+  Otherwise define
+  \begin{align*}
+    \nn_\gamma &\coloneqq \Arch_{[-2r, \lambda + 2(r-|v(d)|)]}(r-|v(d)|, 0) \\
+    \cc_\gamma &\coloneqq \Arch_{[-r-|v(d)|, \lambda + r-|v(d)|]} (0, 2(r-|v(d)|)).
+  \end{align*}
+  Then for any $r \ge 0$ we have the formula:
+  \begin{align*}
+    \Orb(\gamma, \mathbf{1}_{K'_{S, \le r}}, s)
+    &= \sum_{k = -2r}^{\lambda + 2(r-|v(d)|)}
+    (-1)^k \left( 1 + q + q^2 + \dots + q^{\nn_{\gamma}(k)} \right) (q^s)^k \\
+    &= \sum_{k = -r-|v(d)|}^{\lambda + r - |v(d)|} \cc_\gamma(k) (-1)^k q^{r-|v(d)|} (q^s)^k \\
+  \end{align*}
+\end{theorem}
