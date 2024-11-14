@@ -3,7 +3,9 @@ The author wrote some code in the computer algebra system Sage
 in order to help verify the correctness of elementary calculations done in this paper.
 For the convenience of the reader, the code is provided below.
 
-\section{Orbital integral formula and its derivative in the semi-Lie case}
+\section{Orbital integral formula and its derivative for the group AFL}
+
+\section{Orbital integral formula and its derivative for the semi-Lie AFL}
 This code implements the following functions and correctness checks.
 \begin{itemize}
   \ii The function \texttt{O(r, vb, vc, ve, vda)}
@@ -15,7 +17,7 @@ This code implements the following functions and correctness checks.
   runs randomized instantiations of \texttt{O(r, vb, vc, ve, vda)}
   against the summations as they are described in \Cref{ch:orbitalFJ1}
   and checks that the resulting polynomials are equal for the random values
-  $q = 17$ and $s = \log_{17} 1337$.
+  $q = 17$ and $s = \log_q 1337$.
   \ii The function \texttt{verify\_delO\_combo\_correct()}
   runs randomized instances of
   function \texttt{delO\_combo(r, vb, vc, ve, vda)}
@@ -23,4 +25,4 @@ This code implements the following functions and correctness checks.
   when computed from differentiating \texttt{O(r, vb, vc, ve, vda)} within Sage.
 \end{itemize}
 
-\lstinputlisting[language=Python]{sage/semi-lie.sage}
+\lstinputlisting[language=Python]{sage-semi-lie.sage}
