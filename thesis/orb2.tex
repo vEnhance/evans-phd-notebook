@@ -435,7 +435,87 @@ If $\ell$ is even, we now have the following intermediate result.
 
 We describe the final result for odd $\ell$ in the next subsection.
 
-\section{Final formula for $\ell$ odd}
+\section{Arches}
+We introduce one more piece of notation to compress
+the particular shape our formulas are about to take.
+
+\begin{definition}
+  Suppose $\{a_0, a_0 + 1, \dots, a_1\}$ is an interval of integers for some $a_0 \le a_1$,
+  and consider two more integers $w_1$ and $w_2$ such that $w_1 + w_2 \le \frac{a_1-a_0}{2}$.
+  Then we can define a piecewise linear function
+  \[ \Arch_{[a_0, a_1]}(w_1, w_2) \colon \{a_0, a_0+1, \dots, a_1\} \to \ZZ_{\ge 0} \]
+  according to the following definition:
+  \[
+    k \mapsto
+    \begin{cases}
+      k - a_0 & \text{if }a_0 \le k \le a_0 + w_1 \\
+      w_1 + \left\lfloor \frac{k-(a_0+w_1)}{2} \right\rfloor & \text{if } a_0 + w_1 \le k \le a_0 + w_1 + w_2 \\
+      w_1 + \left\lfloor \frac{w_2}{2} \right\rfloor & \text{if } a_0 + w_1 + w_2 \le k \le a_1 - (w_1 + w_2)\\
+      w_1 + \left\lfloor \frac{(a_1-w_1) - k}{2} \right\rfloor & \text{if } a_1 - (w_1 + w_2) \le k \le a_1 - w_1 \\
+      a_1 - k & \text{if }a_1 - w_1 \le k \le a_1.
+    \end{cases}
+  \]
+\end{definition}
+The nomenclature is meant to be indicative of the shape of the graph,
+which looks a little bit like an arch.
+It is a function symmetric around $\frac{a_0+a_1}{2}$ defined piecewise.
+The function grows linearly with slope $1$ at the far left for $w_1$ steps,
+then changes to slope $1/2$ for $w_2$ steps (rounding down),
+before stabilizing, then doing the symmetric descent on the right half.
+\begin{figure}[ht]
+  \begin{center}
+  \begin{asy}
+    size(12cm);
+    draw((-1,0)--(20,0));
+    draw((0,0)--(3,3)--(7,5)--(12,5)--(16,3)--(19,0), lightred);
+    draw((3,3)--(3,0), grey);
+    draw((7,5)--(7,0), grey);
+    draw((12,5)--(12,0), grey);
+    draw((16,3)--(16,0), grey);
+    real eps = 0.3;
+    void brack(string s, real x0, real x1) {
+      draw((x0+0.1,-eps)--(x0+0.1,-2*eps)--(x1-0.1,-2*eps)--(x1-0.1,-eps), blue);
+      label(s, ((x0+x1)/2, -2*eps), dir(-90), blue);
+    }
+    brack("$w_1 = 3$", 0, 3);
+    brack("$w_2 = 4$", 3, 7);
+    brack("$w_2 = 4$", 12, 16);
+    brack("$w_1 = 3$", 16, 19);
+
+    dotfactor *= 1.5;
+    dot("$(0,0)$", (0,0), dir(225));
+    dot((1,1), red);
+    dot((2,2), red);
+    dot("$(3,3)$", (3,3), dir(135));
+    dot((4,3), red);
+    dot((5,4), red);
+    dot((6,4), red);
+    dot("$(7,5)$", (7,5), dir(90));
+    dot((8,5), red);
+    dot((9,5), red);
+    dot((10,5), red);
+    dot((11,5), red);
+    dot("$(12,5)$", (12,5), dir(90));
+    dot((13,4), red);
+    dot((14,4), red);
+    dot((15,3), red);
+    dot("$(16,3)$", (16,3), dir(45));
+    dot((17,2), red);
+    dot((18,1), red);
+    dot("$(19,0)$", (19,0), dir(315));
+
+    label(rotate(45)*"Slope $+1$", (1.5,1.5), dir(135), lightred);
+    label(rotate(26.57)*"Slope $+\frac12$", (5,4), dir(125), lightred);
+    label(rotate(-26.57)*"Slope $-\frac12$", (14,4), dir(55), lightred);
+    label(rotate(-45)*"Slope $-1$", (17.5,1.5), dir(45), lightred);
+    label("Slope $0$", (9.5,5), dir(90), lightred);
+  \end{asy}
+  \end{center}
+  \caption{A plot of $\Arch_{[0,19]}(3,4)$.}
+  \label{fig:arch}
+\end{figure}
+
+\section{Full explicit weighted orbital integral for the case where $\ell$ odd}
 If $\ell$ is odd, so $\lambda = \ell$, then
 the weighted orbital integral can be expressed succinctly in the following way.
 \begin{theorem}
