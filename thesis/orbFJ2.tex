@@ -87,6 +87,98 @@ To simplify the exponent, write
   \end{aligned}
   \label{eq:case_5_exponent}
 \end{equation}
+This already completes \Cref{thm:semi_lie_formula}
+in the situation when $\theta$ is odd since
+\textbf{Case 6\ts+} and \textbf{Case 6\ts-} do not appear at all.
+However, let's turn to the remaining cases first.
+
+\section{The contribution for Case 6\ts+ and Case 6\ts-}
+Herein we assume $\theta = 2v(d-a) > v(b) + v(c)$ is even,
+and in particular $\theta \ge 0$.
+We get a contribution of
+\begin{align*}
+  I^{\text{6+}}
+  &\coloneqq \sum_{n_2 = 0}^{v(e)}
+  \sum_{m = \theta + 2r + 1}
+  ^{\max\left( r, n_2 - \frac{\theta}{2} \right) + v(b) + v(c) + r}
+    q^{\min\left( n_2, \frac{\theta}{2} + r \right)}
+    (-q^s)^{2n_2 - m + v(c) + r} \\
+  I^{\text{6-}}
+  &\coloneqq \sum_{n_2 = 0}^{v(e)}
+  \sum_{m = \theta + 2r + 1}^{n_2 + \frac{\theta}{2} + r}
+    q^{\min\left( n_2, \frac{\theta}{2} + r \right)}
+    (-q^s)^{2n_2 - m + v(c) + r}.
+\end{align*}
+We split both contributions by cases on whether
+$n_2 \le \frac{\theta}{2} + r$ and $n_2 > \frac{\theta}{2} + r$.
+In $I^{\text{6-}}$ this is easier to do, because if $n_2 \le \frac{\theta}{2} + r$
+then the inner sum of $I^{\text{6-}}$ has empty range anyway.
+Consequently, we can simply write
+\begin{align*}
+  I^{\text{6-}}
+  &= q^{\frac{\theta}{2} + r} \sum_{n_2 = \frac{\theta}{2} + r + 1}^{v(e)}
+  \sum_{m = \theta + 2r + 1}^{n_2 + \frac{\theta}{2} + r} (-q^s)^{2n_2 - m + v(c) + r}
+\end{align*}
+which in particular is nonempty only when $v(e) > \frac{\theta}{2} + r$
+(that is $v(e) > v(d-a) + r$).
+In that case, simplifying the inner sum gives
+\begin{align*}
+  I^{\text{6-}}
+  &= q^{\frac{\theta}{2} + r} \sum_{n_2 = \frac{\theta}{2} + r + 1}^{v(e)}
+  \left(
+    (-q^s)^{n_2 - \frac{\theta}{2} + v(c)}
+    + \dots
+    + (-q^s)^{2n_2 - \theta - r - 1 + v(c)}
+  \right) \\
+  &= q^{\frac{\theta}{2} + r} (-q^s)^{r+v(c)}
+    \sum_{j=1}^{v(e) - \frac{\theta}{2} - r}
+    \left( (-q^s)^j + (-q^s)^2 \dots + (-q^s)^{2j-1} \right).
+\end{align*}
+We now turn to splitting $I^{\text{6+}}$ this time:
+\begin{align*}
+  I^{\text{6+}}
+  &= \sum_{n_2 = 0}^{\frac{\theta}{2} + r}
+  \sum_{m = \theta + 2r + 1}^{v(b) + v(c) + 2r}
+    q^{n_2} (-q^s)^{2n_2 - m + v(c) + r} \\
+  &+ q^{\frac{\theta}{2} + r} \sum_{n_2 = \frac{\theta}{2} + r + 1}^{v(e)}
+  \sum_{m = \theta + 2r + 1}^{n_2 - \frac{\theta}{2} + v(b) + v(c) + r}
+    (-q^s)^{2n_2 - m + v(c) + r}.
+\end{align*}
+We're going to compute the second sum in a similar way to $I^{\text{6-}}$ by putting
+\begin{align*}
+  &q^{\frac{\theta}{2} + r} \sum_{n_2 = \frac{\theta}{2} + r + 1}^{v(e)}
+  \sum_{m = \theta + 2r + 1}^{n_2 - \frac{\theta}{2} + v(b) + v(c) + r}
+    (-q^s)^{2n_2 - m + v(c) + r} \\
+  &= q^{\frac{\theta}{2} + r} \sum_{n_2 = \frac{\theta}{2} + r + 1}^{v(e)}
+  \left( (-q^s)^{n_2 + \frac{\theta}{2} - v(b)} + \dots
+    + (-q^s)^{2n_2 - \theta + v(c) - r - 1} \right) \\
+  &= q^{\frac{\theta}{2} + r} \sum_{j = 1}^{v(e) - \frac{\theta}{2} - r}
+  \left( (-q^s)^{\theta + r - v(b) + j} + \dots
+    + (-q^s)^{j + v(c) + r + j - 1} \right) \\
+  &= q^{\frac{\theta}{2} + r} (-q^s)^{r+\theta-v(b)} \sum_{j = 1}^{v(e) - \frac{\theta}{2} - r}
+  \left( (-q^s)^{j} + \dots + (-q^s)^{(2j-1) + (v(c) + v(b) - \theta)} \right).
+\end{align*}
+Meanwhile, the first sum can be computed as
+\begin{align*}
+  \sum_{n_2 = 0}^{\frac{\theta}{2} + r}
+  \sum_{m = \theta + 2r + 1}^{v(b) + v(c) + 2r}
+    q^{n_2} (-q^s)^{2n_2 - m + v(c) + r}
+  &= \sum_{n_2 = 0}^{\frac{\theta}{2} + r} q^{n_2}
+    \sum_{m = \theta + 2r + 1}^{v(b) + v(c) + 2r}
+      (-q^s)^{2n_2 - m + v(c) + r} \\
+  &= \sum_{n_2 = 0}^{\frac{\theta}{2} + r} q^{n_2}
+    \sum_{k = 2n_2 - v(b) - r}^{2n_2 - \theta + v(c) - r - 1} (-q^s)^k.
+\end{align*}
+We now interchange the summation so that $k$ is outside.
+From
+\[ 2n_2 - v(b) - r \le k \le 2n_2 - \theta + v(c) - r -1 \]
+we get
+This gives
+\[ \sum_{k = - v(b) - r}^{v(c) + r - 1}
+  (-q^s)^k
+  \sum_{n_2 = \max(0, \left\lceil \frac{k + \theta - v(c) + r + 1}{2}  \right\rceil)}
+  ^{n_2 = \min\left( \frac{\theta}{2} + r, \left\lfloor \frac{v(b) + r + k}{2} \right\rfloor \right) } q^{n_2}.
+\]
 
 \section{Final formula for the overall orbital integral}
 \begin{theorem}
