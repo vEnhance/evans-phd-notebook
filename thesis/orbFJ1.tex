@@ -60,9 +60,18 @@ From now on we fix the notation
 Note that although $n_2 \ge 0$, the value of $n_1$ will often be non-positive.
 In fact $n_1$ is not particularly simple to work with and we will
 prefer to introduce the notation
-\[ m \coloneqq n_2 + v(c) + r - n_1 \]
+\begin{equation}
+  m \coloneqq n_2 + v(c) + r - n_1
+  \label{eq:def_semi_lie_m}
+\end{equation}
 instead to use as a summation variable.
-(This is chosen so that $\frac{x_2}{x_1} \cdot c \in \varpi^{-r} \OO_F \iff m \ge 0$.)
+This is chosen so that $\frac{x_2}{x_1} \cdot c \in \varpi^{-r} \OO_F \iff m \ge 0$.
+Note that it follows we have
+\begin{equation}
+  n_1 + n_2 = 2n_2 - m + v(c) + r
+  \label{eq:n1_plus_n2_semi_lie}
+\end{equation}
+
 
 \subsection{Collating the linear constraints}
 For a given $r \ge 0$, we find that $h$ contributes to the integral exactly
@@ -191,14 +200,15 @@ However, from the definitions we already know that
 so the disks in the last two conditions have nonempty intersection.
 Hence the earlier \Cref{lem:no_mastercard} applies to tell us that
 the locus of valid $y$ is a single disk whose volume in $\OO_F$ is given by
-\[ q^{-\max\left( m-n_2, \left\lceil m/2 \right\rceil, 0 \right) + v(c) + r}. \]
+\[ q^{-\max\left( m-n_2, \left\lceil m/2 \right\rceil, 0 \right) + v(c) + r}
+  = q^{-\max\left( m-n_2, \left\lceil m/2 \right\rceil \right) + v(c) + r}. \]
 The volume contribution for and $x_1 \in \OO_F^\times$ and $x_2 \in \OO_F^\times$
 is also $1$, because $v(x_1)$ and $v(x_2)$ are fixed.
 Hence the overall volume of the support in $H$ for this pair $(m, n_2)$ is given by
 \begin{align*}
   \left\lvert \frac{x_1}{x_2} \right\rvert q^{n_2 - n_1} \Vol(\{ y \mid \dots \})
-  &= q^{n_2 - n_1 -\max\left( m-n_2, \left\lceil m/2 \right\rceil, 0 \right) + v(c) + r} \\
-  &= q^{m - \max\left( m-n_2, \left\lceil m/2 \right\rceil, 0 \right)}.
+  &= q^{n_2 - n_1 -\max\left( m-n_2, \left\lceil m/2 \right\rceil \right) + v(c) + r} \\
+  &= q^{m - \max\left( m-n_2, \left\lceil m/2 \right\rceil \right)}.
 \end{align*}
 And again, this case is summed over
 \[ 0 \le n_2 \le v(e), \qquad 0 \le m \le \theta + 2r. \]

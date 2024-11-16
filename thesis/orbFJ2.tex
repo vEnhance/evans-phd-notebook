@@ -4,7 +4,6 @@
 We now aggregate the supports we found in the previous section together with the
 definition of the weighted orbital integral to extract the desired formulas.
 
-\section{The contribution for Case 5}
 Recall that the weighted orbital integral was defined as
 \begin{align*}
   & \Orb(\guv, \phi \otimes \oneV, s) \\
@@ -21,15 +20,73 @@ So the contribution to the weighted orbital integral looks like
 For $h$ as above, we know that
 \begin{align*}
   \eta(h) &= (-1)^{n_1 + n_2} \\
-  \left\lvert \det(h) \right\rvert_F^{-s} &= (q^s)^{n_1 + n_2}.
+  \left\lvert \det(h) \right\rvert^{-s}_F &= (q^s)^{n_1 + n_2}.
 \end{align*}
-Hence, the total contribution for Case 5 is
+Applying \eqref{eq:n1_plus_n2_semi_lie} we find that
 \[
-  I^{\text{5}} \coloneqq \sum_{n_2 = 0}^{v(e)} \sum_{m = 0}^{\theta + 2r}
-  q^{m - \max\left( m-n_2, \left\lceil m/2 \right\rceil, 0 \right)}
-  (-q^s)^{2n_2 - m - v(c) - r}.
+  \eta(h)
+  \left\lvert \det(h) \right\rvert^{-s}_F
+  = (q^s)^{2n_ - m + v(c) + r}.
 \]
-\todo{should sum based on exponent}
+
+\section{The contribution for Case 5}
+We assume $\theta + 2r \ge 0$, because otherwise the entire sum is empty.
+Hence, the total contribution for \textbf{Case 5} is
+\begin{align*}
+  I^{\text{5}}
+  &\coloneqq \sum_{n_2 = 0}^{v(e)} \sum_{m = 0}^{\theta + 2r}
+  q^{m - \max\left( m-n_2, \left\lceil m/2 \right\rceil \right)}
+  (-q^s)^{2n_2 - m + v(c) + r} \\
+  &\coloneqq \sum_{n_2 = 0}^{v(e)} \sum_{m = 0}^{\theta + 2r}
+  q^{\min\left( n_2, \left\lfloor m/2 \right\rfloor \right)}
+  (-q^s)^{2n_2 - m + v(c) + r}.
+\end{align*}
+We'll change the summation variable to
+\[ k \coloneqq 2n_2 - m + v(c) + r
+\iff m = 2n_2 - k + v(c) + r \]
+Then
+\begin{align*}
+  I^{\text{5}}
+  &\coloneqq \sum_{n_2 = 0}^{v(e)}
+  \sum_{k = 2n_2 - \theta + v(c) - r}^{2n_2 + v(c) + r}
+  q^{\min\left( n_2, n_2 + \left\lfloor \frac{v(c)+r-k}{2} \right\rfloor \right)} (-q^s)^{k} \\
+  &+ \sum_{n_2 = 0}^{v(e)}
+  \sum_{k = 2n_2 - \theta + v(c) - r}^{2n_2 + v(c) + r}
+  q^{n_2 - \max\left( 0, \left\lceil \frac{k-(v(c)+r)}{2} \right\rceil \right)} (-q^s)^{k}.
+\end{align*}
+We then interchange the order of summation so that $k$ is outside.
+Then $k$ runs from the lowest value of $k = - \theta + v(c) - r$
+to the largest value $k = 2v(e) + v(c) + r$ over all choices of $n_2$.
+Since
+\[ 2n_2 - \theta + v(c) - r \le k \le 2 n_2 + v(c) + r \]
+then in addition to $0 \le n_2 \le v(e)$ we also need
+\[ \frac{k-v(c)-r}{2} \le n_2 \le \frac{k + \theta - v(c) + r}{2}. \]
+In other words, we obtain
+\begin{align*}
+  I^{\text{5}}
+  &= \sum_{k = - \theta + v(c) - r}^{2v(e) + v(c) + r}
+  (-1)^k (q^s)^k \sum_{n_2 = \max\left(0, \left\lceil \frac{k - v(c) - r}{2} \right\rceil \right)}
+  ^{\min\left(v(e), \left\lfloor \frac{k + \theta - v(c) + r}{2} \right\rfloor\right)}
+  q^{n_2 - \max\left( 0, \left\lceil \frac{k-(v(c)+r)}{2} \right\rceil \right)} \\
+  &= \sum_{k = - \theta + v(c) - r}^{2v(e) + v(c) + r}
+  (-1)^k (q^s)^k
+  \left( 1 + q + \dots + q^{\min\left( v(e), \left\lfloor \frac{k+\theta-v(c)+r}{2} \right\rfloor \right) - \max\left( 0, \left\lceil \frac{k-v(c)-r}{2} \right\rceil \right)} \right).
+\end{align*}
+To simplify the exponent, write
+\begin{equation}
+  \begin{aligned}
+    &\min\left( v(e), \left\lfloor \tfrac{k+\theta-v(c)+r}{2} \right\rfloor \right)
+    - \max\left( 0, \left\lceil \tfrac{k-v(c)-r}{2} \right\rceil \right) \\
+    &= \min\left( v(e), \left\lfloor \tfrac{k+\theta-v(c)+r}{2} \right\rfloor \right)
+    + \min\left( 0, \left\lfloor \tfrac{v(c)+r-k}{2} \right\rfloor \right) \\
+    &= \min\left( \left\lfloor \tfrac{k+\theta-v(c)+r}{2} \right\rfloor,
+      v(e) + \left\lfloor \tfrac{v(c)+r-k}{2} \right\rfloor,
+      v(e),
+      \left\lfloor \tfrac{k+\theta-v(c)+r}{2} \right\rfloor
+      + \left\lfloor \tfrac{v(c)+r-k}{2} \right\rfloor \right).
+  \end{aligned}
+  \label{eq:case_5_exponent}
+\end{equation}
 
 \section{Final formula for the overall orbital integral}
 \begin{theorem}
@@ -62,6 +119,29 @@ Hence, the total contribution for Case 5 is
     &+ \sum_{k = 2v(d-a)-v(b)+r}^{2v(e)+v(c)-2v(d-a)-r} (-1)^k \cc_\guv(k) q^{v(d-a) + r} (q^s)^k.
   \end{align*}
 \end{theorem}
+\begin{proof}
+  First, suppose $\theta = v(b) + v(c) < 2v(d-a)$ is odd.
+  Then
+  \[ \nn_\guv(k) \coloneqq \min\left( \left\lfloor \tfrac{k + (v(b)+r)}{2} \right\rfloor,
+      \left\lfloor \tfrac{(2v(e)+v(c)+r)-k}{2} \right\rfloor,
+      v(e), \left\lfloor \tfrac{v(b)+v(c)}{2} \right\rfloor + r \right) \]
+  and $\cc_\guv$ terms do not appear.
+  Now, in that case, the exponent \eqref{eq:case_5_exponent} can be simplified, because
+  \begin{align*}
+    \left\lfloor \frac{k+\theta-v(c)+r}{2} \right\rfloor,
+    &= \left\lfloor \frac{k+v(b)+r}{2} \right\rfloor \\
+    v(e) + \left\lfloor \frac{v(c)+r-k}{2} \right\rfloor
+    &= \left\lfloor \frac{(2v(e) + v(c) + r) - k}{2} \right\rfloor \\
+    \left\lfloor \frac{k+\theta-v(c)+r}{2} \right\rfloor
+    + \left\lfloor \frac{v(c)+r-k}{2} \right\rfloor
+    &= \frac{k+\theta-v(c)+r}{2} + \frac{v(c)+r-k}{2} - \half \\
+    &= \frac{\theta-1}{2} \ r \\
+    &= \left\lfloor \frac{v(b)+v(c)}{2} \right\rfloor + r < v(d-a) + r.
+  \end{align*}
+  Hence, $\nn_\guv$ coincides with the exponent in \eqref{eq:case_5_exponent}.
+  So the result is true in this case.
+\end{proof}
+
 \begin{example}
   When $v(e) = 0$ the expression is particularly simple.
   The assumption $v(d-a) \ge v(e)-r$ is automatically true, and

@@ -99,7 +99,7 @@ def verify_O_correct(num_trials=1):
             for m in irange(0, theta + 2 * r):
                 n1 = n2 + vc + r - m
                 S += (
-                    q ** (m - max(m - n2, ceil(m / 2), 0))
+                    q ** (m - max(m - n2, ceil(m / 2)))
                     * (-1) ** (n1 + n2)
                     * qs ** (n1 + n2)
                 )
