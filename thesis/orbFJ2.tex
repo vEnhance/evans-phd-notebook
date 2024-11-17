@@ -178,7 +178,8 @@ We now turn to splitting $I^{\text{6+}}$ this time:
   \sum_{m = \theta + 2r + 1}^{n_2 - \frac{\theta}{2} + v(b) + v(c) + r}
     (-q^s)^{2n_2 - m + v(c) + r}.
 \end{align*}
-We're going to compute the second sum within $I^{\text{6+}}$
+The second double sum of $I^{\text{6+}}$ is again nonempty only when $v(e) > \theta + 2r$.
+If that's the case, we compute it
 in a similar way to $I^{\text{6-}}$ by putting
 \begin{align*}
   &q^{\frac{\theta}{2} + r} \sum_{n_2 = \frac{\theta}{2} + r + 1}^{v(e)}
@@ -206,10 +207,19 @@ The double sum therefore becomes
   \sum_{k = \theta - v(b) + r + 1}^{2v(e) - \theta + v(c) - r - 1}
   \bigg( 1 + \min\left( v(e), k - \frac{\theta}{2} + v(b) \right) \\
     &\hspace{16ex} - \max\left( \frac{\theta}{2} + r + 1,
-      \left\lceil \frac{k + \theta - v(c) + r + 1}{2} \right\rceil \right) \bigg) (-q^s)^k \\
+      \left\lceil \frac{k + \theta - v(c) + r + 1}{2} \right\rceil \right) \bigg) (-q^s)^k
+\end{align*}
+It is natural to split this sum into $k \le v(c) + r$ and $k > v(c) + r$.
+In the former case, we have both $k - \frac{\theta}{2} + v(b) \le v(e)$
+and $\frac{\theta}{2} + r + 1 \ge \left\lceil \frac{k + \theta - v(c) + r + 1}{2} \right\rceil$;
+in the latter case we have just
+$\frac{\theta}{2} + r + 1 \le \left\lceil \frac{k + \theta - v(c) + r + 1}{2} \right\rceil$
+instead.
+Hence, the double sum simplifies further to
+\begin{align*}
   &= q^{\frac{\theta}{2} + r}
   \sum_{k = \theta - v(b) + r + 1}^{v(c) + r}
-  \bigg( 1 + \min\left( v(e), k - \frac{\theta}{2} + v(b) \right)
+  \bigg( 1 + \left( k - \frac{\theta}{2} + v(b) \right)
     - \left( \frac{\theta}{2} + r + 1 \right) \bigg) (-q^s)^k \\
   &+ q^{\frac{\theta}{2} + r}
   \sum_{k = v(c) + r + 1}^{2v(e) - \theta + v(c) - r - 1}
@@ -217,7 +227,7 @@ The double sum therefore becomes
     - \left\lceil \frac{k + \theta - v(c) + r + 1}{2} \right\rceil \bigg) (-q^s)^k \\
   &= q^{\frac{\theta}{2} + r}
   \sum_{k = \theta - v(b) + r + 1}^{v(c) + r}
-  \min\left( v(e) - \frac{\theta}{2} - r, k - \theta + v(b) - r \right) (-q^s)^k \\
+  \left( k - \theta + v(b) - r \right) (-q^s)^k \\
   &+ q^{\frac{\theta}{2} + r}
   \sum_{k = v(c) + r + 1}^{2v(e) - \theta + v(c) - r - 1}
   \bigg( 1 + \min\left( v(e), k - \frac{\theta}{2} + v(b) \right)
@@ -248,7 +258,7 @@ In other words, we get
   \sum_{n_2 = \max\left(0, \left\lceil \frac{k + \theta - v(c) + r + 1}{2} \right\rceil \right)}
   ^{\min\left( \frac{\theta}{2} + r, \left\lfloor \frac{v(b) + r + k}{2} \right\rfloor \right) } q^{n_2}.
 \]
-In summary, the total contribution from Case 6 is:
+Hence the total contribution from Case 6 can be written as
 \begin{align*}
   I^{\text{6+}} + I^{\text{6-}}
   &=
@@ -259,12 +269,77 @@ In summary, the total contribution from Case 6 is:
     \right) \\
   &+ q^{\frac{\theta}{2} + r}
   \sum_{k = \theta - v(b) + r + 1}^{v(c) + r}
-  \min\left( v(e) - \frac{\theta}{2} - r, k - \theta + v(b) - r \right) (-q^s)^k \\
+  \left( k - \theta + v(b) - r \right) (-q^s)^k \\
   &+ q^{\frac{\theta}{2} + r}
   \sum_{k = v(c) + r + 1}^{2v(e) - \theta + v(c) - r - 1}
-  \bigg( 2 + 2\min\left( v(e), k - \frac{\theta}{2} + v(b) \right)
-    - 2\left\lceil \frac{k + \theta - v(c) + r + 1}{2} \right\rceil \bigg) (-q^s)^k.
+  \bigg( 2 +
+    \min\left( v(e), k - \frac{\theta}{2} + v(b) \right)
+    + \min\left( v(e), k + \frac{\theta}{2} - v(c) \right) \\
+    &\hspace{16ex} - 2\left\lceil \frac{k + \theta - v(c) + r + 1}{2} \right\rceil \bigg) (-q^s)^k
 \end{align*}
+where the latter two double sums contributing to $q^{\frac{\theta}{2}+r}$ above
+are present only when $v(e) > \theta + 2r$.
+
+In the situation where $v(e) > \theta + 2r$,
+we'd like to simplify the coefficient of $q^{\frac{\theta}{2}+r}$ as follows.
+First, we may as well write
+\begin{align*}
+  2 - 2\left\lceil \frac{k + \theta - v(c) + r + 1}{2} \right\rceil
+  &= 2 - \left( (k + \theta - v(c) + r + 1)
+  + \mathbf{1}_{k + \theta + v(c) + r \equiv 1 \pmod 2} \right) \\
+  &= \mathbf{1}_{k + \theta + v(c) + r \equiv 0 \pmod 2}
+  + v(c) - \theta - k - r.
+\end{align*}
+Set aside the indicator function
+$\mathbf{1}_{k + \theta + v(c) + r \equiv 0 \pmod 2}$ momentarily;
+we will merge it in a moment.
+To consolidate the minimum's in the third double sum,
+note that we have
+\[ v(c) + r + 1 \le v(e) + \frac{\theta}{2} - v(b)
+< v(e) + v(c) - \frac{\theta}{2} \le 2v(e) - \theta + v(c) - r - 1. \]
+Hence, based on the value of $k$, we get the following coefficients:
+\begin{itemize}
+  \ii If $v(c) + r + 1 \le k \le v(e) + \frac{\theta}{2} - v(b)$, we get
+  \begin{align*}
+    \left( v(c) - \theta - k - r \right)
+    &+ \left( k - \frac{\theta}{2} + v(b) \right)
+    + \left( k + \frac{\theta}{2} - v(c) \right)  \\
+    &= k - \theta + v(b) - r.
+  \end{align*}
+
+  \ii If $v(e) + \frac{\theta}{2} - v(b) \le k \le v(e) + v(c) - \frac{\theta}{2}$, we get
+  \begin{align*}
+    \left( v(c) - \theta - k - r \right)
+    &+ v(e)
+    + \left( k + \frac{\theta}{2} - v(c) \right)  \\
+    &= v(e) - \frac{\theta}{2} - r.
+  \end{align*}
+
+  \ii If $v(e) + v(c) - \frac{\theta}{2} \le k \le 2v(e) - \theta + v(c) - r$, we get
+  \begin{align*}
+    \left( v(c) - \theta - k - r \right)
+    &+ v(e) + v(e) \\
+    &= 2v(e) + v(c) - \theta - r.
+  \end{align*}
+\end{itemize}
+Noting the expression in the first bullet also matches the coefficient of $(-q^s)^k$
+for $\theta - v(b) + r + 1 \le k \le v(c) + r$, we can now write
+\begin{align*}
+  I^{\text{6+}} + I^{\text{6-}}
+  &=
+  \sum_{k = - v(b) - r}^{v(c) + r - 1} (-q^s)^k \left(
+    q^{\min\left( \frac{\theta}{2} + r, \left\lfloor \frac{v(b) + r + k}{2} \right\rfloor \right)}
+    + \dots
+    + q^{\max\left(0, \left\lceil \frac{k + \theta - v(c) + r + 1}{2} \right\rceil \right)}
+    \right) \\
+  &+ q^{\frac{\theta}{2} + r}
+  \sum_{k = \theta - v(b) + r + 1}^{2v(e) - \theta + v(c) - r - 1}
+  \min \left( k - \theta + v(b) - r, v(e) - \frac{\theta}{2} - r, 2v(e) + v(c) - \theta - r \right) (-q^s)^k \\
+  &+ q^{\frac{\theta}{2} + r}
+  \sum_{k = v(c) + r + 1}^{2v(e) - \theta + v(c) - r - 1}
+  \mathbf{1}_{k + \theta + v(c) + r \equiv 0 \pmod 2} (-q^s)^k
+\end{align*}
+as the overall contribution from Case 6.
 
 \section{Completed formula for the overall orbital integral}
 \begin{theorem}
