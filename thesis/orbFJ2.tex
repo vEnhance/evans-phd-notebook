@@ -115,10 +115,50 @@ We get a contribution of
     q^{\min\left( n_2, \frac{\theta}{2} + r \right)}
     (-q^s)^{2n_2 - m + v(c) + r}.
 \end{align*}
-We split both contributions by cases on whether
-$n_2 \le \frac{\theta}{2} + r$ and $n_2 > \frac{\theta}{2} + r$.
+We will split $I^{\text{6+}}$ into two parts:
+\begin{align*}
+  I^{\text{6+}}
+  &= \sum_{n_2 = 0}^{\frac{\theta}{2} + r}
+  \sum_{m = \theta + 2r + 1}^{v(b) + v(c) + 2r}
+    q^{n_2} (-q^s)^{2n_2 - m + v(c) + r} \\
+  &+ q^{\frac{\theta}{2} + r} \sum_{n_2 = \frac{\theta}{2} + r + 1}^{v(e)}
+  \sum_{m = \theta + 2r + 1}^{n_2 - \frac{\theta}{2} + v(b) + v(c) + r}
+    (-q^s)^{2n_2 - m + v(c) + r}.
+\end{align*}
+Note that the second sum is nonempty only when $v(e) > \frac{\theta}{2} + r$.
+So we consider cases on this in what follows.
 
-In $I^{\text{6-}}$ this is easier to do, because if $n_2 \le \frac{\theta}{2} + r$
+\subsection{Sub-case where $v(e) \le \frac{\theta}{2} + r$}
+First, suppose $v(e) \le \frac{\theta}{2} + r$.
+Then the contribution of \textbf{Case 6\ts{-}} is void,
+since the inner sum of $I^{\text{6-}}$ contributes only when $n_2 > \frac{\theta}{2} + r$.
+We only need to consider
+\begin{align*}
+  I^{\text{6+}}
+  &= \sum_{n_2=0}^{v(e)} \sum_{m=\theta+2r+1}^{v(b)+v(c)+2r}
+    q^{n_2} (-q^s)^{2n_2-m+v(c)+r} \\
+  &= \sum_{n_2=0}^{v(e)} \sum_{k=2n_2-v(b)-r}^{2n_2-\theta+v(c)-r-1}
+    q^{n_2} (-q^s)^k.
+\end{align*}
+Swapping the summation order so that $k$ is outside,
+the sum runs from the lowest value $k = -v(b) - r$
+up to the highest value $k = 2v(e) - \theta + v(c) - r - 1$,
+subject to $0 \le n_2 \le v(e)$ and
+\begin{align*}
+  2n_2 - v(b) - r &\le k \le 2n_2 - \theta + v(c) - r - 1 \\
+  \iff \left\lceil \frac{k + \theta - v(c) + r + 1}{2} \right\rceil
+  &\le n_2 \le \left\lfloor \frac{k + v(b) + r}{2} \right\rfloor.
+\end{align*}
+Thus,
+\[ I^{\text{6+}}
+  = \sum_{k = -v(b) - r}^{2v(e) - \theta + v(c) - r -1}
+    \sum_{n_2 = \max(0, \left\lceil \frac{k + \theta - v(c) + r + 1}{2} \right\rceil)}
+    ^{\min(v(e), \left\lfloor \frac{k + v(b) + r}{2} \right\rfloor)}
+    q^{n_2} (-q^s)^k.
+\]
+
+\subsection{Sub-case where $v(e) > \frac{\theta}{2} + r$}
+We start on $I^{\text{6-}}$; note if $n_2 \le \frac{\theta}{2} + r$
 then the inner sum of $I^{\text{6-}}$ has empty range anyway.
 Consequently, we can simply write
 \begin{align*}
@@ -126,8 +166,7 @@ Consequently, we can simply write
   &= q^{\frac{\theta}{2} + r} \sum_{n_2 = \frac{\theta}{2} + r + 1}^{v(e)}
   \sum_{m = \theta + 2r + 1}^{n_2 + \frac{\theta}{2} + r} (-q^s)^{2n_2 - m + v(c) + r}
 \end{align*}
-which in particular is nonempty only when $v(e) > \frac{\theta}{2} + r$
-(that is $v(e) > v(d-a) + r$).
+which in particular is nonempty.
 In that case, simplifying the inner sum gives
 \[
   I^{\text{6-}}
@@ -168,18 +207,9 @@ Hence we have
   \right) (-q^s)^k.
 \end{align*}
 
-We now turn to splitting $I^{\text{6+}}$ this time:
-\begin{align*}
-  I^{\text{6+}}
-  &= \sum_{n_2 = 0}^{\frac{\theta}{2} + r}
-  \sum_{m = \theta + 2r + 1}^{v(b) + v(c) + 2r}
-    q^{n_2} (-q^s)^{2n_2 - m + v(c) + r} \\
-  &+ q^{\frac{\theta}{2} + r} \sum_{n_2 = \frac{\theta}{2} + r + 1}^{v(e)}
-  \sum_{m = \theta + 2r + 1}^{n_2 - \frac{\theta}{2} + v(b) + v(c) + r}
-    (-q^s)^{2n_2 - m + v(c) + r}.
-\end{align*}
-The second double sum of $I^{\text{6+}}$ is again nonempty only when $v(e) > \theta + 2r$.
-If that's the case, we compute it
+The second double sum of $I^{\text{6+}}$ is again nonempty
+since $v(e) > \frac{\theta}{2} + r$.
+So we compute it
 in a similar way to $I^{\text{6-}}$ by putting
 \begin{align*}
   &q^{\frac{\theta}{2} + r} \sum_{n_2 = \frac{\theta}{2} + r + 1}^{v(e)}
@@ -258,7 +288,7 @@ In other words, we get
   \sum_{n_2 = \max\left(0, \left\lceil \frac{k + \theta - v(c) + r + 1}{2} \right\rceil \right)}
   ^{\min\left( \frac{\theta}{2} + r, \left\lfloor \frac{v(b) + r + k}{2} \right\rfloor \right) } q^{n_2}.
 \]
-Hence the total contribution from Case 6 can be written as
+Hence the total contribution from \textbf{Case 6} can be written as
 \begin{align*}
   I^{\text{6+}} + I^{\text{6-}}
   &=
@@ -275,13 +305,9 @@ Hence the total contribution from Case 6 can be written as
   \bigg( 2 +
     \min\left( v(e), k - \frac{\theta}{2} + v(b) \right)
     + \min\left( v(e), k + \frac{\theta}{2} - v(c) \right) \\
-    &\hspace{16ex} - 2\left\lceil \frac{k + \theta - v(c) + r + 1}{2} \right\rceil \bigg) (-q^s)^k
+    &\hspace{16ex} - 2\left\lceil \frac{k + \theta - v(c) + r + 1}{2} \right\rceil \bigg) (-q^s)^k.
 \end{align*}
-where the latter two double sums contributing to $q^{\frac{\theta}{2}+r}$ above
-are present only when $v(e) > \theta + 2r$.
-
-In the situation where $v(e) > \theta + 2r$,
-we'd like to simplify the coefficient of $q^{\frac{\theta}{2}+r}$ as follows.
+We'd like to further simplify the coefficient of $q^{\frac{\theta}{2}+r}$ as follows.
 First, we may as well write
 \begin{align*}
   2 - 2\left\lceil \frac{k + \theta - v(c) + r + 1}{2} \right\rceil
@@ -333,15 +359,18 @@ for $\theta - v(b) + r + 1 \le k \le v(c) + r$, we can now write
     + q^{\max\left(0, \left\lceil \frac{k + \theta - v(c) + r + 1}{2} \right\rceil \right)}
     \right) \\
   &+ q^{\frac{\theta}{2} + r}
-  \sum_{k = \theta - v(b) + r + 1}^{2v(e) - \theta + v(c) - r - 1}
-  \min \left( k - \theta + v(b) - r, v(e) - \frac{\theta}{2} - r, 2v(e) + v(c) - \theta - r \right) (-q^s)^k \\
+  \sum_{k = \theta - v(b) + r + 1}^{2v(e) - \theta + v(c) - r - 1} \cc_\guv(k)(-q^s)^k \\
   &+ q^{\frac{\theta}{2} + r}
   \sum_{k = v(c) + r + 1}^{2v(e) - \theta + v(c) - r - 1}
   \mathbf{1}_{k + \theta + v(c) + r \equiv 0 \pmod 2} (-q^s)^k
 \end{align*}
-as the overall contribution from Case 6.
+as the overall contribution from \textbf{Case 6}, where
+\[ \cc_\guv(k) \coloneqq \min \left( k - \theta + v(b) - r,
+  v(e) - \frac{\theta}{2} - r,
+  2v(e) + v(c) - \theta - r \right). \]
 
-\section{Completed formula for the overall orbital integral}
+\section{Completed formula for the overall orbital integral for $S_2 \times V'_2(F)$}
+We now put together all the previous calculations to give the following formula.
 \begin{theorem}
   \label{thm:semi_lie_formula}
   Let the representative
@@ -393,6 +422,87 @@ as the overall contribution from Case 6.
   \end{align*}
   Hence, $\nn_\guv$ coincides with the exponent in \eqref{eq:case_5_exponent}.
   So the result is true in this case.
+
+  Now assume instead $\theta = 2v(d-a) < v(b) + v(c)$ is even.
+  Notice that
+  \[ \left\lfloor \frac{k+\theta-v(c)+r}{2} \right\rfloor
+    + \left\lfloor \frac{v(c)+r-k}{2} \right\rfloor
+    = \frac{\theta}{2} + r - \mathbf{1}_{k + v(c) + r \equiv 0 \pmod 2}. \]
+
+  First assume that $v(e) \le \frac{\theta}{2} + r$ and
+  consider \eqref{eq:case_5_exponent}.
+  For the range of values of $k$ in $I^{\text{6+}}$, that is
+  \[ -v(b) - r \le k \le 2v(e)-\theta+v(c)-r-1 \]
+  we have the first term of \eqref{eq:case_5_exponent} is smallest, as
+  \begin{align*}
+    \left\lfloor \frac{k + \theta - v(c) + r}{2} \right\rfloor &< v(e) \\
+    &\le v(e) + \left\lfloor \frac{v(b)+v(c)}{2} \right\rfloor
+      \le v(e) + \left\lfloor \frac{v(c)+r-k}{2} \right\rfloor \\
+    \left\lfloor \frac{k + \theta - v(c) + r}{2} \right\rfloor &\le v(e)-1
+      \le \frac{\theta}{2} + r -1.
+  \end{align*}
+  So the contributions from \textbf{Case 5} and \textbf{Case 6}
+  fit together to give
+  \begin{align*}
+    \left( q^{\left\lfloor \frac{k+\theta-v(c)+r}{2} \right\rfloor}
+      + \dots + q^0 \right)
+    &+
+    \left(
+    q^{\min\left( v(e), \left\lfloor \frac{v(b) + r + k}{2} \right\rfloor \right)}
+    + \dots
+    + q^{\max\left(0, \left\lceil \frac{k + \theta - v(c) + r + 1}{2} \right\rceil \right)}
+    \right) \\
+    &=
+    q^{\min(v(e), \left\lfloor \frac{v(b) + r + k}{2} \right\rfloor)} + \dots + q^0
+  \end{align*}
+  which thus matches the formula for $\nn_\guv(k)$.
+
+  Now suppose instead $v(e) > \frac{\theta}{2} + r$.
+  First, a similar analysis gives that the first part of $I^{\text{6+}}$ fits
+  together with $I^{\text{5}}$ again.
+  Indeed if
+  \[ -v(b) - r \le k \le v(c) + r - 1 \]
+  then in \eqref{eq:case_5_exponent} we get the first exponent again, and hence
+  we have
+  \begin{align*}
+    \left( q^{\left\lfloor \frac{k+\theta-v(c)+r}{2} \right\rfloor}
+      + \dots + q^0 \right)
+    &+
+    \left(
+    q^{\min\left( \frac{\theta}{2} + r, \left\lfloor \frac{v(b) + r + k}{2} \right\rfloor \right)}
+    + \dots
+    + q^{\max\left(0, \left\lceil \frac{k + \theta - v(c) + r + 1}{2} \right\rceil \right)}
+    \right) \\
+    &=
+    q^{\min(\frac{\theta}{2}+r, \left\lfloor \frac{v(b) + r + k}{2} \right\rfloor)} + \dots + q^0
+  \end{align*}
+  which matches the claimed formula for $\nn_\guv$ in this range.
+
+  The remaining contribution from \textbf{Case 6\ts{+} and Case 6\ts{-}} is
+  \begin{align*}
+  &+ q^{\frac{\theta}{2} + r}
+  \sum_{k = \theta - v(b) + r + 1}^{2v(e) - \theta + v(c) - r - 1} \cc_\guv(k)(-q^s)^k \\
+  &+ q^{\frac{\theta}{2} + r}
+  \sum_{k = v(c) + r + 1}^{2v(e) - \theta + v(c) - r - 1}
+  \mathbf{1}_{k + \theta + v(c) + r \equiv 0 \pmod 2} (-q^s)^k
+  \end{align*}
+
+  The first sum matches the claimed coefficient $\cc_\guv$
+  (except the summation in the theorem statement includes
+  endpoints at $k = \theta - v(b) + r$
+  and $k = 2v(e) - \theta + v(c) - r$,
+  but $\cc_\guv(k) = 0$ at these two endpoints,
+  so there is no change).
+
+  Meanwhile the second sum accounts for the discrepancy between
+  the final term of \eqref{eq:case_5_exponent} and the formula for $\nn_\guv$.
+  That is, the range of $k$ for which \eqref{eq:case_5_exponent}
+  achieves the last minimum is exactly
+  $v(c) + r + 1 \le k \le 2v(e) - \theta + v(c) - r - 1$;
+  only in those cases does \eqref{eq:case_5_exponent}
+  differs from $\nn_\guv$ by exactly
+  $\mathbf{1}_{k + \theta + v(c) + r \equiv 0 \pmod 2}$.
+  This final step shows the claimed formulas coincide.
 \end{proof}
 
 \begin{example}
