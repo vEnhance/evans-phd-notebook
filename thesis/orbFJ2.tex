@@ -384,7 +384,9 @@ We now put together all the previous calculations to give the following formula.
   If $v(e) < 0$ or $v(b) + v(c) < -2r$, the entire orbital integral is $0$.
   Otherwise define
   \[ \nn_\guv(k) \coloneqq \min\left( \left\lfloor \tfrac{k + (v(b)+r)}{2} \right\rfloor,
-      \left\lfloor \tfrac{(2v(e)+v(c)+r)-k}{2} \right\rfloor,
+    \left\lfloor \tfrac{(2v(e)+v(c)+r)-k}{2} \right\rfloor, N \right) \]
+  where
+  \[ N \coloneqq \min \left(
       v(e), \left\lfloor \tfrac{v(b)+v(c)}{2} \right\rfloor + r,
       v(d-a) + r \right). \]
   Also, if $v(d-a) < v(e) - r$ and $v(b) + v(c) > 2v(d-a)$, then additionally define
@@ -401,6 +403,74 @@ We now put together all the previous calculations to give the following formula.
     &+ \sum_{k = 2v(d-a)-v(b)+r}^{2v(e)+v(c)-2v(d-a)-r} (-1)^k \cc_\guv(k) q^{v(d-a) + r} (q^s)^k.
   \end{align*}
 \end{theorem}
+
+For reference, we provide \Cref{fig:semi_lie_sketch} sketching the shapes
+of $\nn_\guv$ and $\cc_\guv$, which may be easier to think about.
+
+\begin{figure}
+  \centering
+  \begin{asy}
+    usepackage("amsmath");
+    size(16cm);
+    draw((0,0)--(6,3)--(19,3)--(25,0), lightred);
+    draw((-1,0)--(26,0), grey);
+    draw((-1.4,0)--(-1.8,0)--(-1.8,3)--(-1.4,3), brown);
+    label("$N$", (-1.8,1.5), dir(180), brown);
+    draw((26.4,0)--(26.8,0)--(26.8,3)--(26.4,3), brown);
+    label("$N$", (26.8,1.5), dir(0), brown);
+
+    label("$2N$", (3,3.8), dir(90), brown);
+    label("$2N$", (22,3.8), dir(90), brown);
+    draw((0,3.4)--(0,3.8)--(6,3.8)--(6,3.4), brown);
+    draw((19,3.4)--(19,3.8)--(25,3.8)--(25,3.5), brown);
+
+    draw((0,0)--(0,-3), dotted, Margins);
+    draw((6,3)--(6,-1.5), dotted, Margins);
+    draw((19,3)--(19,-1.5), dotted, Margins);
+    draw((25,0)--(25,-3), dotted, Margins);
+
+    for (int i=0; i<=25; ++i) {
+      real y = min(floor(i/2), floor((25-i)/2), 3);
+      dot((i, y), red);
+    }
+
+    label("$k=\boxed{-v(b)+r}$", (0,-3), dir(-90));
+    label("$k=\boxed{-v(b)+r+2N}$", (6,-1.5), dir(-90));
+    label("$k=\boxed{2v(e)+v(c)+r-2N}$", (19,-1.5), dir(-90));
+    label("$k=\boxed{2v(e)+v(c)+r}$", (25,-3), dir(-90));
+    label("$\mathbf{n}_{(\gamma, \mathbf{u}, \mathbf{v}^\top)}$", (12.5,3), dir(90), red);
+
+    real h = 11; // offset downwards
+    draw((6,-h)--(11,5-h)--(14,5-h)--(19,-h), lightblue);
+    draw((5,-h)--(20,-h), grey);
+    for (int i=6; i<=19; ++i) {
+      real y = min(i-6, 19-i, 5);
+      dot((i, y - h), blue);
+    }
+    label("$\mathbf{c}_{(\gamma, \mathbf{u}, \mathbf{v}^\top)}$, only if $N = v(d-a)+r$", (12.5,5-h), dir(90), blue);
+
+    draw((6,-h)--(6,-3.5), dotted, Margins);
+    draw((19,-h)--(19,-3.5), dotted, Margins);
+    draw((11,5-h)--(11,-2.5-h), dotted, Margins);
+    draw((14,5-h)--(14,-2.5-h), dotted, Margins);
+    label("$k=\boxed{-v(b)+v(e)+v(d-a)+2r}$", (11,-2.5-h), dir(230));
+    label("$k=\boxed{v(c)+v(e)-v(d-a)-2r}$", (14,-2.5-h), dir(310));
+
+    draw((6,-h-0.4)--(6,-h-0.8)--(10.8,-h-0.8)--(10.8,-h-0.4), purple);
+    draw((14.2,-h-0.4)--(14.2,-h-0.8)--(19,-h-0.8)--(19,-h-0.4), purple);
+    label("$v(e)-v(d-a)-r$", (7, -h-0.8), dir(-90), purple);
+    label("$v(e)-v(d-a)-r$", (18, -h-0.8), dir(-90), purple);
+    draw((4.6,-h)--(4.2,-h)--(4.2,5-h)--(4.6,5-h), purple);
+    draw((20.4,-h)--(20.8,-h)--(20.8,5-h)--(20.4,5-h), purple);
+    label((4.2,2.5-h), "$v(e)-v(d-a)-r$", dir(180), purple);
+    label((20.8,2.5-h), "$v(e)-v(d-a)-r$", dir(0), purple);
+  \end{asy}
+  \caption{Sketch of the functions in \Cref{thm:semi_lie_formula}.
+    The boxed numbers indicate values of $k$.}
+  \label{fig:semi_lie_sketch}
+\end{figure}
+
+
 \begin{proof}
   First, suppose $\theta = v(b) + v(c) < 2v(d-a)$ is odd.
   Then
