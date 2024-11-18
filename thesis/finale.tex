@@ -110,8 +110,8 @@ $\frac{2v(e) + (2v(d-a)+2r)}{2}$.
 Now recall the right-hand side of \Cref{prop:GK}, that is
 \[
   \begin{cases}
-    \sum_{j=0}^{\frac{n_1-1}{2}} (n_1+n_2-4j) q^j & \text{if } n_1 \equiv 1 \pmod 2 \\
-    \frac{n_2-n_1+1}{2} q^{n_1/2} + \sum_{j=0}^{n_1/2-1} (n_1+n_2-4j) q^j & \text{if } n_1 \equiv 0 \pmod 2.
+    \sum_{j=0}^{\frac{n_1-1}{2}} (n_1+n_2-4j) \cdot q^j & \text{if } n_1 \equiv 1 \pmod 2 \\
+    \frac{n_2-n_1+1}{2} q^{n_1/2} + \sum_{j=0}^{n_1/2-1} (n_1+n_2-4j) \cdot q^j & \text{if } n_1 \equiv 0 \pmod 2.
   \end{cases}
 \]
 for $0 \le n_1 \le n_2$.
@@ -128,24 +128,29 @@ is equal to the above formula applied at
 \end{align*}
 Note that
 \[ n_1 + n_2 = 2v(e) + v(b) + v(c) + 2r. \]
-For brevity, we henceforth introduce the symbol $\GK$ for the sum above, writing
-\[ \GK(r, v(b), v(c), v(e), v(d-a)) \coloneqq
-  \left< \ZO4(1), \;
-    \ZO4(\bar u \sqrt{\eps} u), \;
-    \ZO4(\varpi^r g_-) \right>_{\MM_2 \times \MM_2}. \]
+For brevity, we henceforth introduce the symbol $\GK$ for the sum above;
+in other words, \Cref{conj:serre_pullback_space} and \Cref{conj:serre_pullback_divisor}
+together amount to asserting that
+\[ \left< \ZO4(1), \; \ZO4(\bar u \sqrt{\eps} u), \; \ZO4(\varpi^r g_-) \right>_{\MM_2 \times \MM_2}
+    = \GK(r, v(b), v(c), v(e), v(d-a)). \]
 In that case we also have
-\[\GK(r, v(b), v(c), v(e)-1, v(d-a)) = \left< \ZO4(1), \;
+\[
+  \left< \ZO4(1), \;
     \ZO4\left(\frac{\bar u \sqrt{\eps} u}{\varpi}\right), \;
-    \ZO4(\varpi^r g_-) \right>_{\MM_2 \times \MM_2}. \]
+    \ZO4(\varpi^r g_-) \right>_{\MM_2 \times \MM_2}
+    = \GK(r, v(b), v(c), v(e)-1, v(d-a)). \]
 Subtracting the two gives
-\begin{align*}
-  \Int^\circ((g,u), \fr) &=
-    \left< \ZO4(1), \;
-      \ZO4(\bar u \sqrt{\eps} u)^\circ, \;
-      \ZO4(\varpi^r g_-) \right>_{\MM_2 \times \MM_2} \\
-  &= \GK(r, v(b), v(c), v(e), v(d-a)) \\
-  &\qquad- \GK(r, v(b), v(c), v(e)-1, v(d-a)).
-\end{align*}
+\begin{equation}
+  \begin{aligned}
+    \Int^\circ((g,u), \fr) &=
+      \left< \ZO4(1), \;
+        \ZO4(\bar u \sqrt{\eps} u)^\circ, \;
+        \ZO4(\varpi^r g_-) \right>_{\MM_2 \times \MM_2} \\
+    &= \GK(r, v(b), v(c), v(e), v(d-a)) \\
+    &\qquad- \GK(r, v(b), v(c), v(e)-1, v(d-a)).
+  \end{aligned}
+  \label{eq:int_subtract}
+\end{equation}
 
 \section{Base change}
 The base change for $n=2$ was already calculated in \cite{ref:AFLspherical}
@@ -161,7 +166,7 @@ As in \Cref{ch:jiao}, we define
     \BC_S^{\eta}(
       \mathbf{1}_{K'_{S, \le r}}
       + \mathbf{1}_{K'_{S, \le (r-1)}}
-      ) = \mathbf{1}_{K, \le r} - \mathbf{1}_{K, \le (r-1)}
+      ) = (-1)^r(\mathbf{1}_{K, \le r} - \mathbf{1}_{K, \le (r-1)})
   \]
 \end{lemma}
 \begin{proof}
@@ -169,28 +174,21 @@ As in \Cref{ch:jiao}, we define
 \end{proof}
 
 \section{Comparison to orbital formula}
-In what follows, we denote
-\[ \partial\Orb(r, v(b), v(c), v(e), v(d-a)) \]
-as the value of the orbital integral described in \Cref{cor:semi_lie_combo}; that is,
-it represents the value of
-\[ \left. \pdv{}{s} \right\rvert_{s=0}
-  \Orb(\guv, (\mathbf{1}_{K'_{S, \le r}} + \mathbf{1}_{K'_{S, \le (r-1)}}) \otimes \oneV, s) \]
-as a function of the parameters in $\guv$.
-
+In what follows, we introduce the shorthand
+\[ \partial\Orb(r, v(b), v(c), v(e), v(d-a))
+  \coloneqq
+  \left. \pdv{}{s} \right\rvert_{s=0}
+  \Orb(\guv, \mathbf{1}_{K'_{S, \le r}} \otimes \oneV, s). \]
 The main claim is that the following formula holds:
-\begin{proposition}
-  \label{prop:finale_by_one}
+\begin{theorem}
+  \label{thm:miracle}
   We have
   \begin{align*}
     &\frac{(-1)^{r+v(c)}}{\log q}\Big(\partial\Orb(r, v(b), v(c), v(e), v(d-a))
       + \partial\Orb(r, v(b), v(c), v(e)-1, v(d-a))\Big) \\
-    &= \GK(r, v(b), v(c), v(e), v(d-a)) - \GK(r-1, v(b), v(c), v(e), v(d-a)).
+    &= \GK(r, v(b), v(c), v(e), v(d-a)).
   \end{align*}
-\end{proposition}
-Here, when $r=0$ we consider the term
-$\GK(r-1, v(b), v(c), v(e), v(d-a))$ to vanish;
-similarly we consider
-$\partial\Orb(r, v(b), v(c), v(e)-1, v(d-a))$ to vanish when $v(e)=0$.
+\end{theorem}
 
 We continue to use the notation $N$ and $\varkappa$ from \Cref{ch:orbitalFJ2} defined by
 \begin{align*}
@@ -198,210 +196,168 @@ We continue to use the notation $N$ and $\varkappa$ from \Cref{ch:orbitalFJ2} de
     \left\lfloor \tfrac{v(b)+v(c)}{2} \right\rfloor + r, v(d-a) + r \right) \\
   \varkappa &\coloneqq v(e) - v(d-a) - r \ge 0
 \end{align*}
-and prove \Cref{prop:finale_by_one} by exhausting the
+and prove \Cref{thm:miracle} by exhausting the
 cases based on which value of $N$ is smallest.
 
-\subsection{Proof of \Cref{prop:finale_by_one}
+\subsection{Proof of \Cref{thm:miracle}
   when $v(e) \le \left\lfloor \tfrac{v(b)+v(c)}{2} \right\rfloor + r$
   and $v(e) \le v(d-a) + r$}
-\subsubsection{Case where $r > 0$}
-In this case, \Cref{cor:semi_lie_combo} implies that
-\begin{align*}
-  \frac{(-1)^{r+v(c)}}{\log q}\partial\Orb(r, v(b), v(c), v(e), v(d-a))
-  &= q^{v(e)} + \dots + 1 \\
-  \frac{(-1)^{r+v(c)}}{\log q}\partial\Orb(r, v(b), v(c), v(e)-1, v(d-a))
-  &= q^{v(e)-1} + \dots + 1.
-\end{align*}
-The sum equals
-\[ q^{v(e)} + 2(q^{v(e)-1} + \dots + 1). \]
-(There is no issue with $v(e) = 0$; we simply take the latter sum to be void.)
-Meanwhile, in the Gross-Keating formula we have simply
+In the Gross-Keating formula we have simply
 \begin{align*}
   n_1 &= 2v(e) \\
-  n_2 &= v(b) + v(c) + 2r
+  n_2 &= v(b) + v(c) + 2r.
 \end{align*}
-and then the same formula with $r$ replaced by $r-1$.
-The two applications of Gross-Keating thus give
+Hence, we have
 \begin{align*}
   \GK(r, v(b), v(c), v(e), v(d-a))
   &= \frac{-2v(e)+v(b)+v(c)+2r+1}{2} q^{v(e)} \\
-  &\qquad+ \sum_{j=0}^{v(e)-1} (2v(e)+v(b)+v(c)+2r-4j) q^j \\
-  \GK(r-1, v(b), v(c), v(e), v(d-a))
-  &= \frac{-2v(e)+v(b)+v(c)+2(r-1)+1}{2} q^{v(e)} \\
-  &\qquad + \sum_{j=0}^{v(e)-1} (2v(e)+v(b)+v(c)+2(r-1)-4j) q^j.
+  &\qquad+ \sum_{j=0}^{v(e)-1} (2v(e)+v(b)+v(c)+2r-4j) \cdot q^j \\
 \end{align*}
-Their difference equals
-\[ q^{v(e)} + 2(q^{v(e)-1} + \dots + 1) \]
-as well, completing the case $r > 0$.
-
-\subsubsection{Case where $r = 0$}
-If $r = 0$ we refer to \Cref{thm:semi_lie_derivative_single}
-and compare it to a single instance of Gross-Keating; we need to verify that
+On the orbital side, we refer to \Cref{thm:semi_lie_derivative_single}
+and compare it to the single instance of Gross-Keating above.
+The exponent of $j$ runs up to $v(e)$ in one case and $v(e)-1$ in the second;
+that is we need
 \begin{align*}
-  &\phantom= \sum_{j=0}^{v(e)} q^j \cdot \left( \frac{2v(e)+v(b)+v(c)+1}{2} + r - 2j \right) \\
-  &\qquad+ \sum_{j=0}^{v(e)-1} q^j \cdot \left( \frac{2(v(e)-1)+v(b)+v(c)+1}{2} + r - 2j \right) \\
+  &\phantom= \sum_{j=0}^{v(e)} \left( \frac{2v(e)+v(b)+v(c)+1}{2} + r - 2j \right) \cdot q^j \\
+  &\qquad+ \sum_{j=0}^{v(e)-1} \left( \frac{2(v(e)-1)+v(b)+v(c)+1}{2} + r - 2j \right) \cdot q^j \\
   &= \frac{-2v(e)+v(b)+v(c)+2r+1}{2} q^{v(e)}
-  + \sum_{j=0}^{v(e)-1} (2v(e)+v(b)+v(c)+2r-4j) q^j
+  + \sum_{j=0}^{v(e)-1} (2v(e)+v(b)+v(c)+2r-4j) \cdot q^j
 \end{align*}
-which is clear.
+which is obvious.
 
-\subsection{Proof of \Cref{prop:finale_by_one}
+\subsection{Proof of \Cref{thm:miracle}
   when $\left\lfloor \tfrac{v(b)+v(c)}{2} \right\rfloor + r < v(e)$
   and $v(b)+v(c) < 2v(d-a)$}
 \subsubsection{Case where $r > 0$}
-Here $N = \left\lfloor \tfrac{v(b)+v(c)}{2} \right\rfloor + r$.
-In this case, \Cref{cor:semi_lie_combo} implies that
-\begin{align*}
-  \frac{(-1)^{r+v(c)}}{\log q}\partial\Orb(r, v(b), v(c), v(e), v(d-a))
-  &= \left( v(e) - N \right) q^{N} + (q^N + \dots + 1) \\
-  \frac{(-1)^{r+v(c)}}{\log q}\partial\Orb(r, v(b), v(c), v(e)-1, v(d-a))
-  &= \left( (v(e) - 1) - N \right) q^{N} + (q^N + \dots + 1).
-\end{align*}
-Hence, the sum equals
-\[ \left( 2v(e) - 2N - 1 \right) + 2(q^N + \dots + 1). \]
-Meanwhile, in the Gross-Keating formula we have simply
+Set $N = \left\lfloor \frac{v(b)+v(c)}{2} \right\rfloor + r$.
+In the Gross-Keating formula we have simply
 \begin{align*}
   n_1 &= 2N+1 \\
   n_2 &= 2v(e).
 \end{align*}
-Note that when we replace $r$ by $r-1$ the value of $N$ decreases by $1$.
-The two applications of Gross-Keating thus give
+Hence
+\[ \GK(r, v(b), v(c), v(e), v(d-a))
+  = \sum_{j=0}^N (2v(e)+v(b)+v(c)+2r-4j) \cdot q^j. \]
+We compare this to \Cref{thm:semi_lie_derivative_single}; we check
 \begin{align*}
-  \GK(r, v(b), v(c), v(e), v(d-a))
-  &= \sum_{j=0}^N (2v(e)+v(b)+v(c)+2r-4j) q^j \\
-  \GK(r-1, v(b), v(c), v(e), v(d-a))
-  &= \sum_{j=0}^{N-1} (2v(e)+v(b)+v(c)+2r-4j) q^j \\
-\end{align*}
-Their difference equals
-\[ (2N+1+2v(e)-4N) q^{N} + 2(q^{N-1} + \dots + 1) \]
-which equals the earlier expression, completing this case too.
-\subsubsection{Case where $r = 0$}
-If $r = 0$, we again use the full \Cref{thm:semi_lie_derivative_single}; we check
-\begin{align*}
-  &\phantom= \sum_{j=0}^{N} q^j \cdot \left( \frac{2v(e)+v(b)+v(c)+1}{2} + r - 2j \right) \\
-  &\qquad+ \sum_{j=0}^{N} q^j \cdot \left( \frac{2(v(e)-1)+v(b)+v(c)+1}{2} + r - 2j \right) \\
-  &= \sum_{j=0}^N (2v(e)+v(b)+v(c)+2r-4j) q^j
+  &\phantom= \sum_{j=0}^{N} \left( \frac{2v(e)+v(b)+v(c)+1}{2} + r - 2j \right) \cdot q^j \\
+  &\qquad+ \sum_{j=0}^{N} \left( \frac{2(v(e)-1)+v(b)+v(c)+1}{2} + r - 2j \right) \cdot q^j \\
+  &= \sum_{j=0}^N (2v(e)+v(b)+v(c)+2r-4j) \cdot q^j
 \end{align*}
 which is clear.
 
-\subsection{Proof of \Cref{prop:finale_by_one}
+\subsection{Proof of \Cref{thm:miracle}
   when $v(d-a)+r < v(e)$ and $2v(d-a) < v(b)+v(c)$}
-\subsubsection{Case where $r > 0$}
-Hence $N = v(d-a) + r$ and $\varkappa \coloneqq v(e) - (v(d-a)+r) > 0$; and now
-\[
-  C = \begin{cases}
-    \frac{\varkappa-1}{2} & \varkappa \equiv 1 \pmod 2\\
-    \frac{\varkappa+v(b)+v(c)-2v(d-a)-1}{2} & \varkappa \equiv 0 \pmod 2 \\
-  \end{cases}
-\]
-Note that when $v(e)$ is decreased by $1$,
-the value of $N$ does not change but the value of $\varkappa$ changes by $1$.
-So we have to define the corresponding constant
-\[
-  C^\flat = \begin{cases}
-    \frac{\varkappa}{2}-1 & \varkappa \equiv 0 \pmod 2\\
-    \frac{\varkappa+v(b)+v(c)-2v(d-a)}{2}-1 & \varkappa \equiv 1 \pmod 2.
-  \end{cases}
-\]
-which is the result for $C$ when $\varkappa$ is replaced by $\varkappa-1$.
-In this case, \Cref{cor:semi_lie_combo} gives
-\begin{align*}
-  \frac{(-1)^{r+v(c)}}{\log q}\partial\Orb(r, v(b), v(c), v(e), v(d-a))
-  &= C q^N + (C+1) q^{N-1} + (q^N + \dots + 1) \\
-  \frac{(-1)^{r+v(c)}}{\log q}\partial\Orb(r, v(b), v(c), v(e)-1, v(d-a))
-  &= C^\flat q^N + (C^\flat+1) q^{N-1} + (q^N + \dots + 1).
-\end{align*}
-The sum is equal to
-\[ (C + C^\flat) q^N + (C+C^\flat+2) q^{N-1} + 2(q^N + \dots + 1). \]
-Note that
-\begin{align*}
-  C + C^\flat
-  &= \varkappa - 1 + \frac{v(b)+v(c)-1}{2} - v(d-a) \\
-  &= v(e) + \frac{v(b)+v(c)-1}{2} - 2v(d-a) - r - 1
-\end{align*}
-regardless of the parity of $\varkappa$.
-
-Meanwhile on the Gross-Keating side, we now have
+Hence $N = v(d-a) + r$ and $\varkappa \coloneqq v(e) - (v(d-a)+r) > 0$.
+In the Gross-Keating side formula, we now have
 \begin{align*}
   n_1 &\coloneqq 2v(d-a) + 2r = 2N \\
   n_2 &= 2v(e) + v(b) + v(c) - 2v(d-a).
 \end{align*}
+Hence
 \begin{align*}
   \GK(r, v(b), v(c), v(e), v(d-a))
   &= \frac{2v(e)+v(b)+v(c)-4v(d-a)-2r+1}{2} q^{N} \\
-    &\qquad+ \sum_{j=0}^{N-1} (2v(e)+v(b)+v(c)+2r-4j) q^j \\
-  \GK(r-1, v(b), v(c), v(e), v(d-a))
-  &= \frac{2v(e)+v(b)+v(c)-4v(d-a)-2(r-1)+1}{2} q^{N-1} \\
-    &\qquad+ \sum_{j=0}^{N-2} (2v(e)+v(b)+v(c)+2(r-1)-4j) q^j.
+    &\qquad+ \sum_{j=0}^{N-1} (2v(e)+v(b)+v(c)+2r-4j) \cdot q^j.
 \end{align*}
-Subtracting these two gives
-\begin{align*}
-  &\phantom= \frac{2v(e)+v(b)+v(c)-4v(d-a)-2r+1}{2} q^{N} \\
-  &+ (2v(e)+v(b)+v(c)+2r-4(N-1)) q^{N-1} \\
-  &\qquad- \frac{2v(e)+v(b)+v(c)-4v(d-a)-2(r-1)+1}{2} q^{N-1} \\
-  &+ 2(q^{N-2} + q^{N-3} + \dots + 1) \\
-  &= (C + C^\flat + 2) q^N \\
-  &+ q^{N-1} \left( v(e)+\frac{v(b)+v(c)-3}{2} + r - 4 \cdot (v(d-a)+r-1) + 2v(d-a) \right) \\
-  &+ 2(q^{N-2} + q^{N-3} + \dots + 1) \\
-  &= (C + C^\flat + 2) q^N + (C + C^\flat + 4) q^{N-1} + 2(q^{N-2} + q^{N-3} + \dots + 1) \\
-  &= (C + C^\flat) q^N + (C + C^\flat + 2) q^{N-1} + 2(q^N + q^{N-1} + \dots + 1).
-\end{align*}
-This matches the orbital formula, so the proof of \Cref{prop:finale_by_one} is done.
-
-\subsubsection{Case where $r = 0$}
-This time, we need to verify that
+This time, the relevant combination of \Cref{thm:semi_lie_derivative_single} is
 \begin{align*}
   &\phantom= \sum_{j=0}^N q^j
   \cdot \left( \frac{2v(e)+v(b)+v(c)+1}{2} + r - 2j \right) \\
-  & + q^{v(d-a)+r} \cdot
+  &\qquad + q^{N} \cdot
   \begin{cases}
     -\frac{\varkappa}{2} & \text{if }\varkappa \equiv 0 \pmod 2 \\
     \frac{\varkappa}{2} - \left( v(e)+\frac{v(b)+v(c)}{2}-2v(d-a)-r \right)
-    & \text{if }\varkappa \equiv 1 \pmod 2 \\
-  \end{cases}
-  &+ \sum_{j=0}^N q^j
+    & \text{if }\varkappa \equiv 1 \pmod 2
+  \end{cases} \\
+  &\qquad + \sum_{j=0}^N q^j
   \cdot \left( \frac{2(v(e)-1)+v(b)+v(c)+1}{2} + r - 2j \right) \\
-  & + q^{v(d-a)+r} \cdot
+  &\qquad + q^{N} \cdot
   \begin{cases}
     -\frac{\varkappa-1}{2} & \text{if }\varkappa-1 \equiv 0 \pmod 2 \\
-    \frac{\varkappa-1}{2} - \left( v(e)+\frac{v(b)+v(c)}{2}-2v(d-a)-r \right)
+    \frac{\varkappa-1}{2} - \left( (v(e)-1)+\frac{v(b)+v(c)}{2}-2v(d-a)-r \right)
     & \text{if }\varkappa-1 \equiv 1 \pmod 2 \\
-  \end{cases}
+  \end{cases} \\
+  &= \sum_{j=0}^N q^j
+  \cdot \left( 2v(e)+v(b)+v(c) + 2r - 4j \right) \cdot q^j \\
+  &\qquad + q^{N} \cdot
+  \begin{cases}
+    -\frac{\varkappa}{2} + \frac{\varkappa-1}{2} - \left( (v(e)-1) +\frac{v(b)+v(c)}{2}-2v(d-a)-r \right)
+    & \text{if }\varkappa \equiv 0 \pmod 2 \\
+    -\frac{\varkappa-1}{2} + \frac{\varkappa}{2} - \left( v(e)+\frac{v(b)+v(c)}{2}-2v(d-a)-r \right)
+    & \text{if }\varkappa \equiv 1 \pmod 2 \\
+  \end{cases} \\
+  &= \sum_{j=0}^N q^j
+  \cdot \left( 2v(e)+v(b)+v(c) + 2r - 4j \right) \cdot q^j \\
+  &\qquad + q^{N} \cdot
+    \left( \half - \left( v(e)+\frac{v(b)+v(c)}{2}-2v(d-a)-r \right) \right) \\
+  &= \sum_{j=0}^{N-1} q^j
+  \cdot \left( 2v(e)+v(b)+v(c) + 2r - 4j \right) \cdot q^j \\
+  &\qquad + q^{N} \cdot
+    \left( \left( 2v(e)+v(b)+v(c) + 2r - 4N \right) +
+    \half - \left( v(e)+\frac{v(b)+v(c)}{2}-2v(d-a)-r \right) \right).
 \end{align*}
-wait i'm a dumby
+The coefficient of $q^N$ is given by
+\begin{align*}
+  &\phantom= \left( 2v(e)+v(b)+v(c) + 2r - 4(v(d-a)-r) \right) +
+  \half - \left( v(e)+\frac{v(b)+v(c)}{2}-2v(d-a)-r \right) \\
+  &= \frac{2v(e)+v(b)+v(c)-4v(d-a)-2r+1}{2}
+\end{align*}
+which matches the one from Gross-Keating.
+Hence \Cref{thm:miracle} is completely proved.
 
 \section{Conclusion (proof of \Cref{thm:semi_lie_n_equals_2})}
-To finish, note that \Cref{prop:finale_by_one} immediately implies the following.
-\begin{corollary}
-  \label{cor:finale_by_two}
-  We have
-  \begin{align*}
-    &\frac{\pm1}{\log q}\Big(\partial\Orb(r, v(b), v(c), v(e), v(d-a)) - \partial\Orb(r, v(b), v(c), v(e)-2, v(d-a))\Big) \\
-    &= \GK(r, v(b), v(c), v(e), v(d-a)) - \GK(r-1, v(b), v(c), v(e), v(d-a)) \\
-    &- \GK(r, v(b), v(c), v(e)-1, v(d-a)) + \GK(r-1, v(b), v(c), v(e)-1, v(d-a)).
-  \end{align*}
-\end{corollary}
-\begin{proof}
-  This is obtained by subtracting \Cref{prop:finale_by_one} from itself,
-  with $v(e)$ decremented by one.
-\end{proof}
-
-We now show that \Cref{cor:finale_by_two} implies \Cref{thm:semi_lie_n_equals_2}.
+From \Cref{thm:miracle} we have
+\begin{align*}
+  \GK(r, v(b), v(c), v(e), v(d-a))
+  &= \frac{(-1)^{r+v(c)}}{\log q} \Big(
+      \partial \Orb(r, v(b), v(c), v(e), v(d-a)) \\
+      &\qquad + \partial \Orb(r, v(b), v(c), v(e)-1, v(d-a))
+    \Big) \\
+  \GK(r, v(b), v(c), v(e)-1, v(d-a))
+  &= \frac{(-1)^{r+v(c)}}{\log q} \Big(
+      \partial \Orb(r, v(b), v(c), v(e)-1, v(d-a)) \\
+      &\qquad + \partial \Orb(r, v(b), v(c), v(e)-2, v(d-a))
+    \Big)
+\end{align*}
+so subtraction (and recalling \eqref{eq:int_subtract}) gives
+\begin{equation}
+  \begin{aligned}
+    \Int^\circ((g,u), \fr)
+    &= \GK(r, v(b), v(c), v(e), v(d-a)) \\
+    &\qquad- \GK(r, v(b), v(c), v(e)-1, v(d-a)) \\
+    &= \frac{(-1)^{r+v(c)}}{\log q} \Big(
+        \partial \Orb(r, v(b), v(c), v(e), v(d-a)) \\
+        &\qquad- \partial \Orb(r, v(b), v(c), v(e)-2, v(d-a))
+      \Big).
+  \end{aligned}
+  \label{eq:descent_by_two}
+\end{equation}
+We now show that \eqref{eq:descent_by_two} implies \Cref{thm:semi_lie_n_equals_2}.
 Because $r = 0$ is known already, it suffices to verify for $r > 0$.
 
-The point is that the right-hand side of \Cref{cor:finale_by_two} is exactly
-\[ \Int^\circ((g,u), \mathbf{1}_{K, \le r}) - \Int^\circ((g,u) \mathbf{1}_{K, \le r-1})
-  = \Int^\circ((g,u), \mathbf{1}_{K, \le r} - \mathbf{1}_{K, \le (r-1)}). \]
-Now suppose we sum \Cref{cor:finale_by_two} with $u$ replaced by
+Suppose we sum \eqref{eq:descent_by_two} with $u$ replaced by
 $u/\varpi^i$ for $i = 0, 1, \dots$.
-On the left-hand side this has the effect of decreasing $v(e)$ by $2$ since $e = \Nm u$.
-Hence the sum of the left-hand sides telescopes and we are left with
-$\frac{\pm1}{\log q}\partial\Orb(r, v(b), v(c), v(e), v(d-a))$
-which is
-\[ \frac{\pm 1}{\log q}\left. \pdv{}{s} \right\rvert_{s=0}
-  \Orb(\guv, (\mathbf{1}_{K'_{S, \le r}} + \mathbf{1}_{K'_{S, \le (r-1)}}) \otimes \oneV, s). \]
-Meanwhile on the right-hand side we obtain by definition
-\[ \Int\left((g,u), \mathbf{1}_{K, \le r} - \mathbf{1}_{K, \le (r-1)}\right). \]
-This matches with \Cref{lem:finale_base_change}.
+The left-hand side equals $\Int((g,u), \fr)$ by \eqref{eq:int_to_int_circ}.
+On the right-hand side this has the effect of decreasing $v(e)$ by $2$ since $e = \Nm u$.
+Hence the sum of the right-hand sides telescopes and gives us the identity
+\begin{equation}
+  \Int((g,u), \mathbf{1}_{K, \le r})
+  = \frac{(-1)^{v(c)+r}}{\log q}\left. \pdv{}{s} \right\rvert_{s=0}
+    \Orb(\guv, \mathbf{1}_{K'_{S, \le r}} \otimes \oneV, s).
+  \label{eq:match_penultimate}
+\end{equation}
+Subtracting the same equation from itself with $r$ replaced by $r-1$ gives
+\begin{equation}
+  \begin{aligned}
+    &\Int((g,u), \mathbf{1}_{K, \le r} - \mathbf{1}_{K, \le (r-1)}) \\
+    &= \frac{(-1)^{v(c)+r}}{\log q}\left. \pdv{}{s} \right\rvert_{s=0}
+    \Orb(\guv, (\mathbf{1}_{K'_{S, \le r}} + \mathbf{1}_{K'_{S, \le (r-1)}}) \otimes \oneV, s).
+  \end{aligned}
+  \label{eq:match_final}
+\end{equation}
+But \Cref{lem:finale_base_change} says that
+$(-1)^r(\mathbf{1}_{K, \le r} - \mathbf{1}_{K, \le (r-1)}) \in \HH(\U(\VV_n^+))$
+matches $\mathbf{1}_{K'_{S, \le r}} + \mathbf{1}_{K'_{S, \le (r-1)}} \in \HH(S_2(F))$.
 And hence from the $r = 0$ case we can inductively conclude
 \Cref{thm:semi_lie_n_equals_2} for $r > 0$, completing the proof.
