@@ -28,6 +28,7 @@ Then, unsurprisingly from the definition of our action as
 \[ h \cdot \guv = (h\gamma h\inv, h\uu, \vv^\top h\inv) \]
 we analogously define the weighted orbital integral as follows.
 \begin{definition}
+  [{\cite[\S1.3]{ref:liuFJ}}]
   For brevity let $\eta(h) \coloneqq \eta(\det h)$ for $h \in H$.
   For $\guv \in S_n(F) \times V'_n(F)$,
   $\phi \in \HH(S_n(F))$, and $s \in \CC$,
@@ -83,6 +84,10 @@ We again have a Cartan decomposition indexed by a single integer $r \ge 0$:
   Then we have a decomposition
   \[ S_2(F) = \coprod_{r \geq 0} K'_{S,r}. \]
 \end{lemma}
+\begin{proof}
+  \todo{reference}
+\end{proof}
+
 Like last time, $K'_{S,r}$ is the part of $S_2(F)$
 for which the most negative valuation among the nine entries is $-r$.
 And as before we abbreviate the $r = 0$ term specifically:
@@ -97,10 +102,10 @@ Repeating the definition
 \[ K'_{S, \le r} \coloneqq S_2(F) \cap \varpi^{-r} \GL_2(\OO_E)
   = K'_{S,0} \sqcup K'_{S,1} \sqcup \dots \sqcup K'_{S,r} \]
 we get a basis of indicator functions for the Hecke algebra $\HH(S_2(F))$:
-\begin{proposition}
+\begin{corollary}
   For $r \ge 0$, the indicator functions $\mathbf{1}_{K'_{S, \le r}}$
   form a basis of $\HH(S_2(F))$.
-\end{proposition}
+\end{corollary}
 
 \section{Parametrization of $\gamma$}
 From now on assume $n = 2$,
@@ -205,7 +210,7 @@ We can now state the following result:
   Let $r \ge 0$ and define
   \begin{align*}
     N &\coloneqq \min\left( v(e), \left\lfloor \frac{v(b)+v(c)}{2} \right\rfloor + r, v(d-a) + r \right) \\
-    \varkappa &\coloneqq v(e) - (v(d-a)+r) \\
+    \varkappa &\coloneqq v(e) - (v(d-a)+r)
   \end{align*}
   Then
   \begin{align*}
