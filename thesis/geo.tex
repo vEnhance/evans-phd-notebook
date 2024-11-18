@@ -83,7 +83,8 @@ At the same time, we can define the following Hermitian space.
   nondegenerate non-split $E/F$-Hermitian space.
 \end{proposition}
 \begin{proof}
-  \todo{ref}
+  See the comment in \cite[\S5.2]{ref:AFLspherical}
+  or the comment after \cite[Equation (4.2)]{ref:survey}.
 \end{proof}
 
 \section{Intersection numbers for the group version of AFL for the full spherical Hecke algebra}
@@ -149,15 +150,19 @@ consider the translation $(1,g) \cdot \Delta_{\RZ_{n-1}}$.
 The intersection number is then defined as by taking the intersection
 of these two objects using the derived tensor product $\jiao$ of the structure sheaves.
 \begin{definition}
-  [{\cite[Equation (6.1.1)]{ref:AFLspherical}}]
+  [{\cite[Equation (6.1.1)]{ref:AFLspherical}}
+  or {\cite[Equation (4.4)]{ref:survey}}]
+  \label{def:intersection_number_inhomog}
   We define the intersection number in \Cref{conj:inhomog} by
-  \[
+  \begin{align*}
     \Int((1,g), \mathbf{1}_{K^\flat} \otimes f)
-    \coloneqq \chi_{\RZ_{n-1,n}} \left(
+    &\coloneqq \left\langle
+      \TT_{\mathbf{1}_{K^\flat} \otimes f} \Delta_{\RZ_{n-1}},
+      (1,g) \cdot \Delta_{\RZ_{n-1}} \right\rangle _{\RZ{n-1,n}} \\
+    &\coloneqq \chi_{\RZ_{n-1,n}} \left(
       \Sheaf_{\TT_{\mathbf{1}_{K^\flat} \otimes f} (\Delta_{\RZ_{n-1}})}
       \jiao_{\Sheaf_{\RZ_{n-1,n}}} \Sheaf_{(1,g) \cdot \Delta_{\RZ_{n-1}}} \right).
-  \]
-  \label{def:intersection_number_inhomog}
+  \end{align*}
 \end{definition}
 Here $\chi$ denotes the Euler-Poincar\'{e} characteristic,
 meaning that if $X$ is a formal scheme over $\Spf \OO_{\breve F}$
@@ -165,6 +170,14 @@ then given a finite complex $\mathcal{F}$ of $\Sheaf_X$-modules we set
 \[ \chi_X(\mathcal{F}) = \sum_i \sum_j (-1)^{i+j}
   \operatorname*{len}_{\OO_{\breve F}} H^j(X, H_i(\mathcal F)) \]
 provided all the lengths are finite.
+
+\begin{remark}
+  In general we could adapt this definition so $(1,g)$ is replaced by
+  by an element of $(\U(\VV_{n-1}^-) \times \U(\VV_n^-))\rs$
+  if we wish to work with the full group version of the AFL
+  rather than just the inhomogeneous version.
+  However, this simpler definition will be sufficient for our purposes.
+\end{remark}
 
 \section{Intersection numbers for the semi-Lie version of AFL for the full spherical Hecke algebra}
 Now we continue to define an intersection number needed for the proposed
@@ -187,7 +200,8 @@ The definition is given as follows.
   which we denote by the triple $(\mathcal{E}, \iota_{\mathcal{E}}, \lambda_{\mathcal E})$.
 
   Then the KR-divisor $\ZD(u)$ is the locus where the quasi-homomorphism
-  $u \colon \EE \to \XX_n$ lifts to a homomorphism from $\mathcal{E}$ to the universal object over $\RZ_n$.
+  \[ u \colon \EE \to \XX_n \]
+  lifts to a homomorphism from $\mathcal{E}$ to the universal object over $\RZ_n$.
   More explicitly, it consists of those $X \in \RZ_n$
   such that there exists a map $\varphi : \mathcal{E} \to X$ with the following property.
   Let $S$ be an $\Spf \OO_{\breve F}$ scheme and consider the map on special fiber
@@ -246,15 +260,22 @@ Meanwhile to replace $(1,g) \Delta_{\RZ_{n,n-1}}$, we let
 denote the graph of the automorphism of $\RZ_n$ induced by $g$.
 This finally allows us to write a definition of the intersection number in the semi-Lie case:
 \begin{definition}
-  We define the intersection number in \Cref{conj:semi_lie_spherical} as
-  \[
+  \label{def:intersection_number_semi_lie_spherical}
+  In analog to \Cref{def:intersection_number_inhomog} for the group version of the AFL,
+  we now define the intersection number in \Cref{conj:semi_lie_spherical} as
+  \begin{align*}
     \Int((g,u), f)
-    \coloneqq \chi_{\RZ_{n,n}} \left(
+    &\coloneqq \left\langle
+      \TT_{\mathbf{1}_{K} \otimes f} \Delta_{\ZD(u)},
+      \Gamma_g \right\rangle _{\RZ{n,n}} \\
+    &\coloneqq \chi_{\RZ_{n,n}} \left(
       \Sheaf_{\TT_{\mathbf{1}_K \otimes f}(\Delta_{\ZD(u)})}
       \jiao_{\Sheaf_{\RZ_{n,n}}} \Sheaf_{\Gamma_g} \right).
-  \]
-  \label{def:intersection_number_semi_lie_spherical}
+    \end{align*}
 \end{definition}
+In the situation where $f = \mathbf{1}_K$,
+this coincides with the existing definition in \cite[Equation (4.9)]{ref:survey}
+and \cite[Remark 3.1]{ref:annalsAFL}.
 
 \section{An analogy between the geometric and analytic sides}
 With the intersection number now defined for \Cref{conj:semi_lie_spherical},
