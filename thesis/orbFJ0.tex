@@ -190,11 +190,9 @@ since in the case $v(e) < 0$ we will shortly see that
 $\Orb(\guv, \phi \otimes \oneV, s) = 0$ identically in $s$ in that situation.
 
 \section{Statement of the differentiated weighted orbital integral}
-The formula seems to be cleanest if we combine the parts
-for $\mathbf{1}_{K'_{S, \le r}}$ and $\mathbf{1}_{K'_{S, \le (r-1)}}$ as follows:
-
+We can now state the following result:
 \begin{theorem}
-  \label{thm:semi_lie_combo}
+  \label{thm:semi_lie_derivative_single}
   Let the representative
   \[
     \guv = \left( \begin{bmatrix} a & b \\ c & d \end{bmatrix},
@@ -204,18 +202,36 @@ for $\mathbf{1}_{K'_{S, \le r}}$ and $\mathbf{1}_{K'_{S, \le (r-1)}}$ as follows
   \]
   be paired with an element of $(\U(\VV_2) \times \VV_2)\rs$
   (in particular, \Cref{assume:FJ} holds).
-  Let $r \ge 1$ be an integer.
+  Let $r \ge 0$ and define
+  \begin{align*}
+    N &\coloneqq \min\left( v(e), \left\lfloor \frac{v(b)+v(c)}{2} \right\rfloor + r, v(d-a) + r \right) \\
+    \varkappa &\coloneqq v(e) - (v(d-a)+r) \\
+  \end{align*}
   Then
   \begin{align*}
-    \frac{1}{\log q} &\left. \pdv{}{s} \right\rvert_{s=0}
+    \frac{(-1)^{v(c)+r}}{\log q}
+    &\left. \pdv{}{s} \right\rvert_{s=0}
     \Orb(\guv, (\mathbf{1}_{K'_{S, \le r}} + \mathbf{1}_{K'_{S, \le (r-1)}}) \otimes \oneV, s) \\
-    &= (-1)^{r+v(c)}\left( (q^N + q^{N-1} + \dots + 1) + C q^N + C' q^{N-1} \right)
+    &= \sum_{j=0}^N q^j
+    \cdot \left( \frac{2v(e)+v(b)+v(c)+1}{2} + r - 2j \right) \\
+    & + q^{v(d-a)+r} \cdot
+    \begin{cases}
+      -\frac{\varkappa}{2} & \text{if }\varkappa \equiv 0 \pmod 2 \\
+      \frac{\varkappa}{2} - \left( v(e)+\frac{v(b)+v(c)}{2}-2v(d-a)-r \right)
+      & \text{if }\varkappa \equiv 1 \pmod 2 \\
+    \end{cases}
   \end{align*}
-  where
+  where the second term is only present when $\varkappa \ge 0$ and $v(b)+v(c)>2v(d-a)$.
+\end{theorem}
+
+The formula simplifies a lot if we combine the parts
+for $\mathbf{1}_{K'_{S, \le r}}$ and $\mathbf{1}_{K'_{S, \le (r-1)}}$;
+this turns out to be right notation later on too.
+\begin{corollary}
+  \label{cor:semi_lie_combo}
+  Retain the notation of \Cref{thm:semi_lie_derivative_single} and assume $r > 0$.
+  Define
   \begin{align*}
-    N &\coloneqq \min\left( v(e),
-    \left\lfloor \frac{v(b)+v(c)}{2} \right\rfloor + r, v(d-a) + r \right) \\
-    \varkappa &\coloneqq v(e) - (v(d-a)+r) \\
     C &\coloneqq
     \begin{cases}
       \left\lfloor \frac{\varkappa}{2} \right\rfloor
@@ -235,10 +251,17 @@ for $\mathbf{1}_{K'_{S, \le r}}$ and $\mathbf{1}_{K'_{S, \le (r-1)}}$ as follows
       0 & \text{otherwise}.
     \end{cases}
   \end{align*}
-\end{theorem}
+  Then
+  \begin{align*}
+    \frac{(-1)^{v(c)+r}}{\log q} &\left. \pdv{}{s} \right\rvert_{s=0}
+    \Orb(\guv, (\mathbf{1}_{K'_{S, \le r}} + \mathbf{1}_{K'_{S, \le (r-1)}}) \otimes \oneV, s) \\
+    &= \left( (q^N + q^{N-1} + \dots + 1) + C q^N + C' q^{N-1} \right).
+  \end{align*}
+\end{corollary}
 
 We dedicate \Cref{ch:orbitalFJ1,ch:orbitalFJ2} to the calculation
-of the full orbital integral and its derivative at $s = 0$ given here.
+of the full orbital integral and the above formulas.
+We have the following examples to showcase \Cref{cor:semi_lie_combo}.
 
 \begin{example}
   When $v(e) < 0$, the entire expression is zero
@@ -247,18 +270,18 @@ of the full orbital integral and its derivative at $s = 0$ given here.
 
 \begin{example}
   When $r=5$, $v(b) = -20$, $v(c) = 37$, $v(e) = 35$ and $v(d-a) > \frac{v(b)+v(c)}{2} = 8.5$
-  the derivative in \Cref{thm:semi_lie_combo} equals
+  the derivative in \Cref{cor:semi_lie_combo} equals
   \[ \log q \cdot (23q^{13} + q^{12} + q^{11} + q^{10} + q^9 + \dots + q + 1). \]
 \end{example}
 
 \begin{example}
   When $r = 6$, $v(b) = 10$, $v(c) = 5$, $v(e) = 7$, $v(d-a) > v(e)-r = 1$,
-  the derivative in \Cref{thm:semi_lie_combo} equals
+  the derivative in \Cref{cor:semi_lie_combo} equals
   \[ -\log q \cdot (q^7 + q^6 + q^5 + \dots + q + 1). \]
 \end{example}
 
 \begin{example}
   When $r = 8$, $v(b) = -101$, $v(c) = 1000$, $v(e) = 29$, $v(d-a) = 11$,
-  the derivative in \Cref{thm:semi_lie_combo} equals
+  the derivative in \Cref{cor:semi_lie_combo} equals
   \[ \log q \cdot (444 q^{19} + 445q^{18} + q^{17} + q^{16} + q^{15} + \dots + q + 1). \]
 \end{example}

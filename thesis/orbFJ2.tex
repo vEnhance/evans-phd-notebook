@@ -655,10 +655,10 @@ of $\nn_\guv$ and $\cc_\guv$, which may be easier to think about.
   \end{align*}
 \end{example}
 
-\section{Derivative of the orbital integral at $s = 0$}
+\section{Proof of \Cref{thm:semi_lie_derivative_single}}
 With \Cref{thm:semi_lie_formula} established, we aim to calculate the derivative of
 \[ \Orb(\guv, \mathbf{1}_{K', S, \le r} \otimes \oneV, s) \]
-now at $s = 0$, in order to complete the proof of \Cref{thm:semi_lie_combo}.
+now at $s = 0$, thus proving \Cref{thm:semi_lie_derivative_single}.
 For this calculation it will be more convenient to reformat \Cref{thm:semi_lie_formula}
 as a sum over $q^j$ rather than $(-1)^k (q^s)^k$.
 To that, continuing to write
@@ -668,7 +668,7 @@ $N \coloneqq \min \left(
 consider any index $0 \le j \le N$.
 Then
 \[ \nn_\guv(k) \ge j \iff 2j - v(b) - r \le k \le 2v(e)+v(c)+r-2j. \]
-In other words, the first part of \Cref{thm:semi_lie_combo} can be rewritten as
+In other words, the first part of \Cref{cor:semi_lie_combo} can be rewritten as
 \[ \sum_{k = -(v(b)+r)}^{2v(e)+v(c)+r} (-1)^k
   \left( 1 + \dots + q^{\nn_\guv(k)} \right) (q^s)^k
   = q^j \sum_{j=0}^N \left( \sum_{k=2j-v(b)-r}^{2v(e)+v(c)+r-2j} (-q^s)^k \right). \]
@@ -744,8 +744,8 @@ If we sum all three,
 we get a contribution of $\varkappa \log q \cdot  (-1)^{v(c)+v(e)+v(d-a)}$ times
 \[ \frac{v(b)+v(c)-2v(d-a)+1}{2} - \frac{v(c)+v(e)-v(d-a)+1}{2} + \frac{-v(b)+v(e)+v(d-a)-1}{2}
   = -\half. \]
-If $\varkappa$ is even, that's all she wrote; and we get
-\[ (-1)^{v(c)+r+1} \frac{\varkappa}{2} q^{v(d-a)+r} \log q. \]
+If $\varkappa$ is even, then that's all she wrote; we simply get
+\[ (-1)^{v(c)+r+1} \cdot \frac{\varkappa}{2} \cdot q^{v(d-a)+r} \log q. \]
 On the other hand, if $\varkappa$ is odd we get instead
 \begin{align*}
   &\phantom+ (-1)^{v(c)+r} \frac{\varkappa}{2} q^{v(d-a)+r} \log q \\
@@ -754,30 +754,14 @@ On the other hand, if $\varkappa$ is odd we get instead
   &= (-1)^{v(c)+r} q^{v(d-a)+r} \log q \cdot \left[
     -\left( v(e)+\frac{v(b)+v(c)}{2}-2v(d-a)-r \right) + \frac{\varkappa}{2} \right].
 \end{align*}
-In summary, when we put everything together we get the following formula.
-\begin{proposition}
-  \label{prop:semi_lie_derivative_single}
-  The derivative of the orbital integral in \Cref{thm:semi_lie_formula} is
-  $(-1)^{v(c)+r} \log q$ times
-  \begin{align*}
-    & \sum_{j=0}^N q^j
-    \cdot \left( \frac{2v(e)+v(b)+v(c)+1}{2} + r - 2j \right) \\
-    & + q^{v(d-a)+r} \cdot
-    \begin{cases}
-      -\frac{\varkappa}{2} & \text{if }\varkappa \equiv 0 \pmod 2 \\
-      \frac{\varkappa}{2} - \left( v(e)+\frac{v(b)+v(c)}{2}-2v(d-a)-r \right)
-      & \text{if }\varkappa \equiv 1 \pmod 2 \\
-    \end{cases}
-  \end{align*}
-  where the second term is only present when $\varkappa \ge 0$ and $v(b)+v(c)>2v(d-a)$.
-\end{proposition}
+These formulas match \Cref{thm:semi_lie_derivative_single}, proving it.
 (Note that we changed $\varkappa > 0$ to $\varkappa \ge 0$,
 which makes no change since then the contribution is zero anyway.)
 
-\section{Proof of \Cref{thm:semi_lie_combo}}
-We can now prove \Cref{thm:semi_lie_combo}
-as a corollary of \Cref{prop:semi_lie_derivative_single}.
-Observe that when we add the right-hand side of \Cref{prop:semi_lie_derivative_single}
+\section{Proof of \Cref{cor:semi_lie_combo}}
+We can now prove \Cref{cor:semi_lie_combo}
+as a corollary of \Cref{thm:semi_lie_derivative_single}.
+Observe that when we add the right-hand side of \Cref{thm:semi_lie_derivative_single}
 to the same right-hand side with $r$ replaced by $r-1$, almost all the terms cancel.
 Indeed, the main sum for $0 \le j \le N-1$ line up:
 \begin{align*}

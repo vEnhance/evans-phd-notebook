@@ -171,7 +171,7 @@ As in \Cref{ch:jiao}, we define
 \section{Comparison to orbital formula}
 In what follows, we denote
 \[ \partial\Orb(r, v(b), v(c), v(e), v(d-a)) \]
-as the value of the orbital integral described in \Cref{thm:semi_lie_combo}; that is,
+as the value of the orbital integral described in \Cref{cor:semi_lie_combo}; that is,
 it represents the value of
 \[ \left. \pdv{}{s} \right\rvert_{s=0}
   \Orb(\guv, (\mathbf{1}_{K'_{S, \le r}} + \mathbf{1}_{K'_{S, \le (r-1)}}) \otimes \oneV, s) \]
@@ -204,8 +204,8 @@ cases based on which value of $N$ is smallest.
 \subsection{Proof of \Cref{prop:finale_by_one}
   when $v(e) \le \left\lfloor \tfrac{v(b)+v(c)}{2} \right\rfloor + r$
   and $v(e) \le v(d-a) + r$}
-First we consider $r > 0$.
-In this case, \Cref{thm:semi_lie_combo} implies that
+\subsubsection{Case where $r > 0$}
+In this case, \Cref{cor:semi_lie_combo} implies that
 \begin{align*}
   \frac{(-1)^{r+v(c)}}{\log q}\partial\Orb(r, v(b), v(c), v(e), v(d-a))
   &= q^{v(e)} + \dots + 1 \\
@@ -234,7 +234,8 @@ Their difference equals
 \[ q^{v(e)} + 2(q^{v(e)-1} + \dots + 1) \]
 as well, completing the case $r > 0$.
 
-In the case where $r = 0$ we refer to \Cref{prop:semi_lie_derivative_single}
+\subsubsection{Case where $r = 0$}
+If $r = 0$ we refer to \Cref{thm:semi_lie_derivative_single}
 and compare it to a single instance of Gross-Keating; we need to verify that
 \begin{align*}
   &\phantom= \sum_{j=0}^{v(e)} q^j \cdot \left( \frac{2v(e)+v(b)+v(c)+1}{2} + r - 2j \right) \\
@@ -247,9 +248,9 @@ which is clear.
 \subsection{Proof of \Cref{prop:finale_by_one}
   when $\left\lfloor \tfrac{v(b)+v(c)}{2} \right\rfloor + r < v(e)$
   and $v(b)+v(c) < 2v(d-a)$}
-
+\subsubsection{Case where $r > 0$}
 Here $N = \left\lfloor \tfrac{v(b)+v(c)}{2} \right\rfloor + r$.
-In this case, \Cref{thm:semi_lie_combo} implies that
+In this case, \Cref{cor:semi_lie_combo} implies that
 \begin{align*}
   \frac{(-1)^{r+v(c)}}{\log q}\partial\Orb(r, v(b), v(c), v(e), v(d-a))
   &= \left( v(e) - N \right) q^{N} + (q^N + \dots + 1) \\
@@ -274,9 +275,18 @@ The two applications of Gross-Keating thus give
 Their difference equals
 \[ (2N+1+2v(e)-4N) q^{N} + 2(q^{N-1} + \dots + 1) \]
 which equals the earlier expression, completing this case too.
+\subsubsection{Case where $r = 0$}
+If $r = 0$, we again use the full \Cref{thm:semi_lie_derivative_single}; we check
+\begin{align*}
+  &\phantom= \sum_{j=0}^{N} q^j \cdot \left( \frac{2v(e)+v(b)+v(c)+1}{2} + r - 2j \right) \\
+  &\qquad+ \sum_{j=0}^{N} q^j \cdot \left( \frac{2(v(e)-1)+v(b)+v(c)+1}{2} + r - 2j \right) \\
+  &= \sum_{j=0}^N (2v(e)+v(b)+v(c)+2r-4j) q^j
+\end{align*}
+which is clear.
 
 \subsection{Proof of \Cref{prop:finale_by_one}
   when $v(d-a)+r < v(e)$ and $2v(d-a) < v(b)+v(c)$}
+\subsubsection{Case where $r > 0$}
 Hence $N = v(d-a) + r$ and $\varkappa \coloneqq v(e) - (v(d-a)+r) > 0$; and now
 \[
   C = \begin{cases}
@@ -294,7 +304,7 @@ So we have to define the corresponding constant
   \end{cases}
 \]
 which is the result for $C$ when $\varkappa$ is replaced by $\varkappa-1$.
-In this case, \Cref{thm:semi_lie_combo} gives
+In this case, \Cref{cor:semi_lie_combo} gives
 \begin{align*}
   \frac{(-1)^{r+v(c)}}{\log q}\partial\Orb(r, v(b), v(c), v(e), v(d-a))
   &= C q^N + (C+1) q^{N-1} + (q^N + \dots + 1) \\
@@ -337,6 +347,28 @@ Subtracting these two gives
   &= (C + C^\flat) q^N + (C + C^\flat + 2) q^{N-1} + 2(q^N + q^{N-1} + \dots + 1).
 \end{align*}
 This matches the orbital formula, so the proof of \Cref{prop:finale_by_one} is done.
+
+\subsubsection{Case where $r = 0$}
+This time, we need to verify that
+\begin{align*}
+  &\phantom= \sum_{j=0}^N q^j
+  \cdot \left( \frac{2v(e)+v(b)+v(c)+1}{2} + r - 2j \right) \\
+  & + q^{v(d-a)+r} \cdot
+  \begin{cases}
+    -\frac{\varkappa}{2} & \text{if }\varkappa \equiv 0 \pmod 2 \\
+    \frac{\varkappa}{2} - \left( v(e)+\frac{v(b)+v(c)}{2}-2v(d-a)-r \right)
+    & \text{if }\varkappa \equiv 1 \pmod 2 \\
+  \end{cases}
+  &+ \sum_{j=0}^N q^j
+  \cdot \left( \frac{2(v(e)-1)+v(b)+v(c)+1}{2} + r - 2j \right) \\
+  & + q^{v(d-a)+r} \cdot
+  \begin{cases}
+    -\frac{\varkappa-1}{2} & \text{if }\varkappa-1 \equiv 0 \pmod 2 \\
+    \frac{\varkappa-1}{2} - \left( v(e)+\frac{v(b)+v(c)}{2}-2v(d-a)-r \right)
+    & \text{if }\varkappa-1 \equiv 1 \pmod 2 \\
+  \end{cases}
+\end{align*}
+wait i'm a dumby
 
 \section{Conclusion (proof of \Cref{thm:semi_lie_n_equals_2})}
 To finish, note that \Cref{prop:finale_by_one} immediately implies the following.
