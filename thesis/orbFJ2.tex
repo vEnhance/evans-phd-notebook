@@ -424,46 +424,47 @@ of $\nn_\guv$ and $\cc_\guv$, which may be easier to think about.
     draw((0,3.4)--(0,3.8)--(6,3.8)--(6,3.4), brown);
     draw((19,3.4)--(19,3.8)--(25,3.8)--(25,3.5), brown);
 
-    draw((0,0)--(0,-3), dotted, Margins);
-    draw((6,3)--(6,-1.5), dotted, Margins);
-    draw((19,3)--(19,-1.5), dotted, Margins);
-    draw((25,0)--(25,-3), dotted, Margins);
+    draw((0,0)--(0,-1.5), dotted, Margins);
+    draw((6,3)--(6,-5), dotted, Margins);
+    draw((19,3)--(19,-5), dotted, Margins);
+    draw((25,0)--(25,-1.5), dotted, Margins);
 
     for (int i=0; i<=25; ++i) {
       real y = min(floor(i/2), floor((25-i)/2), 3);
       dot((i, y), red);
     }
 
-    label("$k=\boxed{-v(b)+r}$", (0,-3), dir(-90));
-    label("$k=\boxed{-v(b)+r+2N}$", (6,-1.5), dir(-90));
-    label("$k=\boxed{2v(e)+v(c)+r-2N}$", (19,-1.5), dir(-90));
-    label("$k=\boxed{2v(e)+v(c)+r}$", (25,-3), dir(-90));
+    label("$k=\boxed{-v(b)-r}$", (0,-1.5), dir(-90));
+    label("$k=\boxed{-v(b)-r+2N}$", (6,-5), dir(-90));
+    label("$k=\boxed{2v(e)+v(c)+r-2N}$", (19,-5), dir(-90));
+    label("$k=\boxed{2v(e)+v(c)+r}$", (25,-1.5), dir(-90));
     label("$\mathbf{n}_{(\gamma, \mathbf{u}, \mathbf{v}^\top)}$", (12.5,3), dir(90), red);
 
-    real h = 11; // offset downwards
+    real h = 18; // offset downwards
     draw((6,-h)--(11,5-h)--(14,5-h)--(19,-h), lightblue);
     draw((5,-h)--(20,-h), grey);
     for (int i=6; i<=19; ++i) {
       real y = min(i-6, 19-i, 5);
       dot((i, y - h), blue);
     }
-    label("$\mathbf{c}_{(\gamma, \mathbf{u}, \mathbf{v}^\top)}$, only if $N = v(d-a)+r$", (12.5,5-h), dir(90), blue);
+    label("$\mathbf{c}_{(\gamma, \mathbf{u}, \mathbf{v}^\top)}$", (12.5,5-h), 5*dir(90), blue);
+    label("(only if $N = v(d-a) + r$)", (12.5,5-h), dir(90), blue);
 
-    draw((6,-h)--(6,-3.5), dotted, Margins);
-    draw((19,-h)--(19,-3.5), dotted, Margins);
-    draw((11,5-h)--(11,-2.5-h), dotted, Margins);
-    draw((14,5-h)--(14,-2.5-h), dotted, Margins);
-    label("$k=\boxed{-v(b)+v(e)+v(d-a)+2r}$", (11,-2.5-h), dir(230));
-    label("$k=\boxed{v(c)+v(e)-v(d-a)-2r}$", (14,-2.5-h), dir(310));
+    draw((6,-h)--(6,-6.8), dotted, Margins);
+    draw((19,-h)--(19,-6.8), dotted, Margins);
+    draw((11,5-h)--(11,-4.5-h), dotted, Margins);
+    draw((14,5-h)--(14,-4.5-h), dotted, Margins);
+    label("$k=\boxed{-v(b)+v(e)+v(d-a)}$", (11,-4.5-h), dir(230));
+    label("$k=\boxed{v(c)+v(e)-v(d-a)}$", (14,-4.5-h), dir(310));
 
     draw((6,-h-0.4)--(6,-h-0.8)--(10.8,-h-0.8)--(10.8,-h-0.4), purple);
     draw((14.2,-h-0.4)--(14.2,-h-0.8)--(19,-h-0.8)--(19,-h-0.4), purple);
-    label("$v(e)-v(d-a)-r$", (7, -h-0.8), dir(-90), purple);
-    label("$v(e)-v(d-a)-r$", (18, -h-0.8), dir(-90), purple);
+    label("$\varkappa \coloneqq v(e)-v(d-a)-r$", (7, -h-0.8), dir(-90), purple);
+    label("$\varkappa \coloneqq v(e)-v(d-a)-r$", (18, -h-0.8), dir(-90), purple);
     draw((4.6,-h)--(4.2,-h)--(4.2,5-h)--(4.6,5-h), purple);
     draw((20.4,-h)--(20.8,-h)--(20.8,5-h)--(20.4,5-h), purple);
-    label((4.2,2.5-h), "$v(e)-v(d-a)-r$", dir(180), purple);
-    label((20.8,2.5-h), "$v(e)-v(d-a)-r$", dir(0), purple);
+    label((4.2,2.5-h), "$\varkappa \coloneqq v(e)-v(d-a)-r$", dir(180), purple);
+    label((20.8,2.5-h), "$\varkappa \coloneqq v(e)-v(d-a)-r$", dir(0), purple);
   \end{asy}
   \caption{Sketch of the functions in \Cref{thm:semi_lie_formula}.
     The boxed numbers indicate values of $k$.}
@@ -548,11 +549,11 @@ of $\nn_\guv$ and $\cc_\guv$, which may be easier to think about.
 
   The remaining contribution from \textbf{Case 6\ts{+} and Case 6\ts{-}} is
   \begin{align*}
-  &+ q^{\frac{\theta}{2} + r}
+  &\phantom+ q^{\frac{\theta}{2} + r}
   \sum_{k = \theta - v(b) + r + 1}^{2v(e) - \theta + v(c) - r - 1} \cc_\guv(k)(-q^s)^k \\
   &+ q^{\frac{\theta}{2} + r}
   \sum_{k = v(c) + r + 1}^{2v(e) - \theta + v(c) - r - 1}
-  \mathbf{1}_{k + \theta + v(c) + r \equiv 0 \pmod 2} (-q^s)^k
+  \mathbf{1}_{k + \theta + v(c) + r \equiv 0 \pmod 2} (-q^s)^k.
   \end{align*}
 
   The first sum matches the claimed coefficient $\cc_\guv$
@@ -652,7 +653,7 @@ of $\nn_\guv$ and $\cc_\guv$, which may be easier to think about.
   \end{align*}
 \end{example}
 
-\section{Derivative of the orbital integral at $s = 0$ (proof of \Cref{thm:semi_lie_combo})}
+\section{Derivative of the orbital integral at $s = 0$}
 With \Cref{thm:semi_lie_formula} established, we aim to calculate the derivative of
 \[ \Orb(\guv, \mathbf{1}_{K', S, \le r} \otimes \oneV, s) \]
 now at $s = 0$, in order to complete the proof of \Cref{thm:semi_lie_combo}.
@@ -673,18 +674,200 @@ If we take the derivative at $s = 0$ with respect to $k$, we get
 \[ \log q \sum_{j=0}^N \left( q^j \sum_{k=2j-v(b)-r}^{2v(e)+v(c)+r-2j} (-1)^k k \right). \]
 The number of terms inside the summation is
 $2v(e)+v(b)+v(c)+2r-4j+1$, an even number.
-Each pair consecutive pair differ by $(-1)^{v(c)+r}$.
+Each consecutive pair differs by $(-1)^{v(c)+r}$.
 Hence we get
 \[ (-1)^{v(c)+r} \log q \sum_{j=0}^N \left( q^j
   \cdot \left( \frac{2v(e)+v(b)+v(c)+1}{2} + r - 2j \right) \right). \]
 Now in the case that $v(e) > v(d-a) + r$ and $2v(d-a) < v(b) + v(c)$,
 we have to handle the additional contribution obtained when we differentiate
-\[
+\begin{equation}
   q^{v(d-a)+r}
   \sum_{k = 2v(d-a)-v(b)+r}^{2v(e)+v(c)-2v(d-a)-r} (-1)^k \cc_\guv(k) (-q^s)^k
-\]
+  \label{eq:top_derivative}
+\end{equation}
 at $s = 0$.
-For the range of $k$ given, we split it into three parts:
+For brevity, we will define
+\[ \varkappa \coloneqq v(e) - v(d-a) - r \ge 0. \]
+(We allow the degenerate case $\kappa = 0$ for convenience,
+in which case $\cc_\guv$ is still identically zero.)
+We will use the following extremely easy lemma:
+\begin{lemma}
+  If $a_0 \le a_1$ are integers then
+  \begin{align*}
+    \sum_{k=a_0}^{a_1} (k-a_0) \cdot k \cdot (-1)^k
+    &= (-1)^{a_1} \cdot \frac{a_1(a_1-a_0+1)}{2} - \frac{(-1)^{a_0} + (-1)^{a_1}}{4} \cdot a_0 \\
+    \sum_{k=a_0}^{a_1} (a_1-k) \cdot k \cdot (-1)^k
+    &= (-1)^{a_0} \cdot \frac{a_0(a_1-a_0+1)}{2} - \frac{(-1)^{a_0} + (-1)^{a_1}}{4} \cdot a_1.
+  \end{align*}
+\end{lemma}
+\begin{proof}
+  This follows trivially by induction on $a_1$.
+  (Alternatively, use a symbolic engine like WolframAlpha;
+  see
+  \href{https://www.wolframalpha.com/input?i=sum+\%28k-a\%29*k*\%28-1\%29\%5Ek+from+k\%3Da+to+b}{here}
+  for the first sum and
+  \href{https://www.wolframalpha.com/input?i=sum+\%28b-k\%29*k*\%28-1\%29\%5Ek+from+k\%3Da+to+b}{here}
+  for the second sum.)
+\end{proof}
+We return to differentiating \eqref{eq:top_derivative}.
+For the range of $k$ given, we split it into three parts.
 \begin{itemize}
-  \ii
+  \ii For $-v(b) + r + 2v(d-a) \le k < -v(b) + v(e) + v(d-a)$,
+  apply the first part of the lemma to conclude that the contribution to the derivative is
+  \begin{align*}
+    \log q \cdot \Big( & (-1)^{v(b)+v(e)+v(d-a)-1} \cdot
+      \frac{(-v(b)+v(e)+v(d-a)-1) \cdot \varkappa}{2} \\
+      &
+      - \frac{(-1)^{v(b)+v(e)+v(d-a)+1} + (-1)^{v(b)+r}}{4} \cdot (-v(b) + r + 2v(d-a))
+    \Big).
+  \end{align*}
+
+  \ii For $v(c)+v(e)-v(d-a) < k \le 2v(e)+v(c)-2v(d-a)-r$
+  apply the second part of the lemma to conclude that the contribution to the derivative is
+  \begin{align*}
+    \log q \cdot \Big( & (-1)^{v(c)+v(e)+v(d-a)+1} \cdot
+      \frac{(v(c)+v(e)-v(d-a)+1) \cdot \varkappa}{2} \\
+      &
+      - \frac{(-1)^{v(c)+v(e)+v(d-a)+1} + (-1)^{v(c)+r}}{4} \cdot (2v(e)+v(c)-r-2v(d-a))
+    \Big).
+  \end{align*}
+
+  \ii For the region $-v(b)+v(e)+v(d-a) \le k \le v(c)+v(e)-v(d-a)$,
+  we have $\cc_{\guv}(k) = \varkappa$
+  and the values of $k$ form $\left\lceil \frac{v(c)+v(b)-2v(d-a)}{2} \right\rceil$ consecutive pairs.
+  So the contribution to the derivative here is exactly
+  \[ \log q \cdot (-1)^{v(c)+v(e)+v(d-a)} \varkappa \cdot \frac{v(b)+v(c)-2v(d-a)+1}{2}. \]
+\end{itemize}
+If we sum all three,
+we get a contribution of $\varkappa \log q \cdot  (-1)^{v(c)+v(e)+v(d-a)}$ times
+\[ \frac{v(b)+v(c)-2v(d-a)+1}{2} - \frac{v(c)+v(e)-v(d-a)+1}{2} + \frac{-v(b)+v(e)+v(d-a)-1}{2}
+  = -\half. \]
+If $\varkappa$ is even, that's all she wrote; and we get
+\[ (-1)^{v(c)+r+1} \frac{\varkappa}{2} q^{v(d-a)+r} \log q. \]
+On the other hand, if $\varkappa$ is odd we get instead
+\begin{align*}
+  &\phantom+ (-1)^{v(c)+r} \frac{\varkappa}{2} q^{v(d-a)+r} \log q \\
+  &- \half q^{v(d-a)+r} \log q \cdot (-1)^{v(c)+v(e)+v(d-a)} \cdot
+  \left( \left( 2v(e)+v(c)-r-2v(d-a)\right) - \left( -v(b)+r+2v(d-a) \right) \right) \\
+  &= (-1)^{v(c)+r} q^{v(d-a)+r} \log q \cdot \left[
+    -\left( v(e)+\frac{v(b)+v(c)}{2}-2v(d-a)-r \right) + \frac{\varkappa}{2} \right].
+\end{align*}
+In summary, when we put everything together we get the following formula.
+\begin{proposition}
+  \label{prop:semi_lie_derivative_single}
+  The derivative of the orbital integral in \Cref{thm:semi_lie_formula} is
+  $(-1)^{v(c)+r} \log q$ times
+  \begin{align*}
+    & \sum_{j=0}^N q^j
+    \cdot \left( \frac{2v(e)+v(b)+v(c)+1}{2} + r - 2j \right) \\
+    & + q^{v(d-a)+r} \cdot
+    \begin{cases}
+      -\frac{\varkappa}{2} & \text{if }\varkappa \equiv 0 \pmod 2 \\
+      \frac{\varkappa}{2} - \left( v(e)+\frac{v(b)+v(c)}{2}-2v(d-a)-r \right)
+      & \text{if }\varkappa \equiv 1 \pmod 2 \\
+    \end{cases}
+  \end{align*}
+  where the second term is only present when $\varkappa \ge 0$ and $v(b)+v(c)>2v(d-a)$.
+\end{proposition}
+(Note that we changed $\varkappa > 0$ to $\varkappa \ge 0$,
+which makes no change since then the contribution is zero anyway.)
+
+\section{Proof of \Cref{thm:semi_lie_combo}}
+We can now prove \Cref{thm:semi_lie_combo}
+as a corollary of \Cref{prop:semi_lie_derivative_single}.
+Observe that when we add the right-hand side of \Cref{prop:semi_lie_derivative_single}
+to the same right-hand side with $r$ replaced by $r-1$, almost all the terms cancel.
+Indeed, the main sum for $0 \le j \le N-1$ line up:
+\begin{align*}
+  &(-1)^{r+v(c)} \sum_{j=0}^{N-1} q^j \cdot \left( \frac{2v(e)+v(b)+v(c)+1}{2} + r - 2j \right) \\
+  &\phantom+
+  (-1)^{(r-1)+v(c)} \sum_{j=0}^{N-1} q^j \cdot \left( \frac{2v(e)+v(b)+v(c)+1}{2} + (r-1) - 2j \right) \\
+  &= q^{N-1} + \dots + q^0.
+\end{align*}
+So we consider three cases:
+\begin{itemize}
+\ii In the case where $v(d-a)+r > v(e)$
+and $\left\lfloor \frac{v(b)+v(c)}{2} \right\rfloor + r > v(e)$
+then the value of $N = v(e)$ does not change when we decrease $r$ by one.
+Hence the term for $j = N$ cancels in both sums and we get exactly
+we get \[ (-1)^{r+v(c)} \log q (1 + q + \dots + q^N). \]
+
+\ii Next suppose $v(e) \ge \left\lfloor \frac{v(b)+v(c)}{2} \right\rfloor + r$
+and also $2v(d-a) > v(b) + v(c)$ (so the extra terms involving $\varkappa$ are absent).
+In that case $N = \left\lfloor \frac{v(b) + v(c)}{2} \right\rfloor + r$.
+Then we are left with $(-1)^{r+v(c)} \log q$ times
+\begin{align*}
+  &\phantom= \sum_{j=0}^{N-1} (q^j) + \left( \frac{2v(e)+v(b)+v(c)+1}{2} + r - (v(b)+v(c)-1+2r) \right) q^N \\
+  &= \sum_{j=0}^{N-1} (q^j) + \left( \frac{2v(e)-v(b)-v(c)-1}{2} - r \right) q^N \\
+  &= \sum_{j=0}^{N} (q^j) + \left( v(e) - r - \left\lfloor \frac{v(b)+v(c)}{2} \right\rfloor \right) q^N.
+\end{align*}
+This matches \Cref{thm:semi_lie_formula}.
+
+\ii Finally, suppose $\varkappa \ge 0$ and $v(b) + v(c) > 2v(d-a)$
+so that $N = v(d-a) + r$.
+Then we are left with $(-1)^{r+v(c)} \log q$ times
+\begin{align*}
+  & \sum_{j=0}^{N-1} (q^j) + \left( \frac{2v(e)+v(b)+v(c)+1}{2} + r - 2(v(d-a)+r) \right) q^N \\
+  & + q^{N} \cdot
+  \begin{cases}
+    -\frac{\varkappa}{2} & \text{if }\varkappa \equiv 0 \pmod 2 \\
+    \frac{\varkappa}{2} - \left( v(e)+\frac{v(b)+v(c)}{2}-2v(d-a)-r \right)
+    & \text{if }\varkappa \equiv 1 \pmod 2 \\
+  \end{cases} \\
+  & + q^{N-1} \cdot
+  \begin{cases}
+    -\frac{\varkappa+1}{2} & \text{if }\varkappa+1 \equiv 0 \pmod 2 \\
+    \frac{\varkappa+1}{2} - \left( v(e)+\frac{v(b)+v(c)}{2}-2v(d-a)-(r-1) \right)
+    & \text{if }\varkappa+1 \equiv 1 \pmod 2
+  \end{cases} \\
+  &= \sum_{j=0}^{N-1} (q^j)
+   + q^{N} \cdot
+  \begin{cases}
+    \left( \frac{2v(e)+v(b)+v(c)+1}{2} + r - 2(v(d-a)+r) \right) -\frac{\varkappa}{2} & \text{if }\varkappa \equiv 0 \pmod 2 \\
+    \half + \frac{\varkappa}{2} & \text{if }\varkappa \equiv 1 \pmod 2
+  \end{cases} \\
+  & - q^{N-1} \cdot
+  \begin{cases}
+    \frac{\varkappa-1}{2} - \left( v(e)+\frac{v(b)+v(c)}{2}-2v(d-a)-(r-1) \right)
+    & \text{if }\varkappa \equiv 1 \pmod 2 \\
+    -\frac{\varkappa+1}{2} & \text{if }\varkappa \equiv 1 \pmod 2
+  \end{cases} \\
+  &= \sum_{j=0}^{N} (q^j)
+   + q^{N} \cdot
+  \begin{cases}
+    \left( \frac{2v(e)+v(b)+v(c)-1}{2} + r - 2(v(d-a)+r) \right) -\frac{\varkappa}{2} & \text{if }\varkappa \equiv 0 \pmod 2 \\
+    \frac{\varkappa-1}{2} & \text{if }\varkappa \equiv 1 \pmod 2
+  \end{cases} \\
+  & - q^{N-1} \cdot
+  \begin{cases}
+    \frac{\varkappa-1}{2} - \left( v(e)+\frac{v(b)+v(c)}{2}-2v(d-a)-(r-1) \right)
+    & \text{if }\varkappa \equiv 1 \pmod 2 \\
+    -\frac{\varkappa+1}{2} & \text{if }\varkappa \equiv 1 \pmod 2
+  \end{cases} \\
+  &= \sum_{j=0}^{N} (q^j)
+   + q^{N} \cdot
+  \begin{cases}
+    \left( \frac{v(e)+v(b)+v(c)-1}{2} - \frac32v(d-a) - \frac12r \right) & \text{if }\varkappa \equiv 0 \pmod 2 \\
+    \frac{\varkappa+1}{2} & \text{if }\varkappa \equiv 1 \pmod 2
+  \end{cases} \\
+  & - q^{N-1} \cdot
+  \begin{cases}
+    -\frac{1}{2} - \left( \frac12v(e)+\frac{v(b)+v(c)}{2}-\frac32v(d-a)-\frac12r \right)
+    & \text{if }\varkappa \equiv 1 \pmod 2 \\
+    -\frac{\varkappa+1}{2} & \text{if }\varkappa \equiv 1 \pmod 2
+  \end{cases} \\
+  &= \sum_{j=0}^{N} (q^j)
+   + q^{N} \cdot
+  \begin{cases}
+    \left( \frac{\varkappa+v(b)+v(c)-1-2v(d-a)}{2}  \right) & \text{if }\varkappa \equiv 0 \pmod 2 \\
+    \frac{\varkappa-1}{2} & \text{if }\varkappa \equiv 1 \pmod 2
+  \end{cases} \\
+  & + q^{N-1} \cdot
+  \begin{cases}
+    \frac{\kappa+v(b)+v(c)+1-2v(d-a)}{2}
+    & \text{if }\varkappa \equiv 1 \pmod 2 \\
+    -\frac{\varkappa+1}{2} & \text{if }\varkappa \equiv 1 \pmod 2.
+  \end{cases}
+\end{align*}
+This matches \Cref{thm:semi_lie_formula}, and the proof is complete.
 \end{itemize}
