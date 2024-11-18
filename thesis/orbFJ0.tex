@@ -209,7 +209,7 @@ We can now state the following result:
   (in particular, \Cref{assume:FJ} holds).
   Let $r \ge 0$ and define
   \begin{align*}
-    N &\coloneqq \min\left( v(e), \left\lfloor \frac{v(b)+v(c)}{2} \right\rfloor + r, v(d-a) + r \right) \\
+    N &\coloneqq \min\left( v(e), \frac{v(b)+v(c)-1}{2} + r, v(d-a) + r \right) \\
     \varkappa &\coloneqq v(e) - (v(d-a)+r)
   \end{align*}
   Then
@@ -240,14 +240,14 @@ come up naturally again).
   \begin{align*}
     C &\coloneqq
     \begin{cases}
-      \left\lfloor \frac{\varkappa}{2} \right\rfloor
+      \frac{\varkappa-1}{2}
         & \text{if } \varkappa > 0 \text{ is odd}
           \text{ and } v(b) + v(c) > 2v(d-a)  \\
-      \left\lfloor \frac{\varkappa+v(b)+v(c)-2v(d-a)}{2} \right\rfloor
+      \frac{\varkappa+v(b)+v(c)-2v(d-a)-1}{2}
         & \text{if } \varkappa \ge 0 \text{ is even}
           \text{ and } v(b) + v(c) > 2v(d-a)  \\
       v(e) - N
-        & \text{if } v(e) \ge \left\lfloor \frac{v(b)+v(c)}{2} \right\rfloor + r
+        & \text{if } v(e) \ge \frac{v(b)+v(c)-1}{2} + r
         \text{ and } 2v(d-a) > v(b) + v(c) \\
       0 & \text{otherwise}
     \end{cases} \\

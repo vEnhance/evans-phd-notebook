@@ -206,14 +206,14 @@ The main claim is that the following formula holds:
 We continue to use the notation $N$ and $\varkappa$ from \Cref{ch:orbitalFJ2} defined by
 \begin{align*}
   N &\coloneqq \min \left( v(e),
-    \left\lfloor \tfrac{v(b)+v(c)}{2} \right\rfloor + r, v(d-a) + r \right) \\
+    \tfrac{v(b)+v(c)-1}{2} + r, v(d-a) + r \right) \\
   \varkappa &\coloneqq v(e) - v(d-a) - r \ge 0
 \end{align*}
 and prove \Cref{thm:miracle} by exhausting the
 cases based on which value of $N$ is smallest.
 
 \subsection{Proof of \Cref{thm:miracle}
-  when $v(e) \le \left\lfloor \tfrac{v(b)+v(c)}{2} \right\rfloor + r$
+  when $v(e) \le \tfrac{v(b)+v(c)-1}{2} + r$
   and $v(e) \le v(d-a) + r$}
 In the Gross-Keating formula we have simply
 \begin{align*}
@@ -239,10 +239,10 @@ that is we need
 which is obvious.
 
 \subsection{Proof of \Cref{thm:miracle}
-  when $\left\lfloor \tfrac{v(b)+v(c)}{2} \right\rfloor + r < v(e)$
+  when $\tfrac{v(b)+v(c)-1}{2} + r < v(e)$
   and $v(b)+v(c) < 2v(d-a)$}
 \subsubsection{Case where $r > 0$}
-Set $N = \left\lfloor \frac{v(b)+v(c)}{2} \right\rfloor + r$.
+Set $N = \frac{v(b)+v(c)-1}{2} + r$.
 In the Gross-Keating formula we have simply
 \begin{align*}
   n_1 &= 2N+1 \\

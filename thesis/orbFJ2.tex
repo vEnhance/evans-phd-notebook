@@ -247,7 +247,7 @@ $\frac{\theta}{2} + r + 1 \le \left\lceil \frac{k + \theta - v(c) + r + 1}{2} \r
 instead.
 Hence, the double sum simplifies further to
 \begin{align*}
-  &= q^{\frac{\theta}{2} + r}
+  &\phantom= q^{\frac{\theta}{2} + r}
   \sum_{k = \theta - v(b) + r + 1}^{v(c) + r}
   \bigg( 1 + \left( k - \frac{\theta}{2} + v(b) \right)
     - \left( \frac{\theta}{2} + r + 1 \right) \bigg) (-q^s)^k \\
@@ -387,7 +387,7 @@ We now put together all the previous calculations to give the following formula.
     \left\lfloor \tfrac{(2v(e)+v(c)+r)-k}{2} \right\rfloor, N \right) \]
   where
   \[ N \coloneqq \min \left(
-      v(e), \left\lfloor \tfrac{v(b)+v(c)}{2} \right\rfloor + r,
+      v(e), \tfrac{v(b)+v(c)-1}{2} + r,
       v(d-a) + r \right). \]
   Also, if $v(d-a) < v(e) - r$ and $v(b) + v(c) > 2v(d-a)$, then additionally define
   \begin{align*}
@@ -479,7 +479,7 @@ of $\nn_\guv$ and $\cc_\guv$, which may be easier to think about.
   Then
   \[ \nn_\guv(k) \coloneqq \min\left( \left\lfloor \tfrac{k + (v(b)+r)}{2} \right\rfloor,
       \left\lfloor \tfrac{(2v(e)+v(c)+r)-k}{2} \right\rfloor,
-      v(e), \left\lfloor \tfrac{v(b)+v(c)}{2} \right\rfloor + r \right) \]
+      v(e), \tfrac{v(b)+v(c)-1}{2} + r \right) \]
   and $\cc_\guv$ terms do not appear.
   Now, in that case, the exponent \eqref{eq:case_5_exponent} can be simplified, because
   \begin{align*}
@@ -491,7 +491,7 @@ of $\nn_\guv$ and $\cc_\guv$, which may be easier to think about.
     + \left\lfloor \frac{v(c)+r-k}{2} \right\rfloor
     &= \frac{k+\theta-v(c)+r}{2} + \frac{v(c)+r-k}{2} - \half \\
     &= \frac{\theta-1}{2} + r \\
-    &= \left\lfloor \frac{v(b)+v(c)}{2} \right\rfloor + r < v(d-a) + r.
+    &= \frac{v(b)+v(c)-1}{2} + r < v(d-a) + r.
   \end{align*}
   Hence, $\nn_\guv$ coincides with the exponent in \eqref{eq:case_5_exponent}.
   So the result is true in this case.
@@ -509,7 +509,7 @@ of $\nn_\guv$ and $\cc_\guv$, which may be easier to think about.
   we have the first term of \eqref{eq:case_5_exponent} is smallest, as
   \begin{align*}
     \left\lfloor \frac{k + \theta - v(c) + r}{2} \right\rfloor &< v(e) \\
-    &\le v(e) + \left\lfloor \frac{v(b)+v(c)}{2} \right\rfloor
+    &\le v(e) + \frac{v(b)+v(c)-1}{2}
       \le v(e) + \left\lfloor \frac{v(c)+r-k}{2} \right\rfloor \\
     \left\lfloor \frac{k + \theta - v(c) + r}{2} \right\rfloor &\le v(e)-1
       \le \frac{\theta}{2} + r -1.
@@ -569,8 +569,8 @@ of $\nn_\guv$ and $\cc_\guv$, which may be easier to think about.
   the final term of \eqref{eq:case_5_exponent} and the formula for $\nn_\guv$.
   That is, the range of $k$ for which \eqref{eq:case_5_exponent}
   achieves the last minimum is exactly
-  $v(c) + r + 1 \le k \le 2v(e) - \theta + v(c) - r - 1$;
-  only in those cases does \eqref{eq:case_5_exponent}
+  \[ v(c) + r + 1 \le k \le 2v(e) - \theta + v(c) - r - 1 \]
+  and only in those cases does \eqref{eq:case_5_exponent}
   differs from $\nn_\guv$ by exactly
   $\mathbf{1}_{k + \theta + v(c) + r \equiv 0 \pmod 2}$.
   This final step shows the claimed formulas coincide.
@@ -603,6 +603,8 @@ of $\nn_\guv$ and $\cc_\guv$, which may be easier to think about.
     &- (q^3+q^2+q+1) \cdot q^{s} \\
     &+ (q^3+q^2+q+1) \cdot q^{2s} \\
     &\vdotswithin= \\
+    &- (q^3+q^2+q+1) \cdot q^{111s} \\
+    &+ (q^3+q^2+q+1) \cdot q^{112s} \\
     &- (q^3+q^2+q+1) \cdot q^{113s} \\
     &+ (q^3+q^2+q+1) \cdot q^{114s} \\
     &- (q^2+q+1) \cdot q^{115s} \\
@@ -659,12 +661,13 @@ of $\nn_\guv$ and $\cc_\guv$, which may be easier to think about.
 With \Cref{thm:semi_lie_formula} established, we aim to calculate the derivative of
 \[ \Orb(\guv, \mathbf{1}_{K', S, \le r} \otimes \oneV, s) \]
 now at $s = 0$, thus proving \Cref{thm:semi_lie_derivative_single}.
+
 For this calculation it will be more convenient to reformat \Cref{thm:semi_lie_formula}
 as a sum over $q^j$ rather than $(-1)^k (q^s)^k$.
 To that, continuing to write
-$N \coloneqq \min \left(
-      v(e), \left\lfloor \tfrac{v(b)+v(c)}{2} \right\rfloor + r,
-      v(d-a) + r \right)$,
+\[ N \coloneqq \min \left(
+    v(e), \frac{v(b)+v(c)-1}{2} + r,
+    v(d-a) + r \right) \]
 consider any index $0 \le j \le N$.
 Then
 \[ \nn_\guv(k) \ge j \iff 2j - v(b) - r \le k \le 2v(e)+v(c)+r-2j. \]
@@ -742,15 +745,18 @@ For the range of $k$ given, we split it into three parts.
 \end{itemize}
 If we sum all three,
 we get a contribution of $\varkappa \log q \cdot  (-1)^{v(c)+v(e)+v(d-a)}$ times
-\[ \frac{v(b)+v(c)-2v(d-a)+1}{2} - \frac{v(c)+v(e)-v(d-a)+1}{2} + \frac{-v(b)+v(e)+v(d-a)-1}{2}
-  = -\half. \]
+\begin{align*}
+  \frac{v(b)+v(c)-2v(d-a)+1}{2} &- \frac{v(c)+v(e)-v(d-a)+1}{2} \\
+  &+ \frac{-v(b)+v(e)+v(d-a)-1}{2} = -\half
+\end{align*}
 If $\varkappa$ is even, then that's all she wrote; we simply get
 \[ (-1)^{v(c)+r+1} \cdot \frac{\varkappa}{2} \cdot q^{v(d-a)+r} \log q. \]
 On the other hand, if $\varkappa$ is odd we get instead
 \begin{align*}
   &\phantom+ (-1)^{v(c)+r} \frac{\varkappa}{2} q^{v(d-a)+r} \log q \\
   &- \half q^{v(d-a)+r} \log q \cdot (-1)^{v(c)+v(e)+v(d-a)} \cdot
-  \left( \left( 2v(e)+v(c)-r-2v(d-a)\right) - \left( -v(b)+r+2v(d-a) \right) \right) \\
+    \Big( \left( 2v(e)+v(c)-r-2v(d-a)\right) \\
+    &\hspace{20ex} - \left( -v(b)+r+2v(d-a) \right) \Big) \\
   &= (-1)^{v(c)+r} q^{v(d-a)+r} \log q \cdot \left[
     -\left( v(e)+\frac{v(b)+v(c)}{2}-2v(d-a)-r \right) + \frac{\varkappa}{2} \right].
 \end{align*}
@@ -773,19 +779,19 @@ Indeed, the main sum for $0 \le j \le N-1$ line up:
 So we consider three cases:
 \begin{itemize}
 \ii In the case where $v(d-a)+r > v(e)$
-and $\left\lfloor \frac{v(b)+v(c)}{2} \right\rfloor + r > v(e)$
+and $\frac{v(b)+v(c)-1}{2} + r > v(e)$
 then the value of $N = v(e)$ does not change when we decrease $r$ by one.
 Hence the term for $j = N$ cancels in both sums and we get exactly
 we get \[ (-1)^{r+v(c)} \log q (1 + q + \dots + q^N). \]
 
-\ii Next suppose $v(e) \ge \left\lfloor \frac{v(b)+v(c)}{2} \right\rfloor + r$
+\ii Next suppose $v(e) \ge \frac{v(b)+v(c)-1}{2} + r$
 and also $2v(d-a) > v(b) + v(c)$ (so the extra terms involving $\varkappa$ are absent).
-In that case $N = \left\lfloor \frac{v(b) + v(c)}{2} \right\rfloor + r$.
+In that case $N = \frac{v(b) + v(c) - 1}{2} + r$.
 Then we are left with $(-1)^{r+v(c)} \log q$ times
 \begin{align*}
   &\phantom= \sum_{j=0}^{N-1} (q^j) + \left( \frac{2v(e)+v(b)+v(c)+1}{2} + r - (v(b)+v(c)-1+2r) \right) q^N \\
   &= \sum_{j=0}^{N-1} (q^j) + \left( \frac{2v(e)-v(b)-v(c)-1}{2} - r \right) q^N \\
-  &= \sum_{j=0}^{N} (q^j) + \left( v(e) - r - \left\lfloor \frac{v(b)+v(c)}{2} \right\rfloor \right) q^N.
+  &= \sum_{j=0}^{N} (q^j) + \left( v(e) - r - \frac{v(b)+v(c)-1}{2} \right) q^N.
 \end{align*}
 This matches \Cref{thm:semi_lie_formula}.
 
