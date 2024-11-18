@@ -173,6 +173,19 @@ As in \Cref{ch:jiao}, we define
   This follows directly from \cite[equation (7.1.9)]{ref:AFLspherical}.
 \end{proof}
 
+\section{Transfer factor}
+For $n = 2$, the transfer factor is
+\begin{align*}
+  \omega\guv
+  &= \eta\left( \det
+    \left[ \gamma^0 \uu, \gamma^1 \uu \right]
+  \right) \\
+  &= \eta\left( \det
+    \begin{bmatrix} 0 & 1 \\ b & c \end{bmatrix}
+  \right) \\
+  &= (-1)^{v(b)} = - (-1)^{v(c)}.
+\end{align*}
+
 \section{Comparison to orbital formula}
 In what follows, we introduce the shorthand
 \[ \partial\Orb(r, v(b), v(c), v(e), v(d-a))
@@ -348,16 +361,23 @@ Hence the sum of the right-hand sides telescopes and gives us the identity
   \label{eq:match_penultimate}
 \end{equation}
 Subtracting the same equation from itself with $r$ replaced by $r-1$ gives
+\begin{align*}
+  &\Int((g,u), \mathbf{1}_{K, \le r} - \mathbf{1}_{K, \le (r-1)}) \\
+  &= \frac{(-1)^{v(c)+r}}{\log q}\left. \pdv{}{s} \right\rvert_{s=0}
+  \Orb(\guv, (\mathbf{1}_{K'_{S, \le r}} + \mathbf{1}_{K'_{S, \le (r-1)}}) \otimes \oneV, s).
+\end{align*}
+which, since $(-1)^{v(c)} = -\omega\varpi$, becomes
 \begin{equation}
   \begin{aligned}
-    &\Int((g,u), \mathbf{1}_{K, \le r} - \mathbf{1}_{K, \le (r-1)}) \\
-    &= \frac{(-1)^{v(c)+r}}{\log q}\left. \pdv{}{s} \right\rvert_{s=0}
+    &\Int((g,u), (-1)^r(\mathbf{1}_{K, \le r} - \mathbf{1}_{K, \le (r-1)})) \\
+    &= \frac{-\omega\guv}{\log q}\left. \pdv{}{s} \right\rvert_{s=0}
     \Orb(\guv, (\mathbf{1}_{K'_{S, \le r}} + \mathbf{1}_{K'_{S, \le (r-1)}}) \otimes \oneV, s).
   \end{aligned}
   \label{eq:match_final}
 \end{equation}
 But \Cref{lem:finale_base_change} says that
 $(-1)^r(\mathbf{1}_{K, \le r} - \mathbf{1}_{K, \le (r-1)}) \in \HH(\U(\VV_n^+))$
-matches $\mathbf{1}_{K'_{S, \le r}} + \mathbf{1}_{K'_{S, \le (r-1)}} \in \HH(S_2(F))$.
+matches $\mathbf{1}_{K'_{S, \le r}} + \mathbf{1}_{K'_{S, \le (r-1)}} \in \HH(S_2(F))$
+for any $r \ge 0$.
 And hence from the $r = 0$ case we can inductively conclude
 \Cref{thm:semi_lie_n_equals_2} for $r > 0$, completing the proof.
