@@ -168,13 +168,24 @@ Now we define the special orthogonal divisor $\ZO4(u)$
 on $\MM_2 \times \MM_2$ as follows.
 \begin{definition}
   Let $u \in \OO_\DD$.
-  Then we define the divisor $\ZO4(u)$ to be
-  the pairs $(X, X') \in \MM_2 \times \MM_2$
-  for which we have a diagram\todo{Is there a better term than ``diagram'' here?}
+  Then we define the divisor $\ZO4(u)$ to be the pairs $(X, X') \in \MM_2 \times \MM_2$
+  such that there exists $\varphi \colon X \to X'$ with the following property.
+  Let $S$ be an $\Spf \OO_{\breve F}$ scheme and consider the map on special fiber
+  \[ X \times_S \ol S \xrightarrow{\varphi \times_S \ol S} X' \times_S \ol S. \]
+  Also, from $X \in \RZ_2$ and $X' \in \RZ_2$ we have the data of framings
+  $\rho \colon X \times_S \ol S \to \XX_2 \times_{\Spec \FF} \ol S$
+  and $\rho' \colon X' \times_S \ol S \to \XX_2 \times_{\Spec \FF} \ol S$.
+  Moreover, $u$ gives a map
+  \[
+    \XX_2 \times_{\Spec \FF} \ol S
+    \xrightarrow{u \times _{\Spec \FF} \ol S}
+    \XX_2 \times_{\Spec \FF} \ol S.
+  \]
+  Then we require the following diagram to commute:
   \begin{center}
   \begin{tikzcd}
-    X \ar[r, "\varphi"] \ar[d, dash] & X' \ar[d, dash] \\
-    \EE \ar[r, "u"] & \EE.
+    X \times_S \ol S \ar[rr, "\varphi \times_S \ol S"] \ar[d, "\rho"] && X' \times_S \ol S\ar[d, "\rho'"] \\
+    \XX_2 \times_{\Spec \FF} \ol S \ar[rr, "u \times_{\Spec \FF} \ol S"] && \XX_2 \times_{\Spec \FF} \ol S.
   \end{tikzcd}
   \end{center}
 \end{definition}

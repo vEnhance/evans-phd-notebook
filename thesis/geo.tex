@@ -180,21 +180,33 @@ This divisor was defined by Kudala and Rapport in \cite{ref:KR}
 and accordingly we call it a \emph{KR-divisor} following \cite[\S4.3]{ref:survey}.
 The definition is given as follows.
 \begin{definition}
+  [{\cite[Definition 3.2]{ref:KR}}]
   Recall that $(\EE, \iota_\EE, \lambda_\EE)$ is the unique triple over $\FF$
   whose Rosati involution has signature $(1,0)$.
-  Then the formal $\OO_F$-module has a unique lifting called its \emph{canonical lifting},
+  Hence the formal $\OO_F$-module has a unique lifting called its \emph{canonical lifting},
   which we denote by the triple $(\mathcal{E}, \iota_{\mathcal{E}}, \lambda_{\mathcal E})$.
+
   Then the KR-divisor $\ZD(u)$ is the locus where the quasi-homomorphism
-  $\EE \to \XX_n$ lifts to a homomorphism from $\mathcal{E}$ to the universal object over $\RZ_n$.
+  $u \colon \EE \to \XX_n$ lifts to a homomorphism from $\mathcal{E}$ to the universal object over $\RZ_n$.
+  More explicitly, it consists of those $X \in \RZ_n$
+  such that there exists a map $\varphi : \mathcal{E} \to X$ with the following property.
+  Let $S$ be an $\Spf \OO_{\breve F}$ scheme and consider the map on special fiber
+  \[ \mathcal{E} = \EE \times_S \ol S \xrightarrow{\varphi \times_S \ol S} X' \times_S \ol S. \]
+  Since $X \in \RZ_n$ we also have $\rho \colon X \times_S \ol S \to \XX_n \times_{\Spec \FF} \ol S$.
+  Moreover, $u$ gives a map
+  \[
+    \EE \times_{\Spec \FF} \ol S
+    \xrightarrow{u \times _{\Spec \FF} \ol S}
+    \XX_n \times_{\Spec \FF} \ol S.
+  \]
+  Then we require the following diagram to commute:
+  \begin{center}
+  \begin{tikzcd}
+    \EE \times_S \ol S \ar[rr, "\varphi \times_S \ol S"] \ar[d, "\rho_{\mathcal E}"] && X \times_S \ol S\ar[d, "\rho"] \\
+    \EE \times_{\Spec \FF} \ol S \ar[rr, "u \times_{\Spec \FF} \ol S"] && \XX_n \times_{\Spec \FF} \ol S.
+  \end{tikzcd}
+  \end{center}
 \end{definition}
-Colloquially, the KR-divisor $\ZD(u)$ can be thought of as a
-moduli space parametrized by diagrams of the form
-\begin{center}
-\begin{tikzcd}
-  \mathcal{E}\ar[r] \ar[d, dash] & \mathcal{X}_n \ar[d, dash] \\
-  \EE \ar[r, "u"] & \XX_n.
-\end{tikzcd}
-\end{center}
 That is, $\ZD(u)$ is the locus where $u$ lifts to a homomorphism $\mathcal{E} \to \mathcal{X}_n$.
 Note also by the definition that $g \ZD(u) = \ZD (gu)$.
 See \cite{ref:KR} for a full definition.
