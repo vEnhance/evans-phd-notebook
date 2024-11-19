@@ -1,12 +1,19 @@
 \chapter{Large and small kernels}
 \label{ch:ker}
 
-In this chapter we consider fixed $\phi \in \HH(S_2(F))$ and consider
-when it can happen that
+In this chapter
+\begin{itemize}
+  \ii TODO: GROUP AFL VERSION
+  \ii We use \Cref{cor:semi_lie_combo} to prove
+  both \Cref{thm:semi_lie_ker_trivial} and  \Cref{thm:semi_lie_ker_huge}.
+\end{itemize}
 
+\section{TODO}
+\todo{GROUP AFL}
 
-\section{In the semi-Lie case, the kernel has finite codimension if $v(e) = 0$}
-\section{In the semi-Lie case, $\HH(S_2(F))$ in the semi-Lie case if we allow $v(e)$ to vary, even if we fix $\gamma$}
+\section{In the semi-Lie case, the kernel is trivial if we allow $v(e)$ to vary, even if we fix $\gamma$}
+We prove \Cref{thm:semi_lie_ker_trivial} in this section.
+
 \begin{lemma}
   Fix any $\gamma$ such that $v(b) = 1$, $v(c) = 0$, $v(d-a) = 0$,
   and let $N \ge 0$ be a nonnegative integer
@@ -122,3 +129,30 @@ Letting $M$ be the matrix given in the above proposition, we are supposed to hav
   = \mathbf{0} \in \CC^{N+2}.
 \]
 Since $M$ has full rank, it follows that $c_0 = \dots = c_N = 0$.
+
+\section{In the semi-Lie case, the kernel has finite codimension if $v(e)=0$}
+We prove \Cref{thm:semi_lie_ker_huge} in this section,
+where we fix $e = 1$ (or any $e$ with $v(e) = 0$.
+For this section,
+we define the following sequence of indicator functions for $r \ge 5$:
+\begin{align*}
+  \phi^{(1)}_r &\coloneqq
+  \left( \mathbf{1}_{K' \le r} + \mathbf{1}_{K' \le (r-1)}
+     - q^2 (\mathbf{1}_{K' \le (r-2)} + \mathbf{1}_{K' \le (r-3)}) \right) \\
+  \phi^{(2)}_r &\coloneqq \phi^{(1)}_r + \phi^{(1)}_{r-1} \\
+  \phi^{(3)}_r &\coloneqq \phi^{(2)}_r + q \phi^{(2)}_{r-1}.
+\end{align*}
+
+We prove the following statement,
+which implies \Cref{thm:semi_lie_ker_huge} as a direct corollary.
+\begin{theorem}
+  Suppose $\guv \in (S_2(F) \times V_2'(F))\rs$
+  pairs with an element of $(\U(\VV_2^-) \times \VV_2^-)\rs$.
+  Then
+  \[
+    \left. \pdv{}{s} \right\rvert_{s=0}
+    \Orb \left( \guv, \phi^{(3)}_r \otimes \oneV, s \right) = 0
+  \]
+  holds for all $r \ge 5$ with at most three exceptions,
+  namely $v(e) - v(d-a) + 2 \le r \le v(e) - v(d-a) + 4$.
+\end{theorem}

@@ -276,7 +276,7 @@ The part of the calculation involving weighted orbital integral has two parts:
   The result is \cite[Lemma 7.1.1]{ref:AFLspherical}.
 
   \ii The calculation makes explicit the value of the weighted orbital integral
-  \[ \Orb(\gamma, \phi) \]
+  \[ \Orb(\gamma, \phi, s) \]
   for any $\gamma \in S_n(F)\rs$ and $\phi \in \HH(S_n(F))$,
   in terms of invariants of $\gamma$ and a decomposition of $\phi$ in a natural basis.
   The result is \cite[Proposition 7.3.2]{ref:AFLspherical}.
@@ -358,21 +358,64 @@ which in this case can be checked independently.
   Therefore $n=2$ is the first case of \Cref{conj:semi_lie_spherical} worth examining.
 \end{remark}
 
-\section{Large kernel}
+\section{The kernel of test functions for which the orbital has identically vanishing derivative}
 \label{sec:intro_large_kernel}
-\todo{large kernel}
 
+In \cite{ref:AFLspherical}, it was observed that for $n = 2$
+there was a rather large space of $\phi \in \HH(S_2(F))$ such that
+\[ \left. \pdv{}{s} \right\rvert_{s=0}
+  \Orb \left(\gamma, \phi, s \right) = 0 \]
+held identically across all $\gamma \in S_2(F)$.
+In fact, the space of such $\phi$ has codimension $2$
+as a vector subspace of $\HH(S_2(F))$ for $n = 2$.
+They thus stated a conjecture the kernel was ``large'' for general $n$
+as \cite[Conjecture 1.0.2]{ref:AFLspherical};
+we give a special case of it here compatible with our specialization.
 \begin{conjecture}
-  TODO
   \label{conj:large_kernel_group}
+  Consider the map of vector spaces
+  \begin{align*}
+    \partial\Orb : \HH(\U(\VV_n^-))
+    &\to C^\infty( \left\{ \text{elements of } S_n(F) \text{ matching } \U(\VV_n^-) \right\} ) \\
+    \phi &\mapsto \left( \gamma \mapsto \left. \pdv{}{s} \right\rvert_{s=0} \Orb \left(\gamma, \phi, s \right) \right).
+  \end{align*}
+  Then this map has a large kernel,
+  in the sense that it is not contained in any maximal ideal of $\HH(\U(\VV_n^-))$.
 \end{conjecture}
+We will later try to establish this conjecture for $n = 3$ as well.
 
+It is therefore natural to ask whether a similar large kernel result
+could hold for the analogous orbital integral in the semi-Lie case.
+It turns out that in order to state the conjecture,
+we will need to consider not just the entire $\guv$
+but the two separate parts, which seem to behave quite differently from each other.
 \begin{conjecture}
-  TODO
-  \label{conj:no_kernel_semilie}
+  \label{conj:kernel_semi_lie}
+  Let $n \ge 2$.
+  \begin{enumerate}
+  \item[(a)]
+  There exists $\gamma \in S_n(F)$ such that there are
+  no nonzero functions $\phi \in \HH(S_n(F))$ for which
+  \[ \left. \pdv{}{s} \right\rvert_{s=0}
+    \Orb \left(\guv, \phi \otimes \oneV, s \right) = 0 \]
+  holds for every $(\uu, \vv^\top) \in V_n'(F)$
+  such that $\guv$ matches with an element of $(\U(\VV_n^-) \times \VV_n^-)\rs$.
+
+  \item[(b)]
+  Fix a choice of $(\uu, \vv^\top) \in V_n'(F)$.
+  Consider all $\gamma \in S_n(F)$ for which $\guv$
+  matches with an element of $(\U(\VV_n^-) \times \VV_n^-)\rs$.
+  Then the vector subspace of functions $\phi \in \HH(S_n(F))$ such that
+  \[
+    \left. \pdv{}{s} \right\rvert_{s=0}
+    \Orb \left( \guv, \phi \otimes \oneV, s \right) = 0
+  \]
+  holds for all such $\gamma$ is large,
+  in the sense it is not contained in any maximal ideal of $\HH(S_n(F))$.
+  \end{enumerate}
 \end{conjecture}
-
-
+This conjecture is motivated by our results for $n = 2$ in this direction,
+namely \Cref{thm:semi_lie_ker_trivial} and \Cref{thm:semi_lie_ker_huge}.
 
 \section{Results}
 \subsection{Explicit formulas for orbital integrals}
@@ -417,40 +460,54 @@ but we give the following summary.
   can be written explicitly in terms of a particular representative
   in the orbit of $\gamma$ (resp.\ $\guv$).
 \end{theorem}
-For the weighted orbital integral $\Orb(\gamma, \phi, s)$
+The full version of \Cref{thm:summary} is listed as follows:
+\begin{itemize}
+\ii For the weighted orbital integral $\Orb(\gamma, \phi, s)$
 with $\gamma \in S_3(F)\rs$ and $\phi \in \HH(S_3(F))$,
 the theorems \Cref{thm:full_orbital_ell_odd,thm:full_orbital_ell_even,thm:full_orbital_ell_neg}
 together cover all the cases that can arise (and cover pairwise disjoint scenarios).
-For the weighted orbital integral $\Orb(\guv, \phi \otimes \oneV, s)$
+\ii For the weighted orbital integral $\Orb(\guv, \phi \otimes \oneV, s)$
 with $\guv \in (S_2(F) \times V'_2(F))\rs$ and $\phi \in \HH(S_3(F))$
 the derivative is the single theorem \Cref{thm:semi_lie_formula}.
+\end{itemize}
 
-\subsection{Large kernel}
+\subsection{Large and small kernel}
 Although we were initially motivated by
 \Cref{conj:inhomog} and \Cref{conj:semi_lie_spherical},
-the formulas alluded to in \Cref{thm:summary} also prove the following.
+the formulas alluded to in \Cref{thm:summary} also enable to prove the following results.
+In the group AFL:
+\begin{theorem}
+  \Cref{conj:large_kernel_group} also holds when $n = 3$.
+\end{theorem}
+
+As we mentioned, in the semi-Lie situation the result is more complicated.
+Providing evidence for \Cref{conj:kernel_semi_lie},
+we will prove the following two results.
+\begin{theorem}
+  \label{thm:semi_lie_ker_trivial}
+  For certain choices of $\gamma \in S_2(F)$,
+  there doesn't exist any nonzero functions $\phi \in \HH(S_2(F))$ such that
+  \[ \left. \pdv{}{s} \right\rvert_{s=0}
+    \Orb \left(
+      \left( \gamma, \begin{pmatrix} 0 \\ 1 \end{pmatrix}, \begin{pmatrix} 0 & \varpi^i \end{pmatrix} \right),
+      \phi \otimes \oneV, s
+    \right) = 0 \]
+  holds for every integer $i \ge 0$.
+\end{theorem}
 
 \begin{theorem}
-  There is no nonzero function $\varphi \in \HH(S_2(F))$ such that
+  \label{thm:semi_lie_ker_huge}
+  Fix a choice of $(\uu, \vv^\top) \in V_2'(F)$ with $\vv^\top \uu \neq 0$.
+  Consider all $\gamma \in S_2(F)$ for which $\guv$
+  matches with an element of $(\U(\VV_n^-) \times \VV_n^-)\rs$.
+  Then the set of $\phi \in \HH(S_2(F))$ such that
   \[
     \left. \pdv{}{s} \right\rvert_{s=0}
-    \Orb(
-    , \varphi \otimes \oneV, s)
-    = 0
+    \Orb \left( \guv, \phi \otimes \oneV, s \right) = 0
   \]
-  holds for every $i \ge 0$.
+  holds for all such $\gamma$ is a vector subspace of $\HH(S_2(F))$
+  whose codimension is at most \[ \max(5, v(\vv^\top \uu) + 4). \]
 \end{theorem}
-
-\begin{theorem}
-  \label{thm:large_kernel}
-  The following cases hold:
-  \begin{itemize}
-    \ii \Cref{conj:large_kernel_group} is true for $n = 3$.
-    \ii \Cref{conj:large_kernel_semilie} is true for $n = 2$.
-  \end{itemize}
-\end{theorem}
-\todo{okay lol it's not even true}
-We prove this in \Cref{ch:ker}.
 
 \subsection{Arithmetic fundamental lemmas}
 For the group AFL, we were also able to determine the
@@ -464,8 +521,8 @@ For the semi-Lie AFL conjectured in \Cref{conj:semi_lie_spherical},
 we are able to show the following result.
 \begin{theorem}
   \label{thm:semi_lie_n_equals_2}
-  Conditional on \Cref{conj:serre_pullback_space} and \Cref{conj:serre_pullback_divisor},
-  \Cref{conj:semi_lie_spherical} holds for $n = 2$.
+  Assume \Cref{conj:serre_pullback_space} and \Cref{conj:serre_pullback_divisor}.
+  Then our generalized AFL conjecture, \Cref{conj:semi_lie_spherical}, holds for $n = 2$.
 \end{theorem}
 The idea of the proof is to use the Gross-Keating formula \cite{ref:GK}
 to provide the formula on the geometric side.
@@ -507,10 +564,11 @@ The rest of the paper is organized as follows.
   which is stated already in \Cref{ch:orbital0} and \Cref{ch:orbitalFJ0} respectively.
 
   \ii Having completely computed the orbital integrals in these cases,
-  we take a side trip in \Cref{ch:ker} to verify that
-  \Cref{conj:large_kernel_group} and \Cref{conj:large_kernel_semilie}
-  hold for the cases we made fully explicit above,
-  thus proving \Cref{thm:large_kernel}.
+  we take a side trip in \Cref{ch:ker} to prove the ``large kernel'' results.
+  We establish \Cref{conj:kernel_semi_lie} for $n = 2$
+  by proving the explicit results
+  \Cref{thm:semi_lie_ker_trivial} and \Cref{thm:semi_lie_ker_huge}
+  (the latter shows the kernel has codimension at most $8$).
 
   \ii We then turn our attention to the other parts of the two versions of the AFL.
   In addition to stating the relevant definitions,
