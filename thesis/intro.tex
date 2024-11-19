@@ -369,8 +369,9 @@ which in this case can be checked independently.
 
 \begin{conjecture}
   TODO
-  \label{conj:large_kernel_semilie}
+  \label{conj:no_kernel_semilie}
 \end{conjecture}
+
 
 
 \section{Results}
@@ -428,6 +429,18 @@ the derivative is the single theorem \Cref{thm:semi_lie_formula}.
 Although we were initially motivated by
 \Cref{conj:inhomog} and \Cref{conj:semi_lie_spherical},
 the formulas alluded to in \Cref{thm:summary} also prove the following.
+
+\begin{theorem}
+  There is no nonzero function $\varphi \in \HH(S_2(F))$ such that
+  \[
+    \left. \pdv{}{s} \right\rvert_{s=0}
+    \Orb(
+    , \varphi \otimes \oneV, s)
+    = 0
+  \]
+  holds for every $i \ge 0$.
+\end{theorem}
+
 \begin{theorem}
   \label{thm:large_kernel}
   The following cases hold:
@@ -436,6 +449,7 @@ the formulas alluded to in \Cref{thm:summary} also prove the following.
     \ii \Cref{conj:large_kernel_semilie} is true for $n = 2$.
   \end{itemize}
 \end{theorem}
+\todo{okay lol it's not even true}
 We prove this in \Cref{ch:ker}.
 
 \subsection{Arithmetic fundamental lemmas}

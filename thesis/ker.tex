@@ -1,2 +1,124 @@
-\chapter{Proof of some cases of the large kernel conjectures}
+\chapter{Large and small kernels}
 \label{ch:ker}
+
+In this chapter we consider fixed $\phi \in \HH(S_2(F))$ and consider
+when it can happen that
+
+
+\section{In the semi-Lie case, the kernel has finite codimension if $v(e) = 0$}
+\section{In the semi-Lie case, $\HH(S_2(F))$ in the semi-Lie case if we allow $v(e)$ to vary, even if we fix $\gamma$}
+\begin{lemma}
+  Fix any $\gamma$ such that $v(b) = 1$, $v(c) = 0$, $v(d-a) = 0$,
+  and let $N \ge 0$ be a nonnegative integer
+  We define an $(N+2) \times (N+1)$ matrix $M$ as follows:
+  for $0 \le i \le N+1$ and $0 \le r \le N$,
+  the $i$\ts{th} row and $r$\ts{j} column takes the value
+  \[
+    M_{i,r} \coloneqq
+    \frac{(-1)^r}{\log q}
+    \left. \pdv{}{s} \right\rvert_{s=0}
+      \Orb\left( \left(\gamma, \begin{bmatrix} 0 \\ 1 \end{bmatrix},
+      \begin{bmatrix} 0 & \varpi^i \end{bmatrix} \right),
+      \varphi \otimes \oneV, s\right).
+  \]
+  Then $M$ has full rank.
+\end{lemma}
+\begin{proof}
+  We perform row operations as follows:
+  \begin{itemize}
+    \ii For each $i=N,N-1,\dots,0$, subtract the $i$\ts{th} row of $M$
+    from the $(i+1)$\ts{th} row of $M$.
+    Denote the new matrix as $M'$.
+
+    \ii For each $i=N-1,N-2,\dots,0$, subtract the $i$\ts{th} row of $M'$
+    from the $(i+2)$\ts{nd} row of $M'$.
+    Denote the new matrix as $M''$.
+  \end{itemize}
+  For example, for $N = 5$, we have
+  \[
+    M =
+    \begin{bmatrix}
+    1 & 2 & 3 & 4 & 5 \\
+    1 & q + 3 & 2 \, q + 4 & 3 \, q + 5 & 4 \, q + 6 \\
+    2 & q + 4 & q^{2} + 3 \, q + 5 & 2 \, q^{2} + 4 \, q + 6 & 3 \, q^{2} + 5 \, q + 7 \\
+    2 & 2 \, q + 5 & q^{2} + 4 \, q + 6 & q^{3} + 3 \, q^{2} + 5 \, q + 7 & 2 \, q^{3} + 4 \, q^{2} + 6 \, q + 8 \\
+    3 & 2 \, q + 6 & 2 \, q^{2} + 5 \, q + 7 & q^{3} + 4 \, q^{2} + 6 \, q + 8 & q^{4} + 3 \, q^{3} + 5 \, q^{2} + 7 \, q + 9 \\
+    3 & 3 \, q + 7 & 2 \, q^{2} + 6 \, q + 8 & 2 \, q^{3} + 5 \, q^{2} + 7 \, q + 9 & q^{4} + 4 \, q^{3} + 6 \, q^{2} + 8 \, q + 10
+    \end{bmatrix}
+  \]
+  hence
+  \[ M'=
+    \begin{bmatrix}
+    1 & 2 & 3 & 4 & 5 \\
+    0 & q + 1 & 2 \, q + 1 & 3 \, q + 1 & 4 \, q + 1 \\
+    1 & 1 & q^{2} + q + 1 & 2 \, q^{2} + q + 1 & 3 \, q^{2} + q + 1 \\
+    0 & q + 1 & q + 1 & q^{3} + q^{2} + q + 1 & 2 \, q^{3} + q^{2} + q + 1 \\
+    1 & 1 & q^{2} + q + 1 & q^{2} + q + 1 & q^{4} + q^{3} + q^{2} + q + 1 \\
+    0 & q + 1 & q + 1 & q^{3} + q^{2} + q + 1 & q^{3} + q^{2} + q + 1
+    \end{bmatrix}
+  \]
+  and finally
+  \[ M'' =
+    \begin{bmatrix}
+    1 & 2 & 3 & 4 & 5 \\
+    0 & q + 1 & 2 \, q + 1 & 3 \, q + 1 & 4 \, q + 1 \\
+    0 & -1 & q^{2} + q - 2 & 2 \, q^{2} + q - 3 & 3 \, q^{2} + q - 4 \\
+    0 & 0 & -q & q^{3} + q^{2} - 2 \, q & 2 \, q^{3} + q^{2} - 3 \, q \\
+    0 & 0 & 0 & -q^{2} & q^{4} + q^{3} - 2 \, q^{2} \\
+    0 & 0 & 0 & 0 & -q^{3}
+    \end{bmatrix}.
+  \]
+  In order to prove $M$ has full rank, it suffices to prove $M''$ has full rank.
+  However, as the examples suggest, $M''$ is almost upper triangular.
+
+  We now show this.
+  In this region in \Cref{thm:semi_lie_derivative_single}, if $i > r$
+  the ``extra'' coefficient on $q^r$ is given by
+  \begin{itemize}
+    \ii When $i \equiv r \pmod 2$ we get $-\frac{\varkappa}{2} = - \frac{i-r}{2}$;
+    \ii When $i \equiv r+1 \pmod 2$ we get $\frac{\varkappa}{2} - (i + \half - r) = -\frac{i-r+1}{2}$
+  \end{itemize}
+  and so we can write
+  \[
+    M_{i,r}
+    = - \max\left(0, \left\lceil \frac{i-r}{2} \right\rceil \right) q^{r}
+    + \sum_{j=0}^{\min(i,r)} \left( i + 1 + r - 2j \right) q^j.
+  \]
+  Hence
+  \begin{align*}
+    M'_{i,r}
+    &= M_{i,r} - M_{i-1,r} \\
+    &= - \mathbf{1}_{i \ge r, i \not\equiv r \mod 2} q^r
+    + \mathbf{1}_{i \le r} (i+1-r) q^i
+    + \sum_{j=0}^{\min(i-1,r)} q^j
+  \end{align*}
+  Then for any $i > r > 0$ it follows that
+  \begin{align*}
+    M''_{i,r}
+    &= M'_{i,r} - M'_{i-2,r} \\
+    &= M'_{i,r} - M'_{i-2,r} \\
+    \begin{cases}
+      -q^{r-1} & \text{if } i \ge r+1, r \ge 1 \\
+      0 & \text{if } i \ge r+2.
+    \end{cases}
+  \end{align*}
+  Moreover, since $M'_{0,r} = \mathbf{1}_{r \equiv 0 \pmod 2}$
+  we deduce
+  $M''_{0,r} = M'_{0,r} - M'_{0,r-2} = 0$
+  for any $r \ge 2$, and $M''_{0,0} = 1$.
+  Hence the pattern suggested by $M''$ holds in general.
+
+  Finally, delete the 2nd row of $M''$ to get a square matrix
+  with $N+1$ rows and $N+1$ columns which is upper triangular,
+  and whose determinant is $(-1)^N q^{1+2+\dots+(N-1)} \neq 0$.
+  Hence $M''$ has full rank.
+\end{proof}
+
+Suppose we are given some function
+\[ \phi = \sum_{r=0}^N (-1)^r c_r \mathbf{1}_{K', \le r} \in \HH(S_2(F)). \]
+Letting $M$ be the matrix given in the above proposition, we are supposed to have
+\[
+  M \begin{bmatrix} c_0 \\ c_1 \\ \vdots \\ c_N \end{bmatrix}
+  = \mathbf{0} \in \CC^{N+2}.
+\]
+Since $M$ has full rank, it follows that $c_0 = \dots = c_N = 0$.
