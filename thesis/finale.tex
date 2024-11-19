@@ -393,7 +393,7 @@ And hence from the $r = 0$ case we can inductively conclude
 \section{A particularly simple formula for a certain intersection number}
 We mention in particular that the value of
 \[ \Int^\circ((g,u), 1_{K,r})
-  = \Big\langle \mathcal{T}_{\mathbf{1}_K \otimes \mathbf{1}_{K, r}}
+  = \Big\langle \mathbb{T}_{\mathbf{1}_K \otimes \mathbf{1}_{K, r}}
     \Delta_{\ZD(u)^\circ}, \Gamma_g \Big\rangle_{\RZ_{2,2}} \]
 (note the change from $\fr$ to $\mathbf{1}_{K, \le r}$ here)
 has a particularly simple formula that seems worth mentioning.
@@ -401,18 +401,21 @@ We phrase this entirely based on the quantities in the geometric side
 to keep in self-contained.
 
 \begin{theorem}
-  When $r \ge 1$ and $v(\Nm u) > 0$ we have
+  If $r \ge 1$ and $v(\Nm u) > 0$ then
+  \[ \Big\langle \mathbb{T}_{\mathbf{1}_K \otimes \mathbf{1}_{K, r}}
+    \Delta_{\ZD(u)^\circ}, \Gamma_g \Big\rangle_{\RZ_{2,2}} \]
+  is equal to
   \[
-    \Int^\circ((g,u), 1_{K,r})
-    =
     \begin{cases}
       (C+1) q^{N} + (C+2) q^{N-1}
         & \text{if } v(e)-r = v(d-a) \le \frac{v(b)+v(c)-1}{2} \\
       2q^N & \text{if } \frac{v(b)+v(c)-1}{2} + r < \min(v(e), v(d-a)+r) \\
-      q^N + q^{N-1} & \text{otherwise}.
+      q^N + q^{N-1} & \text{otherwise}
     \end{cases}
   \]
   where
+  \[ N = \]
+  we write
   \[ C = \frac{v(b) + v(c)- 2v(d-a) - 1}{2} \ge 0 \]
   in the first case.
 \end{theorem}
