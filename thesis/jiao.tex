@@ -69,17 +69,17 @@ In particular, the formula for conjugation then reads as the simpler
 \[ \bar x = x_0 - x_-. \]
 
 \subsection{Hermitian structure}
-We view $\DD$ as an $E/F$-Hermitian space under \emph{right} multiplication by $E$;
+We view $\DD$ as an $E/F$-Hermitian space under left multiplication by $E$;
 that is, for $a,b,t \in E$ we consider
-\[ (a + b \Pi) \cdot t = a t + b \Pi t = a t + b \bar t \Pi \]
+\[ t \cdot (a + b \Pi) a t + b t \Pi. \]
 as the action of $E$ on $\DD$.
 Then we equip $\DD$ with a $E/F$-Hermitian form
 $\left\langle \bullet, \bullet \right\rangle \colon \DD \times \DD \to E$
 defined by
-\[ \left\langle x,y \right\rangle = \half \Tr_{\DD/E}(\bar y x) \]
-i.e.\ the projection of $\bar y x \in \DD = E \oplus E\Pi$ onto the first component.
+\[ \left\langle x,y \right\rangle = \half \Tr_{\DD/E}(x \bar y) \]
+i.e.\ the projection of $x \bar y \in \DD = E \oplus E\Pi$ onto the first component.
 In particular, note that
-\[ \left\langle x,x \right\rangle = \bar{x} x = \Nm x \]
+\[ \left\langle x,x \right\rangle = x \bar{x} = \Nm x \]
 or equivalently
 \[ \left\langle a+b\Pi, a+b\Pi \right\rangle = a \bar a - b \bar b \varpi. \]
 
@@ -98,73 +98,110 @@ We specialize to the situation where $u \in \OO_\DD$ and $g \in \U(\VV_n^-)$.
 To impose coordinates on $g$, we appeal to the following fact.
 \begin{lemma}
   Every unitary map in $\U(\VV_2^-)$ can be described in the form
-  \[ u \mapsto (\alpha + \beta \Pi) u \lambda\inv \]
+  \[ u \mapsto \lambda\inv u (\alpha + \beta \Pi) \]
   for some quaternion $\alpha + \beta \Pi \in \DD^\times$
-  and an element $\lambda \in E^\times$
-  such that $\Nm(\alpha + \beta \Pi) = \Norm_{E/F}(\lambda)$.
+  and an element $\lambda \in E^\times$ such that
+  \[ \Nm(\alpha + \beta \Pi) = \Norm_{E/F}(\lambda). \]
 
   Moreover, such a description is unique up to multiplication by elements of $F$.
   In other words,
-  \[ \U(\VV_2^-) \simeq (\DD^\times \times E^\times)^\circ / \Delta(F^\times) \]
+  \[ \U(\VV_2^-) \simeq (E^\times \times \DD^\times)^\circ / \Delta(F^\times) \]
   where $(\DD^\times \times E^\times)^\circ$
-  denotes those pairs $(\alpha + \beta \Pi, \lambda)$
-  with $\Nm(h) = \Norm_{E/F}(\lambda)$,
+  denotes those pairs $(\lambda, \alpha + \beta \Pi)$
+  with $\Norm_{E/F}(\lambda) = \Nm(\alpha + \beta \Pi)$,
   and $\Delta(F^\times)$ is the diagonal embedding of $F^\times$.
 \end{lemma}
+\begin{remark}
+  In this paper we will not have a need to compose multiple such unitary maps.
+  However, if we did, then our notation above swaps the multiplication order.
+  That is, if we have $g_1, g_2 \in \U(\VV_2^-)$ represented by pairs
+  $g_1 \leftrightarrow (\lambda_1, \alpha_1 + \beta \Pi_1)$
+  and $g_2 \leftrightarrow (\lambda_2, \alpha_2 + \beta \Pi_2)$
+  under the isomorphism above, then
+  \[ g_1 \circ g_2 \leftrightarrow (\lambda_2 \lambda_1, (\alpha_2 + \beta_2 \Pi)(\alpha_1 + \beta \Pi)). \]
+\end{remark}
+
 We encode $g$ as a matrix on $\DD$ now (with the obvious $E$-basis $1$, $\Pi$,
 again viewing $\DD$ as a right-$E$ module)
 so we can compute its determinant and trace.
 We have
 \begin{align*}
-  g(1) &= (\alpha + \beta \Pi) \cdot 1 \cdot \lambda\inv
-    = \alpha \lambda\inv + \beta \Pi \lambda\inv
-    = \alpha \lambda\inv + \Pi \cdot \bar\beta \lambda\inv \\
-  g(\Pi) &= (\alpha + \beta \Pi) \cdot \Pi \cdot \lambda\inv
-    = \beta \varpi \lambda\inv  + \alpha \Pi \lambda\inv
-    = \beta \varpi \lambda\inv  + \Pi \cdot \bar\alpha \lambda\inv.
+  g(1) &= \lambda\inv \cdot 1 \cdot (\alpha + \beta \Pi)
+    = \lambda\inv \alpha + \lambda\inv \beta \Pi \\
+  g(\Pi) &= \lambda\inv \cdot \Pi (\alpha + \beta \Pi)
+    = \lambda\inv \bar\beta \varpi + \lambda\inv \bar\alpha \Pi.
 \end{align*}
-Hence, written as a matrix we have
-\[ g = \begin{bmatrix}
-  \alpha \lambda\inv & \beta \varpi \lambda\inv \\
-  \bar\beta \lambda\inv & \bar\alpha \lambda\inv.
+Hence, written as a matrix with respect to the obvious basis $\{1, \Pi\}$ we have
+\[ g = \lambda\inv \begin{bmatrix}
+  \alpha & \bar\beta \varpi \\
+  \beta &  \bar\alpha
   \end{bmatrix}. \]
 We also impose coordinates for $u$ according to
 \[ u = s + t \Pi \in \OO_\DD \qquad s, t \in E. \]
-For simplicity, we are going to make the following assumption on $u$.
+To make the calculation that follows less complicated,
+we are going to make the following assumption on $u$.
 \begin{assume}
   We have $u \in E$ or $u \in E \Pi$.
   That is, either $s = 0$ or $t = 0$.
   \label{assume:st_zero}
 \end{assume}
 This assumption can be made without loss of generality because
-the invariants above and the intersection only depend
+the invariants and the intersection only depend
 on the $\SU(2)$-orbit of the pair $(g,u)$,
 and any element $u \in \DD^\times$ can be mapped under an element of $\SU(2)$
 into a pair for which $u \in E$ or $u \in E \Pi$.
+
+In order for $(g,u)$ to be regular semisimple we require that
+\begin{align*}
+  u &= s + t \Pi \\
+  g(u) &= \lambda\inv (s + t \Pi)(\alpha + \beta \Pi) \\
+  &= \lambda\inv \left( (s \alpha + t \bar\beta \varpi) + (s \beta + t \bar\alpha)\Pi \right)
+\end{align*}
+are linearly independent, meaning
+\begin{align*}
+  0 &\neq
+  \det \begin{bmatrix}
+    s & s \alpha + t \bar \beta \varpi \\
+    t & s \beta + t \bar \alpha
+  \end{bmatrix}
+  = st(\bar\alpha - \alpha) + \beta s^2 - \bar\beta t^2 \varpi \\
+  &= \beta s^2 - \bar\beta t^2 \varpi \\
+  &= \begin{cases}
+    -\bar\beta t^2 \varpi & \text{if } s = 0 \\
+    \beta s^2 & \text{if } t = 0.
+  \end{cases}
+\end{align*}
+Hence, we have a requirement that $\beta \neq 0$
+and $s$ and $t$ are not both zero (we require $st = 0$ from \Cref{assume:st_zero}).
+\begin{remark}
+  Note that necessarily $\alpha$ is nonzero as well.
+  This follows from the requirement that
+  $\alpha \bar \alpha - \beta \bar \beta \varpi = \lambda \bar\lambda$;
+  if $\alpha = 0$ we would get a left-hand side with odd valuation
+  but a right-hand side with even valuation.
+\end{remark}
 
 Now, the four corresponding invariants of \Cref{def:matching_semi_lie} are:
 \begin{itemize}
   \ii $\Tr g = (\alpha + \bar\alpha) \lambda\inv$.
   \ii $\det g = (\alpha \bar \alpha - \beta \bar\beta \varpi)\lambda^{-2}$.
   \ii The quantity
-  \[ \left\langle u,u \right\rangle = 2 \Nm u = 2(s \bar s - t \bar t \varpi). \]
+  \[ \left\langle u,u \right\rangle = \Nm u = s \bar s - t \bar t \varpi. \]
   \ii The quantity
   \begin{align*}
-    \left\langle gu, u \right\rangle
-    &= \left\langle (\alpha + \beta \Pi)(s + t \Pi) \lambda\inv, s + t \Pi \right\rangle \\
-    &= \left\langle (\alpha s + \beta \bar t \varpi) \lambda\inv
-      + (\alpha t + \beta \bar s) \Pi \lambda\inv,
+    \left\langle g(u), u \right\rangle
+    &= \left\langle \lambda\inv(s + t \Pi)(\alpha + \beta \Pi), s + t \Pi \right\rangle \\
+    &= \lambda\inv \left\langle
+      (s \alpha + t \bar \beta \varpi) + (t \bar \alpha + s \beta) \Pi,
       s + t \Pi \right\rangle \\
-    &= \half \Tr_{\DD/E} [
-      (\bar s - t \Pi)
-      ((\alpha s + \beta \bar t \varpi)
-        + (\alpha t + \beta \bar s) \Pi) \lambda\inv ] \\
-    &= \half \Tr_{\DD/E} \Big[
-      \left( (\alpha s \bar s - \beta t \bar t \varpi)
-      + (\alpha s t + \beta s \bar s) \Pi \right) \lambda\inv
-    \Big] \\
-    &= (\alpha s \bar s - \beta t \bar t \varpi) \lambda \inv \\
-    &= \Nm u \cdot \lambda\inv.
+    &= \lambda\inv \cdot \half \Tr_{\DD/E} \left[
+      ((s \alpha + t \bar \beta \varpi) + (t \bar \alpha + s \beta) \Pi)
+      (\bar s - t \Pi) \right] \\
+    &= \lambda\inv \left( s \bar s \alpha - t \bar t \bar \alpha \varpi \right) \\
+    &= \begin{cases}
+      \lambda\inv \bar\alpha \Nm u & \text{if } s = 0 \\
+      \lambda\inv \alpha \Nm u & \text{if } t = 0.
+    \end{cases}
   \end{align*}
 \end{itemize}
 
@@ -277,18 +314,25 @@ We also assume this conjecture henceforth.
 \section{A basis for $\HH(\U(\VV_2^+))$}
 \label{sec:hecke_unitary_basis}
 
+As before $K = \GL_2(\OO_E) \cap \U(\VV_2^+)$denotes the maximal hyperspecial compact subgroup of $\U(\VV_2^+)$.
 For each $r \ge 0$, we define
-\[ \fr \coloneqq \mathbf{1}_{\varpi^{-r} \Mat_2(\OO_E) \cap \U(\VV_n^+)} \in \HH(\U(\VV_2^+)). \]
+\[ \fr \coloneqq \mathbf{1}_{\varpi^{-r} \Mat_2(\OO_E) \cap \U(\VV_2^+)} \in \HH(\U(\VV_2^+)). \]
+For convenience $\fr = 0$ for $r < 0$.
 We also set
-\[  \mathbf{1}_{K, r} \coloneqq \fr - \mathbf{1}_{K, \le (r-1)}
-  = \mathbf{1}_{K \begin{bmatrix} 0 & \varpi^r \\ \varpi^{-r} & 0 \end{bmatrix} K}. \]
-(When $r = 0$, $\mathbf{1}_{K, 0} = \mathbf{1}_K = \mathbf{1}_{K, \le 0}$.)
-Analogous to \Cref{sec:hecke_basis_FJ} we have the following result.
+\[  \mathbf{1}_{K, r} \coloneqq \fr - \mathbf{1}_{K, \le (r-1)} \]
+which is the indicator function for the coset
+\[ K \begin{bmatrix} 0 & \varpi^r \\ \varpi^{-r} & 0 \end{bmatrix} K. \]
+Note when $r = 0$, $\mathbf{1}_{K, 0} = \mathbf{1}_K = \mathbf{1}_{K, \le 0}$.
+
+Analogous to \Cref{sec:hecke_basis_FJ} we then have the following result.
 \begin{proposition}
   The functions $\fr$ (for $r \ge 0$) form a basis of $\HH(\U(\VV_2^+))$.
   (Similarly, so do $\mathbf{1}_{K, r}$ for $r \ge 0$.)
 \end{proposition}
 \begin{proof}
+  This follows from the fact that
+  \[ \U(\VV_2^+) = \coprod_{r \ge 0}
+    K \begin{bmatrix} 0 & \varpi^r \\ \varpi^{-r} & 0 \end{bmatrix} K. \]
   See the comment in \cite[Equation (7.1.5)]{ref:AFLspherical}.
 \end{proof}
 
@@ -317,11 +361,11 @@ Accordingly, let us introduce the notation
 Assuming \Cref{conj:serre_pullback_divisor} we get
 \begin{align*}
   \Int^\circ((g,u), \fr)
-  &= \left< \ZO4(\varpi^r g), \; \Delta(\Serre^\ast(\ZD(u))^\circ) \right>_{\MM_2 \times \MM_2} \\
-  &= \left< \ZO4(\varpi^r g), \; \ZO3(\bar u \sqrt{\eps} u)^\circ \right>_{\MM_2 \times \MM_2} \\
-  &= \left< \ZO4(\varpi^r g), \; \ZO4(1)^\circ, \; \ZO4(\bar u \sqrt{\eps} u)^\circ \right>_{\MM_2 \times \MM_2} \\
-  &= \left< \ZO4(\varpi^r g), \; \ZO4(1), \; \ZO4(\bar u \sqrt{\eps} u) \right>_{\MM_2 \times \MM_2} \\
-  &\qquad- \left< \ZO4(\varpi^r g), \; \ZO4(1), \; \ZO4\left( \frac{\bar u \sqrt{\eps} u}{\varpi} \right) \right>_{\MM_2 \times \MM_2}.
+  &= \left< \ZO4(g(\varpi^r)), \; \Delta(\Serre^\ast(\ZD(u))^\circ) \right>_{\MM_2 \times \MM_2} \\
+  &= \left< \ZO4(g(\varpi^r)), \; \ZO3(\bar u \sqrt{\eps} u)^\circ \right>_{\MM_2 \times \MM_2} \\
+  &= \left< \ZO4(g(\varpi^r)), \; \ZO4(1)^\circ, \; \ZO4(\bar u \sqrt{\eps} u)^\circ \right>_{\MM_2 \times \MM_2} \\
+  &= \left< \ZO4(g(\varpi^r)), \; \ZO4(1), \; \ZO4(\bar u \sqrt{\eps} u) \right>_{\MM_2 \times \MM_2} \\
+  &\qquad- \left< \ZO4(g(\varpi^r)), \; \ZO4(1), \; \ZO4\left( \frac{\bar u \sqrt{\eps} u}{\varpi} \right) \right>_{\MM_2 \times \MM_2}.
 \end{align*}
 In that case we have
 \begin{equation}
@@ -377,42 +421,47 @@ We now invoke \Cref{assume:st_zero} to simplify this to just
 This assumption will also let us write
 \[ (s \ol s + t \ol t \varpi)^2 = (s \ol s - t \ol t \varpi)^2 = (\Nm u)^2. \]
 
+Next compute
+\[ g(\varpi^r) = \lambda\inv \varpi^r(\alpha + \beta \Pi). \]
 From now on, let's write
-\[ \alpha \lambda\inv = (\alpha \lambda\inv)_0 + \varsigma \sqrt{\eps} \]
-for some $\varsigma \in F$; that is, $\varsigma\sqrt{\eps} \coloneqq (\alpha \lambda\inv)_-$.
+\[ \lambda\inv\alpha = (\lambda\inv\alpha)_0 + \varsigma \sqrt{\eps} \]
+for some choice of $\varsigma \in F$; that is,
+\[ \varsigma\sqrt{\eps} \coloneqq (\lambda\inv \alpha)_-
+  = \frac{\lambda\inv \alpha - \bar\lambda\inv \bar\alpha}{2}
+  \in F \sqrt{\eps}. \]
 Then we use the notation
 \begin{align*}
   x &\coloneqq \bar u \sqrt{\eps} u = (s \bar s + t \bar t \varpi) \sqrt{\eps} \in \ODT \\
-  y &\coloneqq (g(\varpi^r))_- = \varpi^r(\varsigma\sqrt{\eps} + \beta \Pi \lambda\inv) \in \ODT.
+  y &\coloneqq (g(\varpi^r))_- = \varpi^r(\varsigma\sqrt{\eps} + \lambda\inv \beta \Pi) \in \ODT.
 \end{align*}
-
 Then we can compute
 \begin{align*}
-  \left\langle x,x \right\rangle _0 &= \Nm x \\
+  \left\langle x,x \right\rangle _0
+  &= \Nm x \\
   &= \Norm_{E/F}((s \bar s + t \bar t \varpi)\sqrt{\eps}) \\
   &= -\eps(s \bar s + t \bar t \varpi)^2 = -\eps (\Nm u)^2 \\
-  \left\langle y,y \right\rangle _0 &= \Nm ((g(\varpi^r))_-) \\
-  &= \varpi^{2r} (-\varsigma^2\eps - \beta\bar\beta \varpi \lambda^{-2}) \\
-  \left\langle x,y \right\rangle _0 &= (\bar y x)_0 = (-yx)_0 \\
+  % --------------------------------------------
+  \left\langle y,y \right\rangle _0
+  &= \Nm \left( \varpi^r(\varsigma\sqrt{\eps} + \lambda\inv \beta \Pi) \right)  \\
+  &= \varpi^{2r} (-\varsigma^2\eps -  \lambda\inv\bar\lambda\inv \beta\bar\beta \varpi) \\
+  % --------------------------------------------
+  \left\langle x,y \right\rangle _0 &= (\bar x y)_0 \\
   &= \left[
-    \varpi^{r} (-\varsigma\sqrt{\eps} - \beta \Pi \lambda\inv)
+    -(s \bar s + t \bar t \varpi) \sqrt{\eps}
     \cdot
-    \left( (s \bar s + t \bar t \varpi) \sqrt{\eps} \right)
+    \varpi^{r} (\varsigma\sqrt{\eps} + \lambda\inv \beta \Pi)
   \right]_0 \\
-  &= - \varpi^r \left[
-    (s \bar s + t \bar t \varpi) \varsigma \eps
-    + \beta (s \bar s + t \bar t \varpi) \sqrt{\eps} \Pi \lambda\inv \right]_0 \\
   &= - \varpi^r \varsigma \eps (s \bar s + t \bar t \varpi).
 \end{align*}
 This lets us compute the determinant
 \begin{align*}
   \left\langle x,x \right\rangle _0 \left\langle y,y \right\rangle _0 - \left\langle x,y \right\rangle^2_0
-  &= - \eps (\Nm u)^2\cdot \varpi^{2r} (-\varsigma^2 \eps - \beta \bar\beta \varpi \lambda^{-2})
+  &= - \eps (\Nm u)^2\cdot \varpi^{2r}
+    (-\varsigma^2 \eps - \beta \bar\beta \varpi \lambda\inv\bar\lambda\inv)
   - (\varpi^r \varsigma \eps (s \bar s + t \bar t \varpi))^2 \\
-  &= \eps (\Nm u)^2\cdot \varpi^{2r} \beta \bar\beta \varpi \lambda^{-2} \\
-  &= - \eps (\Nm u)^2\cdot \varpi^{2r} (\det g - \alpha \bar\alpha \lambda^{-2}).
+  &= \eps (\Nm u)^2\cdot \varpi^{2r} \cdot
+    (\varpi \beta \bar\beta \lambda\inv \bar \lambda\inv).
 \end{align*}
-
 Hence we arrive at an exact formula for
 \[ \left< \ZO4(1), \; \ZO4(x), \; \ZO4(y) \right>_{\MM_2 \times \MM_2} \]
 in terms of the valuations of the above formulas,

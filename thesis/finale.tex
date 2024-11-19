@@ -36,50 +36,59 @@ We now take these results and line them up with \Cref{sec:g_u_invariants}.
 \begin{lemma}
   \label{lem:finale_match}
   Suppose
-  \[ g = \begin{bmatrix}
-    \alpha \lambda\inv & \beta \varpi \lambda\inv \\
-    \bar\beta \lambda\inv & \bar\alpha \lambda\inv.
-    \end{bmatrix}
-    = \begin{bmatrix} \alpha & \beta \varpi \\ \bar\beta & \bar \alpha \end{bmatrix}
-    \lambda^{-1}
-  \]
-  and $u = s + t \Pi$ as above, and suppose $(g,u)$ matches with
-  \[ (\gamma, \uu, \vv^\top) = \left( \begin{bmatrix} a & b \\ c & d \end{bmatrix}
+  \[ g = \lambda\inv \begin{bmatrix}
+    \alpha & \bar\beta \varpi \\
+    \beta &  \bar\alpha
+    \end{bmatrix} \]
+  and $u = s + t \Pi$ as above with $s t = 0$.
+  Suppose $(g,u)$ matches with
+  \[ (\gamma, \uu, \vv^\top) = \left( \begin{bmatrix} a & b \\ c & d \end{bmatrix},
     \begin{bmatrix} 0 \\ 1 \end{bmatrix}, \begin{bmatrix} 0 & e \end{bmatrix} \right)
     \in (S_2(F) \times V'_2(F))\rs. \]
   Then we have
   \begin{align*}
-    \Nm u &= e \\
-    \bar\alpha \lambda\inv &= a \\
-    \alpha \lambda\inv &= d \\
-    \beta \bar\beta \varpi \lambda^{-2} &= bc.
+    a &= \begin{cases}
+      \lambda\inv \bar\alpha & \text{if } s = 0 \\
+      \lambda\inv \alpha & \text{if } t = 0 \\
+    \end{cases} \\
+    d &= \begin{cases}
+      \lambda\inv \alpha & \text{if } s = 0 \\
+      \lambda\inv \bar\alpha & \text{if } t = 0 \\
+    \end{cases} \\
+    bc &= \beta \bar\beta \varpi \lambda^{-2} \\
+    e &= \Nm u.
   \end{align*}
+  Moreover, we also have the identity
+  \[
+    v(d - a)
+    =
+  \]
 \end{lemma}
 \begin{proof}
   Setting the invariants above equal we obtain
   \begin{align*}
-    a + d &= (\alpha + \bar\alpha) \lambda\inv \\
+    a + d &= \lambda\inv (\alpha + \bar\alpha) \\
     \det \gamma = ad - bc &= \det g \\
     e &= \Nm u \\
-    de &= \alpha\lambda\inv \Nm u.
+    de &= \begin{cases}
+      \lambda\inv \bar\alpha \Nm u & \text{if } s = 0 \\
+      \lambda\inv \alpha \Nm u & \text{if } t = 0.
+    \end{cases}
   \end{align*}
-  Hence it follows $d = \alpha \lambda\inv$ and $a = \bar\alpha \lambda\inv$.
-  In particular $ad = \alpha \bar \alpha \lambda^{-2}$
+  So the equations for $e$, $d$ and $a$ are immediate.
+  In both cases we get $ad = \alpha \bar \alpha \lambda^{-2}$
   and hence
   \[ \beta \bar \beta \varpi \lambda^{-2}
     = -(\det g - \alpha \bar \alpha \lambda^{-2})
-    = -(\det \gamma - ad) = bc. \]
-  Next, we note that we also have
-  proving the lemma.
+    = -(\det \gamma - ad) = bc. \qedhere \]
 \end{proof}
-\todo{Need to verify $v(d- \bar d) = v(d-a)$.}
 
 \section{Translation of the Gross-Keating data to the orbital side}
 We combine the results of \Cref{sec:GK} with \Cref{lem:finale_match}.
 Retaining the notation
 \begin{align*}
   x &\coloneqq \bar u \sqrt{\eps} u = (s \bar s + t \bar t \varpi) \sqrt{\eps} \in \ODT \\
-  y &\coloneqq (g(\varpi^r))_- = (\varsigma\sqrt\eps + \beta \Pi \lambda\inv) \in \ODT
+  y &\coloneqq (g(\varpi^r))_- = (\varsigma\sqrt\eps + \lambda\inv \beta \Pi) \in \ODT
 \end{align*}
 from \Cref{sec:GK}, we obtain the following:
 \begin{align*}
