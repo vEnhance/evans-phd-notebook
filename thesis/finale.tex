@@ -35,38 +35,51 @@ We now take these results and line them up with \Cref{sec:g_u_invariants}.
 
 \begin{lemma}
   \label{lem:finale_match}
-  Let $g = \alpha + \beta \Pi$ and $u = s + t \Pi$ as above
-  and suppose $(g,u)$ matches with
+  Suppose
+  \[ g = \begin{bmatrix}
+    \alpha \lambda\inv & \beta \varpi \lambda\inv \\
+    \bar\beta \lambda\inv & \bar\alpha \lambda\inv.
+    \end{bmatrix}
+    = \begin{bmatrix} \alpha & \beta \varpi \\ \bar\beta & \bar \alpha \end{bmatrix}
+    \lambda^{-1}
+  \]
+  and $u = s + t \Pi$ as above, and suppose $(g,u)$ matches with
   \[ (\gamma, \uu, \vv^\top) = \left( \begin{bmatrix} a & b \\ c & d \end{bmatrix}
     \begin{bmatrix} 0 \\ 1 \end{bmatrix}, \begin{bmatrix} 0 & e \end{bmatrix} \right)
     \in (S_2(F) \times V'_2(F))\rs. \]
   Then we have
   \begin{align*}
-    \alpha_1 &= \frac{d-a}{2} \\
     \Nm u &= e \\
-    \det g - \alpha \bar \alpha &= -bc.
+    \alpha \lambda\inv &= a \\
+    \bar\alpha \lambda\inv &= d \\
+    \beta \bar\beta \varpi \lambda^{-2} &= bc.
   \end{align*}
 \end{lemma}
 \begin{proof}
   Setting the invariants above equal we obtain
   \begin{align*}
-    a + d &= \alpha + \bar\alpha \\
+    a + d &= (\alpha + \bar\alpha) \lambda\inv \\
     \det \gamma = ad - bc &= \det g \\
     e &= \Nm u \\
-    de &= \alpha \Nm u.
+    de &= \alpha\lambda\inv \Nm u.
   \end{align*}
-  Hence it follows $d = \alpha$ and $a = \bar\alpha$.
-  In particular
-  \[ \alpha_1 = \frac{\alpha - \bar\alpha}{2\sqrt\eps} = \frac{d-a}{2\sqrt\eps}. \]
-  The lemma follows directly from this.
+  Hence it follows $d = \alpha \lambda\inv$ and $a = \bar\alpha \lambda\inv$.
+  In particular $ad = \alpha \bar \alpha \lambda^{-2}$
+  and hence
+  \[ \beta \bar \beta \varpi \lambda^{-2}
+    = -(\det g - \alpha \bar \alpha \lambda^{-2})
+    = -(\det \gamma - ad) = bc. \]
+  Next, we note that we also have
+  proving the lemma.
 \end{proof}
+\todo{Need to verify $v(d- \bar d) = v(d-a)$.}
 
 \section{Translation of the Gross-Keating data to the orbital side}
 We combine the results of \Cref{sec:GK} with \Cref{lem:finale_match}.
 Retaining the notation
 \begin{align*}
   x &\coloneqq \bar u \sqrt{\eps} u = (s \bar s + t \bar t \varpi) \sqrt{\eps} \in \ODT \\
-  y &\coloneqq \varpi^r g_- = (\alpha_1\sqrt\eps + \beta \Pi) \in \ODT
+  y &\coloneqq (g(\varpi^r))_- = (\varsigma\sqrt\eps + \beta \Pi \lambda\inv) \in \ODT
 \end{align*}
 from \Cref{sec:GK}, we obtain the following:
 \begin{align*}
@@ -74,13 +87,13 @@ from \Cref{sec:GK}, we obtain the following:
     &= 2 v(\Nm u) \\
     &= 2v(e) \\
   v\left( \left\langle x,y \right\rangle _0 \right)
-    &= r + v(\alpha_1) + v(\Nm u) \\
+    &= r + v(\varsigma) + v(\Nm u) \\
     &= r + v(d-a) + v(e) \\
   v(
     \left\langle x,x \right\rangle _0 \left\langle y,y \right\rangle _0
     - \left\langle x,y \right\rangle^2_0
   )
-    &= 2r + 2 v(\Nm u) + v(\det g - \alpha \bar \alpha) \\
+    &= 2r + 2 v(\Nm u) + v(\det g - \alpha \bar \alpha \lambda^{-2}) \\
     &= 2r + 2v(e) + v(b) + v(c).
 \end{align*}
 Notice that the last valuation is odd.
@@ -119,7 +132,7 @@ Then apply \Cref{prop:GK} to obtain that
 \[
   \left< \ZO4(1), \;
     \ZO4(\bar u \sqrt{\eps} u), \;
-    \ZO4(\varpi^r g_-) \right>_{\MM_2 \times \MM_2}
+    \ZO4((g(\varpi^r))_-) \right>_{\MM_2 \times \MM_2}
 \]
 is equal to the above formula applied at
 \begin{align*}
@@ -131,13 +144,13 @@ Note that
 For brevity, we henceforth introduce the symbol $\GK$ for the sum above;
 in other words, \Cref{conj:serre_pullback_space} and \Cref{conj:serre_pullback_divisor}
 together amount to asserting that
-\[ \left< \ZO4(1), \; \ZO4(\bar u \sqrt{\eps} u), \; \ZO4(\varpi^r g_-) \right>_{\MM_2 \times \MM_2}
+\[ \left< \ZO4(1), \; \ZO4(\bar u \sqrt{\eps} u), \; \ZO4((g(\varpi^r))_-) \right>_{\MM_2 \times \MM_2}
     = \GK(r, v(b), v(c), v(e), v(d-a)). \]
 In that case we also have
 \[
   \left< \ZO4(1), \;
     \ZO4\left(\frac{\bar u \sqrt{\eps} u}{\varpi}\right), \;
-    \ZO4(\varpi^r g_-) \right>_{\MM_2 \times \MM_2}
+    \ZO4((g(\varpi^r))_-) \right>_{\MM_2 \times \MM_2}
     = \GK(r, v(b), v(c), v(e)-1, v(d-a)). \]
 Subtracting the two gives
 \begin{equation}
@@ -145,7 +158,7 @@ Subtracting the two gives
     \Int^\circ((g,u), \fr) &=
       \left< \ZO4(1), \;
         \ZO4(\bar u \sqrt{\eps} u)^\circ, \;
-        \ZO4(\varpi^r g_-) \right>_{\MM_2 \times \MM_2} \\
+        \ZO4((g(\varpi^r))_-) \right>_{\MM_2 \times \MM_2} \\
     &= \GK(r, v(b), v(c), v(e), v(d-a)) \\
     &\qquad- \GK(r, v(b), v(c), v(e)-1, v(d-a)).
   \end{aligned}
@@ -401,25 +414,28 @@ We phrase this entirely based on the quantities in the geometric side
 to keep in self-contained.
 
 \begin{theorem}
-  If $r \ge 1$ and $v(\Nm u) > 0$ then
+  Let $r \ge 1$ and $v(\Nm u) > 0$ for $u \in \VV_2^-$, and let
+  \[ g =
+    \begin{bmatrix} \alpha & \beta \varpi \\ \bar\beta & \bar \alpha \end{bmatrix}
+    \lambda^{-1} \in \U(\VV_2^-). \]
+  Then
   \[ \Big\langle \mathbb{T}_{\mathbf{1}_K \otimes \mathbf{1}_{K, r}}
     \Delta_{\ZD(u)^\circ}, \Gamma_g \Big\rangle_{\RZ_{2,2}} \]
   is equal to
   \[
     \begin{cases}
       (C+1) q^{N} + (C+2) q^{N-1}
-        & \text{if } v(e)-r = v(d-a) \le \frac{v(b)+v(c)-1}{2} \\
-      2q^N & \text{if } \frac{v(b)+v(c)-1}{2} + r < \min(v(e), v(d-a)+r) \\
+        & \text{if } v(\Nm u)-r = v(\alpha - \bar\alpha) - v(\lambda) \le v(\beta) - v(\lambda) \\
+      2q^N & \text{if } v(\beta) - v(\lambda) + r < \min(v(\Nm u), v(\alpha - \bar\alpha) - v(\lambda) + r) \\
       q^N + q^{N-1} & \text{otherwise}
     \end{cases}
   \]
   where
-  \[ N = \]
+  \[ N = \min(v(\Nm u), v(\beta) - v(\lambda) + r, v(\alpha-\bar\alpha) - v(\lambda) + r) \]
   we write
-  \[ C = \frac{v(b) + v(c)- 2v(d-a) - 1}{2} \ge 0 \]
+  \[ C = v(\beta) - v(\alpha - \bar\alpha) \ge 0 \]
   in the first case.
 \end{theorem}
-\todo{translate the invariants}
 
 \begin{proof}
   Recall that
@@ -534,5 +550,6 @@ to keep in self-contained.
   where
   \[ C = \frac{v(b) + v(c)- 2v(d-a) - 1}{2} \ge 0 \]
   in the first case.
-  Then \eqref{eq:int_circle_orbital_param} follows by translating back.
+  Then \eqref{eq:int_circle_orbital_param} translates via
+  \Cref{lem:finale_match} into the desired claim.
 \end{proof}
