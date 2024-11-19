@@ -69,12 +69,15 @@ In particular, the formula for conjugation then reads as the simpler
 \[ \bar x = x_0 - x_-. \]
 
 \subsection{Hermitian structure}
-We view $\DD$ as an $E/F$-Hermitian space under \emph{right} multiplication by $E$,
-and equip $\DD$ with a $E/F$-Hermitian form
+We view $\DD$ as an $E/F$-Hermitian space under \emph{right} multiplication by $E$;
+that is, for $a,b,t \in E$ we consider
+\[ (a + b \Pi) \cdot t = a t + b \bar t \Pi \]
+as the action of $E$ on $\DD$.
+Then we equip $\DD$ with a $E/F$-Hermitian form
 $\left\langle \bullet, \bullet \right\rangle \colon \DD \times \DD \to E$
 defined by
 \[ \left\langle x,y \right\rangle = \half \Tr_{\DD/E}(x\bar y) \]
-i.e.\. the projection of $x\bar y \in \DD = E \oplus E\Pi$ onto the first component.
+i.e.\ the projection of $x\bar y \in \DD = E \oplus E\Pi$ onto the first component.
 In particular, note that
 \[ \left\langle x,x \right\rangle  = x \bar x = \Nm x. \]
 
@@ -89,53 +92,84 @@ and hence the corresponding identification
 
 \section{The invariants for the orbit of $(g,u)$}
 \label{sec:g_u_invariants}
-We specialize to the situation where $u \in \OO_\DD$, and we have
-\[ g \in \U(\VV_n^-) = \left\{
-    \begin{bmatrix} \alpha & \beta \\ \varpi\bar\beta & \bar\alpha \end{bmatrix}
-    \mid \alpha, \beta \in E \right\}. \]
-By abuse of notation we will write $g$ by simply an element of $\OO_\DD$ as well:
-\[ g = \alpha + \beta \Pi \in \OO_\DD \qquad \alpha, \beta \in E. \]
-we also impose coordinates for $u$ according to
-\[ u = s + t \Pi \in \OO_\DD \qquad s, t \in E. \]
-Hence the four corresponding invariants of \Cref{def:matching_semi_lie} are:
-\begin{itemize}
-  \ii $\Tr g = \alpha + \bar\alpha$
-  \ii $\det g = \alpha \bar \alpha - \beta \bar\beta \varpi$
-  \ii The quantity
-  \[ \left\langle u,u \right\rangle = 2 \Nm u = 2(s \bar s - t \bar t \varpi) \]
-  \ii The quantity
-  \begin{align*}
-    \left\langle gu, u \right\rangle
-    &= \left\langle (\alpha + \beta \Pi)(s + t \Pi), s + t \Pi \right\rangle \\
-    &= \left\langle (\alpha s + \beta \bar t \varpi) + (\alpha t + \beta \bar s) \Pi,
-      s + t \Pi \right\rangle \\
-    &= \half \Tr_{\DD/E} [((\alpha s + \beta \bar t \varpi) + (\alpha t + \beta \bar s) \Pi) (\bar s - t \Pi)] \\
-    &= \half \Tr_{\DD/E} \left[
-      (\alpha s \bar s + \beta \bar s \bar t \varpi
-      - (\alpha t \bar t + \beta \bar s \bar t) \varpi)
-      + (-\alpha s t - \beta t \bar t \varpi + \alpha s t + \beta s \bar s) \Pi
-    \right] \\
-    &= \half \Tr_{\DD/E} \left[
-      \alpha (s \bar s - t \bar t \varpi)
-      + \beta(s \bar s - t \bar t) \Pi \right] \\
-    &= \alpha (s \bar s - t \bar t \varpi) \\
-    &= \alpha \left\langle u,u \right\rangle.
-  \end{align*}
-\end{itemize}
+We specialize to the situation where $u \in \OO_\DD$ and $g \in \U(\VV_n^-)$.
+To impose coordinates on $g$, we appeal to the following fact.
+\begin{lemma}
+  Every unitary map in $\U(\VV_2^-)$ can be described in the form
+  \[ u \mapsto h u \lambda^{-1} \]
+  for some quaternion $h = \alpha + \beta \Pi \in \DD^\times$
+  and an element $\lambda \in E^\times$
+  such that $\Nm h = \Norm_{E/F}(\lambda)$.
 
-For simplicity, we are going to make the following assumption on $u$,
-although it will not be used until we use the Gross-Keating formula.
+  Moreover, such a description is unique up to multiplication by elements of $F$.
+  In other words,
+  \[ \U(\VV_2^-) \simeq (\DD^\times \times E^\times)^\circ / \Delta(F^\times) \]
+  where $(\DD^\times \times E^\times)^\circ$
+  denotes those pairs $(h,\lambda)$ with $\Nm(h) = \Norm_{E/F}(\lambda)$,
+  and $\Delta(F^\times)$ is the diagonal embedding of $F^\times$.
+\end{lemma}
+We encode $g$ as a matrix on $\DD$ now (with the obvious $E$-basis $1$, $\Pi$,
+again viewing $\DD$ as a right-$E$ module)
+so we can compute its determinant and trace.
+We have
+\begin{align*}
+  g(1) &= (\alpha + \beta \Pi) \cdot 1 \cdot \lambda\inv
+    = \alpha \lambda\inv + \beta \Pi \lambda\inv
+    = \alpha \lambda\inv + \Pi \cdot \bar\beta \lambda\inv \\
+  g(\Pi) &= (\alpha + \beta \Pi) \cdot \Pi \cdot \lambda\inv
+    = \beta \lambda\inv \varpi + \alpha \Pi \lambda\inv
+    = \beta \lambda\inv \varpi + \Pi \cdot \bar\alpha \lambda\inv.
+\end{align*}
+Hence, written as a matrix we have
+\[ g = \begin{bmatrix}
+  \alpha \lambda\inv & \beta \lambda\inv \varpi  \\
+  \bar\beta \lambda\inv & \bar\alpha \lambda\inv.
+  \end{bmatrix}. \]
+We also impose coordinates for $u$ according to
+\[ u = s + t \Pi \in \OO_\DD \qquad s, t \in E. \]
+For simplicity, we are going to make the following assumption on $u$.
 \begin{assume}
   We have $u \in E$ or $u \in E \Pi$.
   That is, either $s = 0$ or $t = 0$.
   \label{assume:st_zero}
 \end{assume}
-
 This assumption can be made without loss of generality because
 the invariants above and the intersection only depend
 on the $\SU(2)$-orbit of the pair $(g,u)$,
 and any element $u \in \DD^\times$ can be mapped under an element of $\SU(2)$
 into a pair for which $u \in E$ or $u \in E \Pi$.
+
+Now, the four corresponding invariants of \Cref{def:matching_semi_lie} are:
+\begin{itemize}
+  \ii $\Tr g = (\alpha + \bar\alpha)\lambda^{-1}$.
+  \ii $\det g = (\alpha \bar \alpha - \beta \bar\beta \varpi)\lambda^{-2}$.
+  \ii The quantity
+  \[ \left\langle u,u \right\rangle = 2 \Nm u = 2(s \bar s - t \bar t \varpi). \]
+  \ii The quantity
+  \begin{align*}
+    \left\langle gu, u \right\rangle
+    &= \left\langle (\alpha + \beta \Pi)(s + t \Pi)\lambda^{-1}, s + t \Pi \right\rangle \\
+    &= \left\langle (\alpha s + \beta \bar t \varpi) \lambda^{-1}
+      + (\alpha t + \beta \bar s) \Pi \lambda^{-1},
+      s + t \Pi \right\rangle \\
+    &= \left\langle (\alpha s + \beta \bar t \varpi) \lambda^{-1}
+      + (\alpha t + \beta \bar s) \bar\lambda^{-1} \Pi ,
+      s + t \Pi \right\rangle \\
+    &= \half \Tr_{\DD/E} [((\alpha s + \beta \bar t \varpi) \lambda\inv
+      + (\alpha t + \beta \bar s) \bar\lambda\inv \Pi) (\bar s - t \Pi)] \\
+    &= \half \Tr_{\DD/E} \Big[
+      ((\alpha s \bar s + \beta \bar s \bar t \varpi) \lambda^{-1}
+      - (\alpha t \bar t + \beta \bar s \bar t) \bar\lambda^{-1} \varpi) \\
+      &\qquad + ((-\alpha s t - \beta t \bar t \varpi) \lambda\inv
+      + (\alpha s t + \beta s \bar s)\bar\lambda\inv) \Pi
+    \Big] \\
+    &= \half \Tr_{\DD/E} \left[
+      \alpha (s \bar s \lambda\inv - t \bar t \varpi \bar\lambda\inv)
+      + \beta(s \bar s \bar\lambda\inv - t \bar t \lambda\inv) \Pi \right] \\
+    &= \alpha (s \bar s \lambda\inv - t \bar t \varpi \bar\lambda\inv) \\
+  \end{align*}
+\end{itemize}
+\todo{wtf?}
 
 \section{Background on special divisors for $n = 2$}
 \subsection{The Rapoport-Zink space $\RZ_2$}
@@ -351,7 +385,7 @@ From now on, we will write
 and use the notation
 \begin{align*}
   x &\coloneqq \bar u \sqrt{\eps} u = (s \bar s + t \bar t \varpi) \sqrt{\eps} \in \ODT \\
-  y &\coloneqq \varpi^r g_- = (\alpha_1\sqrt\eps + \beta \Pi) \in \ODT.
+  y &\coloneqq (g(\varpi^r))_- = (\alpha_1\sqrt\eps + \beta \Pi) \in \ODT.
 \end{align*}
 
 Then we can compute
