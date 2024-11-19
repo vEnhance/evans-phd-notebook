@@ -58,11 +58,11 @@ To take the Satake transform of $\HH(\U(\VV_n^+))$, we define the following abbr
 \begin{itemize}
   \ii Let $T$ denote the split diagonal torus of $\GL_n$.
   \ii Let
-  \[ N' \coloneqq \left\{ \begin{bmatrix}
+  \[ N' \coloneqq \left\{ \begin{pmatrix}
       1 & \ast & \dots & \ast \\
         & 1 & \dots & \ast \\
         &   & \ddots & \vdots \\
-        &   &   & 1 \end{bmatrix}\right\} \subseteq \GL_n(E) \]
+        &   &   & 1 \end{pmatrix}\right\} \subseteq \GL_n(E) \]
   denote the unipotent upper-triangular matrices.
 \end{itemize}
 Similarly for $\HH(\U(\VV_n^+))$:
@@ -260,13 +260,13 @@ This is the easiest calculation, and we do it for all $n$ rather than just $n = 
   so the unipotent radical of this Borel subgroup
   are the unipotent upper triangulars $N'$ which we describe as
   \[ N' \coloneqq \left\{
-      \begin{bmatrix}
+      \begin{pmatrix}
       1 & y_{12} & y_{13} & \dots & y_{1n} \\
         & 1 & y_{23} & \dots & y_{2n} \\
         &   & 1 & \dots & y_{3n} \\
         &   &   & \ddots & \vdots  \\
         &   &   &   & 1
-      \end{bmatrix}
+      \end{pmatrix}
     \mid y_{12}, \dots, y_{(n-1)n}\in E \right\} \]
   and with additive Haar measure is $\odif{y_{12}, y_{23} \dotso, y_{(n-1)n}}$.
   Recall also the Weyl vector for $\GL_n(E)$ is just
@@ -280,13 +280,13 @@ This is the easiest calculation, and we do it for all $n$ rather than just $n = 
     \underbrace{\int_{y_{12} \in E} \int_{y_{13} \in E} \dotso \int_{y_{(n-1)n} \in E}}_{\binom n2 \text{ integrals}} \\
     &\qquad
       \mathbf{1}_{\Mat_3(\OO_E), v \circ \det = r}
-      \left( \begin{bmatrix}
+      \left( \begin{pmatrix}
         \varpi^{e_1} & \varpi^{e_1} y_{12} & \varpi^{e_1} y_{13} & \dots & \varpi^{e_1} y_{1n} \\
         & \varpi^{e_2} & \varpi^{e_2} y_{23} & \dots & \varpi^{e_2} y_{2n} \\
         &   & \varpi^{e_3} & \dots & \varpi^{e_3} y_{3n} \\
         &   &   & \ddots & \vdots  \\
         &   &   &   & \varpi^{e_n}
-        \end{bmatrix} \right) \\
+        \end{pmatrix} \right) \\
     &\qquad \odif{y_{12}, y_{23} \dotso, y_{(n-1)n}} \\
     &= q_E^{-\left(\frac{n-1}{2}e_1 + \frac{n-3}{2}e_2 + \dots + -\frac{n-1}{2} e_n \right)}
     \mathbf{1}_{e_1 + \dots + e_n = r}
@@ -327,18 +327,18 @@ This is the easiest calculation, and we do it for all $n$ rather than just $n = 
   \[
     n^\ast \beta n
     =
-    \begin{bmatrix} 1 \\ \bar{y_1} & 1 \\ \bar{y_2} & \bar{y_3} & 1 \end{bmatrix}
+    \begin{pmatrix} 1 \\ \bar{y_1} & 1 \\ \bar{y_2} & \bar{y_3} & 1 \end{pmatrix}
     \beta
-    \begin{bmatrix}
+    \begin{pmatrix}
       1 & y_1 & y_2 \\
         & 1 & y_3 \\
         & & 1
-    \end{bmatrix}
-    = \begin{bmatrix}
+    \end{pmatrix}
+    = \begin{pmatrix}
       & & 1 \\
       & 1 & y_3 + \bar{y_1} \\
       1 & y_1 + \bar{y_3} & y_2 + \bar{y_2} + y_3 \bar{y_3}
-    \end{bmatrix}.
+    \end{pmatrix}.
   \]
   So $n \in N$ if and only if the above matrix equals $\beta$, which means
   \[ 0 = y_3 + \bar{y_1} = y_2 + \bar{y_2} + y_3 \bar{y_3}. \]
@@ -360,9 +360,9 @@ This is the easiest calculation, and we do it for all $n$ rather than just $n = 
       \left( \nu(\varpi) n' \right) \odif n \\
     &= \delta(\nu(\varpi))^\half \int_{n \in N}
       \mathbf{1}_{{\varpi^{-r}} \Mat_3(\OO_E) \cap \U(\VV_3^+)}
-      \left( \begin{bmatrix} \varpi^i & \varpi^i y_1 & \varpi^i y_2 \\
+      \left( \begin{pmatrix} \varpi^i & \varpi^i y_1 & \varpi^i y_2 \\
                & 1 & y_3 \\
-               & & \varpi^{-i} \end{bmatrix} \right) \odif n
+               & & \varpi^{-i} \end{pmatrix} \right) \odif n
   \end{align*}
   The matrix itself is always in $\U(\VV_3^+)$, because it's the product of two unitary matrices.
   So the indicator needs to check whether all the entries have valuation at least $-r$.
@@ -426,24 +426,24 @@ This is the easiest calculation, and we do it for all $n$ rather than just $n = 
   the evaluation of the integral at any $g$ such that $g\bar{g} \in K'_{S,j}$.
   Fixing $j \ge 0$, we are going to take the choice
   \[
-    g = \begin{bmatrix}
+    g = \begin{pmatrix}
       1 &   & \varpi^{-j} \sqrt{\eps} \\
       & 1 \\
       &   & 1
-    \end{bmatrix}.
+    \end{pmatrix}.
   \]
   We need to check this choice of $g$ indeed satisfies $g\bar{g}\inv \in K'_{S,j}$.
   This follows as
-  \[ \bar{g} = \begin{bmatrix} 1 &   & -\varpi^{-j} \sqrt{\eps} \\ & 1 \\ &   & 1 \end{bmatrix}
-    \implies \bar{g}\inv = \begin{bmatrix} 1 &   & \varpi^{-j} \sqrt{\eps} \\ & 1 \\ &   & 1 \end{bmatrix}
+  \[ \bar{g} = \begin{pmatrix} 1 &   & -\varpi^{-j} \sqrt{\eps} \\ & 1 \\ &   & 1 \end{pmatrix}
+    \implies \bar{g}\inv = \begin{pmatrix} 1 &   & \varpi^{-j} \sqrt{\eps} \\ & 1 \\ &   & 1 \end{pmatrix}
   \]
   and therefore
   \[
-    g\bar{g}\inv = \begin{bmatrix}
+    g\bar{g}\inv = \begin{pmatrix}
       1 &   & 2\varpi^{-j} \sqrt{\eps} \\
       & 1 \\
       &   & 1
-    \end{bmatrix} \in K'_{S,j}
+    \end{pmatrix} \in K'_{S,j}
   \]
   as needed.
 
@@ -455,8 +455,8 @@ This is the easiest calculation, and we do it for all $n$ rather than just $n = 
   We take (non-Archimedean) Iwasawa decomposition of $h \in \GL_3(F)$ to rewrite it as
   \[
     h =
-    \begin{bmatrix} x_1 \\ & x_2 \\ && x_3 \end{bmatrix}
-    \begin{bmatrix} 1 & y_1 & y_2 \\ & 1 & y_3 \\ & & 1 \end{bmatrix}
+    \begin{pmatrix} x_1 \\ & x_2 \\ && x_3 \end{pmatrix}
+    \begin{pmatrix} 1 & y_1 & y_2 \\ & 1 & y_3 \\ & & 1 \end{pmatrix}
     k
   \]
   for $k \in \GL_3(\OO_F) \subseteq K'$, which does not affect the indicator function.
@@ -465,26 +465,26 @@ This is the easiest calculation, and we do it for all $n$ rather than just $n = 
   \begin{align*}
     gh
     &=
-    \begin{bmatrix}
+    \begin{pmatrix}
       1 &   & \varpi^{-j}\sqrt\eps \\
       & 1 \\
       &   & 1
-    \end{bmatrix}
-    \begin{bmatrix} x_1 \\ & x_2 \\ && x_3 \end{bmatrix}
-    \begin{bmatrix} 1 & y_1 & y_2 \\ & 1 & y_3 \\ & & 1 \end{bmatrix} k \\
+    \end{pmatrix}
+    \begin{pmatrix} x_1 \\ & x_2 \\ && x_3 \end{pmatrix}
+    \begin{pmatrix} 1 & y_1 & y_2 \\ & 1 & y_3 \\ & & 1 \end{pmatrix} k \\
     &=
-    \begin{bmatrix}
+    \begin{pmatrix}
       1 &   & \varpi^{-j}\sqrt\eps \\
       & 1 \\
       &   & 1
-    \end{bmatrix}
-    \begin{bmatrix} x_1 & x_1 y_1 & x_1 y_2 \\ & x_2 & x_2 y_3 \\ & & x_3 \end{bmatrix} k \\
+    \end{pmatrix}
+    \begin{pmatrix} x_1 & x_1 y_1 & x_1 y_2 \\ & x_2 & x_2 y_3 \\ & & x_3 \end{pmatrix} k \\
     &=
-    \begin{bmatrix}
+    \begin{pmatrix}
       x_1 & x_1 y_1 & x_1 y_2 + x_3 \varpi^{-j} \sqrt\eps \\
       & x_2 & x_2 y_3 \\
       & & x_3
-    \end{bmatrix}
+    \end{pmatrix}
     k.
   \end{align*}
   Hence, we can rewrite the $\rproj_\ast(\mathbf{1}_{\Mat_3(\OO_E), v\circ\det=r})$
@@ -494,11 +494,11 @@ This is the easiest calculation, and we do it for all $n$ rather than just $n = 
     &= \int_{x_1 \in F^\times} \int_{x_2 \in F^\times} \int_{x_3 \in F^\times}
     \int_{y_1 \in F} \int_{y_2 \in F} \int_{y_3 \in F} \\
     &\quad \mathbf{1}_{\Mat_3(\OO_E), v\circ\det=r} \left(
-    \begin{bmatrix}
+    \begin{pmatrix}
       x_1 & x_1 y_1 & x_1 y_2 + x_3 \varpi^{-j} \sqrt\eps \\
       & x_2 & x_2 y_3 \\
       & & x_3
-    \end{bmatrix}
+    \end{pmatrix}
     \right) \\
     &\quad \odif[{\times,\times,\times}]{x_1,x_2,x_3,y_1,y_2,y_3}.
   \end{align*}

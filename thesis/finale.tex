@@ -9,8 +9,8 @@ From \Cref{ch:orbitalFJ0}, recall that we considered
 \[
   (\gamma, \uu, \vv^\top)
   =
-  \left( \begin{bmatrix} a & b \\ c & d \end{bmatrix}
-    \begin{bmatrix} 0 \\ 1 \end{bmatrix}, \begin{bmatrix} 0 & e \end{bmatrix} \right)
+  \left( \begin{pmatrix} a & b \\ c & d \end{pmatrix}
+    \begin{pmatrix} 0 \\ 1 \end{pmatrix}, \begin{pmatrix} 0 & e \end{pmatrix} \right)
   \in (S_2(F) \times V'_2(F))\rs
 \]
 subject to the conditions
@@ -24,8 +24,8 @@ The invariants in this case as described in \Cref{def:matching_semi_lie} are:
   \ii $\Tr \gamma = a + d$
   \ii $\det \gamma = ad - bc$
   \ii $\vv^\top \uu = e$
-  \ii $\vv^\top \gamma \uu = \begin{bmatrix} 0 & e \end{bmatrix}
-  \begin{bmatrix} a & b \\ c & d \end{bmatrix} \begin{bmatrix} 0 \\ 1 \end{bmatrix} = de$.
+  \ii $\vv^\top \gamma \uu = \begin{pmatrix} 0 & e \end{pmatrix}
+  \begin{pmatrix} a & b \\ c & d \end{pmatrix} \begin{pmatrix} 0 \\ 1 \end{pmatrix} = de$.
 \end{itemize}
 Note that the parameters $b$ and $c$ are absent; but we have
 \[ v(b) + v(c) = v(\det \gamma - a d). \]
@@ -36,14 +36,14 @@ We now take these results and line them up with \Cref{sec:g_u_invariants}.
 \begin{lemma}
   \label{lem:finale_match}
   Suppose
-  \[ g = \lambda\inv \begin{bmatrix}
+  \[ g = \lambda\inv \begin{pmatrix}
     \alpha & \bar\beta \varpi \\
     \beta &  \bar\alpha
-    \end{bmatrix} \]
+    \end{pmatrix} \]
   and $u = s + t \Pi$ as above with $s t = 0$.
   Suppose $(g,u)$ matches with
-  \[ (\gamma, \uu, \vv^\top) = \left( \begin{bmatrix} a & b \\ c & d \end{bmatrix},
-    \begin{bmatrix} 0 \\ 1 \end{bmatrix}, \begin{bmatrix} 0 & e \end{bmatrix} \right)
+  \[ (\gamma, \uu, \vv^\top) = \left( \begin{pmatrix} a & b \\ c & d \end{pmatrix},
+    \begin{pmatrix} 0 \\ 1 \end{pmatrix}, \begin{pmatrix} 0 & e \end{pmatrix} \right)
     \in (S_2(F) \times V'_2(F))\rs. \]
   Then we have
   \begin{align*}
@@ -211,7 +211,7 @@ For $n = 2$, the transfer factor is
     \left[ \gamma^0 \uu, \gamma^1 \uu \right]
   \right) \\
   &= \eta\left( \det
-    \begin{bmatrix} 0 & 1 \\ b & c \end{bmatrix}
+    \begin{pmatrix} 0 & 1 \\ b & c \end{pmatrix}
   \right) \\
   &= (-1)^{v(b)} = - (-1)^{v(c)}.
 \end{align*}
@@ -425,7 +425,7 @@ to keep in self-contained.
 \begin{theorem}
   Let $r \ge 1$ and $v(\Nm u) > 0$ for $u \in \VV_2^-$, and let
   \[ g =
-    \begin{bmatrix} \alpha & \beta \varpi \\ \bar\beta & \bar \alpha \end{bmatrix}
+    \begin{pmatrix} \alpha & \beta \varpi \\ \bar\beta & \bar \alpha \end{pmatrix}
     \lambda^{-1} \in \U(\VV_2^-). \]
   Then
   \[ \Big\langle \mathbb{T}_{\mathbf{1}_K \otimes \mathbf{1}_{K, r}}

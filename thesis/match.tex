@@ -8,7 +8,7 @@ that first appeared in \cite[\S6]{ref:multoneconj}.
 \begin{definition}
   \label{def:rs}
   Consider a $n \times n$ matrix
-  \[ \begin{bmatrix} A & \uu \\ \vv^\top & d \end{bmatrix} \in \GL_n(E) \]
+  \[ \begin{pmatrix} A & \uu \\ \vv^\top & d \end{pmatrix} \in \GL_n(E) \]
   in $\GL_n(E)$, where $A$ is an $(n-1) \times (n-1)$ matrix.
   Then we say this matrix is \emph{regular semi-simple} if
   \[ \left< \uu, A\uu, \dots, A^{n-2}\uu \right> \]
@@ -33,8 +33,8 @@ that first appeared in \cite[\S6]{ref:multoneconj}.
   [{\cite[Proposition 6.2]{ref:multoneconj}}]
   It turns out we can detect whether two regular semisimple elements
   \[
-    \begin{bmatrix} A_1 & \uu_1 \\ \vv_1^\top & d_1 \end{bmatrix},
-    \begin{bmatrix} A_2 & \uu_2 \\ \vv_2^\top & d_2 \end{bmatrix}
+    \begin{pmatrix} A_1 & \uu_1 \\ \vv_1^\top & d_1 \end{pmatrix},
+    \begin{pmatrix} A_2 & \uu_2 \\ \vv_2^\top & d_2 \end{pmatrix}
     \in \GL_{n}(E)
   \]
   are conjugate by an element of $\GL_{n-1}(E)$.
@@ -49,7 +49,7 @@ that first appeared in \cite[\S6]{ref:multoneconj}.
   under the action of $\GL_{n-1}(E)$.
 
   Put another way, the invariants of
-  \[ \begin{bmatrix} A & \uu \\ \vv^\top & d \end{bmatrix} \in \GL_n(E) \]
+  \[ \begin{pmatrix} A & \uu \\ \vv^\top & d \end{pmatrix} \in \GL_n(E) \]
   are the (monic) characteristic polynomial of $A$
   (which has $n-1$ coefficients besides the leading coefficient),
   the values of $\vv^\top A^i \uu$ for $i = 0, \dots, n-2$
@@ -78,7 +78,7 @@ particular cases relevant to this paper.
     \begin{equation}
       \begin{aligned}
         S_n(F) \times V_n' &\hookrightarrow \GL_{n+1}(E) \\
-        (\gamma, \uu, \vv^\top) &\mapsto \begin{bmatrix} \gamma & \uu \\ \vv^\top & 0 \end{bmatrix}
+        (\gamma, \uu, \vv^\top) &\mapsto \begin{pmatrix} \gamma & \uu \\ \vv^\top & 0 \end{pmatrix}
       \end{aligned}
       \label{eq:embed_FJ_analytic}
     \end{equation}
@@ -96,7 +96,7 @@ particular cases relevant to this paper.
     \begin{equation}
       \begin{aligned}
         \U(\VV_n^\pm) \times \VV_n^\pm &\hookrightarrow \GL_{n+1}(E) \\
-        (g, u) &\mapsto \begin{bmatrix} g & u \\ u^\ast & 0 \end{bmatrix}
+        (g, u) &\mapsto \begin{pmatrix} g & u \\ u^\ast & 0 \end{pmatrix}
       \end{aligned}
       \label{eq:embed_FJ_geometric}
     \end{equation}

@@ -78,9 +78,9 @@ We again have a Cartan decomposition indexed by a single integer $r \ge 0$:
   [Cartan decomposition of $S_2(F)$]
   For each integer $r \ge 0$ let
   \[ K'_{S,r} \coloneqq \GL_2(\OO_E) \cdot
-    \begin{bmatrix} 0 & \varpi^r \\ \varpi^{-r} & 0 \end{bmatrix} \]
+    \begin{pmatrix} 0 & \varpi^r \\ \varpi^{-r} & 0 \end{pmatrix} \]
   denote the orbit of
-  $\begin{bmatrix} 0 & \varpi^r \\ \varpi^{-r} & 0 \end{bmatrix}$
+  $\begin{pmatrix} 0 & \varpi^r \\ \varpi^{-r} & 0 \end{pmatrix}$
   under the left action of $\GL_2(\OO_E)$.
   Then we have a decomposition
   \[ S_2(F) = \coprod_{r \geq 0} K'_{S,r}. \]
@@ -95,7 +95,7 @@ And as before we abbreviate the $r = 0$ term specifically:
 \begin{align*}
   K'_S
   &\coloneqq K'_{S,0} \\
-  &= \GL_2(\OO_E) \cdot \begin{bmatrix} & 1 \\ 1 \end{bmatrix} \\
+  &= \GL_2(\OO_E) \cdot \begin{pmatrix} & 1 \\ 1 \end{pmatrix} \\
   &= \GL_2(\OO_E) \cdot \id_2 = S_2(F) \cap \GL_2(\OO_E).
 \end{align*}
 
@@ -116,35 +116,35 @@ and that $(\gamma, \uu, \vv^\top) \in (S_2(F) \times V'_2)\rs$ is regular.
 The weighted orbital integral depends only on the $H$-orbit of $(\gamma, \uu, \vv^\top)$.
 Consequently, we may assume without loss of generality
 (via multiplication by a suitable change-of-basis $h \in H = \GL_2(F)$) that
-\[ \uu = \begin{bmatrix} 0 \\ 1 \end{bmatrix}, \qquad
-  \vv^\top = \begin{bmatrix} 0 & e \end{bmatrix} \qquad e \in F. \]
+\[ \uu = \begin{pmatrix} 0 \\ 1 \end{pmatrix}, \qquad
+  \vv^\top = \begin{pmatrix} 0 & e \end{pmatrix} \qquad e \in F. \]
 (We know $\uu$ is not the zero vector from the regular condition
 applied on $(\gamma, \uu, \vv^\top)$.)
 
 Meanwhile, we will let
-$\gamma = \begin{bmatrix} a & b \\ c & d \end{bmatrix} \in \GL_2(F)$
+$\gamma = \begin{pmatrix} a & b \\ c & d \end{pmatrix} \in \GL_2(F)$
 for $a,b,c,d \in F$.
 Then, viewed as an element of $\GL_3(F)$ via the embedding we described earlier, we have
 \[
   (\gamma, \uu, \vv^\top)
-  \mapsto \begin{bmatrix}
+  \mapsto \begin{pmatrix}
     a & b & 0 \\
     c & d & 1 \\
     0 & e & 0
-  \end{bmatrix} \in \GL_3(F).
+  \end{pmatrix} \in \GL_3(F).
 \]
 Thus, our definition of regular requires that
-$\begin{bmatrix} 0 \\ 1 \end{bmatrix}$
-is linearly independent from $\begin{bmatrix} b \\ d \end{bmatrix}$
+$\begin{pmatrix} 0 \\ 1 \end{pmatrix}$
+is linearly independent from $\begin{pmatrix} b \\ d \end{pmatrix}$
 and
-$\begin{bmatrix} 0 & e \end{bmatrix}$
-is linearly independent from $\begin{bmatrix} c & d \end{bmatrix}$.
+$\begin{pmatrix} 0 & e \end{pmatrix}$
+is linearly independent from $\begin{pmatrix} c & d \end{pmatrix}$.
 This is just saying that $b$, $c$, $e$ are all nonzero.
 We also know that $\gamma \in S_2(F)$, which gives us relations on $a$, $b$, $c$, $d$
 (the same as \cite[equation (7.3.2)]{ref:AFLspherical}); we have
 \[
-  \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix}
-  = \begin{bmatrix} a & b \\ c & d \end{bmatrix} \begin{bmatrix} \bar a & \bar b \\ \bar c & \bar d \end{bmatrix}
+  \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}
+  = \begin{pmatrix} a & b \\ c & d \end{pmatrix} \begin{pmatrix} \bar a & \bar b \\ \bar c & \bar d \end{pmatrix}
   \implies
   \begin{aligned}
     \bar b c = b \bar c &= 1 - a \bar a = 1 - d \bar d \\
@@ -161,7 +161,7 @@ this is controlled by the parity of $v(\Delta)$, where
 When $n=2$, for the representatives we described before,
 we have
 \[ \left[ \vv^\top \gamma^{i+j} \uu \right]_{0 \le i,j \le n-1}
-  = \begin{bmatrix} e & de \\ de & bce + d^2e \end{bmatrix} \]
+  = \begin{pmatrix} e & de \\ de & bce + d^2e \end{pmatrix} \]
 so
 \[ \Delta = bce^2 = \frac{b}{\bar b}(1-a \bar a) e^2 . \]
 Hence, $v(\Delta)$ is odd if and only if $v(1-a \bar a)$ is odd.
@@ -201,9 +201,9 @@ We can now state the following result:
   \label{thm:semi_lie_derivative_single}
   Let the representative
   \[
-    \guv = \left( \begin{bmatrix} a & b \\ c & d \end{bmatrix},
-      \begin{bmatrix} 0 \\ 1 \end{bmatrix},
-      \begin{bmatrix} 0 & e \end{bmatrix} \right)
+    \guv = \left( \begin{pmatrix} a & b \\ c & d \end{pmatrix},
+      \begin{pmatrix} 0 \\ 1 \end{pmatrix},
+      \begin{pmatrix} 0 & e \end{pmatrix} \right)
     \in (S_2(F) \times V_2'(F))\rs.
   \]
   be paired with an element of $(\U(\VV_2) \times \VV_2)\rs$

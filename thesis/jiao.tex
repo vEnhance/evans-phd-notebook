@@ -132,10 +132,10 @@ We have
     = \lambda\inv \bar\beta \varpi + \lambda\inv \bar\alpha \Pi.
 \end{align*}
 Hence, written as a matrix with respect to the obvious basis $\{1, \Pi\}$ we have
-\[ g = \lambda\inv \begin{bmatrix}
+\[ g = \lambda\inv \begin{pmatrix}
   \alpha & \bar\beta \varpi \\
   \beta &  \bar\alpha
-  \end{bmatrix}. \]
+  \end{pmatrix}. \]
 We also impose coordinates for $u$ according to
 \[ u = s + t \Pi \in \OO_\DD \qquad s, t \in E. \]
 To make the calculation that follows less complicated,
@@ -160,10 +160,10 @@ In order for $(g,u)$ to be regular semisimple we require that
 are linearly independent, meaning
 \begin{align*}
   0 &\neq
-  \det \begin{bmatrix}
+  \det \begin{pmatrix}
     s & s \alpha + t \bar \beta \varpi \\
     t & s \beta + t \bar \alpha
-  \end{bmatrix}
+  \end{pmatrix}
   = st(\bar\alpha - \alpha) + \beta s^2 - \bar\beta t^2 \varpi \\
   &= \beta s^2 - \bar\beta t^2 \varpi \\
   &= \begin{cases}
@@ -321,7 +321,7 @@ For convenience $\fr = 0$ for $r < 0$.
 We also set
 \[  \mathbf{1}_{K, r} \coloneqq \fr - \mathbf{1}_{K, \le (r-1)} \]
 which is the indicator function for the coset
-\[ K \begin{bmatrix} 0 & \varpi^r \\ \varpi^{-r} & 0 \end{bmatrix} K. \]
+\[ K \begin{pmatrix} 0 & \varpi^r \\ \varpi^{-r} & 0 \end{pmatrix} K. \]
 Note when $r = 0$, $\mathbf{1}_{K, 0} = \mathbf{1}_K = \mathbf{1}_{K, \le 0}$.
 
 Analogous to \Cref{sec:hecke_basis_FJ} we then have the following result.
@@ -332,7 +332,7 @@ Analogous to \Cref{sec:hecke_basis_FJ} we then have the following result.
 \begin{proof}
   This follows from the fact that
   \[ \U(\VV_2^+) = \coprod_{r \ge 0}
-    K \begin{bmatrix} 0 & \varpi^r \\ \varpi^{-r} & 0 \end{bmatrix} K. \]
+    K \begin{pmatrix} 0 & \varpi^r \\ \varpi^{-r} & 0 \end{pmatrix} K. \]
   See the comment in \cite[Equation (7.1.5)]{ref:AFLspherical}.
 \end{proof}
 

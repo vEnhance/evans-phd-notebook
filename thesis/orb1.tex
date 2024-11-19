@@ -11,47 +11,47 @@ and determining the volume of the supports of the indicator function.
 \subsection{Computation of value in indicator function}
 We are integrating over $t_1 \in E$ and $t_2 \in E$.
 Regarding $h' \in H'$ as an element of $\GL_3(E)$ as described before, we have
-\[ h' = \begin{bmatrix}
+\[ h' = \begin{pmatrix}
   t_1 & t_2 & 0  \\
   \bar t_2 & \bar t_1 & 0 \\
   0 & 0 & 1
-  \end{bmatrix}. \]
+  \end{pmatrix}. \]
 We therefore have
-\[ \bar{h'}\inv = \begin{bmatrix}
+\[ \bar{h'}\inv = \begin{pmatrix}
   \frac{t_1}{t_1 \bar t_1 - t_2 \bar t_2} & \frac{-\bar t_2}{t_1 \bar t_1 - t_2 \bar t_2} & 0 \\
   \frac{-t_2}{t_1 \bar t_1 - t_2 \bar t_2} & \frac{\bar t_1}{t_1 \bar t_1 - t_2 \bar t_2} & 0 \\
-  0 & 0 & 1 \end{bmatrix}. \]
+  0 & 0 & 1 \end{pmatrix}. \]
 Hence
 \begin{align*}
   \bar{h'} \inv \gamma h'
   &=
-  \begin{bmatrix}
+  \begin{pmatrix}
   \frac{t_1}{t_1 \bar t_1 - t_2 \bar t_2} & \frac{-\bar t_2}{t_1 \bar t_1 - t_2 \bar t_2} & 0 \\
   \frac{-t_2}{t_1 \bar t_1 - t_2 \bar t_2} & \frac{\bar t_1}{t_1 \bar t_1 - t_2 \bar t_2} & 0 \\
-  0 & 0 & 1 \end{bmatrix}
-  \begin{bmatrix}
+  0 & 0 & 1 \end{pmatrix}
+  \begin{pmatrix}
     a & 0 & 0 \\
     b & - \bar d & 1 \\
     c & 1 - d \bar d & d
-  \end{bmatrix}
-  \begin{bmatrix}
+  \end{pmatrix}
+  \begin{pmatrix}
   t_1 & t_2 & 0  \\
   \bar t_2 & \bar t_1 & 0 \\
   0 & 0 & 1
-  \end{bmatrix} \\
+  \end{pmatrix} \\
   &=
-  \begin{bmatrix}
+  \begin{pmatrix}
   \frac{t_1}{t_1 \bar t_1 - t_2 \bar t_2} & \frac{-\bar t_2}{t_1 \bar t_1 - t_2 \bar t_2} & 0 \\
   \frac{-t_2}{t_1 \bar t_1 - t_2 \bar t_2} & \frac{\bar t_1}{t_1 \bar t_1 - t_2 \bar t_2} & 0 \\
-  0 & 0 & 1 \end{bmatrix}
-  \begin{bmatrix}
+  0 & 0 & 1 \end{pmatrix}
+  \begin{pmatrix}
     at_1 & at_2 & 0 \\
     bt_1 - \bar d \bar t_2 & b t_2 - \bar d \bar t_1 & 1 \\
     ct_1 + (1-d\bar d)\bar t_2 & ct_2 + (1-d \bar d) \bar t_1 & d
-  \end{bmatrix}
+  \end{pmatrix}
   \\
   &=
-  \begin{bmatrix}
+  \begin{pmatrix}
     \dfrac{at_1^2 - bt_1 \bar t_2 + d \bar t_2^2}{t_1 \bar t_1 - t_2 \bar t_2}
     & \dfrac{at_1t_2 - bt_2 \bar t_2 + \bar d \bar t_1 \bar t_2}{t_1 \bar t_1 - t_2 \bar t_2}
     & \dfrac{-\bar t_2}{t_1 \bar t_1 - t_2 \bar t_2} \\[2ex]
@@ -59,7 +59,7 @@ Hence
     & \dfrac{-at_2^2+b\bar t_1 t_2-d\bar t_1^2}{t_1 \bar t_1 - t_2 \bar t_2}
     & \dfrac{\bar t_1}{t_1 \bar t_1 - t_2 \bar t_2} \\[2ex]
     ct_1 + (1-d\bar d)\bar t_2 & ct_2 + (1-d \bar d) \bar t_1 & d
-  \end{bmatrix}
+  \end{pmatrix}
 \end{align*}
 At this point, note that the entry $d$ appears by itself at the bottom-right.
 
@@ -69,7 +69,7 @@ This lets us rewrite everything in terms of the ratio $t$ and $t_1 \in E$:
 \[
   \bar{h'} \inv \gamma h'
   =
-  \begin{bmatrix}
+  \begin{pmatrix}
     \dfrac{t_1^2(a-b\bar t+\bar d \bar t^2)}{t_1 \bar t_1(1-t \bar t)}
     & \dfrac{t_1 \bar t_1(at-bt\bar t+\bar d \bar t)}{t_1 \bar t_1(1-t \bar t)}
     & \dfrac{t_1 \cdot (-\bar t)}{t_1 \bar t_1 (1-t \bar t)} \\[2ex]
@@ -77,7 +77,7 @@ This lets us rewrite everything in terms of the ratio $t$ and $t_1 \in E$:
     & \dfrac{\bar t_1^2(-at^2+bt-\bar d)}{t_1 \bar t_1(1-t \bar t)}
     & \dfrac{-\bar t_1}{t_1 \bar t_1(1-t \bar t)} \\[2ex]
     t_1(c + (1-d\bar d)\bar t) & \bar t_1(ct + (1-d \bar d)) & d
-  \end{bmatrix}
+  \end{pmatrix}
 \]
 This new parametrization is better because $t_1$ only plays the role of
 a scale factor on the outside, with ``interesting'' terms only involving $t$.
@@ -87,11 +87,11 @@ for $m \in \ZZ$ and $\epsilon \in \OO_E^\times$.
 Then
 \begin{align*}
   &\phantom=
-  \begin{bmatrix} \bar\epsilon \\ & \epsilon \\ & & 1 \end{bmatrix}
+  \begin{pmatrix} \bar\epsilon \\ & \epsilon \\ & & 1 \end{pmatrix}
   \bar{h'} \inv \gamma h'
-  \begin{bmatrix} \epsilon\inv \\ & \bar\epsilon\inv \\ & & 1 \end{bmatrix} \\
+  \begin{pmatrix} \epsilon\inv \\ & \bar\epsilon\inv \\ & & 1 \end{pmatrix} \\
   &=
-  \begin{bmatrix}
+  \begin{pmatrix}
   \dfrac{a-b\bar t+\bar d \bar t^2}{1-t \bar t}
   & \dfrac{at-bt\bar t+\bar d \bar t}{1-t \bar t}
   & \dfrac{-\varpi^m \bar t}{1-t \bar t} \\[2ex]
@@ -99,7 +99,7 @@ Then
   & \dfrac{-at^2+bt-\bar d}{1-t \bar t}
   & \dfrac{-\varpi^m}{1-t \bar t} \\[2ex]
   \dfrac{c + (1-d\bar d)\bar t}{\varpi^m} & \dfrac{ct + (1-d \bar d)}{\varpi^m} & d
-  \end{bmatrix}.
+  \end{pmatrix}.
 \end{align*}
 For brevity, we will let $\Gamma(\gamma, t, m)$ denote the right-hand matrix.
 The conjugation by
@@ -189,7 +189,7 @@ Bringing this all into the weighted orbital integral gives
   The proof is similar to the previous claim, but simpler.
 
   Since $k > 0$, the fraction $\frac{t^2}{1-t \bar t}$ has positive valuation,
-  so the upper $2 \times 2$ submatrix of $\Gamma(\gamma, t, m)$ is always in $\varpi^{-r}\OO_E$.
+  so the upper $2 \times 2$ supmatrix of $\Gamma(\gamma, t, m)$ is always in $\varpi^{-r}\OO_E$.
   Turning to the right column, the condition reads exactly $m+k \geq -r$.
   Finally, in the bottom row, from $v(t) > 0$ and $v(c) = \delta$
   the condition is simply $-k+\delta-m \geq -r$.
@@ -203,7 +203,7 @@ based on whether $b$ and $d$ are units or not.
 In this situation we evaluate over $n > 0$ only.
 In this case $t$ is automatically a unit.
 
-Consider the upper $2 \times 2$ submatrix of $\Gamma(\gamma, t, m)$.
+Consider the upper $2 \times 2$ supmatrix of $\Gamma(\gamma, t, m)$.
 Using the identities
 \begin{align*}
   \dfrac{a-b\bar t+\bar d \bar t^2}{1-t \bar t}
@@ -217,13 +217,13 @@ Using the identities
     &= -a+b \in \varpi^{-r} \OO_E,
 \end{align*}
 it follows that as soon as one entry in the upper $2 \times 2$
-submatrix is in $\varpi^{-r} \OO_E$, then all four are.
+supmatrix is in $\varpi^{-r} \OO_E$, then all four are.
 Focusing on the fraction with numerator $-at^2+bt-\bar d$
 we use the identity
 \[ (2at-b)^2 - (b^2-4a\bar d) = -4a(-at^2+bt-\bar d) \]
 to rewrite $v(-at^2+bt-\bar d) \geq n-r$ as
 \[ v\left( (2at-b)^2 - (b^2-4a\bar d) \right) \geq n-r. \]
-This takes care of all four of the entries in the upper $2 \times 2$ submatrix.
+This takes care of all four of the entries in the upper $2 \times 2$ supmatrix.
 
 Meanwhile, the requirements on the other entries amount to
 \begin{align}

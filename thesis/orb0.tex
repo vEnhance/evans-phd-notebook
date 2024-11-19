@@ -7,7 +7,7 @@ and describes the parameters which we will use to express our answer.
 \section{Initial definition of the weighted orbital integral for general $S_n(F)$}
 Let $H = \GL_{n-1}(F)$.
 Then $H$ has a natural embedding into $\GL_n(E)$ by
-\[ h \mapsto \begin{bmatrix} h & 0 \\ 0 & 1 \end{bmatrix} \]
+\[ h \mapsto \begin{pmatrix} h & 0 \\ 0 & 1 \end{pmatrix} \]
 which endows it with an action $S_n(F)$.
 Then our weighted orbital integral is defined as follows.
 \begin{definition}
@@ -51,9 +51,9 @@ Then $S_3(F)$ admits the following decomposition, which we will use:
 \begin{lemma}
   [Cartan decomposition of $S_3(F)$]
   For each integer $r \ge 0$ let
-  \[ K'_{S,r} \coloneqq \GL_3(\OO_E) \cdot \begin{bmatrix} 0 & 0 & \varpi^r \\ 0 & 1 & 0 \\ \varpi^{-r} & 0 & 0 \end{bmatrix} \]
+  \[ K'_{S,r} \coloneqq \GL_3(\OO_E) \cdot \begin{pmatrix} 0 & 0 & \varpi^r \\ 0 & 1 & 0 \\ \varpi^{-r} & 0 & 0 \end{pmatrix} \]
   denote the orbit of
-  $\begin{bmatrix} 0 & 0 & \varpi^r \\ 0 & 1 & 0 \\ \varpi^{-r} & 0 & 0 \end{bmatrix}$
+  $\begin{pmatrix} 0 & 0 & \varpi^r \\ 0 & 1 & 0 \\ \varpi^{-r} & 0 & 0 \end{pmatrix}$
   under the left action of $\GL_3(\OO_E)$.
   Then we have a decomposition
   \[ S_3(F) = \coprod_{r \geq 0} K'_{S,r}. \]
@@ -67,7 +67,7 @@ and can be expressed in a few equivalent ways:
 \begin{align*}
   K'_S
   &\coloneqq K'_{S,0} \\
-  &= \GL_3(\OO_E) \cdot \begin{bmatrix} & & 1 \\ & 1 \\ 1 \end{bmatrix} \\
+  &= \GL_3(\OO_E) \cdot \begin{pmatrix} & & 1 \\ & 1 \\ 1 \end{pmatrix} \\
   &= \GL_3(\OO_E) \cdot \id_3 = S_3(F) \cap \GL_3(\OO_E).
 \end{align*}
 One can equivalently define $K'_{S,r}$ to be the part of $S_3(F)$
@@ -109,7 +109,7 @@ It will be more economical to work with the weighted orbital integral as a doubl
 with two coefficients in $E$, in the following sense.
 Define
 \[ H' \coloneqq
-  \left\{ \begin{bmatrix} t_1 & t_2 \\ \bar t_2 & \bar t_1 \end{bmatrix}
+  \left\{ \begin{pmatrix} t_1 & t_2 \\ \bar t_2 & \bar t_1 \end{pmatrix}
     \mid t_1, t_2 \in E \right\}
 \]
 which is indeed a four-dimensional $F$-algebra.
@@ -121,8 +121,8 @@ As an $F$-algebra, we have an isomorphism (see \cite[\S4.1]{ref:AFL})
 \begin{align*}
   \iota_2 \colon H = \GL_2(F)
   &\xrightarrow{\cong} H' \\
-  \begin{bmatrix} a_{11} & a_{12} \\ a_{21} & a_{22} \end{bmatrix}
-  &\mapsto \begin{bmatrix} t_1 & t_2 \\ \bar t_2 & \bar t_1 \end{bmatrix} \\
+  \begin{pmatrix} a_{11} & a_{12} \\ a_{21} & a_{22} \end{pmatrix}
+  &\mapsto \begin{pmatrix} t_1 & t_2 \\ \bar t_2 & \bar t_1 \end{pmatrix} \\
   t_1 &= \half\left( a_{11} + a_{22} + \frac{a_{12}}{\sqrt{\eps}} + a_{21} \sqrt{\eps} \right) \\
   t_2 &= \half\left( a_{11} - a_{22} + \frac{a_{12}}{\sqrt{\eps}} - a_{21} \sqrt{\eps} \right).
 \end{align*}
@@ -158,11 +158,11 @@ Since we assumed $\gamma \in S_3(F)\rs$ is regular semisimple,
 we can invoke \cite[Proposition 4.1]{ref:AFL}
 to assume $\gamma$ is a representative specifically of the form
 \[ \gamma(a,b,d) =
-  \begin{bmatrix}
+  \begin{pmatrix}
     a & 0 & 0 \\
     b & - \bar d & 1 \\
     c & 1 - d \bar d & d
-  \end{bmatrix}
+  \end{pmatrix}
   \in S_3(F)\rs; \quad \text{where $c = -a \bar b + b d$} \]
 over all $a \in E^1$, $b \in E$, $d \in E$ for which $(1-d\bar d)^2 - c \bar c \neq 0$.
 In other words, the representatives described here cover all the regular orbits in $S_3(F)\rs$.

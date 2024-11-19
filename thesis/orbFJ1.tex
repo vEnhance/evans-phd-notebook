@@ -4,8 +4,8 @@
 \section{Iwasawa decomposition}
 The overall method is to take the Iwasawa decomposition in $KAN$ form:
 every element in $h \in \GL_2(F)$ may be parametrized as
-\[ h = k \begin{bmatrix} x_1 & 0 \\ 0 & x_2 \end{bmatrix}
-  \begin{bmatrix} 1 & y \\ 0 & 1 \end{bmatrix} \]
+\[ h = k \begin{pmatrix} x_1 & 0 \\ 0 & x_2 \end{pmatrix}
+  \begin{pmatrix} 1 & y \\ 0 & 1 \end{pmatrix} \]
 where $k \in K' = \GL_2(\OO_F)$, $x_1, x_2 \in \OO_F^\times$ and $y \in \OO_F$.
 Because the orbits are invariant under conjugation by $K'$,
 the parameter $k$ can be discarded.
@@ -17,38 +17,38 @@ and additive Haar measure on $F$ (so $\OO_F$ has volume $1$).
 
 \section{Action of upper triangular matrices on $(\gamma, \uu, \vv^\top)$.}
 We now compute the action of an arbitrary
-\[ h = \begin{bmatrix} x_1 & 0 \\ 0 & x_2 \end{bmatrix}
-  \begin{bmatrix} 1 & y \\ 0 & 1 \end{bmatrix} \]
+\[ h = \begin{pmatrix} x_1 & 0 \\ 0 & x_2 \end{pmatrix}
+  \begin{pmatrix} 1 & y \\ 0 & 1 \end{pmatrix} \]
 on $(\gamma, \uu, \vv^\top)$.
 The main term is given by
 \begin{align*}
   h \gamma h^{-1}
   &=
-  \begin{bmatrix} x_1 & 0 \\ 0 & x_2 \end{bmatrix}
-  \begin{bmatrix} 1 & y \\ 0 & 1 \end{bmatrix}
-  \begin{bmatrix} a & b \\ c & d \end{bmatrix}
-  \begin{bmatrix} 1 & -y \\ 0 & 1 \end{bmatrix}
-  \begin{bmatrix} x_1^{-1} & 0 \\ 0 & x_2^{-1} \end{bmatrix} \\
+  \begin{pmatrix} x_1 & 0 \\ 0 & x_2 \end{pmatrix}
+  \begin{pmatrix} 1 & y \\ 0 & 1 \end{pmatrix}
+  \begin{pmatrix} a & b \\ c & d \end{pmatrix}
+  \begin{pmatrix} 1 & -y \\ 0 & 1 \end{pmatrix}
+  \begin{pmatrix} x_1^{-1} & 0 \\ 0 & x_2^{-1} \end{pmatrix} \\
   &=
-  \begin{bmatrix} x_1 & 0 \\ 0 & x_2 \end{bmatrix}
-  \begin{bmatrix} cy + a & -cy^2+(d-a)y+b \\ c & -cy+d \end{bmatrix}
-  \begin{bmatrix} x_1^{-1} & 0 \\ 0 & x_2^{-1} \end{bmatrix} \\
+  \begin{pmatrix} x_1 & 0 \\ 0 & x_2 \end{pmatrix}
+  \begin{pmatrix} cy + a & -cy^2+(d-a)y+b \\ c & -cy+d \end{pmatrix}
+  \begin{pmatrix} x_1^{-1} & 0 \\ 0 & x_2^{-1} \end{pmatrix} \\
   &=
-  \begin{bmatrix} cy + a & \frac{x_1}{x_2} \cdot \left( -cy^2+(d-a)y+b \right) \\
-    \frac{x_2}{x_1} \cdot c & -cy+d \end{bmatrix}
+  \begin{pmatrix} cy + a & \frac{x_1}{x_2} \cdot \left( -cy^2+(d-a)y+b \right) \\
+    \frac{x_2}{x_1} \cdot c & -cy+d \end{pmatrix}
 \end{align*}
 Meanwhile, we have
 \begin{align*}
   h \uu &=
-    \begin{bmatrix} x_1 & 0 \\ 0 & x_2 \end{bmatrix}
-    \begin{bmatrix} 1 & y \\ 0 & 1 \end{bmatrix}
-    \begin{bmatrix} 0 \\ 1 \end{bmatrix}
-    = \begin{bmatrix} x_1 y \\ x_2 \end{bmatrix} \\
+    \begin{pmatrix} x_1 & 0 \\ 0 & x_2 \end{pmatrix}
+    \begin{pmatrix} 1 & y \\ 0 & 1 \end{pmatrix}
+    \begin{pmatrix} 0 \\ 1 \end{pmatrix}
+    = \begin{pmatrix} x_1 y \\ x_2 \end{pmatrix} \\
   \vv^\top h^{-1} &=
-    \begin{bmatrix} 0 & e \end{bmatrix}
-    \begin{bmatrix} 1 & -y \\ 0 & 1 \end{bmatrix}
-    \begin{bmatrix} x_1^{-1} & 0 \\ 0 & x_2^{-1} \end{bmatrix}
-    = \begin{bmatrix} 0 & \frac{e}{x_2} \end{bmatrix}.
+    \begin{pmatrix} 0 & e \end{pmatrix}
+    \begin{pmatrix} 1 & -y \\ 0 & 1 \end{pmatrix}
+    \begin{pmatrix} x_1^{-1} & 0 \\ 0 & x_2^{-1} \end{pmatrix}
+    = \begin{pmatrix} 0 & \frac{e}{x_2} \end{pmatrix}.
 \end{align*}
 
 \section{Description of support}
