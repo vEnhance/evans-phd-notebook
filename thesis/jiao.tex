@@ -243,13 +243,35 @@ Define $\ZO4(u)^\circ$ and $\ZO3(u)^\circ$ similarly.
 \end{conjecture}
 We also assume this conjecture henceforth.
 
+\section{A basis for $\HH(\U(\VV_2^+))$}
+\label{sec:hecke_unitary_basis}
+
+For each $r \ge 0$, we define
+\[ \fr \coloneqq \mathbf{1}_{\varpi^{-r} \Mat_2(\OO_E) \cap \U(\VV_n^+)} \in \HH(\U(\VV_2^+)). \]
+We also set
+\[  \mathbf{1}_{K, r} \coloneqq \fr - \mathbf{1}_{K, \le (r-1)}
+  = \mathbf{1}_{K \begin{bmatrix} 0 & \varpi^r \\ \varpi^{-r} & 0 \end{bmatrix} K}. \]
+(When $r = 0$, $\mathbf{1}_{K, 0} = \mathbf{1}_K = \mathbf{1}_{K, \le 0}$.)
+Analogous to \Cref{sec:hecke_basis_FJ} we have the following result.
+\begin{proposition}
+  The functions $\fr$ (for $r \ge 0$) form a basis of $\HH(\U(\VV_2^+))$.
+  (Similarly, so do $\mathbf{1}_{K, r}$ for $r \ge 0$.)
+\end{proposition}
+\begin{proof}
+  See the comment in \cite[Equation (7.1.5)]{ref:AFLspherical}.
+\end{proof}
+
+The base change for this basis is given later in \Cref{lem:finale_base_change}.
+
 \section{The intersection number as a triple product}
 We return to the intersection number
 \[ \Int((g,u), \fr) = \chi_{\RZ_{n,n}} \left(
       \Sheaf_{\TT_{\mathbf{1} \otimes \fr}(\Delta_{\ZD(u)})}
-      \jiao_{\Sheaf_{\RZ_{n,n}}} \SO_{\Gamma_g} \right) \]
+      \jiao_{\Sheaf_{\RZ_{n,n}}} \Sheaf_{\Gamma_g} \right) \]
 which we will rewrite more succinctly using angle brackets as
-\[ \Int((g,u), \fr) = \Big\langle (1,g) \cdot \TTr \; \Delta(\ZD(u)) \Big\rangle_{\RZ_{2,2}} \]
+\[ \Int((g,u), \fr) = \Big\langle
+  \mathbb{T}_{\mathbf{1}_K \otimes \mathbf{1}_{K, \le r}}
+  \Delta_{\ZD(u)}, \Gamma_g \Big\rangle_{\RZ_{2,2}} \]
 in analogy to \cite[\S6.1]{ref:AFLspherical}.
 (Note that $\Delta$ here is the diagonal map $\RZ_2 \to \RZ_{2,2}$.)
 For this calculation, it would be sufficient to split
@@ -258,7 +280,8 @@ Accordingly, let us introduce the notation
 \begin{align*}
   \Int^\circ((g,u), \fr)
   &\coloneqq \Int((g,u), \fr) - \Int\left( \left( g, \frac{u}{\varpi} \right), \fr \right) \\
-  &= \Big\langle (1,g) \cdot \TTr \; \Delta(\ZD(u)^\circ) \Big\rangle_{\RZ_{2,2}}.
+  &= \Big\langle \mathbb{T}_{\mathbf{1}_K \otimes \mathbf{1}_{K, \le r}}
+    \Delta_{\ZD(u)^\circ}, \Gamma_g \Big\rangle_{\RZ_{2,2}}.
 \end{align*}
 Assuming \Cref{conj:serre_pullback_divisor} we get
 \begin{align*}
@@ -293,15 +316,16 @@ Let $\ODT \coloneqq \OO_\DD \cap \DT$.
     n_2 &= v\left( \left\langle x,x \right\rangle _0 \left\langle y,y \right\rangle _0 - \left\langle x,y \right\rangle^2_0 \right) - n_1
   \end{align*}
   so that $0 \le n_1 \le n_2$.
-  Then
-  \begin{align*}
-    &\left< \ZO4(1), \; \ZO4(x), \; \ZO4(y) \right>_{\MM_2 \times \MM_2} \\
-    &=
-    \begin{cases}
-      \sum_{j=0}^{\frac{n_1-1}{2}} (n_1+n_2-4j) q^j & \text{if } n_1 \equiv 1 \pmod 2 \\
-      \frac{n_2-n_1+1}{2} q^{n_1/2} + \sum_{j=0}^{n_1/2-1} (n_1+n_2-4j) q^j & \text{if } n_1 \equiv 0 \pmod 2.
-    \end{cases}
-  \end{align*}
+  Then if $n_1$ is odd, we have
+  \[
+    \left< \ZO4(1), \; \ZO4(x), \; \ZO4(y) \right>_{\MM_2 \times \MM_2}
+    = \sum_{j=0}^{\frac{n_1-1}{2}} (n_1+n_2-4j) q^j
+  \]
+  while if $n_1$ is even we instead have
+  \[
+    \left< \ZO4(1), \; \ZO4(x), \; \ZO4(y) \right>_{\MM_2 \times \MM_2}
+    = \frac{n_2-n_1+1}{2} q^{n_1/2} + \sum_{j=0}^{n_1/2-1} (n_1+n_2-4j) q^j.
+  \]
 \end{proposition}
 \begin{proof}
   This is a rewriting of \cite[Proposition 14.6]{ref:Kudla1997}
@@ -361,4 +385,4 @@ Hence we arrive at an exact formula for
 \[ \left< \ZO4(1), \; \ZO4(x), \; \ZO4(y) \right>_{\MM_2 \times \MM_2} \]
 in terms of the valuations of the above formulas,
 which we will explicate in the next section after matching $(g,u)$
-to the corresponding element in $(S_2(F) \times V_2'(F))\rs$
+to the corresponding element in $(S_2(F) \times V_2'(F))\rs$.

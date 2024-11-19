@@ -153,21 +153,29 @@ Subtracting the two gives
 \end{equation}
 
 \section{Base change}
+\label{sec:finale_base_change}
 The base change for $n=2$ was already calculated in \cite{ref:AFLspherical}
 and we simply recall the result here.
 
 As in \Cref{ch:jiao}, we define
-\[ \fr \coloneqq \mathbf{1}_{\varpi^{-r} \Mat_2(\OO_E) \cap \U(\VV_n^+)} \in \HH(\U(\VV_n^+)) \]
+\begin{align*}
+  \fr &\coloneqq \mathbf{1}_{\varpi^{-r} \Mat_2(\OO_E) \cap \U(\VV_n^+)} \in \HH(\U(\VV_n^+)) \\
+  \mathbf{1}_{K, r} &\coloneqq \fr - \mathbf{1}_{K, \le (r-1)} \\
+  &= \mathbf{1}_{\varpi^{-r} \Mat_2(\OO_E) \cap \U(\VV_n^+)} \in \HH(\U(\VV_n^+)) \\
+\end{align*}
+
 \begin{lemma}
   [{\cite[Lemma 7.1.1]{ref:AFLspherical}}]
   \label{lem:finale_base_change}
   For $n = 2$ and $r \ge 1$ we have
-  \[
+  \begin{align*}
     \BC_S^{\eta}(
       \mathbf{1}_{K'_{S, \le r}}
       + \mathbf{1}_{K'_{S, \le (r-1)}}
-      ) = (-1)^r(\mathbf{1}_{K, \le r} - \mathbf{1}_{K, \le (r-1)})
-  \]
+      )
+      &= (-1)^r \mathbf{1}_{K, r} \\
+      &= (-1)^r(\mathbf{1}_{K, \le r} - \mathbf{1}_{K, \le (r-1)}).
+  \end{align*}
 \end{lemma}
 \begin{proof}
   This follows directly from \cite[equation (7.1.9)]{ref:AFLspherical}.
@@ -366,7 +374,7 @@ Subtracting the same equation from itself with $r$ replaced by $r-1$ gives
   &= \frac{(-1)^{v(c)+r}}{\log q}\left. \pdv{}{s} \right\rvert_{s=0}
   \Orb(\guv, (\mathbf{1}_{K'_{S, \le r}} + \mathbf{1}_{K'_{S, \le (r-1)}}) \otimes \oneV, s).
 \end{align*}
-which, since $(-1)^{v(c)} = -\omega\varpi$, becomes
+which, since $(-1)^{v(c)} = -\omega\guv$, becomes
 \begin{equation}
   \begin{aligned}
     &\Int((g,u), (-1)^r(\mathbf{1}_{K, \le r} - \mathbf{1}_{K, \le (r-1)})) \\
@@ -381,3 +389,146 @@ matches $\mathbf{1}_{K'_{S, \le r}} + \mathbf{1}_{K'_{S, \le (r-1)}} \in \HH(S_2
 for any $r \ge 0$.
 And hence from the $r = 0$ case we can inductively conclude
 \Cref{thm:semi_lie_n_equals_2} for $r > 0$, completing the proof.
+
+\section{A particularly simple formula for a certain intersection number}
+We mention in particular that the value of
+\[ \Int^\circ((g,u), 1_{K,r})
+  = \Big\langle \mathcal{T}_{\mathbf{1}_K \otimes \mathbf{1}_{K, r}}
+    \Delta_{\ZD(u)^\circ}, \Gamma_g \Big\rangle_{\RZ_{2,2}} \]
+(note the change from $\fr$ to $\mathbf{1}_{K, \le r}$ here)
+has a particularly simple formula that seems worth mentioning.
+We phrase this entirely based on the quantities in the geometric side
+to keep in self-contained.
+
+\begin{theorem}
+  When $r \ge 1$ and $v(\Nm u) > 0$ we have
+  \[
+    \Int^\circ((g,u), 1_{K,r})
+    =
+    \begin{cases}
+      (C+1) q^{N} + (C+2) q^{N-1}
+        & \text{if } v(e)-r = v(d-a) \le \frac{v(b)+v(c)-1}{2} \\
+      2q^N & \text{if } \frac{v(b)+v(c)-1}{2} + r < \min(v(e), v(d-a)+r) \\
+      q^N + q^{N-1} & \text{otherwise}.
+    \end{cases}
+  \]
+  where
+  \[ C = \frac{v(b) + v(c)- 2v(d-a) - 1}{2} \ge 0 \]
+  in the first case.
+\end{theorem}
+
+\begin{proof}
+  Recall that
+  \begin{align*}
+    \GK(r, v(b), v(c), v(e), v(d-a))
+    &= \frac{(-1)^{r+v(c)}}{\log q} \Big(
+      \partial \Orb(r, v(b), v(c), v(e), v(d-a)) \\
+      &\qquad+ \partial \Orb(r, v(b), v(c), v(e)-1, v(d-a))
+      \Big) \\
+    \GK(r-1, v(b), v(c), v(e), v(d-a))
+    &= \frac{(-1)^{r-1+v(c)}}{\log q} \Big(
+      \partial \Orb(r-1, v(b), v(c), v(e), v(d-a)) \\
+      &\qquad- \partial \Orb(r-1, v(b), v(c), v(e)-1, v(d-a))
+      \Big)
+  \end{align*}
+  when we subtract we obtain that
+  \begin{align*}
+    \Int^\circ((g,u), \mathbf{1}_{K, r})
+    &= \frac{(-1)^{r+v(c)}}{\log q} \Big(
+      \partial \Orb(r, v(b), v(c), v(e), v(d-a)) \\
+      &\qquad+ \partial \Orb(r-1, v(b), v(c), v(e), v(d-a)) \\
+      &\qquad- \partial \Orb(r, v(b), v(c), v(e)-2, v(d-a)) \\
+      &\qquad+ \partial \Orb(r-1, v(b), v(c), v(e)-2, v(d-a))
+    \Big).
+  \end{align*}
+  Gathering the first two terms lets us apply the simpler formula \Cref{cor:semi_lie_combo} twice;
+  doing so gives
+  \begin{align*}
+    \Int^\circ((g,u), \mathbf{1}_{K, r})
+    &= \left( (q^N + q^{N-1} + \dots + 1) + C q^N + C' q^{N-1} \right) \\
+    &- \left( (q^{N^\flat} + q^{N^\flat-1} + \dots + 1) + C^\flat q^{N^\flat} + (C')^\flat q^{N^\flat-1} \right)
+  \end{align*}
+  where $N$, $C$, $C'$ are is in \Cref{cor:semi_lie_combo},
+  and $N^\flat$, $C^\flat$, $(C')^\flat$ are the same quantities
+  with $v(e)$ replaced by $v(e)-2$.
+  Let $\varkappa$ and $\varkappa^\flat = \varkappa - 2$ be also as in \Cref{cor:semi_lie_combo}.
+
+  We consider cases now.
+  \begin{itemize}
+    \ii Suppose first $v(e) \le \frac{v(b)+v(c)-1}{2}+r$ and $v(e) < v(d-a)+r$.
+    Then $N = v(e)$ and $N^\flat = v(e) - 2$ and $C = C' = (C^\flat) = (C')^\flat = 0$,
+    Hence in this case we have
+    \[ \Int^\circ((g,u), \mathbf{1}_{K, r}) = q^{N} + q^{N-1}. \]
+
+    \ii Next suppose $2v(d-a) > v(b) + v(c)$ and consider cases on $v(e)$.
+    We only need to consider $v(e) > \frac{v(b)+v(c)-1}{2} + r$.
+    \begin{itemize}
+      \ii If $v(e) = \frac{v(b)+v(c)-1}{2} + r + 1$
+      then we have
+      \[ N = \frac{v(b)+v(c)-1}{2} + r, \qquad N^\flat = \frac{v(b)+v(c)-1}{2} + r - 1 \]
+      and
+      $C = 1$, $C^\flat = 0$, and $C' = (C')^\flat = 0$.
+      Consequently we get
+      \[ \Int^\circ((g,u), \mathbf{1}_{K, r}) = 2 q^N. \]
+
+      \ii Once $v(e) \ge \frac{v(b)+v(c)-1}{2} + r + 2$
+      we always have $N = N^\flat = \frac{v(b)+v(c)-1}{2} + r$,
+      \[ C - C^\flat = (v(e)-N)-((v(e)-2)-N) = 2 \]
+      and $C' = (C')^\flat = 0$.
+      Hence in this case we have
+      \[ \Int^\circ((g,u), \mathbf{1}_{K, r}) = 2 q^N \]
+      as well.
+    \end{itemize}
+
+    \ii Finally suppose $2v(d-a) < v(b) + v(c)$ and consider cases on $v(e)$.
+    We only need to consider $v(e) \ge v(d-a) + r + 1$.
+    \begin{itemize}
+      \ii If $v(e) = v(d-a) + r$,
+      then \[ N = v(d-a) + r, \qquad N^\flat = v(d-a) + r - 2. \]
+      In this case $\varkappa = 0$ (and $\varkappa^\flat=-2$).
+      So $C^\flat = (C')^\flat = 0$ but we have larger terms
+      \begin{align*}
+        C &= \frac{v(b) + v(c)- 2v(d-a) - 1}{2} \\
+        C' &= \frac{v(b) + v(c)- 2v(d-a) + 1}{2}.
+      \end{align*}
+      Hence, we get an exception case
+      \begin{align*}
+        \Int^\circ((g,u), \mathbf{1}_{K, r})
+        &= \frac{v(b) + v(c) - 2v(d-a) + 1}{2} q^{N} \\
+        &\qquad+ \frac{v(b) + v(c) - 2v(d-a) + 3}{2} q^{N-1}
+      \end{align*}
+
+      \ii If $v(e) = v(d-a) + r + 1$,
+      then we have
+      \[ N = v(d-a) + r, \qquad N^\flat = v(d-a) + r - 1. \]
+      In this case $\varkappa = 1$ (and $\varkappa^\flat=-1$) so we have
+      $C = 0$, $C' = 1$, $C^\flat = 0 = (C')^\flat = 0$.
+      Consequently we get
+      \[ \Int^\circ((g,u), \mathbf{1}_{K, r}) = q^{N} + q^{N-1}. \]
+
+      \ii Once $v(e) \ge v(d-a) + r + 2$,
+      we always have $N = N^\flat = v(d-a) + r$ and
+      \[ C - C^\flat = (C') - (C'^\flat) = 1 \]
+      regardless of the parity of $\varkappa$.
+      Hence in this case we also get
+      \[ \Int^\circ((g,u), \mathbf{1}_{K, r}) = q^{N} + q^{N-1}. \]
+    \end{itemize}
+  \end{itemize}
+  Hence, in summary we get that
+  \begin{equation}
+  \begin{aligned}
+    &\Int^\circ((g,u), \mathbf{1}_{K, r}) \\
+    &= \begin{cases}
+      (C+1) q^{N} + (C+2) q^{N-1}
+        & \text{if } v(e)-r = v(d-a) \le \frac{v(b)+v(c)-1}{2} \\
+      2q^N & \text{if } \frac{v(b)+v(c)-1}{2} + r < \min(v(e), v(d-a)+r) \\
+      q^N + q^{N-1} & \text{otherwise}.
+    \end{cases}
+  \end{aligned}
+  \label{eq:int_circle_orbital_param}
+  \end{equation}
+  where
+  \[ C = \frac{v(b) + v(c)- 2v(d-a) - 1}{2} \ge 0 \]
+  in the first case.
+  Then \eqref{eq:int_circle_orbital_param} follows by translating back.
+\end{proof}
