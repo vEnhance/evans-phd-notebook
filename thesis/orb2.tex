@@ -712,7 +712,7 @@ For the first three, fix an index $k$; we collect the coefficient of $(-q^s)^k$.
   \end{align*}
   Now we collect the coefficient of $(-q^s)^k$.
   The value of $k$ runs from the lowest value $k = \ell-r+1$
-  to the highest value $k = \lambda + r  + 2 \delta - \ell - 2$.
+  to the highest value $k = \lambda - \ell + 2 \delta + r - 2$.
   We seek the number of $0 \le j \le r-\frac{\ell}{2}+\delta-1$ such that
   \[ \ell - r + 2j + 1 \le k \le \lambda - r + 2j
     \iff \frac{k + r - \lambda}{2} \le j \le \frac{k + r - (\ell + 1)}{2} \]
@@ -723,6 +723,10 @@ For the first three, fix an index $k$; we collect the coefficient of $(-q^s)^k$.
     + 1
   \]
   which is nonnegative (but could be zero).
+  We add in one more term $k = \lambda - \ell + 2 \delta + r - 1$
+  and $k = \lambda - \ell + 2 \delta + r$
+  for simplicity;
+  this is okay because the above display equals zero at this value anyway.
   \ii For the second double sum, change the order of summation to
   \begin{align*}
     \sum_{n=\lambda+r+1}^{\lambda-\frac{\ell}{2}+\delta+r}
@@ -744,6 +748,9 @@ For the first three, fix an index $k$; we collect the coefficient of $(-q^s)^k$.
   \[ \min\left(k+r, \lambda - \frac{\ell}{2} + \delta + r \right)
     - \left\lceil \frac{k+\lambda+r+1}{2} \right\rceil + 1 \]
   which is nonnegative (but could be zero).
+  We add in three more terms $k = \ell - r$,
+  $k = \lambda - \ell + 2 \delta + r$ and $k = \lambda - r$
+  for simplicity; this is okay because the above display equals zero at this value anyway.
   \ii For the third double sum, similarly write
   \begin{align*}
     \sum_{n=\ell+r+1}^{\frac{\ell}{2}+\delta+r}
@@ -762,7 +769,91 @@ For the first three, fix an index $k$; we collect the coefficient of $(-q^s)^k$.
   \[ \min\left( k+r, \frac{\ell}{2} + \delta + r \right)
     - \left\lceil \frac{k+\ell+r+1}{2} \right\rceil + 1 \]
   which is nonnegative (but could be zero).
+  We add in two more terms $k = \ell - r$ and $k = 2\delta + r$ for simplicity
+  since the display vanishes for these values.
+\end{itemize}
+Now we collate the contribution of the first three double sums:
+\begin{align*}
+  &\phantom+ \sum_{k=\ell-r}^{\lambda-\ell+2\delta+r} \left(
+    \min\left( \left\lfloor \frac{k + r - (\ell + 1)}{2} \right\rfloor, r - \frac{\ell}{2} + \delta - 1 \right)
+    - \max\left( \left\lceil \frac{k + r -\lambda}{2} \right\rceil, 0 \right) + 1 \right) (-q^s)^k \\
+  &+ \sum_{k=\lambda-r}^{\lambda-\ell+2\delta+r} \left(
+    \min\left(k+r, \lambda - \frac{\ell}{2} + \delta + r \right)
+    - \left\lceil \frac{k+\lambda+r+1}{2} \right\rceil + 1 \right) (-q^s)^k \\
+  &+ \sum_{k=\ell-r}^{2\delta+r} \left(
+    \min\left( k+r, \frac{\ell}{2} + \delta + r \right)
+    - \left\lceil \frac{k+\ell+r+1}{2} \right\rceil + 1 \right) (-q^s)^k \\
+  &= \sum_{k=\ell-r}^{\lambda-r-1} \left(
+    \min\left( \left\lfloor \frac{k + r - (\ell + 1)}{2} \right\rfloor, r - \frac{\ell}{2} + \delta - 1 \right)
+    + 1 \right) (-q^s)^k \\
+  &+ \sum_{k=\lambda-r}^{\lambda-\ell+2\delta+r} \left(
+    \min\left( \left\lfloor \frac{k + r - (\ell + 1)}{2} \right\rfloor, r - \frac{\ell}{2} + \delta - 1 \right)
+    - \left\lceil \frac{k + r -\lambda}{2} \right\rceil + 1 \right) (-q^s)^k \\
+  &+ \sum_{k=\lambda-r}^{\lambda-\ell+2\delta+r} \left(
+    \min\left(k+r, \lambda - \frac{\ell}{2} + \delta + r \right)
+    - \left\lceil \frac{k+\lambda+r+1}{2} \right\rceil + 1 \right) (-q^s)^k \\
+  &+ \sum_{k=\ell-r}^{2\delta+r} \left(
+    \min\left( k+r, \frac{\ell}{2} + \delta + r \right)
+    - \left\lceil \frac{k+\ell+r+1}{2} \right\rceil + 1 \right)(-q^s)^k .
+\end{align*}
+Hence, for each $k$ the coefficient of $(-q^s)^k$
+is given by a sum of a subset of the following four coefficients:
+\begin{itemize}
+  \ii For $\ell - r \le k \le \lambda - r - 1$, we get
+  \[ C_1(k) \coloneqq \begin{cases}
+    \left\lfloor \frac{k + r - \ell + 1}{2} \right\rfloor &\text{if } k \le 2 \delta + r \\
+    r - \frac{\ell}{2} + \delta &\text{if } k \ge 2 \delta + r.
+    \end{cases} \]
+  \ii For $\lambda - r \le k \le \lambda - \ell + 2 \delta + r$, we get
+  \begin{align*}
+    C_2(k)
+    &\coloneqq \begin{cases}
+      \left\lfloor \frac{k+r-\ell+1}{2} \right\rfloor - \left\lceil \frac{k+r-\lambda}{2} \right\rceil &\text{if } k \le 2 \delta + r \\
+      r - \frac{\ell}{2} + \delta - \left\lceil \frac{k+r-\lambda}{2} \right\rceil + 1 &\text{if } k \ge 2 \delta + r \\
+    \end{cases} \\
+    &= \begin{cases}
+      \frac{\lambda-\ell+1}{2} - (k+r-\lambda)\%2 &\text{if } k \le 2 \delta + r \\
+      \left\lfloor \frac{\lambda - \ell + 2\delta + r - k}{2} \right\rfloor &\text{if } k \ge 2 \delta + r.
+    \end{cases}
+  \end{align*}
 
+  \ii For $\lambda - r \le k \le \lambda - \ell + 2 \delta + r$, we get
+  \begin{align*}
+    C_3(k)
+    &\coloneqq \begin{cases}
+      k + r - \left\lceil \frac{k+\lambda+r+1}{2} \right\rceil + 1 &\text{if } k \le \lambda - \frac{\ell}{2} + \delta \\
+      \left( \lambda - \frac{\ell}{2} + \delta + r \right) - \left\lceil \frac{k+\lambda+r+1}{2} \right\rceil + 1 &\text{if } k \ge \lambda - \frac{\ell}{2} + \delta
+    \end{cases} \\
+    &= \begin{cases}
+      \left\lfloor \frac{k-\lambda+r+1}{2} \right\rfloor &\text{if } k \le \lambda - \frac{\ell}{2} + \delta \\
+      \left\lfloor \frac{\lambda - \ell + 2\delta + r - k + 1}{2} \right\rfloor &\text{if } k \ge \lambda - \frac{\ell}{2} + \delta.
+    \end{cases}
+  \end{align*}
+  \ii For $\ell - r \le k \le 2 \delta + r$, we get
+  \begin{align*}
+    C_4(k)
+    &\coloneqq \begin{cases}
+      k + r - \left\lceil \frac{k+\ell+r+1}{2} \right\rceil + 1 &\text{if } k \le \frac{\ell}{2}+\delta \\
+      \frac{\ell}{2} + \delta + r - \left\lceil \frac{k+\ell+r+1}{2} \right\rceil + 1 &\text{if } k \ge \frac{\ell}{2}+\delta.
+    \end{cases} \\
+    &= \begin{cases}
+      \left\lfloor \frac{k-\ell+r+1}{2} \right\rfloor &\text{if } k \le \frac{\ell}{2}+\delta \\
+      \left\lfloor \frac{2\delta+r-k+1}{2} \right\rfloor &\text{if } k \ge \frac{\ell}{2}+\delta.
+    \end{cases}
+  \end{align*}
+\end{itemize}
+We consider the following cases now:
+\begin{itemize}
+  \ii Suppose $\ell - r + 1 \le k \le \delta + \frac{\ell}{2} - r$ (so that $k \le 2 \delta + r$ too).
+  \begin{itemize}
+    \ii If $k < \lambda - r$ as well, the total contribution is
+    \begin{align*}
+      C_1(k) + C_4(k)
+      &= \left\lfloor \frac{k + (r - \ell) + 1}{2} \right\rfloor
+      + (k + r) - \left\lceil \frac{k+\ell+r+1}{2} \right\rceil + 1 \\
+      &=
+    \end{align*}
+  \end{itemize}
 \end{itemize}
 
 \section{Full explicit weighted orbital integral for the case where $\ell$ is even and $v(b) \ge 0$, $v(d) \ge 0$}
