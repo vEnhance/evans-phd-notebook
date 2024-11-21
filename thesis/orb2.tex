@@ -648,7 +648,7 @@ and put $\Vol(t_1:-v(t_1)=m) = q^{2m} (1-q^{-2})$ to get:
 \begin{align*}
   I_{n > 0}^{\text{3+4}}
   % -----------------------------------------------------------
-  &\coloneqq \kappa \sum_{n=\ell+r+1}^{-\frac{\ell}{2}+\delta+\lambda+r}
+  &\coloneqq \kappa \sum_{n=\ell+r+1}^{\lambda-\frac{\ell}{2}+\delta+r}
     \sum_{m=n-r}^{\min(n-1, \lambda+r)-\frac{\ell}{2}+\delta}
     q^{-n-(n-\frac{\ell}{2}-r)} \left( 1 - q^{-1} \right) \\
     &\qquad\qquad\cdot \Big( (-1)^n q^{s(2m-n)} q^{2n-2m} \Big) \Big( q^{2m}(1-q^{-2}) \Big) \\
@@ -660,7 +660,7 @@ and put $\Vol(t_1:-v(t_1)=m) = q^{2m} (1-q^{-2})$ to get:
     \sum_{m=n-\frac{\ell}{2}+\delta}^{\min(n,\lambda)+\delta+r}
     q^{-n-(m-\delta-r)} \left( 1 - q^{-1} \right) \\
     &\qquad\qquad\cdot \Big( (-1)^n q^{s(2m-n)} q^{2n-2m} \Big) \Big( q^{2m}(1-q^{-2}) \Big) \\
-  &= \sum_{n=\ell+r+1}^{-\frac{\ell}{2}+\delta+\lambda+r}
+  &= \sum_{n=\ell+r+1}^{\lambda-\frac{\ell}{2}+\delta+r}
     \sum_{m=n-r}^{\min(n-1, \lambda+r)-\frac{\ell}{2}+\delta}
     q^{-n-(n-\frac{\ell}{2}-r)}
       \cdot \Big( (-1)^n q^{s(2m-n)} q^{2n} \Big) \\
@@ -672,7 +672,7 @@ and put $\Vol(t_1:-v(t_1)=m) = q^{2m} (1-q^{-2})$ to get:
     \sum_{m=n-\frac{\ell}{2}+\delta}^{\min(n,\lambda)+\delta+r}
     q^{-n-(m-\delta-r)}
       \cdot \Big( (-1)^n q^{s(2m-n)} q^{2n} \Big) \\
-  &= \sum_{n=\ell+r+1}^{-\frac{\ell}{2}+\delta+\lambda+r}
+  &= \sum_{n=\ell+r+1}^{\lambda-\frac{\ell}{2}+\delta+r}
     \sum_{m=n-r}^{\min(n-1, \lambda+r)-\frac{\ell}{2}+\delta}
     q^{\frac{\ell}{2}+r} \cdot (-1)^n q^{s(2m-n)} \\
   &\qquad+ \sum_{n=\ell+r+1}^{\frac{\ell}{2}+\delta+r}
@@ -681,9 +681,89 @@ and put $\Vol(t_1:-v(t_1)=m) = q^{2m} (1-q^{-2})$ to get:
   &\qquad+ \sum_{n=\ell+r+1}^{\lambda+r}
     \sum_{m=n-\frac{\ell}{2}+\delta}^{\min(n,\lambda)+\delta+r}
     q^{n-m+\delta+r} \cdot (-1)^n q^{s(2m-n)} \\
+  &= q^{\frac{\ell}{2}+r} \cdot \sum_{n=\ell+r+1}^{\lambda+r}
+    \sum_{m=n-r}^{n-1-\frac{\ell}{2}+\delta}
+    (-1)^n q^{s(2m-n)} \\
+  &\qquad+ q^{\frac{\ell}{2}+r} \cdot \sum_{n=\lambda+r+1}^{\lambda-\frac{\ell}{2}+\delta+r}
+    \sum_{m=n-r}^{\lambda-\frac{\ell}{2}+\delta+r}
+    (-1)^n q^{s(2m-n)} \\
+  &\qquad+ q^{\frac{\ell}{2}+r} \cdot \sum_{n=\ell+r+1}^{\frac{\ell}{2}+\delta+r}
+    \sum_{m=n-r}^{\frac{\ell}{2}+\delta+r}
+    (-1)^n q^{s(2m-n)} \\
+  &\qquad+ \sum_{n=\ell+r+1}^{\lambda+r}
+    \sum_{m=n-\frac{\ell}{2}+\delta}^{\min(n,\lambda)+\delta+r}
+    q^{n-m+\delta+r} \cdot (-1)^n q^{s(2m-n)};
 \end{align*}
+We now analyze each double sum.
+For the first three, fix an index $k$; we collect the coefficient of $(-q^s)^k$.
+\begin{itemize}
+  \ii For the first double sum, change the summation for $m$ to
+  \[ m = n-r + j \iff j = m - n + r \]
+  so that $2m - n = n - 2r + 2j$
+  and the first double sum rewrites as
+  \begin{align*}
+    \sum_{n=\ell+r+1}^{\lambda+r} \sum_{m=n-r}^{n-\frac{\ell}{2}+\delta-1} (-q^s)^{2m-n}
+    &= \sum_{n=\ell+r+1}^{\lambda+r}
+      \sum_{j=0}^{r-\frac{\ell}{2}+\delta-1} (-q^s)^{n-2r+2j} \\
+    &= \sum_{j=0}^{r-\frac{\ell}{2}+\delta-1} \sum_{n=\ell+r+1}^{\lambda+r}
+      (-q^s)^{n-2r+2j} \\
+    &= \sum_{j=0}^{r-\frac{\ell}{2}+\delta-1}
+    \sum_{k=\ell-r+2j+1}^{\lambda-r+2j} (-q^s)^k
+  \end{align*}
+  Now we collect the coefficient of $(-q^s)^k$.
+  The value of $k$ runs from the lowest value $k = \ell-r+1$
+  to the highest value $k = \lambda + r  + 2 \delta - \ell - 2$.
+  We seek the number of $0 \le j \le r-\frac{\ell}{2}+\delta-1$ such that
+  \[ \ell - r + 2j + 1 \le k \le \lambda - r + 2j
+    \iff \frac{k + r - \lambda}{2} \le j \le \frac{k + r - (\ell + 1)}{2} \]
+  so the number of terms that appear is
+  \[
+    \min\left( \left\lfloor \frac{k + r - (\ell + 1)}{2} \right\rfloor, r - \frac{\ell}{2} + \delta - 1 \right)
+    - \max\left( \left\lceil \frac{k + r -\lambda}{2} \right\rceil, 0 \right)
+    + 1
+  \]
+  which is nonnegative (but could be zero).
+  \ii For the second double sum, change the order of summation to
+  \begin{align*}
+    \sum_{n=\lambda+r+1}^{\lambda-\frac{\ell}{2}+\delta+r}
+      \sum_{m=n-r}^{\lambda-\frac{\ell}{2}+\delta+r} (-q^s)^{2m-n}
+    &= \sum_{m=\lambda+1}^{\lambda-\frac{\ell}{2}+\delta+r}
+      \sum_{n=\lambda+r+1}^{m+r} (-q^s)^{2m-n} \\
+    &= \sum_{m=\lambda+1}^{\lambda-\frac{\ell}{2}+\delta+r}
+      \sum_{k=m-r}^{2m-\lambda-r-1} (-q^s)^k.
+  \end{align*}
+  Now we collect the coefficient of $(-q^s)^k$.
+  The value of $k$ runs from the lowest value $k = \lambda - r + 1$
+  to the highest value $k = \lambda-\ell+2\delta+r-1$.
+  For $k$ in this interval, we seek values of $m$ such that
+  \[ m - r \le k \le 2 m - \lambda - r - 1
+    \iff \frac{k + \lambda + r + 1}{2} \le m \le k + r \]
+  and the left inequality for $k \ge \lambda - r + 1$
+  already ensures $\frac{k + \lambda + r + 1}{2} \ge \lambda + 1$,
+  so the number of terms that appear is
+  \[ \min\left(k+r, \lambda - \frac{\ell}{2} + \delta + r \right)
+    - \left\lceil \frac{k+\lambda+r+1}{2} \right\rceil + 1 \]
+  which is nonnegative (but could be zero).
+  \ii For the third double sum, similarly write
+  \begin{align*}
+    \sum_{n=\ell+r+1}^{\frac{\ell}{2}+\delta+r}
+      \sum_{m=n-r}^{\frac{\ell}{2}+\delta+r} (-q^s)^{2m-n}
+    &=\sum_{m=\ell+1}^{\frac{\ell}{2}+\delta+r}
+      \sum_{n=\ell+r+1}^{m+r} (-q^s)^{2m-n} \\
+    &=\sum_{m=\ell+1}^{\frac{\ell}{2}+\delta+r}
+      \sum_{k=m-r}^{2m-\ell-r-1} (-q^s)^k.
+  \end{align*}
+  The value of $k$ runs from the lowest value $k = \ell-r+1$
+  to the highest value $k = 2\delta+r-1$, and for $k$ in this range we need $m$ with
+  \[ m - r \le k \le 2 m - \ell - r - 1 \iff
+    \frac{k + \ell + r + 1}{2} \le m \le k + r \]
+  with the lower bound already being at least $\ell+1$ for $k \ge \ell-r+1$.
+  Hence, we get the number of terms is
+  \[ \min\left( k+r, \frac{\ell}{2} + \delta + r \right)
+    - \left\lceil \frac{k+\ell+r+1}{2} \right\rceil + 1 \]
+  which is nonnegative (but could be zero).
 
-\todo{ok this collation is going to be\dots fun\dots}
+\end{itemize}
 
 \section{Full explicit weighted orbital integral for the case where $\ell$ is even and $v(b) \ge 0$, $v(d) \ge 0$}
 \begin{theorem}
