@@ -844,15 +844,27 @@ is given by a sum of a subset of the following four coefficients:
 \end{itemize}
 We consider the following cases now:
 \begin{itemize}
-  \ii Suppose $\ell - r + 1 \le k \le \delta + \frac{\ell}{2} - r$ (so that $k \le 2 \delta + r$ too).
+  \ii Suppose $\ell - r + 1 \le k \le \delta + \frac{\ell}{2} - r$
+  so that $k \le 2 \delta + r$ too.
   \begin{itemize}
     \ii If $k < \lambda - r$ as well, the total contribution is
     \begin{align*}
       C_1(k) + C_4(k)
       &= \left\lfloor \frac{k + (r - \ell) + 1}{2} \right\rfloor
       + (k + r) - \left\lceil \frac{k+\ell+r+1}{2} \right\rceil + 1 \\
+      &= k - (\ell-r) + \mathbf{1}_{k \equiv \lambda + r \bmod 2}.
+    \end{align*}
+    \ii If $k \ge \lambda - r$,
+    then we require $\lambda \le \delta + \frac{\ell}{2}$.
+    This means $\delta + \frac{\ell}{2} - r \ge \lambda - \frac{\ell}{2} + \delta$ must hold.
+    \begin{align*}
+      C_2(k) + C_3(k) + C_4(k)
+      &= \frac{\lambda-\ell+1}{2} + (k+r-\lambda) \% 2 \\
+      &\qquad + \left( \frac{\lambda-\ell+1}{2} - (k+r-\lambda)\%2 \right)
+        + \left( k + r - \left\lceil \frac{k+\lambda+r+1}{2} \right\rceil \right) \\
       &=
     \end{align*}
+
   \end{itemize}
 \end{itemize}
 
@@ -902,8 +914,8 @@ We consider the following cases now:
   that it is hardly worth including.
   If one defines the shorthands
   \begin{align*}
-    \mathsf{B}_\gamma &\coloneqq \delta + \frac{\ell}{2} - r \\
-    \mathsf{T}_\gamma &\coloneqq \lambda + \delta - \frac{\ell}{2} + r \\
+    \mathsf{B}_\gamma &\coloneqq \frac{\ell}{2} + \delta - r \\
+    \mathsf{T}_\gamma &\coloneqq \lambda - \frac{\ell}{2} + \delta + r \\
     \mathsf{w}_\gamma &\coloneqq \min(\lambda-\ell-1, 2r)
   \end{align*}
   then it could be written out more fully as
@@ -911,7 +923,7 @@ We consider the following cases now:
     \cc_\gamma(k) = \begin{cases}
       k - (\ell - r)
         & \text{if } \ell-r \le k \le \mathsf{B}_\gamma \\
-      \left\lfloor \frac{k - \mathsf{B}_\gamma}{2} \right\rfloor + \delta - \frac{\ell}{2}
+      \left\lfloor \frac{k - \mathsf{B}_\gamma}{2} \right\rfloor - \frac{\ell}{2} + \delta
         &\text{if } \mathsf{B}_\gamma \le k \le \mathsf{B}_\gamma + \mathsf{w}_\gamma \\
       - \frac{\ell}{2} + \delta + \half \mathsf{w}_\gamma
         &\text{if } \mathsf{B}_\gamma + \mathsf{w}_\gamma \le k \le \mathsf{T}_\gamma - \mathsf{w}_\gamma \\
