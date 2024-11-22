@@ -1,4 +1,4 @@
-\chapter{Setup for the weighted orbital integral for $S_3(F)$}
+\chapter{Support for the weighted orbital integral for $S_3(F)$}
 \label{ch:orbital1}
 
 In this section we set up the framework of the weighted orbital integral
@@ -712,19 +712,31 @@ we still have $\lambda + v(d) - \half \ell = \lambda > 0$.)
 
 \subsection{Analysis of merged Case 1 and 2 assuming $v(b) = v(d) < 0$}
 In the situation where $\ell \ge n - r$,
-then for any unit $t$ we have $v(t-\frac{b}{2a}) = v(b) < 0$,
+then for any unit $t$ we have $v(t-\frac{b}{2a}) = v(b) = -|v(d)| < 0$,
 so \eqref{eq:t_disk_case_1_2} becomes simply
 \[ v(b) \ge \left\lceil \frac{n-r}{2} \right\rceil \iff n \le r + 2 v(b) = r + \ell. \]
 Thus, the only constraint on the unit $t$ is that
 \[ v(t + u) \ge m - \delta - r. \]
 So, by applying \Cref{lem:volume}, we find that the nonzero contributions occur exactly when
-\begin{align*}
-  1 &\le n \le \ell + r \\
-  n-r &\le m \le n + \delta + r \\
-  \lambda &\ge m - \delta - r
-\end{align*}
-with the same volume contribution given by \eqref{eq:case_2_vol_contrib}.
-Note that in fact $n < r$ in the entire range since $\ell < 0$.
+\begin{equation}
+  \begin{aligned}
+    1 &\le n \le -2|v(d)| + r \\
+    n-r &\le m \le n - 2|v(d)| + r \\
+    \lambda &\ge m + |v(d)| - r
+  \end{aligned}
+  \label{eq:ell_neg_12_range}
+\end{equation}
+with the same volume contribution given by \eqref{eq:case_2_vol_contrib}, that is.
+\begin{equation}
+  \begin{cases}
+    q^{-n - (m+2|v(d)|-r)} \left( 1 - q\inv \right)
+      & \text{if $m > -2|v(d)| + r$} \\
+    q^{-n} \left( 1 - q^{-2} \right)
+      & \text{if $m \le -2|v(d)| + r$}.
+  \end{cases}
+  \label{eq:ell_neg_12_vol}
+\end{equation}
+
 So an analysis almost identical to the one in \Cref{prop:folding_cases_1_2} applies here
 to show that \eqref{eq:odd_range1} and \eqref{eq:odd_range2}
 match the above range, with the same volume contributions.
@@ -741,15 +753,26 @@ $n - \frac{\ell}{2} - r > m - \delta - r$
 and \textbf{Case 4\ts+} corresponding to
 $n - \frac{\ell}{2} - r \ge m - \delta - r$;
 however there is no need to distinguish between them.
+As before we immediately replace $\ell = \delta = -2|v(d)|$ above.
 
 Consequently, we will need to sum over the range
 \begin{equation}
   \begin{aligned}
     \max(1, -2|v(d)| + r + 1) &\leq n \leq \lambda - |v(d)| + r \\
-    n - r &\leq m \leq \min(n, \lambda) - |v(d)| + r.
+    n - r &\leq m \leq \min(n, \lambda) - 2|v(d)| + r.
   \end{aligned}
-  \label{eq:even_ell_neg}
+  \label{eq:ell_neg_34_range}
 \end{equation}
+The volume contribution is now given by
+\begin{equation}
+  \begin{cases}
+    q^{-n - \max(n+|v(d)|-r, m+2|v(d)|-r)} (1 - q\inv) &\text{if } \max(n+|v(d)|-r, m+2|v(d)|-r) > 0 \\
+    q^{-n} (1 - q^{-2}) &\text{if } \max(n+|v(d)|-r, m+2|v(d)|-r) \le 0.
+  \end{cases}
+  \label{eq:ell_neg_34_vol}
+\end{equation}
+since $\max(n+|v(d)|-r, m+2|v(d)|-r)$ could actually be non-positive,
+in contrast to the earlier cases.
 
 \subsection{Analysis of Case 3\ts- and Case 4\ts+ assuming $v(b) = v(d) < 0$}
 Again suppose $n > \ell + r$ and $v(b) = v(d) < 0$.
