@@ -695,7 +695,10 @@ and put $\Vol(t_1:-v(t_1)=m) = q^{2m} (1-q^{-2})$ to get:
     q^{n-m+\delta+r} \cdot (-1)^n q^{s(2m-n)};
 \end{align*}
 We now analyze each double sum.
-For the first three, fix an index $k$; we collect the coefficient of $(-q^s)^k$.
+
+\subsection{Analysis of the coefficient of $q^{\frac{\ell}{2}+r}$}
+We start by analyzing just the first three double sums:
+Fix an index $k$; we collect the coefficient of $(-q^s)^k$.
 \begin{itemize}
   \ii For the first double sum, change the summation for $m$ to
   \[ m = n-r + j \iff j = m - n + r \]
@@ -766,7 +769,7 @@ For the first three, fix an index $k$; we collect the coefficient of $(-q^s)^k$.
     \left\lfloor \frac{k + \frac{\ell}{2} + \delta + r}{2} \right\rfloor,
     + \frac{\ell}{2} + \delta + r \right)
     - \left\lceil \frac{k+\frac{\ell}{2}+r+1}{2} \right\rceil + 1 \]
-  running form $k = \frac{\ell}{2} - r$ to $k = \frac{\ell}{2} + 2 \delta + r$.
+  running from $k = \frac{\ell}{2} - r$ to $k = \frac{\ell}{2} + 2 \delta + r$.
 \end{itemize}
 Now we collate the contribution of the first three double sums:
 \begin{align*}
@@ -792,6 +795,7 @@ Now we collate the contribution of the first three double sums:
     \min\left( k+r, \left\lfloor \frac{k+\frac{\ell}{2}+\delta+r}{2} \right\rfloor, \frac{\ell}{2} + \delta + r \right)
     - \left\lceil \frac{k+\ell+r+1}{2} \right\rceil + 1 \right)(-q^s)^k .
 \end{align*}
+
 Hence, for each $k$ the coefficient of $(-q^s)^k$
 is given by a sum of a subset of the following four coefficients:
 \begin{itemize}
@@ -805,7 +809,7 @@ is given by a sum of a subset of the following four coefficients:
     C_2(k)
     &\coloneqq \begin{cases}
       \left\lfloor \frac{k-\ell+r+1}{2} \right\rfloor - \left\lceil \frac{k+r-\lambda}{2} \right\rceil &\text{if } k \le 2 \delta + r \\
-      - \frac{\ell}{2} + \delta + r - \left\lceil \frac{k+r-\lambda}{2} \right\rceil + 1 &\text{if } k \ge 2 \delta + r \\
+      - \frac{\ell}{2} + \delta + r - \left\lceil \frac{k+r-\lambda}{2} \right\rceil &\text{if } k \ge 2 \delta + r \\
     \end{cases} \\
     &= \begin{cases}
       \frac{\lambda-\ell+1}{2} - (k+r+1)\%2 &\text{if } k \le 2 \delta + r \\
@@ -843,6 +847,9 @@ is given by a sum of a subset of the following four coefficients:
     \end{cases}
   \end{align*}
 \end{itemize}
+The coefficient we need is then
+\[ C(k) \coloneqq C_1(k) + C_2(k) + C_3(k) + C_4(k) \]
+where we consider $C_i(k) = 0$ if $k$ falls outside the required range for $C_i$.
 
 \Cref{fig:ell_even_bands} gives a sketch of the regions
 covered by $C_1$, $C_2$, $C_3$, $C_4$ in one situation.
@@ -877,7 +884,7 @@ relative to each other.
     dot("$2\delta+r$", (9,h), dir(-90), deepgreen);
     label("$\boxed{C_4}$", (4.5,h), dir(90), deepgreen);
 
-    dot("$2\delta+r$", (9,3*h), grey dir(90));
+    dot("$2\delta+r$", (9,3*h), dir(90), grey);
     dot("$\frac{\ell}{2}+\delta-r$", (1.8,h), dir(90));
     dot("$\frac{\ell}{2}+\delta+r$", (7.2,h), dir(90));
     dot("$\lambda-\frac{\ell}{2}+\delta-r$", (4.8,2*h), dir(90));
@@ -885,15 +892,60 @@ relative to each other.
   \end{asy}
   \end{center}
   \label{fig:ell_even_bands}
-  \caption{Rough illustration of the regions for $C_1$, $C_2$, $C_3$, $C_4$.
+  \caption{Rough illustration of one possibility for the shapes of
+    regions for $C_1$, $C_2$, $C_3$, $C_4$, in the case where
+    $\lambda - \frac{\ell}{2} + \delta - r \le \frac{\ell}{2} + \delta + r$.
     The breaking points within each $C_i$ are marked in black, and grey dotted lines
     join values of $k$ that overlap between the regions.
     The four black breaking points show up in the collated formula later.}
 \end{figure}
 
+\begin{figure}[ht]
+  \begin{center}
+  \begin{asy}
+    size(15cm);
+    usepackage("amsmath");
+    real h = 1.7;
+
+    draw((7,3*h)--(7,2*h), dotted, Margins);
+    draw((5,3*h)--(5,h), dotted, Margins);
+
+    draw(( 0,3*h)--( 7,3*h), red, Arrows(TeXHead), Margins);
+    draw(( 7,3*h)--(12,3*h), red, Arrows(TeXHead), Margins);
+    dot("$\ell-r$", (0,3*h), dir(90), red);
+    dot("$\lambda-r$", (7,3*h), dir(90), red);
+    dot("$\lambda-\ell+2\delta+r$", (12,3*h), dir(90), red);
+    label("$\boxed{C_1}$", (3.5,3*h), dir(90), red);
+    label("$\boxed{C_2}$", (9.5,3*h), dir(90), red);
+
+    draw(( 7,2*h)--(12,2*h), blue, Arrows(TeXHead), Margins);
+    dot("$\lambda-r$", (7,2*h), dir(-90), blue);
+    dot("$\lambda-\ell+2\delta+r$", (12,2*h), dir(-90), blue);
+    label("$\boxed{C_3}$", (9.5,2*h), dir(-90), blue);
+
+    draw(( 0,1*h)--( 5,1*h), deepgreen, Arrows(TeXHead), Margins);
+    dot("$\ell-r$", (0,h), dir(-90), deepgreen);
+    dot("$2\delta+r$", (5,h), dir(-90), deepgreen);
+    label("$\boxed{C_4}$", (2.5,h), dir(90), deepgreen);
+
+    dot("$2\delta+r$", (5,3*h), dir(90), grey);
+    dot("$\frac{\ell}{2}+\delta-r$", (1.8,h), dir(130));
+    dot("$\frac{\ell}{2}+\delta+r$", (3.2,h), dir(50));
+    dot("$\lambda-\frac{\ell}{2}+\delta-r$", (8.8,2*h), dir(110), fontsize(9pt));
+    dot("$\lambda-\frac{\ell}{2}+\delta+r$", (10.2,2*h), dir(70), fontsize(9pt));
+  \end{asy}
+  \end{center}
+  \label{fig:ell_even_bands_alt}
+  \caption{An illustration of another possibility for the shapes of
+    regions for $C_1$, $C_2$, $C_3$, $C_4$, this time in the case where
+    $\frac{\ell}{2} + \delta + r \le \lambda - \frac{\ell}{2} + \delta - r$.}
+\end{figure}
+
+
 To make the casework a bit more efficient, we prove the following lemma,
-which effectively lets us not consider cases on $\lambda-r$ or $2\delta+r$.
+which effectively lets us fold together cases on $\lambda-r$ or $2\delta+r$.
 \begin{lemma}
+  \label{lem:folding_cases}
   The following two identities are true:
   \begin{itemize}
   \ii For $k \le \min\left( \lambda - \frac{\ell}{2} + \delta - r, 2 \delta + r \right)$,
@@ -904,12 +956,12 @@ which effectively lets us not consider cases on $\lambda-r$ or $2\delta+r$.
       C_2(k) + C_3(k) & \text{if } k \ge \lambda-r.
     \end{cases}
   \]
-  \ii For $k \ge \max\left( \lambda - \frac{\ell}{2} + \delta - r, 2 \delta + r \right)$,
+  \ii For $k \ge \max\left( \lambda - \frac{\ell}{2} + \delta - r, \lambda - r \right)$,
   \[
-    \left\lfloor \frac{\lambda-\ell+2\delta+r-k+1}{2} \right\rfloor
+    \left\lfloor \frac{\lambda-\ell+2\delta+r-k}{2} \right\rfloor
     = \begin{cases}
       C_2(k) &\text{if } k \ge 2\delta + r \\
-      C_2(k)+C_4(k) & \text{if }k \le 2 \delta + r.
+      C_2(k)+C_4(k)-(k+r)\%2 & \text{if }k \le 2 \delta + r.
     \end{cases}
   \]
   \end{itemize}
@@ -931,7 +983,7 @@ which effectively lets us not consider cases on $\lambda-r$ or $2\delta+r$.
     C_2(k) + C_4(k) &=
     \frac{\lambda-\ell+1}{2} - (k+r+1)\%2 + \left\lfloor \frac{2\delta+r-k+1}{2} \right\rfloor \\
     &= \left\lfloor \frac{\lambda-\ell+2\delta+r-k}{2} \right\rfloor
-    (1 - (k+r+1)\%2)
+    + (1 - (k+r+1)\%2)
   \end{align*}
   which also matches.
 \end{proof}
@@ -939,54 +991,145 @@ which effectively lets us not consider cases on $\lambda-r$ or $2\delta+r$.
 We consider the following five cases now:
 \begin{enumerate}
   \ii Suppose $\ell - r + 1 \le k \le \frac{\ell}{2} + \delta - r$
-  (in particular, also $k \le 2 \delta + r$
-  and $k \le \lambda - \frac{\ell}{2} = \delta$).
-  \begin{itemize}
-    \ii If $k < \lambda - r$ as well, the total contribution is
-    \begin{align*}
-      C_1(k) + C_4(k)
-      &=
-      + \left\lfloor \frac{k-\ell+r+1}{2} \right\rfloor \\
-      &= k - (\ell-r) + (k+r) \% 2.
-    \end{align*}
-    \ii If $k \ge \lambda - r$, then we instead get
-    \begin{align*}
-      &\phantom= C_2(k) + C_3(k) + C_4(k) \\
-      &=      + \left\lfloor \frac{k-\ell+r+1}{2} \right\rfloor \\
-      &= \frac{\lambda-\ell+1}{2} - (k+r-\lambda) \% 2
-      + \frac{k-\lambda+r+1}{2} + \frac{k-\ell+r+1}{2} - \half \\
-      &= k-(\ell-r) + 1 - (k+r-\lambda) \% 2 \\
-      &= k - (\ell - r) + (k+r) \% 2
-    \end{align*}
-    which is the same as in the other case, so we may fold these cases together.
-  \end{itemize}
+  (in particular, also $k \le 2 \delta + r$ and $k \le \lambda - \frac{\ell}{2} = \delta$).
+  Then from \Cref{lem:folding_cases} we have
+  \[ C(k) = \left\lfloor \frac{k-\ell+r+1}{2} \right\rfloor + C_4(k)
+    = k - (\ell-r) + (k+r) \% 2. \]
 
   \ii Next suppose that
   $\frac{\ell}{2} + \delta - r \le k \le \min(\delta + \frac{\ell}{2} + r,
-    \lambda + \delta - \frac{\ell}{2} - r - 1)$.
+    \lambda - \frac{\ell}{2} + \delta - r)$.
+  Again from \Cref{lem:folding_cases} we have
+  \begin{align*}
+    C(k) &= \left\lfloor \frac{k - \ell + r + 1}{2} \right\rfloor + C_4(k) \\
+    &= \left\lfloor \frac{k - \ell + r + 1}{2} \right\rfloor +
+    \frac{-\frac{\ell}{2} + \delta + 1 - (k+\frac{\ell}{2}+\delta+r)\%2 - (k+r+1)\%2}{2} \\
+    &= \frac{k - \ell + r + 1}{2} +
+      \frac{-\frac{\ell}{2} + \delta + 1 - (k+\frac{\ell}{2}+\delta+r)\%2}{2} - (k+r+1)\%2 \\
+    &= \left( \delta - \frac{\ell}{2}  \right)
+    + \left\lfloor \frac{k - \left( \frac{\ell}{2} + \delta - r \right)}{2}  \right\rfloor
+    + (k+r) \% 2.
+  \end{align*}
+
+  \ii The next case is split into two possibilities.
   \begin{itemize}
-    \ii If $k < \lambda - r$, the contribution is
+    \ii First suppose that
+    \[ \lambda - \frac{\ell}{2} + \delta - r \le k \le \frac{\ell}{2} + \delta + r \]
+    (which matches \Cref{fig:ell_even_bands}).
+    Then
     \begin{align*}
-      C_1(k) + C_4(k)
-      &= \left\lfloor \frac{k - \ell + r + 1}{2} \right\rfloor
-      + \frac{-\frac{\ell}{2} + \delta + 1 - (k+\frac{\ell}{2}+\delta+r)\%2 - (k+r+1)\%2}{2}
-    \end{align*}
-    \ii If $k \ge \lambda-r$ we instead get
-    \begin{align*}
-      &\phantom= C_2(k) + C_3(k) + C_4(k) \\
-      &= \frac{\lambda-\ell+1}{2} - (k+r-\lambda) \% 2
-      + \left\lfloor \frac{k-\lambda+r+1}{2} \right\rfloor
-      + \left\lfloor \frac{k-\ell+r+1}{2} \right\rfloor \\
-      &= \frac{\lambda-\ell+1}{2} - (k+r-\lambda) \% 2
-      + \frac{k-\lambda+r+1}{2} + \frac{k-\ell+r+1}{2} - \half \\
-      &= k-(\ell-r) + 1 - (k+r-\lambda) \% 2 \\
-      &= k - (\ell - r) + (k+r) \% 2
+      C(k) &= C_2(k) + C_3(k) + C_4(k) \\
+      &= \frac{\lambda-\ell+1}{2} - (k+r+1)\%2 \\
+      &\qquad+ \frac{- \frac{\ell}{2} + \delta + 1 - (k+\frac{\ell}{2}+\delta+r+1)\%2 -(k+r)\%2}{2} \\
+      &\qquad+ \frac{-\frac{\ell}{2} + \delta + 1 - (k+\frac{\ell}{2}+\delta+r)\%2 -(k+r+1)\%2}{2} \\
+      &= \frac{\lambda-2\ell+2\delta+1}{2} + (k+r) \% 2.
     \end{align*}
 
+    \ii Instead suppose that
+    \[ \frac{\ell}{2} + \delta + r \le k \le \lambda - \frac{\ell}{2} + \delta - r. \]
+    We consider four more sub-possibilities.
+    \begin{itemize}
+    \ii If $k \le \min(2\delta+r, \lambda-r)$ we get
+    \begin{align*}
+      C(k) &= C_1(k) + C_4(k) \\
+      &= \left\lfloor \frac{k-\ell+r+1}{2} \right\rfloor
+      + \left\lfloor \frac{2\delta+r-k+1}{2} \right\rfloor \\
+      &= -\frac{\ell}{2} + \delta + r + (k+r)\%2.
+    \end{align*}
+    \ii Similarly $k \ge \min(2\delta+r, \lambda-r)$ we get
+    \begin{align*}
+      C(k) &= C_2(k) + C_3(k) \\
+      &= \left\lfloor \frac{\lambda - \ell + 2\delta + r - k}{2} \right\rfloor
+      + \left\lfloor \frac{k-\lambda+r+1}{2} \right\rfloor \\
+      &= -\frac{\ell}{2} + \delta + r.
+    \end{align*}
+    \ii If $2\delta + r \le k \le \lambda - r$ we simply get
+    \[ C(k) = C_1(k) = -\frac{\ell}{2} + \delta + r. \]
+    \ii Finally if $\lambda - r \le k \le 2 \delta + r$ we get instead
+    \begin{align*}
+      C(k) &= C_1(k) + C_2(k) + C_3(k) \\
+      &= \frac{\lambda-\ell+1}{2} - (k+r+1)\%2
+      + \left\lfloor \frac{k-\lambda+r+1}{2} \right\rfloor \\
+      &\qquad + \left( \frac{\ell}{2} + \delta + r \right)- \left\lceil \frac{k+\ell+r+1}{2} \right\rceil + 1 \\
+      &= -\frac{\ell}{2} + \delta + r + (k+r) \% 2.
+    \end{align*}
+    \end{itemize}
   \end{itemize}
 
+  \ii Moving on, suppose that
+  $\max(\frac{\ell}{2} + \delta + r, \lambda - \frac{\ell}{2} + \delta - r)
+    \le k \le \lambda - \frac{\ell}{2} + \delta + r$.
+  Applying \Cref{lem:folding_cases} we get that
+  \begin{align*}
+    C(k) &= \left\lfloor \frac{\lambda - \ell + 2\delta + r - k}{2} \right\rfloor
+    + C_3(k)
+    + \mathbf{1}_{k \le 2 \delta + r} (k + r) \% 2 \\
+    &= \left\lfloor \frac{\lambda - \ell + 2\delta + r - k}{2} \right\rfloor +
+      \frac{- \frac{\ell}{2} + \delta + 1 - (k+\frac{\ell}{2}+\delta+r+1)\%2 -(k+r)\%2}{2} \\
+      &\qquad + \mathbf{1}_{k \le 2 \delta + r} (k + r) \% 2 \\
+    &= \left( \delta - \frac{\ell}{2} \right)
+    + \left\lfloor \frac{\left( \lambda - \frac{\ell}{2} + \delta + r \right) - k}{2} \right\rfloor
+    + \mathbf{1}_{k \le 2 \delta + r} (k + r) \% 2.
+  \end{align*}
 
+  \ii Finally, if $\lambda - \frac{\ell}{2} + \delta + r \le k \le \lambda - \ell + 2 \delta + r$,
+  use \Cref{lem:folding_cases} to get just
+  \begin{align*}
+    C(k) &= \left\lfloor \frac{\lambda - \ell + 2\delta + r - k}{2} \right\rfloor + C_3(k) \\
+    &= \left\lfloor \frac{\lambda - \ell + 2\delta + r - k}{2} \right\rfloor +
+      \left\lfloor \frac{\lambda - \ell + 2\delta + r - k + 1}{2} \right\rfloor
+      + \mathbf{1}_{k \le 2 \delta + r} (k + r) \% 2 \\
+    &= (\lambda - \ell + 2 \delta + r) - k + \mathbf{1}_{k \le 2 \delta + r} (k + r) \% 2.
+  \end{align*}
 \end{enumerate}
+Having exhausted all five cases, we compile them into the following:
+\begin{proposition}
+  Let us define
+  \[
+    \cc_\gamma \coloneqq \Arch_{[\ell-r, \lambda - \ell + 2\delta + r]}
+    (\delta - \ell/2, \min(\lambda-\ell-1, 2r)).
+  \]
+  Then
+  \begin{align*}
+  & q^{\frac{\ell}{2}+r} \cdot \sum_{n=\ell+r+1}^{\lambda+r}
+    \sum_{m=n-r}^{n-1-\frac{\ell}{2}+\delta}
+    (-1)^n q^{s(2m-n)}
+  + q^{\frac{\ell}{2}+r} \cdot \sum_{n=\lambda+r+1}^{\lambda-\frac{\ell}{2}+\delta+r}
+    \sum_{m=n-r}^{\lambda-\frac{\ell}{2}+\delta+r}
+    (-1)^n q^{s(2m-n)} \\
+  &\qquad+ q^{\frac{\ell}{2}+r} \cdot \sum_{n=\ell+r+1}^{\frac{\ell}{2}+\delta+r}
+    \sum_{m=n-r}^{\frac{\ell}{2}+\delta+r}
+    (-1)^n q^{s(2m-n)} \\
+  &= \sum_{k=\ell-r}^{\lambda-\ell+2\delta+r} \cc_\gamma(k) (-1)^k (q^s)^k
+    + \sum_{k \equiv \ell-r}^{2\delta+r} (k+r)\%2 \cdot (-1)^k (q^s)^k.
+  \end{align*}
+\end{proposition}
+\begin{proof}
+After removing the $\mathbf{1}_{k \le 2 \delta + r} \cdot (k + r) \% 2$ term,
+we see that we need to verify
+\[
+  \cc_\gamma(k)
+  =
+  \begin{cases}
+    k - (\ell-r) & \ell - r + 1 \le k \le \frac{\ell}{2} + \delta - r \\
+    \left( \delta - \frac{\ell}{2}  \right)
+      + \left\lfloor \frac{k - \left( \frac{\ell}{2} + \delta - r \right)}{2}  \right\rfloor
+      & \frac{\ell}{2} + \delta - r \le k \le \min(\delta + \frac{\ell}{2} + r,
+      \lambda - \frac{\ell}{2} + \delta - r) \\
+    \frac{\lambda-2\ell+2\delta+1}{2}
+      & \lambda - \frac{\ell}{2} + \delta - r \le k \le \frac{\ell}{2} + \delta + r \\
+    -\frac{\ell}{2} + \delta + r
+      & \frac{\ell}{2} + \delta + r \le k \le \lambda - \frac{\ell}{2} + \delta - r \\
+    \left( \delta - \frac{\ell}{2} \right)
+      + \left\lfloor \frac{\left( \lambda - \frac{\ell}{2} + \delta + r \right) - k}{2} \right\rfloor
+      & \max(\frac{\ell}{2} + \delta + r, \lambda - \frac{\ell}{2} + \delta - r)
+      \le k \le \lambda - \frac{\ell}{2} + \delta + r \\
+    (\lambda - \ell + 2 \delta + r) - k
+      & \lambda - \frac{\ell}{2} + \delta + r \le k \le \lambda - \ell + 2 \delta + r.
+  \end{cases}
+\]
+which follows directly from the definition of $\Arch$ that we proposed.
+\end{proof}
 
 \section{Full explicit weighted orbital integral for the case where $\ell$ is even and $v(b) \ge 0$, $v(d) \ge 0$}
 \begin{theorem}
