@@ -877,9 +877,9 @@ relative to each other.
     dot("$2\delta+r$", (9,h), dir(-90), deepgreen);
     label("$\boxed{C_4}$", (4.5,h), dir(90), deepgreen);
 
-    dot("$2\delta+r$", (9,3*h), dir(90));
-    dot("$\frac{\ell}{2}+\delta-r$", (1.8,h), dir(-90));
-    dot("$\frac{\ell}{2}+\delta+r$", (7.2,h), dir(-90));
+    dot("$2\delta+r$", (9,3*h), grey dir(90));
+    dot("$\frac{\ell}{2}+\delta-r$", (1.8,h), dir(90));
+    dot("$\frac{\ell}{2}+\delta+r$", (7.2,h), dir(90));
     dot("$\lambda-\frac{\ell}{2}+\delta-r$", (4.8,2*h), dir(90));
     dot("$\lambda-\frac{\ell}{2}+\delta+r$", (10.2,2*h), dir(90));
   \end{asy}
@@ -887,11 +887,57 @@ relative to each other.
   \label{fig:ell_even_bands}
   \caption{Rough illustration of the regions for $C_1$, $C_2$, $C_3$, $C_4$.
     The breaking points within each $C_i$ are marked in black, and grey dotted lines
-    join values of $k$ that overlap between the regions.}
+    join values of $k$ that overlap between the regions.
+    The four black breaking points show up in the collated formula later.}
 \end{figure}
 
-We consider the following cases now:
-\begin{itemize}
+To make the casework a bit more efficient, we prove the following lemma,
+which effectively lets us not consider cases on $\lambda-r$ or $2\delta+r$.
+\begin{lemma}
+  The following two identities are true:
+  \begin{itemize}
+  \ii For $k \le \min\left( \lambda - \frac{\ell}{2} + \delta - r, 2 \delta + r \right)$,
+  \[
+    \left\lfloor \frac{k - \ell + r + 1}{2} \right\rfloor
+    = \begin{cases}
+      C_1(k) & \text{if } k \le \lambda - r \\
+      C_2(k) + C_3(k) & \text{if } k \ge \lambda-r.
+    \end{cases}
+  \]
+  \ii For $k \ge \max\left( \lambda - \frac{\ell}{2} + \delta - r, 2 \delta + r \right)$,
+  \[
+    \left\lfloor \frac{\lambda-\ell+2\delta+r-k+1}{2} \right\rfloor
+    = \begin{cases}
+      C_2(k) &\text{if } k \ge 2\delta + r \\
+      C_2(k)+C_4(k) & \text{if }k \le 2 \delta + r.
+    \end{cases}
+  \]
+  \end{itemize}
+\end{lemma}
+\begin{proof}
+  For the first part,
+  it's trivial for $k \le \lambda-r$, whilst for $k \ge \lambda-r$ we have
+  \begin{align*}
+    C_2(k) + C_3(k) &=
+      \frac{\lambda-\ell+1}{2} - (k+r-\lambda) \% 2
+      + \left\lfloor \frac{k-\lambda+r+1}{2} \right\rfloor \\
+      &= \left\lfloor \frac{k-\ell+r+2}{2} \right\rfloor - (k+r-\lambda) \% 2
+  \end{align*}
+  which also equals the claimed result.
+
+  For the second part,
+  it's again trivial for $k \ge 2\delta + r$ whilst for $k \le 2\delta + r$ we have
+  \begin{align*}
+    C_2(k) + C_4(k) &=
+    \frac{\lambda-\ell+1}{2} - (k+r+1)\%2 + \left\lfloor \frac{2\delta+r-k+1}{2} \right\rfloor \\
+    &= \left\lfloor \frac{\lambda-\ell+2\delta+r-k}{2} \right\rfloor
+    (1 - (k+r+1)\%2)
+  \end{align*}
+  which also matches.
+\end{proof}
+
+We consider the following five cases now:
+\begin{enumerate}
   \ii Suppose $\ell - r + 1 \le k \le \frac{\ell}{2} + \delta - r$
   (in particular, also $k \le 2 \delta + r$
   and $k \le \lambda - \frac{\ell}{2} = \delta$).
@@ -899,12 +945,33 @@ We consider the following cases now:
     \ii If $k < \lambda - r$ as well, the total contribution is
     \begin{align*}
       C_1(k) + C_4(k)
-      &= \left\lfloor \frac{k - \ell + r + 1}{2} \right\rfloor
+      &=
       + \left\lfloor \frac{k-\ell+r+1}{2} \right\rfloor \\
       &= k - (\ell-r) + (k+r) \% 2.
     \end{align*}
-    \ii If $k \ge \lambda - r$, then we require $\lambda \le \frac{\ell}{2} + \delta$.
-    This means $\frac{\ell}{2} + \delta - r \ge \lambda - \frac{\ell}{2} + \delta$ must hold.
+    \ii If $k \ge \lambda - r$, then we instead get
+    \begin{align*}
+      &\phantom= C_2(k) + C_3(k) + C_4(k) \\
+      &=      + \left\lfloor \frac{k-\ell+r+1}{2} \right\rfloor \\
+      &= \frac{\lambda-\ell+1}{2} - (k+r-\lambda) \% 2
+      + \frac{k-\lambda+r+1}{2} + \frac{k-\ell+r+1}{2} - \half \\
+      &= k-(\ell-r) + 1 - (k+r-\lambda) \% 2 \\
+      &= k - (\ell - r) + (k+r) \% 2
+    \end{align*}
+    which is the same as in the other case, so we may fold these cases together.
+  \end{itemize}
+
+  \ii Next suppose that
+  $\frac{\ell}{2} + \delta - r \le k \le \min(\delta + \frac{\ell}{2} + r,
+    \lambda + \delta - \frac{\ell}{2} - r - 1)$.
+  \begin{itemize}
+    \ii If $k < \lambda - r$, the contribution is
+    \begin{align*}
+      C_1(k) + C_4(k)
+      &= \left\lfloor \frac{k - \ell + r + 1}{2} \right\rfloor
+      + \frac{-\frac{\ell}{2} + \delta + 1 - (k+\frac{\ell}{2}+\delta+r)\%2 - (k+r+1)\%2}{2}
+    \end{align*}
+    \ii If $k \ge \lambda-r$ we instead get
     \begin{align*}
       &\phantom= C_2(k) + C_3(k) + C_4(k) \\
       &= \frac{\lambda-\ell+1}{2} - (k+r-\lambda) \% 2
@@ -915,14 +982,11 @@ We consider the following cases now:
       &= k-(\ell-r) + 1 - (k+r-\lambda) \% 2 \\
       &= k - (\ell - r) + (k+r) \% 2
     \end{align*}
-    which is the same as in the other case, so we may fold these cases together.
+
   \end{itemize}
 
-  \ii Next suppose
-  $\frac{\ell}{2} + \delta - r \le k \le \min(\delta + \frac{\ell}{2} + r,
-    \lambda + \delta - \frac{\ell}{2} - r - 1)$.
 
-\end{itemize}
+\end{enumerate}
 
 \section{Full explicit weighted orbital integral for the case where $\ell$ is even and $v(b) \ge 0$, $v(d) \ge 0$}
 \begin{theorem}
