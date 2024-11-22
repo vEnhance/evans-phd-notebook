@@ -95,7 +95,7 @@ We prove \Cref{thm:semi_lie_ker_trivial} in this section.
   \begin{align*}
     M'_{i,r}
     &= M_{i,r} - M_{i-1,r} \\
-    &= - \mathbf{1}_{i \ge r, i \not\equiv r \mod 2} q^r
+    &= - \mathbf{1}_{i \ge r, i \not\equiv r \bmod 2} q^r
     + \mathbf{1}_{i \le r} (i+1-r) q^i
     + \sum_{j=0}^{\min(i-1,r)} q^j
   \end{align*}
@@ -109,7 +109,7 @@ We prove \Cref{thm:semi_lie_ker_trivial} in this section.
       0 & \text{if } i \ge r+2.
     \end{cases}
   \end{align*}
-  Moreover, since $M'_{0,r} = \mathbf{1}_{r \equiv 0 \pmod 2}$
+  Moreover, since $M'_{0,r} = \mathbf{1}_{r \equiv 0 \bmod 2}$
   we deduce
   $M''_{0,r} = M'_{0,r} - M'_{0,r-2} = 0$
   for any $r \ge 2$, and $M''_{0,0} = 1$.

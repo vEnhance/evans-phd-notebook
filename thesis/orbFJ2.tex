@@ -312,12 +312,12 @@ First, we may as well write
 \begin{align*}
   2 - 2\left\lceil \frac{k + \theta - v(c) + r + 1}{2} \right\rceil
   &= 2 - \left( (k + \theta - v(c) + r + 1)
-  + \mathbf{1}_{k + \theta + v(c) + r \equiv 1 \pmod 2} \right) \\
-  &= \mathbf{1}_{k + \theta + v(c) + r \equiv 0 \pmod 2}
+  + \mathbf{1}_{k + \theta + v(c) + r \equiv 1 \bmod 2} \right) \\
+  &= \mathbf{1}_{k + \theta + v(c) + r \equiv 0 \bmod 2}
   + v(c) - \theta - k - r.
 \end{align*}
 Set aside the indicator function
-$\mathbf{1}_{k + \theta + v(c) + r \equiv 0 \pmod 2}$ momentarily;
+$\mathbf{1}_{k + \theta + v(c) + r \equiv 0 \bmod 2}$ momentarily;
 we will merge it in a moment.
 To consolidate the minimum's in the third double sum,
 note that we have
@@ -362,7 +362,7 @@ for $\theta - v(b) + r + 1 \le k \le v(c) + r$, we can now write
   \sum_{k = \theta - v(b) + r + 1}^{2v(e) - \theta + v(c) - r - 1} \cc_\guv(k)(-q^s)^k \\
   &+ q^{\frac{\theta}{2} + r}
   \sum_{k = v(c) + r + 1}^{2v(e) - \theta + v(c) - r - 1}
-  \mathbf{1}_{k + \theta + v(c) + r \equiv 0 \pmod 2} (-q^s)^k
+  \mathbf{1}_{k + \theta + v(c) + r \equiv 0 \bmod 2} (-q^s)^k
 \end{align*}
 as the overall contribution from \textbf{Case 6}, where
 \[ \cc_\guv(k) \coloneqq \min \left( k - \theta + v(b) - r,
@@ -500,7 +500,7 @@ of $\nn_\guv$ and $\cc_\guv$, which may be easier to think about.
   Notice that
   \[ \left\lfloor \frac{k+\theta-v(c)+r}{2} \right\rfloor
     + \left\lfloor \frac{v(c)+r-k}{2} \right\rfloor
-    = \frac{\theta}{2} + r - \mathbf{1}_{k + v(c) + r \equiv 0 \pmod 2}. \]
+    = \frac{\theta}{2} + r - \mathbf{1}_{k + v(c) + r \equiv 0 \bmod 2}. \]
 
   First assume that $v(e) \le \frac{\theta}{2} + r$ and
   consider \eqref{eq:case_5_exponent}.
@@ -555,7 +555,7 @@ of $\nn_\guv$ and $\cc_\guv$, which may be easier to think about.
   \sum_{k = \theta - v(b) + r + 1}^{2v(e) - \theta + v(c) - r - 1} \cc_\guv(k)(-q^s)^k \\
   &+ q^{\frac{\theta}{2} + r}
   \sum_{k = v(c) + r + 1}^{2v(e) - \theta + v(c) - r - 1}
-  \mathbf{1}_{k + \theta + v(c) + r \equiv 0 \pmod 2} (-q^s)^k.
+  \mathbf{1}_{k + \theta + v(c) + r \equiv 0 \bmod 2} (-q^s)^k.
   \end{align*}
 
   The first sum matches the claimed coefficient $\cc_\guv$
@@ -572,7 +572,7 @@ of $\nn_\guv$ and $\cc_\guv$, which may be easier to think about.
   \[ v(c) + r + 1 \le k \le 2v(e) - \theta + v(c) - r - 1 \]
   and only in those cases does \eqref{eq:case_5_exponent}
   differs from $\nn_\guv$ by exactly
-  $\mathbf{1}_{k + \theta + v(c) + r \equiv 0 \pmod 2}$.
+  $\mathbf{1}_{k + \theta + v(c) + r \equiv 0 \bmod 2}$.
   This final step shows the claimed formulas coincide.
 \end{proof}
 
