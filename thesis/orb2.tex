@@ -696,7 +696,7 @@ and put $\Vol(t_1:-v(t_1)=m) = q^{2m} (1-q^{-2})$ to get:
 \end{align*}
 We now analyze each double sum.
 
-\subsection{Analysis of the coefficient of $q^{\frac{\ell}{2}+r}$}
+\subsection{Analysis of the coefficient of the top-degree term $q^{\frac{\ell}{2}+r}$}
 We start by analyzing just the first three double sums:
 Fix an index $k$; we collect the coefficient of $(-q^s)^k$.
 \begin{itemize}
@@ -941,7 +941,6 @@ relative to each other.
     $\frac{\ell}{2} + \delta + r \le \lambda - \frac{\ell}{2} + \delta - r$.}
 \end{figure}
 
-
 To make the casework a bit more efficient, we prove the following lemma,
 which effectively lets us fold together cases on $\lambda-r$ or $2\delta+r$.
 \begin{lemma}
@@ -1131,6 +1130,73 @@ we see that we need to verify
 which follows directly from the definition of $\Arch$ that we proposed.
 \end{proof}
 
+\subsection{Analysis of the remaining double sum}
+It remains to evaluate
+\[
+  \sum_{n=\ell+r+1}^{\lambda+r} \sum_{m=n-\frac{\ell}{2}+\delta}^{\min(n,\lambda)+\delta+r}
+  q^{n-m+\delta+r} \cdot (-1)^n q^{s(2m-n)}.
+\]
+As before if we define
+\begin{align*}
+  j &\coloneqq (n+\delta+r)-m \ge 0 \\
+  k &\coloneqq n + 2 \delta + 2 r - 2 j.
+\end{align*}
+so the sum becomes
+\begin{align*}
+  &\phantom= \sum_{n=\ell+r+1}^{\lambda+r} \sum_{j=\max(0,n-\lambda)}^{\frac{\ell}{2}+r}
+  q^j \cdot (-1)^n q^{s(n+2\delta+2r-2j)} \\
+  &= \sum_{j=\max(r-(\lambda-\ell-1),0)}^{\frac{\ell}{2}+r} \sum_{n=\ell+r+1}^{\lambda+\min(j,r)}
+  q^j \cdot (-1)^n q^{s(n+2\delta+2r-2j)} \\
+  &= \sum_{j=\max(r-(\lambda-\ell-1),0)}^{r} \sum_{n=\ell+r+1}^{\lambda+j}
+  q^j \cdot (-1)^n q^{s(n+2\delta+2r-2j)}
+  + \sum_{j=r+1}^{\frac{\ell}{2}+r} \sum_{n=\ell+r+1}^{\lambda+r}
+  q^j \cdot (-1)^n q^{s(n+2\delta+2r-2j)} \\
+  &= \sum_{j=\max(r-(\lambda-\ell-1),0)}^r \sum_{k=\ell+2\delta+3r-2j+1}^{\lambda+2\delta+2r-j}
+  q^j \cdot (-q^s)^k
+  + \sum_{j=r+1}^{\frac{\ell}{2}+r} \sum_{k=\ell+2\delta+3r-2j+1}^{\lambda+2\delta+3r-2j}
+  q^j \cdot (-q^s)^k.
+\end{align*}
+Now we collect the coefficient of $(-q^s)^k$.
+In the first double sum the value of $k$ runs from
+the lowest value $k = \ell + 2 \delta + r + 1$
+to the highest value $\lambda + 2 \delta + 2r - \max(r - (\lambda-\ell-1), 0)$.
+The range of $j$ being summed is given by solving
+\[
+  \ell + 2 \delta + 3r - 2j + 1 \le k \le \lambda + 2 \delta + 2r - j
+  \iff \frac{\ell + 2\delta + 3r + 1 - k}{2} \le j \le \lambda + 2 \delta + 2 r - k
+\]
+to get
+\[ \max\left( \left\lceil \frac{\ell + 2\delta + 3r + 1 - k}{2} \right\rceil,
+    0, r-(\lambda-\ell-1)\right)
+    \le j \le \max\left( \lambda+2\delta+2r-k, r \right). \]
+%However, for $k \le \lambda + 2 \delta + 2r - \max(r - (\lambda-\ell-1), 0)$ we have
+%\[ \frac{\lambda + 2\delta + 3r + 1 - k}{2}
+%  \ge \frac{r + \max(r-(\lambda-\ell-1), 0)}{2}
+%  \ge \max(r-(\lambda-\ell-1), 0) \]
+%so the maximum on the left-hand side resolves.
+
+In the second double sum the value of $k$ runs from the lowest
+value $k = 2 \delta + r + 1$ to the highest value $k = \lambda + 2 \delta + r - 2$
+and $j$ now needs to satisfy
+\[ \ell + 2 \delta + 3r - 2j + 1 \le k \le \lambda + 2\delta + 3r - 2j
+  \iff \frac{\ell+2\delta+3r+1-k}{2} \le j \le \frac{\lambda+2\delta+3r-k}{2} \]
+so we get the range to this time be
+\[ \max\left( \left\lceil \frac{\ell + 2\delta + 3r + 1 - k}{2} \right\rceil, r + 1\right)
+  \le j \le \min\left( \left\lfloor \frac{\lambda+2\delta+3r-k}{2} \right\rfloor,
+r + \frac{\ell}{2} \right). \]
+In this case the max resolves to the ceiling because
+$\frac{\lambda + 2 \delta + 3r + 1 - k}{2}
+\ge \frac{\lambda + 2 \delta + 3r + 1 - (\lambda + 2 \delta + r - 2)}{2} \ge r+1$
+for all $k$ in the desired range, but the min does not resolve immediately.
+
+To proceed further we split this into cases based on whether $\lambda > \ell+r$ or not.
+\begin{itemize}
+  \ii If $\lambda > \ell + r$, then we have
+
+  \ii If $\lambda \le \ell + r$, then we always have
+\end{itemize}
+
+
 \section{Full explicit weighted orbital integral for the case where $\ell$ is even and $v(b) \ge 0$, $v(d) \ge 0$}
 \begin{theorem}
   [Weighted orbital integral in the even case for $\mathbf{1}_{K'_{S, \le r}}$]
@@ -1170,7 +1236,7 @@ which follows directly from the definition of $\Arch$ that we proposed.
       \left\lfloor \frac{k+r}{2} \right\rfloor + r & \text{if }{-r} \le k \le \ell-r \\
       \frac{\ell}{2} + r & \text{if } \ell - r \le k \le \lambda - \ell + 2\delta +  r \\
       \left\lfloor \frac{(2\delta+\lambda+r)-k}{2} \right\rfloor + r & \text{if } \lambda - \ell + 2\delta + r \le k \le \lambda + 2\delta + r \\
-      (2\delta + \lambda + 2r) - k & \text{if } 2\delta + \lambda + r \le k \le 2\delta + \lambda + 2r.
+      (\lambda + 2\delta + 2r) - k & \text{if } \lambda + 2\delta + r \le k \le \lambda + 2\delta + 2r.
     \end{cases}
   \]
   Then $\cc_\gamma$ can be similarly expanded, but the result is so notationally dense
