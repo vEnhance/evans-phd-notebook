@@ -718,82 +718,78 @@ For the first three, fix an index $k$; we collect the coefficient of $(-q^s)^k$.
     \iff \frac{k + r - \lambda}{2} \le j \le \frac{k + r - (\ell + 1)}{2} \]
   so the number of terms that appear is
   \[
-    \min\left( \left\lfloor \frac{k + r - (\ell + 1)}{2} \right\rfloor, r - \frac{\ell}{2} + \delta - 1 \right)
+    \min\left( \left\lfloor \frac{k -\ell + r - 1}{2} \right\rfloor, - \frac{\ell}{2} + \delta + r - 1 \right)
     - \max\left( \left\lceil \frac{k + r -\lambda}{2} \right\rceil, 0 \right)
     + 1
   \]
   which is nonnegative (but could be zero).
   We add in one more term $k = \lambda - \ell + 2 \delta + r - 1$
-  and $k = \lambda - \ell + 2 \delta + r$
-  for simplicity;
+  and $k = \lambda - \ell + 2 \delta + r$ for simplicity;
   this is okay because the above display equals zero at this value anyway.
   \ii For the second double sum, change the order of summation to
   \begin{align*}
     \sum_{n=\lambda+r+1}^{\lambda-\frac{\ell}{2}+\delta+r}
       \sum_{m=n-r}^{\lambda-\frac{\ell}{2}+\delta+r} (-q^s)^{2m-n}
     &= \sum_{m=\lambda+1}^{\lambda-\frac{\ell}{2}+\delta+r}
-      \sum_{n=\lambda+r+1}^{m+r} (-q^s)^{2m-n} \\
+      \sum_{n=\lambda+r+1}^{\min\left( \lambda-\frac{\ell}{2}+\delta+r, m+r \right)} (-q^s)^{2m-n} \\
     &= \sum_{m=\lambda+1}^{\lambda-\frac{\ell}{2}+\delta+r}
-      \sum_{k=m-r}^{2m-\lambda-r-1} (-q^s)^k.
+      \sum_{k=\max\left( m-r, 2m-\lambda+\frac{\ell}{2}-\delta-r \right)}^{2m-\lambda-r-1} (-q^s)^k.
   \end{align*}
   Now we collect the coefficient of $(-q^s)^k$.
   The value of $k$ runs from the lowest value $k = \lambda - r + 1$
   to the highest value $k = \lambda-\ell+2\delta+r-1$.
-  For $k$ in this interval, we seek values of $m$ such that
-  \[ m - r \le k \le 2 m - \lambda - r - 1
-    \iff \frac{k + \lambda + r + 1}{2} \le m \le k + r \]
-  and the left inequality for $k \ge \lambda - r + 1$
-  already ensures $\frac{k + \lambda + r + 1}{2} \ge \lambda + 1$,
+  For $k$ in this interval, we seek values of $\lambda + 1 \le m \le \lambda - \frac{\ell}{2} + \delta + r$
+  and
+  \begin{align*}
+    k \le 2m-\lambda-r-1 &\implies m \ge \frac{k+\lambda+r+1}{2} \\
+    k \ge m-r &\implies m \le k + r \\
+    k \ge 2m - \lambda + \frac{\ell}{2} - \delta - r
+    &\implies m \le \frac{k + \lambda - \frac{\ell}{2} + \delta + r}{2}.
+  \end{align*}
+  When $k \ge \lambda - r + 1$ we already have $\frac{k + \lambda + r + 1}{2} \ge \lambda + 1$,
   so the number of terms that appear is
-  \[ \min\left(k+r, \lambda - \frac{\ell}{2} + \delta + r \right)
+  \[ \min\left(k+r,
+    \left\lfloor \frac{k + \lambda - \frac{\ell}{2} + \delta + r}{2} \right\rfloor,
+    \lambda - \frac{\ell}{2} + \delta + r \right)
     - \left\lceil \frac{k+\lambda+r+1}{2} \right\rceil + 1 \]
   which is nonnegative (but could be zero).
-  We add in three more terms $k = \ell - r$,
-  $k = \lambda - \ell + 2 \delta + r$ and $k = \lambda - r$
+  We add in two extra term at $k = \lambda - r$ and $k = \lambda - \ell + 2 \delta + r$;
   for simplicity; this is okay because the above display equals zero at this value anyway.
-  \ii For the third double sum, similarly write
-  \begin{align*}
+  \ii The third double sum
+  \[
     \sum_{n=\ell+r+1}^{\frac{\ell}{2}+\delta+r}
       \sum_{m=n-r}^{\frac{\ell}{2}+\delta+r} (-q^s)^{2m-n}
-    &=\sum_{m=\ell+1}^{\frac{\ell}{2}+\delta+r}
-      \sum_{n=\ell+r+1}^{m+r} (-q^s)^{2m-n} \\
-    &=\sum_{m=\ell+1}^{\frac{\ell}{2}+\delta+r}
-      \sum_{k=m-r}^{2m-\ell-r-1} (-q^s)^k.
-  \end{align*}
-  The value of $k$ runs from the lowest value $k = \ell-r+1$
-  to the highest value $k = 2\delta+r-1$, and for $k$ in this range we need $m$ with
-  \[ m - r \le k \le 2 m - \ell - r - 1 \iff
-    \frac{k + \ell + r + 1}{2} \le m \le k + r \]
-  with the lower bound already being at least $\ell+1$ for $k \ge \ell-r+1$.
-  Hence, we get the number of terms is
-  \[ \min\left( k+r, \frac{\ell}{2} + \delta + r \right)
-    - \left\lceil \frac{k+\ell+r+1}{2} \right\rceil + 1 \]
-  which is nonnegative (but could be zero).
-  We add in two more terms $k = \ell - r$ and $k = 2\delta + r$ for simplicity
-  since the display vanishes for these values.
+  \]
+  happens to coincide with the previous one if one replaces $\lambda$ by $\ell$ everywhere.
+  Hence the number of terms that appear is
+  \[ \min\left(k+r,
+    \left\lfloor \frac{k + \frac{\ell}{2} + \delta + r}{2} \right\rfloor,
+    + \frac{\ell}{2} + \delta + r \right)
+    - \left\lceil \frac{k+\frac{\ell}{2}+r+1}{2} \right\rceil + 1 \]
+  running form $k = \frac{\ell}{2} - r$ to $k = \frac{\ell}{2} + 2 \delta + r$.
 \end{itemize}
 Now we collate the contribution of the first three double sums:
 \begin{align*}
   &\phantom+ \sum_{k=\ell-r}^{\lambda-\ell+2\delta+r} \left(
-    \min\left( \left\lfloor \frac{k + r - (\ell + 1)}{2} \right\rfloor, r - \frac{\ell}{2} + \delta - 1 \right)
+    \min\left( \left\lfloor \frac{k - \ell + r - 1}{2} \right\rfloor, - \frac{\ell}{2} + \delta + r - 1 \right)
     - \max\left( \left\lceil \frac{k + r -\lambda}{2} \right\rceil, 0 \right) + 1 \right) (-q^s)^k \\
   &+ \sum_{k=\lambda-r}^{\lambda-\ell+2\delta+r} \left(
-    \min\left(k+r, \lambda - \frac{\ell}{2} + \delta + r \right)
+    \min\left(k+r, \left\lfloor \frac{k+\lambda-\frac{\ell}{2}+\delta+r}{2} \right\rfloor, \lambda - \frac{\ell}{2} + \delta + r \right)
     - \left\lceil \frac{k+\lambda+r+1}{2} \right\rceil + 1 \right) (-q^s)^k \\
   &+ \sum_{k=\ell-r}^{2\delta+r} \left(
-    \min\left( k+r, \frac{\ell}{2} + \delta + r \right)
+    \min\left( k+r, \left\lfloor \frac{k+\frac{\ell}{2}+\delta+r}{2} \right\rfloor, \frac{\ell}{2} + \delta + r \right)
     - \left\lceil \frac{k+\ell+r+1}{2} \right\rceil + 1 \right) (-q^s)^k \\
   &= \sum_{k=\ell-r}^{\lambda-r-1} \left(
-    \min\left( \left\lfloor \frac{k + r - (\ell + 1)}{2} \right\rfloor, r - \frac{\ell}{2} + \delta - 1 \right)
+    \min\left( \left\lfloor \frac{k - \ell + r - 1}{2} \right\rfloor, - \frac{\ell}{2} + \delta + r - 1 \right)
     + 1 \right) (-q^s)^k \\
   &+ \sum_{k=\lambda-r}^{\lambda-\ell+2\delta+r} \left(
-    \min\left( \left\lfloor \frac{k + r - (\ell + 1)}{2} \right\rfloor, r - \frac{\ell}{2} + \delta - 1 \right)
+    \min\left( \left\lfloor \frac{k - \ell + r - 1}{2} \right\rfloor, - \frac{\ell}{2} + \delta + r - 1 \right)
     - \left\lceil \frac{k + r -\lambda}{2} \right\rceil + 1 \right) (-q^s)^k \\
   &+ \sum_{k=\lambda-r}^{\lambda-\ell+2\delta+r} \left(
-    \min\left(k+r, \lambda - \frac{\ell}{2} + \delta + r \right)
+    \min\left(k+r, \left\lfloor \frac{k+\lambda-\frac{\ell}{2}+\delta+r}{2} \right\rfloor, \lambda - \frac{\ell}{2} + \delta + r \right)
     - \left\lceil \frac{k+\lambda+r+1}{2} \right\rceil + 1 \right) (-q^s)^k \\
   &+ \sum_{k=\ell-r}^{2\delta+r} \left(
-    \min\left( k+r, \frac{\ell}{2} + \delta + r \right)
+    \min\left( k+r, \left\lfloor \frac{k+\frac{\ell}{2}+\delta+r}{2} \right\rfloor, \frac{\ell}{2} + \delta + r \right)
     - \left\lceil \frac{k+\ell+r+1}{2} \right\rceil + 1 \right)(-q^s)^k .
 \end{align*}
 Hence, for each $k$ the coefficient of $(-q^s)^k$
@@ -801,18 +797,18 @@ is given by a sum of a subset of the following four coefficients:
 \begin{itemize}
   \ii For $\ell - r \le k \le \lambda - r - 1$, we get
   \[ C_1(k) \coloneqq \begin{cases}
-    \left\lfloor \frac{k + r - \ell + 1}{2} \right\rfloor &\text{if } k \le 2 \delta + r \\
-    r - \frac{\ell}{2} + \delta &\text{if } k \ge 2 \delta + r.
+    \left\lfloor \frac{k - \ell + r + 1}{2} \right\rfloor &\text{if } k \le 2 \delta + r \\
+    - \frac{\ell}{2} + \delta + r &\text{if } k \ge 2 \delta + r.
     \end{cases} \]
   \ii For $\lambda - r \le k \le \lambda - \ell + 2 \delta + r$, we get
   \begin{align*}
     C_2(k)
     &\coloneqq \begin{cases}
-      \left\lfloor \frac{k+r-\ell+1}{2} \right\rfloor - \left\lceil \frac{k+r-\lambda}{2} \right\rceil &\text{if } k \le 2 \delta + r \\
-      r - \frac{\ell}{2} + \delta - \left\lceil \frac{k+r-\lambda}{2} \right\rceil + 1 &\text{if } k \ge 2 \delta + r \\
+      \left\lfloor \frac{k-\ell+r+1}{2} \right\rfloor - \left\lceil \frac{k+r-\lambda}{2} \right\rceil &\text{if } k \le 2 \delta + r \\
+      - \frac{\ell}{2} + \delta + r - \left\lceil \frac{k+r-\lambda}{2} \right\rceil + 1 &\text{if } k \ge 2 \delta + r \\
     \end{cases} \\
     &= \begin{cases}
-      \frac{\lambda-\ell+1}{2} - (k+r-\lambda)\%2 &\text{if } k \le 2 \delta + r \\
+      \frac{\lambda-\ell+1}{2} - (k+r+1)\%2 &\text{if } k \le 2 \delta + r \\
       \left\lfloor \frac{\lambda - \ell + 2\delta + r - k}{2} \right\rfloor &\text{if } k \ge 2 \delta + r.
     \end{cases}
   \end{align*}
@@ -821,51 +817,111 @@ is given by a sum of a subset of the following four coefficients:
   \begin{align*}
     C_3(k)
     &\coloneqq \begin{cases}
-      k + r - \left\lceil \frac{k+\lambda+r+1}{2} \right\rceil + 1 &\text{if } k \le \lambda - \frac{\ell}{2} + \delta \\
-      \left( \lambda - \frac{\ell}{2} + \delta + r \right) - \left\lceil \frac{k+\lambda+r+1}{2} \right\rceil + 1 &\text{if } k \ge \lambda - \frac{\ell}{2} + \delta
+      k + r - \left\lceil \frac{k+\lambda+r+1}{2} \right\rceil + 1 &\text{if } k \le \lambda - \frac{\ell}{2} + \delta - r \\
+      \left\lfloor \frac{k + \lambda - \frac{\ell}{2} + \delta + r}{2} \right\rfloor - \left\lceil \frac{k+\lambda+r+1}{2} \right\rceil + 1 &\text{if } \lambda - \frac{\ell}{2} + \delta - r \le k \le \lambda - \frac{\ell}{2} + \delta + r \\
+      \left( \lambda - \frac{\ell}{2} + \delta + r \right)- \left\lceil \frac{k+\lambda+r+1}{2} \right\rceil + 1 &\text{if } k \ge \lambda - \frac{\ell}{2} + \delta + r \\
     \end{cases} \\
     &= \begin{cases}
-      \left\lfloor \frac{k-\lambda+r+1}{2} \right\rfloor &\text{if } k \le \lambda - \frac{\ell}{2} + \delta \\
-      \left\lfloor \frac{\lambda - \ell + 2\delta + r - k + 1}{2} \right\rfloor &\text{if } k \ge \lambda - \frac{\ell}{2} + \delta.
+      \left\lfloor \frac{k-\lambda+r+1}{2} \right\rfloor &\text{if } k \le \lambda - \frac{\ell}{2} + \delta - r \\
+      \frac{- \frac{\ell}{2} + \delta + 1 - (k+\frac{\ell}{2}+\delta+r+1)\%2 -(k+r)\%2}{2} & \text{if } \lambda - \frac{\ell}{2} + \delta - r \le k \le \lambda - \frac{\ell}{2} + \delta + r \\
+      \left\lfloor \frac{\lambda - \ell + 2\delta + r - k + 1}{2} \right\rfloor &\text{if } k \ge \lambda - \frac{\ell}{2} + \delta + r.
     \end{cases}
   \end{align*}
+
   \ii For $\ell - r \le k \le 2 \delta + r$, we get
   \begin{align*}
     C_4(k)
     &\coloneqq \begin{cases}
-      k + r - \left\lceil \frac{k+\ell+r+1}{2} \right\rceil + 1 &\text{if } k \le \frac{\ell}{2}+\delta \\
-      \frac{\ell}{2} + \delta + r - \left\lceil \frac{k+\ell+r+1}{2} \right\rceil + 1 &\text{if } k \ge \frac{\ell}{2}+\delta.
+      k + r - \left\lceil \frac{k+\ell+r+1}{2} \right\rceil + 1 &\text{if } k \le \frac{\ell}{2} + \delta - r \\
+      \left\lfloor \frac{k + \frac{\ell}{2} + \delta + r}{2} \right\rfloor - \left\lceil \frac{k+\ell+r+1}{2} \right\rceil + 1 &\text{if } \frac{\ell}{2} + \delta - r \le k \le \frac{\ell}{2} + \delta + r \\
+      \left( \frac{\ell}{2} + \delta + r \right)- \left\lceil \frac{k+\ell+r+1}{2} \right\rceil + 1 &\text{if } k \ge \frac{\ell}{2} + \delta + r \\
     \end{cases} \\
     &= \begin{cases}
-      \left\lfloor \frac{k-\ell+r+1}{2} \right\rfloor &\text{if } k \le \frac{\ell}{2}+\delta \\
-      \left\lfloor \frac{2\delta+r-k+1}{2} \right\rfloor &\text{if } k \ge \frac{\ell}{2}+\delta.
+      \left\lfloor \frac{k-\ell+r+1}{2} \right\rfloor &\text{if } k \le \frac{\ell}{2} + \delta - r \\
+      \frac{-\frac{\ell}{2} + \delta + 1 - (k+\frac{\ell}{2}+\delta+r)\%2 -(k+r+1)\%2}{2} & \text{if } \frac{\ell}{2} + \delta - r \le k \le \frac{\ell}{2} + \delta + r \\
+      \left\lfloor \frac{2\delta + r - k + 1}{2} \right\rfloor &\text{if } k \ge \frac{\ell}{2} + \delta + r.
     \end{cases}
   \end{align*}
 \end{itemize}
+
+\Cref{fig:ell_even_bands} gives a sketch of the regions
+covered by $C_1$, $C_2$, $C_3$, $C_4$ in one situation.
+In the general situation, some of the points in the middle could have different orders
+relative to each other.
+(In particular, $2\delta+r$ could occur in either $C_1$ or $C_2$.)
+\begin{figure}[ht]
+  \begin{center}
+  \begin{asy}
+    size(15cm);
+    usepackage("amsmath");
+    real h = 1.7;
+
+    draw((3,3*h)--(3,2*h), dotted, Margins);
+    draw((9,3*h)--(9,h), dotted, Margins);
+
+    draw(( 0,3*h)--( 3,3*h), red, Arrows(TeXHead), Margins);
+    draw(( 3,3*h)--(12,3*h), red, Arrows(TeXHead), Margins);
+    dot("$\ell-r$", (0,3*h), dir(90), red);
+    dot("$\lambda-r$", (3,3*h), dir(90), red);
+    dot("$\lambda-\ell+2\delta+r$", (12,3*h), dir(90), red);
+    label("$\boxed{C_1}$", (1.5,3*h), dir(90), red);
+    label("$\boxed{C_2}$", (7.5,3*h), dir(90), red);
+
+    draw(( 3,2*h)--(12,2*h), blue, Arrows(TeXHead), Margins);
+    dot("$\lambda-r$", (3,2*h), dir(-90), blue);
+    dot("$\lambda-\ell+2\delta+r$", (12,2*h), dir(-90), blue);
+    label("$\boxed{C_3}$", (7.5,2*h), dir(90), blue);
+
+    draw(( 0,1*h)--( 9,1*h), deepgreen, Arrows(TeXHead), Margins);
+    dot("$\ell-r$", (0,h), dir(-90), deepgreen);
+    dot("$2\delta+r$", (9,h), dir(-90), deepgreen);
+    label("$\boxed{C_4}$", (4.5,h), dir(90), deepgreen);
+
+    dot("$2\delta+r$", (9,3*h), dir(90));
+    dot("$\frac{\ell}{2}+\delta-r$", (1.8,h), dir(-90));
+    dot("$\frac{\ell}{2}+\delta+r$", (7.2,h), dir(-90));
+    dot("$\lambda-\frac{\ell}{2}+\delta-r$", (4.8,2*h), dir(90));
+    dot("$\lambda-\frac{\ell}{2}+\delta+r$", (10.2,2*h), dir(90));
+  \end{asy}
+  \end{center}
+  \label{fig:ell_even_bands}
+  \caption{Rough illustration of the regions for $C_1$, $C_2$, $C_3$, $C_4$.
+    The breaking points within each $C_i$ are marked in black, and grey dotted lines
+    join values of $k$ that overlap between the regions.}
+\end{figure}
+
 We consider the following cases now:
 \begin{itemize}
-  \ii Suppose $\ell - r + 1 \le k \le \delta + \frac{\ell}{2} - r$
-  so that $k \le 2 \delta + r$ too.
+  \ii Suppose $\ell - r + 1 \le k \le \frac{\ell}{2} + \delta - r$
+  (in particular, also $k \le 2 \delta + r$
+  and $k \le \lambda - \frac{\ell}{2} = \delta$).
   \begin{itemize}
     \ii If $k < \lambda - r$ as well, the total contribution is
     \begin{align*}
       C_1(k) + C_4(k)
-      &= \left\lfloor \frac{k + (r - \ell) + 1}{2} \right\rfloor
-      + (k + r) - \left\lceil \frac{k+\ell+r+1}{2} \right\rceil + 1 \\
-      &= k - (\ell-r) + \mathbf{1}_{k \equiv \lambda + r \bmod 2}.
+      &= \left\lfloor \frac{k - \ell + r + 1}{2} \right\rfloor
+      + \left\lfloor \frac{k-\ell+r+1}{2} \right\rfloor \\
+      &= k - (\ell-r) + (k+r) \% 2.
     \end{align*}
-    \ii If $k \ge \lambda - r$,
-    then we require $\lambda \le \delta + \frac{\ell}{2}$.
-    This means $\delta + \frac{\ell}{2} - r \ge \lambda - \frac{\ell}{2} + \delta$ must hold.
+    \ii If $k \ge \lambda - r$, then we require $\lambda \le \frac{\ell}{2} + \delta$.
+    This means $\frac{\ell}{2} + \delta - r \ge \lambda - \frac{\ell}{2} + \delta$ must hold.
     \begin{align*}
-      C_2(k) + C_3(k) + C_4(k)
-      &= \frac{\lambda-\ell+1}{2} + (k+r-\lambda) \% 2 \\
-      &\qquad + \left( \frac{\lambda-\ell+1}{2} - (k+r-\lambda)\%2 \right)
-        + \left( k + r - \left\lceil \frac{k+\lambda+r+1}{2} \right\rceil \right) \\
-      &=
+      &\phantom= C_2(k) + C_3(k) + C_4(k) \\
+      &= \frac{\lambda-\ell+1}{2} - (k+r-\lambda) \% 2
+      + \left\lfloor \frac{k-\lambda+r+1}{2} \right\rfloor
+      + \left\lfloor \frac{k-\ell+r+1}{2} \right\rfloor \\
+      &= \frac{\lambda-\ell+1}{2} - (k+r-\lambda) \% 2
+      + \frac{k-\lambda+r+1}{2} + \frac{k-\ell+r+1}{2} - \half \\
+      &= k-(\ell-r) + 1 - (k+r-\lambda) \% 2 \\
+      &= k - (\ell - r) + (k+r) \% 2
     \end{align*}
-
+    which is the same as in the other case, so we may fold these cases together.
   \end{itemize}
+
+  \ii Next suppose
+  $\frac{\ell}{2} + \delta - r \le k \le \min(\delta + \frac{\ell}{2} + r,
+    \lambda + \delta - \frac{\ell}{2} - r - 1)$.
+
 \end{itemize}
 
 \section{Full explicit weighted orbital integral for the case where $\ell$ is even and $v(b) \ge 0$, $v(d) \ge 0$}
