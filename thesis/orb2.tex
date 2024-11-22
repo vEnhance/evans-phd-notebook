@@ -403,6 +403,7 @@ This gives us a succinct description of the weighted orbital integral.
 
 If $\ell$ is even, we now have the following intermediate result.
 \begin{proposition}
+  \label{prop:ell_even_half}
   Suppose $\ell$ is even.
   Then we have the intermediate result
   \[
@@ -1083,6 +1084,7 @@ We consider the following five cases now:
 \end{enumerate}
 Having exhausted all five cases, we compile them into the following:
 \begin{proposition}
+  \label{prop:ell_even_top_coeff}
   Let us define
   \[
     \cc_\gamma \coloneqq \Arch_{[\ell-r, \lambda - \ell + 2\delta + r]}
@@ -1183,21 +1185,102 @@ and $j$ now needs to satisfy
 so we get the range to this time be
 \[ \max\left( \left\lceil \frac{\ell + 2\delta + 3r + 1 - k}{2} \right\rceil, r + 1\right)
   \le j \le \min\left( \left\lfloor \frac{\lambda+2\delta+3r-k}{2} \right\rfloor,
-r + \frac{\ell}{2} \right). \]
+    \frac{\ell}{2} + r \right). \]
 In this case the max resolves to the ceiling because
 $\frac{\lambda + 2 \delta + 3r + 1 - k}{2}
 \ge \frac{\lambda + 2 \delta + 3r + 1 - (\lambda + 2 \delta + r - 2)}{2} \ge r+1$
 for all $k$ in the desired range, but the min does not resolve immediately.
+For convenience, we add on two extra values $k = \lambda + 2 \delta + r - 1$
+and $k = \lambda + 2r + r$ for which the range above for $j$ is void anyway,
+to make it easier to merge the sums momentarily.
+
+In summary, our rewritten sum equals
+\begin{align*}
+  \sum_{k = \ell + 2\delta + r + 1}^{\lambda + 2 \delta + 2r - \max(r - (\lambda-\ell-1), 0)}
+  \sum_{j=\max\left( \left\lceil \frac{\ell + 2\delta + 3r + 1 - k}{2} \right\rceil,
+    0, r-(\lambda-\ell-1)\right)}^{\min\left( \lambda+2\delta+2r-k, r \right)}
+    & q^j (-q^s)^k \\
+  + \sum_{k = 2 \delta + r + 1}^{\lambda + 2 \delta + r}
+  \sum_{j = \max\left( \left\lceil \frac{\ell + 2\delta + 3r + 1 - k}{2} \right\rceil, r + 1\right)}
+  ^{\min\left( \left\lfloor \frac{\lambda+2\delta+3r-k}{2} \right\rfloor, \frac{\ell}{2} + r \right)}
+    & q^j (-q^s)^k.
+\end{align*}
+Notice we always have
+\[ 2\delta + r + 1 \le \ell + 2 \delta + r + 1 \le \lambda + 2 \delta + r
+  \le \lambda + 2 \delta + 2r - \max\left( r - (\lambda - \ell - 1), 0 \right) \]
+so the values of $k$ in the second double sum are contained inside those of the first.
+Moreover, the two breaking points are
+\begin{align*}
+  \lambda + 2 \delta + 2 r - k \le r &\iff k \ge \lambda + 2 \delta + r \\
+  \left\lceil \frac{\ell + 2 \delta + 3r + 1 - k}{2} \right\rceil \ge r+1
+  &\iff k \le \ell + 2 \delta + r - 1
+\end{align*}
+which miraculously line up with the boundaries of the sum.
+Hence for these overlapped values the two sums over $j$ fit together neatly
+with a ``seam'' at the value $j = r$.
+Then rewriting the sum with ascending values of $k$ we have
+\begin{align*}
+  \sum_{k = 2 \delta + r + 1}^{\ell + 2\delta + r}
+    \sum_{j = \left\lceil \frac{\ell + 2\delta + 3r + 1 - k}{2} \right\rceil}^{\frac{\ell}{2} + r}
+    & q^j (-q^s)^k \\
+  + \sum_{k = \ell + 2 \delta + r + 1}^{\lambda + 2 \delta + r}
+    \sum_{j=\max\left( \left\lceil \frac{\ell + 2\delta + 3r + 1 - k}{2} \right\rceil,
+    0, r-(\lambda-\ell-1)\right)}^{\frac{\ell}{2} + r}
+    & q^j (-q^s)^k \\
+  + \sum_{k = \lambda + 2\delta + r + 1}^{\lambda + 2 \delta + 2r - \max(r - (\lambda-\ell-1), 0)}
+    \sum_{j=\max\left( \left\lceil \frac{\ell + 2\delta + 3r + 1 - k}{2} \right\rceil,
+    0, r-(\lambda-\ell-1)\right)}^{\lambda+2\delta+2r-k}
+    & q^j (-q^s)^k.
+\end{align*}
+where we have used
+$\frac{\lambda+2\delta+3r-k}{2} \ge \frac{\ell}{2} + r \iff \lambda+2\delta+r+\ell \ge k$
+to resolve the minimums in the first two sums.
+
 
 To proceed further we split this into cases based on whether $\lambda > \ell+r$ or not.
 \begin{itemize}
   \ii If $\lambda > \ell + r$, then we have
+  \begin{equation}
+  \begin{aligned}
+    \sum_{k = 2 \delta + r + 1}^{\ell + 2\delta + r}
+    \sum_{j = \left\lceil \frac{\ell + 2\delta + 3r + 1 - k}{2} \right\rceil}
+      ^{\frac{\ell}{2} + r}
+      & q^j (-q^s)^k \\
+    + \sum_{k = \ell + 2 \delta + r + 1}^{\lambda + 2 \delta + r}
+    \sum_{j=\max\left( \left\lceil \frac{\ell + 2\delta + 3r + 1 - k}{2} \right\rceil, 0\right)}
+      ^{\frac{\ell}{2} + r}
+      & q^j (-q^s)^k \\
+    + \sum_{k = \lambda + 2\delta + r + 1}^{\lambda + 2 \delta + 2r}
+    \sum_{j=\max\left( \left\lceil \frac{\ell + 2\delta + 3r + 1 - k}{2} \right\rceil, 0 \right)}
+      ^{\lambda+2\delta+2r-k}
+      & q^j (-q^s)^k.
+  \end{aligned}
+  \label{eq:ell_even_missing1}
+  \end{equation}
 
-  \ii If $\lambda \le \ell + r$, then we always have
+  \ii If $\lambda \le \ell + r$, then we instead have
+  \begin{equation}
+  \begin{aligned}
+    \sum_{k = 2 \delta + r + 1}^{\ell + 2\delta + r}
+    \sum_{j = \left\lceil \frac{\ell + 2\delta + 3r + 1 - k}{2} \right\rceil}
+      ^{\frac{\ell}{2} + r}
+      & q^j (-q^s)^k \\
+    + \sum_{k = \ell + 2 \delta + r + 1}^{\lambda + 2 \delta + r}
+    \sum_{j=\max\left( \left\lceil \frac{\ell + 2\delta + 3r + 1 - k}{2} \right\rceil,
+      r-(\lambda-\ell-1)\right)}
+      ^{\frac{\ell}{2} + r}
+      & q^j (-q^s)^k \\
+    + \sum_{k = \lambda + 2\delta + r + 1}^{2\lambda - \ell + 2\delta + r - 1}
+    \sum_{j=\max\left( \left\lceil \frac{\ell + 2\delta + 3r + 1 - k}{2} \right\rceil,
+      r-(\lambda-\ell-1)\right)}^{\lambda+2\delta+2r-k}
+      & q^j (-q^s)^k.
+  \end{aligned}
+  \label{eq:ell_even_missing2}
+  \end{equation}
 \end{itemize}
 
-
 \section{Full explicit weighted orbital integral for the case where $\ell$ is even and $v(b) \ge 0$, $v(d) \ge 0$}
+Now we can put everything together to get the following.
 \begin{theorem}
   [Weighted orbital integral in the even case for $\mathbf{1}_{K'_{S, \le r}}$]
   \label{thm:full_orbital_ell_even}
@@ -1227,6 +1310,18 @@ To proceed further we split this into cases based on whether $\lambda > \ell+r$ 
     &+ \sum_{k = \ell-r}^{2\delta + \lambda - \ell + r} \cc_\gamma(k) (-1)^k q^{\frac{\ell}{2}+r} (q^s)^k.
   \end{align*}
 \end{theorem}
+\begin{proof}
+  The coefficient $\cc_\guv$ was already introduced in \Cref{prop:ell_even_top_coeff},
+  where there is an extra $(k+r)\%2$ term for $\ell-r \le k \le 2\delta+r$
+  that matches the corresponding term in \Cref{prop:ell_even_half}.
+
+  Then, when $\lambda > \ell + r$ the terms in \Cref{prop:ell_even_half}
+  fit together with the sum in \eqref{eq:ell_even_missing1} to give $\nn_\guv$.
+  The same is true with $\lambda \le \ell + r$
+  when one uses \eqref{eq:ell_even_missing2} instead.
+  This completes the proof.
+\end{proof}
+
 \begin{remark}
   One can expand the Arch notation for $\nn_\gamma$ to obtain
   \[
