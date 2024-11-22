@@ -990,7 +990,7 @@ which effectively lets us fold together cases on $\lambda-r$ or $2\delta+r$.
 
 We consider the following five cases now:
 \begin{enumerate}
-  \ii Suppose $\ell - r + 1 \le k \le \frac{\ell}{2} + \delta - r$
+  \ii Suppose $\ell - r \le k \le \frac{\ell}{2} + \delta - r$
   (in particular, also $k \le 2 \delta + r$ and $k \le \lambda - \frac{\ell}{2} = \delta$).
   Then from \Cref{lem:folding_cases} we have
   \[ C(k) = \left\lfloor \frac{k-\ell+r+1}{2} \right\rfloor + C_4(k)
@@ -1111,7 +1111,7 @@ we see that we need to verify
   \cc_\gamma(k)
   =
   \begin{cases}
-    k - (\ell-r) & \ell - r + 1 \le k \le \frac{\ell}{2} + \delta - r \\
+    k - (\ell-r) & \ell - r \le k \le \frac{\ell}{2} + \delta - r \\
     \left( \delta - \frac{\ell}{2}  \right)
       + \left\lfloor \frac{k - \left( \frac{\ell}{2} + \delta - r \right)}{2}  \right\rfloor
       & \frac{\ell}{2} + \delta - r \le k \le \min(\delta + \frac{\ell}{2} + r,
