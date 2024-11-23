@@ -1425,7 +1425,7 @@ In that case we get
   &= \sum_{n=1}^{-2|v(d)|+r} \sum_{m=n-r}^{-2|v(d)|+r}
     q^{n} \left( 1 + q^{-1} \right) (-1)^n q^{s(2m-n)} \\
   &+ \sum_{n=1}^{-2|v(d)|+r}
-    \sum_{m=-2|v(d)|+r+1}^{\min\left(n-2|v(d)|+r, \lambda-|v(d)|+r\right)}
+    \sum_{m=-2|v(d)|+r+1}^{\min\left(n,\lambda\right) - 2|v(d)| + r}
     q^{n - (m+2|v(d)|-r)} \cdot (-1)^n q^{s(2m-n)}.
 \end{align*}
 
@@ -1472,7 +1472,7 @@ we get just the following five double sums:
   &+ \sum_{n=-|v(d)|+r+1}^{\lambda-|v(d)|+r}
     \sum_{m=n-r}^{n-|v(d)|} q^{r-|v(d)|} (-1)^n q^{s(2m-n)} \\
   &+ \sum_{n=1}^{-2|v(d)|+r}
-    \sum_{m=-2|v(d)|+r+1}^{\min\left(n-2|v(d)|+r, \lambda-|v(d)|+r\right)}
+    \sum_{m=-2|v(d)|+r+1}^{\min\left(n, \lambda\right) - 2|v(d)|+r}
     q^{n - (m+2|v(d)|-r)} \cdot (-1)^n q^{s(2m-n)} \\
   &+ \sum_{n=\max(1, -2|v(d)|+r+1)}^{-|v(d)|+r}
     \sum_{m=-2|v(d)|+r+1}^{\min(n, \lambda) - 2|v(d)| + r}
@@ -1487,7 +1487,7 @@ $2m-n = 2(n - (2|v(d)| - r) - j) - n = n - 4|v(d)| + 2r - 2j$ and
 the last three double sums transform into
 \begin{align*}
   \sum_{n=1}^{-2|v(d)|+r}
-    \sum_{j=\max(0, n-\lambda+|v(d)|)}^{n-1}
+    \sum_{j=\max(0, n-\lambda)}^{n-1}
     q^j \cdot (-1)^n q^{s(n-4|v(d)|+2r-2j)} \\
   + \sum_{n=\max(1, -2|v(d)|+r+1)}^{-|v(d)|+r}
     \sum_{j=\max(0, n-\lambda)}^{n-1}
@@ -1526,7 +1526,7 @@ and runs from $n = 1$ up to $n = \lambda - |v(d)| + r$.
 
 We now interchange the order of summation so that $j$ is on the outside to get
 \begin{align*}
-  \sum_{j=\max(0, 1-\lambda+|v(d)|)}^{-2|v(d)|+r-1}
+  \sum_{j=0}^{-2|v(d)|+r-1}
     \sum_{n=j+1}^{\min(j+\lambda, -|v(d)| + r) - |v(d)|}
     q^j \cdot (-1)^n q^{s(n-4|v(d)|+2r-2j)} \\
   + \sum_{j=0}^{-|v(d)|+r-1}
@@ -1536,8 +1536,7 @@ We now interchange the order of summation so that $j$ is on the outside to get
     \sum_{n=-|v(d)|+r+1}^{\lambda+\min(j, -|v(d)|+r)}
     q^j (-1)^n q^{s(n-4|v(d)|+2r-2j)}.
 \end{align*}
-
-
+Let $k = n - 4|v(d)| + 2r - 2j$.
 
 \section{Full explicit weighted orbital integral for the case where $\ell = \delta = 2v(b) = 2v(d) < 0$}
 \begin{theorem}
