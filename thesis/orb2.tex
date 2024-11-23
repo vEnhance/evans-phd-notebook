@@ -1404,6 +1404,141 @@ Now we can put everything together to get the following.
   \end{align*}
 \end{example}
 
+\section{Contribution of cases for the $v(b) = v(d) < 0$ case}
+We now deal with the edge case $v(b) = v(d) < 0$.
+The region $I_{n \le 0}$ remains the same, but we need to alter the calculation of the other parts.
+We assume $|v(d)| \le r$ henceforth since otherwise the entire orbital integral vanishes.
+
+\subsection{Contribution of Case 1 and Case 2}
+This situation only occurs if $r > 2|v(d)|$.
+In that case we get
+\begin{align*}
+  I_{n > 0}^{\text{1+2}}
+  &= \kappa \sum_{n=1}^{-2|v(d)|+r}
+    \sum_{m=n-r}^{-2|v(d)|+r}
+    q^{-n} \left( 1 - q^{-2} \right)
+    \cdot \Big( (-1)^n q^{s(2m-n)} q^{2n-2m} \Big) \Big( q^{2m}(1-q^{-2}) \Big) \\
+  &+ \kappa \sum_{n=1}^{-2|v(d)|+r}
+    \sum_{m=-2|v(d)|+r+1}^{\min\left(n-2|v(d)|+r, \lambda-|v(d)|+r\right)}
+    q^{-n - (m+2|v(d)|-r)} \left( 1 - q^{-1} \right) \\
+  &\qquad\qquad\cdot \Big( (-1)^n q^{s(2m-n)} q^{2n-2m} \Big) \Big( q^{2m}(1-q^{-2}) \Big) \\
+  &= \sum_{n=1}^{-2|v(d)|+r} \sum_{m=n-r}^{-2|v(d)|+r}
+    q^{n} \left( 1 + q^{-1} \right) (-1)^n q^{s(2m-n)} \\
+  &+ \sum_{n=1}^{-2|v(d)|+r}
+    \sum_{m=-2|v(d)|+r+1}^{\min\left(n-2|v(d)|+r, \lambda-|v(d)|+r\right)}
+    q^{n - (m+2|v(d)|-r)} \cdot (-1)^n q^{s(2m-n)}.
+\end{align*}
+
+\subsection{Contribution of Case 3\ts+ and Case 4\ts+}
+We split the sum into several cases.
+\begin{align*}
+  I_{n > 0}^{\text{3+4}}
+  &= \kappa \sum_{n=\max(1, -2|v(d)|+r+1)}^{-|v(d)|+r}
+    \sum_{m=n-r}^{-2|v(d)|+r}
+    q^{-n} \left( 1 - q^{-2} \right)
+    \cdot \Big( (-1)^n q^{s(2m-n)} q^{2n-2m} \Big) \Big( q^{2m}(1-q^{-2}) \Big) \\
+  &+ \kappa \sum_{n=\max(1, -2|v(d)|+r+1)}^{-|v(d)|+r}
+    \sum_{m=-2|v(d)|+r+1}^{\min(n, \lambda) - 2|v(d)| + r}
+    q^{-n-(m+2|v(d)|-r)} \left( 1 - q^{-1} \right) \\
+    &\qquad\qquad\cdot \Big( (-1)^n q^{s(2m-n)} q^{2n-2m} \Big) \Big( q^{2m}(1-q^{-2}) \Big) \\
+  &+ \kappa \sum_{n=-|v(d)|+r+1}^{\lambda-|v(d)|+r}
+    \sum_{m=n-r}^{n-|v(d)|}
+    q^{-2n+r-|v(d)|} \left( 1 - q^{-1} \right)
+    \cdot \Big( (-1)^n q^{s(2m-n)} q^{2n-2m} \Big) \Big( q^{2m}(1-q^{-2}) \Big) \\
+  &+ \kappa \sum_{n=-|v(d)|+r+1}^{\lambda-|v(d)|+r}
+    \sum_{m=n-|v(d)|+1}^{\min(n, \lambda) - 2|v(d)| + r}
+    q^{-n - (m+2|v(d)|-r)} \left( 1 - q^{-1} \right) \\
+    &\qquad\qquad\cdot \Big( (-1)^n q^{s(2m-n)} q^{2n-2m} \Big) \Big( q^{2m}(1-q^{-2}) \Big) \\
+  &= \sum_{n=\max(1, -2|v(d)|+r+1)}^{-|v(d)|+r}
+    \sum_{m=n-r}^{-2|v(d)|+r}
+    q^{n} \left( 1 + q^{-1} \right) \cdot (-1)^n q^{s(2m-n)} \\
+  &+ \sum_{n=\max(1, -2|v(d)|+r+1)}^{-|v(d)|+r}
+    \sum_{m=-2|v(d)|+r+1}^{\min(n, \lambda) - 2|v(d)| + r}
+    q^{n-(m+2|v(d)|-r)} (-1)^n q^{s(2m-n)} \\
+  &+ \sum_{n=-|v(d)|+r+1}^{\lambda-|v(d)|+r}
+    \sum_{m=n-r}^{n-|v(d)|} q^{r-|v(d)|} (-1)^n q^{s(2m-n)} \\
+  &+ \sum_{n=-|v(d)|+r+1}^{\lambda-|v(d)|+r}
+    \sum_{m=n-|v(d)|+1}^{\min(n, \lambda) - 2|v(d)| + r}
+    q^{n - (m+2|v(d)|-r)} (-1)^n q^{s(2m-n)}.
+\end{align*}
+
+\subsection{Merging the contributions}
+When we put together these sums, the first two double sums fold together and
+we get just the following five double sums:
+\begin{align*}
+  I_{n>0}^{\text{1+2}} + I_{n>0}^{\text{3+4}}
+  &= \sum_{n=1}^{-|v(d)|+r} \sum_{m=n-r}^{-2|v(d)|+r}
+    q^{n} \left( 1 + q^{-1} \right) (-1)^n q^{s(2m-n)} \\
+  &+ \sum_{n=-|v(d)|+r+1}^{\lambda-|v(d)|+r}
+    \sum_{m=n-r}^{n-|v(d)|} q^{r-|v(d)|} (-1)^n q^{s(2m-n)} \\
+  &+ \sum_{n=1}^{-2|v(d)|+r}
+    \sum_{m=-2|v(d)|+r+1}^{\min\left(n-2|v(d)|+r, \lambda-|v(d)|+r\right)}
+    q^{n - (m+2|v(d)|-r)} \cdot (-1)^n q^{s(2m-n)} \\
+  &+ \sum_{n=\max(1, -2|v(d)|+r+1)}^{-|v(d)|+r}
+    \sum_{m=-2|v(d)|+r+1}^{\min(n, \lambda) - 2|v(d)| + r}
+    q^{n-(m+2|v(d)|-r)} (-1)^n q^{s(2m-n)} \\
+  &+ \sum_{n=-|v(d)|+r+1}^{\lambda-|v(d)|+r}
+    \sum_{m=n-|v(d)|+1}^{\min(n, \lambda) - 2|v(d)| + r}
+    q^{n - (m+2|v(d)|-r)} (-1)^n q^{s(2m-n)}.
+\end{align*}
+We start with the evaluation of the last three double sums.
+Replacing $j = n - (m + 2 |v(d)| - r)$ gives
+$2m-n = 2(n - (2|v(d)| - r) - j) - n = n - 4|v(d)| + 2r - 2j$ and
+the last three double sums transform into
+\begin{align*}
+  \sum_{n=1}^{-2|v(d)|+r}
+    \sum_{j=\max(0, n-\lambda+|v(d)|)}^{n-1}
+    q^j \cdot (-1)^n q^{s(n-4|v(d)|+2r-2j)} \\
+  + \sum_{n=\max(1, -2|v(d)|+r+1)}^{-|v(d)|+r}
+    \sum_{j=\max(0, n-\lambda)}^{n-1}
+    q^j (-1)^n q^{s(n-4|v(d)|+2r-2j)} \\
+  + \sum_{n=-|v(d)|+r+1}^{\lambda-|v(d)|+r}
+    \sum_{j=\max(0, n -\lambda)}^{-|v(d)|+r-1}
+    q^j (-1)^n q^{s(n-4|v(d)|+2r-2j)}.
+\end{align*}
+The range of $n$ across the three double sums is disjoint
+and runs from $n = 1$ up to $n = \lambda - |v(d)| + r$.
+
+%\Cref{tab:ell_neg_9_cases} shows the value of $j$ that are summed over
+%depending on which breaking point applies for $n$.
+%Note that not all $9$ cells are actually used for any particular $(|v(d)|, r, \lambda)$.
+%\begin{table}[ht]
+%  \begin{tabular}{lccc}
+%    \toprule
+%    & $n \le \lambda - |v(d)|$ & $\lambda - |v(d)| \le n \le \lambda$ & $n \ge \lambda$ \\ \midrule
+%    $1 \le n \le -2|v(d)|+r$
+%      & $0 \le j \le n-1$
+%      & $\begin{aligned} n&-\lambda+|v(d)| \\ & \le j \le n-1 \end{aligned}$
+%      & $\begin{aligned} n&-\lambda+|v(d)| \\ & \le j \le n-1 \end{aligned}$ \\
+%    $\begin{aligned} \max(1,& -2|v(d)|+r+1) \\ &\le n \le -|v(d)|+r \end{aligned}$
+%      & $0 \le j \le n-1$
+%      & $0 \le j \le n-1$
+%      & $\begin{aligned} n-\lambda &\le j \\ &\le n-1 \end{aligned}$ \\
+%    $\begin{aligned} -|v(d)|& +r+1 \\ &\le n \le \lambda - |v(d)|+r \end{aligned}$
+%      & $\begin{aligned} 0 &\le j \\ &\le -|v(d)|+r+1 \end{aligned}$
+%      & $\begin{aligned} 0 &\le j \\ &\le -|v(d)|+r+1 \end{aligned}$
+%      & $\begin{aligned} n-\lambda &\le j \\ &\le -|v(d)|+r+1 \end{aligned}$ \\
+%    \bottomrule
+%  \end{tabular}
+%  \caption{The $9$ cases of the double sum}
+%  \label{tab:ell_neg_9_cases}
+%\end{table}
+
+We now interchange the order of summation so that $j$ is on the outside to get
+\begin{align*}
+  \sum_{j=\max(0, 1-\lambda+|v(d)|)}^{-2|v(d)|+r-1}
+    \sum_{n=j+1}^{\min(j+\lambda, -|v(d)| + r) - |v(d)|}
+    q^j \cdot (-1)^n q^{s(n-4|v(d)|+2r-2j)} \\
+  + \sum_{j=0}^{-|v(d)|+r-1}
+    \sum_{n=\max(j+1, -2|v(d)|+r+1)}^{\min(j+\lambda,r)-|v(d)|}
+    q^j (-1)^n q^{s(n-4|v(d)|+2r-2j)} \\
+  +\sum_{j=\max(0, -|v(d)|+r+1 -\lambda)}^{-|v(d)|+r-1}
+    \sum_{n=-|v(d)|+r+1}^{\lambda+\min(j, -|v(d)|+r)}
+    q^j (-1)^n q^{s(n-4|v(d)|+2r-2j)}.
+\end{align*}
+
+
+
 \section{Full explicit weighted orbital integral for the case where $\ell = \delta = 2v(b) = 2v(d) < 0$}
 \begin{theorem}
   \label{thm:full_orbital_ell_neg}
@@ -1430,6 +1565,6 @@ Now we can put everything together to get the following.
     \Orb(\gamma, \mathbf{1}_{K'_{S, \le r}}, s)
     &= \sum_{k = -2r}^{\lambda + 2(r-|v(d)|)}
     (-1)^k \left( 1 + q + q^2 + \dots + q^{\nn_{\gamma}(k)} \right) (q^s)^k \\
-    &= \sum_{k = -r-|v(d)|}^{\lambda + r - |v(d)|} \cc_\gamma(k) (-1)^k q^{r-|v(d)|} (q^s)^k \\
+    &+ \sum_{k = -r-|v(d)|}^{\lambda + r - |v(d)|} \cc_\gamma(k) (-1)^k q^{r-|v(d)|} (q^s)^k \\
   \end{align*}
 \end{theorem}
