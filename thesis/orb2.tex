@@ -142,7 +142,7 @@ There are four double sums to interchange.
   as well as $j \le \left\lfloor \frac{n+r}{2} \right\rfloor
   \iff n \ge 2j-r$.
   Putting these four conditions together gives
-  \[ \max(j+1, 2j-r) \le n \le \min(\lambda+j, \ell+r). \]
+  \[ \max(j+1, 2j-r) \le n \le \min(j+\lambda, \ell+r). \]
 \end{itemize}
 Hence we get
 \begin{align*}
@@ -157,7 +157,7 @@ Hence we get
     \sum_{n=\max(1,2j-r)}^{j}
     q^{n} \left( 1 + q\inv \right) \cdot (-1)^n q^{s(n+2\delta+2r-2j)} \\
   &\qquad+ \sum_{j=0}^{\left\lfloor \frac{\ell}{2} \right\rfloor + r - \mathbf{1}[\ell = 0]}
-    \sum_{n=\max(j+1, 2j-r)}^{\min(\lambda+j, \ell+r)}
+    \sum_{n=\max(j+1, 2j-r)}^{\min(j+\lambda, \ell+r)}
     q^{j} \cdot (-1)^n q^{s(n+2\delta+2r-2j)}.
 \end{align*}
 
@@ -189,7 +189,7 @@ simplifying the expression to just
       q^{\left\lfloor \frac{n+r}{2} \right\rfloor} \cdot (-1)^n q^{s(n-2j)} \\
     &+ \sum_{n=\max(1,2j-r)}^{j}
       q^{n} \left( 1 + q\inv \right) \cdot (-1)^n q^{s(n-2j)} \\
-    &+ \sum_{n=\max(j+1, 2j-r)}^{\min(\lambda+j, \ell+r)} q^{j} \cdot (-1)^n q^{s(n-2j)} \Bigg).
+    &+ \sum_{n=\max(j+1, 2j-r)}^{\min(j+\lambda, \ell+r)} q^{j} \cdot (-1)^n q^{s(n-2j)} \Bigg).
 \end{align*}
 
 \section{Merging of $I_{n \le 0}$ with $I_{n > 0}^{\text{1+2}}$}
@@ -211,7 +211,7 @@ can be rewritten to the collation
       q^{\left\lfloor \frac{n+r}{2} \right\rfloor} \cdot (-1)^n q^{s(n-2j)} \\
     &+ \sum_{n=\max(1,2j-r)}^{j}
       q^{n} \left( 1 + q\inv \right) \cdot (-1)^n q^{s(n-2j)} \\
-    &+ \sum_{n=\max(j+1, 2j-r)}^{\min(\lambda+j, \ell+r)} q^{j} \cdot (-1)^n q^{s(n-2j)} \Bigg).
+    &+ \sum_{n=\max(j+1, 2j-r)}^{\min(j+\lambda, \ell+r)} q^{j} \cdot (-1)^n q^{s(n-2j)} \Bigg).
 \end{align*}
 Note that when $r=0$ and $\ell = \lambda \equiv 1 \pmod 2$
 we recover \cite[equation (4.13)]{ref:AFL}.
@@ -324,7 +324,7 @@ In the region where $k \ge 2\delta + r$, the latter two sums are in play:
   \begin{align*}
     &\phantom{\iff} 0 \le j \le \delta + 2r \\
     j < 2j-2\delta-2r+k &\implies 2\delta+2r-k < j \\
-    2j-2\delta-2r+k \le \lambda+j &\iff j \le 2\delta+2r+\lambda-k \\
+    2j-2\delta-2r+k \le j+\lambda &\iff j \le 2\delta+2r+\lambda-k \\
     2j-2\delta-2r+k \le \ell+r &\iff j \le \delta+\frac{3r+\ell-k}{2}
   \end{align*}
   The values of $k$ for which there is any valid index $j$ is given by
@@ -1149,7 +1149,7 @@ so the sum becomes
   q^j \cdot (-1)^n q^{s(n+2\delta+2r-2j)} \\
   &= \sum_{j=\max(r-(\lambda-\ell-1),0)}^{\frac{\ell}{2}+r} \sum_{n=\ell+r+1}^{\lambda+\min(j,r)}
   q^j \cdot (-1)^n q^{s(n+2\delta+2r-2j)} \\
-  &= \sum_{j=\max(r-(\lambda-\ell-1),0)}^{r} \sum_{n=\ell+r+1}^{\lambda+j}
+  &= \sum_{j=\max(r-(\lambda-\ell-1),0)}^{r} \sum_{n=\ell+r+1}^{j+\lambda}
   q^j \cdot (-1)^n q^{s(n+2\delta+2r-2j)}
   + \sum_{j=r+1}^{\frac{\ell}{2}+r} \sum_{n=\ell+r+1}^{\lambda+r}
   q^j \cdot (-1)^n q^{s(n+2\delta+2r-2j)} \\
@@ -1579,27 +1579,53 @@ and runs from $n = 1$ up to $n = \lambda - |v(d)| + r$.
 %\end{table}
 
 We now interchange the order of summation so that $j$ is on the outside to get
+and then split the second double sum and re-collate:
 \begin{align*}
-  \sum_{j=0}^{-2|v(d)|+r-1}
-    \sum_{n=j+1}^{\min(j+\lambda, -2|v(d)| + r)}
+  &\sum_{j=0}^{-2|v(d)|+r-1}
+    \sum_{n=j+1}^{-2|v(d)|+r}
     q^j \cdot (-1)^n q^{s(n-4|v(d)|+2r-2j)} \\
-  + \sum_{j=0}^{-|v(d)|+r-1}
+  &+ \sum_{j=0}^{-|v(d)|+r-1}
     \sum_{n=\max(j+1, -2|v(d)|+r+1)}^{\min(j+\lambda,-|v(d)|+r)}
     q^j (-1)^n q^{s(n-4|v(d)|+2r-2j)} \\
-  +\sum_{j=\max(0, -|v(d)|+r+1 -\lambda)}^{-|v(d)|+r-1}
-    \sum_{n=-|v(d)|+r+1}^{\lambda+j}
+  &+ \sum_{j=\max(0, -\lambda-|v(d)|+r+1)}^{-|v(d)|+r-1}
+    \sum_{n=-|v(d)|+r+1}^{j+\lambda}
+    q^j (-1)^n q^{s(n-4|v(d)|+2r-2j)} \\
+  &= \sum_{j=0}^{-2|v(d)|+r-1}
+    \sum_{n=j+1}^{-2|v(d)|+r}
+    q^j \cdot (-1)^n q^{s(n-4|v(d)|+2r-2j)} \\
+  &+ \sum_{j=0}^{-\lambda-|v(d)|+r}
+    \sum_{n=\max(j+1, -2|v(d)|+r+1)}^{j+\lambda}
+    q^j (-1)^n q^{s(n-4|v(d)|+2r-2j)} \\
+  &+ \sum_{j=\max(0, -\lambda-|v(d)|+r+1)}^{-|v(d)|+r-1}
+    \sum_{n=\max(j+1, -2|v(d)|+r+1)}^{-|v(d)|+r}
+    q^j (-1)^n q^{s(n-4|v(d)|+2r-2j)} \\
+  &+ \sum_{j=\max(0, -\lambda-|v(d)|+r+1)}^{-|v(d)|+r-1}
+    \sum_{n=-|v(d)|+r+1}^{j+\lambda}
+    q^j (-1)^n q^{s(n-4|v(d)|+2r-2j)} \\
+  &= \sum_{j=0}^{-2|v(d)|+r-1}
+    \sum_{n=j+1}^{-2|v(d)|+r}
+    q^j \cdot (-1)^n q^{s(n-4|v(d)|+2r-2j)} \\
+  &+ \sum_{j=0}^{-\lambda-|v(d)|+r}
+    \sum_{n=\max(j+1, -2|v(d)|+r+1)}^{j+\lambda}
+    q^j (-1)^n q^{s(n-4|v(d)|+2r-2j)} \\
+  &+ \sum_{j=\max(0, -\lambda-|v(d)|+r+1)}^{-|v(d)|+r-1}
+    \sum_{n=\max(j+1, -2|v(d)|+r+1)}^{j+\lambda}
+    q^j (-1)^n q^{s(n-4|v(d)|+2r-2j)} \\
+  &= \sum_{j=0}^{-2|v(d)|+r-1}
+    \sum_{n=j+1}^{-2|v(d)|+r}
+    q^j \cdot (-1)^n q^{s(n-4|v(d)|+2r-2j)} \\
+  &+ \sum_{j=0}^{-|v(d)|+r-1}
+    \sum_{n=\max(j+1, -2|v(d)|+r+1)}^{j+\lambda}
     q^j (-1)^n q^{s(n-4|v(d)|+2r-2j)}.
 \end{align*}
-Let $k = n - 4|v(d)| + 2r - 2j$ and transform this into
+
+Let $k = n - 2j - 4|v(d)| + 2r$ and transform this into
 \begin{align*}
-  \sum_{j=0}^{-2|v(d)|+r-1}
-    \sum_{k=-4|v(d)|+2r-j+1}^{\min(j+\lambda, -2|v(d)| + r)-4|v(d)|+2r-2j}
-    q^j (-q^s)^k \\
-  + \sum_{j=0}^{-|v(d)|+r-1}
-    \sum_{k=\max(j+1, -2|v(d)|+r+1) - 4|v(d)| + 2r - 2j}^{\min(j+\lambda,-|v(d)|+r) - 4|v(d)| + 2r - 2j}
-    q^j (-q^s)^k \\
-  +\sum_{j=\max(0, -|v(d)|+r+1 -\lambda)}^{-|v(d)|+r-1}
-    \sum_{k=-5|v(d)|+3r-2j+1}^{\lambda-j-4|v(d)|+2r}
+  &\sum_{j=0}^{-2|v(d)|+r-1}
+    \sum_{k=-j-4|v(d)|+2r+1}^{-2j-6|v(d)|+3r}
+    q^j \cdot (-q^s)^k \\
+  &+ \sum_{j=0}^{-|v(d)|+r-1}
+    \sum_{k=\max(j+1, -2|v(d)|+r+1) - 2j - 4|v(d)| + 2r}^{-j+\lambda-4|v(d)|+2r}
     q^j (-q^s)^k.
 \end{align*}
 
@@ -1614,67 +1640,99 @@ Altogether, we have arrived at the following formula
   \bigg( \min\left( \left\lfloor \frac{k+\lambda-|v(d)|+r}{2} \right\rfloor, k+r \right) \\
     &\qquad - \max\left( \left\lceil \frac{k-|v(d)|+r+1}{2} \right\rceil, k+|v(d)| \right) + 1 \bigg)
     (-q^s)^k \\
-  &+ \sum_{j=0}^{-2|v(d)|+r-1}
-    \sum_{k=-4|v(d)|+2r-j+1}^{\min(j+\lambda, -2|v(d)| + r)-4|v(d)|+2r-2j}
-    q^j (-q^s)^k \\
+  &\sum_{j=0}^{-2|v(d)|+r-1}
+    \sum_{k=-j-4|v(d)|+2r+1}^{-2j-6|v(d)|+3r}
+    q^j \cdot (-q^s)^k \\
   &+ \sum_{j=0}^{-|v(d)|+r-1}
-    \sum_{k=\max(j+1, -2|v(d)|+r+1) - 4|v(d)| + 2r - 2j}^{\min(j+\lambda,-|v(d)|+r) - 4|v(d)| + 2r - 2j}
-    q^j (-q^s)^k \\
-  &+ \sum_{j=\max(0, -|v(d)|+r+1 -\lambda)}^{-|v(d)|+r-1}
-    \sum_{k=-5|v(d)|+3r-2j+1}^{\lambda-j-4|v(d)|+2r}
+    \sum_{k=\max(j+1, -2|v(d)|+r+1) - 2j - 4|v(d)| + 2r}^{-j+\lambda-4|v(d)|+2r}
     q^j (-q^s)^k.
 \end{align*}
-We now divide into cases.
-
-\subsubsection{Case where $r \le 2|v(d)|$ and $\lambda \ge |v(d)|+r$}
-Resolving the minimums and maximums:
+We collapse the sums
 \begin{align*}
-  \Orb(\gamma, \mathbf{1}_{K'_{S, \le r}}, s)
-  &= \sum_{j=0}^{-|v(d)|+r-1} \sum_{k = j - 2r}^{-j - 4|v(d)| + 2r} q^j (-q^s)^k
-  + q^{-|v(d)|+r} \sum_{\substack{-|v(d)|-r \le k \le -3|v(d)|+r \\ k \equiv -|v(d)|+r \bmod 2}}
+  &\phantom+ q^{-|v(d)|+r} \sum_{\substack{-|v(d)|-r \le k \le -3|v(d)|+r \\ k \equiv -|v(d)|+r \bmod 2}}
     (-q^s)^k \\
   &+ q^{-|v(d)|+r} \sum_{k=-|v(d)|-r+1}^{\lambda-3|v(d)|+r}
   \bigg( \min\left( \left\lfloor \frac{k+\lambda-|v(d)|+r}{2} \right\rfloor, k+r \right) \\
     &\qquad - \max\left( \left\lceil \frac{k-|v(d)|+r+1}{2} \right\rceil, k+|v(d)| \right) + 1 \bigg)
-    (-q^s)^k \\
-  &+ \sum_{j=0}^{-|v(d)|+r-1}
-    \sum_{k=(j+1) - 4|v(d)| + 2r - 2j}^{(-|v(d)|+r) - 4|v(d)| + 2r - 2j}
-    q^j (-q^s)^k \\
-  &+ \sum_{j=0}^{-|v(d)|+r-1}
-    \sum_{k=-5|v(d)|+3r-2j+1}^{\lambda-j-4|v(d)|+2r}
-    q^j (-q^s)^k.
+    (-q^s)^k
 \end{align*}
-Several of the sums collapse together and we are left with just
+by noting that the coefficient of the second sum can be written as
 \begin{align*}
-  \Orb(\gamma, \mathbf{1}_{K'_{S, \le r}}, s)
-  &= \sum_{j=0}^{-|v(d)|+r-1} \sum_{k = j - 2r}^{\lambda-j-4|v(d)|+2r} q^j (-q^s)^k
-  + \sum_{\substack{-|v(d)|-r \le k \le -3|v(d)|+r \\ k \equiv -|v(d)|+r \bmod 2}}
-    q^{-|v(d)|+r} (-q^s)^k \\
-  &+ q^{-|v(d)|+r}  \sum_{k=-|v(d)|-r+1}^{\lambda-3|v(d)|+r}
-  \bigg( \min\left( \left\lfloor \frac{k+\lambda-|v(d)|+r}{2} \right\rfloor, k+r \right) \\
-    &\qquad - \max\left( \left\lceil \frac{k-|v(d)|+r+1}{2} \right\rceil, k+|v(d)| \right) + 1 \bigg)
-    (-q^s)^k.
+  &\phantom=
+  \begin{cases}
+    \left\lfloor \frac{k+\lambda-|v(d)|+r}{2} \right\rfloor - \left\lceil \frac{k-|v(d)|+r+1}{2} \right\rceil + 1 &\text{if } \lambda-|v(d)|-r \le k \le -3|v(d)|+r \\
+    r-|v(d)|+1 &\text{if } -3|v(d)|+r \le k \le \lambda-|v(d)| \\
+    \left\lfloor \frac{k+\lambda-|v(d)|+r}{2} \right\rfloor - (k+|v(d)|) + 1 &\text{if } k \ge \max(-3|v(d)|+r, \lambda-|v(d)|-r) \\
+    (k+r) - \left\lceil \frac{k-|v(d)|+r+1}{2} \right\rceil + 1 &\text{if } k \le \min(-3|v(d)|+r, \lambda-|v(d)|-r) \\
+  \end{cases} \\
+  &=
+  \begin{cases}
+    \frac{\lambda-1}{2} + (k+|v(d)|+r)\%2 &\text{if } \lambda-|v(d)|-r \le k \le -3|v(d)|+r \\
+    r-|v(d)|+1 &\text{if } -3|v(d)|+r \le k \le \lambda-|v(d)| \\
+    \left\lfloor \frac{\lambda-3|v(d)|+r-k}{2} \right\rfloor + 1 &\text{if } k \ge \max(-3|v(d)|+r, \lambda-|v(d)|-r) \\
+    \left\lfloor \frac{k+|v(d)|+r}{2} \right\rfloor + (k+|v(d)|+r)\%2 &\text{if } k \le \min(-3|v(d)|+r, \lambda-|v(d)|-r) \\
+  \end{cases}
 \end{align*}
+Thus when we add
+$q^{-|v(d)|+r} \sum_{\substack{-|v(d)|-r \le k \le -3|v(d)|+r \\ k \equiv -|v(d)|+r \bmod 2}} (-q^s)^k$
+back in we conveniently arrive at a coefficient of
+\[
+  1 +
+  \begin{cases}
+    \frac{\lambda-1}{2} &\text{if } \lambda-|v(d)|-r \le k \le -3|v(d)|+r \\
+    r-|v(d)| &\text{if } -3|v(d)|+r \le k \le \lambda-|v(d)| \\
+    \left\lfloor \frac{\lambda-3|v(d)|+r-k}{2} \right\rfloor &\text{if } k \ge \max(-3|v(d)|+r, \lambda-|v(d)|-r) \\
+    \left\lfloor \frac{k+|v(d)|+r}{2} \right\rfloor &\text{if } k \le \min(-3|v(d)|+r, \lambda-|v(d)|-r).
+  \end{cases}
+\]
+If we now define
+\[ \cc_\gamma(k) \coloneqq \Arch_{[-|v(d)|-r, \lambda-3|v(d)|+r]} (0, \min(2r-2|v(d)|, \lambda)) \]
+then the coefficient can be written instead as
+$1 + \cc_\gamma(k)$.
 
-\subsubsection{Case where $r \le 2|v(d)|$}
+Similarly, we unify the three remaining double sums by
+repeatedly splitting and re-collating everything;
+miraculously the entire expression collapses into a single double sum by
+\begin{align*}
+  &\sum_{j=0}^{-|v(d)|+r-1} \sum_{k = j - 2r}^{-j - 4|v(d)| + 2r} q^j (-q^s)^k \\
+  &+ \sum_{j=0}^{-2|v(d)|+r-1}
+    \sum_{k=-j-4|v(d)|+2r+1}^{-2j-6|v(d)|+3r}
+    q^j \cdot (-q^s)^k \\
+  &+ \sum_{j=0}^{-|v(d)|+r-1}
+    \sum_{k=\max(j+1, -2|v(d)|+r+1) - 2j - 4|v(d)| + 2r}^{-j+\lambda-4|v(d)|+2r}
+    q^j (-q^s)^k \\
+  &= \sum_{j=0}^{-2|v(d)|+r-1} \sum_{k = j - 2r}^{-j - 4|v(d)| + 2r} q^j (-q^s)^k \\
+  &+ \sum_{j=\max(-2|v(d)|+r,0)}^{-|v(d)|+r-1} \sum_{k = j - 2r}^{-j - 4|v(d)| + 2r} q^j (-q^s)^k \\
+  &+ \sum_{j=0}^{-2|v(d)|+r-1}
+    \sum_{k=-j-4|v(d)|+2r+1}^{-2j-6|v(d)|+3r}
+    q^j \cdot (-q^s)^k \\
+  &+ \sum_{j=0}^{-2|v(d)|+r-1}
+    \sum_{k = -2j - 6|v(d)| + 3r + 1}^{-j+\lambda-4|v(d)|+2r}
+    q^j (-q^s)^k \\
+  &+ \sum_{j=\max(-2|v(d)|+r, 0)}^{-|v(d)|+r-1}
+    \sum_{k = -j - 4|v(d)| + 2r + 1}^{-j+\lambda-4|v(d)|+2r}
+    q^j (-q^s)^k \\
+  &= \sum_{j=0}^{-2|v(d)|+r-1} \sum_{k = j - 2r}^{-j + \lambda - 4|v(d)| + 2r} q^j (-q^s)^k
+    + \sum_{j=\max(-2|v(d)|+r,0)}^{-|v(d)|+r-1} \sum_{k = j - 2r}^{-j + \lambda - 4|v(d)| + 2r} q^j (-q^s)^k \\
+  &= \sum_{j=0}^{-|v(d)|+r-1} \sum_{k = j - 2r}^{-j + \lambda - 4|v(d)| + 2r} q^j (-q^s)^k.
+\end{align*}
+Thus, at this point we now have
 \begin{align*}
   \Orb(\gamma, \mathbf{1}_{K'_{S, \le r}}, s)
-  &= \sum_{j=0}^{-|v(d)|+r-1} \sum_{k = j - 2r}^{-j - 4|v(d)| + 2r} q^j (-q^s)^k
-  + q^{-|v(d)|+r} \sum_{\substack{-|v(d)|-r \le k \le -3|v(d)|+r \\ k \equiv -|v(d)|+r \bmod 2}}
-    (-q^s)^k \\
-  &+ \sum_{k=-|v(d)|-r+1}^{\lambda-3|v(d)|+r}
-  \bigg( \min\left( \left\lfloor \frac{k+\lambda-|v(d)|+r}{2} \right\rfloor, k+r \right) \\
-    &\qquad - \max\left( \left\lceil \frac{k-|v(d)|+r+1}{2} \right\rceil, k+|v(d)| \right) + 1 \bigg)
-    (-q^s)^k \\
-  &+ \sum_{j=0}^{-|v(d)|+r-1}
-    \sum_{k=(j+1) - 4|v(d)| + 2r - 2j}^{\min(j+\lambda,-|v(d)|+r) - 4|v(d)| + 2r - 2j}
-    q^j (-q^s)^k \\
-  &+ \sum_{j=\max(0, -|v(d)|+r+1 -\lambda)}^{-|v(d)|+r-1}
-    \sum_{k=-5|v(d)|+3r-2j+1}^{\lambda-j-4|v(d)|+2r}
-    q^j (-q^s)^k.
+  &= \sum_{k=-|v(d)|-r}^{\lambda-3|v(d)|+r} q^{-|v(d)|+r} (1+\cc_\gamma(k)) (-q^s)^k \\
+  &+ \sum_{j=0}^{-|v(d)|+r-1} \sum_{k = j - 2r}^{-j + \lambda - 4|v(d)| + 2r} q^j (-q^s)^k \\
+  &= \sum_{k=-|v(d)|-r}^{\lambda-3|v(d)|+r} q^{-|v(d)|+r} \cc_\gamma(k) (-q^s)^k \\
+  &+ \sum_{j=0}^{-|v(d)|+r} \sum_{k = j - 2r}^{-j + \lambda - 4|v(d)| + 2r} q^j (-q^s)^k.
+\end{align*}
+Interchange the order of the latter sum to be $k$ first:
+\begin{align*}
+  \Orb(\gamma, \mathbf{1}_{K'_{S, \le r}}, s)
+  &= \sum_{k=-|v(d)|-r}^{\lambda-3|v(d)|+r} q^{-|v(d)|+r} \cc_\gamma(k) (-q^s)^k \\
+  &+ \sum_{k=-2r}^{\lambda-4|v(d)|+2r} \sum_{j=0}^{\min(k+2r, -|v(d)|+r, \lambda-4|v(d)|+2r-k)} q^j (-q^s)^k.
 \end{align*}
 
 \section{Full explicit weighted orbital integral for the case where $\ell = \delta = 2v(b) = 2v(d) < 0$}
+We can now state the result for $\ell < 0$ that we obtained from the above work.
 \begin{theorem}
   \label{thm:full_orbital_ell_neg}
   Let the representative
@@ -1689,17 +1747,117 @@ Several of the sums collapse together and we are left with just
   which is necessarily odd.
 
   If $|v(d)| > r$, the entire orbital integral is zero.
-
   Otherwise define
   \begin{align*}
-    \nn_\gamma &\coloneqq \Arch_{[-2r, \lambda + 2(r-|v(d)|)]}(r-|v(d)|, 0) \\
-    \cc_\gamma &\coloneqq \Arch_{[-r-|v(d)|, \lambda + r-|v(d)|]} (0, 2(r-|v(d)|)).
+    \nn_\gamma &\coloneqq \Arch_{[-2r, \lambda+2r-4|v(d)|]}(r-|v(d)|, 0) \\
+    \cc_\gamma &\coloneqq \Arch_{[-r-|v(d)|, \lambda+r-3|v(d)|]} (0, \min(2r-2|v(d)|, \lambda)).
   \end{align*}
   Then for any $r \ge 0$ we have the formula:
   \begin{align*}
     \Orb(\gamma, \mathbf{1}_{K'_{S, \le r}}, s)
-    &= \sum_{k = -2r}^{\lambda + 2(r-|v(d)|)}
+    &= \sum_{k = -2r}^{\lambda + 2r-4|v(d)|}
     (-1)^k \left( 1 + q + q^2 + \dots + q^{\nn_{\gamma}(k)} \right) (q^s)^k \\
-    &+ \sum_{k = -r-|v(d)|}^{\lambda + r - |v(d)|} \cc_\gamma(k) (-1)^k q^{r-|v(d)|} (q^s)^k \\
+    &+ \sum_{k = -r-|v(d)|}^{\lambda+r-3|v(d)|} \cc_\gamma(k) (-1)^k q^{r-|v(d)|} (q^s)^k \\
   \end{align*}
 \end{theorem}
+\begin{example}
+  If $\lambda = 7$, $v(d) = -5$ and $r = 12$ we have
+  \begin{align*}
+    \Orb(\gamma, \mathbf{1}_{K'_{S, \le r}}, s)
+    &= q^{-24s} \\
+    &- (q+1) \cdot q^{-23s} \\
+    &+ (q^2+q+1) \cdot q^{-22s} \\
+    &- (q^3+q^2+q+1) \cdot q^{-21s} \\
+    &+ (q^4+q^3+q^2+q+1) \cdot q^{-20s} \\
+    &- (q^5+q^4+q^3+q^2+q+1) \cdot q^{-19s} \\
+    &+ (q^6+q^5+q^4+q^3+q^2+q+1) \cdot q^{-18s} \\
+    &- (q^7+q^6+q^5+q^4+q^3+q^2+q+1) \cdot q^{-17s} \\
+    &+ (2q^7+q^6+q^5+q^4+q^3+q^2+q+1) \cdot q^{-16s} \\
+    &- (2q^7+q^6+q^5+q^4+q^3+q^2+q+1) \cdot q^{-15s} \\
+    &+ (2q^7+q^6+q^5+q^4+q^3+q^2+q+1) \cdot q^{-14s} \\
+    &- (2q^7+q^6+q^5+q^4+q^3+q^2+q+1) \cdot q^{-13s} \\
+    &+ (3q^7+q^6+q^5+q^4+q^3+q^2+q+1) \cdot q^{-12s} \\
+    &- (3q^7+q^6+q^5+q^4+q^3+q^2+q+1) \cdot q^{-11s} \\
+    &+ (4q^7+q^6+q^5+q^4+q^3+q^2+q+1) \cdot q^{-10s} \\
+    &- (4q^7+q^6+q^5+q^4+q^3+q^2+q+1) \cdot q^{-9s} \\
+    &+ (4q^7+q^6+q^5+q^4+q^3+q^2+q+1) \cdot q^{-8s} \\
+    &- (4q^7+q^6+q^5+q^4+q^3+q^2+q+1) \cdot q^{-7s} \\
+    &+ (4q^7+q^6+q^5+q^4+q^3+q^2+q+1) \cdot q^{-6s} \\
+    &- (4q^7+q^6+q^5+q^4+q^3+q^2+q+1) \cdot q^{-5s} \\
+    &+ (4q^7+q^6+q^5+q^4+q^3+q^2+q+1) \cdot q^{-4s} \\
+    &- (4q^7+q^6+q^5+q^4+q^3+q^2+q+1) \cdot q^{-3s} \\
+    &+ (4q^7+q^6+q^5+q^4+q^3+q^2+q+1) \cdot q^{-2s} \\
+    &- (3q^7+q^6+q^5+q^4+q^3+q^2+q+1) \cdot q^{-s} \\
+    &+ (3q^7+q^6+q^5+q^4+q^3+q^2+q+1) \cdot q^{0} \\
+    &- (2q^7+q^6+q^5+q^4+q^3+q^2+q+1) \cdot q^{s} \\
+    &+ (2q^7+q^6+q^5+q^4+q^3+q^2+q+1) \cdot q^{2s} \\
+    &- (q^7+q^6+q^5+q^4+q^3+q^2+q+1) \cdot q^{3s} \\
+    &+ (q^7+q^6+q^5+q^4+q^3+q^2+q+1) \cdot q^{4s} \\
+    &- (q^6+q^5+q^4+q^3+q^2+q+1) \cdot q^{5s} \\
+    &+ (q^5+q^4+q^3+q^2+q+1) \cdot q^{6s} \\
+    &- (q^4+q^3+q^2+q+1) \cdot q^{7s} \\
+    &+ (q^3+q^2+q+1) \cdot q^{8s} \\
+    &- (q^2+q+1) \cdot q^{9s} \\
+    &+ (q+1) \cdot q^{10s} \\
+    &- q^{11s}.
+  \end{align*}
+\end{example}
+\begin{example}
+  If $\lambda = 2025$, $v(d) = -5$ and $r = 12$ we have
+  \begin{align*}
+    \Orb(\gamma, \mathbf{1}_{K'_{S, \le r}}, s)
+    &= q^{-24s} \\
+    &- (q+1) \cdot q^{-23s} \\
+    &+ (q^2+q+1) \cdot q^{-22s} \\
+    &- (q^3+q^2+q+1) \cdot q^{-21s} \\
+    &+ (q^4+q^3+q^2+q+1) \cdot q^{-20s} \\
+    &- (q^5+q^4+q^3+q^2+q+1) \cdot q^{-19s} \\
+    &+ (q^6+q^5+q^4+q^3+q^2+q+1) \cdot q^{-18s} \\
+    &- (q^7+q^6+q^5+q^4+q^3+q^2+q+1) \cdot q^{-17s} \\
+    &+ (2q^7+q^6+q^5+q^4+q^3+q^2+q+1) \cdot q^{-16s} \\
+    &- (2q^7+q^6+q^5+q^4+q^3+q^2+q+1) \cdot q^{-15s} \\
+    &+ (2q^7+q^6+q^5+q^4+q^3+q^2+q+1) \cdot q^{-14s} \\
+    &- (2q^7+q^6+q^5+q^4+q^3+q^2+q+1) \cdot q^{-13s} \\
+    &+ (3q^7+q^6+q^5+q^4+q^3+q^2+q+1) \cdot q^{-12s} \\
+    &- (3q^7+q^6+q^5+q^4+q^3+q^2+q+1) \cdot q^{-11s} \\
+    &+ (4q^7+q^6+q^5+q^4+q^3+q^2+q+1) \cdot q^{-10s} \\
+    &- (4q^7+q^6+q^5+q^4+q^3+q^2+q+1) \cdot q^{-9s} \\
+    &+ (5q^7+q^6+q^5+q^4+q^3+q^2+q+1) \cdot q^{-8s} \\
+    &- (5q^7+q^6+q^5+q^4+q^3+q^2+q+1) \cdot q^{-7s} \\
+    &+ (6q^7+q^6+q^5+q^4+q^3+q^2+q+1) \cdot q^{-6s} \\
+    &- (6q^7+q^6+q^5+q^4+q^3+q^2+q+1) \cdot q^{-5s} \\
+    &+ (7q^7+q^6+q^5+q^4+q^3+q^2+q+1) \cdot q^{-4s} \\
+    &- (7q^7+q^6+q^5+q^4+q^3+q^2+q+1) \cdot q^{-3s} \\
+    &+ (8q^7+q^6+q^5+q^4+q^3+q^2+q+1) \cdot q^{-2s} \\
+    &- (8q^7+q^6+q^5+q^4+q^3+q^2+q+1) \cdot q^{-s} \\
+    &+ (8q^7+q^6+q^5+q^4+q^3+q^2+q+1) \cdot q^{0} \\
+    &- (8q^7+q^6+q^5+q^4+q^3+q^2+q+1) \cdot q^{s} \\
+    &+ (8q^7+q^6+q^5+q^4+q^3+q^2+q+1) \cdot q^{2s} \\
+    &- (8q^7+q^6+q^5+q^4+q^3+q^2+q+1) \cdot q^{3s} \\
+    &+ (8q^7+q^6+q^5+q^4+q^3+q^2+q+1) \cdot q^{4s} \\
+    &\vdotswithin= \\
+    &- (8q^7+q^6+q^5+q^4+q^3+q^2+q+1) \cdot q^{2007s} \\
+    &+ (8q^7+q^6+q^5+q^4+q^3+q^2+q+1) \cdot q^{2008s} \\
+    &- (7q^7+q^6+q^5+q^4+q^3+q^2+q+1) \cdot q^{2009s} \\
+    &+ (7q^7+q^6+q^5+q^4+q^3+q^2+q+1) \cdot q^{2010s} \\
+    &- (6q^7+q^6+q^5+q^4+q^3+q^2+q+1) \cdot q^{2011s} \\
+    &+ (6q^7+q^6+q^5+q^4+q^3+q^2+q+1) \cdot q^{2012s} \\
+    &- (5q^7+q^6+q^5+q^4+q^3+q^2+q+1) \cdot q^{2013s} \\
+    &+ (5q^7+q^6+q^5+q^4+q^3+q^2+q+1) \cdot q^{2014s} \\
+    &- (4q^7+q^6+q^5+q^4+q^3+q^2+q+1) \cdot q^{2015s} \\
+    &+ (4q^7+q^6+q^5+q^4+q^3+q^2+q+1) \cdot q^{2016s} \\
+    &- (3q^7+q^6+q^5+q^4+q^3+q^2+q+1) \cdot q^{2017s} \\
+    &+ (3q^7+q^6+q^5+q^4+q^3+q^2+q+1) \cdot q^{2018s} \\
+    &- (2q^7+q^6+q^5+q^4+q^3+q^2+q+1) \cdot q^{2019s} \\
+    &+ (2q^7+q^6+q^5+q^4+q^3+q^2+q+1) \cdot q^{2020s} \\
+    &- (q^7+q^6+q^5+q^4+q^3+q^2+q+1) \cdot q^{2021s} \\
+    &+ (q^7+q^6+q^5+q^4+q^3+q^2+q+1) \cdot q^{2022s} \\
+    &- (q^6+q^5+q^4+q^3+q^2+q+1) \cdot q^{2023s} \\
+    &+ (q^5+q^4+q^3+q^2+q+1) \cdot q^{2024s} \\
+    &- (q^4+q^3+q^2+q+1) \cdot q^{2025s} \\
+    &+ (q^3+q^2+q+1) \cdot q^{2026s} \\
+    &- (q^2+q+1) \cdot q^{2027s} \\
+    &+ (q+1) \cdot q^{2028s} \\
+    &- q^{2029s}.
+  \end{align*}
+\end{example}
