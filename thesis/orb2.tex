@@ -1481,7 +1481,61 @@ we get just the following five double sums:
     \sum_{m=n-|v(d)|+1}^{\min(n, \lambda) - 2|v(d)| + r}
     q^{n - (m+2|v(d)|-r)} (-1)^n q^{s(2m-n)}.
 \end{align*}
-We start with the evaluation of the last three double sums.
+
+\subsubsection{The first double sum, combined with $I_{n \le 0}$}
+We start with
+\[ \sum_{n=1}^{-|v(d)|+r} \sum_{m=n-r}^{-2|v(d)|+r} q^{n} \left( 1 + q^{-1} \right) (-1)^n q^{s(2m-n)} \]
+We'd like to write an analogous sum over $j$.
+For $1 < j < -|v(d)|+r$ we get a contribution of $q^j (-q^s)^k$ for $k = 2m-n$ if and only if
+for $n = j + (k-n)\%2 = j + (k-j) \% 2$ we have
+\begin{align*}
+  n-r \le m \le -2|v(d)|+r
+  &\iff 2n-2r \le k+n \le -4|v(d)|+2r \\
+  &\iff j + (k-j)\%2 - 2r \le k \le -j - (k-j)\%2 - 4|v(d)| + 2r \\
+  &\iff j - 2r \le k \le -j - 4|v(d)| + 2r.
+\end{align*}
+When $j=0$, the contribution is analogous except we must have $n=1$ so that $k$ must be odd;
+and when $j=-|v(d)|+r$, the contribution is analogous except we must have $n=-|v(d)|+r$
+so that $k$ must have the same parity as $-|v(d)|+r$.
+In other words, the double sum can be written as
+
+So this double sum can be rewritten as
+\[ \sum_{j=1}^{-|v(d)|+r-1} \sum_{k = j - 2r}^{-j - 4|v(d)| + 2r} q^j (-q^s)^k
+  + \sum_{\substack{-2r \le k \le -4|v(d)|+2r \\ k \equiv 1 \pmod 2}} (-q^s)^k
+  + \sum_{\substack{-|v(d)|-r \le k \le -3|v(d)|+3r \\ k \equiv -|v(d)|+r \bmod 2}}
+    q^{-|v(d)|+r} (-q^s)^k. \]
+However, we also have
+\[ I_{n \le 0} =
+  \sum_{\substack{-2r \le k \le -4|v(d)|+2r \\ k \equiv 0 \pmod 2}} (-q^s)^k. \]
+Hence once we incorporate $I_{n \le 0}$ in we have
+\begin{align*}
+  I_{n \le 0}
+  &+ \sum_{n=1}^{-|v(d)|+r} \sum_{m=n-r}^{-2|v(d)|+r} q^{n} \left( 1 + q^{-1} \right) (-1)^n q^{s(2m-n)} \\
+  &= \sum_{j=0}^{-|v(d)|+r-1} \sum_{k = j - 2r}^{-j - 4|v(d)| + 2r} q^j (-q^s)^k \\
+  &+ \sum_{\substack{-|v(d)|-r \le k \le -3|v(d)|+r \\ k \equiv -|v(d)|+r \bmod 2}}
+    q^{-|v(d)|+r} (-q^s)^k.
+\end{align*}
+
+\subsubsection{The second double sum}
+We turn  to the second double sum
+\[ \sum_{n=-|v(d)|+r+1}^{\lambda-|v(d)|+r} \sum_{m=n-r}^{n-|v(d)|} (-1)^n q^{s(2m-n)}. \]
+Working with $k = 2m-n$,
+the values of $k$ run from the lowest value $k = - |v(d)| - r + 1$
+to the highest value $k = \lambda - 3|v(d)| + r$.
+The coefficient of $k$ is the number of integers $m$ such that
+\[ n-r \le m \le n-|v(d)| \iff 2m-k-r \le m \le 2m-k-|v(d)| \iff k+|v(d)| \le m \le k+r \]
+and
+\[ -|v(d)|+r+1 \le 2m-k \le \lambda - |v(d)| + r
+  \iff \frac{k-|v(d)|+r+1}{2} \le m \le \frac{k+\lambda-|v(d)|+r}{2}. \]
+In other words, the double sum in question equals
+\begin{align*}
+  \sum_{k=-|v(d)|-r+1}^{\lambda-3|v(d)|+r}
+  \bigg( & \min\left( \left\lfloor \frac{k+\lambda-|v(d)|+r}{2} \right\rfloor, k+r \right) \\
+  & - \max\left( \left\lceil \frac{k-|v(d)|+r+1}{2} \right\rceil, k+|v(d)| \right) + 1 \bigg) (-q^s)^k.
+\end{align*}
+
+\subsubsection{The third, fourth, and fifth double sum}
+Now we evaluate the final three double sums.
 Replacing $j = n - (m + 2 |v(d)| - r)$ gives
 $2m-n = 2(n - (2|v(d)| - r) - j) - n = n - 4|v(d)| + 2r - 2j$ and
 the last three double sums transform into
@@ -1527,16 +1581,68 @@ and runs from $n = 1$ up to $n = \lambda - |v(d)| + r$.
 We now interchange the order of summation so that $j$ is on the outside to get
 \begin{align*}
   \sum_{j=0}^{-2|v(d)|+r-1}
-    \sum_{n=j+1}^{\min(j+\lambda, -|v(d)| + r) - |v(d)|}
+    \sum_{n=j+1}^{\min(j+\lambda, -2|v(d)| + r)}
     q^j \cdot (-1)^n q^{s(n-4|v(d)|+2r-2j)} \\
   + \sum_{j=0}^{-|v(d)|+r-1}
-    \sum_{n=\max(j+1, -2|v(d)|+r+1)}^{\min(j+\lambda,r)-|v(d)|}
+    \sum_{n=\max(j+1, -2|v(d)|+r+1)}^{\min(j+\lambda,-|v(d)|+r)}
     q^j (-1)^n q^{s(n-4|v(d)|+2r-2j)} \\
   +\sum_{j=\max(0, -|v(d)|+r+1 -\lambda)}^{-|v(d)|+r-1}
     \sum_{n=-|v(d)|+r+1}^{\lambda+\min(j, -|v(d)|+r)}
     q^j (-1)^n q^{s(n-4|v(d)|+2r-2j)}.
 \end{align*}
-Let $k = n - 4|v(d)| + 2r - 2j$.
+Let $k = n - 4|v(d)| + 2r - 2j$ and transform this into
+\begin{align*}
+  \sum_{j=0}^{-2|v(d)|+r-1}
+    \sum_{k=-4|v(d)|+2r-j+1}^{\min(j+\lambda, -2|v(d)| + r)-4|v(d)|+2r-2j}
+    q^j (-q^s)^k \\
+  + \sum_{j=0}^{-|v(d)|+r-1}
+    \sum_{k=\max(j+1, -2|v(d)|+r+1) - 4|v(d)| + 2r - 2j}^{\min(j+\lambda,-|v(d)|+r) - 4|v(d)| + 2r - 2j}
+    q^j (-q^s)^k \\
+  +\sum_{j=\max(0, -|v(d)|+r+1 -\lambda)}^{-|v(d)|+r-1}
+    \sum_{k=-5|v(d)|+3r-2j+1}^{\lambda+\min(j, -|v(d)|+r) - 4|v(d)|+2r-2j}
+    q^j (-q^s)^k.
+\end{align*}
+
+\subsection{Collation}
+Altogether, we have arrived at the following formula
+\begin{align*}
+  \Orb(\gamma, \mathbf{1}_{K'_{S, \le r}}, s)
+  &= \sum_{j=0}^{-|v(d)|+r-1} \sum_{k = j - 2r}^{-j - 4|v(d)| + 2r} q^j (-q^s)^k
+  + \sum_{\substack{-|v(d)|-r \le k \le -3|v(d)|+r \\ k \equiv -|v(d)|+r \bmod 2}}
+    q^{-|v(d)|+r} (-q^s)^k \\
+  &+ \sum_{k=-|v(d)|-r+1}^{\lambda-3|v(d)|+r}
+  \bigg( \min\left( \left\lfloor \frac{k+\lambda-|v(d)|+r}{2} \right\rfloor, k+r \right) \\
+    &\qquad - \max\left( \left\lceil \frac{k-|v(d)|+r+1}{2} \right\rceil, k+|v(d)| \right) + 1 \bigg)
+    (-q^s)^k \\
+  &+ \sum_{j=0}^{-2|v(d)|+r-1}
+    \sum_{k=-4|v(d)|+2r-j+1}^{\min(j+\lambda, -2|v(d)| + r)-4|v(d)|+2r-2j}
+    q^j (-q^s)^k \\
+  &+ \sum_{j=0}^{-|v(d)|+r-1}
+    \sum_{k=\max(j+1, -2|v(d)|+r+1) - 4|v(d)| + 2r - 2j}^{\min(j+\lambda,-|v(d)|+r) - 4|v(d)| + 2r - 2j}
+    q^j (-q^s)^k \\
+  &+ \sum_{j=\max(0, -|v(d)|+r+1 -\lambda)}^{-|v(d)|+r-1}
+    \sum_{k=-5|v(d)|+3r-2j+1}^{\lambda+\min(j, -|v(d)|+r) - 4|v(d)|+2r-2j}
+    q^j (-q^s)^k.
+\end{align*}
+We now divide into cases.
+
+\subsubsection{Case where $r \le 2|v(d)|$}
+\begin{align*}
+  \Orb(\gamma, \mathbf{1}_{K'_{S, \le r}}, s)
+  &= \sum_{j=0}^{-|v(d)|+r-1} \sum_{k = j - 2r}^{-j - 4|v(d)| + 2r} q^j (-q^s)^k
+  + \sum_{\substack{-|v(d)|-r \le k \le -3|v(d)|+r \\ k \equiv -|v(d)|+r \bmod 2}}
+    q^{-|v(d)|+r} (-q^s)^k \\
+  &+ \sum_{k=-|v(d)|-r+1}^{\lambda-3|v(d)|+r}
+  \bigg( \min\left( \left\lfloor \frac{k+\lambda-|v(d)|+r}{2} \right\rfloor, k+r \right) \\
+    &\qquad - \max\left( \left\lceil \frac{k-|v(d)|+r+1}{2} \right\rceil, k+|v(d)| \right) + 1 \bigg)
+    (-q^s)^k \\
+  &+ \sum_{j=0}^{-|v(d)|+r-1}
+    \sum_{k=(j+1) - 4|v(d)| + 2r - 2j}^{\min(j+\lambda,-|v(d)|+r) - 4|v(d)| + 2r - 2j}
+    q^j (-q^s)^k \\
+  &+ \sum_{j=\max(0, -|v(d)|+r+1 -\lambda)}^{-|v(d)|+r-1}
+    \sum_{k=-5|v(d)|+3r-2j+1}^{\lambda+\min(j, -|v(d)|+r) - 4|v(d)|+2r-2j}
+    q^j (-q^s)^k.
+\end{align*}
 
 \section{Full explicit weighted orbital integral for the case where $\ell = \delta = 2v(b) = 2v(d) < 0$}
 \begin{theorem}
