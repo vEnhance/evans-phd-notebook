@@ -1587,7 +1587,7 @@ We now interchange the order of summation so that $j$ is on the outside to get
     \sum_{n=\max(j+1, -2|v(d)|+r+1)}^{\min(j+\lambda,-|v(d)|+r)}
     q^j (-1)^n q^{s(n-4|v(d)|+2r-2j)} \\
   +\sum_{j=\max(0, -|v(d)|+r+1 -\lambda)}^{-|v(d)|+r-1}
-    \sum_{n=-|v(d)|+r+1}^{\lambda+\min(j, -|v(d)|+r)}
+    \sum_{n=-|v(d)|+r+1}^{\lambda+j}
     q^j (-1)^n q^{s(n-4|v(d)|+2r-2j)}.
 \end{align*}
 Let $k = n - 4|v(d)| + 2r - 2j$ and transform this into
@@ -1599,7 +1599,7 @@ Let $k = n - 4|v(d)| + 2r - 2j$ and transform this into
     \sum_{k=\max(j+1, -2|v(d)|+r+1) - 4|v(d)| + 2r - 2j}^{\min(j+\lambda,-|v(d)|+r) - 4|v(d)| + 2r - 2j}
     q^j (-q^s)^k \\
   +\sum_{j=\max(0, -|v(d)|+r+1 -\lambda)}^{-|v(d)|+r-1}
-    \sum_{k=-5|v(d)|+3r-2j+1}^{\lambda+\min(j, -|v(d)|+r) - 4|v(d)|+2r-2j}
+    \sum_{k=-5|v(d)|+3r-2j+1}^{\lambda-j-4|v(d)|+2r}
     q^j (-q^s)^k.
 \end{align*}
 
@@ -1621,7 +1621,7 @@ Altogether, we have arrived at the following formula
     \sum_{k=\max(j+1, -2|v(d)|+r+1) - 4|v(d)| + 2r - 2j}^{\min(j+\lambda,-|v(d)|+r) - 4|v(d)| + 2r - 2j}
     q^j (-q^s)^k \\
   &+ \sum_{j=\max(0, -|v(d)|+r+1 -\lambda)}^{-|v(d)|+r-1}
-    \sum_{k=-5|v(d)|+3r-2j+1}^{\lambda+\min(j, -|v(d)|+r) - 4|v(d)|+2r-2j}
+    \sum_{k=-5|v(d)|+3r-2j+1}^{\lambda-j-4|v(d)|+2r}
     q^j (-q^s)^k.
 \end{align*}
 We now divide into cases.
@@ -1640,9 +1640,28 @@ We now divide into cases.
     \sum_{k=(j+1) - 4|v(d)| + 2r - 2j}^{\min(j+\lambda,-|v(d)|+r) - 4|v(d)| + 2r - 2j}
     q^j (-q^s)^k \\
   &+ \sum_{j=\max(0, -|v(d)|+r+1 -\lambda)}^{-|v(d)|+r-1}
-    \sum_{k=-5|v(d)|+3r-2j+1}^{\lambda+\min(j, -|v(d)|+r) - 4|v(d)|+2r-2j}
+    \sum_{k=-5|v(d)|+3r-2j+1}^{\lambda-j-4|v(d)|+2r}
     q^j (-q^s)^k.
 \end{align*}
+
+\subsubsection{Case where $r \le 2|v(d)|$}
+\begin{align*}
+  \Orb(\gamma, \mathbf{1}_{K'_{S, \le r}}, s)
+  &= \sum_{j=0}^{-|v(d)|+r-1} \sum_{k = j - 2r}^{-j - 4|v(d)| + 2r} q^j (-q^s)^k
+  + \sum_{\substack{-|v(d)|-r \le k \le -3|v(d)|+r \\ k \equiv -|v(d)|+r \bmod 2}}
+    q^{-|v(d)|+r} (-q^s)^k \\
+  &+ \sum_{k=-|v(d)|-r+1}^{\lambda-3|v(d)|+r}
+  \bigg( \min\left( \left\lfloor \frac{k+\lambda-|v(d)|+r}{2} \right\rfloor, k+r \right) \\
+    &\qquad - \max\left( \left\lceil \frac{k-|v(d)|+r+1}{2} \right\rceil, k+|v(d)| \right) + 1 \bigg)
+    (-q^s)^k \\
+  &+ \sum_{j=0}^{-|v(d)|+r-1}
+    \sum_{k=(j+1) - 4|v(d)| + 2r - 2j}^{\min(j+\lambda,-|v(d)|+r) - 4|v(d)| + 2r - 2j}
+    q^j (-q^s)^k \\
+  &+ \sum_{j=\max(0, -|v(d)|+r+1 -\lambda)}^{-|v(d)|+r-1}
+    \sum_{k=-5|v(d)|+3r-2j+1}^{\lambda-j-4|v(d)|+2r}
+    q^j (-q^s)^k.
+\end{align*}
+
 
 \section{Full explicit weighted orbital integral for the case where $\ell = \delta = 2v(b) = 2v(d) < 0$}
 \begin{theorem}
