@@ -131,28 +131,123 @@ Letting $M$ be the matrix given in the above proposition, we are supposed to hav
 Since $M$ has full rank, it follows that $c_0 = \dots = c_N = 0$.
 
 \section{In the semi-Lie case, the kernel has finite codimension if $v(e)=0$}
-We prove \Cref{thm:semi_lie_ker_huge} in this section,
-where we fix $e = 1$ (or any $e$ with $v(e) = 0$.
-For this section,
-we define the following sequence of indicator functions for $r \ge 5$:
-\begin{align*}
-  \phi^{(1)}_r &\coloneqq
-  \left( \mathbf{1}_{K' \le r} + \mathbf{1}_{K' \le (r-1)}
-     - q^2 (\mathbf{1}_{K' \le (r-2)} + \mathbf{1}_{K' \le (r-3)}) \right) \\
-  \phi^{(2)}_r &\coloneqq \phi^{(1)}_r + \phi^{(1)}_{r-1} \\
-  \phi^{(3)}_r &\coloneqq \phi^{(2)}_r + q \phi^{(2)}_{r-1}.
-\end{align*}
+We prove \Cref{thm:semi_lie_ker_huge} in this section.
+For this section, we define the following indicator function for $r \ge 3$:
+\[
+  \phi_r \coloneqq \left( \mathbf{1}_{K' \le r} + \mathbf{1}_{K' \le (r-1)}
+   - q^2 (\mathbf{1}_{K' \le (r-2)} + \mathbf{1}_{K' \le (r-3)}) \right).
+ \]
 
 We prove the following statement,
 which implies \Cref{thm:semi_lie_ker_huge} as a direct corollary.
 \begin{theorem}
+  \label{thm:semi_lie_finite_codim_full}.
   Suppose $\guv \in (S_2(F) \times V_2'(F))\rs$
   pairs with an element of $(\U(\VV_2^-) \times \VV_2^-)\rs$.
   Then
   \[
     \left. \pdv{}{s} \right\rvert_{s=0}
-    \Orb \left( \guv, \phi^{(3)}_r \otimes \oneV, s \right) = 0
+    \Orb \left( \guv, (\phi_r + (q+1)\phi_{r-1} + q\phi_{r-2}) \otimes \oneV, s \right) = 0
   \]
   holds for all $r \ge 5$ with at most three exceptions,
-  namely $v(e) - v(d-a) + 2 \le r \le v(e) - v(d-a) + 4$.
+  namely those $r$ with
+  \[ v(e) - \min\left(\frac{v(b)+v(c)-1}{2}, v(d-a)\right) + 2
+    \le r \le v(e) - \min\left(\frac{v(b)+v(c)-1}{2}, v(d-a)\right) + 4. \]
 \end{theorem}
+\begin{proof}
+  For brevity define $\theta \coloneqq \min\left( v(b)+v(c), 2v(d-a) \right)$
+  as we did in \Cref{ch:orbitalFJ1}.
+  Consider \Cref{cor:semi_lie_combo}, and let $N$, $C$, $C'$ be as in the statement.
+  Let $N^{\flat\flat}$, $C^{\flat\flat}$, $(C')^{\flat\flat}$
+  be the changes to those constants when one replaces $r$ by $r-2$.
+  Then one can record the changes to these parameters explicitly, see \Cref{tab:semi_lie_change_by_two}.
+
+  \begin{table}
+    \begin{tabular}{lll}
+      \toprule
+      Assumptions & Parameters for $r$ & Parameters for $r-2$ \\
+      \toprule
+      $r \ge v(e) - \left\lfloor \tfrac{\theta}{2} \right\rfloor + 3$
+        & $\begin{aligned} N &= v(e) \\ C &= C' = 0 \end{aligned}$
+        & $\begin{aligned} N^{\flat\flat} &= v(e) \\ C^{\flat\flat} &= (C')^{\flat\flat} = 0 \end{aligned}$ \\
+      \midrule
+      $\begin{aligned} r &= v(e) - \left\lfloor \tfrac{\theta}{2} \right\rfloor + 2 \\ \theta &= 2v(d-a) \\ &\text{(exceptional)} \end{aligned}$
+        & $\begin{aligned} N &= v(e) \\ C &= C' = 0 \end{aligned}$
+        & $\begin{aligned} N^{\flat\flat} &= (r-2) + \left\lfloor \tfrac{\theta}{2} \right\rfloor = v(e) \\
+          C^{\flat\flat} &= \tfrac{-1 + (v(b)+v(c)-2v(d-a))}{2} \\
+          (C')^{\flat\flat} &= C^{\flat\flat}+1 \end{aligned}$ \\
+      \midrule
+      $\begin{aligned} r &= v(e) - \left\lfloor \tfrac{\theta}{2} \right\rfloor + 1 \\ \theta &= 2v(d-a) \end{aligned}$
+        & $\begin{aligned} N &= v(e) \\ C &= C' = 0 \end{aligned}$
+        & $\begin{aligned} N^{\flat\flat} &= (r-2) + \left\lfloor \tfrac{\theta}{2} \right\rfloor =v(e)-1 \\
+          C^{\flat\flat} &= 0 \\
+          (C')^{\flat\flat} &= 1 \end{aligned}$ \\
+      \midrule
+      $\begin{aligned} r &\le v(e) - \left\lfloor \tfrac{\theta}{2} \right\rfloor \\ \theta &= 2v(d-a) \\ \varkappa &\equiv 0 \pmod 2 \end{aligned}$
+        & $\begin{aligned} N &= r + \left\lfloor \tfrac{\theta}{2} \right\rfloor \\
+          C &= \tfrac{\varkappa-1 + (v(b)+v(c)-2v(d-a))}{2} \\
+          C' &= C+1 \end{aligned}$
+        & $\begin{aligned} N^{\flat\flat} &= (r-2) + \left\lfloor \tfrac{\theta}{2} \right\rfloor \\
+          C^{\flat\flat} &= \tfrac{(\varkappa-2)-1 + (v(b)+v(c)-2v(d-a))}{2} \\
+          (C')^{\flat\flat} &= C^{\flat\flat}+1 \end{aligned}$ \\
+      \midrule
+      $\begin{aligned} r &\le v(e) - \left\lfloor \tfrac{\theta}{2} \right\rfloor \\ \theta &= 2v(d-a) \\ \varkappa &\equiv 1 \pmod 2 \end{aligned}$
+        & $\begin{aligned} N &= r + \left\lfloor \tfrac{\theta}{2} \right\rfloor \\
+          C &= \tfrac{\varkappa-1}{2} \\
+          C' &= C+1 \end{aligned}$
+        & $\begin{aligned} N^{\flat\flat} &= (r-2) + \left\lfloor \tfrac{\theta}{2} \right\rfloor \\
+          C^{\flat\flat} &= \tfrac{(\varkappa-2)-1}{2} \\
+          (C')^{\flat\flat} &= C^{\flat\flat}+1 \end{aligned}$ \\
+      \midrule
+      $\begin{aligned} r &\le v(e) - \left\lfloor \tfrac{\theta}{2} \right\rfloor \\ \theta &= v(b)+v(c) \end{aligned}$
+        & $\begin{aligned} N &= r + \left\lfloor \tfrac{\theta}{2} \right\rfloor \\
+          C &= v(e) - \left\lfloor \tfrac{\theta}{2} \right\rfloor + r \\
+          C' = 0 \end{aligned}$
+        & $\begin{aligned} N^{\flat\flat} &= (r-2) + \left\lfloor \tfrac{\theta}{2} \right\rfloor \\
+          C^{\flat\flat} &= v(e) - \left\lfloor \tfrac{\theta}{2} \right\rfloor + (r-2) \\
+          (C')^{\flat\flat} &= 0 \end{aligned}$ \\
+      \bottomrule
+    \end{tabular}
+    \caption{Comparison of $N$ to $N^{\flat\flat}$, etc.,
+      needed to carry out the proof of \Cref{thm:semi_lie_finite_codim_full}.
+      Note the exceptional case $r = v(e) - \left\lfloor \frac{\theta}{2} \right\rfloor + 2$
+      differs from all the others because $C-C^{\flat\flat}$ can be large.}
+    \label{tab:semi_lie_change_by_two}
+  \end{table}
+  Note in particular except for the single exceptional value
+  $r = v(e) - \left\lfloor \frac{\theta}{2} \right\rfloor + 2$
+  we should always have $(N^{\flat\flat}+2)-N \in \{0,1,2\}$,
+  $C - C^{\flat\flat} \in \{0,1,2\}$, $(C') - (C')^{\flat\flat} \in \{0,1\}$.
+  More explicitly, we have the following result from \Cref{tab:semi_lie_change_by_two}
+  for every $r \ge 3$:
+  \begin{align*}
+    &\frac{(-1)^{r+v(c)}}{\log q}
+    \left. \pdv{}{s} \right\rvert_{s=0}
+    \Orb \left( \guv, \phi_r \otimes \oneV, s \right) \\
+    &=
+    \begin{cases}
+      -q^{r+\left\lfloor \frac{\theta}{2} \right\rfloor} -q^{r+\left\lfloor \frac{\theta}{2} \right\rfloor - 1} + q + 1
+        & \text{if } r \le v(e) - \left\lfloor \frac{\theta}{2} \right\rfloor + 1 \text{ and } \theta = v(b)+v(c) \\
+      -2q^{r+\left\lfloor \frac{\theta}{2} \right\rfloor} + q + 1 & \text{if } r \le v(e) - \left\lfloor \frac{\theta}{2} \right\rfloor + 1 \text{ and } \theta = 2v(d-a) \\
+      -q^{v(e)+2} - q^{v(e)+1} + q + 1  & \text{if } r \ge v(e) - \left\lfloor \frac{\theta}{2} \right\rfloor + 3.
+    \end{cases}
+  \end{align*}
+  It follows that for $r \ge v(e) - \left\lfloor \frac{\theta}{2} \right\rfloor + 4$ we have
+  \begin{equation}
+    \frac{(-1)^{r+v(c)}}{\log q}
+    \left. \pdv{}{s} \right\rvert_{s=0}
+    \Orb \left( \guv, (\phi_r + \phi_{r-1}) \otimes \oneV, s \right)
+    = 0
+    \label{eq:semi_lie_finite_codim_large_r}
+  \end{equation}
+  while when $r \le v(e) - \left\lfloor \frac{\theta}{2} \right\rfloor + 1$ we have
+  \begin{equation}
+    \frac{(-1)^{r+v(c)}}{\log q}
+    \left. \pdv{}{s} \right\rvert_{s=0}
+    \Orb \left( \guv, (\phi_r + q\phi_{r-1}) \otimes \oneV, s \right)
+    = 1-q^2.
+    \label{eq:semi_lie_finite_codim_small_r}
+  \end{equation}
+  Then \Cref{thm:semi_lie_finite_codim_full} follows directly
+  from \eqref{eq:semi_lie_finite_codim_large_r} and \eqref{eq:semi_lie_finite_codim_small_r}.
+\end{proof}
