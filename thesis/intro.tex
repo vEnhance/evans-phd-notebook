@@ -477,6 +477,7 @@ Although we were initially motivated by
 the formulas alluded to in \Cref{thm:summary} also enable to prove the following results.
 In the group AFL:
 \begin{theorem}
+  \label{thm:large_kernel_group}
   For $n = 3$, the kernel described in \Cref{conj:large_kernel_group}
   in fact has codimension exactly $3$.
   Moreover, \Cref{conj:large_kernel_group} holds for $n = 3$;
@@ -624,7 +625,7 @@ The rest of the paper is organized as follows.
   we take a side trip in \Cref{ch:ker} to prove the ``large kernel'' results.
   We establish \Cref{conj:kernel_semi_lie} for $n = 2$
   by proving the explicit results
-  \Cref{thm:semi_lie_ker_trivial} and \Cref{thm:semi_lie_ker_huge}
+  \Cref{thm:semi_lie_ker_trivial} and \Cref{thm:semi_lie_finite_codim_full}
   (the latter shows the kernel has codimension at most $8$).
 
   \ii We then turn our attention to the other parts of the two versions of the AFL.
@@ -651,7 +652,7 @@ An approximate dependency chart between the chapters is also given in Figure~\re
   \begin{center}
     \begin{tikzcd}
       \text{\ref{ch:background}. Background} \ar[rd, bend left = 10] \ar[dddd, bend left = 80] && \\
-      \text{\ref{ch:satake}. Base change} \ar[rdddd, bend left]
+      \text{\ref{ch:satake}. Base change} \ar[rd, bend left = 10] \ar[rdddd, bend left]
       & \text{\ref{ch:rs_matching}. Matching} \ar[ld] \ar[rd] \ar[l] \ar[r]
       &  \text{\ref{ch:transf}. Transfer} \ar[ldddd, bend right] \\
       \text{\ref{ch:orbital0}. Group derivative} \ar[r] \ar[d]

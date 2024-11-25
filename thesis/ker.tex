@@ -1,21 +1,72 @@
 \chapter{Large and small kernels}
 \label{ch:ker}
 
-In this chapter
+In this chapter:
 \begin{itemize}
-  \ii TODO: GROUP AFL VERSION
-  \ii We use \Cref{cor:semi_lie_combo} to prove
-  both \Cref{thm:semi_lie_ker_trivial} and  \Cref{thm:semi_lie_ker_huge}.
+  \ii For the orbital integral on $S_3(F)$,
+  we prove \Cref{thm:large_kernel_group_full} which implies \Cref{thm:large_kernel_group}.
+  \ii For the orbital integral on $S_2(F) \times V'_2(F)$,
+  we use \Cref{cor:semi_lie_combo} to prove
+  both \Cref{thm:semi_lie_ker_trivial} and
+  \Cref{thm:semi_lie_finite_codim_full} (which implies \Cref{thm:semi_lie_ker_huge}).
 \end{itemize}
 
 \section{In the group AFL, the kernel still has finite codimension for $n=3$}
+The main result is the following:
 \begin{theorem}
+  \label{thm:large_kernel_group_full}
   For any $r \ge 3$ we always have
-  \[ \partial \Orb(\gamma, \mathbf{1}_{K'_{S, r}})
-    + 2q \partial \Orb(\gamma, \mathbf{1}_{K'_{S, r-1}})
-    + q^2 \partial \Orb(\gamma, \mathbf{1}_{K'_{S, r-2}})
-    = (2q+2) \log q. \]
+  \[ \left. \pdv{}{s} \right\rvert_{s=0}
+    \Orb(\gamma, \mathbf{1}_{K'_{S, r}} + 2q \mathbf{1}_{K'_{S, r-1}}
+    + q^2 \mathbf{1}_{K'_{S, r-2}}) = (2q+2) \log q. \]
 \end{theorem}
+
+\subsection{Proof of \Cref{thm:large_kernel_group}}
+\Cref{thm:large_kernel_group_full} already implies the codimension of the kernel is at most $3$.
+In order to show it is exactly $3$,\todo{prove it}.
+
+We now turn to showing that the kernel is not contained in any maximal ideal.
+\todo{okay i'm not actually sure this is true}
+This requires us to invoke the explicit results from \Cref{ch:satake}.
+Consider the composed isomorphisms
+\[ \HH(S_3(F)) \xrightarrow{\BC_S} \HH(\U(\VV_3^+)) \xrightarrow{\Sat} \QQ[Y + Y^{-1}]. \]
+Let $K =  \GL_n(\OO_E) \cap \U(\VV_3^+)$ and note for any $r \ge 2$ we have
+\begin{align*}
+  \mathbf{1}_{K\varpi^{(r,0,-r)}K}
+  &\xmapsto{\BC_S^{-1}}
+  \mathbf{1}_{K'_{S, r}} + 2q \mathbf{1}_{K'_{S, r-1}} + 2q^2 \mathbf{1}_{K'_{S, r-2}} + 2q^3 \mathbf{1}_{K'_{S, r-3}} + \dots \\
+  \implies
+  \mathbf{1}_{K\varpi^{(r,0,-r)}K} - q^2 \mathbf{1}_{K\varpi^{(r-2,0,-(r-2))}K}
+  &\xmapsto{\BC_S^{-1}}
+  \mathbf{1}_{K'_{S, r}} + 2q \mathbf{1}_{K'_{S, r-1}} + q^2 \mathbf{1}_{K'_{S, r-2}}.
+\end{align*}
+Hence for $r \ge 3$ if we define
+\begin{align*}
+  P_r(Y) &\coloneqq \Sat\left(\BC_S(\mathbf{1}_{K'_{S, r}}
+    + 2q \mathbf{1}_{K'_{S, r-1}} + q^2 \mathbf{1}_{K'_{S, r-2}})\right) \\
+  &= \Sat\left( \mathbf{1}_{K\varpi^{(r,0,-r)}K} - q^2 \mathbf{1}_{K\varpi^{(r-2,0,-(r-2))}K} \right) \\
+  &= \Sat\Big(
+    \mathbf{1}_{\varpi^{-r} \Mat_3(\OO_E) \cap \U(\VV_3^+)}
+    - \mathbf{1}_{\varpi^{-(r-1)} \Mat_3(\OO_E) \cap \U(\VV_3^+)} \\
+    &\qquad- q^2 \mathbf{1}_{\varpi^{-(r-2)} \Mat_3(\OO_E) \cap \U(\VV_3^+)}
+    + q^2 \mathbf{1}_{\varpi^{-(r-3)} \Mat_3(\OO_E) \cap \U(\VV_3^+)}
+    \Big) \\
+  &= \left( q^{2r} \sum_{j=-r}^r Y^j + q^{2r-1} \sum_{j=-(r-1)}^{r-1} Y^j \right)
+  - \left( q^{2r-2} \sum_{j=-(r-1)}^{r-1} Y^j + q^{2r-3} \sum_{j=-(r-2)}^{r-2} Y^j \right) \\
+  &\qquad- \left( q^{2r-2} \sum_{j=-(r-2)}^{r-2} Y^j + q^{2r-3} \sum_{j=-(r-3)}^{r-3} Y^j \right)
+  + \left( q^{2r-4} \sum_{j=-(r-3)}^{r-3} Y^j + q^{2r-5} \sum_{j=-(r-4)}^{r-4} Y^j \right)
+\end{align*}
+then it follows that $P_r(Y) - P_3(Y)$ is contained in the kernel for any $r \ge 3$.
+
+To show this kernel generates the entire ring, it would be sufficient to prove
+there is no $Y \in \CC^\times$ such that $P_3(Y) = P_4(Y) = P_5(Y) = P_6(Y) = \dotsb$.
+However, using the explicit formula for $q$ above,
+a direct calculation gives the following two identities:
+\begin{align*}
+  P_5(Y) - \frac{q^2}{Y} P_4(Y) - q^2 Y P_4(Y) - \frac{q^2}{Y} P_3(Y) &= -q^5 \\
+  P_6(Y) - \frac{q^2}{Y} P_5(Y) - q^2 Y P_5(Y) - \frac{q^2}{Y} P_4(Y) &= 0.
+\end{align*}
+So such a common root $Y$ cannot exist.
 
 \section{In the semi-Lie case, the kernel is trivial if we allow $v(e)$ to vary, even if we fix $\gamma$}
 We prove \Cref{thm:semi_lie_ker_trivial} in this section.
@@ -109,8 +160,7 @@ We prove \Cref{thm:semi_lie_ker_trivial} in this section.
   \begin{align*}
     M''_{i,r}
     &= M'_{i,r} - M'_{i-2,r} \\
-    &= M'_{i,r} - M'_{i-2,r} \\
-    \begin{cases}
+    &= \begin{cases}
       -q^{r-1} & \text{if } i \ge r+1, r \ge 1 \\
       0 & \text{if } i \ge r+2.
     \end{cases}
@@ -127,7 +177,7 @@ We prove \Cref{thm:semi_lie_ker_trivial} in this section.
   Hence $M''$ has full rank.
 \end{proof}
 
-\subsubsection{Proof of \Cref{thm:semi_lie_ker_trivial}}
+\subsection{Proof of \Cref{thm:semi_lie_ker_trivial}}
 Suppose we are given some function
 \[ \phi = \sum_{r=0}^N (-1)^r c_r \mathbf{1}_{K', \le r} \in \HH(S_2(F)). \]
 Letting $M$ be the matrix given in the above proposition, we are supposed to have
@@ -139,13 +189,11 @@ Since $M$ has full rank, it follows that $c_0 = \dots = c_N = 0$.
 
 \section{In the semi-Lie case, the kernel has finite codimension if $v(e)=0$}
 For this section, we define the following indicator function for $r \ge 3$:
-\[
-  \phi_r \coloneqq \left( \mathbf{1}_{K' \le r} + \mathbf{1}_{K' \le (r-1)}
-   - q^2 (\mathbf{1}_{K' \le (r-2)} + \mathbf{1}_{K' \le (r-3)}) \right).
- \]
-The main assertion is the following theroem.
+\[ \phi_r \coloneqq \mathbf{1}_{K', \le r} + \mathbf{1}_{K', \le (r-1)}
+   - q^2 (\mathbf{1}_{K', \le (r-2)} + \mathbf{1}_{K', \le (r-3)}). \]
+The main assertion is the following theorem.
 \begin{theorem}
-  \label{thm:semi_lie_finite_codim_full}.
+  \label{thm:semi_lie_finite_codim_full}
   Suppose $\guv \in (S_2(F) \times V_2'(F))\rs$
   pairs with an element of $(\U(\VV_2^-) \times \VV_2^-)\rs$.
   Then
@@ -256,7 +304,7 @@ The main assertion is the following theroem.
   from \eqref{eq:semi_lie_finite_codim_large_r} and \eqref{eq:semi_lie_finite_codim_small_r}.
 \end{proof}
 
-\subsubsection{Proof of \Cref{thm:semi_lie_ker_huge}}
+\subsection{Proof of \Cref{thm:semi_lie_ker_huge}}
 The first part of \Cref{thm:semi_lie_ker_huge} now follows directly.
 
 It remains to show the kernel is not contained in any maximal ideal.
