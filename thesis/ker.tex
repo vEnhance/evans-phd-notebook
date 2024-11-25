@@ -8,8 +8,14 @@ In this chapter
   both \Cref{thm:semi_lie_ker_trivial} and  \Cref{thm:semi_lie_ker_huge}.
 \end{itemize}
 
-\section{TODO}
-\todo{GROUP AFL}
+\section{In the group AFL, the kernel still has finite codimension for $n=3$}
+\begin{theorem}
+  For any $r \ge 3$ we always have
+  \[ \partial \Orb(\gamma, \mathbf{1}_{K'_{S, r}})
+    + 2q \partial \Orb(\gamma, \mathbf{1}_{K'_{S, r-1}})
+    + q^2 \partial \Orb(\gamma, \mathbf{1}_{K'_{S, r-2}})
+    = (2q+2) \log q. \]
+\end{theorem}
 
 \section{In the semi-Lie case, the kernel is trivial if we allow $v(e)$ to vary, even if we fix $\gamma$}
 We prove \Cref{thm:semi_lie_ker_trivial} in this section.
@@ -121,6 +127,7 @@ We prove \Cref{thm:semi_lie_ker_trivial} in this section.
   Hence $M''$ has full rank.
 \end{proof}
 
+\subsubsection{Proof of \Cref{thm:semi_lie_ker_trivial}}
 Suppose we are given some function
 \[ \phi = \sum_{r=0}^N (-1)^r c_r \mathbf{1}_{K', \le r} \in \HH(S_2(F)). \]
 Letting $M$ be the matrix given in the above proposition, we are supposed to have
@@ -131,15 +138,12 @@ Letting $M$ be the matrix given in the above proposition, we are supposed to hav
 Since $M$ has full rank, it follows that $c_0 = \dots = c_N = 0$.
 
 \section{In the semi-Lie case, the kernel has finite codimension if $v(e)=0$}
-We prove \Cref{thm:semi_lie_ker_huge} in this section.
 For this section, we define the following indicator function for $r \ge 3$:
 \[
   \phi_r \coloneqq \left( \mathbf{1}_{K' \le r} + \mathbf{1}_{K' \le (r-1)}
    - q^2 (\mathbf{1}_{K' \le (r-2)} + \mathbf{1}_{K' \le (r-3)}) \right).
  \]
-
-We prove the following statement,
-which implies \Cref{thm:semi_lie_ker_huge} as a direct corollary.
+The main assertion is the following theroem.
 \begin{theorem}
   \label{thm:semi_lie_finite_codim_full}.
   Suppose $\guv \in (S_2(F) \times V_2'(F))\rs$
@@ -251,3 +255,33 @@ which implies \Cref{thm:semi_lie_ker_huge} as a direct corollary.
   Then \Cref{thm:semi_lie_finite_codim_full} follows directly
   from \eqref{eq:semi_lie_finite_codim_large_r} and \eqref{eq:semi_lie_finite_codim_small_r}.
 \end{proof}
+
+\subsubsection{Proof of \Cref{thm:semi_lie_ker_huge}}
+The first part of \Cref{thm:semi_lie_ker_huge} now follows directly.
+
+It remains to show the kernel is not contained in any maximal ideal.
+Consider the composed isomorphism from \Cref{ch:satake}
+given by
+\[ \HH(S_2(F)) \xrightarrow{\BC^\eta_S} \HH(\U(\VV_2^+)) \xrightarrow{\Sat} \QQ[Y + Y^{-1}]. \]
+By combining \cite[Equation (7.1.9)]{ref:AFLspherical}
+(which is also \Cref{lem:finale_base_change} later)
+and \cite[Equation (7.1.4)]{ref:AFLspherical}
+we find that
+\begin{align*}
+  \Sat(\BC^\eta_S(\mathbf{1}_{K', \le r} + \mathbf{1}_{K', \le (r-1)}))
+  &= (-1)^r \Sat(\mathbf{1}_{\varpi^{-r} \Mat_2(\OO_E) \cap \VV_n^+}) \\
+  &= (-1)^r \left( q^r \sum_{j=-r}^r Y^j - q^{r-1} \sum_{j=-(r-1)}^{r-1} Y^j \right).
+\end{align*}
+Hence
+\begin{align*}
+  (-1)^r \Sat(\BC^\eta_S(\phi_r))
+  &= \left( q^r \sum_{j=-r}^r Y^j - q^{r-1} \sum_{j=-(r-1)}^{r-1} Y^j \right) \\
+  &+ \left( q^{r-2} \sum_{j=-(r-2)}^{r-2} Y^j - q^{r-3} \sum_{j=-(r-3)}^{r-3} Y^j \right).
+\end{align*}
+Define the polynomials
+\[ P_r(Y) \coloneqq (-1)^r \Sat(\BC^\eta_S(\phi_r + (q+1) \phi_{r-1} + q \phi_{r-2})). \]
+Then with at most three exceptions described in \Cref{thm:semi_lie_finite_codim_full},
+all of the polynomials $P_r(Y)$ for $r \ge 5$ are contained inside the kernel.
+In particular, at least two of $P_5(Y)$, $P_8(Y)$, $P_{11}(Y)$ lie in the kernel.
+So it would be sufficient to show that $P_5(Y)$, $P_8(Y)$ and $P_{11}(Y)$
+have no common zeroes in $\CC^\times$.
