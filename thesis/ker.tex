@@ -4,11 +4,10 @@
 In this chapter:
 \begin{itemize}
   \ii For the orbital integral on $S_3(F)$,
-  we prove \Cref{thm:large_kernel_group_full} which implies \Cref{thm:large_kernel_group}.
+  we use \todo{ref} to prove \Cref{thm:large_kernel_group_full} which implies \Cref{thm:large_kernel_group}.
   \ii For the orbital integral on $S_2(F) \times V'_2(F)$,
   we use \Cref{cor:semi_lie_combo} to prove
-  both \Cref{thm:semi_lie_ker_trivial} and
-  \Cref{thm:semi_lie_finite_codim_full} (which implies \Cref{thm:semi_lie_ker_huge}).
+  both \Cref{thm:semi_lie_ker_trivial} and \Cref{thm:semi_lie_ker_huge}.
 \end{itemize}
 
 \section{In the group AFL, the kernel still has finite codimension for $n=3$}
@@ -59,7 +58,7 @@ then it follows that $P_r(Y) - P_3(Y)$ is contained in the kernel for any $r \ge
 
 To show this kernel generates the entire ring, it would be sufficient to prove
 there is no $Y \in \CC^\times$ such that $P_3(Y) = P_4(Y) = P_5(Y) = P_6(Y) = \dotsb$.
-However, using the explicit formula for $q$ above,
+However, using the explicit formula for $P_r(Y)$ above,
 a direct calculation gives the following two identities:
 \begin{align*}
   P_5(Y) - \frac{q^2}{Y} P_4(Y) - q^2 Y P_4(Y) - \frac{q^2}{Y} P_3(Y) &= -q^5 \\
@@ -71,6 +70,7 @@ So such a common root $Y$ cannot exist.
 We prove \Cref{thm:semi_lie_ker_trivial} in this section.
 
 \begin{lemma}
+  \label{lem:semi_lie_ker_full_rank}
   Fix any $\gamma$ such that $v(b) = 1$, $v(c) = 0$, $v(d-a) = 0$,
   and let $N \ge 0$ be a nonnegative integer
   We define an $(N+2) \times (N+1)$ matrix $M$ as follows:
@@ -178,19 +178,148 @@ We prove \Cref{thm:semi_lie_ker_trivial} in this section.
 
 \subsection{Proof of \Cref{thm:semi_lie_ker_trivial}}
 Suppose we are given some function
-\[ \phi = \sum_{r=0}^N (-1)^r c_r \mathbf{1}_{K', \le r} \in \HH(S_2(F)). \]
-Letting $M$ be the matrix given in the above proposition, we are supposed to have
+\[ \phi = \sum_{r=0}^N (-1)^r c_r \mathbf{1}_{K'_{S, \le r}} \in \HH(S_2(F)). \]
+Letting $M$ be the matrix given in \Cref{lem:semi_lie_ker_full_rank},
+we are supposed to have
 \[
   M \begin{pmatrix} c_0 \\ c_1 \\ \vdots \\ c_N \end{pmatrix}
   = \mathbf{0} \in \CC^{N+2}.
 \]
 Since $M$ has full rank, it follows that $c_0 = \dots = c_N = 0$.
 
-\section{In the semi-Lie case, the kernel has finite codimension if $v(e)=0$}
+\section{In the semi-Lie case, the kernel has finite codimension for fixed $v(e)$}
+We start with the following lemma.
+\begin{lemma}
+  \label{lem:semi_lie_large_r}
+  For $r \ge v(e) + 2$, we have
+  \[
+    \left. \pdv{}{s} \right\rvert_{s=0} \Orb \left( \guv,
+      \left(
+        \mathbf{1}_{K'_{S, \le r}} + 2 \mathbf{1}_{K'_{S, \le (r-1)}} + \mathbf{1}_{K'_{S, \le (r-2)}}
+      \right)
+      \otimes \oneV, s \right) = 0.
+  \]
+\end{lemma}
+\begin{proof}
+  This follows directly from \Cref{cor:semi_lie_combo} which gives
+  \begin{align*}
+    \sum_{j=0}^{v(e)} q^j
+    &= \frac{(-1)^r}{\log q} \left. \pdv{}{s} \right\rvert_{s=0}
+    \Orb \left( \guv,
+      \left(\mathbf{1}_{K'_{S, \le r}} + \mathbf{1}_{K'_{S, \le (r-1)}}\right)
+      \otimes \oneV, s \right) \\
+    &= \frac{(-1)^{r-1}}{\log q} \left. \pdv{}{s} \right\rvert_{s=0}
+    \Orb \left( \guv,
+      \left(\mathbf{1}_{K'_{S, \le (r-1)}} + \mathbf{1}_{K'_{S, \le (r-2)}}\right)
+      \otimes \oneV, s \right). \qedhere
+  \end{align*}
+\end{proof}
+
+\subsection{Proof of \Cref{thm:semi_lie_ker_huge}}
+The first part of \Cref{thm:semi_lie_ker_huge} now follows directly from
+\Cref{lem:semi_lie_large_r}.
+
+It remains to show the kernel is not contained in any maximal ideal.
+Again, treat $v(e)$ as fixed.
+Consider the composed isomorphism from \Cref{ch:satake}
+given by
+\[ \HH(S_2(F)) \xrightarrow{\BC^\eta_S} \HH(\U(\VV_2^+)) \xrightarrow{\Sat} \QQ[Y + Y^{-1}]. \]
+By combining \cite[Equation (7.1.9)]{ref:AFLspherical}
+(which is also \Cref{lem:finale_base_change} later)
+and \cite[Equation (7.1.4)]{ref:AFLspherical}
+we find that
+\begin{align*}
+  \Sat\left(\BC^\eta_S\left(\mathbf{1}_{K', \le r} + \mathbf{1}_{K', \le (r-1)}\right)\right)
+  &= (-1)^r \Sat(\mathbf{1}_{\varpi^{-r} \Mat_2(\OO_E) \cap \VV_n^+}) \\
+  &= (-1)^r \left( q^r \sum_{j=-r}^r Y^j - q^{r-1} \sum_{j=-(r-1)}^{r-1} Y^j \right).
+\end{align*}
+Hence, if we define the polynomial
+\begin{align*}
+  P_r(Y) &\coloneqq (-1)^r \Sat\left(\BC^\eta_S\left(
+    \mathbf{1}_{K', \le r} + 2\mathbf{1}_{K', \le (r-1)}
+    + \mathbf{1}_{K', \le (r-2)} \right)\right) \\
+  &= \left( q^r \sum_{j=-r}^r Y^j - q^{r-1} \sum_{j=-(r-1)}^{r-1} Y^j \right)
+    - \left( q^{r-1} \sum_{j=-(r-1)}^{r-1} Y^j - q^{r-2} \sum_{j=-(r-2)}^{r-2} Y^j \right) \\
+  &= q^r \sum_{j=-r}^r Y^j - 2q^{r-1} \sum_{j=-(r-1)}^{r-1} Y^j + q^{r-2} \sum_{j=-(r-2)}^{r-2} Y^j
+\end{align*}
+then for any $r \ge v(e)+2$,
+all the polynomials $P_r(Y) - P_{v(e)+2}(Y)$ lie in the kernel.
+
+We now prove there is no choice of a single $Y \in \CC^\times$ for which
+$P_r(Y)$ is eventually constant, which would complete the proof.
+Indeed, if we write
+\[
+  P_r(Y) - q P_{r-1}(Y)
+  = q^r(Y^r + Y^{-r}) - 2q^{r-1} (Y^{r-1} + Y^{-(r-1)}) + q^{r-2}(Y^{r-2} + Y^{-(r-2)})
+\]
+then
+\begin{align*}
+  (P_r(Y) - q P_{r-1}(Y)) - (P_{r-1}(Y) - q P_{r-2}(Y))
+  &= q^3(Y^r + Y^{-r}) - 3q^2(Y^{r-1} + Y^{-(r-1)}) \\
+  &\qquad + 3q(Y^{r-2} + Y^{-(r-2)}) - (Y^{r-3} + Y^{-(r-3)}).
+\end{align*}
+So we are done after we prove the following standalone lemma.
+\begin{lemma}
+  There is no $Y \in \CC^\times$ such that
+  \[ q^3(Y^r + Y^{-r}) - 3q^2(Y^{r-1} + Y^{-(r-1)})
+    + 3q(Y^{r-2} + Y^{-(r-2)}) - (Y^{r-3} + Y^{-(r-3)}) = 0 \]
+  holds for all sufficiently large integers $r$.
+\end{lemma}
+\begin{proof}
+  Assume for contradiction such a $Y \in \CC^\times$ existed.
+  Let $Y^{\pm k} \coloneqq Y^k + Y^{-k}$ for brevity for every integer $k \ge 1$.
+  By writing the recursion relations
+  \begin{align*}
+    Y^{\pm (r-1)} &= Y^{\pm 1} \cdot Y^{\pm (r-2)} - Y^{\pm (r-3)} \\
+    Y^{\pm r} &= Y^{\pm 1} \cdot Y^{\pm (r-1)} - Y^{\pm (r-2)} \\
+    &= ((Y^{\pm 1})^2 - 1) \cdot Y^{\pm (r-2)} - Y^{\pm 1} \cdot Y^{\pm (r-3)}
+  \end{align*}
+  we can deduce that
+  \begin{align*}
+    0 &= q^3 \cdot Y^{\pm r} - 3q^2 \cdot Y^{\pm (r-1)} + 3q \cdot Y^{\pm (r-2)} - Y^{\pm (r-3)} \\
+    &= \left[ q^3 \cdot \left( (Y^{\pm 1})^2 - 1 \right)
+      - 3q^2 \cdot Y^{\pm 1} + 3q \right] \cdot Y^{\pm (r-2)}
+    - \left[ q^3 \cdot Y^{\pm 1} - 3q^2 + 1 \right] \cdot Y^{\pm (r-3)}.
+  \end{align*}
+
+  Now, in general there is no complex number $Y \in \CC^\times$ such that
+  $Y^r + Y^{-r} = 0$ for two consecutive values of $r$.
+  Hence, if either bracketed coefficient is zero, then so must be the other one.
+  However, in that case, we would conclude that
+  $Y^{\pm 1} = \frac{3q^2-1}{q^3}$ from the second bracketed coefficient, meaning
+  \[ 0 = q^3 \cdot \left( \left( \frac{3q^2-1}{q^3} \right)^2 - 1 \right)
+    - 3q^2 \cdot \frac{3q^2-1}{q^3} + 3q = \frac{(q^2-1)^3}{q^3} \]
+  which is a contradiction, because $q > 1$.
+
+  Hence neither bracketed coefficient can be zero,
+  from which we conclude that there is some nonzero constant $c$ such that
+  \[ Y^{\pm (r-2)} = c \cdot Y^{\pm(r-3)} \neq 0 \]
+  holds for all large $r$.
+  But then
+  \[ c \cdot Y^{\pm(r-3)}
+    = Y^{\pm 1} \cdot Y^{\pm (r-3)} - Y^{\pm (r-4)}
+    = Y^{\pm 1} \cdot Y^{\pm (r-3)} - \frac{Y^{\pm (r-3)}}{c} \]
+  and hence $c = Y^{\pm 1} - \frac 1c$.
+  So either $c = Y$ or $c = \frac 1Y$.
+  Then from $Y^{\pm (r-2)} = c \cdot Y^{\pm(r-3)}$ we derive that $Y = \pm 1$.
+
+  But substituting $Y = 1$ in the original equation would imply $(q-1)^3 = 0$
+  while $Y = -1$ would imply $(q+1)^3 = 0$ neither of which is possible.
+  This contradiction completes the proof of the lemma.
+\end{proof}
+
+\section{A sequence of test functions almost lying in the kernel in the semi-Lie case}
+We make one additional remark on the kernel that encompasses both of the preceding two sections.
 For this section, we define the following indicator function for $r \ge 3$:
 \[ \phi_r \coloneqq \mathbf{1}_{K', \le r} + \mathbf{1}_{K', \le (r-1)}
    - q^2 (\mathbf{1}_{K', \le (r-2)} + \mathbf{1}_{K', \le (r-3)}). \]
-The main assertion is the following theorem.
+We give the following theorem which can be thought of as a simultaneously
+refined version of both \Cref{lem:semi_lie_ker_full_rank} and
+\Cref{lem:semi_lie_large_r}.
+Roughly, it says that we can define a sequence of test functions
+\[ \phi_r + (q+1)\phi_{r-1} + q\phi_{r-2} \qquad r \ge 5 \]
+such that for any fixed $\guv$, there are at most three values of $r$
+for which the orbital integral does not vanish.
 \begin{theorem}
   \label{thm:semi_lie_finite_codim_full}
   Suppose $\guv \in (S_2(F) \times V_2'(F))\rs$
@@ -302,34 +431,3 @@ The main assertion is the following theorem.
   Then \Cref{thm:semi_lie_finite_codim_full} follows directly
   from \eqref{eq:semi_lie_finite_codim_large_r} and \eqref{eq:semi_lie_finite_codim_small_r}.
 \end{proof}
-
-\subsection{Proof of \Cref{thm:semi_lie_ker_huge}}
-The first part of \Cref{thm:semi_lie_ker_huge} now follows directly.
-
-It remains to show the kernel is not contained in any maximal ideal.
-\todo{okay i'm not actually sure this is true}
-Consider the composed isomorphism from \Cref{ch:satake}
-given by
-\[ \HH(S_2(F)) \xrightarrow{\BC^\eta_S} \HH(\U(\VV_2^+)) \xrightarrow{\Sat} \QQ[Y + Y^{-1}]. \]
-By combining \cite[Equation (7.1.9)]{ref:AFLspherical}
-(which is also \Cref{lem:finale_base_change} later)
-and \cite[Equation (7.1.4)]{ref:AFLspherical}
-we find that
-\begin{align*}
-  \Sat(\BC^\eta_S(\mathbf{1}_{K', \le r} + \mathbf{1}_{K', \le (r-1)}))
-  &= (-1)^r \Sat(\mathbf{1}_{\varpi^{-r} \Mat_2(\OO_E) \cap \VV_n^+}) \\
-  &= (-1)^r \left( q^r \sum_{j=-r}^r Y^j - q^{r-1} \sum_{j=-(r-1)}^{r-1} Y^j \right).
-\end{align*}
-Hence
-\begin{align*}
-  (-1)^r \Sat(\BC^\eta_S(\phi_r))
-  &= \left( q^r \sum_{j=-r}^r Y^j - q^{r-1} \sum_{j=-(r-1)}^{r-1} Y^j \right) \\
-  &+ \left( q^{r-2} \sum_{j=-(r-2)}^{r-2} Y^j - q^{r-3} \sum_{j=-(r-3)}^{r-3} Y^j \right).
-\end{align*}
-Define the polynomials
-\[ P_r(Y) \coloneqq (-1)^r \Sat(\BC^\eta_S(\phi_r + (q+1) \phi_{r-1} + q \phi_{r-2})). \]
-Then with at most three exceptions described in \Cref{thm:semi_lie_finite_codim_full},
-all of the polynomials $P_r(Y)$ for $r \ge 5$ are contained inside the kernel.
-In particular, at least two of $P_5(Y)$, $P_8(Y)$, $P_{11}(Y)$ lie in the kernel.
-So it would be sufficient to show that $P_5(Y)$, $P_8(Y)$ and $P_{11}(Y)$
-have no common zeroes in $\CC^\times$.
