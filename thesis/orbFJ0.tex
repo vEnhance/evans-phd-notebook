@@ -35,11 +35,18 @@ we analogously define the weighted orbital integral as follows.
   $\phi \in \HH(S_n(F))$, and $s \in \CC$,
   we define the weighted orbital integral by
   \begin{align*}
-    & \Orb((\gamma, \uu, \vv^\top), \phi \otimes \oneV, s) \\
+    & \Orb(\guv, \phi \otimes \oneV, s) \\
     &\coloneqq \int_{h \in H} \phi(h\inv \gamma h) \oneV(h \uu, \vv^\top h^{-1})
     \eta(h) \left\lvert \det(h) \right\rvert_F^{-s} \odif h.
   \end{align*}
 \end{definition}
+\begin{definition}
+  Moving forward we abbreviate
+  \[ \partial \Orb(\guv, \phi) \coloneqq
+    \left. \pdv{}{s} \right\rvert_{s=0}
+    \Orb((\gamma, \uu, \vv^\top), \phi \otimes \oneV, s). \]
+\end{definition}
+
 
 As before it seems this weighted orbital integral should be related to an ordinary one.
 To define it, fix a self-dual lattice $\Lambda_n$ in $\VV_n^+$ of full rank.
@@ -216,8 +223,7 @@ We can now state the following result:
   Then
   \begin{align*}
     \frac{(-1)^{v(c)+r}}{\log q}
-    &\left. \pdv{}{s} \right\rvert_{s=0}
-    \Orb(\guv, \mathbf{1}_{K'_{S, \le r}} \otimes \oneV, s) \\
+    &\partial \Orb(\guv, \mathbf{1}_{K'_{S, \le r}}) \\
     &= \sum_{j=0}^N \left( \frac{2v(e)+v(b)+v(c)+1}{2} + r - 2j \right) \cdot q^j \\
     & - q^{v(d-a)+r} \cdot
     \begin{cases}
@@ -260,8 +266,8 @@ come up naturally again).
   \end{align*}
   Then
   \begin{align*}
-    \frac{(-1)^{v(c)+r}}{\log q} &\left. \pdv{}{s} \right\rvert_{s=0}
-    \Orb(\guv, \left(\mathbf{1}_{K'_{S, \le r}} + \mathbf{1}_{K'_{S, \le (r-1)}}\right) \otimes \oneV, s) \\
+    \frac{(-1)^{v(c)+r}}{\log q} &
+    \partial\Orb(\guv, \mathbf{1}_{K'_{S, \le r}} + \mathbf{1}_{K'_{S, \le (r-1)}}) \\
     &= (q^N + q^{N-1} + \dots + 1) + C q^N + C' q^{N-1}
   \end{align*}
 \end{corollary}

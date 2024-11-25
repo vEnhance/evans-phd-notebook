@@ -210,9 +210,7 @@ As stated in \eqref{eq:semi_lie_transfer}, the transfer factor is
 \section{Comparison to orbital formula}
 In what follows, we introduce the shorthand
 \[ \partial\Orb(r, v(b), v(c), v(e), v(d-a))
-  \coloneqq
-  \left. \pdv{}{s} \right\rvert_{s=0}
-  \Orb(\guv, \mathbf{1}_{K'_{S, \le r}} \otimes \oneV, s). \]
+  \coloneqq \partial \Orb(\guv, \mathbf{1}_{K'_{S, \le r}}). \]
 The main claim is that the following formula holds:
 \begin{theorem}
   \label{thm:miracle}
@@ -377,22 +375,22 @@ On the right-hand side this has the effect of decreasing $v(e)$ by $2$ since $e 
 Hence the sum of the right-hand sides telescopes and gives us the identity
 \begin{equation}
   \Int((g,u), \mathbf{1}_{K, \le r})
-  = \frac{(-1)^{v(c)+r}}{\log q}\left. \pdv{}{s} \right\rvert_{s=0}
-    \Orb(\guv, \mathbf{1}_{K'_{S, \le r}} \otimes \oneV, s).
+  = \frac{(-1)^{v(c)+r}}{\log q}
+    \partial\Orb(\guv, \mathbf{1}_{K'_{S, \le r}}).
   \label{eq:match_penultimate}
 \end{equation}
 Subtracting the same equation from itself with $r$ replaced by $r-1$ gives
 \begin{align*}
   &\Int((g,u), \mathbf{1}_{K, \le r} - \mathbf{1}_{K, \le (r-1)}) \\
-  &= \frac{(-1)^{v(c)+r}}{\log q}\left. \pdv{}{s} \right\rvert_{s=0}
-  \Orb(\guv, (\mathbf{1}_{K'_{S, \le r}} + \mathbf{1}_{K'_{S, \le (r-1)}}) \otimes \oneV, s).
+  &= \frac{(-1)^{v(c)+r}}{\log q}
+    \partial \Orb(\guv, \mathbf{1}_{K'_{S, \le r}} + \mathbf{1}_{K'_{S, \le (r-1)}}).
 \end{align*}
 which, since $(-1)^{v(c)} = -\omega\guv$, becomes
 \begin{equation}
   \begin{aligned}
     &\Int((g,u), (-1)^r(\mathbf{1}_{K, \le r} - \mathbf{1}_{K, \le (r-1)})) \\
-    &= \frac{-\omega\guv}{\log q}\left. \pdv{}{s} \right\rvert_{s=0}
-    \Orb(\guv, (\mathbf{1}_{K'_{S, \le r}} + \mathbf{1}_{K'_{S, \le (r-1)}}) \otimes \oneV, s).
+    &= \frac{-\omega\guv}{\log q}
+    \partial \Orb(\guv, \mathbf{1}_{K'_{S, \le r}} + \mathbf{1}_{K'_{S, \le (r-1)}}).
   \end{aligned}
   \label{eq:match_final}
 \end{equation}

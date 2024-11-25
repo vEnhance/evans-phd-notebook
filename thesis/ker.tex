@@ -15,9 +15,8 @@ The main result is the following:
 \begin{theorem}
   \label{thm:large_kernel_group_full}
   For any $r \ge 3$ we always have
-  \[ \left. \pdv{}{s} \right\rvert_{s=0}
-    \Orb(\gamma, \mathbf{1}_{K'_{S, r}} + 2q \mathbf{1}_{K'_{S, r-1}}
-    + q^2 \mathbf{1}_{K'_{S, r-2}}) = (2q+2) \log q. \]
+  \[ \partial \Orb\left(\gamma, \mathbf{1}_{K'_{S, r}} + 2q \mathbf{1}_{K'_{S, r-1}}
+    + q^2 \mathbf{1}_{K'_{S, r-2}}\right) = (2q+2) \log q. \]
 \end{theorem}
 
 \subsection{Proof of \Cref{thm:large_kernel_group}}
@@ -77,12 +76,10 @@ We prove \Cref{thm:semi_lie_ker_trivial} in this section.
   for $0 \le i \le N+1$ and $0 \le r \le N$,
   the $i$\ts{th} row and $r$\ts{j} column takes the value
   \[
-    M_{i,r} \coloneqq
-    \frac{(-1)^r}{\log q}
-    \left. \pdv{}{s} \right\rvert_{s=0}
-      \Orb\left( \left(\gamma, \begin{pmatrix} 0 \\ 1 \end{pmatrix},
+    M_{i,r} \coloneqq \frac{(-1)^r}{\log q} \partial \Orb\left(
+      \left(\gamma, \begin{pmatrix} 0 \\ 1 \end{pmatrix},
       \begin{pmatrix} 0 & \varpi^i \end{pmatrix} \right),
-      \varphi \otimes \oneV, s\right).
+      \varphi\right).
   \]
   Then $M$ has full rank.
 \end{lemma}
@@ -193,25 +190,23 @@ We start with the following lemma.
   \label{lem:semi_lie_large_r}
   For $r \ge v(e) + 2$, we have
   \[
-    \left. \pdv{}{s} \right\rvert_{s=0} \Orb \left( \guv,
-      \left(
+    \partial \Orb \left( \guv,
         \mathbf{1}_{K'_{S, \le r}} + 2 \mathbf{1}_{K'_{S, \le (r-1)}} + \mathbf{1}_{K'_{S, \le (r-2)}}
-      \right)
-      \otimes \oneV, s \right) = 0.
+      \right) = 0.
   \]
 \end{lemma}
 \begin{proof}
   This follows directly from \Cref{cor:semi_lie_combo} which gives
   \begin{align*}
     \sum_{j=0}^{v(e)} q^j
-    &= \frac{(-1)^r}{\log q} \left. \pdv{}{s} \right\rvert_{s=0}
+    &= \frac{(-1)^r}{\log q} \partial
     \Orb \left( \guv,
       \left(\mathbf{1}_{K'_{S, \le r}} + \mathbf{1}_{K'_{S, \le (r-1)}}\right)
-      \otimes \oneV, s \right) \\
-    &= \frac{(-1)^{r-1}}{\log q} \left. \pdv{}{s} \right\rvert_{s=0}
+      \right) \\
+    &= \frac{(-1)^{r-1}}{\log q} \partial
     \Orb \left( \guv,
       \left(\mathbf{1}_{K'_{S, \le (r-1)}} + \mathbf{1}_{K'_{S, \le (r-2)}}\right)
-      \otimes \oneV, s \right). \qedhere
+      \right). \qedhere
   \end{align*}
 \end{proof}
 
@@ -325,10 +320,7 @@ for which the orbital integral does not vanish.
   Suppose $\guv \in (S_2(F) \times V_2'(F))\rs$
   pairs with an element of $(\U(\VV_2^-) \times \VV_2^-)\rs$.
   Then
-  \[
-    \left. \pdv{}{s} \right\rvert_{s=0}
-    \Orb \left( \guv, (\phi_r + (q+1)\phi_{r-1} + q\phi_{r-2}) \otimes \oneV, s \right) = 0
-  \]
+  \[ \partial \Orb \left( \guv, \phi_r + (q+1)\phi_{r-1} + q\phi_{r-2} \right) = 0 \]
   holds for all $r \ge 5$ with at most three exceptions,
   namely those $r$ with
   \[ v(e) - \min\left(\frac{v(b)+v(c)-1}{2}, v(d-a)\right) + 2
@@ -402,8 +394,7 @@ for which the orbital integral does not vanish.
   for every $r \ge 3$:
   \begin{align*}
     &\frac{(-1)^{r+v(c)}}{\log q}
-    \left. \pdv{}{s} \right\rvert_{s=0}
-    \Orb \left( \guv, \phi_r \otimes \oneV, s \right) \\
+    \partial \Orb \left( \guv, \phi_r \right) \\
     &=
     \begin{cases}
       -q^{r+\left\lfloor \frac{\theta}{2} \right\rfloor} -q^{r+\left\lfloor \frac{\theta}{2} \right\rfloor - 1} + q + 1
@@ -415,16 +406,13 @@ for which the orbital integral does not vanish.
   It follows that for $r \ge v(e) - \left\lfloor \frac{\theta}{2} \right\rfloor + 4$ we have
   \begin{equation}
     \frac{(-1)^{r+v(c)}}{\log q}
-    \left. \pdv{}{s} \right\rvert_{s=0}
-    \Orb \left( \guv, (\phi_r + \phi_{r-1}) \otimes \oneV, s \right)
-    = 0
+    \partial \Orb \left( \guv, \phi_r + \phi_{r-1} \right) = 0
     \label{eq:semi_lie_finite_codim_large_r}
   \end{equation}
   while when $r \le v(e) - \left\lfloor \frac{\theta}{2} \right\rfloor + 1$ we have
   \begin{equation}
     \frac{(-1)^{r+v(c)}}{\log q}
-    \left. \pdv{}{s} \right\rvert_{s=0}
-    \Orb \left( \guv, (\phi_r + q\phi_{r-1}) \otimes \oneV, s \right)
+    \partial \Orb \left( \guv, \phi_r + q\phi_{r-1} \right)
     = 1-q^2.
     \label{eq:semi_lie_finite_codim_small_r}
   \end{equation}

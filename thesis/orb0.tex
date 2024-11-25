@@ -20,6 +20,12 @@ Then our weighted orbital integral is defined as follows.
     \int_{h \in H} \phi(h\inv \gamma h) \eta(h)
     \left\lvert \det(h) \right\rvert_F^{-s} \odif h. \]
 \end{definition}
+\begin{definition}
+  From now on we will abbreviate
+  \[ \partial \Orb(\gamma, \phi)
+    \coloneqq \left. \pdv{}{s} \right\rvert_{s=0} \Orb(\gamma, \phi, s). \]
+\end{definition}
+
 
 We remark that this weighted orbital integral is related to
 a normal orbital integral on the unitary side
@@ -87,12 +93,9 @@ Then an integral over each $K'_{S, \le r}$ lets us extract the integrals over $K
 \end{corollary}
 
 Then, our goal is to compute for
-\begin{equation}
-  \pdv{}{s}\Orb(\gamma, \mathbf{1}_{K'_{S, \le r}}, s)
-  \label{eq:orbital_goal}
-\end{equation}
-at $s=0$ for any $r > 0$ as well.
-Note that the $r = 0$ case is already done in \cite{ref:AFL}.
+$\partial \Orb(\gamma, \mathbf{1}_{K'_{S, \le r}})$
+at $s=0$ for any $r > 0$ as well;
+note that the $r = 0$ case is already done in \cite{ref:AFL}.
 
 \section{Parametrization of $\gamma$}
 Again, assume $n = 3$.
@@ -190,8 +193,8 @@ or one of $\{v(b), v(d)\}$ is zero and the other is nonnegative.
 
 \section{Parameters used in the calculation of the weighted orbital integral}
 \label{sec:param_orbital0}
-The goal of the next two sections is to evaluate \eqref{eq:orbital_goal}
-(and hence its derivative at $s = 0$) in terms of the parameters
+
+We now evaluate the orbital integral in terms of
 \[ a \in E^1, \qquad b, d \in E, \qquad r \ge 0. \]
 To simplify the notation in what follows,
 it will be convenient to define several quantities that reappear frequently.
