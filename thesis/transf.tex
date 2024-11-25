@@ -1,2 +1,67 @@
 \chapter{Transfer factors}
 \label{ch:transf}
+
+In this short chapter we document the definitions of the transfer
+factors appearing in \Cref{conj:inhomog} and \Cref{conj:semi_lie_spherical}.
+
+\section{Transfer factor for the inhomogeneous group AFL}
+The definition of the transfer factor in \Cref{conj:inhomog} is given below:
+\begin{definition}
+  [{\cite[Equation 2.7]{ref:ZhiyuParahoric}}]
+  Choose any $\gamma \in S_n(F)\rs$.
+  Let $\mathbf{e} = \begin{pmatrix} 0 & \dots & 0 & 1 \end{pmatrix}^\top \in F^n$
+  be a column vector.
+  Then the transfer factor $\omega(\gamma)$ is defined by
+  \[ \omega(\gamma) \coloneqq
+    \eta\left( \det\left( \left( \gamma^i \mathbf{e} \right)_{i=0}^{n-1} \right) \right).
+  \]
+\end{definition}
+
+%We compute this explicitly for the representatives we described:
+%\begin{proposition}
+%  For $n = 3$, given
+%  \[ \gamma = \begin{pmatrix}
+%      a & 0 & 0 \\
+%      b & - \bar d & 1 \\
+%      -a \bar b + b d & 1 - d \bar d & d
+%    \end{pmatrix} \in S_3(F)\rs \]
+%  we have
+%  \[ \omega(\gamma) =
+%  \]
+%\end{proposition}
+%\begin{proof}
+%  We have
+%  \begin{align*}
+%    \mathbf{e} &= \begin{pmatrix} 0 \\ 0 \\ 1 \end{pmatrix} \\
+%    \gamma\mathbf{e} &= \begin{bmatrix} 0 \\ 1 \\ d  \end{bmatrix} \\
+%    \gamma^2 \mathbf{e} &= \gamma \begin{bmatrix} 0 \\ 1 \\ d \end{bmatrix} \\
+%    &= \begin{bmatrix} 0 \\ d - \bar d \\  \end{bmatrix}
+%  \end{align*}
+%\end{proof}
+\todo{we changed to orbit of $H'$, so need to change back to $H$ I guess}
+
+\section{Transfer factor for the semi-Lie AFL}
+\begin{definition}
+  [{\cite[Equation 2.2]{ref:ZhiyuParahoric}}]
+  Choose any $\guv \in (S_n(F) \times V_n'(F))\rs$.
+  Then the transfer factor $\omega(\gamma)$ is defined by
+  \[ \omega\guv \coloneqq
+    \eta\left( \det\left( \left( \gamma^i \uu \right)_{i=0}^{n-1} \right) \right).
+  \]
+\end{definition}
+
+In particular, for $n = 2$, the transfer factor on our representative
+\[ \guv = \left( \begin{pmatrix} a & b \\ c & d \end{pmatrix},
+  \begin{pmatrix} 0 \\ 1 \end{pmatrix}, \begin{pmatrix} 0 & e \end{pmatrix} \right) \]
+used in \Cref{ch:orbitalFJ0} is given by
+\begin{equation}
+    \omega\guv
+    = \eta\left( \det
+      \left( \gamma^0 \uu, \gamma^1 \uu \right)
+    \right)
+    = \eta\left( \det
+      \begin{pmatrix} 0 & b \\ 1 & d \end{pmatrix}
+    \right)
+    = (-1)^{v(b)} = (-1)^{v(c)+1}.
+  \label{eq:semi_lie_transfer}
+\end{equation}
