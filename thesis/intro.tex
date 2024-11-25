@@ -454,7 +454,7 @@ but we give the following summary.
     that every coefficient of $P_k$ besides possibly the leading coefficient is $1$;
 
     \ii both $\deg P_k$ and leading coefficient of $P_k$ are the integer parts
-    of piecewise linear functions in $k$ with slopes in $\{0, \pm\half, 1\}$.
+    of piecewise linear functions in $k$ with slopes in $\{0, \pm\half, \pm 1\}$.
   \end{itemize}
   The range of the summation, and the aforementioned piecewise linear function(s),
   can be written explicitly in terms of a particular representative
@@ -477,7 +477,11 @@ Although we were initially motivated by
 the formulas alluded to in \Cref{thm:summary} also enable to prove the following results.
 In the group AFL:
 \begin{theorem}
-  \Cref{conj:large_kernel_group} also holds when $n = 3$.
+  For $n = 3$, the kernel described in \Cref{conj:large_kernel_group}
+  in fact has codimension exactly $3$.
+  Moreover, \Cref{conj:large_kernel_group} holds for $n = 3$;
+  that is, the kernel (as a $\QQ$-vector subspace of $\HH(S_3(F))$)
+  is not contained in any maximal ideal.
 \end{theorem}
 
 As we mentioned, in the semi-Lie situation the result is more complicated.
@@ -493,6 +497,7 @@ we will prove the following two results.
       \phi \otimes \oneV, s
     \right) = 0 \]
   holds for every integer $i \ge 0$.
+  Thus part (a) of \Cref{conj:kernel_semi_lie} holds for $n = 2$.
 \end{theorem}
 
 \begin{theorem}
@@ -505,9 +510,36 @@ we will prove the following two results.
     \left. \pdv{}{s} \right\rvert_{s=0}
     \Orb \left( \guv, \phi \otimes \oneV, s \right) = 0
   \]
-  holds for all such $\gamma$ is a vector subspace of $\HH(S_2(F))$
+  holds for all such $\gamma$ is a $\QQ$-vector subspace of $\HH(S_2(F))$
   whose codimension is at most \[ \max(5, v(\vv^\top \uu) + 4). \]
+  In addition, part (b) of \Cref{conj:kernel_semi_lie} also holds for $n = 2$;
+  that is, the kernel (as a $\QQ$-vector subspace of $\HH(S_2(F))$)
+  is not contained in any maximal ideal.
 \end{theorem}
+
+\begin{remark}
+  In each case the Hecke algebra is isomorphic as a $\QQ$-algebra to $\QQ[T]$
+  for a single variable $T = Y+Y^{-1}$.
+  So actually it's mildly surprising that we get a result on finite codimension.
+  In general, a finite codimension vector subspace of $\QQ[T]$ could
+  be contained in a maximal ideal,
+  such as the codimension one subspace $T \mathbb Q[T] \subset \QQ[T]$.
+  Conversely, a finite \emph{dimension} vector subspace such as
+  the one-dimensional space $\QQ \subseteq \QQ[T]$ is not contained in any maximal ideal.
+
+  Thus neither of being finite codimension and generating all of $\QQ[T]$ imply each other.
+  However, the author's opinion is that being finite codimension should be more surprising,
+  since even a finite-dimensional $\QQ$-vector subspace of $\QQ[T]$
+  (indeed, any subspace containing $1$) could still generate the entire ring $\QQ[T]$.
+
+  In particular, we do not currently have a reason to expect that for larger $n$
+  the codimension of the kernel will still be finite in $\HH(S_n(F))$,
+  i.e.\ an analogous finite-codimension conjecture
+  to \Cref{conj:large_kernel_group} seems possibly too optimistic.
+  Nonetheless, it might still be interesting to consider different ways
+  of formalizing the notion of ``large kernel'' in \Cref{conj:large_kernel_group}
+  and \Cref{conj:kernel_semi_lie}.
+\end{remark}
 
 \subsection{Arithmetic fundamental lemmas}
 For the group AFL, we were also able to determine the
@@ -518,16 +550,41 @@ although we imagine such a proof could be completed
 once a method for determining the intersection numbers explicitly is devised.
 
 For the semi-Lie AFL conjectured in \Cref{conj:semi_lie_spherical},
-we are able to show the following result.
+the intersection numbers are easier to work for a few reasons.
+\begin{itemize}
+\ii First, one can identify $\VV_2^-$ with an $E/F$-quaternion division algebra,
+equipped with a compatible Hermitian form defined via quaternion multiplication.
+This makes it possible to describe $\U(\VV_2^-)$ concretely as transformations obtained
+via left multiplication by an element of $E$ and right multiplication by a quaternion.
+\ii Secondly, it becomes possible to describe the so-called Rapoport-Zink spaces $\RZ_2$
+used in the definition of the intersection number with a Lubin-Tate space $\MM_2$.
+Thus the problem of computing the intersection number
+$\Int\left( (g,u), f \right) \log q$
+can be reduced to calculating the intersection of certain special
+Kudla-Rapoport divisors on the space $\MM_2$.
+
+However, on the Lubin-Tate space $\MM_2$,
+there is a result known as the Gross-Keating formula \cite{ref:GK}
+which allows one to make this intersection number fully explicit.
+One can then match the resulting equation to the formulas described in
+\Cref{thm:semi_lie_derivative_single}
+and verify that, under the base change \Cref{ch:satake}
+and the matching condition described in \Cref{ch:rs_matching},
+the two obtained formulas are identical.
+\end{itemize}
+
+We can therefore prove the following conditional result where we assume
+the aforementioned divisors are given by the specific forms
+\Cref{conj:serre_pullback_space} and \Cref{conj:serre_pullback_divisor}.
+Then applying Gross-Keating formula enables us to prove the following result.
+
 \begin{theorem}
   \label{thm:semi_lie_n_equals_2}
   Assume \Cref{conj:serre_pullback_space} and \Cref{conj:serre_pullback_divisor}.
   Then our generalized AFL conjecture, \Cref{conj:semi_lie_spherical}, holds for $n = 2$.
 \end{theorem}
-The idea of the proof is to use the Gross-Keating formula \cite{ref:GK}
-to provide the formula on the geometric side.
 The proof of \Cref{thm:semi_lie_n_equals_2} is built up gradually
-throughout the entire paper, culminating in \Cref{ch:finale}.
+throughout the paper, culminating in \Cref{ch:finale}.
 
 \section{Roadmap}
 The rest of the paper is organized as follows.
@@ -588,7 +645,8 @@ The rest of the paper is organized as follows.
   \end{itemize}
 \end{itemize}
 
-An approximate dependency chart between the chapters is given below.
+An approximate dependency chart between the chapters is also given in Figure~\ref{fig:depchart}.
+
 \begin{figure}[ht]
   \begin{center}
     \begin{tikzcd}
