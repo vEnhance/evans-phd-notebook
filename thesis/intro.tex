@@ -375,12 +375,12 @@ we give a special case of it here compatible with our specialization.
   \label{conj:large_kernel_group}
   Consider the map of vector spaces
   \begin{align*}
-    \partial\Orb : \HH(\U(\VV_n^-))
-    &\to C^\infty( \left\{ \text{elements of } S_n(F) \text{ matching } \U(\VV_n^-) \right\} ) \\
+    \HH(S_n(F))
+    &\to C^\infty( \left\{ \text{elements of } S_n(F)\rs \text{ matching } \U(\VV_n^-)\rs \right\} ) \\
     \phi &\mapsto \left( \gamma \mapsto \left. \pdv{}{s} \right\rvert_{s=0} \Orb \left(\gamma, \phi, s \right) \right).
   \end{align*}
   Then this map has a large kernel,
-  in the sense that it is not contained in any maximal ideal of $\HH(\U(\VV_n^-))$.
+  in the sense that the kernel is not contained in any maximal ideal of $\HH(\U(\VV_n^-))$.
 \end{conjecture}
 We will later try to establish this conjecture for $n = 3$ as well.
 
@@ -394,23 +394,25 @@ but the two separate parts, which seem to behave quite differently from each oth
   Let $n \ge 2$.
   \begin{enumerate}
   \item[(a)]
-  There exists $\gamma \in S_n(F)$ such that there are
-  no nonzero functions $\phi \in \HH(S_n(F))$ for which
+  Choose any $\gamma \in S_n(F)$ which could appear in a triple $\guv$
+  matching some element of $\U(\VV_n^-) \times \VV_n^-$.
+  Then there are no nonzero functions $\phi \in \HH(S_n(F))$ for which
   \[ \left. \pdv{}{s} \right\rvert_{s=0}
     \Orb \left(\guv, \phi \otimes \oneV, s \right) = 0 \]
-  holds for every $(\uu, \vv^\top) \in V'_n(F)$
-  such that $\guv$ matches with an element of $(\U(\VV_n^-) \times \VV_n^-)\rs$.
+  holds for every such $(\uu, \vv^\top) \in V'_n(F)$.
 
   \item[(b)]
   Fix a choice of $(\uu, \vv^\top) \in V'_n(F)$.
-  Consider all $\gamma \in S_n(F)$ for which $\guv$
+  Consider all $\gamma \in S_n(F)\rs$ for which $\guv$
   matches with an element of $(\U(\VV_n^-) \times \VV_n^-)\rs$.
-  Then the vector subspace of functions $\phi \in \HH(S_n(F))$ such that
-  \[
-    \left. \pdv{}{s} \right\rvert_{s=0}
-    \Orb \left( \guv, \phi \otimes \oneV, s \right) = 0
-  \]
-  holds for all such $\gamma$ is large,
+  Consider the map of vector spaces
+  \begin{align*}
+    \HH(S_n(F))
+    &\to C^\infty( \left\{ \text{elements of } S_n(F)\rs \text{ matching as above} \right\} ) \\
+      \phi &\mapsto \left( \gamma \mapsto \left. \pdv{}{s} \right\rvert_{s=0}
+      \Orb \left(\guv, \phi \otimes \oneV, s \right) \right).
+  \end{align*}
+  Then this map has large kernel,
   in the sense it is not contained in any maximal ideal of $\HH(S_n(F))$.
   \end{enumerate}
 \end{conjecture}
@@ -488,10 +490,13 @@ In the group AFL:
 As we mentioned, in the semi-Lie situation the result is more complicated.
 Providing evidence for \Cref{conj:kernel_semi_lie},
 we will prove the following two results.
+
 \begin{theorem}
   \label{thm:semi_lie_ker_trivial}
-  For certain choices of $\gamma \in S_2(F)$,
-  there doesn't exist any nonzero functions $\phi \in \HH(S_2(F))$ such that
+  Consider any $\gamma \in S_2(F)$
+  such that $\left( \gamma, \begin{pmatrix} 0 \\ 1 \end{pmatrix}, \begin{pmatrix} 0 & 1 \end{pmatrix} \right)$
+  matches an element of $\U(\VV_2^-) \times \VV_2^-$.
+  Then there don't exist any nonzero functions $\phi \in \HH(S_2(F))$ such that
   \[ \left. \pdv{}{s} \right\rvert_{s=0}
     \Orb \left(
       \left( \gamma, \begin{pmatrix} 0 \\ 1 \end{pmatrix}, \begin{pmatrix} 0 & \varpi^i \end{pmatrix} \right),

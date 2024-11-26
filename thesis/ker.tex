@@ -65,16 +65,18 @@ a direct calculation gives the following two identities:
 \end{align*}
 So such a common root $Y$ cannot exist.
 
-\section{In the semi-Lie case, the kernel is trivial if we allow $v(e)$ to vary, even if we fix $\gamma$}
+\section{In the semi-Lie case, the kernel is trivial if we allow $v(e)$ to vary, for every fixed choice of $\gamma$}
 We prove \Cref{thm:semi_lie_ker_trivial} in this section.
+We treat $\gamma$ as fixed, and let
+\[ \theta \coloneqq \min\left( v(b)+v(c), 2v(d-a) \right) \ge 0 \]
+as we did in \Cref{ch:orbitalFJ1}.
 
 \begin{lemma}
   \label{lem:semi_lie_ker_full_rank}
-  Fix any $\gamma$ such that $v(b) = 1$, $v(c) = 0$, $v(d-a) = 0$,
-  and let $N \ge 0$ be a nonnegative integer
-  We define an $(N+2) \times (N+1)$ matrix $M$ as follows:
-  for $0 \le i \le N+1$ and $0 \le r \le N$,
-  the $i$\ts{th} row and $r$\ts{j} column takes the value
+  Fix $\gamma$. Let $N \ge 0$ be a nonnegative integer.
+  We define an $(N+ \left\lfloor \frac{\theta}{2} \right\rfloor + 2) \times (N+1)$ matrix $M$ as follows:
+  for $0 \le i \le N+ \left\lfloor \frac{\theta}{2} \right\rfloor + 1$ and $0 \le r \le N$,
+  the $i$\ts{th} row and $r$\ts{th} column takes the value
   \[
     M_{i,r} \coloneqq \frac{(-1)^r}{\log q} \partial \Orb\left(
       \left(\gamma, \begin{pmatrix} 0 \\ 1 \end{pmatrix},
@@ -83,94 +85,245 @@ We prove \Cref{thm:semi_lie_ker_trivial} in this section.
   \]
   Then $M$ has full rank.
 \end{lemma}
-\begin{proof}
-  We perform row operations as follows:
-  \begin{itemize}
-    \ii For each $i=N,N-1,\dots,0$, subtract the $i$\ts{th} row of $M$
-    from the $(i+1)$\ts{th} row of $M$.
-    Denote the new matrix as $M'$.
+The basic strategy of the proof will be to perform some sequences of row operations.
+Specifically, we introduce the following definition.
+\begin{itemize}
+  \ii For each $i = N + \left\lfloor \frac{\theta}{2} \right\rfloor,\dots,0$ in that order,
+  subtract the $i$\ts{th} row of $M$
+  from the $(i+1)$\ts{th} row of $M$.
+  Denote the new matrix as $M'$.
 
-    \ii For each $i=N-1,N-2,\dots,0$, subtract the $i$\ts{th} row of $M'$
-    from the $(i+2)$\ts{nd} row of $M'$.
-    Denote the new matrix as $M''$.
-  \end{itemize}
-  For example, for $N = 5$, we have
+  \ii For each $i = N + \left\lfloor \frac{\theta}{2} \right\rfloor - 1,\dots,0$ in that order,
+  subtract the $i$\ts{th} row of $M'$
+  from the $(i+2)$\ts{nd} row of $M'$.
+  Denote the new matrix as $M''$.
+\end{itemize}
+Then the basic premise is to show that $M''$ has an upper triangular submatrix.
+This is easier to see with some illustrations, which we give below.
+
+\begin{example}
+  For example, for $N = 4$ and $v(b)+v(c)=1$, $v(d-a) = 0$ (hence $\theta = 0$), we have
   \[
-    M =
-    \begin{pmatrix}
+    M = \begin{pmatrix}
     1 & 2 & 3 & 4 & 5 \\
-    1 & q + 3 & 2 \, q + 4 & 3 \, q + 5 & 4 \, q + 6 \\
-    2 & q + 4 & q^{2} + 3 \, q + 5 & 2 \, q^{2} + 4 \, q + 6 & 3 \, q^{2} + 5 \, q + 7 \\
-    2 & 2 \, q + 5 & q^{2} + 4 \, q + 6 & q^{3} + 3 \, q^{2} + 5 \, q + 7 & 2 \, q^{3} + 4 \, q^{2} + 6 \, q + 8 \\
-    3 & 2 \, q + 6 & 2 \, q^{2} + 5 \, q + 7 & q^{3} + 4 \, q^{2} + 6 \, q + 8 & q^{4} + 3 \, q^{3} + 5 \, q^{2} + 7 \, q + 9 \\
-    3 & 3 \, q + 7 & 2 \, q^{2} + 6 \, q + 8 & 2 \, q^{3} + 5 \, q^{2} + 7 \, q + 9 & q^{4} + 4 \, q^{3} + 6 \, q^{2} + 8 \, q + 10
+    1 & q + 3 & 2q + 4 & 3q + 5 & 4q + 6 \\
+    2 & q + 4 & q^{2} + 3q + 5 & 2q^{2} + 4q + 6 & 3q^{2} + 5q + 7 \\
+    2 & 2q + 5 & q^{2} + 4q + 6 & q^{3} + 3q^{2} + 5q + 7 & 2q^{3} + 4q^{2} + 6q + 8 \\
+    3 & 2q + 6 & 2q^{2} + 5q + 7 & q^{3} + 4q^{2} + 6q + 8 & q^{4} + 3q^{3} + 5q^{2} + 7q + 9 \\
+    3 & 3q + 7 & 2q^{2} + 6q + 8 & 2q^{3} + 5q^{2} + 7q + 9 & q^{4} + 4q^{3} + 6q^{2} + 8q + 10
     \end{pmatrix}
   \]
   hence
-  \[ M'=
-    \begin{pmatrix}
+  \[ M'= \begin{pmatrix}
     1 & 2 & 3 & 4 & 5 \\
-    0 & q + 1 & 2 \, q + 1 & 3 \, q + 1 & 4 \, q + 1 \\
-    1 & 1 & q^{2} + q + 1 & 2 \, q^{2} + q + 1 & 3 \, q^{2} + q + 1 \\
-    0 & q + 1 & q + 1 & q^{3} + q^{2} + q + 1 & 2 \, q^{3} + q^{2} + q + 1 \\
+    0 & q + 1 & 2q + 1 & 3q + 1 & 4q + 1 \\
+    1 & 1 & q^{2} + q + 1 & 2q^{2} + q + 1 & 3q^{2} + q + 1 \\
+    0 & q + 1 & q + 1 & q^{3} + q^{2} + q + 1 & 2q^{3} + q^{2} + q + 1 \\
     1 & 1 & q^{2} + q + 1 & q^{2} + q + 1 & q^{4} + q^{3} + q^{2} + q + 1 \\
     0 & q + 1 & q + 1 & q^{3} + q^{2} + q + 1 & q^{3} + q^{2} + q + 1
     \end{pmatrix}
   \]
   and finally
-  \[ M'' =
-    \begin{pmatrix}
+  \[ M'' = \begin{pmatrix}
     1 & 2 & 3 & 4 & 5 \\
-    0 & q + 1 & 2 \, q + 1 & 3 \, q + 1 & 4 \, q + 1 \\
-    0 & -1 & q^{2} + q - 2 & 2 \, q^{2} + q - 3 & 3 \, q^{2} + q - 4 \\
-    0 & 0 & -q & q^{3} + q^{2} - 2 \, q & 2 \, q^{3} + q^{2} - 3 \, q \\
-    0 & 0 & 0 & -q^{2} & q^{4} + q^{3} - 2 \, q^{2} \\
+    0 & q + 1 & 2q + 1 & 3q + 1 & 4q + 1 \\
+    0 & -1 & q^{2} + q - 2 & 2q^{2} + q - 3 & 3q^{2} + q - 4 \\
+    0 & 0 & -q & q^{3} + q^{2} - 2q & 2q^{3} + q^{2} - 3q \\
+    0 & 0 & 0 & -q^{2} & q^{4} + q^{3} - 2q^{2} \\
     0 & 0 & 0 & 0 & -q^{3}
+    \end{pmatrix}. \]
+\end{example}
+
+\begin{example}
+  For example, for $N = 4$, $v(b)+v(c)=17$, $v(d-a) = 2$ (hence $\theta=4$), we have
+  \[
+    M = \begin{pmatrix}
+    9 & 10 & 11 & \dots \\
+    8q + 10 & 9q + 11 & 10q + 12 & \dots \\
+    7q^{2} + 9q + 11 & 8q^{2} + 10q + 12 & 9q^{2} + 11q + 13 & \dots \\
+    q^{2} + 10q + 12 & 7q^{3} + 9q^{2} + 11q + 13 & 8q^{3} + 10q^{2} + 12q + 14 & \dots \\
+    8q^{2} + 11q + 13 & q^{3} + 10q^{2} + 12q + 14 & 7q^{4} + 9q^{3} + 11q^{2} + 13q + 15 & \dots \\
+    2q^{2} + 12q + 14 & 8q^{3} + 11q^{2} + 13q + 15 & q^{4} + 10q^{3} + 12q^{2} + 14q + 16 & \dots \\
+    9q^{2} + 13q + 15 & 2q^{3} + 12q^{2} + 14q + 16 & 8q^{4} + 11q^{3} + 13q^{2} + 15q + 17 & \dots \\
+    3q^{2} + 14q + 16 & 9q^{3} + 13q^{2} + 15q + 17 & 2q^{4} + 12q^{3} + 14q^{2} + 16q + 18 & \dots
+    \end{pmatrix}
+  \]
+  hence
+  \[ M' = \begin{pmatrix}
+    9 & 10 & 11 & 12 & \dots \\
+    8q + 1 & 9q + 1 & 10q + 1 & 11q + 1 & \dots \\
+    7q^{2} + q + 1 & 8q^{2} + q + 1 & 9q^{2} + q + 1 & 10q^{2} + q + 1 & \dots \\
+    -6q^{2} + q + 1 & 7q^{3} + q^{2} + q + 1 & 8q^{3} + q^{2} + q + 1 & 9q^{3} + q^{2} + q + 1 & \dots \\
+    7q^{2} + q + 1 & -6q^{3} + q^{2} + q + 1 & 7q^{4} + q^{3} + q^{2} + q + 1 & 8q^{4} + \dots + 1 & \dots \\
+    -6q^{2} + q + 1 & 7q^{3} + q^{2} + q + 1 & -6q^{4} + q^{3} + q^{2} + q + 1 & 7q^{5} + \dots + 1 & \dots \\
+    7q^{2} + q + 1 & -6q^{3} + q^{2} + q + 1 & 7q^{4} + q^{3} + q^{2} + q + 1 & -6q^{5} + \dots + 1 & \dots \\
+    -6q^{2} + q + 1 & 7q^{3} + q^{2} + q + 1 & -6q^{4} + q^{3} + q^{2} + q + 1 & 7q^{5} + \dots + 1 & \dots
+    \end{pmatrix}
+  \]
+  and finally
+  \[
+    M'' = \begin{pmatrix}
+    9 & 10 & 11 & 12 & 13 \\
+    8q + 1 & 9q + 1 & 10q + 1 & 11q + 1 & 12q + 1 \\
+    7q^{2} + q - 8 & 8q^{2} + q - 9 & 9q^{2} + q - 10 & 10q^{2} + q - 11 & 11q^{2} + q - 12 \\
+    -6q^{2} - 7q & 7q^{3} + q^{2} - 8q & 8q^{3} + q^{2} - 9q & 9q^{3} + q^{2} - 10q & 10q^{3} + q^{2} - 11q \\
+    0 & -6q^{3} - 7q^{2} & 7q^{4} + q^{3} - 8q^{2} & 8q^{4} + q^{3} - 9q^{2} & 9q^{4} + q^{3} - 10q^{2} \\
+    0 & 0 & -6q^{4} - 7q^{3} & 7q^{5} + q^{4} - 8q^{3} & 8q^{5} + q^{4} - 9q^{3} \\
+    0 & 0 & 0 & -6q^{5} - 7q^{4} & 7q^{6} + q^{5} - 8q^{4} \\
+    0 & 0 & 0 & 0 & -6q^{6} - 7q^{5}
     \end{pmatrix}.
   \]
-  In order to prove $M$ has full rank, it suffices to prove $M''$ has full rank.
-  However, as the examples suggest, $M''$ is almost upper triangular.
+\end{example}
+\begin{example}
+  For example, for $N = 4$, $v(b)+v(c)=5$, $v(d-a) = 8$ (hence $\theta=5$), we have
+  \[ M = \begin{pmatrix}
+    3 & 4 & 5 & \dots \\
+    2q + 4 & 3q + 5 & 4q + 6 & \dots \\
+    q^{2} + 3q + 5 & 2q^{2} + 4q + 6 & 3q^{2} + 5q + 7 & \dots \\
+    2q^{2} + 4q + 6 & q^{3} + 3q^{2} + 5q + 7 & 2q^{3} + 4q^{2} + 6q + 8 & \dots \\
+    3q^{2} + 5q + 7 & 2q^{3} + 4q^{2} + 6q + 8 & q^{4} + 3q^{3} + 5q^{2} + 7q + 9 & \dots \\
+    4q^{2} + 6q + 8 & 3q^{3} + 5q^{2} + 7q + 9 & 2q^{4} + 4q^{3} + 6q^{2} + 8q + 10 & \dots \\
+    5q^{2} + 7q + 9 & 4q^{3} + 6q^{2} + 8q + 10 & 3q^{4} + 5q^{3} + 7q^{2} + 9q + 11 & \dots \\
+    6q^{2} + 8q + 10 & 5q^{3} + 7q^{2} + 9q + 11 & 4q^{4} + 6q^{3} + 8q^{2} + 10q + 12 & \dots \\
+    \end{pmatrix} \]
+  hence
+  \[ M' = \begin{pmatrix}
+    3 & 4 & 5 & 6 & 7 \\
+    2q + 1 & 3q + 1 & 4q + 1 & 5q + 1 & 6q + 1 \\
+    q^{2} + q + 1 & 2q^{2} + q + 1 & 3q^{2} + q + 1 & 4q^{2} + q + 1 & 5q^{2} + q + 1 \\
+    q^{2} + q + 1 & q^{3} + q^{2} + q + 1 & 2q^{3} + q^{2} + q + 1 & 3q^{3} + q^{2} + q + 1 & 4q^{3} + q^{2} + q + 1 \\
+    q^{2} + q + 1 & q^{3} + q^{2} + q + 1 & q^{4} + \dots + 1 & 2q^{4} + \dots + 1 & 3q^{4} + \dots + 1 \\
+    q^{2} + q + 1 & q^{3} + q^{2} + q + 1 & q^{4} + \dots + 1 & q^{5} + \dots + 1 & 2q^{5} + \dots + 1 \\
+    q^{2} + q + 1 & q^{3} + q^{2} + q + 1 & q^{4} + \dots + 1 & q^{5} + \dots + 1 & q^{6} + \dots + 1 \\
+    q^{2} + q + 1 & q^{3} + q^{2} + q + 1 & q^{4} + \dots + 1 & q^{5} + \dots + 1 & q^{6} + \dots + 1
+    \end{pmatrix} \]
+  and finally
+  \[ M'' = \begin{pmatrix}
+    3 & 4 & 5 & 6 & 7 \\
+    2q + 1 & 3q + 1 & 4q + 1 & 5q + 1 & 6q + 1 \\
+    q^{2} + q - 2 & 2q^{2} + q - 3 & 3q^{2} + q - 4 & 4q^{2} + q - 5 & 5q^{2} + q - 6 \\
+    q^{2} - q & q^{3} + q^{2} - 2q & 2q^{3} + q^{2} - 3q & 3q^{3} + q^{2} - 4q & 4q^{3} + q^{2} - 5q \\
+    0 & q^{3} - q^{2} & q^{4} + q^{3} - 2q^{2} & 2q^{4} + q^{3} - 3q^{2} & 3q^{4} + q^{3} - 4q^{2} \\
+    0 & 0 & q^{4} - q^{3} & q^{5} + q^{4} - 2q^{3} & 2q^{5} + q^{4} - 3q^{3} \\
+    0 & 0 & 0 & q^{5} - q^{4} & q^{6} + q^{5} - 2q^{4} \\
+    0 & 0 & 0 & 0 & q^{6} - q^{5}
+    \end{pmatrix}. \]
+\end{example}
 
-  We now show this.
-  In this region in \Cref{thm:semi_lie_derivative_single}, if $i > r$
-  the ``extra'' coefficient on $q^r$ is given by
-  \begin{itemize}
-    \ii When $i \equiv r \pmod 2$ we get $-\frac{\varkappa}{2} = - \frac{i-r}{2}$;
-    \ii When $i \equiv r+1 \pmod 2$ we get $\frac{\varkappa}{2} - (i + \half - r) = -\frac{i-r+1}{2}$
-  \end{itemize}
-  and so we can write
-  \[
+\begin{proof}
+  In order to prove $M$ has full rank, it suffices to prove $M''$ has full rank.
+  We now confirm the patterns shown by the example above.
+
+  By quoting \Cref{thm:semi_lie_derivative_single} we will write
+  \begin{align*}
     M_{i,r}
-    = - \max\left(0, \left\lceil \frac{i-r}{2} \right\rceil \right) q^{r}
-    + \sum_{j=0}^{\min(i,r)} \left( i + 1 + r - 2j \right) q^j.
+    &= \sum_{j=0}^{\min(i,r + \left\lfloor \frac{\theta}{2} \right\rfloor)}
+      \left( i + \frac{v(b)+v(c)+1}{2} + r - 2j \right) q^j \\
+    &- \mathbf{1}_{\substack{\theta \equiv 0 \bmod 2 \\ i \ge r + \theta/2}}
+      \cdot q^{v(d-a)+r} \cdot \left( \frac{i-r}{2} + t_i \right)
+  \end{align*}
+  where
+  \[
+    t_i = \begin{cases}
+      -\frac{v(d-a)}{2} &\text{if } i + r \equiv v(d-a) \pmod 2 \\
+      \frac{v(b)+v(c)-3v(d-a)}{2} &\text{if } i + r \not\equiv v(d-a) \pmod 2 \\
+    \end{cases}
   \]
-  Hence
+  depends only on the parity of $i$.
+  Hence for $i \ge 1$ we always have
   \begin{align*}
     M'_{i,r}
     &= M_{i,r} - M_{i-1,r} \\
-    &= - \mathbf{1}_{i \ge r, i \not\equiv r \bmod 2} q^r
-    + \mathbf{1}_{i \le r} (i+1-r) q^i
-    + \sum_{j=0}^{\min(i-1,r)} q^j
+    &=- \mathbf{1}_{\substack{\theta \equiv 0 \bmod 2 \\ i \ge r + \theta/2}}
+      \cdot q^{v(d-a)+r} \cdot \left( \frac{i-r}{2} + t_i \right) \\
+    &+ \mathbf{1}_{\substack{\theta \equiv 0 \bmod 2 \\ i-1 \ge r + \theta/2}}
+      \cdot q^{v(d-a)+r} \cdot \left( \frac{i-1-r}{2} + t_{i-1} \right) \\
+    &+ \mathbf{1}_{i \le r + \left\lfloor \frac{\theta}{2} \right\rfloor} \cdot
+      \left( \frac{v(b)+v(c)+1}{2} + r - i \right) q^i \\
+    &+ \sum_{j=0}^{\min(i-1,r + \left\lfloor \frac{\theta}{2} \right\rfloor)} q^j.
   \end{align*}
-  Then for any $i > r > 0$ it follows that
-  \begin{align*}
-    M''_{i,r}
-    &= M'_{i,r} - M'_{i-2,r} \\
-    &= \begin{cases}
-      -q^{r-1} & \text{if } i \ge r+1, r \ge 1 \\
-      0 & \text{if } i \ge r+2.
-    \end{cases}
-  \end{align*}
-  Moreover, since $M'_{0,r} = \mathbf{1}_{r \equiv 0 \bmod 2}$
-  we deduce
-  $M''_{0,r} = M'_{0,r} - M'_{0,r-2} = 0$
-  for any $r \ge 2$, and $M''_{0,0} = 1$.
-  Hence the pattern suggested by $M''$ holds in general.
+  From this we can make the following deductions
+  on \[ M''_{i,r} = M'_{i,r} - M'_{i-2,r} \]
+  by cancelling most of the terms.
+  \begin{itemize}
+    \ii If $i \ge r + \left\lfloor \frac{\theta}{2} \right\rfloor + 3$
+    then $M''_{i,r} = 0$ is clear.
+    \ii If $i = r + \left\lfloor \frac{\theta}{2} \right\rfloor + 2$
+    we contend that $M''_{i,r} = 0$ too.
+    \begin{itemize}
+      \ii When $\theta = v(b) + v(c)$ is odd, the surviving terms are
+      \[
+        - \left( \frac{v(b)+v(c)+1}{2} + r - (i-2) \right) q^{ i-2}
+        + q^{r + \left\lfloor \frac{\theta}{2} \right\rfloor}
+      \]
+      Substituting in $i = r + \frac{v(b)+v(c)-1}{2} + 2$ gives zero, as needed.
 
-  Finally, delete the 2nd row of $M''$ to get a square matrix
-  with $N+1$ rows and $N+1$ columns which is upper triangular,
-  and whose determinant is $(-1)^N q^{1+2+\dots+(N-1)} \neq 0$.
-  Hence $M''$ has full rank.
+      \ii When $\theta = 2v(d-a)$ is even, the surviving terms are
+      \begin{align*}
+        &-q^{v(d-a)+r} \cdot \left( \frac{i-r}{2} + t_{i} \right)
+          + q^{v(d-a)+r} \cdot \left( \frac{(i-2)-r}{2} + t_{i-2} \right) \\
+        &\qquad+ q^{v(d-a)+r} \cdot \left( \frac{i-1-r}{2} + t_{i-1} \right) \\
+        &\qquad- \left( \frac{v(b)+v(c)+1}{2} + r - (i-2) \right) q^{i-2} \\
+        &\qquad+ q^{r + \left\lfloor \frac{\theta}{2} \right\rfloor} \\
+        &= q^{v(d-a)+r} \cdot \left( -1 + \frac{i-1-r}{2} + t_{i-1} - \frac{v(b)+v(c)+1}{2} - r  + i - 2 +1 \right) \\
+        &= q^{v(d-a)+r} \cdot \left( -\frac{3}{2}r + t_{i-1} - \frac{v(b)+v(c)}{2} + \frac32 i \right)
+      \end{align*}
+      Substituting in $i = r + v(d-a) + 2$ (and since $t_i = t_{i-2}$),
+      we also get exactly $0$,
+      since $t_{i-1} = \frac{v(b)+v(c)-3v(d-a)}{2}$.
+    \end{itemize}
+
+    \ii If $i = r + \left\lfloor \frac{\theta}{2} \right\rfloor + 1$,
+    we consider again cases on the parity of $\theta$.
+    \begin{itemize}
+      \ii When $\theta = v(b)+v(c)$ is odd, the surviving terms are
+      \[
+        -\left( \frac{v(b)+v(c)+1}{2} + r - (i-2) \right) q^{i-2} \\
+        + q^{r+\left\lfloor \frac{\theta}{2} \right\rfloor} + q^{r+\left\lfloor \frac{\theta}{2} \right\rfloor-1} \\
+        = q^{r+\left\lfloor \frac{\theta}{2} \right\rfloor} - q^{r+\left\lfloor \frac{\theta}{2} \right\rfloor - 1}.
+      \]
+
+      \ii When $\theta = 2v(d-a)$ is even, the surviving terms are
+      \begin{align*}
+        &-q^{v(d-a)+r} \cdot \left( \frac{i-r}{2} + t_{i} \right) \\
+        &\qquad+ q^{v(d-a)+r} \cdot \left( \frac{i-1-r}{2} + t_{i-1} \right) \\
+        &\qquad- \left( \frac{v(b)+v(c)+1}{2} + r - (i-2) \right) q^{i-2} \\
+        &\qquad+ q^{r + \left\lfloor \frac{\theta}{2} \right\rfloor}
+        + q^{r + \left\lfloor \frac{\theta}{2} \right\rfloor - 1} \\
+        &= \left( t_{i-1}-t_i+\half  \right) q^{r + \left\lfloor \frac{\theta}{2} \right\rfloor} \\
+        &\qquad- \left( \frac{v(b)+v(c)+1}{2} + r - (i-2) - 1 \right) q^{r + \left\lfloor \frac{\theta}{2} \right\rfloor - 1} \\
+        &= \left( -\frac{v(d-a)}{2} - \frac{v(b)+v(c)-3v(d-a)}{2} + \frac12 \right) q^{r + \left\lfloor \frac{\theta}{2} \right\rfloor} \\
+        &\qquad- \left( \frac{v(b)+v(c)+1}{2} + r - ((r+v(d-a)+1)-2) - 1 \right) q^{r + \left\lfloor \frac{\theta}{2} \right\rfloor - 1} \\
+        &= - \frac{v(b)+v(c)-1-2v(d-a)}{2} q^{r + \left\lfloor \frac{\theta}{2} \right\rfloor} \\
+        &\qquad- \frac{v(b)+v(c)+1-2v(d-a)}{2} q^{r + \left\lfloor \frac{\theta}{2} \right\rfloor - 1}.
+      \end{align*}
+      In the edge case where $r = 0$ and $\theta \le 1$,
+      it can be checked the same formula still holds with the last term omitted.
+    \end{itemize}
+  \end{itemize}
+  Hence we have found a diagonal of $M''$ below with all entries are zero,
+  and on which all entries are nonzero except possibly $M''_{1,0} = 0$
+  in the case where $r = 0$ and $\theta \le 1$.
+
+  Assuming $r + \left\lfloor \frac{\theta}{2} \right\rfloor \ge 2$,
+  suppose we take the rows from $i = r + \left\lfloor \frac{\theta}{2} \right\rfloor + 1$
+  up to $i = r + \left\lfloor \frac{\theta}{2} \right\rfloor + N + 1$.
+  Then the resulting matrix is upper triangular.
+  The determinant is the product of the diagonal entries;
+  up to multiplication by sign and a power of $q$, it equals
+  and the determinant is equal to
+  \[
+    \begin{cases}
+    (q-1)^{N+1} & \text{if } \theta \equiv 1 \pmod 2 \\
+    \left( \frac{v(b)+v(c)-1-2v(d-a)}{2} q + \frac{v(b)+v(c)+1-2v(d-a)}{2} \right)^{N+1} & \text{if } \theta \equiv 0 \pmod 2
+    \end{cases}
+  \]
+  which is manifestly nonzero for any odd prime power $q$.
+
+  In the situation where $r + \left\lfloor \frac{\theta}{2} \right\rfloor = 1$,
+  we use the same rows except that we replace the row for $i=1$
+  with the row for $i=0$, which has leftmost entry $M_{0,0} = \frac{v(b)+v(c)+1}{2} > 0$.
+  Hence the same proof still shows that the determinant is nonzero.
 \end{proof}
 
 \subsection{Proof of \Cref{thm:semi_lie_ker_trivial}}
@@ -178,10 +331,7 @@ Suppose we are given some function
 \[ \phi = \sum_{r=0}^N (-1)^r c_r \mathbf{1}_{K'_{S, \le r}} \in \HH(S_2(F)). \]
 Letting $M$ be the matrix given in \Cref{lem:semi_lie_ker_full_rank},
 we are supposed to have
-\[
-  M \begin{pmatrix} c_0 \\ c_1 \\ \vdots \\ c_N \end{pmatrix}
-  = \mathbf{0} \in \CC^{N+2}.
-\]
+\[ M \begin{pmatrix} c_0 \\ c_1 \\ \vdots \\ c_N \end{pmatrix} = \mathbf{0}. \]
 Since $M$ has full rank, it follows that $c_0 = \dots = c_N = 0$.
 
 \section{In the semi-Lie case, the kernel has finite codimension for fixed $v(e)$}
@@ -304,7 +454,7 @@ So we are done after we prove the following standalone lemma.
 \end{proof}
 
 \section{A sequence of test functions almost lying in the kernel in the semi-Lie case}
-We make one additional remark on the kernel that encompasses both of the preceding two sections.
+We make one additional remark on the kernel that unifies both of the preceding two sections.
 For this section, we define the following indicator function for $r \ge 3$:
 \[ \phi_r \coloneqq \mathbf{1}_{K', \le r} + \mathbf{1}_{K', \le (r-1)}
    - q^2 (\mathbf{1}_{K', \le (r-2)} + \mathbf{1}_{K', \le (r-3)}). \]
@@ -327,8 +477,8 @@ for which the orbital integral does not vanish.
     \le r \le v(e) - \min\left(\frac{v(b)+v(c)-1}{2}, v(d-a)\right) + 4. \]
 \end{theorem}
 \begin{proof}
-  For brevity define $\theta \coloneqq \min\left( v(b)+v(c), 2v(d-a) \right)$
-  as we did in \Cref{ch:orbitalFJ1}.
+  As always $\theta \coloneqq \min\left( v(b)+v(c), 2v(d-a) \right)$
+  as in \Cref{ch:orbitalFJ1}.
   Consider \Cref{cor:semi_lie_combo}, and let $N$, $C$, $C'$ be as in the statement.
   Let $N^{\flat\flat}$, $C^{\flat\flat}$, $(C')^{\flat\flat}$
   be the changes to those constants when one replaces $r$ by $r-2$.
