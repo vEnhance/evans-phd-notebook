@@ -92,7 +92,7 @@ The fundamental lemma has since been proved completely;
 a local proof was given by Beuzart-Plessis \cite{ref:BeuzartPlessis}
 while a global proof was given for large characteristic by W.\ Zhang \cite{ref:Wei2021}.
 
-\subsection{The arithmetic GGP conjectures, and the arithmetic fundamental lemma.}
+\subsection{The arithmetic GGP conjectures, and the arithmetic fundamental lemma}
 At around the same time Waldspurger's formula was published,
 Gross-Zagier \cite{ref:gross_zagier} proved a formula
 relating the height of Heegner points
@@ -160,7 +160,8 @@ $\HH(G'^\flat \times G, K'^\flat \times K)$.
 This formula is proposed by \cite{ref:AFLspherical},
 and is the primary focus of this paper; we discuss it in the next section.
 
-\section{The inhomogeneous version of the arithmetic fundamental lemma for spherical Hecke algebras}
+\section{Formulation of AFL conjectures to the full spherical Hecke algebra}
+\subsection{The inhomogeneous version of the arithmetic fundamental lemma for spherical Hecke algebras proposed by Li-Rapoport-Zhang}
 In contrast to the vague motivational cheerleading in the previous section,
 starting in this section we will give more precise statements,
 even though we will necessarily need to reference definitions appearing in later sections.
@@ -287,10 +288,8 @@ with a calculation of intersection numbers in \cite[Corollary 7.4.3]{ref:AFLsphe
 shows that \Cref{conj:inhomog} holds for $n = 2$,
 cf.\ \cite[Theorem 7.5.1]{ref:AFLspherical}.
 
-\section{The arithmetic fundamental lemma for spherical Hecke algebras
-  in the semi-Lie case}
-
-We propose an analogous conjecture to \Cref{conj:inhomog}
+\subsection{A proposed arithmetic fundamental lemma for spherical Hecke algebras in the semi-Lie case}
+The primary focus of this paper is an analogous conjecture to \Cref{conj:inhomog}
 for the semi-Lie version (also called the Fourier-Jacobi case).
 It serves to complete the analogy given in \Cref{tab:semi_lie_analogy}.
 
@@ -315,7 +314,7 @@ we consider an augmented space larger than $\U(\VV_n^-)$ and $S_n(F)$.
 Specifically, one considers a matching between tuples of regular semisimple elements
 \[ (g, u) \in (\U(\VV_n^-) \times \VV_n^-)\rs
   \longleftrightarrow (\gamma, \uu, \vv^\top) \in (S_n(F) \times V'_n(F))\rs \]
-where $V'_n(F)$ (defined in \Cref{def:matching_semi_lie})
+where $V'_n(F) = F^n \times (F^n)^\vee$ (defined in \Cref{def:matching_semi_lie})
 consists of pairs of column vectors and row vectors of length $n$,
 and the space $\VV_n^-$ is defined in \Cref{def:VV_n_nonsplit}.
 The notion of \emph{matching} is defined in \Cref{def:matching_semi_lie} as well.
@@ -344,9 +343,10 @@ to accommodate the new term $u$ in \Cref{def:intersection_number_semi_lie_spheri
   \label{conj:semi_lie_spherical}
 \end{conjecture}
 Note that in this version the new orbital integral $\Orb(\guv, \phi \otimes \oneV, s)$
-is defined similarly, but no analog of \Cref{thm:rel_fundamental_lemma}
+is defined similarly.
+However, as far as we know, no analog of \Cref{thm:rel_fundamental_lemma}
 (linking it to an orbital integral on the unitary side) appears in the literature.
-We record the corresponding statement as \Cref{conj:rel_fundamental_lemma_semilie}.
+Thus we record the corresponding statement as \Cref{conj:rel_fundamental_lemma_semilie}.
 Like before, \Cref{conj:rel_fundamental_lemma_semilie}
 predicts that $\Orb(\guv, \phi \otimes \oneV, 0) = 0$ in the case of interest,
 which in this case can be checked independently.
@@ -354,11 +354,11 @@ which in this case can be checked independently.
 \begin{remark}
   For $n = 1$, the Hecke algebra $\HH(S_n(F))$ is trivial
   and therefore \Cref{conj:semi_lie_spherical}
-  becomes a special case of the known \cite{ref:liuFJ}.
+  becomes a special case of the known result \cite{ref:liuFJ}.
   Therefore $n=2$ is the first case of \Cref{conj:semi_lie_spherical} worth examining.
 \end{remark}
 
-\section{The kernel of test functions for which the orbital has identically vanishing derivative}
+\subsection{A proposed conjecture on the kernel of indicator functions on which the orbital has identically vanishing derivative}
 \label{sec:intro_large_kernel}
 
 In \cite{ref:AFLspherical}, it was observed that for $n = 2$
@@ -371,7 +371,9 @@ as a vector subspace of $\HH(S_2(F))$ for $n = 2$.
 They thus stated a conjecture the kernel was ``large'' for general $n$
 as \cite[Conjecture 1.0.2]{ref:AFLspherical};
 we give a special case of it here compatible with our specialization.
+Later in this paper we will see it holds for $n = 3$ as well.
 \begin{conjecture}
+  [{\cite[Conjecture 1.0.2]{ref:AFLspherical}}]
   \label{conj:large_kernel_group}
   Consider the map of vector spaces
   \begin{align*}
@@ -382,13 +384,14 @@ we give a special case of it here compatible with our specialization.
   Then this map has a large kernel,
   in the sense that the kernel is not contained in any maximal ideal of $\HH(\U(\VV_n^-))$.
 \end{conjecture}
-We will later try to establish this conjecture for $n = 3$ as well.
 
 It is therefore natural to ask whether a similar large kernel result
 could hold for the analogous orbital integral in the semi-Lie case.
-It turns out that in order to state the conjecture,
-we will need to consider not just the entire $\guv$
-but the two separate parts, which seem to behave quite differently from each other.
+In fact, even for $n=2$ it turns out the different parameters
+behave quite differently from each other,
+in contrast to the group case from before.
+Thus, we propose the following conjecture, which we have proved for $n = 2$
+(see \Cref{thm:semi_lie_ker_trivial} and \Cref{thm:semi_lie_ker_huge} momentarily).
 \begin{conjecture}
   \label{conj:kernel_semi_lie}
   Let $n \ge 2$.
@@ -416,80 +419,141 @@ but the two separate parts, which seem to behave quite differently from each oth
   in the sense it is not contained in any maximal ideal of $\HH(S_n(F))$.
   \end{enumerate}
 \end{conjecture}
-This conjecture is motivated by our results for $n = 2$ in this direction,
-namely \Cref{thm:semi_lie_ker_trivial} and \Cref{thm:semi_lie_ker_huge}.
 
 \section{Results}
-\subsection{Explicit formulas for orbital integrals}
-One primary objective of this paper is to fully determine the weighted orbital integral
-in the next situations for which the AFL for the full spherical Hecke algebra
-was not previously known:
-\begin{itemize}
-  \ii The case $n = 3$ for the inhomogeneous group version of the AFL (\Cref{conj:inhomog});
-  \ii The case $n = 2$ of semi-Lie version of the AFL (\Cref{conj:semi_lie_spherical}).
-\end{itemize}
-The first calculation corresponds directly to the earlier results
-\cite[Lemma 7.1.1 and Proposition 7.3.2]{ref:AFLspherical}
-which were the case $n = 2$ of the inhomogeneous group version of the AFL
-(note what \cite{ref:AFLspherical} calls $n$ is $n+1$ in our notation).
+Most of the results here are dedicated toward the semi-Lie version of the AFL,
+which is the new contribution provided by this paper.
+But in \Cref{sec:results_group_AFL} we mention some other results
+we proved for the group version of the AFL.
 
-The methods, which are local in nature,
-are rather similar to those employed in \cite{ref:AFL},
-which shows how to compute the weighted orbital integral for $n = 3$ when $f = \mathbf{1}_{K'}$.
-We were able to successfully calculate this weighted orbital integral for all these cases.
-The result is too involved to state in the introduction,
-but we give the following summary.
+\subsection{Formulas for the orbital side of the semi-Lie AFL conjecture for $n=2$}
+The main case of interest in this thesis is the new conjectured AFL
+for the spherical Hecke algebra in the semi-Lie situation in the
+specific case $n = 2$ where one can provide evidence for the conjecture.
+On the orbital side, the various ingredients can be described concretely
+in the following way:
+\begin{itemize}
+  \ii The Hecke algebra $\HH(S_2(F))$ has a natural basis of
+  indicator functions $\mathbf{1}_{K', \le r}$ for each $r \ge 0$;
+  see \Cref{ch:orbitalFJ0} for a definition.
+
+  \ii Suppose $\guv \in (S_2(F) \times V'_2(F))\rs$
+  pairs with an element of $(\U(\VV_2^-) \times \VV_2^-)\rs$.
+  Then under the action $\GL_2(F)$ we may assume $\guv$ is of the form
+  \[
+    \guv = \left( \begin{pmatrix} a & b \\ c & d \end{pmatrix},
+      \begin{pmatrix} 0 \\ 1 \end{pmatrix},
+      \begin{pmatrix} 0 & e \end{pmatrix} \right)
+    \in (S_2(F) \times V_2'(F))\rs
+  \]
+  (that is, we can find an orbit representative of this form).
+  The parameters $a$, $b$, $c$, $d$ need to satisfy certain dependencies
+  for the matching to hold; these are described in \Cref{ch:orbitalFJ0}.
+\end{itemize}
+
+Then we were able to derive the following fully explicit formula.
+See \Cref{sec:proof_semi_lie_formula} for some concrete examples and illustrations.
 \begin{theorem}
-  \label{thm:summary}
-  Let $\gamma \in S_3(F)\rs$ and $\phi \in \HH(S_3(F))$
-  (resp.\ $\guv \in (S_2(F) \times V'_2(F))\rs$ and $\phi \in \HH(S_3(F))$).
-  Assume that $\gamma$ (resp.\ $\guv$)
-  matches an element in $\U(\VV_3^-)\rs$ (resp.\ $(\U(\VV_2^-) \times \VV_2^-)\rs$).
-  Then the weighted orbital integral $\Orb(\gamma, \phi, s)$
-  (resp.\ $\Orb(\guv, \phi \otimes \oneV, s)$) always takes the form
-  \[ \sum_k P_k(q) (-q^s)^k \]
-  for some polynomials $P_k(q) \in \ZZ[q]$, where
+  \label{thm:semi_lie_formula}
+  Let $\guv$ be as above.
+  If $v(e) < 0$ or $v(b) + v(c) < -2r$, the entire orbital integral is $0$.
+  Otherwise define
+  \[ \nn_\guv(k) \coloneqq \min\left( \left\lfloor \tfrac{k + (v(b)+r)}{2} \right\rfloor,
+    \left\lfloor \tfrac{(2v(e)+v(c)+r)-k}{2} \right\rfloor, N \right) \]
+  where
+  \[ N \coloneqq \min \left(
+      v(e), \tfrac{v(b)+v(c)-1}{2} + r,
+      v(d-a) + r \right). \]
+  Also, if $v(d-a) < v(e) - r$ and $v(b) + v(c) > 2v(d-a)$, then additionally define
+  \begin{align*}
+    \cc_\guv(k) &= \min\big( k - (2v(d-a)-v(b)+r), \\
+      &\qquad (2v(e)+v(c)-2v(d-a)-r)-k, v(e)-v(d-a)-r \big).
+  \end{align*}
+  Otherwise define $\cc_\guv(k) = 0$.
+  Then we have
+  \begin{align*}
+    &\phantom= \Orb(\guv, \mathbf{1}_{K'_{S, \le r}} \otimes \oneV, s) \\
+    &= \sum_{k = -(v(b)+r)}^{2v(e)+v(c)+r} (-1)^k
+    \left( 1 + q + q^2 + \dots + q^{\nn_\guv(k)} \right) (q^s)^k \\
+    &+ \sum_{k = 2v(d-a)-v(b)+r}^{2v(e)+v(c)-2v(d-a)-r} (-1)^k \cc_\guv(k) q^{v(d-a) + r} (q^s)^k.
+  \end{align*}
+\end{theorem}
+
+Differentiating this yields the following result:
+\begin{corollary}
+  \label{cor:semi_lie_derivative_single}
+  Let $r$, $\guv$ and $N$ be as in \Cref{thm:semi_lie_formula}
+  Also define $\varkappa \coloneqq v(e) - (v(d-a)+r)$.
+  Then
+  \begin{align*}
+    \frac{(-1)^{v(c)+r}}{\log q}
+    &\partial \Orb(\guv, \mathbf{1}_{K'_{S, \le r}}) \\
+    &= \sum_{j=0}^N \left( \frac{2v(e)+v(b)+v(c)+1}{2} + r - 2j \right) \cdot q^j \\
+    & - q^{v(d-a)+r} \cdot
+    \begin{cases}
+      \frac{\varkappa}{2} & \text{if }\varkappa \equiv 0 \pmod 2 \\
+      \left( v(e)+\frac{v(b)+v(c)}{2}-2v(d-a)-r \right) - \frac{\varkappa}{2}
+      & \text{if }\varkappa \equiv 1 \pmod 2 \\
+    \end{cases}
+  \end{align*}
+  where the second term is only present when $\varkappa \ge 0$ and $v(b)+v(c)>2v(d-a)$.
+\end{corollary}
+
+The formula simplifies even further if one considers instead
+$\mathbf{1}_{K'_{S, \le r}} + \mathbf{1}_{K'_{S, \le (r-1)}}$;
+and indeed we will see that this particular combination comes up naturally
+with a special role later as well.
+\begin{corollary}
+  \label{cor:semi_lie_combo}
+  Let $r$, $\guv$, $N$, $\varkappa$ be as in \Cref{cor:semi_lie_derivative_single}.
+  Assume $r \ge 1$ and define
+  \begin{align*}
+    C &\coloneqq
+    \begin{cases}
+      \frac{\varkappa-1}{2}
+        & \text{if } \varkappa > 0 \text{ is odd}
+          \text{ and } v(b) + v(c) > 2v(d-a)  \\
+      \frac{\varkappa+v(b)+v(c)-2v(d-a)-1}{2}
+        & \text{if } \varkappa \ge 0 \text{ is even}
+          \text{ and } v(b) + v(c) > 2v(d-a)  \\
+      v(e) - N
+        & \text{if } v(e) \ge \frac{v(b)+v(c)-1}{2} + r
+        \text{ and } 2v(d-a) > v(b) + v(c) \\
+      0 & \text{otherwise}
+    \end{cases} \\
+    C' &\coloneqq
+    \begin{cases}
+      C + 1 & \text{if } \varkappa \ge 0 \text{ and } v(b)+v(c) > 2v(d-a) \\
+      0 & \text{otherwise}.
+    \end{cases}
+  \end{align*}
+  Then
+  \begin{align*}
+    \frac{(-1)^{v(c)+r}}{\log q} &
+    \partial\Orb(\guv, \mathbf{1}_{K'_{S, \le r}} + \mathbf{1}_{K'_{S, \le (r-1)}}) \\
+    &= (q^N + q^{N-1} + \dots + 1) + C q^N + C' q^{N-1}
+  \end{align*}
+\end{corollary}
+
+\begin{example}
+  We show some examples of \Cref{cor:semi_lie_combo}:
   \begin{itemize}
-    \ii the summation variable $k$ is a some contiguous range of integers,
-
-    \ii the polynomials $P_k \in \ZZ[q]$ are nonzero and satisfy the property
-    that every coefficient of $P_k$ besides possibly the leading coefficient is $1$;
-
-    \ii both $\deg P_k$ and leading coefficient of $P_k$ are the integer parts
-    of piecewise linear functions in $k$ with slopes in $\{0, \pm\half, \pm 1\}$.
+  \ii When $r=5$, $v(b) = -20$, $v(c) = 37$, $v(e) = 35$ and $v(d-a) > \frac{v(b)+v(c)}{2} = 8.5$
+  the derivative in \Cref{cor:semi_lie_combo} equals
+  \[ \log q \cdot (23q^{13} + q^{12} + q^{11} + q^{10} + q^9 + \dots + q + 1). \]
+  \ii When $r = 6$, $v(b) = 10$, $v(c) = 5$, $v(e) = 7$, $v(d-a) > v(e)-r = 1$,
+  the derivative in \Cref{cor:semi_lie_combo} equals
+  \[ -\log q \cdot (q^7 + q^6 + q^5 + \dots + q + 1). \]
+  \ii When $r = 8$, $v(b) = -101$, $v(c) = 1000$, $v(e) = 29$, $v(d-a) = 11$,
+  the derivative in \Cref{cor:semi_lie_combo} equals
+  \[ \log q \cdot (444 q^{19} + 445q^{18} + q^{17} + q^{16} + q^{15} + \dots + q + 1). \]
   \end{itemize}
-  The range of the summation, and the aforementioned piecewise linear function(s),
-  can be written explicitly in terms of a particular representative
-  in the orbit of $\gamma$ (resp.\ $\guv$).
-\end{theorem}
-The full version of \Cref{thm:summary} is listed as follows:
-\begin{itemize}
-\ii For the weighted orbital integral $\Orb(\gamma, \phi, s)$
-with $\gamma \in S_3(F)\rs$ and $\phi \in \HH(S_3(F))$,
-the theorems \Cref{thm:full_orbital_ell_odd,thm:full_orbital_ell_even,thm:full_orbital_ell_neg}
-together cover all the cases that can arise (and cover pairwise disjoint scenarios).
-\ii For the weighted orbital integral $\Orb(\guv, \phi \otimes \oneV, s)$
-with $\guv \in (S_2(F) \times V'_2(F))\rs$ and $\phi \in \HH(S_3(F))$
-the derivative is the single theorem \Cref{thm:semi_lie_formula}.
-\end{itemize}
+\end{example}
 
-\subsection{Large and small kernel}
-Although we were initially motivated by
-\Cref{conj:inhomog} and \Cref{conj:semi_lie_spherical},
-the formulas alluded to in \Cref{thm:summary} also enable to prove the following results.
-In the group AFL:
-\begin{theorem}
-  \label{thm:large_kernel_group}
-  For $n = 3$, the kernel described in \Cref{conj:large_kernel_group}
-  in fact has codimension exactly $3$.
-  Moreover, \Cref{conj:large_kernel_group} holds for $n = 3$;
-  that is, the kernel (as a $\QQ$-vector subspace of $\HH(S_3(F))$)
-  is not contained in any maximal ideal.
-\end{theorem}
-
-As we mentioned, in the semi-Lie situation the result is more complicated.
-Providing evidence for \Cref{conj:kernel_semi_lie},
-we will prove the following two results.
+\subsection{Kernel results for the semi-Lie orbital integral when $n=2$}
+As we mentioned our earlier conjecture \Cref{conj:kernel_semi_lie}
+is true for $n = 2$.
+More precisely, we have the following two theorems.
 
 \begin{theorem}
   \label{thm:semi_lie_ker_trivial}
@@ -540,21 +604,27 @@ we will prove the following two results.
   the codimension of the kernel will still be finite in $\HH(S_n(F))$,
   i.e.\ an analogous finite-codimension conjecture
   to \Cref{conj:large_kernel_group} seems possibly too optimistic.
-  Nonetheless, it might still be interesting to consider different ways
+  Nonetheless, it might still be interesting to consider other different ways
   of formalizing the notion of ``large kernel'' in \Cref{conj:large_kernel_group}
   and \Cref{conj:kernel_semi_lie}.
 \end{remark}
 
-\subsection{Arithmetic fundamental lemmas}
-For the group AFL, we were also able to determine the
-relevant base changes in \Cref{ch:satake}.
-However, we did not complete the comparison on the geometric side in this situation.
-Thus we do not claim a proof of $n = 3$ of \Cref{conj:inhomog},
-although we imagine such a proof could be completed
-once a method for determining the intersection numbers explicitly is devised.
+\subsection{The geometric side of the semi-Lie AFL conjecture for $n=2$}
+On the geometric side, we were also able to determine the intersection numbers
+subject to two provisions,
+\Cref{conj:serre_pullback_space} and \Cref{conj:serre_pullback_divisor},
+about the pullback of certain divisors.
+\begin{theorem}
+  \label{thm:semi_lie_n_equals_2}
+  Assume \Cref{conj:serre_pullback_space} and \Cref{conj:serre_pullback_divisor}.
+  Then our generalized AFL conjecture, \Cref{conj:semi_lie_spherical}, holds for $n = 2$.
+\end{theorem}
+The proof of \Cref{thm:semi_lie_n_equals_2} is built up gradually
+throughout the entire paper, culminating in \Cref{ch:finale}.
 
-For the semi-Lie AFL conjectured in \Cref{conj:semi_lie_spherical},
-the intersection numbers are easier to work for a few reasons.
+We comment briefly on the strategy of the proof.
+The proof is made possible because the intersection numbers for $n=2$
+are easier to work for a few reasons.
 \begin{itemize}
 \ii First, one can identify $\VV_2^-$ with an $E/F$-quaternion division algebra,
 equipped with a compatible Hermitian form defined via quaternion multiplication.
@@ -571,24 +641,75 @@ However, on the Lubin-Tate space $\MM_2$,
 there is a result known as the Gross-Keating formula \cite{ref:GK}
 which allows one to make this intersection number fully explicit.
 One can then match the resulting equation to the formulas described in
-\Cref{thm:semi_lie_derivative_single}
+\Cref{cor:semi_lie_derivative_single}
 and verify that, under the base change \Cref{ch:satake}
 and the matching condition described in \Cref{ch:rs_matching},
 the two obtained formulas are identical.
 \end{itemize}
+The two hypotheses \Cref{conj:serre_pullback_space} and \Cref{conj:serre_pullback_divisor}
+are a stipulation that the pullback of two of the divisors
+behaves in the way one would expect.
 
-We can therefore prove the following conditional result where we assume
-the aforementioned divisors are given by the specific forms
-\Cref{conj:serre_pullback_space} and \Cref{conj:serre_pullback_divisor}.
-Then applying Gross-Keating formula enables us to prove the following result.
-
+\subsection{Results for $n=3$ for the group AFL}
+\label{sec:results_group_AFL}
+For the group AFL, we were able to fully compute the orbital integral as well.
+The result is too involved to state in the introduction,
+but we give the following summary.
 \begin{theorem}
-  \label{thm:semi_lie_n_equals_2}
-  Assume \Cref{conj:serre_pullback_space} and \Cref{conj:serre_pullback_divisor}.
-  Then our generalized AFL conjecture, \Cref{conj:semi_lie_spherical}, holds for $n = 2$.
+  \label{thm:summary}
+  Let $\gamma \in S_3(F)\rs$.
+  Assume that $\gamma$ matches an element in $\U(\VV_3^-)\rs$ (resp.\ $(\U(\VV_2^-) \times \VV_2^-)\rs$).
+  Then the weighted orbital integral $\Orb(\gamma, \phi, s)$ takes the form
+  \[ \sum_k P_k(q) (-q^s)^k \]
+  for some polynomials $P_k(q) \in \ZZ[q]$, where
+  \begin{itemize}
+    \ii the summation variable $k$ is a some contiguous range of integers,
+
+    \ii the polynomials $P_k \in \ZZ[q]$ are nonzero and satisfy the property
+    that every coefficient of $P_k$ besides possibly the leading coefficient is $1$;
+
+    \ii both $\deg P_k$ and leading coefficient of $P_k$ are the integer parts
+    of piecewise linear functions in $k$ with slopes in $\{0, \pm\half, \pm 1\}$.
+  \end{itemize}
+  The range of the summation, and the aforementioned piecewise linear function(s),
+  can be written explicitly in terms of a particular representative
+  in the orbit of $\gamma$.
 \end{theorem}
-The proof of \Cref{thm:semi_lie_n_equals_2} is built up gradually
-throughout the paper, culminating in \Cref{ch:finale}.
+For a full statement, see
+\Cref{thm:full_orbital_ell_odd,thm:full_orbital_ell_even,thm:full_orbital_ell_neg}.
+The calculation corresponds directly to the earlier results
+\cite[Lemma 7.1.1 and Proposition 7.3.2]{ref:AFLspherical}
+which were the case $n = 2$ of the inhomogeneous group version of the AFL
+(note what \cite{ref:AFLspherical} calls $n$ is $n+1$ in our notation).
+The methods, which are local in nature,
+are rather similar to those employed in \cite{ref:AFL},
+which can be thought of as the case $r = 0$.
+
+\begin{remark}
+  Interestingly, the formula \Cref{thm:semi_lie_formula}
+  for $\guv \in (S_2(F) \times V'_2(F))\rs$
+  actually fits the same template as \Cref{thm:summary},
+  although the semi-Lie formula is more pleasant.
+  We do not have a good explanation why the shapes of the orbital integrals
+  end up being so similar.
+\end{remark}
+
+We were also able to determine the
+relevant base changes in \Cref{ch:satake}.
+However, we did not complete the comparison on the geometric side in this situation.
+Thus we do not claim a proof of $n = 3$ of \Cref{conj:inhomog},
+although we imagine such a proof could be completed
+once a method for determining the intersection numbers explicitly is devised.
+
+On the other hand, the orbital data is enough to prove the following result.
+\begin{theorem}
+  \label{thm:large_kernel_group}
+  For $n = 3$, the kernel described in \Cref{conj:large_kernel_group}
+  in fact has codimension exactly $3$.
+  Moreover, \Cref{conj:large_kernel_group} holds for $n = 3$;
+  that is, the kernel (as a $\QQ$-vector subspace of $\HH(S_3(F))$)
+  is not contained in any maximal ideal.
+\end{theorem}
 
 \section{Roadmap}
 The rest of the paper is organized as follows.
@@ -612,24 +733,21 @@ The rest of the paper is organized as follows.
     \ii In \Cref{ch:orbital0} we introduce the weighted orbital integral
     for the group version of the AFL for full spherical Hecke algebra,
     and state the derivative explicitly for $n = 3$ in terms of a representative.
-    In \Cref{ch:orbital1,ch:orbital2} we show the calculation of this formula.
+    In \Cref{ch:orbital1,ch:orbital2} we show the calculation of this formula,
+    and give the full version of \Cref{thm:summary}.
 
     \ii In \Cref{ch:orbitalFJ0} we introduce the weighted orbital integral
-    for the semi-Lie version of the AFL for full spherical Hecke algebra,
-    and state the derivative explicitly for $n = 2$ in terms of a representative.
-    The analogous calculation is in \Cref{ch:orbitalFJ1,ch:orbitalFJ2}.
+    for the semi-Lie version of the AFL for full spherical Hecke algebra.
+    The analogous calculation is in \Cref{ch:orbitalFJ1,ch:orbitalFJ2},
+    which is used to prove \Cref{thm:semi_lie_formula} and its corollaries.
   \end{itemize}
-  A high-level overview of the results are summarized in \Cref{thm:summary}.
-  The full formulas appear in \Cref{ch:orbital2} and \Cref{ch:orbitalFJ2} respectively.
-  However, later on we only need to remember the derivative at $s = 0$,
-  which is stated already in \Cref{ch:orbital0} and \Cref{ch:orbitalFJ0} respectively.
 
   \ii Having completely computed the orbital integrals in these cases,
   we take a side trip in \Cref{ch:ker} to prove the ``large kernel'' results.
   We establish \Cref{conj:kernel_semi_lie} for $n = 2$
   by proving the explicit results
-  \Cref{thm:semi_lie_ker_trivial} and \Cref{thm:semi_lie_finite_codim_full}
-  (the latter shows the kernel has codimension at most $8$).
+  \Cref{thm:semi_lie_ker_trivial} and \Cref{thm:semi_lie_finite_codim_full}.
+  We also prove the existing conjecture for the group AFL for $n=3$.
 
   \ii We then turn our attention to the other parts of the two versions of the AFL.
   In addition to stating the relevant definitions,

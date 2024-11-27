@@ -369,41 +369,9 @@ as the overall contribution from \textbf{Case 6}, where
   v(e) - \frac{\theta}{2} - r,
   2v(e) + v(c) - \theta - r \right). \]
 
-\section{Completed formula for the overall orbital integral for $S_2 \times V'_2(F)$}
-We now put together all the previous calculations to give the following formula.
-\begin{theorem}
-  \label{thm:semi_lie_formula}
-  Let the representative
-  \[
-    \guv = \left( \begin{pmatrix} a & b \\ c & d \end{pmatrix},
-      \begin{pmatrix} 0 \\ 1 \end{pmatrix},
-      \begin{pmatrix} 0 & e \end{pmatrix} \right)
-    \in (S_2(F) \times V_2'(F))\rs.
-  \]
-  be paired with an element of $(\U(\VV_2) \times \VV_2)\rs$.
-  If $v(e) < 0$ or $v(b) + v(c) < -2r$, the entire orbital integral is $0$.
-  Otherwise define
-  \[ \nn_\guv(k) \coloneqq \min\left( \left\lfloor \tfrac{k + (v(b)+r)}{2} \right\rfloor,
-    \left\lfloor \tfrac{(2v(e)+v(c)+r)-k}{2} \right\rfloor, N \right) \]
-  where
-  \[ N \coloneqq \min \left(
-      v(e), \tfrac{v(b)+v(c)-1}{2} + r,
-      v(d-a) + r \right). \]
-  Also, if $v(d-a) < v(e) - r$ and $v(b) + v(c) > 2v(d-a)$, then additionally define
-  \begin{align*}
-    \cc_\guv(k) &= \min\big( k - (2v(d-a)-v(b)+r), \\
-      &\qquad (2v(e)+v(c)-2v(d-a)-r)-k, v(e)-v(d-a)-r \big).
-  \end{align*}
-  Otherwise define $\cc_\guv(k) = 0$.
-  Then we have
-  \begin{align*}
-    &\phantom= \Orb(\guv, \mathbf{1}_{K'_{S, \le r}} \otimes \oneV, s) \\
-    &= \sum_{k = -(v(b)+r)}^{2v(e)+v(c)+r} (-1)^k
-    \left( 1 + q + q^2 + \dots + q^{\nn_\guv(k)} \right) (q^s)^k \\
-    &+ \sum_{k = 2v(d-a)-v(b)+r}^{2v(e)+v(c)-2v(d-a)-r} (-1)^k \cc_\guv(k) q^{v(d-a) + r} (q^s)^k.
-  \end{align*}
-\end{theorem}
-
+\section{Proof of \Cref{thm:semi_lie_formula}}
+\label{sec:proof_semi_lie_formula}
+We now prove \Cref{thm:semi_lie_formula}.
 For reference, we provide \Cref{fig:semi_lie_sketch} sketching the shapes
 of $\nn_\guv$ and $\cc_\guv$, which may be easier to think about.
 
@@ -473,8 +441,7 @@ of $\nn_\guv$ and $\cc_\guv$, which may be easier to think about.
   \label{fig:semi_lie_sketch}
 \end{figure}
 
-
-\begin{proof}
+\begin{proof}[Proof of \Cref{thm:semi_lie_formula}]
   First, suppose $\theta = v(b) + v(c) < 2v(d-a)$ is odd.
   Then
   \[ \nn_\guv(k) \coloneqq \min\left( \left\lfloor \tfrac{k + (v(b)+r)}{2} \right\rfloor,
@@ -657,10 +624,10 @@ of $\nn_\guv$ and $\cc_\guv$, which may be easier to think about.
   \end{align*}
 \end{example}
 
-\section{Proof of \Cref{thm:semi_lie_derivative_single}}
+\section{Proof of \Cref{cor:semi_lie_derivative_single}}
 With \Cref{thm:semi_lie_formula} established, we aim to calculate the derivative of
 \[ \Orb(\guv, \mathbf{1}_{K', S, \le r} \otimes \oneV, s) \]
-now at $s = 0$, thus proving \Cref{thm:semi_lie_derivative_single}.
+now at $s = 0$, thus proving \Cref{cor:semi_lie_derivative_single}.
 
 For this calculation it will be more convenient to reformat \Cref{thm:semi_lie_formula}
 as a sum over $q^j$ rather than $(-1)^k (q^s)^k$.
@@ -760,14 +727,14 @@ On the other hand, if $\varkappa$ is odd we get instead
   &= (-1)^{v(c)+r} q^{v(d-a)+r} \log q \cdot \left[
     -\left( v(e)+\frac{v(b)+v(c)}{2}-2v(d-a)-r \right) + \frac{\varkappa}{2} \right].
 \end{align*}
-These formulas match \Cref{thm:semi_lie_derivative_single}, proving it.
+These formulas match \Cref{cor:semi_lie_derivative_single}, proving it.
 (Note that we changed $\varkappa > 0$ to $\varkappa \ge 0$,
 which makes no change since then the contribution is zero anyway.)
 
 \section{Proof of \Cref{cor:semi_lie_combo}}
 We can now prove \Cref{cor:semi_lie_combo}
-as a corollary of \Cref{thm:semi_lie_derivative_single}.
-Observe that when we add the right-hand side of \Cref{thm:semi_lie_derivative_single}
+as a corollary of \Cref{cor:semi_lie_derivative_single}.
+Observe that when we add the right-hand side of \Cref{cor:semi_lie_derivative_single}
 to the same right-hand side with $r$ replaced by $r-1$, almost all the terms cancel.
 Indeed, the main sum for $0 \le j \le N-1$ line up:
 \begin{align*}

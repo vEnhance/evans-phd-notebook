@@ -28,10 +28,10 @@ Then our weighted orbital integral is defined as follows.
 
 
 We remark that this weighted orbital integral is related to
-a normal orbital integral on the unitary side
+an (unweighted) orbital integral on the unitary side
 by the so-called relative fundamental lemma.
 Specifically, for $g \in \U(\VV_n^+)$ and $f \in \HH(\U(\VV_n^+))$,
-we define the normal orbital integral by
+we define the (unweighted) orbital integral by
 \[ \Orb^{\U(\VV_n^+)}(g, f) \coloneqq \int_{\U(\VV_n^+)} f(x^{-1}gx) \odif x. \]
 Then the following result is true.
 \begin{theorem}
@@ -108,16 +108,16 @@ that we can use for our explicit calculations.
 Our weighted orbital integral is at present a quadruple integral over $F$,
 owing to $H = \GL_{2}(F)$ being a four-dimensional $F$-vector space.
 
-It will be more economical to work with the weighted orbital integral as a double integral
-with two coefficients in $E$, in the following sense.
-Define
+It will be more economical to work with the weighted orbital integral
+as a double integral with two coefficients in $E$, in the following sense.
+As in \cite[\S4.1]{ref:AFL} define
 \[ H' \coloneqq
   \left\{ \begin{pmatrix} t_1 & t_2 \\ \bar t_2 & \bar t_1 \end{pmatrix}
     \mid t_1, t_2 \in E \right\}
 \]
 which is indeed a four-dimensional $F$-algebra.
 As before $H' \hookrightarrow \U(\VV_n^+)$ according to the same embedding
-$\GL_2(E) \hookrightarrow \GL_(3)$
+$\GL_2(E) \hookrightarrow \GL_3(E)$
 and so $H'$ also acts on $S_n(E)$ by conjugation.
 
 As an $F$-algebra, we have an isomorphism (see \cite[\S4.1]{ref:AFL})
@@ -152,15 +152,17 @@ then the following integral formula is obtained.
 \end{proposition}
 
 \subsection{Identifying a representative in the $H'$-orbit}
+Write $\gamma \overset{H'}{\sim} \gamma'$ to mean that $\gamma$ and $\gamma'$
+are in the same $H'$-orbit.
 Evidently the weighted orbital integral $\Orb(\gamma, \phi, s)$ in \Cref{prop:orbital_over_H_prime}
-only depends on the $H'$-orbit of $\gamma$.
+only depends on such an orbit.
 So it makes sense to pick a canonical representative for the $H'$-orbit to compute
 the weighted orbital integral in terms of.
 
 Since we assumed $\gamma \in S_3(F)\rs$ is regular semisimple,
 we can invoke \cite[Proposition 4.1]{ref:AFL}
-to assume $\gamma$ is a representative (under the orbit of $H'$) specifically of the form
-\[ \gamma(a,b,d) =
+to assume that $\gamma$ that under the orbit of $H'$ we have
+\[ \gamma \overset{H'}{\sim}
   \begin{pmatrix}
     a & 0 & 0 \\
     b & - \bar d & 1 \\
@@ -168,7 +170,7 @@ to assume $\gamma$ is a representative (under the orbit of $H'$) specifically of
   \end{pmatrix}
   \in S_3(F)\rs; \quad \text{where $c = -a \bar b + b d$} \]
 over all $a \in E^1$, $b \in E$, $d \in E$ for which $(1-d\bar d)^2 - c \bar c \neq 0$.
-In other words, the representatives described here cover all the regular orbits in $S_3(F)\rs$.
+In other words, the representatives described here cover all the regular $H'$-orbits in $S_3(F)\rs$.
 
 \subsection{Simplification due to the matching of non-quasi-split unitary group}
 In this calculation, we restrict attention to the case where our regular $\gamma$
@@ -185,6 +187,22 @@ Hence, we only have to consider this case:
   \[ v\left( (1-d\bar d)^2 - c \bar c\right) \equiv 1 \pmod 2. \]
 \end{assume}
 This is the same assumption made in \cite[Equation (4.3)]{ref:AFL}.
+
+To summarize everything we've said.
+\begin{lemma}
+  \label{lem:S3_abcd}
+  Let $\gamma \in S_3(F)\rs$ be an element matching with $\U(\VV_3^-)$.
+  Then there exists unique $a \in E^1$, $b \in E$, $d \in E$ such that
+  \[ \gamma \overset{H'}{\sim}
+    \begin{pmatrix}
+      a & 0 & 0 \\
+      b & - \bar d & 1 \\
+      c & 1 - d \bar d & d
+    \end{pmatrix}
+    \in S_3(F)\rs; \quad \text{where $c = -a \bar b + b d$}. \]
+  Moreover, $v\left( (1-d \bar d)^2 - c \bar c \right)$ is odd.
+\end{lemma}
+
 
 We will mostly be interested in the case where $v(b) = v(d) = 0$.
 In fact, few other cases even occur at all given \Cref{assume:u_odd};
@@ -234,9 +252,13 @@ Just as many pairs $(v(b), v(d))$ do not occur (given \Cref{assume:u_odd})
 and $v(b) = v(d) = 0$ is the main case of interest,
 the parameters $(\delta, \ell, \lambda)$ satisfy some additional relations.
 We will now describe them.
-\begin{proposition}
-  \label{prop:parameter_constraints}
-  Exactly one of the following situations is true:
+
+\begin{lemma}
+  \label{lem:parameter_constraints}
+  Let $a$, $b$, $c$, $d$ be as in \Cref{lem:S3_abcd},
+  and let $\delta$, $\ell$, and $\lambda$ be as defined in
+  \eqref{eq:delta}, \eqref{eq:ell}, \eqref{eq:lambda}.
+  Then exactly one of the following situations is true:
   \begin{itemize}
     \ii $v(b) = v(d) = 0$, $\ell \ge 1$ is odd, $\ell < 2 \delta$, and $\lambda = \ell$.
     \ii $v(b) = v(d) = 0$, $\ell \ge 0$ is even, $\ell \le 2 \delta$, and $\lambda > \ell$ is odd.
@@ -247,7 +269,7 @@ We will now describe them.
   See \Cref{tab:parameter_constraints}.
   Moreover, whenever $\ell$ is even,
   the quantity $b^2 - 4 a \bar d$ is a square of some element in $E$.
-\end{proposition}
+\end{lemma}
 
 \begin{table}[ht]
   \centering
@@ -260,12 +282,11 @@ We will now describe them.
     $v(d) < 0$ & never & never & $v(b) = v(d) = \frac{\ell}{2} = \frac{\delta}{2} < 0$ \\
     \bottomrule
   \end{tabular}
-  \caption{A table showing the five cases in \Cref{prop:parameter_constraints}.}
+  \caption{A table showing the five cases in \Cref{lem:parameter_constraints}.}
   \label{tab:parameter_constraints}
 \end{table}
 
-
-Before proving the proposition in full we first prove the following lemmas.
+Before proving the lemma in full we first prove the following lemmas.
 \begin{lemma}
   \label{lem:au_minus_du}
   Assume $v(d) \ge 0$.
@@ -324,8 +345,8 @@ Before proving the proposition in full we first prove the following lemmas.
   and this proves $\ell \le 2\delta$.
 \end{proof}
 
-Now we can prove \Cref{prop:parameter_constraints}.
-\begin{proof}[Proof of \Cref{prop:parameter_constraints}]
+Now we can prove \Cref{lem:parameter_constraints}.
+\begin{proof}[Proof of \Cref{lem:parameter_constraints}]
   It's clear the five bullets above are disjoint.
   \begin{itemize}
   \ii First assume $\ell$ is odd.
@@ -468,14 +489,13 @@ and for $v(d) < 0$ we have $v(d) = \half \ell$ anyway.
 \section{Statement of the differentiated weighted orbital integral}
 We can now state the answer.
 \begin{theorem}
-  Let \[ \gamma(a,b,d) = \begin{pmatrix}
-    a & 0 & 0 \\
-    b & - \bar d & 1 \\
-    c & 1 - d \bar d & d
-  \end{pmatrix} \in S_3(F)\rs \]
-  be paired with an element of $\U(\VV_3^-)\rs$.
+  Let $r \ge 0$.
+  Let $\gamma \in S_3(F)\rs$ match an element of $\U(\VV_3^-)$,
+  and let $b$, $d$, $\ell$, $\delta$, $\lambda$ be as in
+  \Cref{lem:S3_abcd} and \Cref{lem:parameter_constraints}.
+  Then
+  \todo{compute this}
 \end{theorem}
-
 
 We dedicate \Cref{ch:orbital1,ch:orbital2} to the calculation
 of the full orbital integral and its derivative at $s = 0$ given here.

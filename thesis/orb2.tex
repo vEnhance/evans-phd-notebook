@@ -523,17 +523,11 @@ the weighted orbital integral can be expressed succinctly in the following way.
 \begin{theorem}
   [Weighted orbital integral in the odd case for $\mathbf{1}_{K'_{S, \le r}}$]
   \label{thm:full_orbital_ell_odd}
-  Let the representative
-  \[ \gamma = \begin{pmatrix}
-      a & 0 & 0 \\
-      b & - \bar d & 1 \\
-      -a \bar b + b d & 1 - d \bar d & d
-    \end{pmatrix} \in S_3(F)\rs \]
-  be paired to an element in $\U(\VV_3^-)$.
-  Assume $v(b) = v(d) = 0$.
-  Let $\delta = v(1 - d \bar d)$
-  and $\ell = v(b^2 - 4 a \bar d)$ be the parameters defined earlier.
-  Assume further that $\ell$ is odd, and define
+  Let $r \ge 0$.
+  Let $\gamma \in S_3(F)\rs$ match an element of $\U(\VV_3^-)$,
+  and let $b$, $d$, $\delta$, $\ell$, be as in
+  \Cref{lem:S3_abcd} and \Cref{lem:parameter_constraints}.
+  If $\ell$ is odd, define
   \[ \nn_\gamma \coloneqq \Arch_{[-2r, \ell + 2\delta + 2r]}(r, \ell). \]
   Then for any $r \ge 0$ we have the formula:
   \[
@@ -1284,19 +1278,12 @@ Now we can put everything together to get the following.
 \begin{theorem}
   [Weighted orbital integral in the even case for $\mathbf{1}_{K'_{S, \le r}}$]
   \label{thm:full_orbital_ell_even}
-  Let the representative
-  \[ \gamma = \begin{pmatrix}
-      a & 0 & 0 \\
-      b & - \bar d & 1 \\
-      -a \bar b + b d & 1 - d \bar d & d
-    \end{pmatrix} \in S_3(F)\rs \]
-  be paired to an element in $\U(\VV_3^-)$.
-  Assume further $v(b) \ge 0$ and $v(d) \ge 0$.
-  Let $\delta = v(1 - d \bar d)$, $\ell = v(b^2 - 4 a \bar d)$ and
-  $\lambda = v((1 - d \bar d)^2 - c \bar c) - 2\delta$
-  (where $c = -a \bar b + b d $) be the parameters defined earlier.
-  (Necessarily $\lambda \equiv 1 \pmod 2$.)
-  Assume further $\ell$ is even, and define
+  Let $r \ge 0$.
+  Let $\gamma \in S_3(F)\rs$ match an element of $\U(\VV_3^-)$,
+  and let $b$, $d$, $\delta$, $\ell$, $\lambda$ be as in
+  \Cref{lem:S3_abcd} and \Cref{lem:parameter_constraints}.
+  Suppose also $\ell \ge 0$ is even.
+  Define
   \begin{align*}
     \nn_\gamma &\coloneqq \Arch_{[-2r, \lambda + 2\delta + 2r]}(r, \ell) \\
     \cc_\gamma &\coloneqq \Arch_{[\ell-r, \lambda - \ell + 2\delta + r]}
@@ -1735,18 +1722,13 @@ Interchange the order of the latter sum to be $k$ first:
 We can now state the result for $\ell < 0$ that we obtained from the above work.
 \begin{theorem}
   \label{thm:full_orbital_ell_neg}
-  Let the representative
-  \[ \gamma = \begin{pmatrix}
-      a & 0 & 0 \\
-      b & - \bar d & 1 \\
-      -a \bar b + b d & 1 - d \bar d & d
-    \end{pmatrix} \in S_3(F)\rs \]
-  be paired to an element in $\U(\VV_3^-)$.
-  Assume that $v(b) = v(d) < 0$ and let
-  $\lambda = v((1 - d \bar d)^2 - c \bar c) + 2|v(d)|$
-  which is necessarily odd.
+  Let $r \ge 0$.
+  Let $\gamma \in S_3(F)\rs$ match an element of $\U(\VV_3^-)$,
+  and let $b$, $d$, $\lambda$ be as in
+  \Cref{lem:S3_abcd} and \Cref{lem:parameter_constraints}.
+  Suppose also $v(b) = v(d) < 0$.
 
-  If $|v(d)| > r$, the entire orbital integral is zero.
+  Then if $|v(d)| > r$, the entire orbital integral is zero.
   Otherwise define
   \begin{align*}
     \nn_\gamma &\coloneqq \Arch_{[-2r, \lambda+2r-4|v(d)|]}(r-|v(d)|, 0) \\

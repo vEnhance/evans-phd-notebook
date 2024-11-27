@@ -7,6 +7,11 @@
 Throughout this section, $H = \GL_n(F)$ (rather than $H = \GL_{n-1}(F)$)
 and $K' = \GL_n(\OO_F)$.
 For the concrete calculation, we are mostly interested in the case $n = 2$.
+The goal of this chapter is to define the orbital integral in
+\Cref{thm:semi_lie_formula} and give a precise statement
+of the parameters used to state the formula,
+as well as the dependencies between the parameters that needs to hold
+in order for the matching to work.
 
 \section{Definition}
 We will not work in the generality of a function on all of $S_n(F) \times V'_n(F)$.
@@ -201,100 +206,3 @@ These are the only constraints between these five numbers we will consider
 However, we mention that we will only be interested in the case when $v(e) \ge 0$
 since in the case $v(e) < 0$ we will shortly see that
 $\Orb(\guv, \phi \otimes \oneV, s) = 0$ identically in $s$ in that situation.
-
-\section{Statement of the differentiated weighted orbital integral}
-We can now state the following result:
-\begin{theorem}
-  \label{thm:semi_lie_derivative_single}
-  Let the representative
-  \[
-    \guv = \left( \begin{pmatrix} a & b \\ c & d \end{pmatrix},
-      \begin{pmatrix} 0 \\ 1 \end{pmatrix},
-      \begin{pmatrix} 0 & e \end{pmatrix} \right)
-    \in (S_2(F) \times V_2'(F))\rs.
-  \]
-  be paired with an element of $(\U(\VV_2) \times \VV_2)\rs$
-  (in particular, \Cref{assume:FJ} holds).
-  Let $r \ge 0$ and define
-  \begin{align*}
-    N &\coloneqq \min\left( v(e), \frac{v(b)+v(c)-1}{2} + r, v(d-a) + r \right) \\
-    \varkappa &\coloneqq v(e) - (v(d-a)+r)
-  \end{align*}
-  Then
-  \begin{align*}
-    \frac{(-1)^{v(c)+r}}{\log q}
-    &\partial \Orb(\guv, \mathbf{1}_{K'_{S, \le r}}) \\
-    &= \sum_{j=0}^N \left( \frac{2v(e)+v(b)+v(c)+1}{2} + r - 2j \right) \cdot q^j \\
-    & - q^{v(d-a)+r} \cdot
-    \begin{cases}
-      \frac{\varkappa}{2} & \text{if }\varkappa \equiv 0 \pmod 2 \\
-      \left( v(e)+\frac{v(b)+v(c)}{2}-2v(d-a)-r \right) - \frac{\varkappa}{2}
-      & \text{if }\varkappa \equiv 1 \pmod 2 \\
-    \end{cases}
-  \end{align*}
-  where the second term is only present when $\varkappa \ge 0$ and $v(b)+v(c)>2v(d-a)$.
-\end{theorem}
-
-The formula looks somewhat simpler if one merges the contribution of
-$\mathbf{1}_{K'_{S, \le r}}$ and $\mathbf{1}_{K'_{S, \le (r-1)}}$
-(and in \Cref{ch:finale} we will see that
-$\mathbf{1}_{K'_{S, \le r}} + \mathbf{1}_{K'_{S, \le (r-1)}}$
-come up naturally again).
-\begin{corollary}
-  \label{cor:semi_lie_combo}
-  Retain the notation of \Cref{thm:semi_lie_derivative_single} and assume $r > 0$.
-  Define
-  \begin{align*}
-    C &\coloneqq
-    \begin{cases}
-      \frac{\varkappa-1}{2}
-        & \text{if } \varkappa > 0 \text{ is odd}
-          \text{ and } v(b) + v(c) > 2v(d-a)  \\
-      \frac{\varkappa+v(b)+v(c)-2v(d-a)-1}{2}
-        & \text{if } \varkappa \ge 0 \text{ is even}
-          \text{ and } v(b) + v(c) > 2v(d-a)  \\
-      v(e) - N
-        & \text{if } v(e) \ge \frac{v(b)+v(c)-1}{2} + r
-        \text{ and } 2v(d-a) > v(b) + v(c) \\
-      0 & \text{otherwise}
-    \end{cases} \\
-    C' &\coloneqq
-    \begin{cases}
-      C + 1 & \text{if } \varkappa \ge 0 \text{ and } v(b)+v(c) > 2v(d-a) \\
-      0 & \text{otherwise}.
-    \end{cases}
-  \end{align*}
-  Then
-  \begin{align*}
-    \frac{(-1)^{v(c)+r}}{\log q} &
-    \partial\Orb(\guv, \mathbf{1}_{K'_{S, \le r}} + \mathbf{1}_{K'_{S, \le (r-1)}}) \\
-    &= (q^N + q^{N-1} + \dots + 1) + C q^N + C' q^{N-1}
-  \end{align*}
-\end{corollary}
-
-We dedicate \Cref{ch:orbitalFJ1,ch:orbitalFJ2} to the calculation
-of the full orbital integral and the above formulas.
-We have the following examples to showcase \Cref{cor:semi_lie_combo}.
-
-\begin{example}
-  When $v(e) < 0$, the entire expression is zero
-  (indeed in that case the orbital integral is identically zero).
-\end{example}
-
-\begin{example}
-  When $r=5$, $v(b) = -20$, $v(c) = 37$, $v(e) = 35$ and $v(d-a) > \frac{v(b)+v(c)}{2} = 8.5$
-  the derivative in \Cref{cor:semi_lie_combo} equals
-  \[ \log q \cdot (23q^{13} + q^{12} + q^{11} + q^{10} + q^9 + \dots + q + 1). \]
-\end{example}
-
-\begin{example}
-  When $r = 6$, $v(b) = 10$, $v(c) = 5$, $v(e) = 7$, $v(d-a) > v(e)-r = 1$,
-  the derivative in \Cref{cor:semi_lie_combo} equals
-  \[ -\log q \cdot (q^7 + q^6 + q^5 + \dots + q + 1). \]
-\end{example}
-
-\begin{example}
-  When $r = 8$, $v(b) = -101$, $v(c) = 1000$, $v(e) = 29$, $v(d-a) = 11$,
-  the derivative in \Cref{cor:semi_lie_combo} equals
-  \[ \log q \cdot (444 q^{19} + 445q^{18} + q^{17} + q^{16} + q^{15} + \dots + q + 1). \]
-\end{example}
