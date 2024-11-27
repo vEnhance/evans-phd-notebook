@@ -39,8 +39,9 @@
 \setbeamercovered{transparent}
 
 \DeclareMathOperator{\BC}{BC}
-\DeclareMathOperator{\Lie}{Lie}
 \DeclareMathOperator{\Int}{Int}
+\DeclareMathOperator{\Lie}{Lie}
+\DeclareMathOperator{\Nm}{Nm}
 \DeclareMathOperator{\Orb}{Orb}
 \DeclareMathOperator{\Sat}{Satake}
 \DeclareMathOperator{\Sh}{Sh}
@@ -343,7 +344,7 @@
 \begin{frame}
   \frametitle{Semi-Lie version of AFL by Yifeng Liu (2021)}
   \begin{definition}
-  For $\guv \in S_n(F) \times \OO_F^n \times (\OO_F^n)^\vee$,
+  For $\guv \in S_n(F) \times F^n \times (F^n)^\vee$,
   $\phi \in \HH(S_n(F))$, and $s \in \CC$,
   \begin{align*}
     & \Orb((\gamma, \uu, \vv^\top), \phi \otimes \oneV, s) \\
@@ -355,7 +356,7 @@
   \begin{theorem}
     [AFL, semi-Lie version]
     If $(g, u) \in (\U(\VV_n^-) \times \VV_n^-)\rs \longleftrightarrow
-      (\gamma, \uu, \vv^\top) \in (S_n(F) \times \OO_F^n \times (\OO_F^n)^\vee)\rs$:
+      (\gamma, \uu, \vv^\top) \in (S_n(F) \times F^n \times (F^n)^\vee)\rs$:
     \[
       \Int\left( (g,u), \mathbf{1}_{K'} \right) \log q
       = \pm \left. \pdv{}{s} \right\rvert_{s=0}
@@ -372,7 +373,7 @@
   and $\guv \mapsto \begin{bmatrix} \gamma & \uu \\ \vv^\top & 0 \end{bmatrix} \in \GL_{n+1}(E)$.
 
   \begin{block}{Matching criteria in semi-Lie case}
-  \[ [S_n(F) \times \OO_F^n \times (\OO_F^n)^\vee]\rs \xrightarrow{\sim} [\U(\VV_n^+) \times \VV_n^+]\rs \amalg [\U(\VV_n^-) \times \VV_n^-]\rs. \]
+  \[ [S_n(F) \times F^n \times (F^n)^\vee]\rs \xrightarrow{\sim} [\U(\VV_n^+) \times \VV_n^+]\rs \amalg [\U(\VV_n^-) \times \VV_n^-]\rs. \]
   To see which one, define
   \[ \Delta \coloneqq \det \left[ \vv^\top \gamma^{i+j-2} \uu \right]_{i,j=1}^n \neq 0. \]
   We get $\VV_n^+$ if $v(\Delta)$ is even
@@ -476,8 +477,9 @@
     \[ \Int\left( (1,g), \mathbf{1}_{K'^\flat} \otimes \alert{f} \right) \log q
     = \pm \left. \pdv{}{s} \right\rvert_{s=0} \Orb(\gamma, \alert{\phi}, s). \]
   \end{exampleblock}
-  \only<1>{
   AFL is special case $f = \mathbf{1}_{K'}$ and $\phi = \mathbf{1}_K$.
+  Verified for $n = 2$. \\
+  (For $n=3$, I brute-force computed RHS but not LHS.)
   \begin{block}{Updated intersection number}
     New Hecke operator $\TT_{\mathbf{1}_{K^\flat} \otimes f}$.
     \[
@@ -487,76 +489,7 @@
         \jiao_{\Sheaf_{\RZ_{n-1,n}}} \Sheaf_{(1,g) \cdot \Delta_{\RZ_{n-1}}} \right).
     \]
   \end{block}
-  }
-  \only<2>{
-  \begin{theorem}
-    [Li-Rapoport-Zhang 2024]
-    True for $n = 2$.
-  \end{theorem}
-  Tried to mimic the proof for $n = 3$ of original AFL from W.\ Zhang 2012.
-  \begin{itemize}
-  \ii Was able to compute the base change for $n = 3$.
-  \ii Was able to compute the orbital integral too.
-  \ii However, didn't understand geometric side enough to compute it.
-  \end{itemize}
-  }
 \end{frame}
-
-\begin{frame}
-  \frametitle{An example of a group AFL orbital integral ($n=3$)}
-  \begin{align*}
-    \Orb(\dots) &= q^{-4s} &&- (3q^3+q^2+q+1) q^{5s} \\
-    &- (q+1)q^{-3s} &&+ (3q^3+q^2+q+1) q^{6s} \\
-    &+ (q^2+q+1) q^{-2s} &&- (2q^3+q^2+q+1) q^{7s} \\
-    &- (q^2+q+1) q^{-s} &&+ (2q^3+q^2+q+1) q^{8s} \\
-    &+ (q^3+q^2+q+1) &&- (q^3+q^2+q+1) q^{9s} \\
-    &- (2q^3+q^2+q+1) q^s &&+ (q^2+q+1) q^{10s}\\
-    &+ (2q^3+q^2+q+1) q^{2s} &&- (q^2+q+1)q^{11s} \\
-    &- (3q^3+q^2+q+1) q^{3s} &&+ (q+1) q^{12s} \\
-    &+ (3q^3+q^2+q+1) q^{4s} &&- q^{13s}. \\
-  \end{align*}
-\end{frame}
-
-\begin{frame}
-  \frametitle{Summary for a group AFL orbital integral}
-  \begin{theorem}[C.]
-    Let $\gamma \in S_3(F)\rs$ and $\phi \in \HH(S_3(F))$,
-    where $\gamma$ matches in $\U(\VV_3^-)\rs$.
-    Then
-    \[ \Orb(\gamma, \phi, s) = \sum_k P_k(q) (-q^s)^k \]
-    for some polynomials $P_k(q) \in \ZZ[q]$, where
-    \begin{itemize}
-      \ii the summation variable $k$ is a some contiguous range of integers,
-
-      \ii the polynomials $P_k(q) \in \ZZ[q]$ are nonzero and
-      every coefficient of $P_k$ besides possibly the leading coefficient is $1$;
-
-      \ii both $\deg P_k$ and leading coefficient of $P_k$ are the integer parts
-      of piecewise linear functions in $k$ with slopes in $\{0, \pm\half, 1\}$.
-    \end{itemize}
-    And these can made explicit in terms of a particular representative in the orbit $\guv$.
-  \end{theorem}
-\end{frame}
-
-\begin{frame}
-  \frametitle{The derivatives at $s = 0$ have large kernel}
-  \begin{itemize}
-    \ii Let $K' = \GL_3(\OO_E)$ again.
-    \ii The space $S_3(F)$ has a \alert{Cartan decomposition}: if we let
-    \[ K'_{S,r} \coloneqq \GL_3(\OO_E) \cdot \begin{bmatrix} 0 & 0 & \varpi^r \\ 0 & 1 & 0 \\ \varpi^{-r} & 0 & 0 \end{bmatrix}
-      \implies S_3(F) = \coprod_{r \geq 0} K'_{S,r}. \]
-    \ii So $\HH(S_3(F))$ has a basis of indicators functions $\phi_r \coloneqq \mathbf{1}_{K'_{S, r}}. $
-  \end{itemize}
-  \begin{exampleblock}{Observation}
-    For $r \ge 3$ the following holds \emph{identically} in $\gamma$:
-    \[ \partial \Orb(\gamma, \phi_r)
-      + 2q \partial \Orb(\gamma, \phi_{r-1})
-      + q^2 \partial \Orb(\gamma, \phi_{r-2}) = -2q-2. \]
-  \end{exampleblock}
-  So the map $\phi \mapsto \partial \Orb(-, \phi)$ has finite codimension kernel.
-  This verifies a conjecture of LRZ for $n = 3$.
-\end{frame}
-
 
 \begin{frame}
   \frametitle{Semi-Lie AFL conjectured for full spherical Hecke algebra}
@@ -583,20 +516,44 @@
   \end{block}
   }
   \only<2>{
-  \begin{exampleblock}{Current status of work on $n = 2$ case}
+  \begin{exampleblock}{$n=2$ is almost proved}
   \begin{itemize}
     \ii Orbital is computed, and base change is easy.
-    \ii $\Int(\dots)$ easier to work with here because one gets a
-    Lubin-Tate space $\mathcal{M}_2$, and can use \alert{Gross-Keating}.
-    WIP.
+    \ii $\Int(\dots)$ is computed subject to some pullback conjectures (WIP).
+    One uses a Lubin-Tate space $\mathcal{M}_2$, and can use \alert{Gross-Keating}.
   \end{itemize}
   \end{exampleblock}
   }
 \end{frame}
 
+\begin{frame}
+  \frametitle{Matching geometric side to orbital side for $n=2$}
+  \begin{itemize}
+    \item \alert{Geometric side}:
+    Identify $\VV_2^-$ with a quaternion division algebra $E + E \Pi$,
+    where $\Pi t = \bar t \Pi$ for $t \in E$, and $\Pi^2 = \varpi$.
+    \[
+      g = \lambda^{-1} \begin{pmatrix} \alpha & \bar\beta\varpi \\ \beta & \bar\alpha \end{pmatrix} \in \U(\VV_2)^-
+      \text{ by } g(x)= \lambda^{-1} x (\alpha + \beta \Pi)
+    \]
+    Require $\lambda \bar\lambda = \Nm(\alpha + \beta \Pi) = \alpha \bar \alpha - \beta \bar \beta \varpi$.
+    \item \alert{Orbital side}:
+    $\guv = \left( \begin{pmatrix} a & b \\ c & d \end{pmatrix},
+      \begin{pmatrix} 0 \\ 1 \end{pmatrix},
+      \begin{pmatrix} 0 & e \end{pmatrix} \right)$
+  \end{itemize}
+  \begin{align*}
+    \lambda\inv(\alpha + \bar\alpha) =\Tr g &\longleftrightarrow \Tr \gamma = a + d \\
+    \lambda^{-2}(\alpha \bar \alpha - \beta \bar\beta \varpi ) = \det g &\longleftrightarrow \det \gamma = ad - bc \\
+    \Nm u = \left\langle u,u \right\rangle &\longleftrightarrow \uu \vv^\top = e \\
+    \lambda^{-1} (\alpha \text{ or } \bar\alpha) \Nm u = \left\langle g(u), u \right\rangle
+      &\longleftrightarrow \uu \gamma \vv^\top = d e \\
+  \end{align*}
+\end{frame}
 
 \begin{frame}
   \frametitle{An example of a semi-Lie orbital integral ($n=2$)}
+  For $r=2$, $v(d-a)=1$, $v(b)=3$, $v(c)=0$, $v(e)=5$:
   \begin{align*}
     \Orb(\dots) &= -q^{-5s} &&+ (3q^3+q^2+q+1) q^{4s} \\
     &+ q^{-4s} &&- (2q^3+q^2+q+1) q^{5s} \\
@@ -611,17 +568,61 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{Summary for a semi-Lie AFL orbital integral}
-  \begin{theorem}[C.]
-    Let $\guv \in (S_2(F) \times V'_2(F))\rs$ and $\phi \in \HH(S_3(F))$,
-    where $\guv$ matches in $(\U(\VV_2^-) \times \VV_2^-)\rs$.
-    Then
-    \[ \Orb(\guv, \phi \otimes \oneV, s) = \sum_k P_k(q) (-q^s)^k \]
-    for some polynomials $P_k(q) \in \ZZ[q]$, satisfying the same conditions;
-    and these can made explicit in terms of a particular representative in the orbit $\guv$.
+  \frametitle{An example of part of the intersection number}
+  Let $r \ge 1$ and $v(\Nm u) > 0$ for $u \in \VV_2^-$, and $g$ as before.
+  Then
+  \[ \Big\langle \mathbb{T}_{\mathbf{1}_K \otimes \mathbf{1}_{K, r}}
+    \Delta_{\ZD(u)^\circ}, \Gamma_g \Big\rangle_{\RZ_{2,2}}
+    =
+    \begin{cases}
+      (C+1) q^{N} + (C+2) q^{N-1} \\
+      2q^N \\
+      q^N + q^{N-1}
+    \end{cases}
+  \]
+  where
+  \[ N = \min(v(\Nm u), v(\beta) + r, v(\alpha-\bar\alpha) + r) \]
+  and
+  \[ C = v(\beta) - v(\alpha - \bar\alpha) \ge 0. \]
+\end{frame}
+
+\begin{frame}
+  \frametitle{Large kernel}
+  \begin{itemize}
+  \ii Li-Rapoport-Zhang noticed the orbital derivative had a large kernel in group AFL.
+  \ii That is, the set of $\phi$ for which
+    $\left. \pdv{}{s} \right\rvert_{s=0} \Orb \left(\gamma, \phi, s \right) = 0$
+    for all applicable $\gamma \in S_2(F)\rs$ was \emph{large}
+    (not contained in any maximal ideal).
+  \ii In fact for $n=2$ it had codimension $2$.
+  \ii Conjectured the kernel is large for all $n \ge 2$.
+  \end{itemize}
+  \begin{theorem}
+    [C.]
+    LRZ's large kernel conjecture holds for $n=3$ as well (codimension $3$).
   \end{theorem}
-  There should be an analogous large kernel result,
-  but I haven't worked out the coefficients yet.
+  We hope for something similar for semi-Lie, but the situation is different!
+\end{frame}
+\begin{frame}
+  \begin{block}{Conjecture (C.)}
+    \[ \partial \Orb \coloneqq \left. \pdv{}{s} \right\rvert_{s=0}
+      \Orb \left(\guv, \phi \otimes \oneV, s \right) \]
+    \begin{enumerate}
+    \item[(a)] For $\gamma \in S_n(F)$,
+    there are no nonzero $\phi$ such that $\partial \Orb = 0$
+    for all applicable $(\uu, \vv^\top) \in F^n \times (F^n)^\vee$, unless $\Orb \equiv 0$.
+
+    \item[(b)] Fix $(\uu, \vv^\top) \in \OO_F^n \times (\OO_F^n)^\vee$.
+    Consider the ``kernel'' of $\phi$ for which $\partial \Orb = 0$
+    for all applicable $\gamma \in S_n(F)$.
+    Then this kernel is ``large'' (e.g., not contained in any maximal ideal).
+    \end{enumerate}
+  \end{block}
+  \begin{theorem}
+    [C.]
+    True for $n=2$.
+    For (b), the kernel has codimension at most $v(\uu\vv^\top)+2$.
+  \end{theorem}
 \end{frame}
 
 \begin{frame}
