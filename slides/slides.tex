@@ -228,7 +228,7 @@
 %    the $\GL_{n-1}(\ol E)$-orbit is a Zariski-closed subset of $\GL_n(\ol E)$.
 %  \end{itemize}
 %  Regular semisimple elements are acted on by conjugation under $\GL_{n-1}(E)$
-%  (viewed as a subset of $\GL_n(E)$ by $g \mapsto \begin{bmatrix} g & 0 \\ 0 & 1 \end{bmatrix}$.)
+%  (viewed as a subset of $\GL_n(E)$ by $g \mapsto \begin{pmatrix} g & 0 \\ 0 & 1 \end{pmatrix}$.)
 %\end{frame}
 
 \begin{frame}
@@ -241,19 +241,17 @@
   %  \ii We have $d_1 = d_2$.
   %\end{itemize}
   \begin{definition}
-  $\begin{bmatrix} A & \uu \\ \vv^\top & d \end{bmatrix} \in \GL_n(E)$
+  $\begin{pmatrix} A & \uu \\ \vv^\top & d \end{pmatrix} \in \GL_n(E)$
   is \textbf{regular semisimple} if
-  $\det \left[ \vv^\top A^{i+j-2} \uu \right]_{i,j=1}^{n-1} \neq 0$.
+  \[ \Delta \coloneqq \det \left( \left( \vv^\top A^{i+j-2} \uu \right)_{i,j=1}^{n-1} \right) \neq 0 \]
   We say $\gamma \in S_n(F)\rs$ \textbf{matches} the element $g \in \U(\VV_n^\pm)\rs$
   if $g$ is conjugate to $\gamma$ by an element of $\GL_{n-1}(E)$; write
   $g \in \U(\VV_n^\pm)\rs \longleftrightarrow \gamma \in S_n(F)\rs$.
   \end{definition}
   \begin{block}{Matching criteria}
     \[ [S_n(F)]\rs \xrightarrow{\sim} [\U(\VV_n^+)]\rs \amalg [\U(\VV_n^-)]\rs. \]
-    For $\gamma \in S_n(F)$, to tell which case we're in, let
-    \[ \Delta \coloneqq \det \left[ \vv^\top A^{i+j-2} \uu \right]_{i,j=1}^{n-1} \neq 0. \]
-    We get $\VV_n^+$ if $v(\Delta)$ is even
-    and $\VV_n^-$ if $v(\Delta)$ is odd.
+    Matches in $\U(\VV_n^+)$ if $v(\Delta)$ is even,
+    and $\U(\VV_n^-)$ otherwise.
   \end{block}
 \end{frame}
 
@@ -369,13 +367,13 @@
 \begin{frame}
   \frametitle{Matching (analogous)}
   Matching is defined in the same way via
-  $(g,u) \mapsto \begin{bmatrix} g & u \\ u^\ast & 0 \end{bmatrix} \in \GL_{n+1}(E)$
+  $(g,u) \mapsto \begin{pmatrix} g & u \\ u^\ast & 0 \end{pmatrix} \in \GL_{n+1}(E)$
   and $\guv \mapsto \begin{bmatrix} \gamma & \uu \\ \vv^\top & 0 \end{bmatrix} \in \GL_{n+1}(E)$.
 
   \begin{block}{Matching criteria in semi-Lie case}
   \[ [S_n(F) \times F^n \times (F^n)^\vee]\rs \xrightarrow{\sim} [\U(\VV_n^+) \times \VV_n^+]\rs \amalg [\U(\VV_n^-) \times \VV_n^-]\rs. \]
   To see which one, define
-  \[ \Delta \coloneqq \det \left[ \vv^\top \gamma^{i+j-2} \uu \right]_{i,j=1}^n \neq 0. \]
+  \[ \Delta \coloneqq \det \left( \left( \vv^\top \gamma^{i+j-2} \uu \right)_{i,j=1}^n \right) \neq 0. \]
   We get $\VV_n^+$ if $v(\Delta)$ is even
   and $\VV_n^-$ if $v(\Delta)$ is odd.
   \end{block}
@@ -546,7 +544,7 @@
       \lambda\inv(\alpha + \bar\alpha) =\Tr g &\longleftrightarrow \Tr \gamma = a + d \\
       \lambda^{-2}(\alpha \bar \alpha - \beta \bar\beta \varpi ) = \det g &\longleftrightarrow \det \gamma = ad - bc \\
       \Nm u = \left\langle u,u \right\rangle &\longleftrightarrow \uu \vv^\top = e \\
-      \lambda^{-1} (\alpha \text{ or } \bar\alpha) \Nm u = \left\langle g(u), u \right\rangle
+      \lambda^{-1} \cdot (\alpha \text{ or } \bar\alpha) \cdot \Nm u = \left\langle g(u), u \right\rangle
         &\longleftrightarrow \uu \gamma \vv^\top = d e \\
     \end{align*}
   \end{itemize}
