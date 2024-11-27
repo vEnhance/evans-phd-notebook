@@ -399,10 +399,11 @@ Thus, we propose the following conjecture, which we have proved for $n = 2$
   \item[(a)]
   Choose any $\gamma \in S_n(F)$ which could appear in a triple $\guv$
   matching some element of $\U(\VV_n^-) \times \VV_n^-$.
-  Then there are no nonzero functions $\phi \in \HH(S_n(F))$ for which
+  Suppose $\phi \in \HH(S_n(F))$ satisfies
   \[ \left. \pdv{}{s} \right\rvert_{s=0}
     \Orb \left(\guv, \phi \otimes \oneV, s \right) = 0 \]
-  holds for every such $(\uu, \vv^\top) \in V'_n(F)$.
+  for every such $(\uu, \vv^\top) \in V'_n(F)$,
+  Then in fact $\Orb \left(\guv, \phi \otimes \oneV, s \right) = 0$ for all $s \in \CC$.
 
   \item[(b)]
   Fix a choice of $(\uu, \vv^\top) \in V'_n(F)$.
@@ -427,6 +428,7 @@ But in \Cref{sec:results_group_AFL} we mention some other results
 we proved for the group version of the AFL.
 
 \subsection{Formulas for the orbital side of the semi-Lie AFL conjecture for $n=2$}
+\label{sec:semi_lie_2_intro_params}
 The main case of interest in this thesis is the new conjectured AFL
 for the spherical Hecke algebra in the semi-Lie situation in the
 specific case $n = 2$ where one can provide evidence for the conjecture.
@@ -557,9 +559,9 @@ More precisely, we have the following two theorems.
 
 \begin{theorem}
   \label{thm:semi_lie_ker_trivial}
-  Consider any $\gamma \in S_2(F)$
-  such that $\left( \gamma, \begin{pmatrix} 0 \\ 1 \end{pmatrix}, \begin{pmatrix} 0 & 1 \end{pmatrix} \right)$
-  matches an element of $\U(\VV_2^-) \times \VV_2^-$.
+  Consider any $\gamma = \begin{pmatrix} a & b \\ c & d \end{pmatrix} \in S_2(F)$
+  as in \Cref{sec:semi_lie_2_intro_params}.
+  Assume $v(b)+v(c)>0$ (so that the orbital integrals are not all zero.)
   Then there don't exist any nonzero functions $\phi \in \HH(S_2(F))$ such that
   \[ \left. \pdv{}{s} \right\rvert_{s=0}
     \Orb \left(
@@ -658,7 +660,7 @@ but we give the following summary.
 \begin{theorem}
   \label{thm:summary}
   Let $\gamma \in S_3(F)\rs$.
-  Assume that $\gamma$ matches an element in $\U(\VV_3^-)\rs$ (resp.\ $(\U(\VV_2^-) \times \VV_2^-)\rs$).
+  Assume that $\gamma$ matches an element in $\U(\VV_3^-)\rs$.
   Then the weighted orbital integral $\Orb(\gamma, \phi, s)$ takes the form
   \[ \sum_k P_k(q) (-q^s)^k \]
   for some polynomials $P_k(q) \in \ZZ[q]$, where
