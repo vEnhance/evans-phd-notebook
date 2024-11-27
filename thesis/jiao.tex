@@ -94,11 +94,14 @@ and hence the corresponding identification
 
 \section{The invariants for the orbit of $(g,u)$}
 \label{sec:g_u_invariants}
+
 We specialize to the situation where $u \in \OO_\DD$ and $g \in \U(\VV_n^-)$.
+
+\subsection{Coordinates for $g$}
 To impose coordinates on $g$, we appeal to the following fact.
 \begin{lemma}
   Every unitary map in $\U(\VV_2^-)$ can be described in the form
-  \[ u \mapsto \lambda\inv u (\alpha + \beta \Pi) \]
+  \[ x \mapsto \lambda\inv x (\alpha + \beta \Pi) \]
   for some quaternion $\alpha + \beta \Pi \in \DD^\times$
   and an element $\lambda \in E^\times$ such that
   \[ \Nm(\alpha + \beta \Pi) = \Norm_{E/F}(\lambda). \]
@@ -121,6 +124,15 @@ To impose coordinates on $g$, we appeal to the following fact.
   \[ g_1 \circ g_2 \leftrightarrow (\lambda_2 \lambda_1, (\alpha_2 + \beta_2 \Pi)(\alpha_1 + \beta \Pi)). \]
 \end{remark}
 
+Note that in the definition for $g$, if $v(\lambda) \neq 0$
+then we can factor out powers of $\varpi = \bar\varpi$ from $\lambda$
+and put them into $\alpha$ and $\beta$ instead.
+Hence, by relabeling $\alpha$ and $\beta$, we may assume without loss of generality that:
+\begin{assume}
+  We assume WLOG that $v(\lambda) = 0$ (and hence $v(\alpha)=0$, $v(\beta) \ge 0$).
+\end{assume}
+This frees us from having to deal with $v(\lambda)$ offsets in subsequent calculation.
+
 We encode $g$ as a matrix on $\DD$ now (with the obvious $E$-basis $1$, $\Pi$,
 again viewing $\DD$ as a left-$E$ module)
 so we can compute its determinant and trace.
@@ -136,12 +148,14 @@ Hence, written as a matrix with respect to the obvious basis $\{1, \Pi\}$ we hav
   \alpha & \bar\beta \varpi \\
   \beta &  \bar\alpha
   \end{pmatrix}. \]
+
+\subsection{Coordinates for $u$}
 We also impose coordinates for $u$ according to
 \[ u = s + t \Pi \in \OO_\DD \qquad s, t \in E. \]
 To make the calculation that follows less complicated,
 we are going to make the following assumption on $u$.
 \begin{assume}
-  We have $u \in E$ or $u \in E \Pi$.
+  We assume WLOG that either $u \in E$ or $u \in E \Pi$.
   That is, either $s = 0$ or $t = 0$.
   \label{assume:st_zero}
 \end{assume}
@@ -181,13 +195,25 @@ and $s$ and $t$ are not both zero (we require $st = 0$ from \Cref{assume:st_zero
   but a right-hand side with even valuation.
 \end{remark}
 
-Now, the four corresponding invariants of \Cref{def:matching_semi_lie} are:
-\begin{itemize}
-  \ii $\Tr g = (\alpha + \bar\alpha) \lambda\inv$.
-  \ii $\det g = (\alpha \bar \alpha - \beta \bar\beta \varpi)\lambda^{-2}$.
-  \ii The quantity
-  \[ \left\langle u,u \right\rangle = \Nm u = s \bar s - t \bar t \varpi. \]
-  \ii The quantity
+\subsection{The invariants of the matching}
+At this point we can state:
+\begin{lemma}
+  \label{lem:g_u_invariants}
+  Under the coordinates we just described,
+  the four corresponding invariants of \Cref{def:matching_semi_lie} are:
+  \begin{align*}
+    \Tr g &= \lambda^{-1} (\alpha + \bar \alpha) \\
+    \det g &= \lambda^{-2} (\alpha \bar \alpha - \beta \bar\beta \varpi) \\
+    \left\langle u,u \right\rangle &= s \bar s - t \bar t \varpi \\
+    \left\langle g(u), u \right\rangle &= \begin{cases}
+        \lambda\inv \bar\alpha \Nm u & \text{if } s = 0 \\
+        \lambda\inv \alpha \Nm u & \text{if } t = 0.
+      \end{cases}
+  \end{align*}
+\end{lemma}
+\begin{proof}
+  The first three are immediate.
+  The last one follows by computing
   \begin{align*}
     \left\langle g(u), u \right\rangle
     &= \left\langle \lambda\inv(s + t \Pi)(\alpha + \beta \Pi), s + t \Pi \right\rangle \\
@@ -197,13 +223,10 @@ Now, the four corresponding invariants of \Cref{def:matching_semi_lie} are:
     &= \lambda\inv \cdot \half \Tr_{\DD/E} \left[
       ((s \alpha + t \bar \beta \varpi) + (t \bar \alpha + s \beta) \Pi)
       (\bar s - t \Pi) \right] \\
-    &= \lambda\inv \left( s \bar s \alpha - t \bar t \bar \alpha \varpi \right) \\
-    &= \begin{cases}
-      \lambda\inv \bar\alpha \Nm u & \text{if } s = 0 \\
-      \lambda\inv \alpha \Nm u & \text{if } t = 0.
-    \end{cases}
+    &= \lambda\inv \left( s \bar s \alpha - t \bar t \bar \alpha \varpi \right)
   \end{align*}
-\end{itemize}
+  and recalling that $s t = 0$.
+\end{proof}
 
 \section{Background on special divisors for $n = 2$}
 \subsection{The Rapoport-Zink space $\RZ_2$}
@@ -218,11 +241,11 @@ Then as described in the previous section we have a diagram
 \end{tikzcd}
 \end{center}
 
-\subsection{The Lubin-Tate space $\MM_2$ and the divisor $\ZO4$ on $\MM_2 \times \MM_2$}
+\subsection{The Lubin-Tate space $\MM_2$}
 We introduce the notation $\MM_2$ for the \emph{Lubin-Tate space} for $n = 2$.
 It's parametrized by tuples $(Y, \rho)$
 where $Y$ is a one-dimensional strict formal $\OO_F$-module of height $2$,
-and $\rho$ is a framing of a fixed Lubin-Tate module $\mathbb{Y}$.\todo{should this be $\EE$?}
+and $\rho$ is a framing of a fixed Lubin-Tate module $\mathbb{Y}$.
 
 \begin{proposition}
   [{\cite[Example 5.5.6]{ref:AFLspherical}}]
@@ -232,6 +255,20 @@ and $\rho$ is a framing of a fixed Lubin-Tate module $\mathbb{Y}$.\todo{should t
   \[ \Serre \colon \RZ_{2,2} \xrightarrow{\sim} \MM_2 \times \MM_2. \]
 \end{proposition}
 
+Recall we have an action of $\U(\VV_2^-)$ (actually $\PU(\VV_2^-)$) on $\RZ_2$.
+We describe now the corresponding action on $\MM_2$.
+We have an isomorphism of short exact sequences
+\begin{center}
+\begin{tikzcd}
+  1 \ar[r] & \OO_E^\times / \OO_F \ar[r] & (\OO_\DD^\times \times \OO_E^\times) / \Delta(\OO_F^\times) \ar[r] & \OO_\DD^\times / \OO_F^\times \ar[r] & 1 \\
+  1 \ar[r] & \U(1) \ar[r] \ar[u, equals] & \U(\VV_2^-) \ar[r] \ar[u, equals] & \PU(\VV_2^-) \ar[r] \ar[u, equals] & 1.
+\end{tikzcd}
+\end{center}
+The image of $\alpha + \beta \Pi \in \OO_\DD^\times / \OO_F^\times$
+is then $(\lambda, \alpha + \beta \Pi) \in \PU(2)$
+for any choice of $\lambda$ with $\lambda \bar \lambda = \Nm (\alpha + \beta \Pi)$.
+
+\subsection{The divisor $\ZO4$ on $\MM_2 \times \MM_2$}
 Now we define the special orthogonal divisor $\ZO4(u)$
 on $\MM_2 \times \MM_2$ as follows.
 \begin{definition}
@@ -361,11 +398,11 @@ Accordingly, let us introduce the notation
 Assuming \Cref{conj:serre_pullback_divisor} we get
 \begin{align*}
   \Int^\circ((g,u), \fr)
-  &= \left< \ZO4(g(\varpi^r)), \; \Delta(\Serre^\ast(\ZD(u))^\circ) \right>_{\MM_2 \times \MM_2} \\
-  &= \left< \ZO4(g(\varpi^r)), \; \ZO3(\bar u \sqrt{\eps} u)^\circ \right>_{\MM_2 \times \MM_2} \\
-  &= \left< \ZO4(g(\varpi^r)), \; \ZO4(1)^\circ, \; \ZO4(\bar u \sqrt{\eps} u)^\circ \right>_{\MM_2 \times \MM_2} \\
-  &= \left< \ZO4(g(\varpi^r)), \; \ZO4(1), \; \ZO4(\bar u \sqrt{\eps} u) \right>_{\MM_2 \times \MM_2} \\
-  &\qquad- \left< \ZO4(g(\varpi^r)), \; \ZO4(1), \; \ZO4\left( \frac{\bar u \sqrt{\eps} u}{\varpi} \right) \right>_{\MM_2 \times \MM_2}.
+  &= \left< \ZO4(g \cdot \varpi^r), \; \Delta(\Serre^\ast(\ZD(u))^\circ) \right>_{\MM_2 \times \MM_2} \\
+  &= \left< \ZO4(g \cdot \varpi^r), \; \ZO3(\bar u \sqrt{\eps} u)^\circ \right>_{\MM_2 \times \MM_2} \\
+  &= \left< \ZO4(g \cdot \varpi^r), \; \ZO4(1)^\circ, \; \ZO4(\bar u \sqrt{\eps} u)^\circ \right>_{\MM_2 \times \MM_2} \\
+  &= \left< \ZO4(g \cdot \varpi^r), \; \ZO4(1), \; \ZO4(\bar u \sqrt{\eps} u) \right>_{\MM_2 \times \MM_2} \\
+  &\qquad- \left< \ZO4(g \cdot \varpi^r), \; \ZO4(1), \; \ZO4\left( \frac{\bar u \sqrt{\eps} u}{\varpi} \right) \right>_{\MM_2 \times \MM_2}.
 \end{align*}
 In that case we have
 \begin{equation}
@@ -421,18 +458,17 @@ We now invoke \Cref{assume:st_zero} to simplify this to just
 This assumption will also let us write
 \[ (s \ol s + t \ol t \varpi)^2 = (s \ol s - t \ol t \varpi)^2 = (\Nm u)^2. \]
 
-Next compute
-\[ g(\varpi^r) = \lambda\inv \varpi^r(\alpha + \beta \Pi). \]
+Next we consider
+\[ g \cdot \varpi^r = \varpi^r(\alpha + \beta \Pi). \]
+(Here the action of $g$ is the one on $\MM_2$,
+which is why we write $g \cdot \varpi^r$ rather than $g(\varpi^r$).)
 From now on, let's write
-\[ \lambda\inv\alpha = (\lambda\inv\alpha)_0 + \varsigma \sqrt{\eps} \]
-for some choice of $\varsigma \in F$; that is,
-\[ \varsigma\sqrt{\eps} \coloneqq (\lambda\inv \alpha)_-
-  = \frac{\lambda\inv \alpha - \bar\lambda\inv \bar\alpha}{2}
-  \in F \sqrt{\eps}. \]
+\[ \alpha = \alpha_0 + \alpha_1 \sqrt{\eps} \]
+for $\alpha_0, \alpha_1 \in F$.
 Then we use the notation
 \begin{align*}
   x &\coloneqq \bar u \sqrt{\eps} u = (s \bar s + t \bar t \varpi) \sqrt{\eps} \in \ODT \\
-  y &\coloneqq (g(\varpi^r))_- = \varpi^r(\varsigma\sqrt{\eps} + \lambda\inv \beta \Pi) \in \ODT.
+  y &\coloneqq (g \cdot \varpi^r)_- = \varpi^r(\alpha_1\sqrt{\eps} + \beta \Pi) \in \ODT.
 \end{align*}
 Then we can compute
 \begin{align*}
@@ -442,25 +478,25 @@ Then we can compute
   &= -\eps(s \bar s + t \bar t \varpi)^2 = -\eps (\Nm u)^2 \\
   % --------------------------------------------
   \left\langle y,y \right\rangle _0
-  &= \Nm \left( \varpi^r(\varsigma\sqrt{\eps} + \lambda\inv \beta \Pi) \right)  \\
-  &= \varpi^{2r} (-\varsigma^2\eps -  \lambda\inv\bar\lambda\inv \beta\bar\beta \varpi) \\
+  &= \Nm \left( \varpi^r(\alpha_1\sqrt{\eps} + \beta \Pi) \right)  \\
+  &= \varpi^{2r} (-\alpha_1^2\eps - \beta\bar\beta \varpi) \\
   % --------------------------------------------
   \left\langle x,y \right\rangle _0 &= (\bar x y)_0 \\
   &= \left[
     -(s \bar s + t \bar t \varpi) \sqrt{\eps}
     \cdot
-    \varpi^{r} (\varsigma\sqrt{\eps} + \lambda\inv \beta \Pi)
+    \varpi^{r} (\alpha_1\sqrt{\eps} + \beta \Pi)
   \right]_0 \\
-  &= - \varpi^r \varsigma \eps (s \bar s + t \bar t \varpi).
+  &= - \varpi^r \alpha_1 \eps (s \bar s + t \bar t \varpi).
 \end{align*}
 This lets us compute the determinant
 \begin{align*}
   \left\langle x,x \right\rangle _0 \left\langle y,y \right\rangle _0 - \left\langle x,y \right\rangle^2_0
   &= - \eps (\Nm u)^2\cdot \varpi^{2r}
-    (-\varsigma^2 \eps - \beta \bar\beta \varpi \lambda\inv\bar\lambda\inv)
-  - (\varpi^r \varsigma \eps (s \bar s + t \bar t \varpi))^2 \\
+    (-\alpha_1^2 \eps - \beta \bar\beta \varpi)
+  - (\varpi^r \alpha_1 \eps (s \bar s + t \bar t \varpi))^2 \\
   &= \eps (\Nm u)^2\cdot \varpi^{2r} \cdot
-    (\varpi \beta \bar\beta \lambda\inv \bar \lambda\inv).
+    (\varpi \beta \bar\beta).
 \end{align*}
 Hence we arrive at an exact formula for
 \[ \left< \ZO4(1), \; \ZO4(x), \; \ZO4(y) \right>_{\MM_2 \times \MM_2} \]

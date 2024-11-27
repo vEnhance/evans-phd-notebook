@@ -31,7 +31,8 @@ Note that the parameters $b$ and $c$ are absent; but we have
 \[ v(b) + v(c) = v(\det \gamma - a d). \]
 
 \subsection{Matching}
-We now take these results and line them up with \Cref{sec:g_u_invariants}.
+We now take these results and line them up with \Cref{lem:g_u_invariants}
+to deduce the following lemma.
 
 \begin{lemma}
   \label{lem:finale_match}
@@ -39,8 +40,8 @@ We now take these results and line them up with \Cref{sec:g_u_invariants}.
   \[ g = \lambda\inv \begin{pmatrix}
     \alpha & \bar\beta \varpi \\
     \beta &  \bar\alpha
-    \end{pmatrix} \]
-  and $u = s + t \Pi$ as above with $s t = 0$.
+    \end{pmatrix} \in \U(\VV_2^-) \]
+  and $u = s + t \Pi$ as above with $s t = 0$ and $v(\lambda) = 0$.
   Suppose $(g,u)$ matches with
   \[ (\gamma, \uu, \vv^\top) = \left( \begin{pmatrix} a & b \\ c & d \end{pmatrix},
     \begin{pmatrix} 0 \\ 1 \end{pmatrix}, \begin{pmatrix} 0 & e \end{pmatrix} \right)
@@ -58,14 +59,12 @@ We now take these results and line them up with \Cref{sec:g_u_invariants}.
     bc &= \lambda^{-2} \beta \bar\beta \varpi \\
     e &= \Nm u.
   \end{align*}
-  Moreover, we also have the identity
-  \[
-    v(d - a)
-    =
-  \]
+  Thus we also have the identity
+  \[ v(d - a) = v(\alpha_1). \]
 \end{lemma}
 \begin{proof}
-  Setting the invariants above equal we obtain
+  Setting the invariants from the previous subsection equal
+  to the ones determined in \Cref{lem:g_u_invariants} gives
   \begin{align*}
     a + d &= \lambda\inv (\alpha + \bar\alpha) \\
     \det \gamma = ad - bc &= \det g \\
@@ -76,8 +75,7 @@ We now take these results and line them up with \Cref{sec:g_u_invariants}.
     \end{cases}
   \end{align*}
   So the equations for $e$, $d$ and $a$ are immediate.
-  In both cases we get $ad = \lambda^{-2} \alpha \bar \alpha$
-  and hence
+  In both cases we get $ad = \lambda^{-2} \alpha \bar \alpha$ and hence
   \[ \lambda^{-2} \beta \bar \beta \varpi
     = -(\det g -  \lambda^{-2} \alpha \bar \alpha)
     = -(\det \gamma - ad) = bc. \qedhere \]
@@ -88,7 +86,7 @@ We combine the results of \Cref{sec:GK} with \Cref{lem:finale_match}.
 Retaining the notation
 \begin{align*}
   x &\coloneqq \bar u \sqrt{\eps} u = (s \bar s + t \bar t \varpi) \sqrt{\eps} \in \ODT \\
-  y &\coloneqq (g(\varpi^r))_- = (\varsigma\sqrt\eps + \lambda\inv \beta \Pi) \in \ODT
+  y &\coloneqq (g \cdot \varpi^r)_- = (\alpha_1\sqrt\eps + \beta \Pi) \in \ODT
 \end{align*}
 from \Cref{sec:GK}, we obtain the following:
 \begin{align*}
@@ -96,13 +94,13 @@ from \Cref{sec:GK}, we obtain the following:
     &= 2 v(\Nm u) \\
     &= 2v(e) \\
   v\left( \left\langle x,y \right\rangle _0 \right)
-    &= r + v(\varsigma) + v(\Nm u) \\
-    &= r + v(\varsigma) + v(e) \\
+    &= r + v(\alpha_1) + v(\Nm u) \\
+    &= r + v(d-a) + v(e) \\
   v(
     \left\langle x,x \right\rangle _0 \left\langle y,y \right\rangle _0
     - \left\langle x,y \right\rangle^2_0
   )
-    &= 2r + 2 v(\Nm u) + v(\det g - \alpha \bar \alpha \lambda^{-2}) \\
+    &= 2r + 2 v(\Nm u) + v(\beta \bar\beta \varpi) \\
     &= 2r + 2v(e) + v(b) + v(c).
 \end{align*}
 Notice that the last valuation is odd.
@@ -112,8 +110,8 @@ Therefore we can always extract $v(\left\langle y,y \right\rangle _0)$ by writin
   &= \min \left( v\left( \left\langle x,x \right\rangle _0 \left\langle y,y \right\rangle _0 - \left\langle x,y \right\rangle^2_0 \right),
     v(\left\langle x,y \right\rangle^2_0) \right) \\
   \implies  v\left(\left\langle y,y \right\rangle _0\right)
-  &= \min(2r + 2v(e) + v(b) + v(c), 2r + 2v(\varsigma) + 2v(e)) - 2v(e) \\
-  &= 2r + \min(v(b) + v(c), 2v(\varsigma)).
+  &= \min(2r + 2v(e) + v(b) + v(c), 2r + 2v(d-a) + 2v(e)) - 2v(e) \\
+  &= 2r + \min(v(b) + v(c), 2v(d-a)).
 \end{align*}
 Hence, we have
 \begin{align*}
@@ -122,12 +120,12 @@ Hence, we have
     v(\left\langle x,y \right\rangle _0),
     v(\left\langle y,y \right\rangle _0),
   \right) \\
-  &= \min\left( 2v(e), r+v(\varsigma)+v(e), 2r+\min(v(b)+v(c), 2v(\varsigma)) \right) \\
-  &= \min\left( 2v(e), r+v(\varsigma)+v(e), 2r+v(b)+v(c), 2r+2v(\varsigma) \right) \\
-  &= \min\left( 2v(e), v(b)+v(c)+2r, 2v(\varsigma)+2r \right)
+  &= \min\left( 2v(e), r+v(d-a)+v(e), 2r+\min(v(b)+v(c), 2v(\varsigma)) \right) \\
+  &= \min\left( 2v(e), r+v(d-a)+v(e), 2r+v(b)+v(c), 2r+2v(\varsigma) \right) \\
+  &= \min\left( 2v(e), v(b)+v(c)+2r, 2v(d-a)+2r \right)
 \end{align*}
-where we can drop $r+v(\varsigma)+v(e)$ from the minimum because it equals
-$\frac{2v(e) + (2v(\varsigma)+2r)}{2}$.
+where we can drop $r+v(d-a)+v(e)$ from the minimum because it equals
+$\frac{2v(e) + (2v(d-a)+2r)}{2}$.
 
 Now recall the right-hand side of \Cref{prop:GK}, that is
 \[
@@ -141,11 +139,11 @@ Then apply \Cref{prop:GK} to obtain that
 \[
   \left< \ZO4(1), \;
     \ZO4(\bar u \sqrt{\eps} u), \;
-    \ZO4((g(\varpi^r))_-) \right>_{\MM_2 \times \MM_2}
+    \ZO4((g \cdot \varpi^r)_-) \right>_{\MM_2 \times \MM_2}
 \]
 is equal to the above formula applied at
 \begin{align*}
-  n_1 &\coloneqq \min(2v(e), v(b)+v(c)+2r, 2v(\varsigma)+2r) \\
+  n_1 &\coloneqq \min(2v(e), v(b)+v(c)+2r, 2v(d-a)+2r) \\
   n_2 &\coloneqq 2v(e) + v(b) + v(c) + 2r - n_1.
 \end{align*}
 Note that
@@ -153,23 +151,23 @@ Note that
 For brevity, we henceforth introduce the symbol $\GK$ for the sum above;
 in other words, \Cref{conj:serre_pullback_space} and \Cref{conj:serre_pullback_divisor}
 together amount to asserting that
-\[ \left< \ZO4(1), \; \ZO4(\bar u \sqrt{\eps} u), \; \ZO4((g(\varpi^r))_-) \right>_{\MM_2 \times \MM_2}
-    = \GK(r, v(b), v(c), v(e), v(\varsigma)). \]
+\[ \left< \ZO4(1), \; \ZO4(\bar u \sqrt{\eps} u), \; \ZO4((g \cdot \varpi^r)_-) \right>_{\MM_2 \times \MM_2}
+    = \GK(r, v(b), v(c), v(e), v(d-a)). \]
 In that case we also have
 \[
   \left< \ZO4(1), \;
     \ZO4\left(\frac{\bar u \sqrt{\eps} u}{\varpi}\right), \;
-    \ZO4((g(\varpi^r))_-) \right>_{\MM_2 \times \MM_2}
-    = \GK(r, v(b), v(c), v(e)-1, v(\varsigma)). \]
+    \ZO4((g \cdot \varpi^r)_-) \right>_{\MM_2 \times \MM_2}
+    = \GK(r, v(b), v(c), v(e)-1, v(d-a)). \]
 Subtracting the two gives
 \begin{equation}
   \begin{aligned}
     \Int^\circ((g,u), \fr) &=
       \left< \ZO4(1), \;
         \ZO4(\bar u \sqrt{\eps} u)^\circ, \;
-        \ZO4((g(\varpi^r))_-) \right>_{\MM_2 \times \MM_2} \\
-    &= \GK(r, v(b), v(c), v(e), v(\varsigma)) \\
-    &\qquad- \GK(r, v(b), v(c), v(e)-1, v(\varsigma)).
+        \ZO4((g \cdot \varpi^r)_-) \right>_{\MM_2 \times \MM_2} \\
+    &= \GK(r, v(b), v(c), v(e), v(d-a)) \\
+    &\qquad- \GK(r, v(b), v(c), v(e)-1, v(d-a)).
   \end{aligned}
   \label{eq:int_subtract}
 \end{equation}
@@ -413,9 +411,10 @@ to keep in self-contained.
 
 \begin{theorem}
   Let $r \ge 1$ and $v(\Nm u) > 0$ for $u \in \VV_2^-$, and let
-  \[ g =
-    \begin{pmatrix} \alpha & \beta \varpi \\ \bar\beta & \bar \alpha \end{pmatrix}
-    \lambda^{-1} \in \U(\VV_2^-). \]
+  \[ g = \lambda^{-1}
+    \begin{pmatrix} \alpha & \bar\beta \varpi \\ \beta & \bar\alpha \end{pmatrix}
+    \in \U(\VV_2^-) \]
+  where $v(\lambda) = 0$.
   Then
   \[ \Big\langle \mathbb{T}_{\mathbf{1}_K \otimes \mathbf{1}_{K, r}}
     \Delta_{\ZD(u)^\circ}, \Gamma_g \Big\rangle_{\RZ_{2,2}} \]
@@ -423,14 +422,14 @@ to keep in self-contained.
   \[
     \begin{cases}
       (C+1) q^{N} + (C+2) q^{N-1}
-        & \text{if } v(\Nm u)-r = v(\alpha - \bar\alpha) - v(\lambda) \le v(\beta) - v(\lambda) \\
-      2q^N & \text{if } v(\beta) - v(\lambda) + r < \min(v(\Nm u), v(\alpha - \bar\alpha) - v(\lambda) + r) \\
+        & \text{if } v(\Nm u)-r = v(\alpha - \bar\alpha) \le v(\beta) \\
+      2q^N & \text{if } v(\beta) + r < \min(v(\Nm u), v(\alpha - \bar\alpha) + r) \\
       q^N + q^{N-1} & \text{otherwise}
     \end{cases}
   \]
   where
-  \[ N = \min(v(\Nm u), v(\beta) - v(\lambda) + r, v(\alpha-\bar\alpha) - v(\lambda) + r) \]
-  we write
+  \[ N = \min(v(\Nm u), v(\beta) + r, v(\alpha-\bar\alpha) + r) \]
+  and we write
   \[ C = v(\beta) - v(\alpha - \bar\alpha) \ge 0 \]
   in the first case.
 \end{theorem}
