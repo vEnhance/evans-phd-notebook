@@ -4,12 +4,8 @@
 This section introduces necessary background material on the base change
 \[ \BC_{S_n}^{\eta^{n-1}} \colon \HH(S_n(F)) \to \HH(\U(\VV_n^+)). \]
 
-Throughout this section we have the following additional notation.
-\begin{definition}
-  Denote by $\rproj \colon \GL_n(E) \surjto S_n(F)$ the projection defined by
-  \[ \rproj(g) \coloneqq g \bar{g}\inv. \]
-\end{definition}
-We also let $\Sym(n)$ denotes the symmetric group in $n$ variables with order $n!$
+Throughout this section we let $\Sym(n)$ denote the symmetric group in $n$ variables
+with order $n!$
 (since $S_n(F) \subseteq \GL_n(E)$ is already reserved for the symmetric space).
 
 \section{Background on the Satake transformation in transformation}
@@ -159,7 +155,12 @@ in some situations.
 \section{The map $\BC^{\eta^{n-1}}_{S_n}$}
 Before we can define the map $\BC^{\eta^{n-1}}_{S_n}$
 we need one more piece of notation.
-Our prior map $\rproj \colon \GL_n(E) \surjto S_n(F)$ induces a map
+Consider the following map.
+\begin{definition}
+  Denote by $\rproj \colon \GL_n(E) \surjto S_n(F)$ the projection defined by
+  \[ \rproj(g) \coloneqq g \bar{g}\inv. \]
+\end{definition}
+Then $\rproj$ induces a map
 \begin{align*}
   \rproj_\ast \colon \HH(\GL_n(E)) &\to \HH(S_n(F)) \\
   \rproj_\ast(f')\left( g\bar{g}\inv \right) &= \int_{\GL_n(F)} f'(gh) \odif h
