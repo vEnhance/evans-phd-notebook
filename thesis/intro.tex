@@ -410,6 +410,15 @@ We propose the following conjecture, which we have proved for $n = 2$
   \end{enumerate}
 \end{conjecture}
 
+Part (a) of the conjecture really says that if we consider the map
+\begin{align*}
+  \HH(S_n(F))
+  &\to C^\infty( \left\{ \guv \text{ matching in } \U(\VV_n^-) \times \VV_n^- \right\} ) \\
+    \phi &\mapsto \left( \gamma \mapsto \left. \pdv{}{s} \right\rvert_{s=0}
+    \Orb \left(\guv, \phi \otimes \oneV, s \right) \right)
+\end{align*}
+then this map is injective, i.e.\ the image is as large as possible.
+
 \section{Results}
 Most of the results here are dedicated toward the semi-Lie version of the AFL,
 which is the new contribution provided by this paper.
@@ -717,6 +726,10 @@ On the other hand, the orbital data is enough to prove the following result.
   \[ \left. \pdv{}{s} \right\rvert_{s=0} \Orb \left( \gamma, \phi, s \right) = 0 \]
   holds for every $\gamma \in S_3(F)\rs$ pairing to an element of $\U(\VV_3^-)\rs$.
 \end{theorem}
+Hence the map considered in \cite[Conjecture 1.0.2]{ref:AFLspherical}
+\todo{use new notation here}
+has a large \emph{image} for $n = 3$.
+
 \begin{remark}
   Note that \Cref{thm:no_kernel_group} does not falsify
   \cite[Conjecture 1.0.2]{ref:AFLspherical},
@@ -779,9 +792,10 @@ The rest of the paper is organized as follows.
     The Rapoport-Zink spaces become replaced with Lubin-Tate ones,
     and we introduce the Gross-Keating formula
     that will be our primary tool for the calculation.
-    \ii In \Cref{ch:finale} we tie everything together and establish
-    \Cref{thm:semi_lie_n_equals_2}.
   \end{itemize}
+
+  \ii Finally, in \Cref{ch:finale} we tie everything together and establish
+  \Cref{thm:semi_lie_n_equals_2}.
 \end{itemize}
 
 An approximate dependency chart between the chapters is also given in Figure~\ref{fig:depchart}.

@@ -664,26 +664,10 @@ For brevity, we will define
 \[ \varkappa \coloneqq v(e) - v(d-a) - r \ge 0. \]
 (We allow the degenerate case $\kappa = 0$ for convenience,
 in which case $\cc_\guv$ is still identically zero.)
-We will use the following extremely easy lemma:
-\begin{lemma}
-  If $a_0 \le a_1$ are integers then
-  \begin{align*}
-    \sum_{k=a_0}^{a_1} (k-a_0) \cdot k \cdot (-1)^k
-    &= (-1)^{a_1} \cdot \frac{a_1(a_1-a_0+1)}{2} - \frac{(-1)^{a_0} + (-1)^{a_1}}{4} \cdot a_0 \\
-    \sum_{k=a_0}^{a_1} (a_1-k) \cdot k \cdot (-1)^k
-    &= (-1)^{a_0} \cdot \frac{a_0(a_1-a_0+1)}{2} - \frac{(-1)^{a_0} + (-1)^{a_1}}{4} \cdot a_1.
-  \end{align*}
-\end{lemma}
-\begin{proof}
-  This follows trivially by induction on $a_1$.
-  (Alternatively, use a symbolic engine like WolframAlpha;
-  see
-  \href{https://www.wolframalpha.com/input?i=sum+\%28k-a\%29*k*\%28-1\%29\%5Ek+from+k\%3Da+to+b}{here}
-  for the first sum and
-  \href{https://www.wolframalpha.com/input?i=sum+\%28b-k\%29*k*\%28-1\%29\%5Ek+from+k\%3Da+to+b}{here}
-  for the second sum.)
-\end{proof}
-We return to differentiating \eqref{eq:top_derivative}.
+
+We return to differentiating \eqref{eq:top_derivative};
+to do so we reuse the (self-contained) extremely easy \Cref{lem:extremely_easy_lemma}
+from before.
 For the range of $k$ given, we split it into three parts.
 \begin{itemize}
   \ii For $-v(b) + r + 2v(d-a) \le k < -v(b) + v(e) + v(d-a)$,

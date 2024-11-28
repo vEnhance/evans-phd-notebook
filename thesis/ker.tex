@@ -1,4 +1,4 @@
-\chapter{Large and small kernels}
+\chapter{Large kernel and large image}
 \label{ch:ker}
 
 In this chapter we use \Cref{cor:semi_lie_combo} to prove
@@ -540,19 +540,269 @@ The proof is complete.
 
 \section{A sequence of test functions almost lying in the kernel in the group AFL case}
 We mention the following $S_3(F)$ analog of \Cref{thm:semi_lie_finite_codim_full}.
-\begin{proposition}
-  Choose $\gamma \in S_3(F)\rs$ match an orbit of $\U(\VV_3^-)$
+\begin{theorem}
+  \label{thm:group_kernel_full}
+  Choose $\gamma \in S_3(F)\rs$ matching an orbit of $\U(\VV_3^-)$
   and let $\ell$ be as in \Cref{lem:S3_abcd}.
   If $\ell \ge 0$, then for any $r \ge 3$,
   \[ \partial \Orb\left(\gamma, \mathbf{1}_{K'_{S, r}} + 2q \mathbf{1}_{K'_{S, r-1}}
-    + q^2 \mathbf{1}_{K'_{S, r-2}}\right) = (2q+2) \log q. \]
+    + q^2 \mathbf{1}_{K'_{S, r-2}}\right) = -(2q+2) \log q. \]
   The result also holds for $\ell < 0$ with at most three exceptions for $r$,
   namely $-\half\ell \le r \le -\half\ell + 2$.
-\end{proposition}
+\end{theorem}
+
+The rest of this section sets up the proof of \Cref{thm:group_kernel_full}.
+
+\subsection{Analysis of the $\nn_\gamma$ sum}
+\begin{lemma}
+  \label{lem:derivative_nn}
+  Let $L$ and $H$ be integers such that $W > 4H \ge 0$ and $W$ odd.
+  Consider sums of the form
+  \[ \Sigma_r(s) \coloneqq \sum_{k=C-2r}^{C+2r+W} \left( 1 + q + \dots
+    + q^{\Arch_{[C-2r, C+2r+W]}(r, 2H)(k)} \right) (-q^s)^k. \]
+  Then for any $r \ge 0$ we have
+  \begin{align*}
+    - \frac{1}{\log q} \left. \pdv{}{s} \Sigma_r(s) \right\rvert_{s=0}
+    &= (-1)^{r+C} \sum_{j=r+1}^{r+H} \left( \frac{W+1}{2} + r - 2(j-r) \right) \cdot q^j \\
+      &+ \sum_{j=0}^{r} (-1)^{j+C} \left( \frac{W+1}{2} + 2r - j \right) \cdot q^j.
+  \end{align*}
+\end{lemma}
 \begin{proof}
-  \todo{write this proof}
+  Since $\Sigma_r(0) = 0$, the effect of $C$ is just multiplication by $(-1)^C$
+  and hence we assume without loss of generality that $C = 0$.
+  For each $0 \le j \le r+H$ we consider the range of $k$
+  such that $j \le \Arch_{[-2r, 2r+W]}(r, 2H)(k)$.
+  The derivative at $s = 0$ will give the coefficient for $q^j$.
+  \begin{itemize}
+    \ii For $0 \le j \le r$, we have a contiguous range $-2r + j \le k \le 2r+W-j$.
+    When we take the derivative of $\sum_k (-q^s)^k$ at $s = 0$ we get
+    we get $\log q \cdot \sum_k (-1)^k$ across this range.
+    Since consecutive elements differ by $1$, and $W$ is odd,
+    we get $(-1)^j$ times half the number of elements in the range,
+    which is $\frac{(2r+W-j) - (-2r+j) + 1}{2} = \frac{W+1}{2} + 2r - j$.
+
+    \ii For $r+1 \le j \le r+H$, we have a contiguous range
+    $-2r + r + 2(j-r) \le k \le 2r+W-(r + 2(j-r))$ instead,
+    and the same proof gives the coefficient of $q^j$.
+    \qedhere
+  \end{itemize}
+\end{proof}
+\begin{corollary}
+  \label{cor:derivative_nn}
+  Retain the setting of \Cref{lem:derivative_nn}.
+  Also let $\Sigma'_r(s) = \Sigma_r(s) - \Sigma_{r-1}(s)$ for all $r \ge 1$.
+  Then for all $r \ge 3$,
+  \[
+    \left. \pdv{}{s}
+      \left( \Sigma'_r(s) + 2q \Sigma'_{r-1}(s) + q^2 \Sigma'_{r-2}(s) \right)
+      \right\rvert_{s=0}
+      = (-1)^{C+1} (2q+2) \log q.
+  \]
+\end{corollary}
+\begin{proof}
+  From \Cref{lem:derivative_nn} it follows that for any $r \ge 1$ we have
+  \[ -\left. \pdv{}{s} \left( \Sigma_r(s) + q \Sigma_{r-1}(s) \right) \right\rvert_{s=0}
+    = (-1)^r \sum_{j=r+1}^{r+H} q^j + \sum_{j=1}^r (-1)^j q^j + \frac{W+1}{2} + 2r. \]
+  Hence it follows that for any $r \ge 2$,
+  \[ -\left. \pdv{}{s} \left(
+      \Sigma_r(s) + q \Sigma_{r-1}(s)
+      + q \left( \Sigma_r(s) + q \Sigma_{r-1}(s) \right) \right) \right\rvert_{s=0}
+    = \left( \frac{W-3}{2}+2r \right) q + \frac{W+1}{2}+2r.
+  \]
+  Subtracting this from the same expression for $r-1$ yields the corollary.
 \end{proof}
 
+\subsection{Analysis of the $\cc_\gamma$ sum}
+We will use the following extremely easy lemma:
+\begin{lemma}
+  \label{lem:extremely_easy_lemma}
+  If $a_0 \le a_1$ are integers then
+  \begin{align*}
+    \sum_{k=a_0}^{a_1} (k-a_0) \cdot k \cdot (-1)^k
+    &= (-1)^{a_1} \cdot \frac{a_1(a_1-a_0+1)}{2} - \frac{(-1)^{a_0} + (-1)^{a_1}}{4} \cdot a_0 \\
+    \sum_{k=a_0}^{a_1} (a_1-k) \cdot k \cdot (-1)^k
+    &= (-1)^{a_0} \cdot \frac{a_0(a_1-a_0+1)}{2} - \frac{(-1)^{a_0} + (-1)^{a_1}}{4} \cdot a_1.
+  \end{align*}
+\end{lemma}
+\begin{proof}
+  This follows trivially by induction on $a_1$.
+  (Alternatively, use a symbolic engine like WolframAlpha;
+  see
+  \href{https://www.wolframalpha.com/input?i=sum+\%28k-a\%29*k*\%28-1\%29\%5Ek+from+k\%3Da+to+b}{here}
+  for the first sum and
+  \href{https://www.wolframalpha.com/input?i=sum+\%28b-k\%29*k*\%28-1\%29\%5Ek+from+k\%3Da+to+b}{here}
+  for the second sum.)
+\end{proof}
+
+\begin{lemma}
+  \label{lem:derivative_cc}
+  Let $C$, $W$, $L$ be integers with $L \ge 1$ odd and $W \ge 0$.
+  Consider sums of the form
+  \[ \Sigma_r(s) \coloneqq \sum_{k=C-r}^{C+2W+L+r} \Arch_{[C-r, C+2W+L+r]}(W, \min(2r, L))(k) \cdot (-q^s)^k. \]
+  Then for any $r \ge 0$ we have
+  \[ \frac{(-1)^{r+W+C}}{\log q} \left. \pdv{}{s} \Sigma_r(s) \right\rvert_{s=0}
+    = \begin{cases}
+      \frac W2 - \frac{L-1}{2} \cdot r & \text{if } W \equiv 0 \pmod 2 \\
+      - \frac{W+L}{2} - \frac{L+1}{2} \cdot r & \text{if } W \equiv 1 \pmod 2.
+    \end{cases}
+  \]
+\end{lemma}
+\begin{proof}
+  Since $\Sigma_r(0) = 0$, the effect of $C$ is just multiplication by $(-1)^C$
+  and hence we assume without loss of generality that $C = 0$.
+  Also, note that change $L$ to $L-1$ makes no difference since $L$ is odd
+  (in general the $\Arch(w_0, w_1)$ only depends on $\left\lfloor w_1/2 \right\rfloor$).
+  With this assumption, we could write explicitly
+  \[ \Sigma_r(s) \coloneqq \sum_{k=-r}^{2W+L+r} \Arch_{[-r, 2W+L+r]}(W, \min(2r, L-1))(k) \cdot (-q^s)^k. \]
+  Then for any $r \ge 0$ we have
+  \[ \frac{1}{\log q} \left. \pdv{}{s} \Sigma_r(s) \right\rvert_{s=0}
+    = \sum_{k=-r}^{2W+L+r} (-1)^{k} \cdot k \cdot \Arch_{[-r, 2W+L+r]}(W, \min(2r, L-1))(k). \]
+  Let $H \coloneqq \min(2r, L-1)$ for brevity, which is even.
+  We split the sum now into five parts:
+  \begin{align*}
+    \frac{1}{\log q} \left. \pdv{}{s} \Sigma_r(s) \right\rvert_{s=0}
+    &= \sum_{k=-r}^{W-r-1} (-1)^{k} \cdot k \cdot \Arch_{[-r, 2W+L+r]}(W, H)(k) \\
+    &\qquad+ \sum_{k=W-r}^{W-r + H - 1} (-1)^{k} \cdot k \cdot \Arch_{[-r, 2W+L+r]}(W, H)(k) \\
+    &\qquad+ \sum_{k=W-r + H}^{W+L+r - H}
+      (-1)^{k} \cdot k \cdot \Arch_{[-r, 2W+L+r]}(W, H)(k) \\
+    &\qquad+ \sum_{k=W+L+r - H+1}^{W+L+r} (-1)^{k} \cdot k \cdot \Arch_{[-r, 2W+L+r]}(W, H)(k) \\
+    &\qquad+ \sum_{k=W+L+r+1}^{2W+L+r} (-1)^{k} \cdot k \cdot \Arch_{[-r, 2W+L+r]}(W, H)(k) \\
+    &= \sum_{k=-r}^{W-r-1} (-1)^{k} \cdot k \cdot (k+r) \\
+    &\qquad+ \sum_{k=W-r}^{W-r + H - 1} (-1)^{k} \cdot k \cdot
+      \left( W + \left\lfloor \frac{k-(W-r)}{2} \right\rfloor \right) \\
+    &\qquad+ \sum_{k=W-r + H}^{W+L+r - H}
+      (-1)^{k} \cdot k \cdot \left( W + \frac H2 \right) \\
+    &\qquad+ \sum_{k=W+L+r - H + 1}^{W+L+r} (-1)^{k} \cdot k \cdot
+      \left( W + \left\lfloor \frac{W+L+r-k}{2} \right\rfloor \right) \\
+    &\qquad+ \sum_{k=W+L+r+1}^{2W+L+r} (-1)^{k} \cdot k \cdot (2W+L+r-k).
+  \end{align*}
+  We can take out the contribution of $r$ in the second, third, and fourth sum and write
+  \begin{equation}
+    \sum_{k=W-r}^{W+L+r} (-1)^k \cdot k \cdot W = (-1)^{W-r+1} W \cdot \frac{L+2r+1}{2}
+    \label{eq:moment234r}
+  \end{equation}
+  The remaining part of the third sum is
+  \begin{equation}
+    \sum_{k=W-r + H}^{W+L+r - H} (-1)^{k} \cdot k \cdot \frac H2
+    = (-1)^{W-r+1} \frac{L+2r-2H+1}{2} \cdot \frac H2
+    \label{eq:moment3top}
+  \end{equation}
+  By \Cref{lem:extremely_easy_lemma}, the first sum is
+  \[ \sum_{k=-r}^{W-r-1} (-1)^{k} \cdot k \cdot (k+r)
+      = (-1)^{W-r-1} \cdot \frac{W(W-r-1)}{2} - \frac{(-1)^r + (-1)^{W+r-1}}{4} \cdot (-r) \]
+  and the fifth sum is
+  \begin{align*}
+    \sum_{k=W+L+r+1}^{2W+L+r} (-1)^{k} \cdot k \cdot (2W+L+r-k)
+    &= (-1)^{W+L+r+1} \cdot \frac{W(W+L+r+1)}{2} \\
+      &\qquad - \frac{(-1)^{r+1} + (-1)^{W+r}}{4} \cdot (2W+L+r).
+  \end{align*}
+  This sum equals
+  \begin{equation}
+    \begin{aligned}
+      &\sum_{k=-r}^{W-r-1} (-1)^{k} \cdot k \cdot (k+r)
+      + \sum_{k=W+L+r+1}^{2W+L+r} (-1)^{k} \cdot k \cdot (2W+L+r-k) \\
+      &= (-1)^{W+r} \frac{W(L+2r+2)}{2} - (-1)^{W+r} (W\%2) \cdot \frac{2W+L+2r}{2}
+    \end{aligned}
+    \label{eq:moment15}
+  \end{equation}
+
+  Similarly, if we set aside the floors for the moment the second and fourth sum give
+  \begin{align*}
+    \sum_{k=W-r}^{W-r + H - 1} (-1)^{k} \cdot k \cdot \frac{k-(W-r)}{2}
+    &= \frac{(-1)^{W-r-1}}{4} \cdot H \cdot \left( W - r + H - 1 \right) \\
+    \sum_{k=W+L+r - H + 1}^{W+L+r} (-1)^{k} \cdot k \cdot \frac{W+L+r-k}{2}
+    &= \frac{(-1)^{W+r}}{4} \cdot H \cdot \left( W + L + r - H + 1 \right)
+  \end{align*}
+  by \Cref{lem:extremely_easy_lemma}.
+  Their sum is
+  \begin{equation}
+    \begin{aligned}
+      \sum_{k=W-r}^{W-r + H - 1} (-1)^{k} \cdot k \cdot \frac{k-(W-r)}{2}
+      &+ \sum_{k=W+L+r-H+1}^{W+L+r} (-1)^{k} \cdot k \cdot \frac{W+L+r-k}{2} \\
+      &= \frac{(-1)^{W+r}}{4} \cdot H \cdot (L + 2r + 2 - 2H).
+    \end{aligned}
+    \label{eq:moment24main}
+  \end{equation}
+  We now add in the correction terms of $-1/2$ from the floor:
+  \begin{align*}
+    \sum_{\substack{W-r \le k \le W-r+H-1 \\ k \equiv W+r+1 \bmod 2}} (-1)^{k} \cdot k \cdot \left( - \half \right)
+    &= \frac{(-1)^{W-r}}{2}
+    \left( (W-r) \cdot \frac{H}{2} + \left( \frac{H}{2} \right)^2  \right) \\
+    \sum_{\substack{W+L+r-H+1 \le k \le W+L+r \\ k \equiv W+L+r-1 \bmod 2}} (-1)^{k} \cdot k \cdot \left( - \half \right)
+    &= \frac{(-1)^{W+L+r}}{2}
+    \left( (W+L+r) \cdot \frac{H}{2} - \left( \frac{H}{2} \right)^2 \right).
+  \end{align*}
+  As $L$ is odd the sum of these is equal to
+  \begin{equation}
+    \begin{aligned}
+      \sum_{\substack{W-r \le k \le W-r+H-1 \\ k \equiv W+r+1 \bmod 2}} (-1)^{k} \cdot k \cdot \left( - \half \right)
+      &+ \sum_{\substack{W+L+r-H+1 \le k \le W+L+r \\ k \equiv W+L+r-1 \bmod 2}} (-1)^{k} \cdot k \cdot \left( - \half \right) \\
+      &= \frac{(-1)^{W+r}}{2} \cdot \left( \frac{H^2}{2} - (L+2r) \frac H2 \right).
+    \end{aligned}
+    \label{eq:moment24err}
+  \end{equation}
+  Hence, if we sum all of \eqref{eq:moment234r}, \eqref{eq:moment3top},
+  \eqref{eq:moment15}, \eqref{eq:moment24main}, \eqref{eq:moment24err} we obtain
+  \begin{align*}
+    \frac{(-1)^{W+r}}{\log q} \left. \pdv{}{s} \Sigma_r(s) \right\rvert_{s=0}
+    &= - W \cdot \frac{L+2r+1}{2} - \frac{L+2r-2H+1}{2} \cdot \frac H2 \\
+    &\qquad+ \frac{W(L+2r+2)}{2} - (W\%2) \cdot \frac{2W+L+2r}{2} \\
+    &\qquad+ \frac14 \cdot H \cdot (L + 2r + 2 - 2H) + \half \left( \frac{H^2}{2} - (L+2r) \frac H2 \right) \\
+    &= \frac{W}{2} - (W\%2) \cdot \frac{2W+L+2r}{2} - \frac{H}{4} \left( (L-1) + 2r - H  \right).
+  \end{align*}
+  Since $H = \min(L-1, 2r)$, it follows $H \cdot \left( (L-1)+2r-H \right) = 2r(L-1)$,
+  and finally the variable $H$ is gone.
+  Hence
+  \[ \frac{(-1)^{W+r}}{\log q} \left. \pdv{}{s} \Sigma_r(s) \right\rvert_{s=0}
+    = \frac{W}{2} - (W\%2) \cdot \frac{2W+L+2r}{2} - \frac r2 (L-1) \]
+  which equals the claimed expression.
+\end{proof}
+
+\begin{corollary}
+  \label{cor:derivative_cc}
+  Retain the setting of \Cref{lem:derivative_cc}.
+  Also let $\Sigma'_r(s) = \Sigma_r(s) - \Sigma_{r-1}(s)$ for all $r \ge 1$.
+  Then for all $r \ge 2$,
+  \[ \left. \pdv{}{s}
+      \left( \Sigma'_r(s) + \Sigma'_{r-1}(s) \right)
+      \right\rvert_{s=0} = 0. \]
+\end{corollary}
+\begin{proof}
+  Since \Cref{lem:derivative_cc} implies $\Sigma'_r(s) = - \frac{L - (-1)^W}{2} (-1)^{r+W+C}$
+  this is immediate.
+\end{proof}
+
+\subsection{Proof of \Cref{thm:group_kernel_full}}
+Assume the notation in \Cref{lem:S3_abcd} and \Cref{lem:parameter_constraints}.
+We apply \Cref{cor:derivative_nn} and \Cref{cor:derivative_cc} directly:
+\begin{itemize}
+  \ii For $\ell$ odd, consult \Cref{thm:full_orbital_ell_odd}.
+  \begin{itemize}
+    \ii Apply \Cref{cor:derivative_nn} with $C = 0$, $W = \ell + 2 \delta$ and $H = \frac{\ell-1}{2}$.
+  \end{itemize}
+
+  \ii For $\ell \ge 0$ even, consult \Cref{thm:full_orbital_ell_even}.
+  \begin{itemize}
+    \ii Apply \Cref{cor:derivative_nn} with $C = 0$, $W = \lambda + 2 \delta$ and $H = \frac{\ell-1}{2}$.
+    \ii Apply \Cref{cor:derivative_cc} with $C = \ell$, $W = \delta - \half\ell$ and $L = \lambda - \ell$.
+  \end{itemize}
+
+  \ii For $\ell < 0$ even, consult \Cref{thm:full_orbital_ell_even}.
+  If $r < |v(d)|$ then all the orbital integrals are zero anyway.
+  Meanwhile if $r \ge |v(d)|+3$ then we replace $r$ by to $r-|v(d)| \ge 3$
+  in applying the following lemmas:
+  \begin{itemize}
+    \ii Apply \Cref{cor:derivative_nn} with $C = -2|v(d)|$, $W = \lambda$ and $H = 0$
+    and $r$ replaced by $r - |v(d)|$.
+    \ii Apply \Cref{cor:derivative_cc} with $C = -2|v(d)|$, $W = 0$ and $L = \lambda$
+    and $r$ replaced by $r - |v(d)|$.
+  \end{itemize}
+\end{itemize}
+Hence the $\cc_\gamma$ sum (when $\ell$ is even) has no effect,
+while by \Cref{cor:derivative_nn} we always get $-(2q+2) \log q$
+(as we only use $C$ even in \Cref{cor:derivative_nn}).
+
+\subsection{Generation of $\HH(S_3(F))$ as an ideal}
 In the spirit of the conjecture proposed in \cite[Conjecture 1.0.2]{ref:AFLspherical},
 we mention the following result as well.
 
