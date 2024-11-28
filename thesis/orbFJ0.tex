@@ -51,7 +51,6 @@ we analogously define the weighted orbital integral as follows.
     \Orb((\gamma, \uu, \vv^\top), \phi \otimes \oneV, s). \]
 \end{definition}
 
-
 As before it seems this weighted orbital integral should be related to an ordinary one.
 To define it, fix a self-dual lattice $\Lambda_n$ in $\VV_n^+$ of full rank.
 First, if $(g,u) \in \U(\VV_n^+) \times \VV_n^+$ and $f \in \HH(\U(\VV_n^+))$,
@@ -66,11 +65,16 @@ and \Cref{thm:rel_fundamental_lemma}, we propose the following.
 \begin{conjecture}
   \label{conj:rel_fundamental_lemma_semilie}
   Let $\phi \in \HH(S_n(F))$ and $\guv \in (S_n(F) \times V'_n(F))\rs$.
-  If $\guv$ matches an element of $(\U(\VV_n^-) \times \VV_n^-)\rs$, then
-  \[ \omega\guv \Orb(\phi \otimes \oneV, \guv, 0) = 0. \]
-  If $\guv$ instead matches an element $g \in (\U(\VV_n^+) \times \VV_n^+)\rs$, then
-  \[ \omega\guv \Orb(\phi \otimes \oneV, \guv, 0)
-    = \Orb^{\U(\VV_n^+) \times \VV_n^+}((g,u), \BC^{\eta^{n-1}}_{S_n}(\phi) \otimes \mathbf{1}_{\Lambda_n}) \]
+  Then
+  \begin{align*}
+    &\omega\guv \Orb(\phi \otimes \oneV, \guv, 0) \\
+    &=
+    \begin{cases}
+      0 & \text{if } \guv \in (S_n(F) \times V'_n(F))\rs^- \\
+      \Orb^{\U(\VV_n^+) \times \VV_n^+}((g,u), \BC^{\eta^{n-1}}_{S_n}(\phi) \otimes \mathbf{1}_{\Lambda_n})
+      & \text{if } \guv \in (S_n(F) \times V'_n(F))\rs^+
+    \end{cases}
+  \end{align*}
   where the transfer factor $\omega$ is defined in \Cref{ch:geo}.
 \end{conjecture}
 Wei Zhang suggests that this conjecture can be proven by similar means

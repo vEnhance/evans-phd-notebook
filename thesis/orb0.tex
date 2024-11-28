@@ -38,11 +38,12 @@ Then the following result is true.
   [Relative fundamental lemma; {\cite[Theorem 1.1]{ref:leslie}}]
   \label{thm:rel_fundamental_lemma}
   Let $\phi \in \HH(S_n(F))$ and $\gamma \in S_n(F)\rs$.
-  If $\gamma$ matches an element of $\U(\VV_n^-)\rs$, then
-  \[ \omega(\gamma) \Orb(\phi, \gamma, 0) = 0. \]
-  If $\gamma$ instead matches an element $g \in \U(\VV_n^+)\rs$, then
   \[ \omega(\gamma) \Orb(\phi, \gamma, 0)
-    = \Orb^{\U(\VV_n^+)}(g, \BC^{\eta^{n-1}}_{S_n}(\phi)) \]
+    = \begin{cases}
+      0 & \text{if }\gamma \in S_n(F)\rs^- \\
+      \Orb^{\U(\VV_n^+)}(g, \BC^{\eta^{n-1}}_{S_n}(\phi)) & \text{if } \gamma \in S_n(F)\rs^+
+    \end{cases}
+  \]
   where the transfer factor $\omega$ is defined in \Cref{ch:geo}.
 \end{theorem}
 
@@ -191,7 +192,7 @@ This is the same assumption made in \cite[Equation (4.3)]{ref:AFL}.
 To summarize everything we've said.
 \begin{lemma}
   \label{lem:S3_abcd}
-  Let $\gamma \in S_3(F)\rs$ be an element matching with $\U(\VV_3^-)$.
+  Let $\gamma \in S_3(F)\rs^-$.
   Then there exists $a \in E^1$, $b \in E$, $d \in E$ such that
   \[ \gamma \overset{H'}{\sim}
     \begin{pmatrix}

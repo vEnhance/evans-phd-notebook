@@ -215,6 +215,9 @@ We only mention these pieces by name here, with definitions given later:
     is itself defined in \Cref{def:orbital0}.
     (It is connected to an unweighted orbital integral on the unitary group
     according to \Cref{thm:rel_fundamental_lemma}.)
+    We abbreviate
+    \[ \partial \Orb(\gamma, \phi)
+      \coloneqq \left. \pdv{}{s} \right\rvert_{s=0} \Orb(\gamma, \phi, s). \]
     \ii There is also an extra transfer factor $\omega \in \{\pm1\}$
     which we define in \Cref{ch:transf}.
   \end{itemize}
@@ -243,7 +246,7 @@ we can now state the conjecture proposed in \cite{ref:AFLspherical}.
 \begin{conjecture}
   [Inhomogeneous version of the AFL for the full spherical Hecke algebra,
   {\cite[Conjecture 6.2.1]{ref:AFLspherical}}]
-  \label{conj:inhomog}
+  \label{conj:inhomog_spherical}
   Let $f \in \HH(\U(\VV_n^+))$ be any element of the Hecke algebra,
   and let $\phi = (\BC_{S_n}^{\eta^{n-1}})^{-1}(f) \in \HH(S_n(F))$ be its image
   under base change as defined in \Cref{ch:satake}.
@@ -252,7 +255,7 @@ we can now state the conjecture proposed in \cite{ref:AFLspherical}.
   we have
   \begin{equation}
     \Int\left( (1,g), \mathbf{1}_{K^\flat} \otimes f \right) \log q
-    = -\omega(\gamma) \left. \pdv{}{s} \right\rvert_{s=0} \Orb(\gamma, \phi, s)
+    = -\omega(\gamma) \partial \Orb(\gamma, \phi)
     \label{eq:inhomog}
   \end{equation}
   where the weighted orbital integral $\Orb(\dots)$ is defined in \Cref{def:orbital0},
@@ -286,11 +289,11 @@ The part of the calculation involving weighted orbital integral has two parts:
 Combining these two (hence obtaining the right-hand side of \eqref{eq:inhomog})
 with a calculation of intersection numbers in \cite[Corollary 7.4.3]{ref:AFLspherical}
 (which is the left-hand side of \eqref{eq:inhomog})
-shows that \Cref{conj:inhomog} holds for $n = 2$,
+shows that \Cref{conj:inhomog_spherical} holds for $n = 2$,
 cf.\ \cite[Theorem 7.5.1]{ref:AFLspherical}.
 
 \subsection{A proposed arithmetic fundamental lemma for spherical Hecke algebras in the semi-Lie case}
-The primary focus of this paper is an analogous conjecture to \Cref{conj:inhomog}
+The primary focus of this paper is an analogous conjecture to \Cref{conj:inhomog_spherical}
 for the semi-Lie version (also called the Fourier-Jacobi case).
 It serves to complete the analogy given in \Cref{tab:semi_lie_analogy}.
 
@@ -319,11 +322,15 @@ where $V'_n(F) = F^n \times (F^n)^\vee$ (defined in \Cref{def:matching_semi_lie}
 consists of pairs of column vectors and row vectors of length $n$,
 and the space $\VV_n^-$ is defined in \Cref{def:VV_n_nonsplit}.
 The notion of \emph{matching} is defined in \Cref{def:matching_semi_lie} as well.
+
 Meanwhile, we still use the same test functions $f$ and $\phi$,
 as we did for \cite[Conjecture 6.2.1]{ref:AFLspherical}.
+The derivative of interest will be denoted
+\[ \partial \Orb(\guv, \phi) \coloneqq
+  \left. \pdv{}{s} \right\rvert_{s=0}
+  \Orb((\gamma, \uu, \vv^\top), \phi \otimes \oneV, s). \]
 Finally, we also update the definition of intersection number
 to accommodate the new term $u$ in \Cref{def:intersection_number_semi_lie_spherical}.
-
 \begin{conjecture}
   [Semi-Lie version of the AFL for the full spherical Hecke algebra]
   Let $f \in \HH(\U(\VV_n^+))$ be any element of the Hecke algebra,
@@ -335,8 +342,7 @@ to accommodate the new term $u$ in \Cref{def:intersection_number_semi_lie_spheri
   we have
   \begin{equation}
     \Int\left( (g,u), f \right) \log q \\
-    = -\omega\guv \left. \pdv{}{s} \right\rvert_{s=0}
-    \Orb(\guv, \phi \otimes \oneV, s)
+    = -\omega\guv \partial \Orb(\guv, \phi \otimes \oneV)
   \end{equation}
   where the orbital integral $\Orb(\dots)$ is defined in \Cref{def:orbitalFJ},
   the transfer factor is defined in \Cref{ch:transf},
@@ -362,15 +368,26 @@ which in this case can be checked independently.
 \subsection{A proposed conjecture on the kernel of indicator functions on which the orbital has identically vanishing derivative}
 \label{sec:intro_large_kernel}
 
+We let $S_n(F)\rs^-$ (resp.\ $(S_n(F) \times V'_n(F))\rs^-$)
+denote the subsets of $S_n(F)\rs$ (resp.\ $(S_n(F) \times V'_n(F))\rs$)
+consisting of regular semisimple elements that also match with an element of
+$\U(\VV_n^-)\rs$ (resp.\ $(\U(\VV_n^-) \times \VV_n^-)\rs$),
+i.e.\ those for which \Cref{conj:inhomog_spherical}
+and \Cref{conj:semi_lie_spherical} apply.
+
 In \cite{ref:AFLspherical}, it was observed that for $n = 2$
 there was a rather large space of $\phi \in \HH(S_2(F))$ such that
-\[ \left. \pdv{}{s} \right\rvert_{s=0}
-  \Orb \left(\gamma, \phi, s \right) = 0 \]
-held identically across all $\gamma \in S_2(F)$.
-In fact, the space of such $\phi$ has codimension $2$
-as a vector subspace of $\HH(S_2(F))$ for $n = 2$.
-They thus stated a conjecture the kernel was ``large'' for general $n$
-as \cite[Conjecture 1.0.2]{ref:AFLspherical}.
+\[ \partial \Orb \left(\gamma, \phi \right) = 0 \]
+held identically across all $\gamma \in S_2(F)\rs^-$.
+If we consider the map
+\begin{align*}
+  \partial\Orb \colon \HH(S_2(F)) &\to C^\infty(S_2(F)\rs^-) \\
+  \phi &\mapsto \left( \gamma \mapsto \partial \Orb \left(\gamma, \phi \right) \right)
+\end{align*}
+then \cite[Theorem 8.2.3]{ref:AFLspherical} in fact
+shows this map has codimension $2$.
+They thus stated \cite[Conjecture 1.0.2]{ref:AFLspherical} which asserts that for $n \ge 2$,
+a similarly defined map (albeit for more than one Hecke algebra) there is a large kernel.
 
 It is therefore natural to ask whether a similar large kernel result
 could hold for the analogous orbital integral in the semi-Lie case.
@@ -382,27 +399,23 @@ We propose the following conjecture, which we have proved for $n = 2$
   Let $n \ge 2$.
   \begin{enumerate}
   \item[(a)]
-  Choose any $\gamma \in S_n(F)$ which could appear in a triple $\guv$
-  matching some element of $\U(\VV_n^-) \times \VV_n^-$.
+  Choose any $\gamma \in S_n(F)$ which could appear in $(S_n(F) \times V'_n(F))\rs^-$.
   Suppose $\phi \in \HH(S_n(F))$ satisfies
-  \[ \left. \pdv{}{s} \right\rvert_{s=0}
-    \Orb \left(\guv, \phi \otimes \oneV, s \right) = 0 \]
+  \[ \partial \Orb \left(\guv, \phi \right) = 0 \]
   for every such $(\uu, \vv^\top) \in V'_n(F)$,
   Then in fact
-  \[ \Orb \left(\guv, \phi \otimes \oneV, s \right) = 0 \]
+  \[ \partial \Orb \left(\guv, \phi \oneV \right) = 0 \]
   for all $s \in \CC$.
 
   \item[(b)]
   Fix a choice of $(\uu, \vv^\top) \in V'_n(F)$.
-  Consider all $\gamma \in S_n(F)\rs$ for which $\guv$
-  matches with an element of $(\U(\VV_n^-) \times \VV_n^-)\rs$
+  Consider all $\gamma \in S_n(F)$ such that $\guv \in (S_n(F) \times V'_n(F))\rs^-$,
   and assume there is at least one such $\gamma$.
   Define the map of vector spaces
   \begin{align*}
     \HH(S_n(F))
-    &\to C^\infty( \left\{ \text{elements of } S_n(F)\rs \text{ matching as above} \right\} ) \\
-      \phi &\mapsto \left( \gamma \mapsto \left. \pdv{}{s} \right\rvert_{s=0}
-      \Orb \left(\guv, \phi \otimes \oneV, s \right) \right).
+    &\to C^\infty( \left\{ \text{elements of } S_n(F) \text{ matching as above} \right\} ) \\
+      \phi &\mapsto \left( \gamma \mapsto \partial \Orb \left( \guv, \phi \right) \right).
   \end{align*}
   Then this map has large kernel,
   in the sense it is not contained in any maximal ideal of $\HH(S_n(F))$
@@ -410,14 +423,12 @@ We propose the following conjecture, which we have proved for $n = 2$
   \end{enumerate}
 \end{conjecture}
 
-Part (a) of the conjecture really says that if we consider the map
+Part (a) of the conjecture can be rephrased as saying the map
 \begin{align*}
-  \HH(S_n(F))
-  &\to C^\infty( \left\{ \guv \text{ matching in } \U(\VV_n^-) \times \VV_n^- \right\} ) \\
-    \phi &\mapsto \left( \gamma \mapsto \left. \pdv{}{s} \right\rvert_{s=0}
-    \Orb \left(\guv, \phi \otimes \oneV, s \right) \right)
+  \partial\Orb \colon \HH(S_n(F)) &\to C^\infty\left( (S_n(F) \times V'_n(F))^- \right) \\
+  \phi &\mapsto \left( \guv \mapsto \partial \Orb \left(\guv, \phi \right) \right)
 \end{align*}
-then this map is injective, i.e.\ the image is as large as possible.
+is injective, i.e.\ the image is as large as possible.
 
 \section{Results}
 Most of the results here are dedicated toward the semi-Lie version of the AFL,
@@ -437,14 +448,13 @@ in the following way:
   indicator functions $\mathbf{1}_{K', \le r}$ for each $r \ge 0$;
   see \Cref{ch:orbitalFJ0} for a definition.
 
-  \ii Suppose $\guv \in (S_2(F) \times V'_2(F))\rs$
-  matches an element of $(\U(\VV_2^-) \times \VV_2^-)\rs$.
+  \ii Suppose $\guv \in (S_2(F) \times V'_2(F))\rs^-$.
   Then under the action $\GL_2(F)$ we may assume $\guv$ is of the form
   \[
     \guv = \left( \begin{pmatrix} a & b \\ c & d \end{pmatrix},
       \begin{pmatrix} 0 \\ 1 \end{pmatrix},
       \begin{pmatrix} 0 & e \end{pmatrix} \right)
-    \in (S_2(F) \times V_2'(F))\rs
+    \in (S_2(F) \times V_2'(F))\rs^-
   \]
   (that is, we can find a $\GL_2(F)$-orbit representative of this form).
   The parameters $a$, $b$, $c$, $d$ need to satisfy certain dependencies
@@ -463,7 +473,7 @@ and illustrations of \Cref{thm:semi_lie_formula}.
     \guv = \left( \begin{pmatrix} a & b \\ c & d \end{pmatrix},
       \begin{pmatrix} 0 \\ 1 \end{pmatrix},
       \begin{pmatrix} 0 & e \end{pmatrix} \right)
-    \in (S_2(F) \times V_2'(F))\rs
+    \in (S_2(F) \times V_2'(F))\rs^-
   \]
   satisfy the requirements in \Cref{lem:semi_lie_params}.
   Let $r \ge 0$.
@@ -487,7 +497,7 @@ and illustrations of \Cref{thm:semi_lie_formula}.
   Otherwise define $\cc_\guv(k) = 0$.
   Then we have
   \begin{align*}
-    &\phantom= \Orb(\guv, \mathbf{1}_{K'_{S, \le r}} \otimes \oneV, s) \\
+    \partial\Orb(\guv, \mathbf{1}_{K'_{S, \le r}}, s)
     &= \sum_{k = -(v(b)+r)}^{2v(e)+v(c)+r} (-1)^k
     \left( 1 + q + q^2 + \dots + q^{\nn_\guv(k)} \right) (q^s)^k \\
     &+ \sum_{k = 2v(d-a)-v(b)+r}^{2v(e)+v(c)-2v(d-a)-r} (-1)^k \cc_\guv(k) q^{v(d-a) + r} (q^s)^k.
@@ -582,11 +592,9 @@ More precisely, we have the following two theorems.
   \label{thm:semi_lie_ker_trivial}
   Consider any $\gamma \in S_2(F)$ as in \Cref{lem:semi_lie_params}.
   Then there doesn't exist any nonzero function $\phi \in \HH(S_2(F))$ such that
-  \[ \left. \pdv{}{s} \right\rvert_{s=0}
-    \Orb \left(
+  \[ \partial \Orb \left(
       \left( \gamma, \begin{pmatrix} 0 \\ 1 \end{pmatrix}, \begin{pmatrix} 0 & \varpi^i \end{pmatrix} \right),
-      \phi \otimes \oneV, s
-    \right) = 0 \]
+      \phi, \right) = 0 \]
   holds for every integer $i \ge 0$.
   Thus part (a) of \Cref{conj:kernel_semi_lie} holds for $n = 2$.
 \end{theorem}
@@ -594,19 +602,23 @@ More precisely, we have the following two theorems.
 \begin{theorem}
   \label{thm:semi_lie_ker_huge}
   Fix a choice of $(\uu, \vv^\top) \in V_2'(F)$ with $\vv^\top \uu \neq 0$.
-  Consider the choices of $\gamma \in S_2(F)$ for which $\guv$
-  matches with an element of $(\U(\VV_n^-) \times \VV_n^-)\rs$.
+  Consider all $\gamma \in S_2(F)$ for which $\guv \in (S_2(F) \times V'_2(F))\rs^-$.
   Then the space of $\phi \in \HH(S_2(F))$ such that
-  \[
-    \left. \pdv{}{s} \right\rvert_{s=0}
-    \Orb \left( \guv, \phi \otimes \oneV, s \right) = 0
-  \]
+  \[ \partial \Orb \left( \guv, \phi \right) = 0 \]
   holds for all these $\gamma$ is a $\QQ$-vector subspace of $\HH(S_2(F))$
   whose codimension is at most $v(\uu \vv^\top) + 2$.
+
   Moreover, this subspace of $\HH(S_2(F))$
   is not contained in any maximal ideal of $\HH(S_2(F))$
   when $\HH(S_2(F))$ is viewed as a ring under the isomorphism of \Cref{ch:satake}.
 \end{theorem}
+
+In particular, for $n=2$ the map
+\begin{align*}
+  \partial\Orb \colon \HH(S_2(F)) &\to C^\infty\left( (S_2(F) \times V'_2(F))^- \right) \\
+  \phi &\mapsto \left( \guv \mapsto \partial \Orb \left(\guv, \phi \right) \right)
+\end{align*}
+is indeed injective.
 
 \begin{remark}
   In each case the Hecke algebra is isomorphic as a $\QQ$-algebra to $\QQ[T]$
@@ -676,8 +688,7 @@ The result is too involved to state in the introduction,
 but we give the following summary.
 \begin{theorem}
   \label{thm:summary}
-  Let $\gamma \in S_3(F)\rs$.
-  Assume that $\gamma$ matches an element in $\U(\VV_3^-)\rs$.
+  Let $\gamma \in S_3(F)\rs^-$.
   Then the weighted orbital integral $\Orb(\gamma, \phi, s)$ takes the form
   \[ \sum_k P_k(q) (-q^s)^k \]
   for some polynomials $P_k(q) \in \ZZ[q]$, where
@@ -716,19 +727,22 @@ which can be thought of as the case $r = 0$.
 We were also able to determine the
 relevant base changes in \Cref{ch:satake}.
 However, we did not complete the comparison on the geometric side in this situation.
-Thus we do not claim a proof of $n = 3$ of \Cref{conj:inhomog},
+Thus we do not claim a proof of $n = 3$ of \Cref{conj:inhomog_spherical},
 although we imagine such a proof could be completed
 once a method for determining the intersection numbers explicitly is devised.
 On the other hand, the orbital data is enough to prove the following result.
 \begin{theorem}
   \label{thm:no_kernel_group}
   There is no nontrivial $\phi \in \HH(S_3(F))$ such that
-  \[ \left. \pdv{}{s} \right\rvert_{s=0} \Orb \left( \gamma, \phi, s \right) = 0 \]
-  holds for every $\gamma \in S_3(F)\rs$ pairing to an element of $\U(\VV_3^-)\rs$.
+  \[ \partial \Orb \left( \gamma, \phi \right) = 0 \]
+  holds for every $\gamma \in S_3(F)\rs^-$.
 \end{theorem}
-Hence the map considered in \cite[Conjecture 1.0.2]{ref:AFLspherical}
-\todo{use new notation here}
-has a large \emph{image} for $n = 3$.
+Hence the analogous map
+\begin{align*}
+  \partial\Orb \colon \HH(S_3(F)) &\to C^\infty(S_3(F)\rs^-) \\
+  \phi &\mapsto \left( \gamma \mapsto \partial \Orb \left(\gamma, \phi \right) \right)
+\end{align*}
+is injective, i.e., has image as large as possible, for $n = 3$.
 
 \begin{remark}
   Note that \Cref{thm:no_kernel_group} does not falsify
@@ -752,8 +766,8 @@ The rest of the paper is organized as follows.
     \ii In \Cref{ch:satake} we provide reminders on the Satake transform.
     We also derive concrete formulas for base change when $n = 3$
     (in comparison, the analogous results for $n=2$ are
-    \cite[Lemma 7.1.1]{ref:AFLspherical}),
-    but these formulas are not used again later on.
+    \cite[Lemma 7.1.1]{ref:AFLspherical});
+    but these formulas are only used for a remark towards the end of \Cref{ch:ker}.
   \end{itemize}
 
   \ii We then proceed to introduce the orbital integrals.
@@ -798,13 +812,13 @@ The rest of the paper is organized as follows.
   \Cref{thm:semi_lie_n_equals_2}.
 \end{itemize}
 
-An approximate dependency chart between the chapters is also given in Figure~\ref{fig:depchart}.
+An approximate dependency chart between the chapters is given in Figure~\ref{fig:depchart}.
 
 \begin{figure}[ht]
   \begin{center}
     \begin{tikzcd}
       \text{\ref{ch:background}. Background} \ar[rd, bend left = 10] \ar[dddd, bend left = 80] && \\
-      \text{\ref{ch:satake}. Base change} \ar[rd, bend left = 10] \ar[rdddd, bend left]
+      \text{\ref{ch:satake}. Base change} \ar[rdddd, bend left]
       & \text{\ref{ch:rs_matching}. Matching} \ar[ld] \ar[rd] \ar[l] \ar[r]
       &  \text{\ref{ch:transf}. Transfer} \ar[ldddd, bend right] \\
       \text{\ref{ch:orbital0}. Group orbital} \ar[r] \ar[d]
