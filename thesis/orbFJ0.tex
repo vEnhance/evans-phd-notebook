@@ -14,8 +14,7 @@ as well as the dependencies between the parameters that needs to hold
 in order for the matching to work.
 
 \section{Definition}
-We will not work in the generality of a function on all of $S_n(F) \times V'_n(F)$.
-Instead, for our conjecture, it will be enough to define the weighted orbital integral
+For our conjecture, it will be enough to define the weighted orbital integral
 in the case where our function is of the form
 \[ \phi \otimes \oneV \]
 where $\phi \in \HH(S_n(F))$ is the left component, and
@@ -169,10 +168,10 @@ Like before, we focus on the case where regular $(\gamma, \uu, \vv^\top)$
 matches an element in the non-split unitary group.
 As we described in \Cref{prop:valuation_delta_matching_semilie},
 this is controlled by the parity of $v(\Delta)$, where
-\[ \Delta = \det \left[ \vv^\top \gamma^{i+j} \uu \right]_{0 \le i,j \le n-1}. \]
+\[ \Delta = \det \left( \left( \vv^\top \gamma^{i+j} \uu \right)_{0 \le i,j \le n-1} \right). \]
 When $n=2$, for the representatives we described before,
 we have
-\[ \left[ \vv^\top \gamma^{i+j} \uu \right]_{0 \le i,j \le n-1}
+\[ \left( \vv^\top \gamma^{i+j} \uu \right)_{0 \le i,j \le n-1}
   = \begin{pmatrix} e & de \\ de & bce + d^2e \end{pmatrix} \]
 so
 \[ \Delta = bce^2 = \frac{b}{\bar b}(1-a \bar a) e^2 . \]
@@ -206,3 +205,27 @@ These are the only constraints between these five numbers we will consider
 However, we mention that we will only be interested in the case when $v(e) \ge 0$
 since in the case $v(e) < 0$ we will shortly see that
 $\Orb(\guv, \phi \otimes \oneV, s) = 0$ identically in $s$ in that situation.
+
+For convenience, we summarize all the assumptions on the shape of $\guv$ in the following single lemma.
+\begin{lemma}
+  \label{lem:semi_lie_params}
+  Suppose $\guv \in (S_2(F) \times V'_2(F))\rs$.
+  Then one can choose a representative of the $\GL_2(F)$-orbit of $\guv$ of the form
+  \[
+      \left( \begin{pmatrix} a & b \\ c & d \end{pmatrix},
+      \begin{pmatrix} 0 \\ 1 \end{pmatrix}, \begin{pmatrix} 0 & e \end{pmatrix} \right)
+  \]
+  where $a,b,c,d,e \in F$ satisfy $bce \neq 0$ and
+  \begin{align*}
+    \bar b c = b \bar c &= 1 - a \bar a = 1 - d \bar d \\
+    \text{and } d &= - \bar a c / \bar c = -\bar a b / \bar b.
+  \end{align*}
+
+  Moreover, we always assume $\guv$ matches an element of
+  $(\U(\VV_2^-) \times \VV_2^-)\rs$
+  rather than $(\U(\VV_2^+) \times \VV_2^+)\rs$;
+  this is equivalent to \Cref{assume:a_odd} which states that
+  \[ v(1 - a \bar a) \equiv 1 \pmod 2. \]
+  In particular, we may assume $v(a) = v(d) = 0$ and $v(b) + v(c) \ge 1$ is odd
+  (\Cref{assume:FJ}).
+\end{lemma}

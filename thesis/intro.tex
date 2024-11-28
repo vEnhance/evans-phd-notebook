@@ -388,13 +388,16 @@ We propose the following conjecture, which we have proved for $n = 2$
   \[ \left. \pdv{}{s} \right\rvert_{s=0}
     \Orb \left(\guv, \phi \otimes \oneV, s \right) = 0 \]
   for every such $(\uu, \vv^\top) \in V'_n(F)$,
-  Then in fact $\Orb \left(\guv, \phi \otimes \oneV, s \right) = 0$ for all $s \in \CC$.
+  Then in fact
+  \[ \Orb \left(\guv, \phi \otimes \oneV, s \right) = 0 \]
+  for all $s \in \CC$.
 
   \item[(b)]
   Fix a choice of $(\uu, \vv^\top) \in V'_n(F)$.
   Consider all $\gamma \in S_n(F)\rs$ for which $\guv$
-  matches with an element of $(\U(\VV_n^-) \times \VV_n^-)\rs$.
-  Consider the map of vector spaces
+  matches with an element of $(\U(\VV_n^-) \times \VV_n^-)\rs$
+  and assume there is at least one such $\gamma$.
+  Define the map of vector spaces
   \begin{align*}
     \HH(S_n(F))
     &\to C^\infty( \left\{ \text{elements of } S_n(F)\rs \text{ matching as above} \right\} ) \\
@@ -402,7 +405,8 @@ We propose the following conjecture, which we have proved for $n = 2$
       \Orb \left(\guv, \phi \otimes \oneV, s \right) \right).
   \end{align*}
   Then this map has large kernel,
-  in the sense it is not contained in any maximal ideal of $\HH(S_n(F))$.
+  in the sense it is not contained in any maximal ideal of $\HH(S_n(F))$
+  when $\HH(S_n(F))$ is viewed as a ring under the isomorphism of \Cref{ch:satake}.
   \end{enumerate}
 \end{conjecture}
 
@@ -425,7 +429,7 @@ in the following way:
   see \Cref{ch:orbitalFJ0} for a definition.
 
   \ii Suppose $\guv \in (S_2(F) \times V'_2(F))\rs$
-  pairs with an element of $(\U(\VV_2^-) \times \VV_2^-)\rs$.
+  matches an element of $(\U(\VV_2^-) \times \VV_2^-)\rs$.
   Then under the action $\GL_2(F)$ we may assume $\guv$ is of the form
   \[
     \guv = \left( \begin{pmatrix} a & b \\ c & d \end{pmatrix},
@@ -433,17 +437,32 @@ in the following way:
       \begin{pmatrix} 0 & e \end{pmatrix} \right)
     \in (S_2(F) \times V_2'(F))\rs
   \]
-  (that is, we can find an orbit representative of this form).
+  (that is, we can find a $\GL_2(F)$-orbit representative of this form).
   The parameters $a$, $b$, $c$, $d$ need to satisfy certain dependencies
-  for the matching to hold; these are described in \Cref{ch:orbitalFJ0}.
+  for the matching to hold;
+  these requirements are documented in \Cref{lem:semi_lie_params}.
 \end{itemize}
 
-Then we were able to derive the following fully explicit formula.
-See \Cref{sec:proof_semi_lie_formula} for some concrete examples and illustrations.
+Then we were able to derive the following fully explicit formula
+in terms of the representative detailed in \Cref{lem:semi_lie_params}.
+See \Cref{sec:proof_semi_lie_formula} for some concrete examples
+and illustrations of \Cref{thm:semi_lie_formula}.
 \begin{theorem}
   \label{thm:semi_lie_formula}
-  Let $\guv$ be as above.
-  If $v(e) < 0$ or $v(b) + v(c) < -2r$, the entire orbital integral is $0$.
+  Let
+  \[
+    \guv = \left( \begin{pmatrix} a & b \\ c & d \end{pmatrix},
+      \begin{pmatrix} 0 \\ 1 \end{pmatrix},
+      \begin{pmatrix} 0 & e \end{pmatrix} \right)
+    \in (S_2(F) \times V_2'(F))\rs
+  \]
+  satisfy the requirements in \Cref{lem:semi_lie_params}.
+  Let $r \ge 0$.
+
+  If $v(e) < 0$ or $v(b) + v(c) < -2r$, then
+  \[ \Orb(\guv, \mathbf{1}_{K'_{S, \le r}} \otimes \oneV, s) = 0 \]
+  holds identically for all $s \in \CC$.
+
   Otherwise define
   \[ \nn_\guv(k) \coloneqq \min\left( \left\lfloor \tfrac{k + (v(b)+r)}{2} \right\rfloor,
     \left\lfloor \tfrac{(2v(e)+v(c)+r)-k}{2} \right\rfloor, N \right) \]
@@ -469,9 +488,9 @@ See \Cref{sec:proof_semi_lie_formula} for some concrete examples and illustratio
 Differentiating this yields the following result:
 \begin{corollary}
   \label{cor:semi_lie_derivative_single}
-  Let $r$, $\guv$ and $N$ be as in \Cref{thm:semi_lie_formula}
+  Retain the setting of \Cref{thm:semi_lie_formula}.
   Also define $\varkappa \coloneqq v(e) - (v(d-a)+r)$.
-  Then
+  If both $\varkappa \ge 0$ and $v(b) + v(c) > 2v(d-a)$, then we have the formula
   \begin{align*}
     \frac{(-1)^{v(c)+r}}{\log q}
     &\partial \Orb(\guv, \mathbf{1}_{K'_{S, \le r}}) \\
@@ -480,20 +499,28 @@ Differentiating this yields the following result:
     \begin{cases}
       \frac{\varkappa}{2} & \text{if }\varkappa \equiv 0 \pmod 2 \\
       \left( v(e)+\frac{v(b)+v(c)}{2}-2v(d-a)-r \right) - \frac{\varkappa}{2}
-      & \text{if }\varkappa \equiv 1 \pmod 2 \\
+      & \text{if }\varkappa \equiv 1 \pmod 2.
     \end{cases}
   \end{align*}
-  where the second term is only present when $\varkappa \ge 0$ and $v(b)+v(c)>2v(d-a)$.
+  Otherwise we instead have the formula
+  \[
+    \frac{(-1)^{v(c)+r}}{\log q}
+    \partial \Orb(\guv, \mathbf{1}_{K'_{S, \le r}}) \\
+    = \sum_{j=0}^N \left( \frac{2v(e)+v(b)+v(c)+1}{2} + r - 2j \right) \cdot q^j.
+  \]
 \end{corollary}
 
 The formula simplifies even further if one considers instead
 $\mathbf{1}_{K'_{S, \le r}} + \mathbf{1}_{K'_{S, \le (r-1)}}$;
-and indeed we will see that this particular combination comes up naturally
-with a special role later as well.
+and indeed we will see that this particular combination
+comes up naturally in \Cref{ch:finale} with a special rose
+as the base change mentioned in \cite[Lemma 7.1.1]{ref:AFLspherical}.
+
 \begin{corollary}
   \label{cor:semi_lie_combo}
-  Let $r$, $\guv$, $N$, $\varkappa$ be as in \Cref{cor:semi_lie_derivative_single}.
-  Assume $r \ge 1$ and define
+  Retain the setting of \Cref{thm:semi_lie_formula}.
+  Also define $\varkappa \coloneqq v(e) - (v(d-a)+r)$.
+  For $r \ge 1$ define
   \begin{align*}
     C &\coloneqq
     \begin{cases}
@@ -544,10 +571,8 @@ More precisely, we have the following two theorems.
 
 \begin{theorem}
   \label{thm:semi_lie_ker_trivial}
-  Consider any $\gamma = \begin{pmatrix} a & b \\ c & d \end{pmatrix} \in S_2(F)$
-  as in \Cref{sec:semi_lie_2_intro_params}.
-  Assume $v(b)+v(c)>0$ (so that the orbital integrals are not all zero.)
-  Then there don't exist any nonzero functions $\phi \in \HH(S_2(F))$ such that
+  Consider any $\gamma \in S_2(F)$ as in \Cref{lem:semi_lie_params}.
+  Then there doesn't exist any nonzero function $\phi \in \HH(S_2(F))$ such that
   \[ \left. \pdv{}{s} \right\rvert_{s=0}
     \Orb \left(
       \left( \gamma, \begin{pmatrix} 0 \\ 1 \end{pmatrix}, \begin{pmatrix} 0 & \varpi^i \end{pmatrix} \right),
@@ -560,16 +585,18 @@ More precisely, we have the following two theorems.
 \begin{theorem}
   \label{thm:semi_lie_ker_huge}
   Fix a choice of $(\uu, \vv^\top) \in V_2'(F)$ with $\vv^\top \uu \neq 0$.
-  Consider all $\gamma \in S_2(F)$ for which $\guv$
+  Consider the choices of $\gamma \in S_2(F)$ for which $\guv$
   matches with an element of $(\U(\VV_n^-) \times \VV_n^-)\rs$.
-  Then the set of $\phi \in \HH(S_2(F))$ such that
+  Then the space of $\phi \in \HH(S_2(F))$ such that
   \[
     \left. \pdv{}{s} \right\rvert_{s=0}
     \Orb \left( \guv, \phi \otimes \oneV, s \right) = 0
   \]
-  holds for all such $\gamma$ is a $\QQ$-vector subspace of $\HH(S_2(F))$
+  holds for all these $\gamma$ is a $\QQ$-vector subspace of $\HH(S_2(F))$
   whose codimension is at most $v(\uu \vv^\top) + 2$.
-  Moreover, the set of such $\phi$ is not contained in any maximal ideal of $\HH(S_2(F))$.
+  Moreover, this subspace of $\HH(S_2(F))$
+  is not contained in any maximal ideal of $\HH(S_2(F))$
+  when $\HH(S_2(F))$ is viewed as a ring under the isomorphism of \Cref{ch:satake}.
 \end{theorem}
 
 \begin{remark}
@@ -579,21 +606,17 @@ More precisely, we have the following two theorems.
   In general, a finite codimension vector subspace of $\QQ[T]$ could
   be contained in a maximal ideal,
   such as the codimension one subspace $T \mathbb Q[T] \subset \QQ[T]$.
-  Conversely, a finite \emph{dimension} vector subspace such as
-  the one-dimensional space $\QQ \subseteq \QQ[T]$ is not contained in any maximal ideal.
+  Conversely, a \emph{finite} dimension vector subspace might still
+  not be contained in any maximal ideal,
+  such as the one-dimensional space $\QQ \subseteq \QQ[T]$.
+  Thus neither of being finite codimension and generating all of $\QQ[T]$ as an ideal
+  imply each other.
 
-  Thus neither of being finite codimension and generating all of $\QQ[T]$ imply each other.
   However, the author's opinion is that being finite codimension should be more surprising,
   since even a finite-dimensional $\QQ$-vector subspace of $\QQ[T]$
   (indeed, any subspace containing $1$) could still generate the entire ring $\QQ[T]$.
-
-  In particular, we do not currently have a reason to expect that for larger $n$
-  the codimension of the kernel will still be finite in $\HH(S_n(F))$,
-  i.e.\ an analogous finite-codimension conjecture
-  to \Cref{conj:large_kernel_group} seems possibly too optimistic.
-  Nonetheless, it might still be interesting to consider other different ways
-  of formalizing the notion of ``large kernel'' in \Cref{conj:large_kernel_group}
-  and \Cref{conj:kernel_semi_lie}.
+  It might be interesting to consider other different ways
+  of formalizing the notion of ``large kernel'' in \Cref{conj:kernel_semi_lie}.
 \end{remark}
 
 \subsection{The geometric side of the semi-Lie AFL conjecture for $n=2$}
@@ -691,9 +714,17 @@ On the other hand, the orbital data is enough to prove the following result.
 \begin{theorem}
   \label{thm:no_kernel_group}
   There is no nontrivial $\phi \in \HH(S_3(F))$ such that
-   \[ \left. \pdv{}{s} \right\rvert_{s=0} \Orb \left( \gamma, \phi, s \right) = 0 \]
-   holds for every $\gamma \in S_3(F)\rs$ pairing to an element of $\UU(\VV_3^-)\rs$.
+  \[ \left. \pdv{}{s} \right\rvert_{s=0} \Orb \left( \gamma, \phi, s \right) = 0 \]
+  holds for every $\gamma \in S_3(F)\rs$ pairing to an element of $\U(\VV_3^-)\rs$.
 \end{theorem}
+\begin{remark}
+  Note that \Cref{thm:no_kernel_group} does not falsify
+  \cite[Conjecture 1.0.2]{ref:AFLspherical},
+  because the conjecture in \emph{loc.\ cit.}\ is formulated
+  for a larger Hecke algebra $\HH(S_{n-1}(F)) \otimes \HH(S_n(F))$.
+  Meanwhile, here we have only considered an inhomogeneous version of the AFL
+  where the first component is $\mathbf{1}_{K'}$.
+\end{remark}
 
 \section{Roadmap}
 The rest of the paper is organized as follows.

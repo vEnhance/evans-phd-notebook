@@ -3,22 +3,11 @@
 We now put together all the results from the previous chapters to
 prove \Cref{thm:semi_lie_n_equals_2}.
 
+We assume $\guv$ is as in \Cref{lem:semi_lie_params} throughout.
+
 \section{Matching $\guv$ and $(g,u)$, and the invariants for the matching}
 \subsection{The invariants for the orbit of $\guv$}
-From \Cref{ch:orbitalFJ0}, recall that we considered
-\[
-  (\gamma, \uu, \vv^\top)
-  =
-  \left( \begin{pmatrix} a & b \\ c & d \end{pmatrix}
-    \begin{pmatrix} 0 \\ 1 \end{pmatrix}, \begin{pmatrix} 0 & e \end{pmatrix} \right)
-  \in (S_2(F) \times V'_2(F))\rs
-\]
-subject to the conditions
-\begin{align*}
-  \bar b c = b \bar c &= 1 - a \bar a = 1 - d \bar d \\
-  \text{and } d &= - \bar a c / \bar c = -\bar a b / \bar b.
-\end{align*}
-It will again be enough to consider the situation in which $\det \gamma = 1$.
+Recall the relations in \Cref{lem:semi_lie_params}.
 The invariants in this case as described in \Cref{def:matching_semi_lie} are:
 \begin{itemize}
   \ii $\Tr \gamma = a + d$
@@ -36,12 +25,12 @@ to deduce the following lemma.
 
 \begin{lemma}
   \label{lem:finale_match}
-  Suppose
+  Let
   \[ g = \lambda\inv \begin{pmatrix}
     \alpha & \bar\beta \varpi \\
-    \beta &  \bar\alpha
+    \beta & \bar\alpha
     \end{pmatrix} \in \U(\VV_2^-) \]
-  and $u = s + t \Pi$ as above with $s t = 0$ and $v(\lambda) = 0$.
+  and $u = s + t \Pi$ with $s t = 0$ and $v(\lambda) = 0$.
   Suppose $(g,u)$ matches with
   \[ (\gamma, \uu, \vv^\top) = \left( \begin{pmatrix} a & b \\ c & d \end{pmatrix},
     \begin{pmatrix} 0 \\ 1 \end{pmatrix}, \begin{pmatrix} 0 & e \end{pmatrix} \right)
@@ -67,7 +56,7 @@ to deduce the following lemma.
   to the ones determined in \Cref{lem:g_u_invariants} gives
   \begin{align*}
     a + d &= \lambda\inv (\alpha + \bar\alpha) \\
-    \det \gamma = ad - bc &= \det g \\
+    \det \gamma = ad - bc &= \det g = \lambda^{-2} (\alpha \bar\alpha - \beta \bar\beta \varpi) \\
     e &= \Nm u \\
     de &= \begin{cases}
       \lambda\inv \bar\alpha \Nm u & \text{if } s = 0 \\
@@ -80,6 +69,17 @@ to deduce the following lemma.
     = -(\det g -  \lambda^{-2} \alpha \bar \alpha)
     = -(\det \gamma - ad) = bc. \qedhere \]
 \end{proof}
+
+\begin{remark}
+  Note that many of the assumptions in \Cref{lem:semi_lie_params}
+  can also be extracted from \Cref{lem:finale_match}.
+  For example, taking the valuation of
+  \[ \lambda \bar \lambda = \alpha \bar \alpha - \beta \bar \beta \varpi \]
+  implies that (since the left-hand side is a unit)
+  \[ v(a) = v(\alpha) = 0 <  2v(\beta) + 1 = v(b) + v(c). \]
+  So indeed $v(1-a \bar a) = v(\bar bc)$ must be odd.
+\end{remark}
+
 
 \section{Translation of the Gross-Keating data to the orbital side}
 We combine the results of \Cref{sec:GK} with \Cref{lem:finale_match}.
