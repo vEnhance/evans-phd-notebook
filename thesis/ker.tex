@@ -1,69 +1,16 @@
 \chapter{Large and small kernels}
 \label{ch:ker}
 
-In this chapter:
+In this chapter we use \Cref{cor:semi_lie_combo} to prove
+both \Cref{thm:semi_lie_ker_trivial} and \Cref{thm:semi_lie_ker_huge}
+for the orbital integral on $S_2(F) \times V'_2(F)$,
+We also comment on an analogous result for $S_3(F)$,
+although we do not provide all the details.
+
 \begin{itemize}
   \ii For the orbital integral on $S_3(F)$,
   we use \todo{ref} to prove \Cref{thm:large_kernel_group_full} which implies \Cref{thm:large_kernel_group}.
-  \ii For the orbital integral on $S_2(F) \times V'_2(F)$,
-  we use \Cref{cor:semi_lie_combo} to prove
-  both \Cref{thm:semi_lie_ker_trivial} and \Cref{thm:semi_lie_ker_huge}.
 \end{itemize}
-
-\section{In the group AFL, the kernel still has finite codimension for $n=3$}
-The main result is the following:
-\begin{theorem}
-  \label{thm:large_kernel_group_full}
-  For any $r \ge 3$ we always have
-  \[ \partial \Orb\left(\gamma, \mathbf{1}_{K'_{S, r}} + 2q \mathbf{1}_{K'_{S, r-1}}
-    + q^2 \mathbf{1}_{K'_{S, r-2}}\right) = (2q+2) \log q. \]
-\end{theorem}
-
-\subsection{Proof of \Cref{thm:large_kernel_group}}
-\Cref{thm:large_kernel_group_full} already implies the codimension of the kernel is at most $3$.
-In order to show it is exactly $3$,\todo{prove it}.
-
-We now turn to showing that the kernel is not contained in any maximal ideal.
-This requires us to invoke the explicit results from \Cref{ch:satake}.
-Consider the composed isomorphisms
-\[ \HH(S_3(F)) \xrightarrow{\BC_S} \HH(\U(\VV_3^+)) \xrightarrow{\Sat} \QQ[Y + Y^{-1}]. \]
-Let $K =  \GL_n(\OO_E) \cap \U(\VV_3^+)$ and note for any $r \ge 2$ we have
-\begin{align*}
-  \mathbf{1}_{K\varpi^{(r,0,-r)}K}
-  &\xmapsto{\BC_S^{-1}}
-  \mathbf{1}_{K'_{S, r}} + 2q \mathbf{1}_{K'_{S, r-1}} + 2q^2 \mathbf{1}_{K'_{S, r-2}} + 2q^3 \mathbf{1}_{K'_{S, r-3}} + \dots \\
-  \implies
-  \mathbf{1}_{K\varpi^{(r,0,-r)}K} - q^2 \mathbf{1}_{K\varpi^{(r-2,0,-(r-2))}K}
-  &\xmapsto{\BC_S^{-1}}
-  \mathbf{1}_{K'_{S, r}} + 2q \mathbf{1}_{K'_{S, r-1}} + q^2 \mathbf{1}_{K'_{S, r-2}}.
-\end{align*}
-Hence for $r \ge 3$ if we define
-\begin{align*}
-  P_r(Y) &\coloneqq \Sat\left(\BC_S(\mathbf{1}_{K'_{S, r}}
-    + 2q \mathbf{1}_{K'_{S, r-1}} + q^2 \mathbf{1}_{K'_{S, r-2}})\right) \\
-  &= \Sat\left( \mathbf{1}_{K\varpi^{(r,0,-r)}K} - q^2 \mathbf{1}_{K\varpi^{(r-2,0,-(r-2))}K} \right) \\
-  &= \Sat\Big(
-    \mathbf{1}_{\varpi^{-r} \Mat_3(\OO_E) \cap \U(\VV_3^+)}
-    - \mathbf{1}_{\varpi^{-(r-1)} \Mat_3(\OO_E) \cap \U(\VV_3^+)} \\
-    &\qquad- q^2 \mathbf{1}_{\varpi^{-(r-2)} \Mat_3(\OO_E) \cap \U(\VV_3^+)}
-    + q^2 \mathbf{1}_{\varpi^{-(r-3)} \Mat_3(\OO_E) \cap \U(\VV_3^+)}
-    \Big) \\
-  &= \left( q^{2r} \sum_{j=-r}^r Y^j + q^{2r-1} \sum_{j=-(r-1)}^{r-1} Y^j \right)
-  - \left( q^{2r-2} \sum_{j=-(r-1)}^{r-1} Y^j + q^{2r-3} \sum_{j=-(r-2)}^{r-2} Y^j \right) \\
-  &\qquad- \left( q^{2r-2} \sum_{j=-(r-2)}^{r-2} Y^j + q^{2r-3} \sum_{j=-(r-3)}^{r-3} Y^j \right)
-  + \left( q^{2r-4} \sum_{j=-(r-3)}^{r-3} Y^j + q^{2r-5} \sum_{j=-(r-4)}^{r-4} Y^j \right)
-\end{align*}
-then it follows that $P_r(Y) - P_3(Y)$ is contained in the kernel for any $r \ge 3$.
-
-To show this kernel generates the entire ring, it would be sufficient to prove
-there is no $Y \in \CC^\times$ such that $P_3(Y) = P_4(Y) = P_5(Y) = P_6(Y) = \dotsb$.
-However, using the explicit formula for $P_r(Y)$ above,
-a direct calculation gives the following two identities:
-\begin{align*}
-  P_5(Y) - \frac{q^2}{Y} P_4(Y) - q^2 Y P_4(Y) - \frac{q^2}{Y} P_3(Y) &= -q^5 \\
-  P_6(Y) - \frac{q^2}{Y} P_5(Y) - q^2 Y P_5(Y) - \frac{q^2}{Y} P_4(Y) &= 0.
-\end{align*}
-So such a common root $Y$ cannot exist.
 
 \section{In the semi-Lie case, the kernel is trivial if we allow $v(e)$ to vary, for every fixed choice of $\gamma$}
 We prove \Cref{thm:semi_lie_ker_trivial} in this section.
@@ -567,4 +514,97 @@ for which the orbital integral does not vanish.
   \end{equation}
   Then \Cref{thm:semi_lie_finite_codim_full} follows directly
   from \eqref{eq:semi_lie_finite_codim_large_r} and \eqref{eq:semi_lie_finite_codim_small_r}.
+\end{proof}
+\section{Proof of \Cref{thm:no_kernel_group} for the group AFL}
+We give a proof in this section that no nonzero $\phi \in \HH(S_3(F))$ can satisfy
+\[ \partial \Orb(\gamma, \phi) = 0 \]
+for every $\gamma \in S_3(F)\rs$ pairing to an element of $\U(\VV_3^-)$.
+The proof is actually quite short.
+Suppose that
+\[ \phi = \sum_{r=0}^N a_j \mathbf{1}_{K'_{S, \le r}} \]
+for some $N > 0$.
+We pick our $\gamma$ according to \Cref{lem:S3_abcd} subject to
+\[ v(b) = v(d) = -N. \]
+In that case, we have
+\[ \Orb(\gamma, \mathbf{1}_{K'_{S, \le r}}, s) = 0 \text{ for all } r = 0, 1, \dots, N-1 \]
+and so there is certainly no contribution to its derivative.
+However, for $a_N$ according to \Cref{ex:ell_neg_top_case} we have
+\[
+  \partial \Orb(\gamma, \mathbf{1}_{K'_{S, \le N}})
+  = \left. \pdv{}{s} \right\rvert_{s=0}
+  \left( \sum_{k=-r}^{\lambda-2r} (-1)^k (q^s)^k \right)
+  = (-1)^{r+1} \cdot \frac{\lambda+1}{2} \neq 0.
+\]
+Hence $N > 0$ cannot hold.
+
+For $N=0$, we instead take, say, $\ell = \delta = 1$ in \Cref{thm:full_orbital_ell_odd}
+in which case $\Orb(\gamma, \mathbf{1}_{K'_S}, s) = -q^{3s} + q^{2s} - q^s + 1$
+whose derivative is $-2$.
+The proof is complete.
+
+\section{A sequence of test functions almost lying in the kernel in the group AFL case}
+We mention the following $S_3(F)$ analog of \Cref{thm:semi_lie_finite_codim_full}.
+\begin{proposition}
+  Choose $\gamma \in S_3(F)\rs$, and let $\ell$ be as in \Cref{lem:S3_abcd}.
+  If $\ell \ge 0$, then for any $r \ge 3$,
+  \[ \partial \Orb\left(\gamma, \mathbf{1}_{K'_{S, r}} + 2q \mathbf{1}_{K'_{S, r-1}}
+    + q^2 \mathbf{1}_{K'_{S, r-2}}\right) = (2q+2) \log q. \]
+  The result also holds for $\ell < 0$ with at most three exceptions for $r$,
+  namely $-\half\ell \le r \le -\half\ell + 2$.
+\end{proposition}
+\begin{proof}
+  \todo{write this proof}
+\end{proof}
+
+In the spirit of the conjecture proposed in \cite[Conjecture 1.0.2]{ref:AFLspherical},
+we mention the following result as well.
+
+\begin{proposition}
+  The subspace of $\HH(S_3(F))$ spanned by
+  \[ \mathbf{1}_{K'_{S, r}} + 2q \mathbf{1}_{K'_{S, r-1}} + \mathbf{1}_{K'_{S, r-2}} \]
+  for $r \ge 3$ is (in addition to being of codimension at most $3$)
+  not contained in any maximal ideal of $\HH(S_3(F))$.
+\end{proposition}
+
+\begin{proof}
+  This requires us to invoke the explicit results from \Cref{ch:satake}.
+  Consider the composed isomorphisms
+  \[ \HH(S_3(F)) \xrightarrow{\BC_S} \HH(\U(\VV_3^+)) \xrightarrow{\Sat} \QQ[Y + Y^{-1}]. \]
+  Let $K =  \GL_n(\OO_E) \cap \U(\VV_3^+)$ and note for any $r \ge 2$ we have
+  \begin{align*}
+    \mathbf{1}_{K\varpi^{(r,0,-r)}K}
+    &\xmapsto{\BC_S^{-1}}
+    \mathbf{1}_{K'_{S, r}} + 2q \mathbf{1}_{K'_{S, r-1}} + 2q^2 \mathbf{1}_{K'_{S, r-2}} + 2q^3 \mathbf{1}_{K'_{S, r-3}} + \dots \\
+    \implies
+    \mathbf{1}_{K\varpi^{(r,0,-r)}K} - q^2 \mathbf{1}_{K\varpi^{(r-2,0,-(r-2))}K}
+    &\xmapsto{\BC_S^{-1}}
+    \mathbf{1}_{K'_{S, r}} + 2q \mathbf{1}_{K'_{S, r-1}} + q^2 \mathbf{1}_{K'_{S, r-2}}.
+  \end{align*}
+  Hence for $r \ge 3$ if we define
+  \begin{align*}
+    P_r(Y) &\coloneqq \Sat\left(\BC_S(\mathbf{1}_{K'_{S, r}}
+      + 2q \mathbf{1}_{K'_{S, r-1}} + q^2 \mathbf{1}_{K'_{S, r-2}})\right) \\
+    &= \Sat\left( \mathbf{1}_{K\varpi^{(r,0,-r)}K} - q^2 \mathbf{1}_{K\varpi^{(r-2,0,-(r-2))}K} \right) \\
+    &= \Sat\Big(
+      \mathbf{1}_{\varpi^{-r} \Mat_3(\OO_E) \cap \U(\VV_3^+)}
+      - \mathbf{1}_{\varpi^{-(r-1)} \Mat_3(\OO_E) \cap \U(\VV_3^+)} \\
+      &\qquad- q^2 \mathbf{1}_{\varpi^{-(r-2)} \Mat_3(\OO_E) \cap \U(\VV_3^+)}
+      + q^2 \mathbf{1}_{\varpi^{-(r-3)} \Mat_3(\OO_E) \cap \U(\VV_3^+)}
+      \Big) \\
+    &= \left( q^{2r} \sum_{j=-r}^r Y^j + q^{2r-1} \sum_{j=-(r-1)}^{r-1} Y^j \right)
+    - \left( q^{2r-2} \sum_{j=-(r-1)}^{r-1} Y^j + q^{2r-3} \sum_{j=-(r-2)}^{r-2} Y^j \right) \\
+    &\qquad- \left( q^{2r-2} \sum_{j=-(r-2)}^{r-2} Y^j + q^{2r-3} \sum_{j=-(r-3)}^{r-3} Y^j \right)
+    + \left( q^{2r-4} \sum_{j=-(r-3)}^{r-3} Y^j + q^{2r-5} \sum_{j=-(r-4)}^{r-4} Y^j \right)
+  \end{align*}
+  then it follows that $P_r(Y) - P_3(Y)$ is contained in the kernel for any $r \ge 3$.
+
+  To show this kernel generates the entire ring, it would be sufficient to prove
+  there is no $Y \in \CC^\times$ such that $P_3(Y) = P_4(Y) = P_5(Y) = P_6(Y) = \dotsb$.
+  However, using the explicit formula for $P_r(Y)$ above,
+  a direct calculation gives the following two identities:
+  \begin{align*}
+    P_5(Y) - \frac{q^2}{Y} P_4(Y) - q^2 Y P_4(Y) - \frac{q^2}{Y} P_3(Y) &= -q^5 \\
+    P_6(Y) - \frac{q^2}{Y} P_5(Y) - q^2 Y P_5(Y) - \frac{q^2}{Y} P_4(Y) &= 0.
+  \end{align*}
+  So such a common root $Y$ cannot exist.
 \end{proof}

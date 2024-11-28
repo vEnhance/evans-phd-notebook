@@ -370,28 +370,12 @@ held identically across all $\gamma \in S_2(F)$.
 In fact, the space of such $\phi$ has codimension $2$
 as a vector subspace of $\HH(S_2(F))$ for $n = 2$.
 They thus stated a conjecture the kernel was ``large'' for general $n$
-as \cite[Conjecture 1.0.2]{ref:AFLspherical};
-we give a special case of it here compatible with our specialization.
-Later in this paper we will see it holds for $n = 3$ as well.
-\begin{conjecture}
-  [{\cite[Conjecture 1.0.2]{ref:AFLspherical}}]
-  \label{conj:large_kernel_group}
-  Consider the map of vector spaces
-  \begin{align*}
-    \HH(S_n(F))
-    &\to C^\infty( \left\{ \text{elements of } S_n(F)\rs \text{ matching } \U(\VV_n^-)\rs \right\} ) \\
-    \phi &\mapsto \left( \gamma \mapsto \left. \pdv{}{s} \right\rvert_{s=0} \Orb \left(\gamma, \phi, s \right) \right).
-  \end{align*}
-  Then this map has a large kernel,
-  in the sense that the kernel is not contained in any maximal ideal of $\HH(\U(\VV_n^-))$.
-\end{conjecture}
+as \cite[Conjecture 1.0.2]{ref:AFLspherical}.
 
 It is therefore natural to ask whether a similar large kernel result
 could hold for the analogous orbital integral in the semi-Lie case.
-In fact, even for $n=2$ it turns out the different parameters
-behave quite differently from each other,
-in contrast to the group case from before.
-Thus, we propose the following conjecture, which we have proved for $n = 2$
+In fact, even for $n=2$ the behavior is somewhat different.
+We propose the following conjecture, which we have proved for $n = 2$
 (see \Cref{thm:semi_lie_ker_trivial} and \Cref{thm:semi_lie_ker_huge} momentarily).
 \begin{conjecture}
   \label{conj:kernel_semi_lie}
@@ -703,15 +687,12 @@ However, we did not complete the comparison on the geometric side in this situat
 Thus we do not claim a proof of $n = 3$ of \Cref{conj:inhomog},
 although we imagine such a proof could be completed
 once a method for determining the intersection numbers explicitly is devised.
-
 On the other hand, the orbital data is enough to prove the following result.
 \begin{theorem}
-  \label{thm:large_kernel_group}
-  For $n = 3$, the kernel described in \Cref{conj:large_kernel_group}
-  in fact has codimension exactly $3$.
-  Moreover, \Cref{conj:large_kernel_group} holds for $n = 3$;
-  that is, the kernel (as a $\QQ$-vector subspace of $\HH(S_3(F))$)
-  is not contained in any maximal ideal.
+  \label{thm:no_kernel_group}
+  There is no nontrivial $\phi \in \HH(S_3(F))$ such that
+   \[ \left. \pdv{}{s} \right\rvert_{s=0} \Orb \left( \gamma, \phi, s \right) = 0 \]
+   holds for every $\gamma \in S_3(F)\rs$ pairing to an element of $\UU(\VV_3^-)\rs$.
 \end{theorem}
 
 \section{Roadmap}
