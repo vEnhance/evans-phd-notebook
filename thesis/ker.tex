@@ -11,7 +11,8 @@ We assume $\guv$ is as in \Cref{lem:semi_lie_params} throughout this chapter.
 
 \section{In the semi-Lie case, the kernel is trivial if we allow $v(e)$ to vary, for every fixed choice of $\gamma$}
 We prove \Cref{thm:semi_lie_ker_trivial} in this section.
-We treat $\gamma$ as fixed, and let
+We treat $\gamma$ as fixed, satisfying the requirements of \Cref{lem:semi_lie_params},
+and we let
 \[ \theta \coloneqq \min\left( v(b)+v(c), 2v(d-a) \right) \ge 0 \]
 as we did in \Cref{ch:orbitalFJ1}.
 
@@ -281,7 +282,7 @@ Since $M$ has full rank, it follows that $c_0 = \dots = c_N = 0$.
 We start with the following lemma.
 \begin{lemma}
   \label{lem:semi_lie_large_r}
-  For $r \ge v(e) + 2$, we have
+  Let $\guv \in (S_2(F) \times V'_2(F))\rs^-$. If $r \ge v(e) + 2$, we have
   \[
     \partial \Orb \left( \guv,
         \mathbf{1}_{K'_{S, \le r}} + 2 \mathbf{1}_{K'_{S, \le (r-1)}} + \mathbf{1}_{K'_{S, \le (r-2)}}
@@ -410,7 +411,7 @@ such that for any fixed $\guv$, there are at most three values of $r$
 for which the orbital integral does not vanish.
 \begin{theorem}
   \label{thm:semi_lie_finite_codim_full}
-  Suppose $\guv \in (S_2(F) \times V_2'(F))\rs$ is as in \Cref{lem:semi_lie_params}.
+  Suppose $\guv \in (S_2(F) \times V_2'(F))\rs^-$ is as in \Cref{lem:semi_lie_params}.
   Then
   \[ \partial \Orb \left( \guv, \phi_r + (q+1)\phi_{r-1} + q\phi_{r-2} \right) = 0 \]
   holds for all $r \ge 5$ with at most three exceptions,
@@ -643,8 +644,7 @@ We will use the following extremely easy lemma:
     = \begin{cases}
       \frac W2 - \frac{L-1}{2} \cdot r & \text{if } W \equiv 0 \pmod 2 \\
       - \frac{W+L}{2} - \frac{L+1}{2} \cdot r & \text{if } W \equiv 1 \pmod 2.
-    \end{cases}
-  \]
+    \end{cases} \]
 \end{lemma}
 \begin{proof}
   Since $\Sigma_r(0) = 0$, the effect of $C$ is just multiplication by $(-1)^C$
