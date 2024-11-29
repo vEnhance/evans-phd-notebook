@@ -1,8 +1,8 @@
 \chapter{Sage implementations of formulas and test cases}
-The author wrote some code in the computer algebra system Sage
-in order to help verify the correctness of elementary calculations done in this paper.
-For the convenience of the reader, the code is provided below.
-It can also be found on \url{https://github.com/vEnhance/evans-phd-notebook}
+Below we provide Sage implementations and test suites
+for some of the calculations this paper.
+The Sage file itself can also be found
+\url{https://github.com/vEnhance/evans-phd-notebook}
 under \texttt{thesis/checkthesis.sage}.
 
 \section{Description of implemented functions}
@@ -32,11 +32,11 @@ The parameters are those described in \Cref{lem:S3_abcd} and \Cref{lem:parameter
   \Cref{thm:full_orbital_ell_odd,thm:full_orbital_ell_even,thm:full_orbital_ell_neg}
   which are implemented as follows.
   \begin{itemize}
-    \ii The function \texttt{ARCH\_sum\_n(a0, a1, w1, w2)} denotes the sum
+    \ii The function \texttt{ARCH\_sum\_n(a0, a1, w1, w2)} implements the sum
     \[ \sum_{k=a_0}^{a_1} \left( 1 + q + \dots
-      + q^{\Arch_{[a_0, a_1]}(w_1, w_2)(k)} \right) (-q^s)^k \in \ZZ[q^s]. \]
-    \ii The function \texttt{ARCH\_sum\_c(a0, a1, w1, w2)} denotes the sum
-    \[ \sum_{k=a_0}^{a_1} + \Arch_{[a_0, a_1]}(w_1, w_2)(k) (-q^s)^k \in \ZZ[q^s, q]. \]
+      + q^{\Arch_{[a_0, a_1]}(w_1, w_2)(k)} \right) (-q^s)^k \in \ZZ[q^s, q]. \]
+    \ii The function \texttt{ARCH\_sum\_c(a0, a1, w1, w2)} implements the sum
+    \[ \sum_{k=a_0}^{a_1} \Arch_{[a_0, a_1]}(w_1, w_2)(k) (-q^s)^k \in \ZZ[q^s]. \]
   \end{itemize}
   \ii Using these functions, we implement \texttt{O\_for\_S3(r, l, delta, lam)}
   as the full orbital integral for all the cases.
@@ -62,8 +62,8 @@ derivative of the orbital integral for $S_3(F)$.
   \ii \texttt{gross\_keating\_sum(n1, n2)} implements the sum in \Cref{prop:GK}.
   \ii \texttt{GK(r, vb, vc, ve, vda)} implements the sum $\GK(r, v(b), v(c), v(e), v(d-a))$
   that we introduced in \eqref{eq:GKdef}.
-  \ii \texttt{clean\_intersection(r, vb, vc, ve, vda)} implements the simple right-hand side of
-  \Cref{thm:clean_intersection},
+  \ii \texttt{clean\_intersection(r, vb, vc, ve, vda)} implements the
+  right-hand side of \Cref{thm:clean_intersection},
   although we use the argument names corresponding to the matched elements
   after the translation in \Cref{lem:finale_match}.
 \end{itemize}
