@@ -236,7 +236,7 @@ def volDiskDouble(n, vxx1, vx12, rho1, rho2):
     assert n >= 1 and n >= rho1
 
     if vxx1 >= rho1 and vx12 >= rho2:
-        return factor(
+        return (
             q ** (-(n + rho1)) * (1 - q ** (-1))
             if rho1 >= 1
             else q ** (-n) * (1 - q ** (-2))
@@ -355,7 +355,7 @@ def O_ell_neg_brute(r, vb, lam):
     assert lam % 2 == 1
     l = 2 * vb
     delta = 2 * vb
-    INFINITY = 3 * (abs(r) + abs(l) + abs(delta) + abs(lam) + 5)
+    INFINITY = abs(r) + abs(l) + abs(delta) + abs(lam) + 1
 
     S = 0
     for n in irange(1, INFINITY):
@@ -517,8 +517,11 @@ class ThesisTest(unittest.TestCase):
             + q**2 * (O_for_S3(r - 2, **params) - O_for_S3(r - 3, **params))
         )
         deriv = derivative(combin, qs).subs(q_s=1)
-        if l < 0 and -l // 2 <= r <= -l // 2 + 2:
-            self.assertNotEqual(deriv, -2 * q - 2)
+        if l < 0:
+            if r < -l // 2:
+                self.assertEqual(deriv, 0)
+            elif r >= -l // 2 + 3:
+                self.assertNotEqual(deriv, -2 * q - 2)
         else:
             self.assertEqual(deriv, -2 * q - 2)
 
