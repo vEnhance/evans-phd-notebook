@@ -373,7 +373,10 @@ as the overall contribution from \textbf{Case 6}, where
 
 \section{Proof of \Cref{thm:semi_lie_formula}}
 \label{sec:proof_semi_lie_formula}
-We now prove \Cref{thm:semi_lie_formula}.
+We now prove \Cref{thm:semi_lie_formula}, which we restate here.
+
+\semilieformula*
+
 For reference, we provide \Cref{fig:semi_lie_sketch} sketching the shapes
 of $\nn_\guv$ and $\cc_\guv$, which may be easier to think about.
 
@@ -630,8 +633,11 @@ of $\nn_\guv$ and $\cc_\guv$, which may be easier to think about.
 \section{Proof of \Cref{cor:semi_lie_derivative_single}}
 With \Cref{thm:semi_lie_formula} established, we aim to calculate the derivative of
 \[ \Orb(\guv, \mathbf{1}_{K', S, \le r} \otimes \oneV, s) \]
-now at $s = 0$, thus proving \Cref{cor:semi_lie_derivative_single}.
+now at $s = 0$.
+Our goal is to prove \Cref{cor:semi_lie_derivative_single}:
+\semiliederiv*
 
+\begin{proof}[Proof of \Cref{cor:semi_lie_derivative_single}]
 For this calculation it will be more convenient to reformat \Cref{thm:semi_lie_formula}
 as a sum over $q^j$ rather than $(-1)^k (q^s)^k$.
 To that, continuing to write
@@ -717,10 +723,12 @@ On the other hand, if $\varkappa$ is odd we get instead
 These formulas match \Cref{cor:semi_lie_derivative_single}, proving it.
 (Note that we changed $\varkappa > 0$ to $\varkappa \ge 0$,
 which makes no change since then the contribution is zero anyway.)
+\end{proof}
 
 \section{Proof of \Cref{cor:semi_lie_combo}}
-We can now prove \Cref{cor:semi_lie_combo}
-as a corollary of \Cref{cor:semi_lie_derivative_single}.
+From \Cref{cor:semi_lie_derivative_single} we can now prove \Cref{cor:semi_lie_combo}
+\semiliecombo*
+\begin{proof}[Proof of \Cref{cor:semi_lie_combo}]
 Observe that when we add the right-hand side of \Cref{cor:semi_lie_derivative_single}
 to the same right-hand side with $r$ replaced by $r-1$, almost all the terms cancel.
 Indeed, the main sum for $0 \le j \le N-1$ line up:
@@ -815,5 +823,6 @@ Then we are left with $(-1)^{r+v(c)} \log q$ times
     -\frac{\varkappa+1}{2} & \text{if }\varkappa \equiv 1 \pmod 2.
   \end{cases}
 \end{align*}
-This matches \Cref{thm:semi_lie_formula}, and the proof is complete.
+This matches \Cref{thm:semi_lie_formula}, and the proof is complete. \qedhere
 \end{itemize}
+\end{proof}

@@ -247,9 +247,9 @@ we can now state the conjecture proposed in \cite{ref:AFLspherical}.
   [Inhomogeneous version of the AFL for the full spherical Hecke algebra,
   {\cite[Conjecture 6.2.1]{ref:AFLspherical}}]
   \label{conj:inhomog_spherical}
-  Let $f \in \HH(\U(\VV_n^+))$ be any element of the Hecke algebra,
-  and let $\phi = (\BC_{S_n}^{\eta^{n-1}})^{-1}(f) \in \HH(S_n(F))$ be its image
-  under base change as defined in \Cref{ch:satake}.
+  Let $f \in \HH(\U(\VV_n^+))$ be any element of the Hecke algebra, and let
+  \[ \phi = (\BC_{S_n}^{\eta^{n-1}})^{-1}(f) \in \HH(S_n(F)) \]
+  be its image under base change as defined in \Cref{ch:satake}.
   Then for matching (as defined in \Cref{def:matching_inhomog}) regular semisimple elements
   \[ g \in \U(\VV_n^-)\rs \longleftrightarrow \gamma \in S_n(F)\rs \]
   we have
@@ -333,9 +333,9 @@ Finally, we also update the definition of intersection number
 to accommodate the new term $u$ in \Cref{def:intersection_number_semi_lie_spherical}.
 \begin{conjecture}
   [Semi-Lie version of the AFL for the full spherical Hecke algebra]
-  Let $f \in \HH(\U(\VV_n^+))$ be any element of the Hecke algebra,
-  and let $\phi = (\BC_{S_n}^{\eta^{n-1}})^{-1}(f) \in \HH(S_n(F))$ be its image
-  under base change defined in \Cref{ch:satake}.
+  Let $f \in \HH(\U(\VV_n^+))$ be any element of the Hecke algebra, and let
+  \[ \phi = (\BC_{S_n}^{\eta^{n-1}})^{-1}(f) \in \HH(S_n(F)) \]
+  be its image under base change defined in \Cref{ch:satake}.
   Then for matching (as defined in \Cref{def:matching_semi_lie}) regular semisimple elements
   \[ (g, u) \in (\U(\VV_n^-) \times \VV_n^-)\rs \longleftrightarrow
     \guv \in (S_n(F) \times V'_n(F))\rs \]
@@ -387,7 +387,7 @@ If we consider the map
 then \cite[Theorem 8.2.3]{ref:AFLspherical} in fact
 shows this map has codimension $2$.
 They thus stated \cite[Conjecture 1.0.2]{ref:AFLspherical} which asserts that for $n \ge 2$,
-a similarly defined map (albeit for more than one Hecke algebra) there is a large kernel.
+a similarly defined map (albeit for more than one Hecke algebra) has a large kernel.
 
 It is therefore natural to ask whether a similar large kernel result
 could hold for the analogous orbital integral in the semi-Lie case.
@@ -405,7 +405,7 @@ We propose the following conjecture, which we have proved for $n = 2$
   \[ \partial \Orb \left(\guv, \phi \right) = 0 \]
   for every such $(\uu, \vv^\top) \in V'_n(F)$,
   Then in fact
-  \[ \partial \Orb \left(\guv, \phi \oneV \right) = 0 \]
+  \[ \Orb \left(\guv, \phi \otimes \oneV, s \right) = 0 \]
   for all $s \in \CC$.
 
   \item[(b)]
@@ -424,7 +424,7 @@ We propose the following conjecture, which we have proved for $n = 2$
   \end{enumerate}
 \end{conjecture}
 
-Part (a) of the conjecture can be rephrased as saying the map
+Part (a) of \Cref{conj:kernel_semi_lie} implies that the map
 \begin{align*}
   \partial\Orb \colon \HH(S_n(F)) &\to C^\infty\left( (S_n(F) \times V'_n(F))^- \right) \\
   \phi &\mapsto \left( \guv \mapsto \partial \Orb \left(\guv, \phi \right) \right)
@@ -467,7 +467,7 @@ Then we were able to derive the following fully explicit formula
 in terms of the representative detailed in \Cref{lem:semi_lie_params}.
 See \Cref{sec:proof_semi_lie_formula} for some concrete examples
 and illustrations of \Cref{thm:semi_lie_formula}.
-\begin{theorem}[Explicit formula for the orbital integral on $S_2(F) \times V'_2(F)$]
+\begin{restatable}[Explicit orbital integral on $S_2(F) \times V'_2(F)$]{theorem}{semilieformula}
   \label{thm:semi_lie_formula}
   Let
   \[
@@ -503,10 +503,10 @@ and illustrations of \Cref{thm:semi_lie_formula}.
     \left( 1 + q + q^2 + \dots + q^{\nn_\guv(k)} \right) (q^s)^k \\
     &+ \sum_{k = 2v(d-a)-v(b)+r}^{2v(e)+v(c)-2v(d-a)-r} (-1)^k \cc_\guv(k) q^{v(d-a) + r} (q^s)^k.
   \end{align*}
-\end{theorem}
+\end{restatable}
 
 Differentiating this yields the following result:
-\begin{corollary}[Derivative at $s=0$ for the orbital integral on $S_2(F) \times V'_2(F)$]
+\begin{restatable}[Derivative at $s=0$ for $S_2(F) \times V'_2(F)$]{corollary}{semiliederiv}
   \label{cor:semi_lie_derivative_single}
   Retain the setting of \Cref{thm:semi_lie_formula}.
   Also define $\varkappa \coloneqq v(e) - (v(d-a)+r)$.
@@ -528,7 +528,7 @@ Differentiating this yields the following result:
     \partial \Orb(\guv, \mathbf{1}_{K'_{S, \le r}}) \\
     = \sum_{j=0}^N \left( \frac{2v(e)+v(b)+v(c)+1}{2} + r - 2j \right) \cdot q^j.
   \]
-\end{corollary}
+\end{restatable}
 
 The formula simplifies even further if one considers instead
 $\mathbf{1}_{K'_{S, \le r}} + \mathbf{1}_{K'_{S, \le (r-1)}}$;
@@ -536,7 +536,7 @@ and indeed we will see that this particular combination
 comes up naturally in \Cref{ch:finale} with a special rose
 as the base change mentioned in \cite[Lemma 7.1.1]{ref:AFLspherical}.
 
-\begin{corollary}[The special case $\partial \Orb(\guv, \mathbf{1}_{K'_{S, \le r}} + \mathbf{1}_{K'_{S, \le (r-1)}})$]
+\begin{restatable}[The special case $\partial \Orb(\guv, \mathbf{1}_{K'_{S, \le r}} + \mathbf{1}_{K'_{S, \le (r-1)}})$]{corollary}{semiliecombo}
   \label{cor:semi_lie_combo}
   Retain the setting of \Cref{thm:semi_lie_formula}.
   Also define $\varkappa \coloneqq v(e) - (v(d-a)+r)$.
@@ -567,7 +567,7 @@ as the base change mentioned in \cite[Lemma 7.1.1]{ref:AFLspherical}.
     \partial\Orb(\guv, \mathbf{1}_{K'_{S, \le r}} + \mathbf{1}_{K'_{S, \le (r-1)}}) \\
     &= (q^N + q^{N-1} + \dots + 1) + C q^N + C' q^{N-1}
   \end{align*}
-\end{corollary}
+\end{restatable}
 
 \begin{example}[Examples of \Cref{cor:semi_lie_combo}]
   We show some examples of \Cref{cor:semi_lie_combo}:
@@ -589,7 +589,7 @@ As we mentioned our earlier conjecture \Cref{conj:kernel_semi_lie}
 is true for $n = 2$.
 More precisely, we have the following two theorems.
 
-\begin{theorem}[The kernel of $\partial\Orb$ is essentially injective even for fixed $\gamma \in S_2(F)$]
+\begin{restatable}[$\partial\Orb$ is injective even for fixed $\gamma \in S_2(F)$]{theorem}{semiliekertriv}
   \label{thm:semi_lie_ker_trivial}
   Consider any $\gamma \in S_2(F)$ as in \Cref{lem:semi_lie_params}.
   Then there doesn't exist any nonzero function $\phi \in \HH(S_2(F))$ such that
@@ -598,9 +598,9 @@ More precisely, we have the following two theorems.
       \phi, \right) = 0 \]
   holds for every integer $i \ge 0$.
   Thus part (a) of \Cref{conj:kernel_semi_lie} holds for $n = 2$.
-\end{theorem}
+\end{restatable}
 
-\begin{theorem}[The kernel of $\partial\Orb$ is large for fixed $(\uu, \vv^\top) \in V'_2(F)$]
+\begin{restatable}[The kernel of $\partial\Orb$ is large for fixed $(\uu, \vv^\top) \in V'_2(F)$]{theorem}{semiliekerlarge}
   \label{thm:semi_lie_ker_huge}
   Fix a choice of $(\uu, \vv^\top) \in V_2'(F)$ with $\vv^\top \uu \neq 0$.
   Consider all $\gamma \in S_2(F)$ for which $\guv \in (S_2(F) \times V'_2(F))\rs^-$.
@@ -612,7 +612,7 @@ More precisely, we have the following two theorems.
   Moreover, this subspace of $\HH(S_2(F))$
   is not contained in any maximal ideal of $\HH(S_2(F))$
   when $\HH(S_2(F))$ is viewed as a ring under the isomorphism of \Cref{ch:satake}.
-\end{theorem}
+\end{restatable}
 
 In particular, for $n=2$ the map
 \begin{align*}
@@ -736,13 +736,12 @@ Thus we do not claim a proof of $n = 3$ of \Cref{conj:inhomog_spherical},
 although we imagine such a proof could be completed
 once a method for determining the intersection numbers explicitly is devised.
 On the other hand, the orbital data is enough to prove the following result.
-\begin{theorem}
-  [$\partial\Orb \colon \HH(S_3(F)) \to C^\infty(S_3(F)\rs^-)$ has large image]
+\begin{restatable}[$\partial\Orb \colon \HH(S_3(F)) \to C^\infty(S_3(F)\rs^-)$ has large image]{theorem}{nogroupkernel}
   \label{thm:no_kernel_group}
   There is no nontrivial $\phi \in \HH(S_3(F))$ such that
   \[ \partial \Orb \left( \gamma, \phi \right) = 0 \]
   holds for every $\gamma \in S_3(F)\rs^-$.
-\end{theorem}
+\end{restatable}
 Hence the analogous map
 \begin{align*}
   \partial\Orb \colon \HH(S_3(F)) &\to C^\infty(S_3(F)\rs^-) \\

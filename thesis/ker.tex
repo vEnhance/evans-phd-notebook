@@ -156,6 +156,7 @@ This is easier to see with some illustrations, which we give below.
 \end{example}
 
 \begin{proof}
+  [Proof of \Cref{lem:semi_lie_ker_full_rank}]
   In order to prove $M$ has full rank, it suffices to prove $M''$ has full rank.
   We now confirm the patterns shown by the example above.
 
@@ -272,14 +273,21 @@ This is easier to see with some illustrations, which we give below.
 \end{proof}
 
 \subsection{Proof of \Cref{thm:semi_lie_ker_trivial}}
+We can now deduce:
+
+\semiliekertriv*
+
+\begin{proof}[Proof of \Cref{thm:semi_lie_ker_trivial}]
 Suppose we are given some function
 \[ \phi = \sum_{r=0}^N (-1)^r c_r \mathbf{1}_{K'_{S, \le r}} \in \HH(S_2(F)). \]
 Letting $M$ be the matrix given in \Cref{lem:semi_lie_ker_full_rank},
 we are supposed to have
 \[ M \begin{pmatrix} c_0 \\ c_1 \\ \vdots \\ c_N \end{pmatrix} = \mathbf{0}. \]
 Since $M$ has full rank, it follows that $c_0 = \dots = c_N = 0$.
+\end{proof}
 
 \section{In the semi-Lie case, the kernel has finite codimension for fixed $v(e)$}
+We prove \Cref{thm:semi_lie_ker_huge} in this section.
 We start with the following lemma.
 \begin{lemma}
   [A combination vanishing for large $r$]
@@ -306,51 +314,9 @@ We start with the following lemma.
   \end{align*}
 \end{proof}
 
-\subsection{Proof of \Cref{thm:semi_lie_ker_huge}}
-The first part of \Cref{thm:semi_lie_ker_huge} now follows directly from
-\Cref{lem:semi_lie_large_r}.
-
-It remains to show the kernel is not contained in any maximal ideal.
-Again, treat $v(e)$ as fixed.
-Consider the composed isomorphism from \Cref{ch:satake}
-given by
-\[ \HH(S_2(F)) \xrightarrow{\BC^\eta_S} \HH(\U(\VV_2^+)) \xrightarrow{\Sat} \QQ[Y + Y^{-1}]. \]
-By combining \cite[Equation (7.1.9)]{ref:AFLspherical}
-(which is also \Cref{lem:finale_base_change} later)
-and \cite[Equation (7.1.4)]{ref:AFLspherical}
-we find that
-\begin{align*}
-  \Sat\left(\BC^\eta_S\left(\mathbf{1}_{K', \le r} + \mathbf{1}_{K', \le (r-1)}\right)\right)
-  &= (-1)^r \Sat(\mathbf{1}_{\varpi^{-r} \Mat_2(\OO_E) \cap \VV_n^+}) \\
-  &= (-1)^r \left( q^r \sum_{j=-r}^r Y^j - q^{r-1} \sum_{j=-(r-1)}^{r-1} Y^j \right).
-\end{align*}
-Hence, if we define the polynomial
-\begin{align*}
-  P_r(Y) &\coloneqq (-1)^r \Sat\left(\BC^\eta_S\left(
-    \mathbf{1}_{K', \le r} + 2\mathbf{1}_{K', \le (r-1)}
-    + \mathbf{1}_{K', \le (r-2)} \right)\right) \\
-  &= \left( q^r \sum_{j=-r}^r Y^j - q^{r-1} \sum_{j=-(r-1)}^{r-1} Y^j \right)
-    - \left( q^{r-1} \sum_{j=-(r-1)}^{r-1} Y^j - q^{r-2} \sum_{j=-(r-2)}^{r-2} Y^j \right) \\
-  &= q^r \sum_{j=-r}^r Y^j - 2q^{r-1} \sum_{j=-(r-1)}^{r-1} Y^j + q^{r-2} \sum_{j=-(r-2)}^{r-2} Y^j
-\end{align*}
-then for any $r \ge v(e)+2$,
-all the polynomials $P_r(Y) - P_{v(e)+2}(Y)$ lie in the kernel.
-
-We now prove there is no choice of a single $Y \in \CC^\times$ for which
-$P_r(Y)$ is eventually constant, which would complete the proof.
-Indeed, if we write
-\[
-  P_r(Y) - q P_{r-1}(Y)
-  = q^r(Y^r + Y^{-r}) - 2q^{r-1} (Y^{r-1} + Y^{-(r-1)}) + q^{r-2}(Y^{r-2} + Y^{-(r-2)})
-\]
-then
-\begin{align*}
-  (P_r(Y) - q P_{r-1}(Y)) - (P_{r-1}(Y) - q P_{r-2}(Y))
-  &= q^3(Y^r + Y^{-r}) - 3q^2(Y^{r-1} + Y^{-(r-1)}) \\
-  &\qquad + 3q(Y^{r-2} + Y^{-(r-2)}) - (Y^{r-3} + Y^{-(r-3)}).
-\end{align*}
-So we are done after we prove the following standalone lemma.
+We need one more lemma:
 \begin{lemma}
+  \label{lem:chebyshev}
   There is no $Y \in \CC^\times$ such that
   \[ q^3(Y^r + Y^{-r}) - 3q^2(Y^{r-1} + Y^{-(r-1)})
     + 3q(Y^{r-2} + Y^{-(r-2)}) - (Y^{r-3} + Y^{-(r-3)}) = 0 \]
@@ -397,6 +363,56 @@ So we are done after we prove the following standalone lemma.
   But substituting $Y = 1$ in the original equation would imply $(q-1)^3 = 0$
   while $Y = -1$ would imply $(q+1)^3 = 0$ neither of which is possible.
   This contradiction completes the proof of the lemma.
+\end{proof}
+
+\subsection{Proof of \Cref{thm:semi_lie_ker_huge}}
+We now prove:
+\semiliekerlarge*
+
+\begin{proof}[Proof of \Cref{thm:semi_lie_ker_huge}]
+The first part of \Cref{thm:semi_lie_ker_huge} follows directly from
+\Cref{lem:semi_lie_large_r}.
+
+It remains to show the kernel is not contained in any maximal ideal.
+Again, treat $v(e)$ as fixed.
+Consider the composed isomorphism from \Cref{ch:satake}
+given by
+\[ \HH(S_2(F)) \xrightarrow{\BC^\eta_S} \HH(\U(\VV_2^+)) \xrightarrow{\Sat} \QQ[Y + Y^{-1}]. \]
+By combining \cite[Equation (7.1.9)]{ref:AFLspherical}
+(which is also \Cref{lem:finale_base_change} later)
+and \cite[Equation (7.1.4)]{ref:AFLspherical}
+we find that
+\begin{align*}
+  \Sat\left(\BC^\eta_S\left(\mathbf{1}_{K', \le r} + \mathbf{1}_{K', \le (r-1)}\right)\right)
+  &= (-1)^r \Sat(\mathbf{1}_{\varpi^{-r} \Mat_2(\OO_E) \cap \VV_n^+}) \\
+  &= (-1)^r \left( q^r \sum_{j=-r}^r Y^j - q^{r-1} \sum_{j=-(r-1)}^{r-1} Y^j \right).
+\end{align*}
+Hence, if we define the polynomial
+\begin{align*}
+  P_r(Y) &\coloneqq (-1)^r \Sat\left(\BC^\eta_S\left(
+    \mathbf{1}_{K', \le r} + 2\mathbf{1}_{K', \le (r-1)}
+    + \mathbf{1}_{K', \le (r-2)} \right)\right) \\
+  &= \left( q^r \sum_{j=-r}^r Y^j - q^{r-1} \sum_{j=-(r-1)}^{r-1} Y^j \right)
+    - \left( q^{r-1} \sum_{j=-(r-1)}^{r-1} Y^j - q^{r-2} \sum_{j=-(r-2)}^{r-2} Y^j \right) \\
+  &= q^r \sum_{j=-r}^r Y^j - 2q^{r-1} \sum_{j=-(r-1)}^{r-1} Y^j + q^{r-2} \sum_{j=-(r-2)}^{r-2} Y^j
+\end{align*}
+then for any $r \ge v(e)+2$,
+all the polynomials $P_r(Y) - P_{v(e)+2}(Y)$ lie in the kernel.
+
+We now prove there is no choice of a single $Y \in \CC^\times$ for which
+$P_r(Y)$ is eventually constant, which would complete the proof.
+Indeed, if we write
+\[
+  P_r(Y) - q P_{r-1}(Y)
+  = q^r(Y^r + Y^{-r}) - 2q^{r-1} (Y^{r-1} + Y^{-(r-1)}) + q^{r-2}(Y^{r-2} + Y^{-(r-2)})
+\]
+then
+\begin{align*}
+  (P_r(Y) - q P_{r-1}(Y)) - (P_{r-1}(Y) - q P_{r-2}(Y))
+  &= q^3(Y^r + Y^{-r}) - 3q^2(Y^{r-1} + Y^{-(r-1)}) \\
+  &\qquad + 3q(Y^{r-2} + Y^{-(r-2)}) - (Y^{r-3} + Y^{-(r-3)}).
+\end{align*}
+So we are done by \Cref{lem:chebyshev}.
 \end{proof}
 
 \section{A sequence of test functions almost lying in the kernel in the semi-Lie case}
@@ -516,31 +532,32 @@ for which the orbital integral does not vanish.
   from \eqref{eq:semi_lie_finite_codim_large_r} and \eqref{eq:semi_lie_finite_codim_small_r}.
 \end{proof}
 \section{Proof of \Cref{thm:no_kernel_group} for the group AFL}
-We give a proof in this section that no nonzero $\phi \in \HH(S_3(F))$ can satisfy
-\[ \partial \Orb(\gamma, \phi) = 0 \]
-for every $\gamma \in S_3(F)\rs^-$.
-The proof is actually quite short.
-Suppose that
-\[ \phi = \sum_{r=0}^N a_j \mathbf{1}_{K'_{S, \le r}} \]
-for some $N > 0$.
-We pick our $\gamma$ according to \Cref{lem:S3_abcd} subject to
-\[ v(b) = v(d) = -N. \]
-In that case, we have
-\[ \Orb(\gamma, \mathbf{1}_{K'_{S, \le r}}, s) = 0 \text{ for all } r = 0, 1, \dots, N-1 \]
-and so there is certainly no contribution to its derivative.
-However, for $a_N$ according to \Cref{ex:ell_neg_top_case} we have
-\[
-  \partial \Orb(\gamma, \mathbf{1}_{K'_{S, \le N}})
-  = \left. \pdv{}{s} \right\rvert_{s=0}
-  \left( \sum_{k=-r}^{\lambda-2r} (-1)^k (q^s)^k \right)
-  = (-1)^{r+1} \cdot \frac{\lambda+1}{2} \neq 0.
-\]
-Hence $N > 0$ cannot hold.
+We give the short proof of the following:
+\nogroupkernel*
 
-For $N=0$, we instead take, say, $\ell = \delta = 1$ in \Cref{thm:full_orbital_ell_odd}
-in which case $\Orb(\gamma, \mathbf{1}_{K'_S}, s) = -q^{3s} + q^{2s} - q^s + 1$
-whose derivative is $-2$.
-The proof is complete.
+\begin{proof}[Proof of \Cref{thm:no_kernel_group}]
+  Suppose that
+  \[ \phi = \sum_{r=0}^N a_j \mathbf{1}_{K'_{S, \le r}} \]
+  for some $N > 0$.
+  We pick our $\gamma$ according to \Cref{lem:S3_abcd} subject to
+  \[ v(b) = v(d) = -N. \]
+  In that case, we have
+  \[ \Orb(\gamma, \mathbf{1}_{K'_{S, \le r}}, s) = 0 \text{ for all } r = 0, 1, \dots, N-1 \]
+  and so there is certainly no contribution to its derivative.
+  However, for $a_N$ according to \Cref{ex:ell_neg_top_case} we have
+  \[
+    \partial \Orb(\gamma, \mathbf{1}_{K'_{S, \le N}})
+    = \left. \pdv{}{s} \right\rvert_{s=0}
+    \left( \sum_{k=-r}^{\lambda-2r} (-1)^k (q^s)^k \right)
+    = (-1)^{r+1} \cdot \frac{\lambda+1}{2} \neq 0.
+  \]
+  Hence $N > 0$ cannot hold.
+
+  For $N=0$, we instead take, say, $\ell = \delta = 1$ in \Cref{thm:full_orbital_ell_odd}
+  in which case $\Orb(\gamma, \mathbf{1}_{K'_S}, s) = -q^{3s} + q^{2s} - q^s + 1$
+  whose derivative is $-2$.
+  The proof is complete.
+\end{proof}
 
 \section{A sequence of test functions almost lying in the kernel in the group AFL case}
 We mention the following $S_3(F)$ analog of \Cref{thm:semi_lie_finite_codim_full}.
