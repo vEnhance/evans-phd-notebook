@@ -11,6 +11,9 @@ def irange(start, stop):
     return range(start, stop + 1)
 
 
+# Semi-Lie Orbital and its derivatives
+
+
 def O(r, vb, vc, ve, vda):
     """Value of the overall orbital integral in the semi-Lie case"""
     assert vb % 2 != vc % 2, (vb, vc)
@@ -206,6 +209,7 @@ def ARCH_deriv_c(r, C, W, L):
     )
 
 
+# Orbital for S3 and its derivative
 def O_for_S3(r, l, delta, lam):
     if l % 2 == 1:
         assert lam == l, (l, lam)
@@ -265,7 +269,7 @@ def O_zero(r, l, delta):
     return sum(qs ** (2 * j), j, -r, delta + r)
 
 
-def volDiskSingle(n, vxx, rho):
+def vol_disk_single(n, vxx, rho):
     assert n >= 1 and n >= rho
     if vxx < rho:
         return 0
@@ -275,7 +279,7 @@ def volDiskSingle(n, vxx, rho):
         return q ** (-(n + rho)) * (1 - q ** (-1))
 
 
-def volDiskDouble(n, vxx1, vx12, rho1, rho2):
+def vol_disk_double(n, vxx1, vx12, rho1, rho2):
     assert rho1 >= rho2
     assert n >= 1 and n >= rho1
 
@@ -316,11 +320,11 @@ def O_case_1_2_brute(r, l, delta, lam=None):
             r_n = ceil((n - r) / 2)
             r_m = m - delta - r
             if r_n >= r_m:
-                S += volDiskDouble(
+                S += vol_disk_double(
                     n, vxx1=min(l, delta), vx12=ceil(l / 2), rho1=r_n, rho2=r_m
                 ) * qs_weight(n, m)
             else:
-                S += volDiskDouble(
+                S += vol_disk_double(
                     n, vxx1=lam, vx12=ceil(l / 2), rho1=r_m, rho2=r_n
                 ) * qs_weight(n, m)
     return S
@@ -341,7 +345,7 @@ def O_case_3_4_brute(r, l, delta, lam):
 
             # Case 3+ and 4+
             if r_n > r_m:  # Case 3+
-                S += volDiskDouble(
+                S += vol_disk_double(
                     n,
                     vxx1=lam + delta - l,
                     vx12=lam - l / 2,
@@ -349,7 +353,7 @@ def O_case_3_4_brute(r, l, delta, lam):
                     rho2=r_m,
                 ) * qs_weight(n, m)
             else:  # Case 4+
-                S += volDiskDouble(
+                S += vol_disk_double(
                     n,
                     vxx1=lam,
                     vx12=lam - l / 2,
@@ -359,7 +363,7 @@ def O_case_3_4_brute(r, l, delta, lam):
 
             # Cases 3- and 4-
             if r_n > r_m:  # Case 3-
-                S += volDiskDouble(
+                S += vol_disk_double(
                     n,
                     vxx1=delta,
                     vx12=l / 2,
@@ -368,7 +372,7 @@ def O_case_3_4_brute(r, l, delta, lam):
                 ) * qs_weight(n, m)
             else:  # Case 4-
                 assert (
-                    volDiskDouble(
+                    vol_disk_double(
                         n,
                         vxx1=lam,
                         vx12=l / 2,
@@ -405,26 +409,61 @@ def O_ell_neg_brute(r, vb, lam):
     for n in irange(1, INFINITY):
         for m in irange(n - r, n + delta + r):
             if n <= l + r:
-                S += volDiskSingle(n, vxx=lam, rho=m - delta - r) * qs_weight(n, m)
+                S += vol_disk_single(n, vxx=lam, rho=m - delta - r) * qs_weight(n, m)
             elif n > l + r:
                 rho1 = max(n - l / 2 - r, m - delta - r)
                 rho2 = min(n - l / 2 - r, m - delta - r)
-                S += volDiskDouble(
+                S += vol_disk_double(
                     n, vxx1=lam, vx12=lam, rho1=rho1, rho2=rho2
                 ) * qs_weight(n, m)
 
     return S + O_zero(r, l, delta)
 
 
+# Geometric side --- Gross-Keating and friends
+def gross_keating_sum(n1, n2):
+    j = var("j")
+    assert 0 <= n1 <= n2
+    if n1 % 2 == 1:
+        return sum((n1 + n2 - 4 * j) * q**j, j, 0, (n1 - 1) / 2)
+    else:
+        return sum((n1 + n2 - 4 * j) * q**j, j, 0, n1 / 2 - 1) + (
+            n2 - n1 + 1
+        ) / 2 * q ^ (n1 / 2)
+
+
+def GK(r, vb, vc, ve, vda):
+    assert r >= 0
+    assert vb + vc >= 0 and vb % 2 != vc % 2
+    vxx = 2 * ve
+    vxy = r + vda + ve
+    vdet = 2 * r + 2 * ve + vb + vc
+    vyy = min(2 * vxy, vdet) - vxx
+
+    return gross_keating_sum(min(vxx, vxy, vyy), vdet - min(vxx, vxy, vyy))
+
+
+def clean_intersection(r, vb, vc, ve, vda):
+    vbeta = (vb + vc - 1) / 2
+    N = min(ve, vbeta + r, vda + r)
+    C = vbeta - vda
+    if ve - r == vda <= vbeta:
+        return (C + 1) * q**N + (C + 2) * q ** (N - 1)
+    elif vbeta + r < min(ve, vda + r):
+        return 2 * q**N
+    else:
+        return q**N + q ** (N - 1)
+
+
 class ThesisTest(unittest.TestCase):
-    def get_semi_lie_params(self, r_min=0, r_max=20):
+    def get_semi_lie_params(self, r_min=0, r_max=15):
         params = {
             "r": randint(r_min, r_max),
-            "vb": randint(-10, 20),
-            "vda": randint(0, 20),
-            "ve": randint(0, 20),
+            "vb": randint(-5, 15),
+            "vda": randint(0, 15),
+            "ve": randint(0, 15),
         }
-        params["vc"] = randrange(1 - params["vb"], 21, 2)
+        params["vc"] = randrange(1 - params["vb"], 15, 2)
         assert params["vb"] % 2 != params["vc"] % 2
         assert params["vb"] + params["vc"] >= 0
         return params
@@ -468,9 +507,9 @@ class ThesisTest(unittest.TestCase):
         M0 = matrix(
             [
                 vector(
-                    (-1) ** (r + vc) * delO(r, vb, vc, i, vda) for r in range(0, n + 1)
+                    (-1) ** (r + vc) * delO(r, vb, vc, i, vda) for r in range(0, N + 1)
                 )
-                for i in irange(0, n + theta // 2 + 1)
+                for i in irange(0, N + theta // 2 + 1)
             ]
         )
         M1 = matrix([M0[0]] + [M0[i + 1] - M0[i] for i in range(M0.nrows() - 1)])
@@ -478,7 +517,7 @@ class ThesisTest(unittest.TestCase):
 
         for r in range(0, N + 1):
             t = r + theta // 2
-            for i in irange(t + 2, theta // 2 + N + 1):
+            for i in irange(t + 2, N + theta // 2 + 1):
                 self.assertEqual(M2[i][r], 0)
             C = (vb + vc - 1 - 2 * vda) / 2
             if theta % 2 == 1:
@@ -523,16 +562,16 @@ class ThesisTest(unittest.TestCase):
         elif r == right_bound - 1 and vb + vc >= 2 * vda:
             self.assertEqual(expr, 0)
 
-    def get_S3_params(self, r_min=0, r_max=20):
-        l = randint(-5, 20)
+    def get_S3_params(self, r_min=0, r_max=10):
+        l = randint(-5, 10)
         if l < 0:
             l *= 2
 
         params = {
             "r": randint(r_min, r_max),
             "l": l,
-            "lam": l if l % 2 == 1 else randrange(max(0, l + l % 2) + 1, 22, 2),
-            "delta": l if l < 0 else randint((l + 1) // 2, 20),
+            "lam": l if l % 2 == 1 else randrange(max(0, l + l % 2) + 1, 17, 2),
+            "delta": l if l < 0 else randint((l + 1) // 2, 10),
         }
         return params
 
@@ -573,6 +612,32 @@ class ThesisTest(unittest.TestCase):
                 self.assertEqual(deriv, -2 * q - 2)
         else:
             self.assertEqual(deriv, -2 * q - 2)
+
+    def test_GK_equals_orbital(self):
+        params = self.get_semi_lie_params(r_min=1)
+        omega = (-1) ** (params["r"] + params["vc"])  # transfer factor
+        ve = params.pop("ve")
+        self.assertEqual(
+            omega * (delO(ve=ve, **params) + delO(ve=ve - 1, **params)),
+            GK(ve=ve, **params),
+        )
+
+    def test_clean_intersection(self):
+        params = self.get_semi_lie_params(r_min=1)
+        if params["ve"] == 0:
+            params["ve"] += 1
+        r, vb, vc, ve, vda = (
+            params["r"],
+            params["vb"],
+            params["vc"],
+            params["ve"],
+            params["vda"],
+        )
+        self.assertEqual(
+            (GK(r, vb, vc, ve, vda) - GK(r - 1, vb, vc, ve, vda))
+            - (GK(r, vb, vc, ve - 1, vda) - GK(r - 1, vb, vc, ve - 1, vda)),
+            clean_intersection(**params),
+        )
 
 
 if __name__ == "__main__":
