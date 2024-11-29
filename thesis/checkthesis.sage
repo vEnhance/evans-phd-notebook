@@ -258,14 +258,13 @@ def qs_weight(n, m):
 
 
 def O_case_1_2_brute(r, l, delta, lam=None):
-    assert 0 < l < 2 * delta
-    assert r >= 0
+    assert 0 <= l <= 2 * delta, (l, delta)
+    assert r >= 0, r
     if lam is None:
         assert l % 2 == 1
         lam = l
     else:
         assert l % 2 == 0
-    INFINITY = 3 * (abs(r) + abs(l) + abs(delta) + 5)
 
     S = 0
     for n in irange(1, l + r):
@@ -284,11 +283,11 @@ def O_case_1_2_brute(r, l, delta, lam=None):
 
 
 def O_case_3_4_brute(r, l, delta, lam):
-    assert 0 <= l < 2 * delta
-    assert r >= 0
-    assert l % 2 == 0
-    assert lam % 2 == 1
-    INFINITY = 3 * (abs(r) + abs(l) + abs(delta) + abs(lam) + 5)
+    assert 0 <= l <= 2 * delta, (l, delta)
+    assert r >= 0, r
+    assert l % 2 == 0, l
+    assert lam % 2 == 1, lam
+    INFINITY = abs(r) + abs(l) + abs(delta) + abs(lam) + 1
 
     S = 0
     for n in irange(l + r + 1, INFINITY):
@@ -489,7 +488,7 @@ class ThesisTest(unittest.TestCase):
             "r": randint(r_min, r_max),
             "l": l,
             "lam": l if l % 2 == 1 else randrange(max(0, l + l % 2) + 1, 22, 2),
-            "delta": l if l < 0 else randint(l // 2, 20),
+            "delta": l if l < 0 else randint((l + 1) // 2, 20),
         }
         return params
 
@@ -532,21 +531,36 @@ if __name__ == "__main__":
     parser.add_argument(
         "--trials", default=5, type=int, help="Number of trials to run."
     )
-
+    parser.add_argument("--seed", type=int, help="Random seed passed to Sage")
+    parser.add_argument(
+        "--failfast", action="store_true", help="On failure, immediately stop."
+    )
+    group = parser.add_mutually_exclusive_group()
+    group.add_argument("--verbose", action="store_true", help="Set verbosity to 2.")
+    group.add_argument("--quiet", action="store_true", help="Set verbosity to 0.")
     parser.add_argument(
         "--test",
         default="",
         type=str,
         help="The name of a specific test to run (if empty, runs all).",
     )
-
     args = parser.parse_args()
+    if args.verbose is True:
+        verbosity = 2
+    elif args.quiet is True:
+        verbosity = 0
+    else:
+        verbosity = 1
+
     suite = unittest.TestSuite()
     loader = unittest.TestLoader()
+    if args.seed:
+        set_random_seed(args.seed)
+    print(f"Using random seed {initial_seed()}")
     for _ in range(args.trials):
         if args.test:
             suite.addTest(ThesisTest(args.test))
         else:
             suite.addTest(loader.loadTestsFromTestCase(ThesisTest))
-    runner = unittest.TextTestRunner()
+    runner = unittest.TextTestRunner(failfast=args.failfast, verbosity=verbosity)
     runner.run(suite)
