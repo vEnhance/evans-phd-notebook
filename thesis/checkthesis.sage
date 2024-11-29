@@ -624,9 +624,7 @@ class ThesisTest(unittest.TestCase):
 
     def test_delO_for_S3(self):
         params = self.get_S3_params()
-        self.assertEqual(
-            derivative(delO_for_S3_via_arch(**params), delO_for_S3(**params))
-        )
+        self.assertEqual(delO_for_S3_via_arch(**params), delO_for_S3(**params))
 
     def test_ker_for_S3(self):
         params = self.get_S3_params(r_min=3)
