@@ -12,10 +12,7 @@ def irange(start, stop):
 
 
 # Semi-Lie Orbital and its derivatives
-
-
 def O(r, vb, vc, ve, vda):
-    """Value of the overall orbital integral in the semi-Lie case"""
     assert vb % 2 != vc % 2, (vb, vc)
     assert r >= 0, r
     assert vb + vc >= 0, (vb, vc)
@@ -36,7 +33,6 @@ def O(r, vb, vc, ve, vda):
 
 
 def delO(r, vb, vc, ve, vda):
-    """This is 1/(log q) times the derivative of the orbital for 1_(<= r)"""
     assert r >= 0, r
     assert vb + vc >= 0 and vb % 2 != vc % 2, (vb, vc)
     varkappa = ve - vda - r
@@ -53,8 +49,6 @@ def delO(r, vb, vc, ve, vda):
 
 
 def delO_combo(r, vb, vc, ve, vda):
-    """This is 1/(log q) times the derivative of the orbital for 1_(<= r) + 1_(<= r-1)"""
-
     assert r >= 1
     N = min(ve, (vb + vc) // 2 + r, vda + r)
     j = var("j")
@@ -80,7 +74,6 @@ def delO_combo(r, vb, vc, ve, vda):
 
 # Brute force auxiliary functions for the semi-Lie orbital
 def O_brute_odd(r, vb, vc, ve, vda):
-    """This is Case 5 in the situation where theta is odd"""
     assert vb % 2 != vc % 2, (vb, vc)
     assert vda >= 0, vda
     assert r >= 0, r
@@ -106,7 +99,6 @@ def O_brute_odd(r, vb, vc, ve, vda):
 
 
 def O_brute_even(r, vb, vc, ve, vda):
-    """This is Case 5/6+/6- in the situation where theta is odd"""
     assert vb % 2 != vc % 2, (vb, vc)
     assert vda >= 0, vda
     assert r >= 0, r
@@ -189,26 +181,6 @@ def ARCH_sum_c(a0, a1, w1, w2):
     return S
 
 
-def ARCH_deriv_n(r, C, W, H):
-    j = var("j")
-    assert W > 4 * H >= 0, (W, H)
-    assert W % 2 == 1, W
-    return -(
-        (-1) ** (r + C) * sum(((W + 1) / 2 + r - 2 * (j - r)) * q**j, j, r + 1, r + H)
-        + sum((-1) ** (j + C) * ((W + 1) / 2 + 2 * r - j) * q**j, j, 0, r)
-    )
-
-
-def ARCH_deriv_c(r, C, W, L):
-    k = var("k")
-    assert L >= 1, L
-    assert W >= 0, W
-    assert L % 2 == 1, L
-    return (-1) ** (r + W + C) * (
-        W / 2 - (L - 1) / 2 * r if W % 2 == 0 else -(W + L) / 2 - (L + 1) / 2 * r
-    )
-
-
 # Orbital for S3 and its derivative
 def O_for_S3(r, l, delta, lam):
     if l % 2 == 1:
@@ -235,31 +207,6 @@ def O_for_S3(r, l, delta, lam):
             return 0
         n_sum = ARCH_sum_n(-2 * r, lam + 2 * (r - 2 * avd), r - avd, 0)
         c_sum = ARCH_sum_c(-r - avd, lam + r - 3 * avd, 0, min(lam - 1, 2 * (r - avd)))
-        return n_sum + q ** (r - avd) * c_sum
-
-
-def delO_for_S3(r, l, delta, lam):
-    if l % 2 == 1:
-        assert lam == l, (l, lam)
-    else:
-        assert l < lam, (l, lam)
-    if l < 0 or delta < 0:
-        assert l == delta and l % 2 == 0, (l, delta)
-    else:
-        assert l <= 2 * delta, (l, delta)
-
-    if l % 2 == 1:
-        return ARCH_deriv_n(r, C=0, W=l + 2 * delta, H=(l - 1) / 2)
-    elif l >= 0:
-        n_sum = ARCH_deriv_n(r, C=0, W=lam + 2 * delta, H=l / 2)
-        c_sum = ARCH_deriv_c(r, C=0, W=delta - l / 2, L=lam - l)
-        return n_sum + q ** (r + l / 2) * c_sum
-    else:
-        assert (avd := -l / 2) > 0  # avd := abs(vd)
-        if r < avd:
-            return 0
-        n_sum = ARCH_deriv_n(r - avd, C=-2 * avd, W=lam, H=0)
-        c_sum = ARCH_deriv_c(r - avd, C=0, W=0, L=lam)
         return n_sum + q ** (r - avd) * c_sum
 
 
@@ -330,6 +277,10 @@ def O_case_1_2_brute(r, l, delta, lam=None):
     return S
 
 
+def O_ell_odd_brute(r, l, delta):
+    return O_zero(r, l, delta) + O_case_1_2_brute(r, l, delta)
+
+
 def O_case_3_4_brute(r, l, delta, lam):
     assert 0 <= l <= 2 * delta, (l, delta)
     assert r >= 0, r
@@ -385,10 +336,6 @@ def O_case_3_4_brute(r, l, delta, lam):
     return S
 
 
-def O_ell_odd_brute(r, l, delta):
-    return O_zero(r, l, delta) + O_case_1_2_brute(r, l, delta)
-
-
 def O_ell_even_brute(r, l, delta, lam):
     return (
         O_zero(r, l, delta)
@@ -418,6 +365,52 @@ def O_ell_neg_brute(r, vb, lam):
                 ) * qs_weight(n, m)
 
     return S + O_zero(r, l, delta)
+
+
+# Derivatives of the orbital integral
+def ARCH_deriv_n(r, C, W, H):
+    j = var("j")
+    assert W > 4 * H >= 0, (W, H)
+    assert W % 2 == 1, W
+    return -(
+        (-1) ** (r + C) * sum(((W + 1) / 2 + r - 2 * (j - r)) * q**j, j, r + 1, r + H)
+        + sum((-1) ** (j + C) * ((W + 1) / 2 + 2 * r - j) * q**j, j, 0, r)
+    )
+
+
+def ARCH_deriv_c(r, C, W, L):
+    k = var("k")
+    assert L >= 1, L
+    assert W >= 0, W
+    assert L % 2 == 1, L
+    return (-1) ** (r + W + C) * (
+        W / 2 - (L - 1) / 2 * r if W % 2 == 0 else -(W + L) / 2 - (L + 1) / 2 * r
+    )
+
+
+def delO_for_S3(r, l, delta, lam):
+    if l % 2 == 1:
+        assert lam == l, (l, lam)
+    else:
+        assert l < lam, (l, lam)
+    if l < 0 or delta < 0:
+        assert l == delta and l % 2 == 0, (l, delta)
+    else:
+        assert l <= 2 * delta, (l, delta)
+
+    if l % 2 == 1:
+        return ARCH_deriv_n(r, C=0, W=l + 2 * delta, H=(l - 1) / 2)
+    elif l >= 0:
+        n_sum = ARCH_deriv_n(r, C=0, W=lam + 2 * delta, H=l / 2)
+        c_sum = ARCH_deriv_c(r, C=0, W=delta - l / 2, L=lam - l)
+        return n_sum + q ** (r + l / 2) * c_sum
+    else:
+        assert (avd := -l / 2) > 0  # avd := abs(vd)
+        if r < avd:
+            return 0
+        n_sum = ARCH_deriv_n(r - avd, C=-2 * avd, W=lam, H=0)
+        c_sum = ARCH_deriv_c(r - avd, C=0, W=0, L=lam)
+        return n_sum + q ** (r - avd) * c_sum
 
 
 # Geometric side --- Gross-Keating and friends

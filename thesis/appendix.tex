@@ -1,29 +1,155 @@
-\chapter{Source code for calculations}
+\chapter{Sage implementations of formulas and test cases}
 The author wrote some code in the computer algebra system Sage
 in order to help verify the correctness of elementary calculations done in this paper.
 For the convenience of the reader, the code is provided below.
-It can also be found on \url{https://github.com/vEnhance/evans-phd-notebook}.
+It can also be found on \url{https://github.com/vEnhance/evans-phd-notebook}
+under \texttt{thesis/checkthesis.sage}.
 
-\section{Orbital integral formula and its derivative for the group AFL}
-
-\section{Orbital integral formula and its derivative for the semi-Lie AFL}
-This code implements the following functions and correctness checks.
+\section{Description of implemented functions}
+\subsection{Semi-Lie orbital integral in $S_2(F) \times V'_2(F)$}
+All the formulas in \Cref{sec:semi_lie_intro_formulas} are implemented.
 \begin{itemize}
-  \ii The function \texttt{O(r, vb, vc, ve, vda)}
-  corresponds to the formula in \Cref{thm:semi_lie_formula}.
-  \ii The function \texttt{delO\_combo(r, vb, vc, ve, vda)}
-  corresponds to the formula in \Cref{cor:semi_lie_combo},
-  except for the $\log q$ factor.
-  \ii The function \texttt{verify\_O\_correct()}
-  runs randomized instantiations of \texttt{O(r, vb, vc, ve, vda)}
-  against the summations as they are described in \Cref{ch:orbitalFJ1}
-  and checks that the resulting polynomials are equal for the random values
-  $q = 17$ and $s = \log_q 1337$.
-  \ii The function \texttt{verify\_delO\_combo\_correct()}
-  runs randomized instances of
-  function \texttt{delO\_combo(r, vb, vc, ve, vda)}
-  and verifies that they equal the actual value of the derivative
-  when computed from differentiating \texttt{O(r, vb, vc, ve, vda)} within Sage.
+  \ii \texttt{O(r, vb, vc, ve, vda)}
+  implements \Cref{thm:semi_lie_formula}.
+
+  \ii \texttt{delO(r, vb, vc, ve, vda)}
+  implements \Cref{cor:semi_lie_derivative_single},
+  divided by a factor of $\log q$.
+
+  \ii \texttt{delO\_combo(r, vb, vc, ve, vda)}
+  implements \Cref{cor:semi_lie_combo},
+  divided by a factor of $\log q$.
 \end{itemize}
 
-\lstinputlisting[language=Python]{sage-semi-lie.sage}
+In addition, the casework in \Cref{ch:orbitalFJ1} is implemented
+in the following functions that are used for testing later.
+\begin{itemize}
+  \ii The function \texttt{O\_brute\_odd(r, vb, vc, ve, vda)}
+  is a na\"{\i}ve implementation of the casework in \Cref{ch:orbitalFJ1} when $\theta$ is odd.
+  \ii The function \texttt{O\_brute\_even(r, vb, vc, ve, vda)}
+  is a na\"{\i}ve implementation of the casework in \Cref{ch:orbitalFJ1} when $\theta$ is even
+  (encompassing both \textbf{Case 5}, \textbf{Case 6\ts+} and \textbf{Case 6\ts-}.
+\end{itemize}
+
+\subsection{Inhomogeneous orbital integral for $S_3(F)$}
+The next part of the program implements the orbital integral
+that is alluded to in \Cref{thm:summary}.
+The parameters are those described in \Cref{lem:S3_abcd} and \Cref{lem:parameter_constraints}.
+\begin{itemize}
+  \ii The $\ARCH$ function defined in \Cref{def:ARCH} is implemented
+  as \texttt{ARCH(a0, a1, w1, w2, k)}.
+  \ii There are some common sums appearing in the formulas
+  \Cref{thm:full_orbital_ell_odd,thm:full_orbital_ell_even,thm:full_orbital_ell_neg}
+  which are implemented as follows.
+  \begin{itemize}
+    \ii The function \texttt{ARCH\_sum\_n(a0, a1, w1, w2)} denotes the sum
+    \[ \sum_{k=a_0}^{a_1} \left( 1 + q + \dots
+      + q^{\Arch_{[a_0, a_1]}(w_1, w_2)(k)} \right) (-q^s)^k \in \ZZ[q^s]. \]
+    \ii The function \texttt{ARCH\_sum\_c(a0, a1, w1, w2)} denotes the sum
+    \[ \sum_{k=a_0}^{a_1} + \Arch_{[a_0, a_1]}(w_1, w_2)(k) (-q^s)^k \in \ZZ[q^s, q]. \]
+  \end{itemize}
+  \ii Using these functions, we implement \texttt{O\_for\_S3(r, l, delta, lam)}
+  as the full orbital integral for all the cases.
+  Hence this function implements all there of
+  \Cref{thm:full_orbital_ell_odd,thm:full_orbital_ell_even,thm:full_orbital_ell_neg}.
+\end{itemize}
+The next several functions are na\"{i}ve implementations of the casework in
+\Cref{ch:orbital1} that are used later in testing.
+\begin{itemize}
+  \ii \texttt{O\_zero(r, l, delta)} implements $I_{\le 0}$ as in \Cref{prop:O_zero}.
+  \ii The function \texttt{vol\_disk\_single(n, vxx, rho)} implements \cref{lem:volume}.
+  Here the argument \texttt{vxx} corresponds to $v(1 - \xi \bar \xi)$.
+  \ii The function \texttt{vol\_disk\_double(n, vxx, rho)} implements \cref{lem:quadruple_ineq}.
+  Here the argument \texttt{vxx1} corresponds to $v(1 - \xi_1 \bar \xi_1)$
+  and the argument \texttt{vxx2} corresponds to $v(1 - \xi_2 \bar \xi_2)$.
+  \ii The function \texttt{qs\_weight(n, m)} implements the weight
+  \[ \varkappa \cdot (-1)^n q^{s(2m-n)} q^{2n-2m} \Big( q^{2m}(1-q^{-2}) \Big) \]
+  that occurs frequently throughout.
+  This expression is the product of the factor
+  $\varkappa \cdot (-1)^n q^{s(2m-n)} q^{2n-2m}$ from \Cref{sec:qs_weight_from_sub}
+  and the volume factor $\Vol(t_1: -v(t_1)=m) = q^{2m} (1-q^{-2})$.
+
+  \ii The function \texttt{O\_case\_1\_2\_brute(r, l, delta, lam=None)}
+  is a na\"{\i}ve implementation of \textbf{Case 1} and \textbf{Case 2}
+  from \Cref{ch:orbital1}.
+  For odd $\ell$, we combine it with $I_{\le 0}$ in \texttt{O\_ell\_odd\_brute(r, l, delta)}
+  to get a na\"{i}ve implemenattion of \Cref{thm:full_orbital_ell_odd}.
+  For even $\ell$ we instead get (together with $I_{\le 0}$) is \Cref{prop:ell_even_half}.
+
+  \ii The function \texttt{O\_case\_3\_4\_brute(r, l, delta, lam)}
+  is a na\"{\i}ve implementation of
+  \textbf{Case 3\ts+}, \textbf{Case 3\ts-}, \textbf{Case 4\ts+}
+  and \textbf{Case 4\ts-} (asserting it never occurs)
+  from \Cref{ch:orbital1}.
+  Putting all the cases together gives
+  \texttt{O\_ell\_odd\_brute(r, l, delta, lam)}
+  which is a na\"{\i}ve implementation of \Cref{thm:full_orbital_ell_even}.
+
+  \ii The function \texttt{O\_ell\_neg\_brute(r, l, delta, lam)}
+  is a separate na\"{\i}ve implementation of \Cref{thm:full_orbital_ell_neg}.
+  It re-does the cases separately in the same was as this paper
+  rather than using the previous brute-force implementation.
+\end{itemize}
+
+\subsection{Derivative of the inhomogeneous orbital integral for $S_3(F)$}
+We also implement functions that can compute the
+derivative of the orbital integral for $S_3(F)$.
+
+\begin{itemize}
+  \ii \texttt{ARCH\_deriv\_n(r, C, W, H)} implements \Cref{lem:derivative_nn}.
+  \ii \texttt{ARCH\_deriv\_c(r, C, W, H)} implements \Cref{lem:derivative_cc}.
+  \ii \texttt{delO\_for\_S3(r, l, delta, lam)} implements
+  $\frac{1}{\log q}\partial\Orb(\gamma, \phi)$
+  by calling the previous two functions,
+  using the arguments that are mentioned in the proof of \Cref{thm:group_kernel_full}.
+\end{itemize}
+
+\subsection{The geometric side}
+\begin{itemize}
+  \ii \texttt{gross\_keating\_sum(n1, n2)} implements the sum in \Cref{prop:GK}.
+  \ii \texttt{GK(r, vb, vc, ve, vda)} implements the sum $\GK(r, v(b), v(c), v(e), v(d-a))$
+  that we introduced in \eqref{eq:GKdef}.
+  \ii \texttt{clean\_intersection(r, vb, vc, ve, vda)} implements the simple right-hand side of
+  \Cref{thm:clean_intersection},
+  although we use the argument names corresponding to the matched elements
+  after the translation in \Cref{lem:finale_match}.
+\end{itemize}
+
+\section{Tests}
+The code then implements the following tests to check correctness.
+These tests are randomized tests where the parameters are randomly selected by a program
+which can then numerically compute them;
+they do not purport to be symbolic or formal proofs of the formulas.
+
+\begin{enumerate}
+  \ii \texttt{test\_O} verifies that the formula \Cref{thm:semi_lie_formula}
+  matches the casework described in \Cref{ch:orbitalFJ1}.
+  To speed up the test, rather than symbolically comparing,
+  it selects the values $q = 17$ and $s = \log_q 1337$ in comparing the sides.
+
+  \ii \texttt{test\_delO} verifies that \Cref{cor:semi_lie_derivative_single}
+  matches the derivative of \Cref{thm:semi_lie_formula}.
+  \ii \texttt{test\_delO\_combo} verifies that \Cref{cor:semi_lie_combo}
+  matches a subtraction of \Cref{cor:semi_lie_derivative_single}.
+
+  \ii \texttt{test\_matrix\_upper\_triangular} verifies that the important entries
+  of the matrix in \Cref{lem:semi_lie_ker_full_rank} are computed correctly
+  (that is, one indeed gets an upper triangular matrix
+  when looking at the relevant rows).
+  \ii \texttt{test\_kernel\_large\_r} verifies \Cref{lem:semi_lie_large_r} holds.
+  \ii \texttt{test\_kernel\_full} verifies \Cref{thm:semi_lie_finite_codim_full} holds.
+
+  \ii \texttt{test\_O\_for\_S3} verifies that the formulas
+  \Cref{thm:full_orbital_ell_odd,thm:full_orbital_ell_even,thm:full_orbital_ell_neg}
+  match the casework described in \Cref{ch:orbital1}.
+  \ii \texttt{test\_delO\_for\_S3} verifies that the derivatives of the formulas in
+  \Cref{thm:full_orbital_ell_odd,thm:full_orbital_ell_even,thm:full_orbital_ell_neg}
+  match those predicted by \Cref{lem:derivative_nn} and \Cref{lem:derivative_nn}.
+  \ii \texttt{test\_ker\_for\_S3} verifies that \Cref{thm:group_kernel_full} holds.
+
+  \ii \texttt{test\_GK\_to\_orbital} verifies the formula \Cref{thm:miracle}.
+  \ii \texttt{test\_clean\_intersection} verifies the formula \Cref{thm:clean_intersection}.
+\end{enumerate}
+
+\section{Code listing}
+\lstinputlisting[language=Python]{check-thesis.sage}
