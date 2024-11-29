@@ -186,6 +186,26 @@ def ARCH_sum_c(a0, a1, w1, w2):
     return S
 
 
+def ARCH_deriv_n(r, C, W, H):
+    j = var("j")
+    assert W > 4 * H >= 0, (W, H)
+    assert W % 2 == 1, W
+    return -(
+        (-1) ** (r + C) * sum(((W + 1) / 2 + r - 2 * (j - r)) * q**j, j, r + 1, r + H)
+        + sum((-1) ** (j + C) * ((W + 1) / 2 + 2 * r - j) * q**j, j, 0, r)
+    )
+
+
+def ARCH_deriv_c(r, C, W, L):
+    k = var("k")
+    assert L >= 1, L
+    assert W >= 0, W
+    assert L % 2 == 1, L
+    return (-1) ** (r + W + C) * (
+        W / 2 - (L - 1) / 2 * r if W % 2 == 0 else -(W + L) / 2 - (L + 1) / 2 * r
+    )
+
+
 def O_for_S3(r, l, delta, lam):
     if l % 2 == 1:
         assert lam == l, (l, lam)
@@ -200,19 +220,43 @@ def O_for_S3(r, l, delta, lam):
     if l % 2 == 1:
         return ARCH_sum_n(-2 * r, 2 * delta + l + 2 * r, r, l)
     elif l % 2 == 0 and l >= 0:
-        return ARCH_sum_n(-2 * r, 2 * delta + lam + 2 * r, r, l) + q ** (
-            l / 2 + r
-        ) * ARCH_sum_c(
+        n_sum = ARCH_sum_n(-2 * r, 2 * delta + lam + 2 * r, r, l)
+        c_sum = ARCH_sum_c(
             l - r, 2 * delta + lam - l + r, delta - l / 2, min(lam - l - 1, 2 * r)
         )
+        return n_sum + q ** (r + l / 2) * c_sum
     else:
-        vd = l // 2
-        assert (avd := -vd) > 0  # avd := abs(vd)
+        assert (avd := -l / 2) > 0  # avd := abs(vd)
         if r < avd:
             return 0
-        return ARCH_sum_n(-2 * r, lam + 2 * (r - 2 * avd), r - avd, 0) + q ** (
-            r - avd
-        ) * ARCH_sum_c(-r - avd, lam + r - 3 * avd, 0, min(lam - 1, 2 * (r - avd)))
+        n_sum = ARCH_sum_n(-2 * r, lam + 2 * (r - 2 * avd), r - avd, 0)
+        c_sum = ARCH_sum_c(-r - avd, lam + r - 3 * avd, 0, min(lam - 1, 2 * (r - avd)))
+        return n_sum + q ** (r - avd) * c_sum
+
+
+def delO_for_S3(r, l, delta, lam):
+    if l % 2 == 1:
+        assert lam == l, (l, lam)
+    else:
+        assert l < lam, (l, lam)
+    if l < 0 or delta < 0:
+        assert l == delta and l % 2 == 0, (l, delta)
+    else:
+        assert l <= 2 * delta, (l, delta)
+
+    if l % 2 == 1:
+        return ARCH_deriv_n(r, C=0, W=l + 2 * delta, H=(l - 1) / 2)
+    elif l >= 0:
+        n_sum = ARCH_deriv_n(r, C=0, W=lam + 2 * delta, H=l / 2)
+        c_sum = ARCH_deriv_c(r, C=0, W=delta - l / 2, L=lam - l)
+        return n_sum + q ** (r + l / 2) * c_sum
+    else:
+        assert (avd := -l / 2) > 0  # avd := abs(vd)
+        if r < avd:
+            return 0
+        n_sum = ARCH_deriv_n(r - avd, C=-2 * avd, W=lam, H=0)
+        c_sum = ARCH_deriv_c(r - avd, C=0, W=0, L=lam)
+        return n_sum + q ** (r - avd) * c_sum
 
 
 # Brute force auxiliary functions for the inhomogeneous group AFL orbital
@@ -507,21 +551,26 @@ class ThesisTest(unittest.TestCase):
         self.assertEqual(orb.subs(q_s=1), 0)
         self.assertEqual(brute_res.subs(q=17, q_s=1337), orb.subs(q=17, q_s=1337))
 
-    def test_ker_for_S3_correct(self):
+    def test_delO_for_S3(self):
+        params = self.get_S3_params()
+        self.assertEqual(
+            derivative(O_for_S3(**params), qs).subs(q_s=1), delO_for_S3(**params)
+        )
+
+    def test_ker_for_S3(self):
         params = self.get_S3_params(r_min=3)
         l = params["l"]
         r = params.pop("r")
-        combin = (
-            (O_for_S3(r, **params) - O_for_S3(r - 1, **params))
-            + 2 * q * (O_for_S3(r - 1, **params) - O_for_S3(r - 2, **params))
-            + q**2 * (O_for_S3(r - 2, **params) - O_for_S3(r - 3, **params))
+        deriv = (
+            (delO_for_S3(r, **params) - delO_for_S3(r - 1, **params))
+            + 2 * q * (delO_for_S3(r - 1, **params) - delO_for_S3(r - 2, **params))
+            + q**2 * (delO_for_S3(r - 2, **params) - delO_for_S3(r - 3, **params))
         )
-        deriv = derivative(combin, qs).subs(q_s=1)
         if l < 0:
             if r < -l // 2:
                 self.assertEqual(deriv, 0)
             elif r >= -l // 2 + 3:
-                self.assertNotEqual(deriv, -2 * q - 2)
+                self.assertEqual(deriv, -2 * q - 2)
         else:
             self.assertEqual(deriv, -2 * q - 2)
 
