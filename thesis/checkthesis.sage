@@ -13,9 +13,9 @@ def irange(start, stop):
 
 def O(r, vb, vc, ve, vda):
     """Value of the overall orbital integral in the semi-Lie case"""
-    assert vb % 2 != vc % 2
-    assert r >= 0
-    assert vb + vc >= 0
+    assert vb % 2 != vc % 2, (vb, vc)
+    assert r >= 0, r
+    assert vb + vc >= 0, (vb, vc)
     S = 0
     for k in irange(-vb - r, 2 * ve + vc + r):
         n = min(
@@ -34,8 +34,8 @@ def O(r, vb, vc, ve, vda):
 
 def delO(r, vb, vc, ve, vda):
     """This is 1/(log q) times the derivative of the orbital for 1_(<= r)"""
-    assert r >= 0
-    assert vb + vc >= 0 and vb % 2 != vc % 2
+    assert r >= 0, r
+    assert vb + vc >= 0 and vb % 2 != vc % 2, (vb, vc)
     varkappa = ve - vda - r
     N = min(ve, floor((vb + vc) // 2 + r), vda + r)
     j = var("j")
@@ -52,8 +52,7 @@ def delO(r, vb, vc, ve, vda):
 def delO_combo(r, vb, vc, ve, vda):
     """This is 1/(log q) times the derivative of the orbital for 1_(<= r) + 1_(<= r-1)"""
 
-    assert r >= 0
-
+    assert r >= 1
     N = min(ve, (vb + vc) // 2 + r, vda + r)
     j = var("j")
     S = sum(q**j, j, 0, N)
@@ -79,10 +78,10 @@ def delO_combo(r, vb, vc, ve, vda):
 # Brute force auxiliary functions for the semi-Lie orbital
 def O_brute_odd(r, vb, vc, ve, vda):
     """This is Case 5 in the situation where theta is odd"""
-    assert vb % 2 != vc % 2
-    assert vda >= 0
-    assert r >= 0
-    assert vda * 2 > vb + vc
+    assert vb % 2 != vc % 2, (vb, vc)
+    assert vda >= 0, vda
+    assert r >= 0, r
+    assert vda * 2 > vb + vc, (vda, vb, vc)
 
     voffset = vda - vc
     S = 0
@@ -105,10 +104,10 @@ def O_brute_odd(r, vb, vc, ve, vda):
 
 def O_brute_even(r, vb, vc, ve, vda):
     """This is Case 5/6+/6- in the situation where theta is odd"""
-    assert vb % 2 != vc % 2
-    assert vda >= 0
-    assert r >= 0
-    assert vda * 2 < vb + vc
+    assert vb % 2 != vc % 2, (vb, vc)
+    assert vda >= 0, vda
+    assert r >= 0, r
+    assert vda * 2 < vb + vc, (vda, vb, vc)
     theta = vda * 2
     vt = theta // 2 - vc
 
@@ -187,15 +186,15 @@ def ARCH_sum_c(a0, a1, w1, w2):
     return S
 
 
-def O_group(r, l, delta, lam):
+def O_for_S3(r, l, delta, lam):
     if l % 2 == 1:
-        assert lam == l
+        assert lam == l, (l, lam)
     else:
-        assert l < lam
+        assert l < lam, (l, lam)
     if l < 0 or delta < 0:
-        assert l == delta and l % 2 == 0
+        assert l == delta and l % 2 == 0, (l, delta)
     else:
-        assert l <= 2 * delta
+        assert l <= 2 * delta, (l, delta)
 
     S = 0
     if l % 2 == 1:
@@ -374,8 +373,8 @@ def O_ell_neg_brute(r, vb, lam):
     return S + O_zero(r, l, delta)
 
 
-class SemiLieTest(unittest.TestCase):
-    def get_params(self, r_min=0, r_max=20):
+class ThesisTest(unittest.TestCase):
+    def get_semi_lie_params(self, r_min=0, r_max=20):
         params = {
             "r": randint(r_min, r_max),
             "vb": randint(-10, 20),
@@ -387,8 +386,8 @@ class SemiLieTest(unittest.TestCase):
         assert params["vb"] + params["vc"] >= 0
         return params
 
-    def test_O_correct(self):
-        params = self.get_params()
+    def test_O(self):
+        params = self.get_semi_lie_params()
         brute_res = (
             O_brute_odd(**params)
             if params["vb"] + params["vc"] < 2 * params["vda"]
@@ -399,24 +398,24 @@ class SemiLieTest(unittest.TestCase):
         self.assertEqual(orb.subs(q_s=1), 0)
         self.assertEqual(brute_res.subs(q=17, q_s=1337), orb.subs(q=17, q_s=1337))
 
-    def test_delO_correct(self):
-        params = self.get_params()
+    def test_delO(self):
+        params = self.get_semi_lie_params()
         self.assertEqual(
             delO(**params),
             derivative(O(**params), qs).subs(q_s=1),
         )
 
-    def test_delO_combo_correct(self):
-        params = self.get_params(r_min=1)
+    def test_delO_combo(self):
+        params = self.get_semi_lie_params(r_min=1)
         r = params.pop("r")
         self.assertEqual(
             delO(r, **params) + delO(r - 1, **params),
             delO_combo(r, **params),
         )
 
-    def test_matrix_for_full_rank_correct(self):
+    def test_matrix_upper_triangular(self):
         N = 7
-        params = self.get_params(r_min=0, r_max=N)
+        params = self.get_semi_lie_params(r_min=0, r_max=N)
         del params["ve"]
         del params["r"]
         vb, vc, vda = params["vb"], params["vc"], params["vda"]
@@ -441,20 +440,20 @@ class SemiLieTest(unittest.TestCase):
             C = (vb + vc - 1 - 2 * vda) / 2
             if theta % 2 == 1:
                 self.assertEqual(M2[t + 1][r], q**t - (q ** (t - 1) if t > 0 else 0))
-            elif t > 0:
+            else:
                 self.assertEqual(
                     M2[t + 1][r], -C * q**t - (C + 1) * (q ** (t - 1) if t > 0 else 0)
                 )
 
     def test_kernel_large_r(self):
-        params = self.get_params(r_min=2)
+        params = self.get_semi_lie_params(r_min=2)
         r = max(params.pop("r"), params["ve"] + 2)
         self.assertEqual(
             delO(r, **params) + 2 * delO(r - 1, **params) + delO(r - 2, **params), 0
         )
 
     def test_kernel_full(self):
-        params = self.get_params(r_min=5)
+        params = self.get_semi_lie_params(r_min=5)
         vb, vc, vda, ve = params["vb"], params["vc"], params["vda"], params["ve"]
         r = params.pop("r")
 
@@ -481,25 +480,23 @@ class SemiLieTest(unittest.TestCase):
         elif r == right_bound - 1 and vb + vc >= 2 * vda:
             self.assertEqual(expr, 0)
 
-
-class InhomogeneousGroupTest(unittest.TestCase):
-    def get_params(self):
+    def get_S3_params(self, r_min=0, r_max=20):
         l = randint(-5, 20)
         if l < 0:
             l *= 2
 
         params = {
-            "r": randint(0, 20),
+            "r": randint(r_min, r_max),
             "l": l,
             "lam": l if l % 2 == 1 else randrange(max(0, l + l % 2) + 1, 22, 2),
             "delta": l if l < 0 else randint(l // 2, 20),
         }
         return params
 
-    def test_O_correct(self):
-        params = self.get_params()
+    def test_O_for_S3(self):
+        params = self.get_S3_params()
         l = params["l"]
-        orb = O_group(**params)
+        orb = O_for_S3(**params)
         if l < 0:
             brute_res = O_ell_neg_brute(r=params["r"], vb=l // 2, lam=params["lam"])
         elif l % 2 == 0:
@@ -508,7 +505,23 @@ class InhomogeneousGroupTest(unittest.TestCase):
             del params["lam"]
             brute_res = O_ell_odd_brute(**params)
 
+        self.assertEqual(orb.subs(q_s=1), 0)
         self.assertEqual(brute_res.subs(q=17, q_s=1337), orb.subs(q=17, q_s=1337))
+
+    def test_ker_for_S3_correct(self):
+        params = self.get_S3_params(r_min=3)
+        l = params["l"]
+        r = params.pop("r")
+        combin = (
+            (O_for_S3(r, **params) - O_for_S3(r - 1, **params))
+            + 2 * q * (O_for_S3(r - 1, **params) - O_for_S3(r - 2, **params))
+            + q**2 * (O_for_S3(r - 2, **params) - O_for_S3(r - 3, **params))
+        )
+        deriv = derivative(combin, qs).subs(q_s=1)
+        if l < 0 and -l // 2 <= r <= -l // 2 + 2:
+            self.assertNotEqual(deriv, -2 * q - 2)
+        else:
+            self.assertEqual(deriv, -2 * q - 2)
 
 
 if __name__ == "__main__":
@@ -532,10 +545,8 @@ if __name__ == "__main__":
     loader = unittest.TestLoader()
     for _ in range(args.trials):
         if args.test:
-            suite.addTest(SemiLieTest(args.test))
-            suite.addTest(InhomogeneousGroupTest(args.test))
+            suite.addTest(ThesisTest(args.test))
         else:
-            suite.addTest(loader.loadTestsFromTestCase(SemiLieTest))
-            suite.addTest(loader.loadTestsFromTestCase(InhomogeneousGroupTest))
+            suite.addTest(loader.loadTestsFromTestCase(ThesisTest))
     runner = unittest.TextTestRunner()
     runner.run(suite)
