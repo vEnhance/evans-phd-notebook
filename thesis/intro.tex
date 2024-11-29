@@ -365,7 +365,7 @@ which in this case can be checked independently.
   Therefore $n=2$ is the first case of \Cref{conj:semi_lie_spherical} worth examining.
 \end{remark}
 
-\subsection{A proposed conjecture on the kernel of indicator functions on which the orbital has identically vanishing derivative}
+\subsection{A proposed large image conjecture}
 \label{sec:intro_large_kernel}
 
 We let $S_n(F)\rs^-$ (resp.\ $(S_n(F) \times V'_n(F))\rs^-$)
@@ -385,51 +385,29 @@ If we consider the map
   \phi &\mapsto \left( \gamma \mapsto \partial \Orb \left(\gamma, \phi \right) \right)
 \end{align*}
 then \cite[Theorem 8.2.3]{ref:AFLspherical} in fact
-shows this map has codimension $2$.
+shows this map has a kernel of codimension $2$
+(equivalently, the image of the map was only two-dimensional).
 They thus stated \cite[Conjecture 1.0.2]{ref:AFLspherical} which asserts that for $n \ge 2$,
 a similarly defined map (albeit for more than one Hecke algebra) has a large kernel.
 
 It is therefore natural to ask whether a similar large kernel result
 could hold for the analogous orbital integral in the semi-Lie case.
-In fact, even for $n=2$ the behavior is somewhat different.
-We propose the following conjecture, which we have proved for $n = 2$
-(see \Cref{thm:semi_lie_ker_trivial} and \Cref{thm:semi_lie_ker_huge} momentarily).
+We instead propose the following \emph{large image} conjecture,
+which we have proved for $n = 2$.
 \begin{conjecture}
-  [Kernel conjecture for the orbital on $(S_n(F) \times V'_n(F))\rs^-$]
+  [Large image conjecture for $(S_n(F) \times V'_n(F))\rs^-$]
   \label{conj:kernel_semi_lie}
   Let $n \ge 2$.
-  \begin{enumerate}
-  \item[(a)]
-  Choose any $\gamma \in S_n(F)$ which could appear in $(S_n(F) \times V'_n(F))\rs^-$.
-  Suppose $\phi \in \HH(S_n(F))$ satisfies
-  \[ \partial \Orb \left(\guv, \phi \right) = 0 \]
-  for every such $(\uu, \vv^\top) \in V'_n(F)$,
-  Then in fact
-  \[ \Orb \left(\guv, \phi \otimes \oneV, s \right) = 0 \]
-  for all $s \in \CC$.
-
-  \item[(b)]
-  Fix a choice of $(\uu, \vv^\top) \in V'_n(F)$.
-  Consider all $\gamma \in S_n(F)$ such that $\guv \in (S_n(F) \times V'_n(F))\rs^-$,
-  and assume there is at least one such $\gamma$.
-  Define the map of vector spaces
+  The map
   \begin{align*}
-    \HH(S_n(F))
-    &\to C^\infty( \left\{ \text{elements of } S_n(F) \text{ matching as above} \right\} ) \\
-      \phi &\mapsto \left( \gamma \mapsto \partial \Orb \left( \guv, \phi \right) \right).
+    \partial\Orb \colon \HH(S_n(F)) &\to C^\infty\left( (S_n(F) \times V'_n(F))^- \right) \\
+    \phi &\mapsto \left( \guv \mapsto \partial \Orb \left(\guv, \phi \right) \right)
   \end{align*}
-  Then this map has large kernel,
-  in the sense it is not contained in any maximal ideal of $\HH(S_n(F))$
-  when $\HH(S_n(F))$ is viewed as a ring under the isomorphism of \Cref{ch:satake}.
-  \end{enumerate}
+  is injective.
 \end{conjecture}
-
-Part (a) of \Cref{conj:kernel_semi_lie} implies that the map
-\begin{align*}
-  \partial\Orb \colon \HH(S_n(F)) &\to C^\infty\left( (S_n(F) \times V'_n(F))^- \right) \\
-  \phi &\mapsto \left( \guv \mapsto \partial \Orb \left(\guv, \phi \right) \right)
-\end{align*}
-is injective, i.e.\ the image is as large as possible.
+In fact for $n=2$ we have a more precise result
+showing that the injectivity essentially comes from $v(\uu\vv^\top)$ alone in this case.
+See \Cref{thm:semi_lie_ker_trivial} and \Cref{thm:semi_lie_ker_huge} momentarily.
 
 \section{Results}
 Most of the results here are dedicated toward the semi-Lie version of the AFL,
@@ -584,34 +562,18 @@ as the base change mentioned in \cite[Lemma 7.1.1]{ref:AFLspherical}.
   \end{itemize}
 \end{example}
 
-\subsection{Kernel results for the semi-Lie orbital integral when $n=2$}
+\subsection{Kernel and image results for the semi-Lie orbital integral when $n=2$}
 As we mentioned our earlier conjecture \Cref{conj:kernel_semi_lie}
 is true for $n = 2$.
 More precisely, we have the following two theorems.
 
 \begin{restatable}[$\partial\Orb$ is injective even for fixed $\gamma \in S_2(F)$]{theorem}{semiliekertriv}
   \label{thm:semi_lie_ker_trivial}
-  Consider any $\gamma \in S_2(F)$ as in \Cref{lem:semi_lie_params}.
+  Fix any $\guv \in (S_2(F) \times V'_2(F))\rs^-$.
   Then there doesn't exist any nonzero function $\phi \in \HH(S_2(F))$ such that
-  \[ \partial \Orb \left(
-      \left( \gamma, \begin{pmatrix} 0 \\ 1 \end{pmatrix}, \begin{pmatrix} 0 & \varpi^i \end{pmatrix} \right),
-      \phi, \right) = 0 \]
-  holds for every integer $i \ge 0$.
-  Thus part (a) of \Cref{conj:kernel_semi_lie} holds for $n = 2$.
-\end{restatable}
-
-\begin{restatable}[The kernel of $\partial\Orb$ is large for fixed $(\uu, \vv^\top) \in V'_2(F)$]{theorem}{semiliekerlarge}
-  \label{thm:semi_lie_ker_huge}
-  Fix a choice of $(\uu, \vv^\top) \in V_2'(F)$ with $\vv^\top \uu \neq 0$.
-  Consider all $\gamma \in S_2(F)$ for which $\guv \in (S_2(F) \times V'_2(F))\rs^-$.
-  Then the space of $\phi \in \HH(S_2(F))$ such that
-  \[ \partial \Orb \left( \guv, \phi \right) = 0 \]
-  holds for all these $\gamma$ is a $\QQ$-vector subspace of $\HH(S_2(F))$
-  whose codimension is at most $v(\uu \vv^\top) + 2$.
-
-  Moreover, this subspace of $\HH(S_2(F))$
-  is not contained in any maximal ideal of $\HH(S_2(F))$
-  when $\HH(S_2(F))$ is viewed as a ring under the isomorphism of \Cref{ch:satake}.
+  \[ \partial \Orb \left( (\gamma, \uu, \varpi^i \vv^\top), \phi, \right) = 0 \]
+  holds for every integer $i$.
+  Thus \Cref{conj:kernel_semi_lie} holds for $n = 2$.
 \end{restatable}
 
 In particular, for $n=2$ the map
@@ -620,6 +582,20 @@ In particular, for $n=2$ the map
   \phi &\mapsto \left( \guv \mapsto \partial \Orb \left(\guv, \phi \right) \right)
 \end{align*}
 is indeed injective.
+
+\begin{restatable}[The kernel of $\partial\Orb$ is large for fixed $(\uu, \vv^\top) \in V'_2(F)$]{theorem}{semiliekerlarge}
+  \label{thm:semi_lie_ker_huge}
+  Let $N \ge 0$ be an integer.
+  Consider all $\guv \in (S_2(F) \times V'_2(F))\rs^-$ for which $v(\uu\vv^\top) \le N$.
+  Then the space of $\phi \in \HH(S_2(F))$ for which
+  \[ \partial \Orb \left( \guv, \phi \right) = 0 \]
+  holds for all such $\guv$ is a $\QQ$-vector subspace of $\HH(S_2(F))$
+  whose codimension is at most $N + 2$.
+
+  Moreover, this subspace of $\HH(S_2(F))$
+  is not contained in any maximal ideal of $\HH(S_2(F))$
+  when $\HH(S_2(F))$ is viewed as a ring under the isomorphism of \Cref{ch:satake}.
+\end{restatable}
 
 \begin{remark}
   [On formalizing large kernels]
@@ -632,14 +608,10 @@ is indeed injective.
   Conversely, a \emph{finite} dimension vector subspace might still
   not be contained in any maximal ideal,
   such as the one-dimensional space $\QQ \subseteq \QQ[T]$.
-  Thus neither of being finite codimension and generating all of $\QQ[T]$ as an ideal
-  imply each other.
 
-  However, the author's opinion is that being finite codimension should be more surprising,
-  since even a finite-dimensional $\QQ$-vector subspace of $\QQ[T]$
-  (indeed, any subspace containing $1$) could still generate the entire ring $\QQ[T]$.
+  Thus neither finite codimension nor generating all of $\QQ[T]$ as an ideal imply each other.
   It might be interesting to consider other different ways
-  of formalizing the notion of ``large kernel'' in \Cref{conj:kernel_semi_lie}.
+  of formalizing the notion of ``large kernel''.
 \end{remark}
 
 \subsection{The geometric side of the semi-Lie AFL conjecture for $n=2$}
@@ -735,21 +707,22 @@ However, we did not complete the comparison on the geometric side in this situat
 Thus we do not claim a proof of $n = 3$ of \Cref{conj:inhomog_spherical},
 although we imagine such a proof could be completed
 once a method for determining the intersection numbers explicitly is devised.
-On the other hand, the orbital data is enough to prove the following result.
+On the other hand, the orbital data is enough to prove the following result,
+which serves as an analog to \Cref{conj:kernel_semi_lie}.
 \begin{restatable}[$\partial\Orb \colon \HH(S_3(F)) \to C^\infty(S_3(F)\rs^-)$ has large image]{theorem}{nogroupkernel}
   \label{thm:no_kernel_group}
   There is no nontrivial $\phi \in \HH(S_3(F))$ such that
   \[ \partial \Orb \left( \gamma, \phi \right) = 0 \]
   holds for every $\gamma \in S_3(F)\rs^-$.
+  In other words, the map
+  \begin{align*}
+    \partial\Orb \colon \HH(S_3(F)) &\to C^\infty(S_3(F)\rs^-) \\
+    \phi &\mapsto \left( \gamma \mapsto \partial \Orb \left(\gamma, \phi \right) \right)
+  \end{align*}
+  is injective, i.e., has image as large as possible, for $n = 3$.
 \end{restatable}
-Hence the analogous map
-\begin{align*}
-  \partial\Orb \colon \HH(S_3(F)) &\to C^\infty(S_3(F)\rs^-) \\
-  \phi &\mapsto \left( \gamma \mapsto \partial \Orb \left(\gamma, \phi \right) \right)
-\end{align*}
-is injective, i.e., has image as large as possible, for $n = 3$.
-
 \begin{remark}
+  [Comparison to {\cite[Conjecture 1.0.2]{ref:AFLspherical}}]
   Note that \Cref{thm:no_kernel_group} does not falsify
   \cite[Conjecture 1.0.2]{ref:AFLspherical},
   because the conjecture in \emph{loc.\ cit.}\ is formulated
@@ -761,61 +734,68 @@ is injective, i.e., has image as large as possible, for $n = 3$.
 \section{Roadmap}
 The rest of the paper is organized as follows.
 
+\subsection{Background information}
+The paper begins with some general background information.
 \begin{itemize}
-  \ii The paper begins with some general background information.
-  \begin{itemize}
-    \ii In \Cref{ch:background} we provide some preliminary background
-    on the spaces appearing in the overall paper and the Hecke modules that will be used.
-    \ii Further background is stated in \Cref{ch:rs_matching},
-    where we describe the matching of regular semisimple elements.
-    \ii In \Cref{ch:satake} we provide reminders on the Satake transform.
-    We also derive concrete formulas for base change when $n = 3$
-    (in comparison, the analogous results for $n=2$ are
-    \cite[Lemma 7.1.1]{ref:AFLspherical});
-    but these formulas are only used for a remark towards the end of \Cref{ch:ker}.
-  \end{itemize}
+  \ii In \Cref{ch:background} we provide some preliminary background
+  on the spaces appearing in the overall paper and the Hecke algebras
+  $\HH(\U(\VV_n^+))$ and $\HH(S_n(F))$.
 
-  \ii We then proceed to introduce the orbital integrals.
-  \begin{itemize}
-    \ii In \Cref{ch:orbital0} we introduce the weighted orbital integral
-    for the group version of the AFL for full spherical Hecke algebra,
-    and state the parameters to be used for concrete calculation in \Cref{lem:S3_abcd}.
-    In \Cref{ch:orbital1,ch:orbital2} we prove \Cref{thm:summary}
-    by providing the full formulas
-    \Cref{thm:full_orbital_ell_odd,thm:full_orbital_ell_even,thm:full_orbital_ell_neg}.
+  \ii Further background is stated in \Cref{ch:rs_matching},
+  where we describe the matching of regular semisimple elements
+  so that we may speak of $S_n(F)\rs^-$ and $(S_n(F) \times V'_n(F))\rs^-$.
 
-    \ii In \Cref{ch:orbitalFJ0} we introduce the weighted orbital integral
-    for the semi-Lie version of the AFL for full spherical Hecke algebra,
-    and state the parameters to be used in \Cref{lem:semi_lie_params}.
-    The analogous calculation is in \Cref{ch:orbitalFJ1,ch:orbitalFJ2},
-    which is used to prove \Cref{thm:semi_lie_formula} and its corollaries.
-  \end{itemize}
-
-  \ii Having completely computed the orbital integrals in these cases,
-  we take a side trip in \Cref{ch:ker} to prove the ``large kernel'' results.
-  We establish \Cref{conj:kernel_semi_lie} for $n = 2$
-  by proving the explicit results
-  \Cref{thm:semi_lie_ker_trivial} and \Cref{thm:semi_lie_finite_codim_full}.
-  We also prove \Cref{thm:no_kernel_group}.
-
-  \ii We then turn our attention to the other parts of the two versions of the AFL.
-  In addition to stating the relevant definitions,
-  the subsequent chapters aim to prove \Cref{thm:semi_lie_n_equals_2}.
-  \begin{itemize}
-    \ii In \Cref{ch:transf} we define the transfer factors $\omega \in \{\pm1\}$.
-    \ii In \Cref{ch:geo}, we describe the Rapoport-Zink spaces
-    that the geometric side is based on, and define the intersection numbers
-    on both sides of the AFL.
-    \ii In \Cref{ch:jiao}, we specialize to the situation $n = 2$
-    for the intersection numbers in the semi-Lie AFL only.
-    The Rapoport-Zink spaces become replaced with Lubin-Tate ones,
-    and we introduce the Gross-Keating formula
-    that will be our primary tool for the calculation.
-  \end{itemize}
-
-  \ii Finally, in \Cref{ch:finale} we tie everything together and establish
-  \Cref{thm:semi_lie_n_equals_2}.
+  \ii In \Cref{ch:satake} we provide reminders on the Satake transform.
+  We also derive concrete formulas for base change when $n = 3$
+  (in comparison, the analogous results for $n=2$ are
+  \cite[Lemma 7.1.1]{ref:AFLspherical});
+  but these formulas are only used towards the end of \Cref{ch:ker} later.
 \end{itemize}
+
+\subsection{Introduction and calculation of the orbital integrals}
+We then proceed to introduce the orbital integrals.
+\begin{itemize}
+  \ii In \Cref{ch:orbital0} we introduce the weighted orbital integral
+  for the group version of the AFL for full spherical Hecke algebra,
+  and state the parameters to be used for concrete calculation in \Cref{lem:S3_abcd}.
+  In \Cref{ch:orbital1,ch:orbital2} we prove \Cref{thm:summary}
+  by providing the full formulas
+  \Cref{thm:full_orbital_ell_odd,thm:full_orbital_ell_even,thm:full_orbital_ell_neg}.
+
+  \ii In \Cref{ch:orbitalFJ0} we introduce the weighted orbital integral
+  for the semi-Lie version of the AFL for full spherical Hecke algebra,
+  and state the parameters to be used in \Cref{lem:semi_lie_params}.
+  The analogous calculation is in \Cref{ch:orbitalFJ1,ch:orbitalFJ2},
+  which is used to prove \Cref{thm:semi_lie_formula} and its corollaries.
+\end{itemize}
+
+\subsection{Large kernel and image}
+Having completely computed the orbital integrals in these cases,
+we take a side trip in \Cref{ch:ker} to prove the large image results asserted.
+We establish \Cref{conj:kernel_semi_lie} for $n = 2$ by proving the asserted
+\Cref{thm:semi_lie_ker_trivial} and \Cref{thm:semi_lie_ker_huge}
+for the orbital integral on $(S_2(F) \times V'_2(F))\rs^-$.
+We also prove \Cref{thm:no_kernel_group} for the orbital integral on $S_3(F)\rs^-$.
+
+\subsection{Geometric side}
+We then turn our attention to the other parts of the two versions of the AFL.
+In addition to stating the relevant definitions,
+the subsequent chapters aim to prove \Cref{thm:semi_lie_n_equals_2}.
+\begin{itemize}
+  \ii In \Cref{ch:transf} we briefly define the transfer factors $\omega \in \{\pm1\}$.
+  \ii In \Cref{ch:geo}, we describe the Rapoport-Zink spaces $\RZ_n$
+  that the geometric side is based on, and define the intersection numbers
+  $\Int((1,g), \mathbf{1}_{K^\flat} \otimes f)$ and $\Int((g,u), f)$
+  that appear in the AFL based on the Hecke operator introduced in \cite{ref:AFLspherical}
+  and the KR-divisor $\ZD(u)$ introduced in \cite{ref:KR}.
+  \ii In \Cref{ch:jiao}, we specialize to the situation $n = 2$
+  for the intersection numbers in the semi-Lie AFL only.
+  The Rapoport-Zink space $\RZ_2$ become replaced with Lubin-Tate space $\MM_2$,
+  and we introduce the Gross-Keating formula
+  that will be our primary tool for the calculation.
+\end{itemize}
+Finally, in \Cref{ch:finale} we tie everything together and establish
+\Cref{thm:semi_lie_n_equals_2}.
 
 An approximate dependency chart between the chapters is given in Figure~\ref{fig:depchart}.
 

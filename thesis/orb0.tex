@@ -579,8 +579,7 @@ before stabilizing, then doing the symmetric descent on the right half.
 \subsection{Full explicit weighted orbital integral for the case where $\ell$ odd}
 If $\ell$ is odd, so $\lambda = \ell$, then
 the weighted orbital integral can be expressed succinctly in the following way.
-\begin{theorem}
-  [Weighted orbital integral for odd $\ell$]
+\begin{restatable}[Weighted orbital integral for odd $\ell$]{theorem}{ellodd}
   \label{thm:full_orbital_ell_odd}
   Let $r \ge 0$.
   Let $\gamma \in S_3(F)\rs$ match an element of $\U(\VV_3^-)$,
@@ -594,7 +593,7 @@ the weighted orbital integral can be expressed succinctly in the following way.
     = \sum_{k = -2r}^{\ell + 2\delta + 2r}
     (-1)^k \left( 1 + q + q^2 + \dots + q^{\nn_{\gamma}(k)}  \right) (q^s)^k
   \]
-\end{theorem}
+\end{restatable}
 \begin{remark}
   To make $\nn_\gamma$ fully explicit, one could also expand the arch shorthand to
   \[
@@ -694,8 +693,7 @@ we can then write the following equivalent formulation.
 
 \subsection{Full explicit weighted orbital integral for the case where $\ell \ge 0$ is even}
 When $\ell$ is even the formula has a change to the leading coefficient as well.
-\begin{theorem}
-  [Weighted orbital integral for even $\ell \ge 0$]
+\begin{restatable}[Weighted orbital integral for even $\ell \ge 0$]{theorem}{elleven}
   \label{thm:full_orbital_ell_even}
   Let $r \ge 0$.
   Let $\gamma \in S_3(F)\rs$ match an element of $\U(\VV_3^-)$,
@@ -715,7 +713,7 @@ When $\ell$ is even the formula has a change to the leading coefficient as well.
     (-1)^k \left( 1 + q + q^2 + \dots + q^{\nn_{\gamma}(k)}  \right) (q^s)^k \\
     &+ \sum_{k = \ell-r}^{2\delta + \lambda - \ell + r} \cc_\gamma(k) (-1)^k q^{\frac{\ell}{2}+r} (q^s)^k.
   \end{align*}
-\end{theorem}
+\end{restatable}
 
 \begin{example}
   We provide an example for $r=5$, $\ell=2$, $\delta=4$, $\lambda=9$ for concreteness:
@@ -766,8 +764,7 @@ When $\ell$ is even the formula has a change to the leading coefficient as well.
 \subsection{Full explicit weighted orbital integral for the case $\ell < 0$}
 In this case, $\ell = \delta = 2v(b) = 2v(d) < 0$.
 We will just state the relevant theorem in terms of $v(b)$ and $v(d)$, omitting $\ell$ and $\delta$.
-\begin{theorem}
-  [Weighted orbital integral when $v(b)=v(d)<0$]
+\begin{restatable}[Weighted orbital integral when $v(b)=v(d)<0$]{theorem}{ellneg}
   \label{thm:full_orbital_ell_neg}
   Let $r \ge 0$.
   Let $\gamma \in S_3(F)\rs$ match an element of $\U(\VV_3^-)$,
@@ -788,7 +785,7 @@ We will just state the relevant theorem in terms of $v(b)$ and $v(d)$, omitting 
     (-1)^k \left( 1 + q + q^2 + \dots + q^{\nn_{\gamma}(k)} \right) (q^s)^k \\
     &+ \sum_{k = -r-|v(d)|}^{\lambda+r-3|v(d)|} \cc_\gamma(k) (-1)^k q^{r-|v(d)|} (q^s)^k \\
   \end{align*}
-\end{theorem}
+\end{restatable}
 
 \begin{example}
   \label{ex:ell_neg_top_case}
@@ -898,10 +895,12 @@ We will just state the relevant theorem in terms of $v(b)$ and $v(d)$, omitting 
     &- q^{2029s}.
   \end{align*}
 \end{example}
+
 \subsection{Derivatives of the orbital integrals}
 We do not explicitly write the derivatives for the above three theorems in this paper,
 since they are not used later on.
 However, we mention that these formulas could be easily extracted by using
 \Cref{lem:derivative_nn} and \Cref{lem:derivative_cc} later on;
-indeed, we use certain combinations of the derivative later on in
+and in fact we do use certain simple combinations of the derivative later on in
 \Cref{thm:group_kernel_full}.
+In any case, the code in the Appendix implements the derivatives in $O(1)$ runtime.

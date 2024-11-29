@@ -598,25 +598,21 @@
   We hope for something similar for semi-Lie, but the situation is different!
 \end{frame}
 \begin{frame}
-  \frametitle{Semi-Lie version of large kernel}
+  \frametitle{Semi-Lie large image conjecture}
+  \[ \partial\Orb \colon \phi \mapsto \left( \guv \mapsto \partial \Orb \left(\guv, \phi \right) \right) \]
   \begin{block}{Conjecture (C.)}
-    \[ \partial \Orb \coloneqq \left. \pdv{}{s} \right\rvert_{s=0}
-      \Orb \left(\guv, \phi \otimes \oneV, s \right) \]
-    \begin{enumerate}
-    \item[(a)] For $\gamma \in S_n(F)$,
-    there are no nonzero $\phi$ such that $\partial \Orb = 0$
-    for all applicable $(\uu, \vv^\top) \in F^n \times (F^n)^\vee$, unless $\Orb \equiv 0$.
-
-    \item[(b)] Fix $(\uu, \vv^\top) \in \OO_F^n \times (\OO_F^n)^\vee$.
-    Consider the ``kernel'' of $\phi$ for which $\partial \Orb = 0$
-    for all applicable $\gamma \in S_n(F)$.
-    Then this kernel is ``large'' (e.g., not contained in any maximal ideal).
-    \end{enumerate}
+    $\partial\Orb \colon \HH(S_n(F)) \to C^\infty\left( (S_n(F) \times V'_n(F))^- \right)$
+    is injective.
   \end{block}
   \begin{theorem}
     [C.]
-    True for $n=2$.
-    For (b), the kernel has codimension at most $v(\uu\vv^\top)+2$.
+    True for $n=2$. In fact for $n=2$:
+    \begin{enumerate}
+    \item[(a)] Still injective even if one only considers $(\gamma, \uu, \varpi^\ZZ \vv)$.
+
+    \item[(b)] But if one requires $v(\uu\vv^\top) \le N$
+    then the kernel has codimension at most $N + 2$.
+    \end{enumerate}
   \end{theorem}
 \end{frame}
 

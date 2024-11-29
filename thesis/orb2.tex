@@ -440,7 +440,8 @@ If $\ell$ is even, we now have the following intermediate result.
   in the case $\lambda \le \ell+r$.
 \end{proposition}
 
-On the other hand, when $\ell$ is odd, we get \Cref{thm:full_orbital_ell_odd}.
+On the other hand, when $\ell$ is odd, we get \Cref{thm:full_orbital_ell_odd}:
+\ellodd
 
 \section{Contribution from Case 3\ts{+}, 3\ts{-}, 4\ts{+} assuming $v(b) \ge 0$ and $v(d) \ge 0$}
 These cases only appear when $\ell$ is even and we assume this for this subsection.
@@ -1085,6 +1086,8 @@ To proceed further we split this into cases based on whether $\lambda > \ell+r$ 
 
 \section{Proof of \Cref{thm:full_orbital_ell_even}}
 We now put the finishing touches to deduce \Cref{thm:full_orbital_ell_even}.
+
+\elleven
 \begin{proof}
   [Proof of \Cref{thm:full_orbital_ell_even}]
   The coefficient $\cc_\guv$ was already introduced in \Cref{prop:ell_even_top_coeff},
@@ -1462,4 +1465,5 @@ Interchange the order of the latter sum to be $k$ first:
   &= \sum_{k=-|v(d)|-r}^{\lambda-3|v(d)|+r} q^{-|v(d)|+r} \cc_\gamma(k) (-q^s)^k \\
   &+ \sum_{k=-2r}^{\lambda-4|v(d)|+2r} \sum_{j=0}^{\min(k+2r, -|v(d)|+r, \lambda-4|v(d)|+2r-k)} q^j (-q^s)^k.
 \end{align*}
-Putting this all together gives \Cref{thm:full_orbital_ell_neg}.
+Putting this all together gives \Cref{thm:full_orbital_ell_neg}:
+\ellneg
