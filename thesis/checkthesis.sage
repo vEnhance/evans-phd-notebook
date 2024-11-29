@@ -1,5 +1,3 @@
-# Setup
-
 import argparse
 import unittest
 
@@ -72,81 +70,7 @@ def delO_combo(r, vb, vc, ve, vda):
     return (-1) ** (r + vc) * S
 
 
-# Brute force auxiliary functions for the semi-Lie orbital
-def O_brute_odd(r, vb, vc, ve, vda):
-    assert vb % 2 != vc % 2, (vb, vc)
-    assert vda >= 0, vda
-    assert r >= 0, r
-    assert vda * 2 > vb + vc, (vda, vb, vc)
-
-    voffset = vda - vc
-    S = 0
-
-    for n2 in irange(0, ve):
-        for n1 in irange(n2 - vb - r, n2 + vc + r):
-            rho1 = max(-n1, -r - vc)
-            rho2 = ceil((n2 - n1 - vc - r) / 2)
-            if voffset < min(rho1, rho2):
-                continue
-            else:
-                S += (
-                    q ** (n2 - n1)
-                    * q ** (-max(rho1, rho2))
-                    * (-1) ** (n1 + n2)
-                    * qs ** (n1 + n2)
-                )
-    return S
-
-
-def O_brute_even(r, vb, vc, ve, vda):
-    assert vb % 2 != vc % 2, (vb, vc)
-    assert vda >= 0, vda
-    assert r >= 0, r
-    assert vda * 2 < vb + vc, (vda, vb, vc)
-    theta = vda * 2
-    vt = theta // 2 - vc
-
-    S = 0
-
-    for n2 in irange(0, ve):
-        # Case 5
-        for m in irange(0, theta + 2 * r):
-            n1 = n2 + vc + r - m
-            S += (
-                q ** (m - max(m - n2, ceil(m / 2)))
-                * (-1) ** (n1 + n2)
-                * qs ** (n1 + n2)
-            )
-
-        # Case 6+/6-
-        center_plus = vb - theta // 2
-        center_minus = theta // 2 - vc
-
-        for m in irange(
-            theta + 2 * r + 1, max(n2 + vc + r, 2 * vc + 2 * r + vt) + center_plus
-        ):
-            n1 = n2 + vc + r - m
-            rho1 = max(m - n2, 0) - vc - r
-            rho2 = m - 2 * vc - 2 * r - vt
-            if center_plus >= min(rho1, rho2):
-                S += (
-                    q ** (n2 - n1)
-                    * q ** (-max(rho1, rho2))
-                    * (-1) ** (n1 + n2)
-                    * qs ** (n1 + n2)
-                )
-            if center_minus >= min(rho1, rho2):
-                S += (
-                    q ** (n2 - n1)
-                    * q ** (-max(rho1, rho2))
-                    * (-1) ** (n1 + n2)
-                    * qs ** (n1 + n2)
-                )
-
-    return S
-
-
-## Formulas for the group AFL on S3(F)
+# Formulas for the group AFL on S3(F)
 def ARCH(a0, a1, w1, w2, k):
     assert a0 <= a1
     assert w1 + w2 <= (a1 - a0) / 2
@@ -181,7 +105,7 @@ def ARCH_sum_c(a0, a1, w1, w2):
     return S
 
 
-# Orbital for S3 and its derivative
+# Orbital for S3
 def O_for_S3(r, l, delta, lam):
     if l % 2 == 1:
         assert lam == l, (l, lam)
@@ -208,163 +132,6 @@ def O_for_S3(r, l, delta, lam):
         n_sum = ARCH_sum_n(-2 * r, lam + 2 * (r - 2 * avd), r - avd, 0)
         c_sum = ARCH_sum_c(-r - avd, lam + r - 3 * avd, 0, min(lam - 1, 2 * (r - avd)))
         return n_sum + q ** (r - avd) * c_sum
-
-
-# Brute force auxiliary functions for the inhomogeneous group AFL orbital
-def O_zero(r, l, delta):
-    j = var("j")
-    return sum(qs ** (2 * j), j, -r, delta + r)
-
-
-def vol_disk_single(n, vxx, rho):
-    assert n >= 1 and n >= rho
-    if vxx < rho:
-        return 0
-    elif rho <= 0:
-        return q ** (-n) * (1 - q ** (-2))
-    else:
-        return q ** (-(n + rho)) * (1 - q ** (-1))
-
-
-def vol_disk_double(n, vxx1, vx12, rho1, rho2):
-    assert rho1 >= rho2
-    assert n >= 1 and n >= rho1
-
-    if vxx1 >= rho1 and vx12 >= rho2:
-        return (
-            q ** (-(n + rho1)) * (1 - q ** (-1))
-            if rho1 >= 1
-            else q ** (-n) * (1 - q ** (-2))
-        )
-    else:
-        return 0
-
-
-def qs_weight(n, m):
-    kappa = 1 / ((1 - q ** (-1)) * (1 - q ** (-2)))
-    return (
-        kappa
-        * (-1) ** n
-        * qs ** (2 * m - n)
-        * q ** (2 * n - 2 * m)
-        * q ** (2 * m)
-        * (1 - q ** (-2))
-    )
-
-
-def O_case_1_2_brute(r, l, delta, lam=None):
-    assert 0 <= l <= 2 * delta, (l, delta)
-    assert r >= 0, r
-    if lam is None:
-        assert l % 2 == 1
-        lam = l
-    else:
-        assert l % 2 == 0
-
-    S = 0
-    for n in irange(1, l + r):
-        for m in irange(n - r, n + delta + r):
-            r_n = ceil((n - r) / 2)
-            r_m = m - delta - r
-            if r_n >= r_m:
-                S += vol_disk_double(
-                    n, vxx1=min(l, delta), vx12=ceil(l / 2), rho1=r_n, rho2=r_m
-                ) * qs_weight(n, m)
-            else:
-                S += vol_disk_double(
-                    n, vxx1=lam, vx12=ceil(l / 2), rho1=r_m, rho2=r_n
-                ) * qs_weight(n, m)
-    return S
-
-
-def O_ell_odd_brute(r, l, delta):
-    return O_zero(r, l, delta) + O_case_1_2_brute(r, l, delta)
-
-
-def O_case_3_4_brute(r, l, delta, lam):
-    assert 0 <= l <= 2 * delta, (l, delta)
-    assert r >= 0, r
-    assert l % 2 == 0, l
-    assert lam % 2 == 1, lam
-    INFINITY = abs(r) + abs(l) + abs(delta) + abs(lam) + 1
-
-    S = 0
-    for n in irange(l + r + 1, INFINITY):
-        for m in irange(n - r, n + delta + r):
-            r_n = n - l / 2 - r
-            r_m = m - delta - r
-
-            # Case 3+ and 4+
-            if r_n > r_m:  # Case 3+
-                S += vol_disk_double(
-                    n,
-                    vxx1=lam + delta - l,
-                    vx12=lam - l / 2,
-                    rho1=r_n,
-                    rho2=r_m,
-                ) * qs_weight(n, m)
-            else:  # Case 4+
-                S += vol_disk_double(
-                    n,
-                    vxx1=lam,
-                    vx12=lam - l / 2,
-                    rho1=r_m,
-                    rho2=r_n,
-                ) * qs_weight(n, m)
-
-            # Cases 3- and 4-
-            if r_n > r_m:  # Case 3-
-                S += vol_disk_double(
-                    n,
-                    vxx1=delta,
-                    vx12=l / 2,
-                    rho1=r_n,
-                    rho2=r_m,
-                ) * qs_weight(n, m)
-            else:  # Case 4-
-                assert (
-                    vol_disk_double(
-                        n,
-                        vxx1=lam,
-                        vx12=l / 2,
-                        rho1=r_m,
-                        rho2=r_n,
-                    )
-                    == 0
-                )
-
-    return S
-
-
-def O_ell_even_brute(r, l, delta, lam):
-    return (
-        O_zero(r, l, delta)
-        + O_case_1_2_brute(r, l, delta, lam)
-        + O_case_3_4_brute(r, l, delta, lam)
-    )
-
-
-def O_ell_neg_brute(r, vb, lam):
-    assert r >= 0
-    assert vb < 0
-    assert lam % 2 == 1
-    l = 2 * vb
-    delta = 2 * vb
-    INFINITY = abs(r) + abs(l) + abs(delta) + abs(lam) + 1
-
-    S = 0
-    for n in irange(1, INFINITY):
-        for m in irange(n - r, n + delta + r):
-            if n <= l + r:
-                S += vol_disk_single(n, vxx=lam, rho=m - delta - r) * qs_weight(n, m)
-            elif n > l + r:
-                rho1 = max(n - l / 2 - r, m - delta - r)
-                rho2 = min(n - l / 2 - r, m - delta - r)
-                S += vol_disk_double(
-                    n, vxx1=lam, vx12=lam, rho1=rho1, rho2=rho2
-                ) * qs_weight(n, m)
-
-    return S + O_zero(r, l, delta)
 
 
 # Derivatives of the orbital integral
@@ -463,6 +230,79 @@ class ThesisTest(unittest.TestCase):
 
     def test_O(self):
         params = self.get_semi_lie_params()
+
+        def O_brute_odd(r, vb, vc, ve, vda):
+            assert vb % 2 != vc % 2, (vb, vc)
+            assert vda >= 0, vda
+            assert r >= 0, r
+            assert vda * 2 > vb + vc, (vda, vb, vc)
+
+            voffset = vda - vc
+            S = 0
+
+            for n2 in irange(0, ve):
+                for n1 in irange(n2 - vb - r, n2 + vc + r):
+                    rho1 = max(-n1, -r - vc)
+                    rho2 = ceil((n2 - n1 - vc - r) / 2)
+                    if voffset < min(rho1, rho2):
+                        continue
+                    else:
+                        S += (
+                            q ** (n2 - n1)
+                            * q ** (-max(rho1, rho2))
+                            * (-1) ** (n1 + n2)
+                            * qs ** (n1 + n2)
+                        )
+            return S
+
+        def O_brute_even(r, vb, vc, ve, vda):
+            assert vb % 2 != vc % 2, (vb, vc)
+            assert vda >= 0, vda
+            assert r >= 0, r
+            assert vda * 2 < vb + vc, (vda, vb, vc)
+            theta = vda * 2
+            vt = theta // 2 - vc
+
+            S = 0
+
+            for n2 in irange(0, ve):
+                # Case 5
+                for m in irange(0, theta + 2 * r):
+                    n1 = n2 + vc + r - m
+                    S += (
+                        q ** (m - max(m - n2, ceil(m / 2)))
+                        * (-1) ** (n1 + n2)
+                        * qs ** (n1 + n2)
+                    )
+
+                # Case 6+/6-
+                center_plus = vb - theta // 2
+                center_minus = theta // 2 - vc
+
+                for m in irange(
+                    theta + 2 * r + 1,
+                    max(n2 + vc + r, 2 * vc + 2 * r + vt) + center_plus,
+                ):
+                    n1 = n2 + vc + r - m
+                    rho1 = max(m - n2, 0) - vc - r
+                    rho2 = m - 2 * vc - 2 * r - vt
+                    if center_plus >= min(rho1, rho2):
+                        S += (
+                            q ** (n2 - n1)
+                            * q ** (-max(rho1, rho2))
+                            * (-1) ** (n1 + n2)
+                            * qs ** (n1 + n2)
+                        )
+                    if center_minus >= min(rho1, rho2):
+                        S += (
+                            q ** (n2 - n1)
+                            * q ** (-max(rho1, rho2))
+                            * (-1) ** (n1 + n2)
+                            * qs ** (n1 + n2)
+                        )
+
+            return S
+
         brute_res = (
             O_brute_odd(**params)
             if params["vb"] + params["vc"] < 2 * params["vda"]
@@ -569,6 +409,156 @@ class ThesisTest(unittest.TestCase):
         return params
 
     def test_O_for_S3(self):
+        # Brute force auxiliary functions for the inhomogeneous group AFL orbital
+        def O_zero(r, l, delta):
+            j = var("j")
+            return sum(qs ** (2 * j), j, -r, delta + r)
+
+        def vol_disk_single(n, vxx, rho):
+            assert n >= 1 and n >= rho
+            if vxx < rho:
+                return 0
+            elif rho <= 0:
+                return q ** (-n) * (1 - q ** (-2))
+            else:
+                return q ** (-(n + rho)) * (1 - q ** (-1))
+
+        def vol_disk_double(n, vxx1, vx12, rho1, rho2):
+            assert rho1 >= rho2
+            assert n >= 1 and n >= rho1
+
+            if vxx1 >= rho1 and vx12 >= rho2:
+                return (
+                    q ** (-(n + rho1)) * (1 - q ** (-1))
+                    if rho1 >= 1
+                    else q ** (-n) * (1 - q ** (-2))
+                )
+            else:
+                return 0
+
+        def qs_weight(n, m):
+            kappa = 1 / ((1 - q ** (-1)) * (1 - q ** (-2)))
+            return (
+                kappa
+                * (-1) ** n
+                * qs ** (2 * m - n)
+                * q ** (2 * n - 2 * m)
+                * q ** (2 * m)
+                * (1 - q ** (-2))
+            )
+
+        def O_case_1_2_brute(r, l, delta, lam=None):
+            assert 0 <= l <= 2 * delta, (l, delta)
+            assert r >= 0, r
+            if lam is None:
+                assert l % 2 == 1
+                lam = l
+            else:
+                assert l % 2 == 0
+
+            S = 0
+            for n in irange(1, l + r):
+                for m in irange(n - r, n + delta + r):
+                    r_n = ceil((n - r) / 2)
+                    r_m = m - delta - r
+                    if r_n >= r_m:
+                        S += vol_disk_double(
+                            n, vxx1=min(l, delta), vx12=ceil(l / 2), rho1=r_n, rho2=r_m
+                        ) * qs_weight(n, m)
+                    else:
+                        S += vol_disk_double(
+                            n, vxx1=lam, vx12=ceil(l / 2), rho1=r_m, rho2=r_n
+                        ) * qs_weight(n, m)
+            return S
+
+        def O_ell_odd_brute(r, l, delta):
+            return O_zero(r, l, delta) + O_case_1_2_brute(r, l, delta)
+
+        def O_case_3_4_brute(r, l, delta, lam):
+            assert 0 <= l <= 2 * delta, (l, delta)
+            assert r >= 0, r
+            assert l % 2 == 0, l
+            assert lam % 2 == 1, lam
+            INFINITY = abs(r) + abs(l) + abs(delta) + abs(lam) + 1
+
+            S = 0
+            for n in irange(l + r + 1, INFINITY):
+                for m in irange(n - r, n + delta + r):
+                    r_n = n - l / 2 - r
+                    r_m = m - delta - r
+
+                    # Case 3+ and 4+
+                    if r_n > r_m:  # Case 3+
+                        S += vol_disk_double(
+                            n,
+                            vxx1=lam + delta - l,
+                            vx12=lam - l / 2,
+                            rho1=r_n,
+                            rho2=r_m,
+                        ) * qs_weight(n, m)
+                    else:  # Case 4+
+                        S += vol_disk_double(
+                            n,
+                            vxx1=lam,
+                            vx12=lam - l / 2,
+                            rho1=r_m,
+                            rho2=r_n,
+                        ) * qs_weight(n, m)
+
+                    # Cases 3- and 4-
+                    if r_n > r_m:  # Case 3-
+                        S += vol_disk_double(
+                            n,
+                            vxx1=delta,
+                            vx12=l / 2,
+                            rho1=r_n,
+                            rho2=r_m,
+                        ) * qs_weight(n, m)
+                    else:  # Case 4-
+                        assert (
+                            vol_disk_double(
+                                n,
+                                vxx1=lam,
+                                vx12=l / 2,
+                                rho1=r_m,
+                                rho2=r_n,
+                            )
+                            == 0
+                        )
+
+            return S
+
+        def O_ell_even_brute(r, l, delta, lam):
+            return (
+                O_zero(r, l, delta)
+                + O_case_1_2_brute(r, l, delta, lam)
+                + O_case_3_4_brute(r, l, delta, lam)
+            )
+
+        def O_ell_neg_brute(r, vb, lam):
+            assert r >= 0
+            assert vb < 0
+            assert lam % 2 == 1
+            l = 2 * vb
+            delta = 2 * vb
+            INFINITY = abs(r) + abs(l) + abs(delta) + abs(lam) + 1
+
+            S = 0
+            for n in irange(1, INFINITY):
+                for m in irange(n - r, n + delta + r):
+                    if n <= l + r:
+                        S += vol_disk_single(n, vxx=lam, rho=m - delta - r) * qs_weight(
+                            n, m
+                        )
+                    elif n > l + r:
+                        rho1 = max(n - l / 2 - r, m - delta - r)
+                        rho2 = min(n - l / 2 - r, m - delta - r)
+                        S += vol_disk_double(
+                            n, vxx1=lam, vx12=lam, rho1=rho1, rho2=rho2
+                        ) * qs_weight(n, m)
+
+            return S + O_zero(r, l, delta)
+
         params = self.get_S3_params()
         l = params["l"]
         orb = O_for_S3(**params)
@@ -606,7 +596,7 @@ class ThesisTest(unittest.TestCase):
         else:
             self.assertEqual(deriv, -2 * q - 2)
 
-    def test_GK_equals_orbital(self):
+    def test_GK_to_orbital(self):
         params = self.get_semi_lie_params(r_min=1)
         omega = (-1) ** (params["r"] + params["vc"])  # transfer factor
         ve = params.pop("ve")

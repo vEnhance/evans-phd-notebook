@@ -21,22 +21,12 @@ All the formulas in \Cref{sec:semi_lie_intro_formulas} are implemented.
   divided by a factor of $\log q$.
 \end{itemize}
 
-In addition, the casework in \Cref{ch:orbitalFJ1} is implemented
-in the following functions that are used for testing later.
-\begin{itemize}
-  \ii The function \texttt{O\_brute\_odd(r, vb, vc, ve, vda)}
-  is a na\"{\i}ve implementation of the casework in \Cref{ch:orbitalFJ1} when $\theta$ is odd.
-  \ii The function \texttt{O\_brute\_even(r, vb, vc, ve, vda)}
-  is a na\"{\i}ve implementation of the casework in \Cref{ch:orbitalFJ1} when $\theta$ is even
-  (encompassing both \textbf{Case 5}, \textbf{Case 6\ts+} and \textbf{Case 6\ts-}.
-\end{itemize}
-
 \subsection{Inhomogeneous orbital integral for $S_3(F)$}
 The next part of the program implements the orbital integral
 that is alluded to in \Cref{thm:summary}.
 The parameters are those described in \Cref{lem:S3_abcd} and \Cref{lem:parameter_constraints}.
 \begin{itemize}
-  \ii The $\ARCH$ function defined in \Cref{def:ARCH} is implemented
+  \ii The $\Arch$ function defined in \Cref{def:arch} is implemented
   as \texttt{ARCH(a0, a1, w1, w2, k)}.
   \ii There are some common sums appearing in the formulas
   \Cref{thm:full_orbital_ell_odd,thm:full_orbital_ell_even,thm:full_orbital_ell_neg}
@@ -52,43 +42,6 @@ The parameters are those described in \Cref{lem:S3_abcd} and \Cref{lem:parameter
   as the full orbital integral for all the cases.
   Hence this function implements all there of
   \Cref{thm:full_orbital_ell_odd,thm:full_orbital_ell_even,thm:full_orbital_ell_neg}.
-\end{itemize}
-The next several functions are na\"{i}ve implementations of the casework in
-\Cref{ch:orbital1} that are used later in testing.
-\begin{itemize}
-  \ii \texttt{O\_zero(r, l, delta)} implements $I_{\le 0}$ as in \Cref{prop:O_zero}.
-  \ii The function \texttt{vol\_disk\_single(n, vxx, rho)} implements \cref{lem:volume}.
-  Here the argument \texttt{vxx} corresponds to $v(1 - \xi \bar \xi)$.
-  \ii The function \texttt{vol\_disk\_double(n, vxx, rho)} implements \cref{lem:quadruple_ineq}.
-  Here the argument \texttt{vxx1} corresponds to $v(1 - \xi_1 \bar \xi_1)$
-  and the argument \texttt{vxx2} corresponds to $v(1 - \xi_2 \bar \xi_2)$.
-  \ii The function \texttt{qs\_weight(n, m)} implements the weight
-  \[ \varkappa \cdot (-1)^n q^{s(2m-n)} q^{2n-2m} \Big( q^{2m}(1-q^{-2}) \Big) \]
-  that occurs frequently throughout.
-  This expression is the product of the factor
-  $\varkappa \cdot (-1)^n q^{s(2m-n)} q^{2n-2m}$ from \Cref{sec:qs_weight_from_sub}
-  and the volume factor $\Vol(t_1: -v(t_1)=m) = q^{2m} (1-q^{-2})$.
-
-  \ii The function \texttt{O\_case\_1\_2\_brute(r, l, delta, lam=None)}
-  is a na\"{\i}ve implementation of \textbf{Case 1} and \textbf{Case 2}
-  from \Cref{ch:orbital1}.
-  For odd $\ell$, we combine it with $I_{\le 0}$ in \texttt{O\_ell\_odd\_brute(r, l, delta)}
-  to get a na\"{i}ve implemenattion of \Cref{thm:full_orbital_ell_odd}.
-  For even $\ell$ we instead get (together with $I_{\le 0}$) is \Cref{prop:ell_even_half}.
-
-  \ii The function \texttt{O\_case\_3\_4\_brute(r, l, delta, lam)}
-  is a na\"{\i}ve implementation of
-  \textbf{Case 3\ts+}, \textbf{Case 3\ts-}, \textbf{Case 4\ts+}
-  and \textbf{Case 4\ts-} (asserting it never occurs)
-  from \Cref{ch:orbital1}.
-  Putting all the cases together gives
-  \texttt{O\_ell\_odd\_brute(r, l, delta, lam)}
-  which is a na\"{\i}ve implementation of \Cref{thm:full_orbital_ell_even}.
-
-  \ii The function \texttt{O\_ell\_neg\_brute(r, l, delta, lam)}
-  is a separate na\"{\i}ve implementation of \Cref{thm:full_orbital_ell_neg}.
-  It re-does the cases separately in the same was as this paper
-  rather than using the previous brute-force implementation.
 \end{itemize}
 
 \subsection{Derivative of the inhomogeneous orbital integral for $S_3(F)$}
@@ -127,6 +80,15 @@ they do not purport to be symbolic or formal proofs of the formulas.
   To speed up the test, rather than symbolically comparing,
   it selects the values $q = 17$ and $s = \log_q 1337$ in comparing the sides.
 
+  Within this test, some auxiliary functions are defined.
+  \begin{itemize}
+    \ii The function \texttt{O\_brute\_odd(r, vb, vc, ve, vda)}
+    is a na\"{\i}ve implementation of the casework in \Cref{ch:orbitalFJ1} when $\theta$ is odd.
+    \ii The function \texttt{O\_brute\_even(r, vb, vc, ve, vda)}
+    is a na\"{\i}ve implementation of the casework in \Cref{ch:orbitalFJ1} when $\theta$ is even
+    (encompassing both \textbf{Case 5}, \textbf{Case 6\ts+} and \textbf{Case 6\ts-}).
+  \end{itemize}
+
   \ii \texttt{test\_delO} verifies that \Cref{cor:semi_lie_derivative_single}
   matches the derivative of \Cref{thm:semi_lie_formula}.
   \ii \texttt{test\_delO\_combo} verifies that \Cref{cor:semi_lie_combo}
@@ -142,6 +104,47 @@ they do not purport to be symbolic or formal proofs of the formulas.
   \ii \texttt{test\_O\_for\_S3} verifies that the formulas
   \Cref{thm:full_orbital_ell_odd,thm:full_orbital_ell_even,thm:full_orbital_ell_neg}
   match the casework described in \Cref{ch:orbital1}.
+  To speed up the test, rather than symbolically comparing,
+  it selects the values $q = 17$ and $s = \log_q 1337$ in comparing the sides.
+
+  There are many subfunctions in here used for the
+  na\"{\i}ve implementations of the casework.
+    \begin{itemize}
+      \ii \texttt{O\_zero(r, l, delta)} implements $I_{\le 0}$ as in \Cref{prop:O_zero}.
+      \ii The function \texttt{vol\_disk\_single(n, vxx, rho)} implements \cref{lem:volume}.
+      Here the argument \texttt{vxx} corresponds to $v(1 - \xi \bar \xi)$.
+      \ii The function \texttt{vol\_disk\_double(n, vxx, rho)} implements \cref{lem:quadruple_ineq}.
+      Here the argument \texttt{vxx1} corresponds to $v(1 - \xi_1 \bar \xi_1)$
+      and the argument \texttt{vxx2} corresponds to $v(1 - \xi_2 \bar \xi_2)$.
+      \ii The function \texttt{qs\_weight(n, m)} implements the weight
+      \[ \varkappa \cdot (-1)^n q^{s(2m-n)} q^{2n-2m} \Big( q^{2m}(1-q^{-2}) \Big) \]
+      that occurs frequently throughout.
+      This expression is the product of the factor
+      $\varkappa \cdot (-1)^n q^{s(2m-n)} q^{2n-2m}$ from \Cref{sec:qs_weight_from_sub}
+      and the volume factor $\Vol(t_1: -v(t_1)=m) = q^{2m} (1-q^{-2})$.
+
+      \ii The function \texttt{O\_case\_1\_2\_brute(r, l, delta, lam=None)}
+      is a na\"{\i}ve implementation of \textbf{Case 1} and \textbf{Case 2}
+      from \Cref{ch:orbital1}.
+      For odd $\ell$, we combine it with $I_{\le 0}$ in \texttt{O\_ell\_odd\_brute(r, l, delta)}
+      to get a na\"{\i}ve implemenattion of \Cref{thm:full_orbital_ell_odd}.
+      For even $\ell$ we instead get (together with $I_{\le 0}$) is \Cref{prop:ell_even_half}.
+
+      \ii The function \texttt{O\_case\_3\_4\_brute(r, l, delta, lam)}
+      is a na\"{\i}ve implementation of
+      \textbf{Case 3\ts+}, \textbf{Case 3\ts-}, \textbf{Case 4\ts+}
+      and \textbf{Case 4\ts-} (asserting it never occurs)
+      from \Cref{ch:orbital1}.
+      Putting all the cases together gives
+      \texttt{O\_ell\_odd\_brute(r, l, delta, lam)}
+      which is a na\"{\i}ve implementation of \Cref{thm:full_orbital_ell_even}.
+
+      \ii The function \texttt{O\_ell\_neg\_brute(r, l, delta, lam)}
+      is a separate na\"{\i}ve implementation of \Cref{thm:full_orbital_ell_neg}.
+      It re-does the cases separately in the same was as this paper
+      rather than using the previous brute-force implementation.
+    \end{itemize}
+
   \ii \texttt{test\_delO\_for\_S3} verifies that the derivatives of the formulas in
   \Cref{thm:full_orbital_ell_odd,thm:full_orbital_ell_even,thm:full_orbital_ell_neg}
   match those predicted by \Cref{lem:derivative_nn} and \Cref{lem:derivative_nn}.
@@ -152,4 +155,4 @@ they do not purport to be symbolic or formal proofs of the formulas.
 \end{enumerate}
 
 \section{Code listing}
-\lstinputlisting[language=Python]{check-thesis.sage}
+\lstinputlisting[language=Python]{checkthesis.sage}
