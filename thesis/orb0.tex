@@ -582,8 +582,7 @@ the weighted orbital integral can be expressed succinctly in the following way.
 \begin{restatable}[Weighted orbital integral for odd $\ell$]{theorem}{ellodd}
   \label{thm:full_orbital_ell_odd}
   Let $r \ge 0$.
-  Let $\gamma \in S_3(F)\rs$ match an element of $\U(\VV_3^-)$,
-  and let $b$, $d$, $\delta$, $\ell$, be as in
+  Let $\gamma \in S_3(F)\rs^-$ and let $b$, $d$, $\delta$, $\ell$, be as in
   \Cref{lem:S3_abcd} and \Cref{lem:parameter_constraints}.
   If $\ell$ is odd, define
   \[ \nn_\gamma \coloneqq \Arch_{[-2r, \ell + 2\delta + 2r]}(r, \ell). \]
@@ -696,8 +695,7 @@ When $\ell$ is even the formula has a change to the leading coefficient as well.
 \begin{restatable}[Weighted orbital integral for even $\ell \ge 0$]{theorem}{elleven}
   \label{thm:full_orbital_ell_even}
   Let $r \ge 0$.
-  Let $\gamma \in S_3(F)\rs$ match an element of $\U(\VV_3^-)$,
-  and let $b$, $d$, $\delta$, $\ell$, $\lambda$ be as in
+  Let $\gamma \in S_3(F)\rs^-$ and let $b$, $d$, $\delta$, $\ell$, $\lambda$ be as in
   \Cref{lem:S3_abcd} and \Cref{lem:parameter_constraints}.
   Suppose also $\ell \ge 0$ is even.
   Define
@@ -714,6 +712,8 @@ When $\ell$ is even the formula has a change to the leading coefficient as well.
     &+ \sum_{k = \ell-r}^{2\delta + \lambda - \ell + r} \cc_\gamma(k) (-1)^k q^{\frac{\ell}{2}+r} (q^s)^k.
   \end{align*}
 \end{restatable}
+
+\todo{i think we should have an example here where $2r < \lambda - \ell$}
 
 \begin{example}
   We provide an example for $r=5$, $\ell=2$, $\delta=4$, $\lambda=9$ for concreteness:
@@ -767,8 +767,7 @@ We will just state the relevant theorem in terms of $v(b)$ and $v(d)$, omitting 
 \begin{restatable}[Weighted orbital integral when $v(b)=v(d)<0$]{theorem}{ellneg}
   \label{thm:full_orbital_ell_neg}
   Let $r \ge 0$.
-  Let $\gamma \in S_3(F)\rs$ match an element of $\U(\VV_3^-)$,
-  and let $b$, $d$, $\lambda$ be as in
+  Let $\gamma \in S_3(F)\rs^-$ and let $b$, $d$, $\lambda$ be as in
   \Cref{lem:S3_abcd} and \Cref{lem:parameter_constraints}.
   Suppose also $v(b) = v(d) < 0$.
 
@@ -896,11 +895,39 @@ We will just state the relevant theorem in terms of $v(b)$ and $v(d)$, omitting 
   \end{align*}
 \end{example}
 
-\subsection{Derivatives of the orbital integrals}
-We do not explicitly write the derivatives for the above three theorems in this paper,
-since they are not used later on.
-However, we mention that these formulas could be easily extracted by using
-\Cref{lem:derivative_nn} and \Cref{lem:derivative_cc} later on;
-and in fact we do use certain simple combinations of the derivative later on in
-\Cref{thm:group_kernel_full}.
-In any case, the code in the Appendix implements the derivatives in $O(1)$ runtime.
+\section{Derivatives of the orbital integrals}
+We now state the derivative of the orbital integral in the three cases we described before.
+
+\begin{theorem}
+  \label{thm:S3_orbital_deriv}
+  Let $r \ge 0$.
+  Let $\gamma \in S_3(F)\rs^-$ and let $\ell$, $\delta$, $\lambda$
+  be as in \Cref{lem:S3_abcd} and \Cref{lem:parameter_constraints}.
+  Then
+  \[ \frac{1}{\log q} \partial\Orb(\gamma, \mathbf{1}_{K'_{S, \le r}}) \]
+  is given by the following three expressions:
+  \begin{itemize}
+    \ii If $\ell$ is odd, the derivative is
+    \begin{align*}
+      &(-1)^{r+1} \sum_{j=r+1}^{r+\frac{\ell-1}{2}} \left( \frac{\ell+2\delta+1}{2} + 3r - 2j \right) \cdot q^j \\
+      &+ \sum_{j=0}^{r} (-1)^{j+1} \left( \frac{\ell+2\delta+1}{2} + 2r - j \right) \cdot q^j.
+    \end{align*}
+
+    \ii If $\ell \ge 0$ is even, the derivative is
+    \begin{align*}
+      &(-1)^{r+1} \sum_{j=r+1}^{r+\frac{\ell}{2}} \left( \frac{\lambda+2\delta+1}{2} + 3r - 2j \right) \cdot q^j \\
+      &+ \sum_{j=0}^{r} (-1)^{j+1} \left( \frac{\lambda+2\delta+1}{2} + 2r - j \right) \cdot q^j \\
+      &+ (-1)^{r+\delta-\frac{\ell}{2}} q^{r+\frac{\ell}{2}} \cdot \begin{cases}
+        \frac{\delta - \frac{\ell}{2}}{2} - \frac{\lambda - \ell-1}{2} \cdot r & \text{if } \delta \equiv \frac{\ell}{2} \pmod 2 \\
+        - \frac{\delta - \frac32\ell + \lambda}{2} - \frac{\lambda - \ell+1}{2} \cdot r & \text{if } \delta \not\equiv \frac{\ell}{2} \pmod 2.
+    \end{cases}
+    \end{align*}
+
+    \ii If $\ell < 0$ is even (so $\ell = -2|v(d)|$), the derivative is
+    \begin{align*}
+      &\sum_{j=0}^{r-|v(d)|} (-1)^{j+1} \left( \frac{\lambda+1}{2} + 2(r-|v(d)|) - j \right) \cdot q^j \\
+      &+ (-1)^{r-|v(d)|+1} \cdot \frac{\lambda-1}{2} \cdot \max\left( r-|v(d)|, 0 \right) \cdot q^{r-|v(d)|}.
+    \end{align*}
+  \end{itemize}
+\end{theorem}
+We prove \Cref{thm:S3_orbital_deriv} in \Cref{sec:S3_orbital_deriv}.

@@ -155,7 +155,7 @@ def ARCH_deriv_c(r, C, W, L):
     )
 
 
-def delO_for_S3(r, l, delta, lam):
+def delO_for_S3_via_arch(r, l, delta, lam):
     if l % 2 == 1:
         assert lam == l, (l, lam)
     else:
@@ -178,6 +178,48 @@ def delO_for_S3(r, l, delta, lam):
         n_sum = ARCH_deriv_n(r - avd, C=-2 * avd, W=lam, H=0)
         c_sum = ARCH_deriv_c(r - avd, C=0, W=0, L=lam)
         return n_sum + q ** (r - avd) * c_sum
+
+
+def delO_for_S3(r, l, delta, lam):
+    if l % 2 == 1:
+        assert lam == l, (l, lam)
+    else:
+        assert l < lam, (l, lam)
+    if l < 0 or delta < 0:
+        assert l == delta and l % 2 == 0, (l, delta)
+    else:
+        assert l <= 2 * delta, (l, delta)
+
+    j = var("j")
+    if l % 2 == 1:
+        return (-1) ** (r + 1) * sum(
+            ((l + 2 * delta + 1) / 2 + 3 * r - 2 * j) * q**j, j, r + 1, r + (l - 1) / 2
+        ) + sum((-1) ** (j + 1) * ((l + 2 * delta + 1) / 2 + 2 * r - j) * q**j, j, 0, r)
+    elif l >= 0:
+        return (
+            (-1) ** (r + 1)
+            * sum(
+                ((lam + 2 * delta + 1) / 2 + 3 * r - 2 * j) * q**j, j, r + 1, r + l / 2
+            )
+            + sum(
+                (-1) ** (j + 1) * ((lam + 2 * delta + 1) / 2 + 2 * r - j) * q**j,
+                j,
+                0,
+                r,
+            )
+            + (-1) ** (r + delta - l / 2)
+            * q ** (r + l / 2)
+            * (
+                (delta - l / 2) / 2 - (lam - l - 1) / 2 * r
+                if (delta - l // 2) % 2 == 0
+                else -(delta - 3 * l / 2 + lam) / 2 - (lam - l + 1) / 2 * r
+            )
+        )
+    else:
+        assert (avd := -l / 2) > 0  # avd := abs(vd)
+        return sum(
+            (-1) ** (j + 1) * ((lam + 1) / 2 + 2 * (r - avd) - j) * q**j, j, 0, r - avd
+        ) + (-1) ** (r - avd + 1) * (lam - 1) / 2 * max(r - avd, 0) * q ** (r - avd)
 
 
 # Geometric side --- Gross-Keating and friends
@@ -573,10 +615,17 @@ class ThesisTest(unittest.TestCase):
         self.assertEqual(orb.subs(q_s=1), 0)
         self.assertEqual(brute_res.subs(q=17, q_s=1337), orb.subs(q=17, q_s=1337))
 
+    def test_delO_for_S3_via_arch(self):
+        params = self.get_S3_params()
+        self.assertEqual(
+            derivative(O_for_S3(**params), qs).subs(q_s=1),
+            delO_for_S3_via_arch(**params),
+        )
+
     def test_delO_for_S3(self):
         params = self.get_S3_params()
         self.assertEqual(
-            derivative(O_for_S3(**params), qs).subs(q_s=1), delO_for_S3(**params)
+            derivative(delO_for_S3_via_arch(**params), delO_for_S3(**params))
         )
 
     def test_ker_for_S3(self):

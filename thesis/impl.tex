@@ -48,10 +48,15 @@ derivative of the orbital integral for $S_3(F)$.
 \begin{itemize}
   \ii \texttt{ARCH\_deriv\_n(r, C, W, H)} implements \Cref{lem:derivative_nn}.
   \ii \texttt{ARCH\_deriv\_c(r, C, W, H)} implements \Cref{lem:derivative_cc}.
-  \ii \texttt{delO\_for\_S3(r, l, delta, lam)} implements
+  \ii \texttt{delO\_for\_S3\_via\_arch(r, l, delta, lam)} implements
   $\frac{1}{\log q}\partial\Orb(\gamma, \phi)$
   by calling the previous two functions,
   using the arguments that are mentioned in the proof of \Cref{thm:group_kernel_full}.
+  \ii \texttt{delO\_for\_S3(r, l, delta, lam)} implements the final formula for
+  $\frac{1}{\log q}\partial\Orb(\gamma, \phi)$
+  detailed in \Cref{thm:S3_orbital_deriv}.
+  It is the result of directly substituting \Cref{lem:derivative_nn} and \Cref{lem:derivative_cc}
+  with the parameters described in the proof of \Cref{thm:S3_orbital_deriv}
 \end{itemize}
 
 \subsection{The geometric side}
@@ -142,13 +147,15 @@ they do not purport to be symbolic or formal proofs of the formulas.
       rather than using the previous brute-force implementation.
     \end{itemize}
 
-  \ii \texttt{test\_delO\_for\_S3} verifies that the derivatives of the formulas in
+  \ii \texttt{test\_delO\_for\_S3\_via\_arch} verifies that the derivatives of the formulas in
   \Cref{thm:full_orbital_ell_odd,thm:full_orbital_ell_even,thm:full_orbital_ell_neg}
   match those predicted by \Cref{lem:derivative_nn} and \Cref{lem:derivative_nn}.
-  \ii \texttt{test\_ker\_for\_S3} verifies that \Cref{thm:group_kernel_full} holds.
+  Hence it can be thought of as a verification of those two lemmas.
 
-  \ii \texttt{test\_GK\_to\_orbital} verifies the formula \Cref{thm:miracle}.
-  \ii \texttt{test\_clean\_intersection} verifies the formula \Cref{thm:clean_intersection}.
+  \ii \texttt{test\_delO\_for\_S3} verifies \Cref{thm:S3_orbital_deriv}.
+  \ii \texttt{test\_ker\_for\_S3} verifies \Cref{thm:group_kernel_full}.
+  \ii \texttt{test\_GK\_to\_orbital} verifies \Cref{thm:miracle}.
+  \ii \texttt{test\_clean\_intersection} verifies \Cref{thm:clean_intersection}.
 \end{enumerate}
 
 \section{Code listing}
