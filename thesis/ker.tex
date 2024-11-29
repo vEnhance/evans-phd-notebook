@@ -556,7 +556,7 @@ The rest of this section sets up the proof of \Cref{thm:group_kernel_full}.
 \subsection{Analysis of the $\nn_\gamma$ sum}
 \begin{lemma}
   \label{lem:derivative_nn}
-  Let $L$ and $H$ be integers such that $W > 4H \ge 0$ and $W$ odd.
+  Let $C$, $W$ and $H$ be integers with $W > 4H \ge 0$ and $W$ odd.
   Consider sums of the form
   \[ \Sigma_r(s) \coloneqq \sum_{k=C-2r}^{C+2r+W} \left( 1 + q + \dots
     + q^{\Arch_{[C-2r, C+2r+W]}(r, 2H)(k)} \right) (-q^s)^k. \]
@@ -782,7 +782,7 @@ We apply \Cref{cor:derivative_nn} and \Cref{cor:derivative_cc} directly:
 
   \ii For $\ell \ge 0$ even, consult \Cref{thm:full_orbital_ell_even}.
   \begin{itemize}
-    \ii Apply \Cref{cor:derivative_nn} with $C = 0$, $W = \lambda + 2 \delta$ and $H = \frac{\ell-1}{2}$.
+    \ii Apply \Cref{cor:derivative_nn} with $C = 0$, $W = \lambda + 2 \delta$ and $H = \frac{\ell}{2}$.
     \ii Apply \Cref{cor:derivative_cc} with $C = \ell$, $W = \delta - \half\ell$ and $L = \lambda - \ell$.
   \end{itemize}
 
