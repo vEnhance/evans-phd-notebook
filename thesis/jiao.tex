@@ -58,6 +58,7 @@ $\{1, \sqrt{\eps}, \Pi, \sqrt{\eps}\Pi\}$, that is
 \[ \DD = F \oplus F\sqrt\eps \oplus F \Pi \oplus F\sqrt\eps\Pi. \]
 It will be convenient to introduce the following notation:
 \begin{definition}
+  [$x_0$ and $x_-$]
   For $x \in \DD$, we introduce the notation $x_0$ and $x_-$ to mean
   \begin{itemize}
     \ii $x_0$ is the projection into the first component $F$; and
@@ -100,6 +101,7 @@ We specialize to the situation where $u \in \OO_\DD$ and $g \in \U(\VV_n^-)$.
 \subsection{Coordinates for $g$}
 To impose coordinates on $g$, we appeal to the following fact.
 \begin{lemma}
+  [Description of $\U(\VV_2^-)$]
   Every unitary map in $\U(\VV_2^-)$ can be described in the form
   \[ x \mapsto \lambda\inv x (\alpha + \beta \Pi) \]
   for some quaternion $\alpha + \beta \Pi \in \DD^\times$
@@ -187,7 +189,7 @@ are linearly independent, meaning
 \end{align*}
 Hence, we have a requirement that $\beta \neq 0$
 and $s$ and $t$ are not both zero (we require $st = 0$ from \Cref{assume:st_zero}).
-\begin{remark}
+\begin{remark}[$\alpha \neq 0$]
   Note that necessarily $\alpha$ is nonzero as well.
   This follows from the requirement that
   $\alpha \bar \alpha - \beta \bar \beta \varpi = \lambda \bar\lambda$;
@@ -272,6 +274,7 @@ for any choice of $\lambda$ with $\lambda \bar \lambda = \Nm (\alpha + \beta \Pi
 Now we define the special orthogonal divisor $\ZO4(u)$
 on $\MM_2 \times \MM_2$ as follows.
 \begin{definition}
+  [$\ZO4(u)$]
   Let $u \in \OO_\DD$.
   Then we define the divisor $\ZO4(u)$ to be the pairs $(X, X') \in \MM_2 \times \MM_2$
   such that there exists $\varphi \colon X \to X'$ with the following property.
@@ -296,6 +299,7 @@ on $\MM_2 \times \MM_2$ as follows.
 \end{definition}
 We propose that the Serre tensor construction identifies $\TTr$ with this divisor:
 \begin{conjecture}
+  [$\TT^r \simeq \ZO4(\varpi^r)$]
   \label{conj:serre_pullback_space}
   The Serre tensor construction gives an isomorphism
   \[ \TTr \simeq \ZO4(\varpi^r) \]
@@ -319,6 +323,7 @@ with its image under the diagonal map
 \end{center}
 
 \begin{definition}
+  [$\ZO3(u)$]
   Suppose now $u \in \DT$.
   Then we define the divisor $\ZO3(u)$ to be those $X \in \MM_2$
   for which we have a diagram
@@ -341,6 +346,7 @@ Recall that we have the notation
 Define $\ZO4(u)^\circ$ and $\ZO3(u)^\circ$ similarly.
 
 \begin{conjecture}
+  [$\ZO3(\bar u \sqrt{\eps} u)^\circ$]
   \label{conj:serre_pullback_divisor}
   Let $u \in \VV_n^-$, and consider it as an element $u \in \DD$.
   Then pullback along the Serre tensor construction identifies
@@ -362,7 +368,7 @@ which is the indicator function for the coset
 Note when $r = 0$, $\mathbf{1}_{K, 0} = \mathbf{1}_K = \mathbf{1}_{K, \le 0}$.
 
 Analogous to \Cref{sec:hecke_basis_FJ} we then have the following result.
-\begin{proposition}
+\begin{proposition}[$\fr$ basis]
   The functions $\fr$ (for $r \ge 0$) form a basis of $\HH(\U(\VV_2^+))$.
   (Similarly, so do $\mathbf{1}_{K, r}$ for $r \ge 0$.)
 \end{proposition}

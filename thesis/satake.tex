@@ -38,6 +38,7 @@ Introduce the following notation:
 \end{itemize}
 We can now state the Satake isomorphism.
 \begin{definition}
+  [Satake transform]
   The \emph{Satake transform} is a canonical isomorphism of Hecke algebras
   \[ \Sat \colon \HH(G, K) \to \HH(M, \prescript{\circ}{} M)^W \]
   which is given by defining
@@ -157,6 +158,7 @@ Before we can define the map $\BC^{\eta^{n-1}}_{S_n}$
 we need one more piece of notation.
 Consider the following map.
 \begin{definition}
+  [$\rproj$]
   Denote by $\rproj \colon \GL_n(E) \surjto S_n(F)$ the projection defined by
   \[ \rproj(g) \coloneqq g \bar{g}\inv. \]
 \end{definition}
@@ -248,6 +250,7 @@ rather than determining the exact coset $K'\varpi^{(n_1, n_2, n_3)}K'$).
 \subsection{Satake transform of the determinant characteristic function on the top arrow}
 This is the easiest calculation, and we do it for all $n$ rather than just $n = 3$.
 \begin{proposition}
+  [Satake transform for $v \circ \det = r$]
   For every integer $r \ge 0$, we have
   \[ \Sat(\mathbf{1}_{\Mat_n(\OO_E), v\circ\det=r})
     = q^{(n-1)r} \sum_{e_1 \dots + e_n = r} X_1^{e_1} \dots X_n^{e_n}. \]
@@ -310,6 +313,7 @@ This is the easiest calculation, and we do it for all $n$ rather than just $n = 
 
 \subsection{Satake transform of the indicator on the bottom arrow}
 \begin{proposition}
+  [Satake transform for $\varpi^{-r} \Mat_3(\OO_E) \cap \U(\VV_3^+)$]
   For each $r \ge 0$ we have
   \[ \Sat\left(\mathbf{1}_{\varpi^{-r} \Mat_3(\OO_E) \cap \U(\VV_3^+)}\right)
     = \sum_{i=0}^r q^{2r - \mathbf{1}_{r \equiv i \bmod 2}} Y_1^{\pm i} \]
@@ -413,6 +417,7 @@ This is the easiest calculation, and we do it for all $n$ rather than just $n = 
 
 \subsection{Integration over fiber}
 \begin{proposition}
+  [Integration over fiber]
   For every integer $r \ge 0$, we have
   \begin{align*}
     &\rproj_\ast(\mathbf{1}_{\Mat_3(\OO_E), v\circ\det=r}) \\
@@ -605,6 +610,7 @@ To summarize, the completed commutative diagram can be written in full as
 
 Thus, we arrive at the following:
 \begin{proposition}
+  [Base change $\BC_{S_3}$]
   \label{prop:BC_S3}
   For $n = 3$, we have
   \begin{align*}

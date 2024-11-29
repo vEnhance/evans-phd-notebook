@@ -8,6 +8,7 @@ in this chapter.
 
 \section{Region where $n \leq 0$ for all values of $\ell$}
 \begin{proposition}
+  [$I_{n \le 0}$]
   \label{prop:O_zero}
   The contribution to the integral $\Orb(\gamma, \mathbf{1}_{K'_{S, \le r}}, s)$ over $n \leq 0$ is exactly
   \[ I_{n \le 0} \coloneqq q^{2(\delta+r)s} \sum_{j=0}^{\delta+2r} q^{-2js}
@@ -406,8 +407,9 @@ This gives us a succinct description of the weighted orbital integral.
 
 If $\ell$ is even, we now have the following intermediate result.
 \begin{proposition}
+  [Case 1 and 2 for $\ell \ge 0$ even]
   \label{prop:ell_even_half}
-  Suppose $\ell$ is even.
+  Suppose $\ell \ge 0$ is even.
   Then we have the intermediate result
   \[
     I_{n \le 0} + I_{n > 0}^{\text{1+2}}
@@ -745,6 +747,7 @@ relative to each other.
 To make the casework a bit more efficient, we prove the following lemma,
 which effectively lets us fold together cases on $\lambda-r$ or $2\delta+r$.
 \begin{lemma}
+  [Folding cases]
   \label{lem:folding_cases}
   The following two identities are true:
   \begin{itemize}
@@ -884,6 +887,7 @@ We consider the following five cases now:
 \end{enumerate}
 Having exhausted all five cases, we compile them into the following:
 \begin{proposition}
+  [$\cc_\gamma$]
   \label{prop:ell_even_top_coeff}
   Let us define
   \[
@@ -1095,6 +1099,7 @@ We now put the finishing touches to deduce \Cref{thm:full_orbital_ell_even}.
 \end{proof}
 
 \begin{remark}
+  [Expanding $\nn_\gamma$]
   One can expand the Arch notation for $\nn_\gamma$ to obtain
   \[
     \nn_\gamma(k) =

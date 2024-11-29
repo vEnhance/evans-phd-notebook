@@ -5,10 +5,13 @@ We assume $\guv$ is as in \Cref{lem:semi_lie_params} throughout this chapter.
 
 \section{Iwasawa decomposition}
 The overall method is to take the Iwasawa decomposition in $KAN$ form:
-every element in $h \in \GL_2(F)$ may be parametrized as
-\[ h = k \begin{pmatrix} x_1 & 0 \\ 0 & x_2 \end{pmatrix}
-  \begin{pmatrix} 1 & y \\ 0 & 1 \end{pmatrix} \]
-where $k \in K' = \GL_2(\OO_F)$, $x_1, x_2 \in \OO_F^\times$ and $y \in \OO_F$.
+\begin{lemma}
+  [Iwasawa decomposition]
+  Every element in $h \in \GL_2(F)$ may be parametrized as
+  \[ h = k \begin{pmatrix} x_1 & 0 \\ 0 & x_2 \end{pmatrix}
+    \begin{pmatrix} 1 & y \\ 0 & 1 \end{pmatrix} \]
+  where $k \in K' = \GL_2(\OO_F)$, $x_1, x_2 \in \OO_F^\times$ and $y \in \OO_F$.
+\end{lemma}
 Because the orbits are invariant under conjugation by $K'$,
 the parameter $k$ can be discarded.
 The Haar measure in these coordinates
@@ -124,8 +127,12 @@ Because $b \bar c = 1 - a \bar a$ has odd valuation,
 it follows that $\frac b c = \frac{1-a \bar a}{c\bar c}$ has odd valuation to.
 On the other hand, $\frac{(d-a)^2}{4c^2}$ has even valuation.
 
-This motivates us to introduce the parameter
-\[ \theta \coloneqq \min \left( v(b)+v(c), 2v(d-a) \right) \ge 0. \]
+This motivates us to introduce the following parameter:
+\begin{definition}
+  [$\theta$]
+  We define
+  \[ \theta \coloneqq \min \left( v(b)+v(c), 2v(d-a) \right) \ge 0. \]
+\end{definition}
 Note that $v(b) + v(c)$ is odd,
 so $\theta$ takes the odd value if $v(b)+v(c) < 2v(d-a)$ and the even value otherwise.
 This definition ensures that

@@ -36,7 +36,7 @@ it's unique up to $\OO_E$-linear quasi-isogeny compatible with the polarization,
 and refer to it as the \emph{framing object}.
 We can now define the Rapoport-Zink space:
 \begin{definition}
-  [{\cite[\S5.1]{ref:AFLspherical}}]
+  [Rapoport-Zink space; {\cite[\S5.1]{ref:AFLspherical}}]
   For each $n \ge 1$, we let $\RZ_n$ denote the
   functor over $\Spf \OO_{\breve F}$ defined as follows.
   Let $S$ be an $\Spf \OO_{\breve F}$ scheme, and let
@@ -54,6 +54,7 @@ Then $\RZ_n$ is formally smooth over $\OO_{\breve F}$ of relative dimension $n-1
 
 Henceforth, we also make the following abbreviation.
 \begin{definition}
+  [$\RZ_{m,n}$]
   For integers $m$ and $n$,
   \[ \RZ_{m,n} \coloneq \RZ_{m} \times_{\Spf \OO_{\breve F}} \RZ_n. \]
 \end{definition}
@@ -61,6 +62,7 @@ Henceforth, we also make the following abbreviation.
 \section{A realization of the non-split Hermitian space $\VV_n^-$ of dimension $n$}
 For the following definition (and later on), we need a variation of $\RZ_1$:
 \begin{definition}
+  [$\EE$]
   Let $(\EE, \iota_\EE, \lambda_\EE)$ be the unique triple over $\FF$
   whose Rosati involution has signature $(1,0)$
   (note this is different from $\RZ_1$ where the signature is $(0,1)$ instead).
@@ -79,6 +81,7 @@ At the same time, we can define the following Hermitian space.
   \label{def:VV_n_nonsplit}
 \end{definition}
 \begin{proposition}
+  [Realization of $\VV_n^-$]
   Up to isomorphism, $\VV_n^-$ is the unique $n$-dimensional
   nondegenerate non-split $E/F$-Hermitian space.
 \end{proposition}
@@ -142,6 +145,7 @@ along the projection
 and then takes the pushforward along the other projection
 \[ \mathcal{T}_{\mathbf{1}_{K^\flat} \otimes f} \xrightarrow{\pi_2} \RZ_{n-1,n}. \]
 \begin{definition}
+  [Hecke operator]
   Set
   \[
     \TT_{\mathbf{1}_{K^\flat} \otimes f} (\Delta_{\RZ_{n-1}})
@@ -154,8 +158,9 @@ As for our $g \in \U(\VV_n^-)\rs$,
 consider the translation $(1,g) \cdot \Delta_{\RZ_{n-1}}$.
 The intersection number is then defined as by taking the intersection
 of these two objects using the derived tensor product $\jiao$ of the structure sheaves.
+
 \begin{definition}
-  [{\cite[Equation (6.1.1)]{ref:AFLspherical}}
+  [$\Int((1,g), \mathbf{1}_{K^\flat} \otimes f$); {\cite[Equation (6.1.1)]{ref:AFLspherical}}
   or {\cite[Equation (4.4)]{ref:survey}}]
   \label{def:intersection_number_inhomog}
   We define the intersection number in \Cref{conj:inhomog_spherical} by
@@ -169,6 +174,7 @@ of these two objects using the derived tensor product $\jiao$ of the structure s
       \jiao_{\Sheaf_{\RZ_{n-1,n}}} \Sheaf_{(1,g) \cdot \Delta_{\RZ_{n-1}}} \right).
   \end{align*}
 \end{definition}
+
 Here $\chi$ denotes the Euler-Poincar\'{e} characteristic,
 meaning that if $X$ is a formal scheme over $\Spf \OO_{\breve F}$
 then given a finite complex $\mathcal{F}$ of $\Sheaf_X$-modules we set
@@ -198,7 +204,7 @@ This divisor was defined by Kudala and Rapport in \cite{ref:KR}
 and accordingly we call it a \emph{KR-divisor} following \cite[\S4.3]{ref:survey}.
 The definition is given as follows.
 \begin{definition}
-  [{\cite[Definition 3.2]{ref:KR}}]
+  [$\ZD(u)$; {\cite[Definition 3.2]{ref:KR}}]
   Recall that $(\EE, \iota_\EE, \lambda_\EE)$ is the unique triple over $\FF$
   whose Rosati involution has signature $(1,0)$.
   Hence the formal $\OO_F$-module has a unique lifting called its \emph{canonical lifting},
@@ -253,7 +259,7 @@ then one can then repeat the diagram from before:
 In other words, we again take a pullback followed by a pushforward
 but this time of $\Delta_{\ZD(u)} \hookrightarrow \RZ_{n,n}$.
 This lets us write an analogous definition:
-\begin{definition}
+\begin{definition}[Hecke operator]
   Set
   \[
     \TT_{\mathbf{1}_K \otimes f} (\Delta_{\ZD(u)})
@@ -265,6 +271,7 @@ Meanwhile to replace $(1,g) \Delta_{\RZ_{n,n-1}}$, we let
 denote the graph of the automorphism of $\RZ_n$ induced by $g$.
 This finally allows us to write a definition of the intersection number in the semi-Lie case:
 \begin{definition}
+  [$\Int((g,u), f)$]
   \label{def:intersection_number_semi_lie_spherical}
   In analog to \Cref{def:intersection_number_inhomog} for the group version of the AFL,
   we now define the intersection number in \Cref{conj:semi_lie_spherical} as

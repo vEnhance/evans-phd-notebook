@@ -21,6 +21,7 @@ Then our weighted orbital integral is defined as follows.
     \left\lvert \det(h) \right\rvert_F^{-s} \odif h. \]
 \end{definition}
 \begin{definition}
+  [The abbreviation $\partial \Orb(\gamma, \phi)$]
   From now on we will abbreviate
   \[ \partial \Orb(\gamma, \phi)
     \coloneqq \left. \pdv{}{s} \right\rvert_{s=0} \Orb(\gamma, \phi, s). \]
@@ -88,6 +89,7 @@ We can re-parametrize the problem according to the following.
 \end{corollary}
 Then an integral over each $K'_{S, \le r}$ lets us extract the integrals over $K'_{S,r}$.
 \begin{corollary}
+  [Basis for $\HH(S_3(F))$]
   For $r \ge 0$, the indicator functions $\mathbf{1}_{K'_{S, \le r}}$
   form a basis of $\HH(S_3(F))$.
 \end{corollary}
@@ -190,6 +192,7 @@ This is the same assumption made in \cite[Equation (4.3)]{ref:AFL}.
 
 To summarize everything we've said.
 \begin{lemma}
+  [Parametrization for $S_3(F)\rs^-$ via $H'$-orbit]
   \label{lem:S3_abcd}
   Let $\gamma \in S_3(F)\rs^-$.
   Then there exists $a \in E^1$, $b \in E$, $d \in E$ such that
@@ -253,6 +256,7 @@ the parameters $(\delta, \ell, \lambda)$ satisfy some additional relations.
 We will now describe them.
 
 \begin{lemma}
+  [Constraints between $\ell$, $\delta$, $\lambda$]
   \label{lem:parameter_constraints}
   Let $a$, $b$, $c$, $d$ be as in \Cref{lem:S3_abcd},
   and let $\delta$, $\ell$, and $\lambda$ be as defined in
@@ -287,6 +291,7 @@ We will now describe them.
 
 Before proving the lemma in full we first prove the following lemmas.
 \begin{lemma}
+  [$v(au-\bar d \bar u)$]
   \label{lem:au_minus_du}
   Assume $v(d) \ge 0$.
   For odd $\ell$, we have
@@ -306,6 +311,7 @@ Before proving the lemma in full we first prove the following lemmas.
 \end{proof}
 
 \begin{lemma}
+  [$\ell \le 2 \delta$]
   If $v(b) = v(d) = 0$ and $\ell \ge 0$, then $\ell \le 2 \delta$.
   \label{lem:ell_le_2_delta}
 \end{lemma}
@@ -415,6 +421,7 @@ Here $\lambda + v(d) - \half \ell > 0$ is obvious when $v(d) \ge 0$
 and for $v(d) < 0$ we have $v(d) = \half \ell$ anyway.
 
 \begin{lemma}
+  [$v(4 - \Norm(b\pm\tau)$]
   With this choice of $\tau$, we have
   \begin{equation}
     \begin{aligned}
@@ -573,7 +580,7 @@ before stabilizing, then doing the symmetric descent on the right half.
 If $\ell$ is odd, so $\lambda = \ell$, then
 the weighted orbital integral can be expressed succinctly in the following way.
 \begin{theorem}
-  [Weighted orbital integral in the odd case for $\mathbf{1}_{K'_{S, \le r}}$]
+  [Weighted orbital integral for odd $\ell$]
   \label{thm:full_orbital_ell_odd}
   Let $r \ge 0$.
   Let $\gamma \in S_3(F)\rs$ match an element of $\U(\VV_3^-)$,
@@ -609,7 +616,6 @@ From the identity
 \]
 we can then write the following equivalent formulation.
 \begin{corollary}
-  [Weighted orbital integral in the odd case for $\mathbf{1}_{K'_{S,r}}$]
   Retaining the setting of the previous theorem, we have for any $r \ge 1$ the formula
   \[
     \Orb(\gamma, \mathbf{1}_{K'_{S, r}}, s)
@@ -689,7 +695,7 @@ we can then write the following equivalent formulation.
 \subsection{Full explicit weighted orbital integral for the case where $\ell \ge 0$ is even}
 When $\ell$ is even the formula has a change to the leading coefficient as well.
 \begin{theorem}
-  [Weighted orbital integral in the even case for $\mathbf{1}_{K'_{S, \le r}}$]
+  [Weighted orbital integral for even $\ell \ge 0$]
   \label{thm:full_orbital_ell_even}
   Let $r \ge 0$.
   Let $\gamma \in S_3(F)\rs$ match an element of $\U(\VV_3^-)$,
@@ -761,6 +767,7 @@ When $\ell$ is even the formula has a change to the leading coefficient as well.
 In this case, $\ell = \delta = 2v(b) = 2v(d) < 0$.
 We will just state the relevant theorem in terms of $v(b)$ and $v(d)$, omitting $\ell$ and $\delta$.
 \begin{theorem}
+  [Weighted orbital integral when $v(b)=v(d)<0$]
   \label{thm:full_orbital_ell_neg}
   Let $r \ge 0$.
   Let $\gamma \in S_3(F)\rs$ match an element of $\U(\VV_3^-)$,

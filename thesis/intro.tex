@@ -395,6 +395,7 @@ In fact, even for $n=2$ the behavior is somewhat different.
 We propose the following conjecture, which we have proved for $n = 2$
 (see \Cref{thm:semi_lie_ker_trivial} and \Cref{thm:semi_lie_ker_huge} momentarily).
 \begin{conjecture}
+  [Kernel conjecture for the orbital on $(S_n(F) \times V'_n(F))\rs^-$]
   \label{conj:kernel_semi_lie}
   Let $n \ge 2$.
   \begin{enumerate}
@@ -466,7 +467,7 @@ Then we were able to derive the following fully explicit formula
 in terms of the representative detailed in \Cref{lem:semi_lie_params}.
 See \Cref{sec:proof_semi_lie_formula} for some concrete examples
 and illustrations of \Cref{thm:semi_lie_formula}.
-\begin{theorem}
+\begin{theorem}[Explicit formula for the orbital integral on $S_2(F) \times V'_2(F)$]
   \label{thm:semi_lie_formula}
   Let
   \[
@@ -505,7 +506,7 @@ and illustrations of \Cref{thm:semi_lie_formula}.
 \end{theorem}
 
 Differentiating this yields the following result:
-\begin{corollary}
+\begin{corollary}[Derivative at $s=0$ for the orbital integral on $S_2(F) \times V'_2(F)$]
   \label{cor:semi_lie_derivative_single}
   Retain the setting of \Cref{thm:semi_lie_formula}.
   Also define $\varkappa \coloneqq v(e) - (v(d-a)+r)$.
@@ -535,7 +536,7 @@ and indeed we will see that this particular combination
 comes up naturally in \Cref{ch:finale} with a special rose
 as the base change mentioned in \cite[Lemma 7.1.1]{ref:AFLspherical}.
 
-\begin{corollary}
+\begin{corollary}[The special case $\partial \Orb(\guv, \mathbf{1}_{K'_{S, \le r}} + \mathbf{1}_{K'_{S, \le (r-1)}})$]
   \label{cor:semi_lie_combo}
   Retain the setting of \Cref{thm:semi_lie_formula}.
   Also define $\varkappa \coloneqq v(e) - (v(d-a)+r)$.
@@ -568,7 +569,7 @@ as the base change mentioned in \cite[Lemma 7.1.1]{ref:AFLspherical}.
   \end{align*}
 \end{corollary}
 
-\begin{example}
+\begin{example}[Examples of \Cref{cor:semi_lie_combo}]
   We show some examples of \Cref{cor:semi_lie_combo}:
   \begin{itemize}
   \ii When $r=5$, $v(b) = -20$, $v(c) = 37$, $v(e) = 35$ and $v(d-a) > \frac{v(b)+v(c)}{2} = 8.5$
@@ -588,7 +589,7 @@ As we mentioned our earlier conjecture \Cref{conj:kernel_semi_lie}
 is true for $n = 2$.
 More precisely, we have the following two theorems.
 
-\begin{theorem}
+\begin{theorem}[The kernel of $\partial\Orb$ is essentially injective even for fixed $\gamma \in S_2(F)$]
   \label{thm:semi_lie_ker_trivial}
   Consider any $\gamma \in S_2(F)$ as in \Cref{lem:semi_lie_params}.
   Then there doesn't exist any nonzero function $\phi \in \HH(S_2(F))$ such that
@@ -599,7 +600,7 @@ More precisely, we have the following two theorems.
   Thus part (a) of \Cref{conj:kernel_semi_lie} holds for $n = 2$.
 \end{theorem}
 
-\begin{theorem}
+\begin{theorem}[The kernel of $\partial\Orb$ is large for fixed $(\uu, \vv^\top) \in V'_2(F)$]
   \label{thm:semi_lie_ker_huge}
   Fix a choice of $(\uu, \vv^\top) \in V_2'(F)$ with $\vv^\top \uu \neq 0$.
   Consider all $\gamma \in S_2(F)$ for which $\guv \in (S_2(F) \times V'_2(F))\rs^-$.
@@ -621,6 +622,7 @@ In particular, for $n=2$ the map
 is indeed injective.
 
 \begin{remark}
+  [On formalizing large kernels]
   In each case the Hecke algebra is isomorphic as a $\QQ$-algebra to $\QQ[T]$
   for a single variable $T = Y+Y^{-1}$.
   So actually it's mildly surprising that we get a result on finite codimension.
@@ -646,6 +648,7 @@ subject to two provisions,
 \Cref{conj:serre_pullback_space} and \Cref{conj:serre_pullback_divisor},
 about the pullback of certain divisors.
 \begin{theorem}
+  [Semi-Lie AFL for $n=2$]
   \label{thm:semi_lie_n_equals_2}
   Assume \Cref{conj:serre_pullback_space} and \Cref{conj:serre_pullback_divisor}.
   Then our generalized AFL conjecture, \Cref{conj:semi_lie_spherical}, holds for $n = 2$.
@@ -687,6 +690,7 @@ For the group AFL, we were able to fully compute the orbital integral as well.
 The result is too involved to state in the introduction,
 but we give the following summary.
 \begin{theorem}
+  [Summary of the weighted orbital integral for $S_3(F)$]
   \label{thm:summary}
   Let $\gamma \in S_3(F)\rs^-$.
   Then the weighted orbital integral $\Orb(\gamma, \phi, s)$ takes the form
@@ -716,6 +720,7 @@ are rather similar to those employed in \cite{ref:AFL},
 which can be thought of as the case $r = 0$.
 
 \begin{remark}
+  [\Cref{thm:summary} applies to \Cref{thm:semi_lie_formula}]
   Interestingly, the formula \Cref{thm:semi_lie_formula}
   for $\guv \in (S_2(F) \times V'_2(F))\rs$
   actually fits the same template as \Cref{thm:summary},
@@ -732,6 +737,7 @@ although we imagine such a proof could be completed
 once a method for determining the intersection numbers explicitly is devised.
 On the other hand, the orbital data is enough to prove the following result.
 \begin{theorem}
+  [$\partial\Orb \colon \HH(S_3(F)) \to C^\infty(S_3(F)\rs^-)$ has large image]
   \label{thm:no_kernel_group}
   There is no nontrivial $\phi \in \HH(S_3(F))$ such that
   \[ \partial \Orb \left( \gamma, \phi \right) = 0 \]

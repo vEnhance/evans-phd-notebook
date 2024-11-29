@@ -25,19 +25,16 @@
 
 \usepackage[backend=biber,backref=true,style=alphabetic]{biblatex}
 
-\newtheorem{theorem}{Theorem}[section]
-\newtheorem{lemma}[theorem]{Lemma}
-\newtheorem{proposition}[theorem]{Proposition}
-\newtheorem{corollary}[theorem]{Corollary}
-\newtheorem{conjecture}[theorem]{Conjecture}
-\newtheorem{assume}[theorem]{Assumption}
-
-\theoremstyle{definition}
-\newtheorem{definition}[theorem]{Definition}
-\newtheorem{example}[theorem]{Example}
-\newtheorem{claim}[theorem]{Claim}
-\newtheorem{remark}[theorem]{Remark}
-\newtheorem{question}[theorem]{Question}
+\usepackage{thmtools}
+\declaretheorem[name=Theorem,numberwithin=section]{theorem}
+\declaretheorem[name=Lemma,sibling=theorem]{lemma}
+\declaretheorem[name=Proposition,sibling=theorem]{proposition}
+\declaretheorem[name=Corollary,sibling=theorem]{corollary}
+\declaretheorem[name=Conjecture,sibling=theorem]{conjecture}
+\declaretheorem[name=Assumption,sibling=theorem]{assume}
+\declaretheorem[name=Definition,sibling=theorem,style=definition]{definition}
+\declaretheorem[name=Example,sibling=theorem,style=definition]{example}
+\declaretheorem[name=Remark,sibling=theorem,style=definition]{remark}
 
 %%% Macros
 \providecommand{\ol}{\overline}
