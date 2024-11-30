@@ -3,7 +3,7 @@ import unittest
 
 def show_quaternion(expr, **kwargs) -> None:
     """If you're using a Jupyter notebook you can use this utility function to
-    pretty-print the four coefficients of the quaternion, one on its own line.
+    pretty-print the four coefficients of the quaternion, each on its own line.
 
     :param expr: the quaternion to print
     :param **kwargs: passed to c.subs for each of the four coefficients c

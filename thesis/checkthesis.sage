@@ -15,7 +15,7 @@ def print_coeffs(expression) -> None:
     you can use this utility function to print out the coefficients of q^s each on their
     own line.
 
-    :param expression: The polynomial to eb pretty-printed
+    :param expression: The polynomial to be pretty-printed
     """
     if expand(expression) == 0:
         show(0)
@@ -243,9 +243,9 @@ def gross_keating_sum(n1, n2):
     if n1 % 2 == 1:
         return sum((n1 + n2 - 4 * j) * q**j, j, 0, (n1 - 1) / 2)
     else:
-        return sum((n1 + n2 - 4 * j) * q**j, j, 0, n1 / 2 - 1) + (
-            n2 - n1 + 1
-        ) / 2 * q ^ (n1 / 2)
+        S = sum((n1 + n2 - 4 * j) * q**j, j, 0, n1 / 2 - 1)
+        S += (n2 - n1 + 1) / 2 * q ^ (n1 / 2)
+        return S
 
 
 def GK(r, vb, vc, ve, vda):
@@ -470,7 +470,7 @@ class RandThesisTest(unittest.TestCase):
             j = var("j")
             return sum(qs ** (2 * j), j, -r, delta + r)
 
-        def vol_disk_single(n, vxx, rho):
+        def vol_1disk(n, vxx, rho):
             assert n >= 1 and n >= rho
             if vxx < rho:
                 return 0
@@ -479,7 +479,7 @@ class RandThesisTest(unittest.TestCase):
             else:
                 return q ** (-(n + rho)) * (1 - q ** (-1))
 
-        def vol_disk_double(n, vxx1, vx12, rho1, rho2):
+        def vol_2disk(n, vxx1, vx12, rho1, rho2):
             assert rho1 >= rho2
             assert n >= 1 and n >= rho1
 
@@ -518,11 +518,11 @@ class RandThesisTest(unittest.TestCase):
                     r_n = ceil((n - r) / 2)
                     r_m = m - delta - r
                     if r_n >= r_m:
-                        S += vol_disk_double(
+                        S += vol_2disk(
                             n, vxx1=min(l, delta), vx12=ceil(l / 2), rho1=r_n, rho2=r_m
                         ) * qs_weight(n, m)
                     else:
-                        S += vol_disk_double(
+                        S += vol_2disk(
                             n, vxx1=lam, vx12=ceil(l / 2), rho1=r_m, rho2=r_n
                         ) * qs_weight(n, m)
             return S
@@ -545,7 +545,7 @@ class RandThesisTest(unittest.TestCase):
 
                     # Case 3+ and 4+
                     if r_n > r_m:  # Case 3+
-                        S += vol_disk_double(
+                        S += vol_2disk(
                             n,
                             vxx1=lam + delta - l,
                             vx12=lam - l / 2,
@@ -553,7 +553,7 @@ class RandThesisTest(unittest.TestCase):
                             rho2=r_m,
                         ) * qs_weight(n, m)
                     else:  # Case 4+
-                        S += vol_disk_double(
+                        S += vol_2disk(
                             n,
                             vxx1=lam,
                             vx12=lam - l / 2,
@@ -563,7 +563,7 @@ class RandThesisTest(unittest.TestCase):
 
                     # Cases 3- and 4-
                     if r_n > r_m:  # Case 3-
-                        S += vol_disk_double(
+                        S += vol_2disk(
                             n,
                             vxx1=delta,
                             vx12=l / 2,
@@ -572,7 +572,7 @@ class RandThesisTest(unittest.TestCase):
                         ) * qs_weight(n, m)
                     else:  # Case 4-
                         assert (
-                            vol_disk_double(
+                            vol_2disk(
                                 n,
                                 vxx1=lam,
                                 vx12=l / 2,
@@ -603,13 +603,11 @@ class RandThesisTest(unittest.TestCase):
             for n in irange(1, INFINITY):
                 for m in irange(n - r, n + delta + r):
                     if n <= l + r:
-                        S += vol_disk_single(n, vxx=lam, rho=m - delta - r) * qs_weight(
-                            n, m
-                        )
+                        S += vol_1disk(n, vxx=lam, rho=m - delta - r) * qs_weight(n, m)
                     elif n > l + r:
                         rho1 = max(n - l / 2 - r, m - delta - r)
                         rho2 = min(n - l / 2 - r, m - delta - r)
-                        S += vol_disk_double(
+                        S += vol_2disk(
                             n, vxx1=lam, vx12=lam, rho1=rho1, rho2=rho2
                         ) * qs_weight(n, m)
 
@@ -693,9 +691,7 @@ if __name__ == "__main__":
         "--trials", default=5, type=int, help="Number of trials to run."
     )
     parser.add_argument("--seed", type=int, help="Random seed passed to Sage")
-    parser.add_argument(
-        "--failfast", action="store_true", help="On failure, immediately stop."
-    )
+    parser.add_argument("--failfast", action="store_true", help="Stop on 1st failure.")
     group = parser.add_mutually_exclusive_group()
     group.add_argument("--verbose", action="store_true", help="Set verbosity to 2.")
     group.add_argument("--quiet", action="store_true", help="Set verbosity to 0.")
