@@ -9,6 +9,21 @@ def irange(start, stop):
     return range(start, stop + 1)
 
 
+def print_coeffs(expression) -> None:
+    """
+    If you're working in a Juptyer notebook, and you have a polynomial in q and qs,
+    you can use this utility function to print out the coefficients of q^s each on their
+    own line.
+
+    :param expression: The polynomial to eb pretty-printed
+    """
+    if expand(expression) == 0:
+        show(0)
+    else:
+        for c in expand(expression).coefficients(qs, sparse=True):
+            show(c[1], "." * 10, c[0])
+
+
 # Semi-Lie Orbital and its derivatives
 def O(r, vb, vc, ve, vda):
     assert vb % 2 != vc % 2, (vb, vc)
@@ -192,22 +207,19 @@ def delO_for_S3(r, l, delta, lam):
 
     j = var("j")
     if l % 2 == 1:
-        return (-1) ** (r + 1) * sum(
+        S = (-1) ** (r + 1) * sum(
             ((l + 2 * delta + 1) / 2 + 3 * r - 2 * j) * q**j, j, r + 1, r + (l - 1) / 2
-        ) + sum((-1) ** (j + 1) * ((l + 2 * delta + 1) / 2 + 2 * r - j) * q**j, j, 0, r)
+        )
+        S += sum(
+            (-1) ** (j + 1) * ((l + 2 * delta + 1) / 2 + 2 * r - j) * q**j, j, 0, r
+        )
+        return S
     elif l >= 0:
-        return (
-            (-1) ** (r + 1)
-            * sum(
-                ((lam + 2 * delta + 1) / 2 + 3 * r - 2 * j) * q**j, j, r + 1, r + l / 2
-            )
-            + sum(
-                (-1) ** (j + 1) * ((lam + 2 * delta + 1) / 2 + 2 * r - j) * q**j,
-                j,
-                0,
-                r,
-            )
-            + (-1) ** (r + delta - l / 2)
+        frac = (lam + 2 * delta + 1) / 2
+        S = (-1) ** (r + 1) * sum((frac + 3 * r - 2 * j) * q**j, j, r + 1, r + l / 2)
+        S += sum((-1) ** (j + 1) * (frac + 2 * r - j) * q**j, j, 0, r)
+        S += (
+            (-1) ** (r + delta - l / 2)
             * q ** (r + l / 2)
             * (
                 (delta - l / 2) / 2 - (lam - l - 1) / 2 * r
@@ -215,11 +227,13 @@ def delO_for_S3(r, l, delta, lam):
                 else -(delta - 3 * l / 2 + lam) / 2 - (lam - l + 1) / 2 * r
             )
         )
+        return S
     else:
         assert (avd := -l / 2) > 0  # avd := abs(vd)
-        return sum(
-            (-1) ** (j + 1) * ((lam + 1) / 2 + 2 * (r - avd) - j) * q**j, j, 0, r - avd
-        ) + (-1) ** (r - avd + 1) * (lam - 1) / 2 * max(r - avd, 0) * q ** (r - avd)
+        t = r - avd  # top-level exponent (if t < 0, then S = 0)
+        S = sum((-1) ** (j + 1) * ((lam + 1) / 2 + 2 * t - j) * q**j, j, 0, t)
+        S += (-1) ** (t + 1) * (lam - 1) / 2 * max(t, 0) * q**t
+        return S
 
 
 # Geometric side --- Gross-Keating and friends
@@ -257,7 +271,7 @@ def clean_intersection(r, vb, vc, ve, vda):
         return q**N + q ** (N - 1)
 
 
-class ThesisTest(unittest.TestCase):
+class RandThesisTest(unittest.TestCase):
     def get_semi_lie_params(self, r_min=0, r_max=15):
         params = {
             "r": randint(r_min, r_max),
@@ -706,8 +720,8 @@ if __name__ == "__main__":
     print(f"Using random seed {initial_seed()}")
     for _ in range(args.trials):
         if args.test:
-            suite.addTest(ThesisTest(args.test))
+            suite.addTest(RandThesisTest(args.test))
         else:
-            suite.addTest(loader.loadTestsFromTestCase(ThesisTest))
+            suite.addTest(loader.loadTestsFromTestCase(RandThesisTest))
     runner = unittest.TextTestRunner(failfast=args.failfast, verbosity=verbosity)
     runner.run(suite)
