@@ -2,8 +2,9 @@
 Below we provide Sage implementations and test suites
 for some of the calculations this paper.
 
-\section{Description of implemented functions}
-\subsection{Semi-Lie orbital integral in $S_2(F) \times V'_2(F)$}
+\section{Orbital and Gross-Keating implementations and tests}
+\subsection{Description of implemented functions}
+\subsubsection{Semi-Lie orbital integral in $S_2(F) \times V'_2(F)$}
 All the formulas in \Cref{sec:semi_lie_intro_formulas} are implemented.
 \begin{itemize}
   \ii \texttt{O(r, vb, vc, ve, vda)}
@@ -18,7 +19,7 @@ All the formulas in \Cref{sec:semi_lie_intro_formulas} are implemented.
   divided by a factor of $\log q$.
 \end{itemize}
 
-\subsection{Inhomogeneous orbital integral for $S_3(F)$}
+\subsubsection{Inhomogeneous orbital integral for $S_3(F)$}
 The next part of the program implements the orbital integral
 that is alluded to in \Cref{thm:summary}.
 The parameters are those described in \Cref{lem:S3_abcd} and \Cref{lem:parameter_constraints}.
@@ -41,7 +42,7 @@ The parameters are those described in \Cref{lem:S3_abcd} and \Cref{lem:parameter
   \Cref{thm:full_orbital_ell_odd,thm:full_orbital_ell_even,thm:full_orbital_ell_neg}.
 \end{itemize}
 
-\subsection{Derivative of the inhomogeneous orbital integral for $S_3(F)$}
+\subsubsection{Derivative of the inhomogeneous orbital integral for $S_3(F)$}
 We also implement functions that can compute the
 derivative of the orbital integral for $S_3(F)$.
 
@@ -59,7 +60,7 @@ derivative of the orbital integral for $S_3(F)$.
   with the parameters described in the proof of \Cref{thm:S3_orbital_deriv}
 \end{itemize}
 
-\subsection{The geometric side}
+\subsubsection{The geometric side}
 \begin{itemize}
   \ii \texttt{gross\_keating\_sum(n1, n2)} implements the sum in \Cref{prop:GK}.
   \ii \texttt{GK(r, vb, vc, ve, vda)} implements the sum $\GK(r, v(b), v(c), v(e), v(d-a))$
@@ -70,7 +71,7 @@ derivative of the orbital integral for $S_3(F)$.
   after the translation in \Cref{lem:finale_match}.
 \end{itemize}
 
-\section{Test suite}
+\subsection{Randomized test suite}
 The code then implements the following tests to check correctness.
 These tests are randomized tests where the parameters are randomly selected by a program
 which can then numerically compute them;
@@ -158,6 +159,17 @@ they do not purport to be symbolic or formal proofs of the formulas.
   \ii \texttt{test\_clean\_intersection} verifies \Cref{thm:clean_intersection}.
 \end{enumerate}
 
-\section{Code listing}
+\subsection{Code listing}
+
 \singlespacing
 \lstinputlisting[language=Python]{checkthesis.sage}
+\doublespacing
+
+\section{Quaternion implementations and tests}
+As an afterthought we also provide the following short self-contained file
+verifying the quaternion calculations done in \Cref{ch:jiao}.
+Unlike the previous code, it is symbolic.
+
+\singlespacing
+\lstinputlisting[language=Python]{checkquat.sage}
+\doublespacing
