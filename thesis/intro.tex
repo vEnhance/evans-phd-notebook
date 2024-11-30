@@ -56,7 +56,7 @@ based on the values of the $L$-function of a certain cuspidal automorphic repres
 
 In 2011, Jacquet-Rallis \cite{ref:JR} proposed an approach to the Gross-Prasad conjectures
 for unitary groups via a relative trace formula (RTF).
-The idea is to compare a RTF for the general linear group to one for a unitary group.
+The idea is to compare an RTF for the general linear group to one for a unitary group.
 This approach relies on a so-called \emph{fundamental lemma},
 which links values of certain orbital integrals
 over two reductive groups over a non-Archimedean local field.
@@ -65,17 +65,17 @@ Let's be a bit more precise about what this fundamental lemma says.
 Let $\VV_n^+$ denote the split $E/F$-Hermitian space of dimension $n$ (unique up to isomorphism),
 fix a unit vector $w_0$ in it,
 and let $(\VV_n^+)^\flat$ be the orthogonal complement of the span of $w_0$.
-Let $G'^\flat \coloneqq \GL_{n-1}(E)$, $G' \coloneqq \GL_n(E)$,
+Let $(G')^\flat \coloneqq \GL_{n-1}(E)$, $G' \coloneqq \GL_n(E)$,
 $G^\flat \coloneqq \U((\VV_n^+)^\flat)(F)$ and $G \coloneqq \U(\VV_n^+)(F)$.
 For certain
-\[ \gamma \in G'^\flat \times G', \qquad g \in G^\flat \times G \]
+\[ \gamma \in (G')^\flat \times G', \qquad g \in G^\flat \times G \]
 the Jacquet-Rallis fundamental lemma proposes a relation between two orbital integrals.
 Specifically, it supplies a relation between
 \begin{itemize}
 \item the orbital integral of $\gamma$ with respect to
-  the indicator function $\mathbf{1}_{K'^\flat \times K'}$
+  the indicator function $\mathbf{1}_{(K')^\flat \times K'}$
   of the natural hyperspecial compact subgroup
-  \[ K'^\flat \times K' \subset G'^\flat \times G' = \GL_{n-1}(E) \times \GL_n(E); \]
+  \[ (K')^\flat \times K' \subset (G')^\flat \times G' = \GL_{n-1}(E) \times \GL_n(E); \]
   and
 \item the orbital integral of $g$ with respect to
   the indicator function $\mathbf{1}_{K^\flat \times K}$
@@ -84,7 +84,7 @@ Specifically, it supplies a relation between
 \end{itemize}
 In other words, it states that
 \begin{equation}
-  \Orb(\gamma, \mathbf{1}_{K'^\flat \times K'}) = \omega(\gamma) \Orb(g, \mathbf{1}_{K^\flat \times K})
+  \Orb(\gamma, \mathbf{1}_{(K')^\flat \times K'}) = \omega(\gamma) \Orb(g, \mathbf{1}_{K^\flat \times K})
   \label{eq:old_FL}
 \end{equation}
 where $\omega(\gamma)$ is a suitable \emph{transfer factor}.
@@ -118,9 +118,9 @@ the arithmetic GGP conjectures should have a corresponding
 which was proposed by W.\ Zhang \cite[Conjecture 2.9]{ref:AFL}.
 The arithmetic fundamental lemma then relates the derivative
 of the weighted orbital integral with respect to the indicator function
-$\mathbf{1}_{K'^\flat \times K'} \in \HH(G'^\flat \times G, K'^\flat \times K')$, that is
-\[ \left. \pdv{}{s} \right\rvert_{s=0} \Orb(\gamma, \mathbf{1}_{K'^\flat \times K'}, s) \]
-for $\gamma \in G'^\flat \times G'$,
+$\mathbf{1}_{(K')^\flat \times K'} \in \HH((G')^\flat \times G, (K')^\flat \times K')$, that is
+\[ \left. \pdv{}{s} \right\rvert_{s=0} \Orb(\gamma, \mathbf{1}_{(K')^\flat \times K'}, s) \]
+for $\gamma \in (G')^\flat \times G'$,
 to arithmetic intersection numbers on a certain Rapoport-Zink formal moduli space.
 The AFL in \cite{ref:AFL} has since been proven over $p$-adic fields for any prime $p$ in
 Mihatsch-Zhang \cite{ref:MZ2021}, W.\ Zhang \cite{ref:Wei2021}, Z.\ Zhang \cite{ref:Zhiyu}.
@@ -130,7 +130,7 @@ There is another different version of the AFL, proposed by Yifeng Liu in
 \cite[Conjecture 1.12]{ref:liuFJ},
 which is often referred to as the \emph{semi-Lie version} of the AFL.
 Its statement has been shown to be equivalent to AFL,
-\cite[Remark 1.13]{ref:liuFJ} (and is thus now proven).
+see \cite[Remark 1.13]{ref:liuFJ} and is thus now proven.
 In contrast, the original AFL proposed by Zhang in \cite[Conjecture 2.9]{ref:AFL}
 is sometimes referred to as the \emph{group version}.
 
@@ -140,11 +140,11 @@ A more detailed account of this equivalence is described in \cite[\S1.4]{ref:liu
 Recently it was shown by Leslie \cite{ref:leslie} that in fact
 \eqref{eq:old_FL} holds in greater generality where the indicator function
 $\mathbf{1}_{K^\flat \times K}$ can be replaced by any element in the spherical
-Hecke algebra $\varphi \in \HH(G'^\flat \times G', K'^\flat \times K')$.
-In that case, $\mathbf{1}_{K'^\flat \times K}$ needs to be replaced
+Hecke algebra $\varphi \in \HH((G')^\flat \times G', (K')^\flat \times K')$.
+In that case, $\mathbf{1}_{(K')^\flat \times K}$ needs to be replaced
 by the corresponding element $\varphi'$ under a certain base change homomorphism
 \begin{align*}
-  \HH(G'^\flat \times G', K'^\flat \times K') &\to \HH(G^\flat \times G, K^\flat \times K) \\
+  \HH((G')^\flat \times G', (K')^\flat \times K') &\to \HH(G^\flat \times G, K^\flat \times K) \\
   \varphi' &\mapsto \varphi
 \end{align*}
 
@@ -155,10 +155,13 @@ In that case, the identity \eqref{eq:old_FL} still hold as
 \end{equation}
 To complete the analogy illustrated in \Cref{fig:history},
 there should thus be a generalization of the AFL in which
-$\mathbf{1}_{K'^\flat \times K}$ is replaced by any element of the Hecke algebra
-$\HH(G'^\flat \times G, K'^\flat \times K)$.
-This formula is proposed by \cite{ref:AFLspherical},
-and is the primary focus of this paper; we discuss it in the next section.
+$\mathbf{1}_{(K')^\flat \times K}$ is replaced by any element of the Hecke algebra
+$\HH((G')^\flat \times G, (K')^\flat \times K)$.
+This conjectural generalization
+(for the group version of the AFL) is \cite{ref:AFLspherical}
+and we discuss it momentarily;
+while the analogous conjectural generalization for the semi-Lie version of the AFL
+is our \Cref{conj:semi_lie_spherical} also discussed in the next section.
 
 \section{Formulation of AFL conjectures to the full spherical Hecke algebra}
 \subsection{The inhomogeneous version of the arithmetic fundamental lemma for spherical Hecke algebras proposed by Li-Rapoport-Zhang}
@@ -173,20 +176,19 @@ Moreover, define the symmetric space
 \[ S_n(F) \coloneqq \left\{ g \in \GL_n(E) \mid g \bar{g} = \id_n \right\}. \]
 Finally, let $\VV_n^-$ be the non-split Hermitian space of dimension $n$
 (unique up to isomorphism),
-and let $\VV_n^+$ be the split one (again unique up to isomorphism).
-Denote by $\U(\VV_n^-)$ the corresponding unitary groups.
+while $\VV_n^+$ continues to denote the split one (again unique up to isomorphism).
 
 For concreteness, we focus on the inhomogeneous version
 of the arithmetic fundamental lemma, which is \cite[Conjecture 6.2.1]{ref:AFLspherical}.
-This allows us to deal with just $G'$ instead of $G'^\flat \times G'$, etc.,
-so that the Hecke algebra $\HH(G'^\flat \times G', K'^\flat \times K')$
+This allows us to deal with just $G'$ instead of $(G')^\flat \times G'$, etc.,
+so that the Hecke algebra $\HH((G')^\flat \times G', (K')^\flat \times K')$
 can be replaced by the simpler one $\HH(\GL_n(E)) \coloneqq \HH(G', K')$.
 Similarly, $\HH(G^\flat \times G, K^\flat \times K)$
 can be replaced by the simpler $\HH(\U(\VV_n^+)) \coloneqq \HH(G, K)$.
 
 The AFL conjecture provides a bridge between a geometric left-hand side
 (given by an intersection number)
-and an analytic right-hand side (given by an weighted orbital integral).
+and an analytic right-hand side (given by a weighted orbital integral).
 Stating it requires several pieces of data.
 We only mention these pieces by name here, with definitions given later:
 \begin{itemize}
@@ -196,7 +198,7 @@ We only mention these pieces by name here, with definitions given later:
     \ii We choose a regular semisimple element $g \in \U(\VV_n^-)\rs$.
     (The notation $\U(\VV_n^-)\rs$ denotes the regular semisimple elements of $\U(\VV_n^-)$, etc.
     The notion of regular semisimple is defined in \Cref{def:regular}.)
-    \ii We choose a function $f \in \HH(\GL_n(E))$ from the spherical Hecke algebra,
+    \ii We choose a function $f \in \HH(\U(\VV_n^+))$ from the spherical Hecke algebra,
     defined in \Cref{ch:background}.
     \ii We define a certain \emph{intersection number} $\Int((g,u), f)$
     in \Cref{def:intersection_number_inhomog}.
@@ -204,7 +206,7 @@ We only mention these pieces by name here, with definitions given later:
     described in \Cref{ch:geo}.
   \end{itemize}
 
-  \ii On the analytic side, we have an weighted orbital integral.
+  \ii On the analytic side, we have a weighted orbital integral.
   It uses the following ingredients.
   \begin{itemize}
     \ii We choose a regular semisimple element $\gamma \in S_n(F)\rs$.
@@ -230,9 +232,9 @@ We only mention these pieces by name here, with definitions given later:
     we require $\gamma \in S_n(F)\rs$ to be a \emph{matching} element.
     This matching is defined in \Cref{def:matching_inhomog}.
     (Alternatively, one could imagine picking $\gamma \in S_n(F)\rs$ first
-    and finding corresponding $g$;
-    it turns out $\gamma$ will match an element of $\U(\VV_n^\pm)\rs$ is general,
-    and the conjecture is only formulated in the case where $g \in \U(\VV_n^-)$).
+    and finding corresponding $g$.
+    It turns out $\gamma$ will match an element of $\U(\VV_n^\pm)\rs$ is general,
+    and the conjecture is only formulated in the case where $g \in \U(\VV_n^-)$.)
 
     \ii Once $f \in \HH(\U(\VV_n^+))$ is chosen, we select
     \[ \phi = (\BC_{S_n}^{\eta^{n-1}})^{-1}(f) \]
@@ -254,8 +256,8 @@ we can now state the conjecture proposed in \cite{ref:AFLspherical}.
   \[ g \in \U(\VV_n^-)\rs \longleftrightarrow \gamma \in S_n(F)\rs \]
   we have
   \begin{equation}
-    \Int\left( (1,g), \mathbf{1}_{K^\flat} \otimes f \right) \log q
-    = -\omega(\gamma) \partial \Orb(\gamma, \phi)
+    \Int\left( (1,g), \mathbf{1}_{K^\flat} \otimes f \right)
+    = -\frac{\omega(\gamma)}{\log q} \partial \Orb(\gamma, \phi)
     \label{eq:inhomog}
   \end{equation}
   where the weighted orbital integral $\Orb(\dots)$ is defined in \Cref{def:orbital0},
@@ -274,7 +276,7 @@ so the conjecture instead looks at the first derivative at $s = 0$.
 The generalized conjecture is also proved in full for
 $n = 2$ in \cite[Theorem 1.0.1]{ref:AFLspherical}
 (in that reference, our $n$ denotes the $n+1$ in \emph{loc.\ cit.}).
-The part of the calculation involving weighted orbital integral has two parts:
+The part of the calculation involving the weighted orbital integral has two parts:
 \begin{itemize}
   \ii The calculation makes $\BC_{S_{n}}^{\eta^{n-1}}$
   completely explicit in a natural basis for $n = 2$.
@@ -341,8 +343,7 @@ to accommodate the new term $u$ in \Cref{def:intersection_number_semi_lie_spheri
     \guv \in (S_n(F) \times V'_n(F))\rs \]
   we have
   \begin{equation}
-    \Int\left( (g,u), f \right) \log q \\
-    = -\omega\guv \partial \Orb(\guv, \phi \otimes \oneV)
+    \Int\left( (g,u), f \right) = -\frac{\omega\guv}{\log q} \partial \Orb(\guv, \phi \otimes \oneV)
   \end{equation}
   where the orbital integral $\Orb(\dots)$ is defined in \Cref{def:orbitalFJ},
   the transfer factor is defined in \Cref{ch:transf},
@@ -352,7 +353,7 @@ to accommodate the new term $u$ in \Cref{def:intersection_number_semi_lie_spheri
 Note that in this version the new orbital integral $\Orb(\guv, \phi \otimes \oneV, s)$
 is defined similarly.
 However, as far as we know, no analog of \Cref{thm:rel_fundamental_lemma}
-(linking it to an orbital integral on the unitary side) appears in the literature.
+(linking it to an unweighted orbital integral on the unitary side) appears in the literature.
 Thus we record the corresponding statement as \Cref{conj:rel_fundamental_lemma_semilie}.
 Like before, \Cref{conj:rel_fundamental_lemma_semilie}
 predicts that $\Orb(\guv, \phi \otimes \oneV, 0) = 0$ in the case of interest,
@@ -381,7 +382,7 @@ there was a rather large space of $\phi \in \HH(S_2(F))$ such that
 held identically across all $\gamma \in S_2(F)\rs^-$.
 If we consider the map
 \begin{align*}
-  \partial\Orb \colon \HH(S_2(F)) &\to C^\infty(S_2(F)\rs^-) \\
+  \partial\Orb \colon \HH(S_2(F)) &\to \mathcal{C}^\infty(S_2(F)\rs^-) \\
   \phi &\mapsto \left( \gamma \mapsto \partial \Orb \left(\gamma, \phi \right) \right)
 \end{align*}
 then \cite[Theorem 8.2.3]{ref:AFLspherical} in fact
@@ -400,7 +401,7 @@ which we have proved for $n = 2$.
   Let $n \ge 2$.
   The map
   \begin{align*}
-    \partial\Orb \colon \HH(S_n(F)) &\to C^\infty\left( (S_n(F) \times V'_n(F))^- \right) \\
+    \partial\Orb \colon \HH(S_n(F)) &\to \mathcal{C}^\infty\left( (S_n(F) \times V'_n(F))^- \right) \\
     \phi &\mapsto \left( \guv \mapsto \partial \Orb \left(\guv, \phi \right) \right)
   \end{align*}
   is injective.
@@ -578,7 +579,7 @@ More precisely, we have the following two theorems.
 
 In particular, for $n=2$ the map
 \begin{align*}
-  \partial\Orb \colon \HH(S_2(F)) &\to C^\infty\left( (S_2(F) \times V'_2(F))^- \right) \\
+  \partial\Orb \colon \HH(S_2(F)) &\to \mathcal{C}^\infty\left( (S_2(F) \times V'_2(F))^- \right) \\
   \phi &\mapsto \left( \guv \mapsto \partial \Orb \left(\guv, \phi \right) \right)
 \end{align*}
 is indeed injective.
@@ -630,13 +631,13 @@ throughout the entire paper, culminating in \Cref{ch:finale}.
 
 We comment briefly on the strategy of the proof.
 The proof is made possible because the intersection numbers for $n=2$
-are easier to work for a few reasons.
+are easier to work with for a few reasons.
 \begin{itemize}
 \ii First, one can identify $\VV_2^-$ with an $E/F$-quaternion division algebra,
 equipped with a compatible Hermitian form defined via quaternion multiplication.
 This makes it possible to describe $\U(\VV_2^-)$ concretely as transformations obtained
 via left multiplication by an element of $E$ and right multiplication by a quaternion.
-\ii Secondly, it becomes possible to describe the so-called Rapoport-Zink spaces $\RZ_2$
+\ii Secondly, it becomes possible to replace the so-called Rapoport-Zink spaces $\RZ_2$
 used in the definition of the intersection number with a Lubin-Tate space $\MM_2$.
 Thus the problem of computing the intersection number
 $\Int\left( (g,u), f \right) \log q$
@@ -709,14 +710,14 @@ although we imagine such a proof could be completed
 once a method for determining the intersection numbers explicitly is devised.
 On the other hand, the orbital data is enough to prove the following result,
 which serves as an analog to \Cref{conj:kernel_semi_lie}.
-\begin{restatable}[$\partial\Orb \colon \HH(S_3(F)) \to C^\infty(S_3(F)\rs^-)$ has large image]{theorem}{nogroupkernel}
+\begin{restatable}[$\partial\Orb \colon \HH(S_3(F)) \to \mathcal{C}^\infty(S_3(F)\rs^-)$ has large image]{theorem}{nogroupkernel}
   \label{thm:no_kernel_group}
   There is no nontrivial $\phi \in \HH(S_3(F))$ such that
   \[ \partial \Orb \left( \gamma, \phi \right) = 0 \]
   holds for every $\gamma \in S_3(F)\rs^-$.
   In other words, the map
   \begin{align*}
-    \partial\Orb \colon \HH(S_3(F)) &\to C^\infty(S_3(F)\rs^-) \\
+    \partial\Orb \colon \HH(S_3(F)) &\to \mathcal{C}^\infty(S_3(F)\rs^-) \\
     \phi &\mapsto \left( \gamma \mapsto \partial \Orb \left(\gamma, \phi \right) \right)
   \end{align*}
   is injective, i.e., has image as large as possible, for $n = 3$.
@@ -786,7 +787,8 @@ the subsequent chapters aim to prove \Cref{thm:semi_lie_n_equals_2}.
   \ii In \Cref{ch:geo}, we describe the Rapoport-Zink spaces $\RZ_n$
   that the geometric side is based on, and define the intersection numbers
   $\Int((1,g), \mathbf{1}_{K^\flat} \otimes f)$ and $\Int((g,u), f)$
-  that appear in the AFL based on the Hecke operator introduced in \cite{ref:AFLspherical}
+  that appear in the two version of the generalized AFL.
+  The main ingredients are the Hecke operator introduced in \cite{ref:AFLspherical}
   and the KR-divisor $\ZD(u)$ introduced in \cite{ref:KR}.
   \ii In \Cref{ch:jiao}, we specialize to the situation $n = 2$
   for the intersection numbers in the semi-Lie AFL only.
