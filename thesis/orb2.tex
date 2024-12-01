@@ -434,7 +434,7 @@ If $\ell$ is even, we now have the following intermediate result.
       \left\lfloor \frac{k+r}{2} \right\rfloor + r & \text{if }{-r} \le k \le \ell-r \\
       \frac{\ell}{2} + r - (k-r) \% 2 & \text{if } \ell - r \le k \le 2\delta + r \\
       \left\lfloor \frac{(\ell+2\delta+r)-k}{2} \right\rfloor + r & \text{if } 2\delta + r \le k \le 2\lambda - \ell + 2\delta + r \\
-      (\lambda + 2\delta + 2r) - k & \text{if } 2 \delta + 2 \lambda - \ell + r \le k \le \lambda + 2\delta + 2r.
+      (\lambda + 2\delta + 2r) - k & \text{if } 2 \delta + 2 \lambda - \ell + r \le k \le \lambda + 2\delta + 2r
     \end{cases}
   \]
   in the case $\lambda \le \ell+r$.
@@ -1602,7 +1602,7 @@ We will use the following extremely easy lemma:
     \begin{aligned}
       &\sum_{k=-r}^{W-r-1} (-1)^{k} \cdot k \cdot (k+r)
       + \sum_{k=W+L+r+1}^{2W+L+r} (-1)^{k} \cdot k \cdot (2W+L+r-k) \\
-      &= (-1)^{W+r} \frac{W(L+2r+2)}{2} - (-1)^{W+r} (W\%2) \cdot \frac{2W+L+2r}{2}
+      &= (-1)^{W+r} \frac{W(L+2r+2)}{2} - (-1)^{W+r} (W\%2) \cdot \frac{2W+L+2r}{2}.
     \end{aligned}
     \label{eq:moment15}
   \end{equation}

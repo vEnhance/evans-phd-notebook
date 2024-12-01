@@ -51,7 +51,7 @@ Then the following result is true.
 \label{ch:orbital0_hecke_basis}
 From now on assume $n = 3$.
 We have the symmetric space
-\[ S_3(F) \coloneqq \left\{ g \in \GL_3(E) \mid g \bar{g} = \id_3 \right\}. \]
+\[ S_3(F) \coloneqq \left\{ g \in \GL_3(E) \mid g \bar{g} = \id_3 \right\} \]
 which has a left action under $\GL_3(E)$ by $g \cdot s \mapsto gs\bar{g}\inv$.
 
 Then $S_3(F)$ admits the following decomposition, which we will use:
@@ -243,7 +243,7 @@ Finally, define
   \ell \coloneqq v(b^2 - 4 a \ol d).
   \label{eq:ell}
 \end{equation}
-We will also define one additional parameter useful when $\ell$ is even
+We will also define one additional parameter which is useful when $\ell$ is even
 (but as we will see, redundant for odd $\ell$):
 \begin{equation}
   \lambda \coloneqq v(1-u \bar u) \equiv 1 \pmod 2.
@@ -590,7 +590,7 @@ the weighted orbital integral can be expressed succinctly in the following way.
   \[
     \Orb(\gamma, \mathbf{1}_{K'_{S, \le r}}, s)
     = \sum_{k = -2r}^{\ell + 2\delta + 2r}
-    (-1)^k \left( 1 + q + q^2 + \dots + q^{\nn_{\gamma}(k)}  \right) (q^s)^k
+    (-1)^k \left( 1 + q + q^2 + \dots + q^{\nn_{\gamma}(k)} \right) (q^s)^k.
   \]
 \end{restatable}
 \begin{remark}
@@ -815,7 +815,7 @@ We will just state the relevant theorem in terms of $v(b)$ and $v(d)$, omitting 
     \Orb(\gamma, \mathbf{1}_{K'_{S, \le r}}, s)
     &= \sum_{k = -2r}^{\lambda + 2r-4|v(d)|}
     (-1)^k \left( 1 + q + q^2 + \dots + q^{\nn_{\gamma}(k)} \right) (q^s)^k \\
-    &+ \sum_{k = -r-|v(d)|}^{\lambda+r-3|v(d)|} \cc_\gamma(k) (-1)^k q^{r-|v(d)|} (q^s)^k \\
+    &+ \sum_{k = -r-|v(d)|}^{\lambda+r-3|v(d)|} \cc_\gamma(k) (-1)^k q^{r-|v(d)|} (q^s)^k.
   \end{align*}
 \end{restatable}
 
