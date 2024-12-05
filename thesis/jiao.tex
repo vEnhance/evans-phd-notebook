@@ -345,14 +345,19 @@ Recall that we have the notation
 \[ \ZD(u)^\circ \coloneqq \ZD(u) - \ZD\left( \frac{u}{\varpi} \right). \]
 Define $\ZO4(u)^\circ$ and $\ZO3(u)^\circ$ similarly.
 
-\begin{conjecture}
-  [$\ZO3(\bar u \sqrt{\eps} u)^\circ$]
-  \label{conj:serre_pullback_divisor}
+\begin{lemma}
+  [$\ZO3(\bar u \sqrt{\eps} u)^\circ$, {\cite{ref:CLZ}}]
+  \label{lem:serre_pullback_divisor}
   Let $u \in \VV_n^-$, and consider it as an element $u \in \DD$.
   Then pullback along the Serre tensor construction identifies
   \[ \Serre^\ast \ZD(u)^\circ \simeq \ZO3(\bar u \sqrt{\eps} u)^\circ. \]
-\end{conjecture}
-We also assume this conjecture henceforth.
+\end{lemma}
+\begin{proof}
+  This is shown in the in-preparation
+  \cite{ref:CLZ} by Ryan C.~Chen, Weixiao Liu, and Wei Zhang.
+  (Although \cite{ref:CLZ} is technically written for $F = \QQ_p$,
+  that restriction is for other parts of the paper that don't affect this lemma.)
+\end{proof}
 
 \section{A basis for $\HH(\U(\VV_2^+))$}
 \label{sec:hecke_unitary_basis}
@@ -401,7 +406,7 @@ Accordingly, let us introduce the notation
   &= \Big\langle \mathbb{T}_{\mathbf{1}_K \otimes \mathbf{1}_{K, \le r}}
     \Delta_{\ZD(u)^\circ}, \Gamma_g \Big\rangle_{\RZ_{2,2}}.
 \end{align*}
-Assuming \Cref{conj:serre_pullback_divisor} we get
+From \Cref{lem:serre_pullback_divisor} we get
 \begin{align*}
   \Int^\circ((g,u), \fr)
   &= \left< \ZO4(g \cdot \varpi^r), \; \Delta(\Serre^\ast(\ZD(u))^\circ) \right>_{\MM_2 \times \MM_2} \\
