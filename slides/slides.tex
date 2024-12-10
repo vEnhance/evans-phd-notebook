@@ -45,6 +45,7 @@
 \DeclareMathOperator{\Orb}{Orb}
 \DeclareMathOperator{\Sat}{Satake}
 \DeclareMathOperator{\Sh}{Sh}
+\DeclareMathOperator{\SO}{SO}
 \DeclareMathOperator{\Spf}{Spf}
 \DeclareMathOperator{\U}{U}
 \DeclareMathOperator{\rproj}{proj}
@@ -52,6 +53,7 @@
 \newcommand{\G}{\mathrm{G}}
 \newcommand{\EE}{\mathbb{E}}
 \newcommand{\HH}{\mathcal{H}}
+\newcommand{\MM}{\mathcal{M}}
 \newcommand{\VV}{\mathbb{V}}
 \newcommand{\TT}{\mathbb{T}}
 \newcommand{\XX}{\mathbb{X}}
@@ -67,11 +69,12 @@
 \newcommand{\rs}{_{\text{rs}}}
 \newcommand{\uu}{\mathbf{u}}
 \newcommand{\vv}{\mathbf{v}}
+\newcommand{\ZO}[1]{\mathcal Z^{\dagger}_{\SO(#1)}}
 
 \title[Semi-Lie AFL for full Hecke algebra]{Semi-Lie Arithmetic Fundamental Lemma for full spherical Hecke Algebra}
-\subtitle{Mass Tech Learning Seminar}
+\subtitle{Mass Tech Department of Mathematics}
 \author{Evan Chen}
-\date{4 November 2024}
+\date{11 December 2024}
 
 \begin{document}
 
@@ -361,7 +364,7 @@
       \Orb(\guv, \mathbf{1}_K \otimes \oneV, s).
     \]
   \end{theorem}
-  Equivalent to Zhang's Bessel-period AFL; induction uses both!
+  Equivalent to Zhang's AFL; induction uses both!
 \end{frame}
 
 \begin{frame}
@@ -503,7 +506,6 @@
       \Orb(\guv, \alert{\phi} \otimes \oneV, s).
     \]
   \end{exampleblock}
-  \only<1>{
   \begin{block}{Updated definition of intersection number}
     \[
       \Int((g,u), f)
@@ -512,46 +514,35 @@
       \jiao_{\Sheaf_{\RZ_{n,n}}} \Sheaf_{\Gamma_g} \right).
     \]
   \end{block}
-  }
-  \only<2>{
-  \begin{exampleblock}{$n=2$ is almost proved}
-  \begin{itemize}
-    \ii Orbital is computed, and base change is easy.
-    \ii $\Int(\dots)$ is computed subject to some pullback conjectures (WIP).
-    One uses a Lubin-Tate space $\mathcal{M}_2$, and can use \alert{Gross-Keating}.
-  \end{itemize}
+\end{frame}
+\begin{frame}
+  \begin{exampleblock}{Main theorem}
+    For $n = 2$, this semi-Lie AFL conjecture
+    \[
+      \Int\left( (g,u), f \right) \log q
+      = \pm \left. \pdv{}{s} \right\rvert_{s=0}
+      \Orb(\guv, \phi \otimes \oneV, s).
+    \]
+    holds assuming a certain conjecture about the pullback of
+    $\TT_{\mathbf{1}_K \otimes f}(\Delta_{\ZD(u)})$ via Serre tensor construction.
   \end{exampleblock}
-  }
+  \begin{block}{Strategy of proof}
+    \begin{itemize}
+      \ii Orbital integral calculated explicitly in Hecke basis.
+      \ii Base change and transfer factor are easy.
+      \ii On the geometric side, work instead with a Lubin-Tate space $\mathcal{M}_2$
+      by pulling back with Serre tensor construction.
+    \end{itemize}
+  \end{block}
+  Removing the conditional hypothesis is a WIP.
 \end{frame}
 
-\begin{frame}
-  \frametitle{Matching geometric side to orbital side for $n=2$}
-  \begin{itemize}
-    \item \alert{Geometric side}:
-    Identify $\VV_2^-$ with a quaternion division algebra $E + E \Pi$,
-    where $\Pi t = \bar t \Pi$ for $t \in E$, and $\Pi^2 = \varpi$.
-    \[
-      g = \lambda^{-1} \begin{pmatrix} \alpha & \bar\beta\varpi \\ \beta & \bar\alpha \end{pmatrix} \in \U(\VV_2)^-
-      \text{ by } g(x)= \lambda^{-1} x (\alpha + \beta \Pi)
-    \]
-    Require $\lambda \bar\lambda = \Nm(\alpha + \beta \Pi) = \alpha \bar \alpha - \beta \bar \beta \varpi$.
-    \item \alert{Orbital side}:
-    $\guv = \left( \begin{pmatrix} a & b \\ c & d \end{pmatrix},
-      \begin{pmatrix} 0 \\ 1 \end{pmatrix},
-      \begin{pmatrix} 0 & e \end{pmatrix} \right)$
-      \ii Resulting \alert{matching}:
-    \begin{align*}
-      \lambda\inv(\alpha + \bar\alpha) =\Tr g &\longleftrightarrow \Tr \gamma = a + d \\
-      \lambda^{-2}(\alpha \bar \alpha - \beta \bar\beta \varpi ) = \det g &\longleftrightarrow \det \gamma = ad - bc \\
-      \Nm u = \left\langle u,u \right\rangle &\longleftrightarrow \uu \vv^\top = e \\
-      \lambda^{-1} \cdot (\alpha \text{ or } \bar\alpha) \cdot \Nm u = \left\langle g(u), u \right\rangle
-        &\longleftrightarrow \uu \gamma \vv^\top = d e \\
-    \end{align*}
-  \end{itemize}
-\end{frame}
 
 \begin{frame}
   \frametitle{An example of a semi-Lie orbital integral ($n=2$)}
+  \[ \guv = \left( \begin{pmatrix} a & b \\ c & d \end{pmatrix},
+      \begin{pmatrix} 0 \\ 1 \end{pmatrix},
+      \begin{pmatrix} 0 & e \end{pmatrix} \right) \]
   For $r=2$, $v(d-a)=1$, $v(b)=3$, $v(c)=0$, $v(e)=5$:
   \begin{align*}
     \Orb(\dots) &= -q^{-5s} &&+ (3q^3+q^2+q+1) q^{4s} \\
@@ -567,9 +558,44 @@
 \end{frame}
 
 \begin{frame}
+  \frametitle{Geometric side}
+  \begin{itemize}
+    \ii Let $\MM_2$ be the Lubin-Tate space for $n=2$ ---
+      parametrized by tuples $(Y, \rho)$
+      where $Y$ is a one-dimensional strict formal $\OO_F$-module of height $2$,
+      and $\rho$ is a framing of a fixed Lubin-Tate module $\mathbb{Y}$.
+    \ii Use Serre tensor to pull back everything from $\RZ_2$ onto $\MM_2$.
+    \ii $\U(\VV_2^-)$ can basically be identified with $\SO(3)$, up to certain tori.
+  \end{itemize}
+  \begin{theorem}
+    [Gross-Keating triple product formula]
+    For certain divisors $\ZO4$ defined on $\MM_2 \times \MM_2$, if we set
+    \bgroup
+    \small
+    $n_1 = \min\left( v((x,x) ), v( (x,y) ), v( (y,y) ) \right)$;
+    $n_1 + n_2 = v\left( (x,x) (y,y) - (x,y)^2 \right)$:
+    \egroup
+    \begin{align*}
+      &\left< \ZO4(1), \; \ZO4(x), \; \ZO4(y) \right>_{\MM_2 \times \MM_2} \\
+      &=
+      \begin{cases}
+        \sum_{j=0}^{\frac{n_1-1}{2}} (n_1+n_2-4j) q^j & n_1 \text{ odd} \\
+        \frac{n_2-n_1+1}{2} q^{n_1/2} + \sum_{j=0}^{n_1/2-1} (n_1+n_2-4j) q^j & n_1 \text{ even}.
+      \end{cases}
+    \end{align*}
+  \end{theorem}
+\end{frame}
+
+
+\begin{frame}
   \frametitle{An example of part of the intersection number}
-  Let $r \ge 1$ and $v(\Nm u) > 0$ for $u \in \VV_2^-$, and $g$ as before.
-  Then
+  \[ \ZD(u)^\circ \coloneqq \ZD(u) - \ZD\left( \frac{u}{\varpi} \right). \]
+  Let $r \ge 1$ and $v(\Nm u) > 0$ for $u \in \VV_2^-$, and let
+  \[ g = \lambda^{-1}
+    \begin{pmatrix} \alpha & \bar\beta \varpi \\ \beta & \bar\alpha \end{pmatrix}
+    \in \U(\VV_2^-) \]
+  where $v(\lambda) = 0$.
+  With $\mathbb{T}_{\mathbf{1}_{K, r}}$ the Hecke operator on $\MM_2$,
   \[ \Big\langle \mathbb{T}_{\mathbf{1}_K \otimes \mathbf{1}_{K, r}}
     \Delta_{\ZD(u)^\circ}, \Gamma_g \Big\rangle_{\RZ_{2,2}}
     =
@@ -579,10 +605,8 @@
       q^N + q^{N-1}
     \end{cases}
   \]
-  where
-  \[ N = \min(v(\Nm u), v(\beta) + r, v(\alpha-\bar\alpha) + r) \]
-  and
-  \[ C = v(\beta) - v(\alpha - \bar\alpha) \ge 0. \]
+  where $N = \min(v(\Nm u), v(\beta) + r, v(\alpha-\bar\alpha) + r)$
+  and $C = v(\beta) - v(\alpha - \bar\alpha)$.
 \end{frame}
 
 \begin{frame}
@@ -617,11 +641,8 @@
 \end{frame}
 
 \begin{frame}
-  \begin{block}{The end}
-    Thanks for coming!
-  \end{block}
-
-  Relevant files of mine are kept at:
+  \frametitle{The end}
+  Source files and full thesis draft:
   \begin{itemize}
     \ii \url{https://github.com/vEnhance/evans-phd-notebook}
   \end{itemize}
