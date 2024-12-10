@@ -230,24 +230,66 @@ At this point we can state:
   and recalling that $s t = 0$.
 \end{proof}
 
+\section{A basis for $\HH(\U(\VV_2^+))$}
+\label{sec:hecke_unitary_basis}
+
+As before $K = \GL_2(\OO_E) \cap \U(\VV_2^+)$denotes the maximal hyperspecial compact subgroup of $\U(\VV_2^+)$.
+For each $r \ge 0$, we define
+\[ \fr \coloneqq \mathbf{1}_{\varpi^{-r} \Mat_2(\OO_E) \cap \U(\VV_2^+)} \in \HH(\U(\VV_2^+)). \]
+For convenience $\fr = 0$ for $r < 0$.
+We also set
+\[  \mathbf{1}_{K, r} \coloneqq \fr - \mathbf{1}_{K, \le (r-1)} \]
+which is the indicator function for the coset
+\[ K \begin{pmatrix} 0 & \varpi^r \\ \varpi^{-r} & 0 \end{pmatrix} K. \]
+Note when $r = 0$, $\mathbf{1}_{K, 0} = \mathbf{1}_K = \mathbf{1}_{K, \le 0}$.
+
+Analogous to \Cref{sec:hecke_basis_FJ} we then have the following result.
+\begin{proposition}[$\fr$ basis]
+  The functions $\fr$ (for $r \ge 0$) form a basis of $\HH(\U(\VV_2^+))$.
+  (Similarly, so do $\mathbf{1}_{K, r}$ for $r \ge 0$.)
+\end{proposition}
+\begin{proof}
+  This follows from the fact that
+  \[ \U(\VV_2^+) = \coprod_{r \ge 0}
+    K \begin{pmatrix} 0 & \varpi^r \\ \varpi^{-r} & 0 \end{pmatrix} K. \]
+  See the comment in \cite[Equation (7.1.5)]{ref:AFLspherical}.
+\end{proof}
+
+The base change for this basis is given later in \Cref{lem:finale_base_change}.
+
 \section{Background on special divisors for $n = 2$}
-\subsection{The Rapoport-Zink space $\RZ_2$}
-For integers $r \ge 0$, if we consider the functions
-\[ \mathbf{1}_{K, \le r} \coloneqq \mathbf{1}_{\varpi^{-r} \Mat_2(\OO_E) \cap \U(\VV_n^+)} \in \HH(\U(\VV_n^+)) \]
-then these functions produce a basis for the Hecke algebra $\HH(\U(\VV_n^+))$.
-Then as described in the previous section we have a diagram
+\subsection{The Rapoport-Zink space $\RZ_2$ and $\TTr$}
+Recall $\RZ_2$ from \Cref{ch:geo}.
+With the Hecke operator $\TT$ from \cite{ref:AFLspherical}
+(see \Cref{ch:geo} for discussion)
+we introduce $\TTr = \TT_{\mathbf{1}_K \otimes \mathbf{1}_{K, \le r}}(\Delta_{\RZ_n})$
+so that we have the diagram
 \begin{center}
 \begin{tikzcd}
   & \ar[ld] \TTr \ar[rd] & \\
-  \RZ_{2} && \RZ_{2}.
+  \RZ_{2} && \RZ_{2}
 \end{tikzcd}
 \end{center}
 
 \subsection{The Lubin-Tate space $\MM_2$}
 We introduce the notation $\MM_2$ for the \emph{Lubin-Tate space} for $n = 2$.
-It's parametrized by tuples $(Y, \rho)$
-where $Y$ is a one-dimensional strict formal $\OO_F$-module of height $2$,
-and $\rho$ is a framing of a fixed Lubin-Tate module $\mathbb{Y}$.
+It is defined almost in the same way as $\RZ_2$ except that we replace
+$\XX_2$ with $\EE$ now.
+
+\begin{definition}
+  [Lubin-Tate space]
+  We let $\MM_2$ denote the functor over $\Spf \OO_{\breve F}$ defined as follows.
+  Let $S$ be an $\Spf \OO_{\breve F}$ scheme, and let
+  $\ol S \coloneqq S \times_{\Spf \OO_{\breve F}} \Spec \FF$.
+  For every $\Spf \OO_{\breve F}$ scheme, we let $\RZ_n(S)$
+  be the set of isomorphism classes of quadruples
+  \[ (Y, \iota, \lambda, \rho) \]
+  where $(Y, \iota, \lambda)$ is one of the triples as we described, and
+  \[ \rho \colon Y \times_S \ol S \to \EE \times_{\Spec \FF} \ol S \]
+  is a \emph{framing}, meaning it is a height zero $\OO_F$-linear quasi-isogeny
+  and satisfies
+  \[ \rho^\ast((\lambda_{\EE})_{\ol S}) = \lambda_{\ol S}. \]
+\end{definition}
 
 \begin{proposition}
   [{\cite[Example 5.5.6]{ref:AFLspherical}}]
@@ -276,28 +318,30 @@ on $\MM_2 \times \MM_2$ as follows.
 \begin{definition}
   [$\ZO4(u)$]
   Let $u \in \OO_\DD$.
-  Then we define the divisor $\ZO4(u)$ to be the pairs $(X, X') \in \MM_2 \times \MM_2$
-  such that there exists $\varphi \colon X \to X'$ with the following property.
+  Then we define the divisor $\ZO4(u)$ to be the pairs $(Y, Y') \in \MM_2 \times \MM_2$
+  such that there exists $\varphi \colon Y \to Y'$ with the following property.
   Let $S$ be an $\Spf \OO_{\breve F}$ scheme and consider the map on special fiber
-  \[ X \times_S \ol S \xrightarrow{\varphi \times_S \ol S} X' \times_S \ol S. \]
-  Also, from $X \in \RZ_2$ and $X' \in \RZ_2$ we have the data of framings
-  $\rho \colon X \times_S \ol S \to \XX_2 \times_{\Spec \FF} \ol S$
-  and $\rho' \colon X' \times_S \ol S \to \XX_2 \times_{\Spec \FF} \ol S$.
+  \[ Y \times_S \ol S \xrightarrow{\varphi \times_S \ol S} Y' \times_S \ol S. \]
+  Also, from $Y \in \MM_2$ and $Y' \in \MM_2$ we have the data of framings
+  $\rho \colon Y \times_S \ol S \to \EE \times_{\Spec \FF} \ol S$
+  and $\rho' \colon Y' \times_S \ol S \to \EE \times_{\Spec \FF} \ol S$.
   Moreover, $u$ gives a map
   \[
-    \XX_2 \times_{\Spec \FF} \ol S
+    \EE \times_{\Spec \FF} \ol S
     \xrightarrow{u \times _{\Spec \FF} \ol S}
-    \XX_2 \times_{\Spec \FF} \ol S.
+    \EE \times_{\Spec \FF} \ol S.
   \]
   Then we require the following diagram to commute:
   \begin{center}
   \begin{tikzcd}
-    X \times_S \ol S \ar[rr, "\varphi \times_S \ol S"] \ar[d, "\rho"] && X' \times_S \ol S\ar[d, "\rho'"] \\
-    \XX_2 \times_{\Spec \FF} \ol S \ar[rr, "u \times_{\Spec \FF} \ol S"] && \XX_2 \times_{\Spec \FF} \ol S.
+    Y \times_S \ol S \ar[rr, "\varphi \times_S \ol S"] \ar[d, "\rho"] && Y' \times_S \ol S\ar[d, "\rho'"] \\
+    \EE \times_{\Spec \FF} \ol S \ar[rr, "u \times_{\Spec \FF} \ol S"] && \EE \times_{\Spec \FF} \ol S.
   \end{tikzcd}
   \end{center}
 \end{definition}
-We propose that the Serre tensor construction identifies $\TTr$ with this divisor:
+
+We propose that the Serre tensor construction identifies
+the space $\TTr$ we previously described with the following $\ZO4$ divisor:
 \begin{conjecture}
   [$\TTr \simeq \ZO4(\varpi^r)$]
   \label{conj:serre_pullback_space}
@@ -312,6 +356,9 @@ We propose that the Serre tensor construction identifies $\TTr$ with this diviso
   \end{center}
 \end{conjecture}
 We assume this conjecture henceforth.
+(In fact, for $n = 2$ we could even go as far as to take this as a definition of $\TTr$,
+but then the generalization \Cref{conj:semi_lie_spherical} would be less obvious,
+since a definition like this would not easily extend to $n > 2$.)
 
 \subsection{The divisor $\ZO3$ on $\MM_2$}
 Turning to $\MM_2 \times \MM_2$, we will henceforth always identify $\MM_2$
@@ -358,33 +405,6 @@ Define $\ZO4(u)^\circ$ and $\ZO3(u)^\circ$ similarly.
   (Although \cite{ref:CLZ} is technically written for $F = \QQ_p$,
   that restriction is for other parts of the paper that don't affect this lemma.)
 \end{proof}
-
-\section{A basis for $\HH(\U(\VV_2^+))$}
-\label{sec:hecke_unitary_basis}
-
-As before $K = \GL_2(\OO_E) \cap \U(\VV_2^+)$denotes the maximal hyperspecial compact subgroup of $\U(\VV_2^+)$.
-For each $r \ge 0$, we define
-\[ \fr \coloneqq \mathbf{1}_{\varpi^{-r} \Mat_2(\OO_E) \cap \U(\VV_2^+)} \in \HH(\U(\VV_2^+)). \]
-For convenience $\fr = 0$ for $r < 0$.
-We also set
-\[  \mathbf{1}_{K, r} \coloneqq \fr - \mathbf{1}_{K, \le (r-1)} \]
-which is the indicator function for the coset
-\[ K \begin{pmatrix} 0 & \varpi^r \\ \varpi^{-r} & 0 \end{pmatrix} K. \]
-Note when $r = 0$, $\mathbf{1}_{K, 0} = \mathbf{1}_K = \mathbf{1}_{K, \le 0}$.
-
-Analogous to \Cref{sec:hecke_basis_FJ} we then have the following result.
-\begin{proposition}[$\fr$ basis]
-  The functions $\fr$ (for $r \ge 0$) form a basis of $\HH(\U(\VV_2^+))$.
-  (Similarly, so do $\mathbf{1}_{K, r}$ for $r \ge 0$.)
-\end{proposition}
-\begin{proof}
-  This follows from the fact that
-  \[ \U(\VV_2^+) = \coprod_{r \ge 0}
-    K \begin{pmatrix} 0 & \varpi^r \\ \varpi^{-r} & 0 \end{pmatrix} K. \]
-  See the comment in \cite[Equation (7.1.5)]{ref:AFLspherical}.
-\end{proof}
-
-The base change for this basis is given later in \Cref{lem:finale_base_change}.
 
 \section{The intersection number as a triple product}
 We return to the intersection number

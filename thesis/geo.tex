@@ -239,7 +239,8 @@ See \cite{ref:KR} for a full definition.
 The main change is then that we can consider $\Delta_{\ZD(u)}$ as the image of
 \[ \ZD(u) \hookrightarrow \RZ_n \xrightarrow{\Delta} \RZ_{n,n} \]
 where $\Delta \colon \RZ_n \to \RZ_{n,n}$ now denotes the diagonal map.
-If one defines an appropriate space $\mathcal T_{\mathbf{1}_K \otimes f}$ for $f \in \HH(\U(\VV_n^+))$ together with
+If one defines an appropriate space $\mathcal T_{\mathbf{1}_K \otimes f}$
+for $f \in \HH(\U(\VV_n^+))$ again following \cite{ref:AFLspherical}, together with
 \begin{center}
 \begin{tikzcd}
   & \ar[ld] \mathcal T_{\mathbf{1}_K \otimes f} \ar[rd] & \\
@@ -261,10 +262,8 @@ but this time of $\Delta_{\ZD(u)} \hookrightarrow \RZ_{n,n}$.
 This lets us write an analogous definition:
 \begin{definition}[Hecke operator]
   Set
-  \[
-    \TT_{\mathbf{1}_K \otimes f} (\Delta_{\ZD(u)})
-    \coloneqq (\pi_2)_\ast(\pi_1^\ast(\Delta_{\ZD(u)})).
-  \]
+  \[ \TT_{\mathbf{1}_K \otimes f} (\Delta_{\ZD(u)})
+    \coloneqq (\pi_2)_\ast(\pi_1^\ast(\Delta_{\ZD(u)})). \]
 \end{definition}
 Meanwhile to replace $(1,g) \Delta_{\RZ_{n,n-1}}$, we let
 \[ \Gamma_g \subseteq \RZ_{n,n} \]
@@ -277,9 +276,7 @@ This finally allows us to write a definition of the intersection number in the s
   we now define the intersection number in \Cref{conj:semi_lie_spherical} as
   \begin{align*}
     \Int((g,u), f)
-    &\coloneqq \left\langle
-      \TT_{\mathbf{1}_{K} \otimes f} \Delta_{\ZD(u)},
-      \Gamma_g \right\rangle _{\RZ{n,n}} \\
+    &\coloneqq \left\langle \TT_{\mathbf{1}_{K} \otimes f} \Delta_{\ZD(u)}, \Gamma_g \right\rangle _{\RZ{n,n}} \\
     &\coloneqq \chi_{\RZ_{n,n}} \left(
       \Sheaf_{\TT_{\mathbf{1}_K \otimes f}(\Delta_{\ZD(u)})}
       \jiao_{\Sheaf_{\RZ_{n,n}}} \Sheaf_{\Gamma_g} \right).

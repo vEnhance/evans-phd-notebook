@@ -41,6 +41,7 @@
 \DeclareMathOperator{\BC}{BC}
 \DeclareMathOperator{\Int}{Int}
 \DeclareMathOperator{\Lie}{Lie}
+\DeclareMathOperator{\Mat}{Mat}
 \DeclareMathOperator{\Nm}{Nm}
 \DeclareMathOperator{\Orb}{Orb}
 \DeclareMathOperator{\Sat}{Satake}
@@ -72,7 +73,7 @@
 \newcommand{\ZO}[1]{\mathcal Z^{\dagger}_{\SO(#1)}}
 
 \title[Semi-Lie AFL for full Hecke algebra]{Semi-Lie Arithmetic Fundamental Lemma for full spherical Hecke Algebra}
-\subtitle{Mass Tech Department of Mathematics}
+\subtitle{Mass Tech --- Department of Mathematics}
 \author{Evan Chen}
 \date{11 December 2024}
 
@@ -516,17 +517,16 @@
 \end{frame}
 \begin{frame}
   \begin{exampleblock}{Main theorem}
-    For $n = 2$, this semi-Lie AFL conjecture
-    \[
-      \Int\left( (g,u), f \right) \log q
-      = \pm \left. \pdv{}{s} \right\rvert_{s=0}
-      \Orb(\guv, \phi \otimes \oneV, s).
-    \]
+    Semi-Lie AFL conjecture holds when $n = 2$.
   \end{exampleblock}
-  \begin{block}{Strategy of proof}
+  \begin{block}{Strategy of proof for $n = 2$}
     \begin{itemize}
-      \ii Orbital integral calculated explicitly in Hecke basis.
-      \ii Base change and transfer factor are easy.
+      \ii For $n = 2$, on the orbital side use indicator functions of
+      \[ K'_{S, \le r} \coloneqq S_2(F) \cap \varpi^{-r} \GL_2(\OO_E) \]
+      as a basis of $\HH(S_2(F))$, for $r \ge 0$.
+      \ii Straightforward to get base change to $\HH(\U(\VV_2^+))$ which has a similar basis
+      \[ \mathbf{1}_{K, r} \coloneqq
+        \mathbf{1}_{\varpi^{-r} \Mat_2(\OO_E) \cap \U(\VV_2^+)} \in \HH(\U(\VV_2^+)). \]
       \ii On the geometric side, work instead with a Lubin-Tate space $\mathcal{M}_2$
       by pulling back with Serre tensor construction.
     \end{itemize}
@@ -534,7 +534,7 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{An example of a semi-Lie orbital integral ($n=2$)}
+  \frametitle{Example $\Orb(\guv, \mathbf{1}_{K'_{S, \le r}} \otimes \oneV)$ when $n=2$}
   \[ \guv = \left( \begin{pmatrix} a & b \\ c & d \end{pmatrix},
       \begin{pmatrix} 0 \\ 1 \end{pmatrix},
       \begin{pmatrix} 0 & e \end{pmatrix} \right) \]
@@ -552,23 +552,41 @@
   \end{align*}
 \end{frame}
 
+\begin{frame}[fragile]
+  \begin{definition}[Lubin-Tate space $\MM_2$]
+    We let $\MM_2$ denote the functor over $\Spf \OO_{\breve F}$ similarly
+    by taking the set of isomorphism classes of quadruples
+    $(Y, \iota, \lambda, \rho)$ where $(Y, \iota, \lambda)$ is as before and
+    $\rho \colon Y \times_S \ol S \to \EE \times_{\Spec \FF} \ol S$
+    is a framing.
+  \end{definition}
+  \begin{definition}[The divisor $\ZO4(u)$ on $\MM_2 \times \MM_2$]
+    Define divisor $\ZO4(u)$ to be the pairs $(Y, Y') \in \MM_2 \times \MM_2$
+    such that there exists $\varphi \colon Y \to Y'$ for which
+    the given $u \colon \EE \to \EE$ lifts to
+    \begin{center}
+    \begin{tikzcd}
+      Y \times_S \ol S \ar[rr, "\varphi \times_S \ol S"] \ar[d, "\rho"] && Y' \times_S \ol S\ar[d, "\rho'"] \\
+      \EE \times_{\Spec \FF} \ol S \ar[rr, "u \times_{\Spec \FF} \ol S"] && \EE \times_{\Spec \FF} \ol S.
+    \end{tikzcd}
+    \end{center}
+  \end{definition}
+\end{frame}
+
 \begin{frame}
-  \frametitle{Geometric side}
+  \frametitle{Gross-Keating}
   \begin{itemize}
-    \ii Let $\MM_2$ be the Lubin-Tate space for $n=2$ ---
-      parametrized by tuples $(Y, \rho)$
-      where $Y$ is a one-dimensional strict formal $\OO_F$-module of height $2$,
-      and $\rho$ is a framing of a fixed Lubin-Tate module $\mathbb{Y}$.
-    \ii Use Serre tensor to pull back everything from $\RZ_2$ onto $\MM_2$.
+    \ii Since $\RZ_2 \simeq \MM_2$ work on $\MM_2$ instead.
+    \ii The Hecke correspondence gives $\TT_{\mathbf{1}_K \otimes f}(\Delta_{\RZ_2}) \simeq \ZO4(\varpi^r)$.
     \ii $\U(\VV_2^-)$ can basically be identified with $\SO(3)$, up to certain tori.
+    \ii Use Gross-Keating triple product formula on $\MM_2$.
   \end{itemize}
   \begin{theorem}
     [Gross-Keating triple product formula]
-    For certain divisors $\ZO4$ defined on $\MM_2 \times \MM_2$, if we set
     \bgroup
     \small
     $n_1 = \min\left( v((x,x) ), v( (x,y) ), v( (y,y) ) \right)$;
-    $n_1 + n_2 = v\left( (x,x) (y,y) - (x,y)^2 \right)$:
+    $n_1 + n_2 = v\left( (x,x) (y,y) - (x,y)^2 \right)$
     \egroup
     \begin{align*}
       &\left< \ZO4(1), \; \ZO4(x), \; \ZO4(y) \right>_{\MM_2 \times \MM_2} \\
@@ -581,7 +599,6 @@
   \end{theorem}
 \end{frame}
 
-
 \begin{frame}
   \frametitle{An example of part of the intersection number}
   \[ \ZD(u)^\circ \coloneqq \ZD(u) - \ZD\left( \frac{u}{\varpi} \right). \]
@@ -590,7 +607,7 @@
     \begin{pmatrix} \alpha & \bar\beta \varpi \\ \beta & \bar\alpha \end{pmatrix}
     \in \U(\VV_2^-) \]
   where $v(\lambda) = 0$.
-  With $\mathbb{T}_{\mathbf{1}_{K, r}}$ the Hecke operator on $\MM_2$,
+  With $\mathbb{T}_{\mathbf{1}_K \otimes \mathbf{1}_{K, r}}$ the Hecke operator on $\MM_2$,
   \[ \Big\langle \mathbb{T}_{\mathbf{1}_K \otimes \mathbf{1}_{K, r}}
     \Delta_{\ZD(u)^\circ}, \Gamma_g \Big\rangle_{\RZ_{2,2}}
     =
