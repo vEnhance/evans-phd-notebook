@@ -81,12 +81,11 @@ particular cases relevant to this paper.
     \begin{equation}
       \begin{aligned}
         S_n(F) \times V'_n(F) &\hookrightarrow \GL_{n+1}(E) \\
-        (\gamma, \uu, \vv^\top) &\mapsto \begin{pmatrix} \gamma & \uu \\ \vv^\top & d \end{pmatrix}
+        (\gamma, \uu, \vv^\top) &\mapsto \begin{pmatrix} \gamma & \uu \\ \vv^\top & 0 \end{pmatrix}
       \end{aligned}
       \label{eq:embed_FJ_analytic}
     \end{equation}
-    is regular semisimple for some/any value of $d$
-    (for which the matrix is indeed invertible).
+    is regular semisimple.
     In other words, we require that
     both of the sets
     $\left( \uu, \gamma \uu \dots, \gamma^{n-1}\uu \right)$
@@ -100,14 +99,11 @@ particular cases relevant to this paper.
     \begin{equation}
       \begin{aligned}
         \U(\VV_n^\pm) \times \VV_n^\pm &\hookrightarrow \GL_{n+1}(E) \\
-        (g, u) &\mapsto \begin{pmatrix} g & u \\ u^\ast & d \end{pmatrix}
+        (g, u) &\mapsto \begin{pmatrix} g & u \\ u^\ast & 0 \end{pmatrix}
       \end{aligned}
       \label{eq:embed_FJ_geometric}
     \end{equation}
-    is regular semisimple for some/any value of $d$
-    for which the matrix on the right-hand side is indeed invertible.
-    Here $u^\ast$ is the conjugate transpose.
-
+    is regular semisimple; here $u^\ast$ is the conjugate transpose.
     This is equivalent to the set $\left(  u, gu, \dots, g^{n-1}u \right)$
     being linearly independent (i.e.\ form a basis of $\VV_n^\pm$);
     in this case the independence of $\left( u^\ast, u^\ast g, \dots, u^\ast g^{n-1} \right)$
@@ -166,9 +162,7 @@ For the semi-Lie version matching is defined analogously:
   We say $(\gamma, \uu, \vv^\top) \in (S_n(F) \times V'_n(F))\rs$
   matches the element $(g, u) \in (\U(\VV_n^\pm) \times \VV_n^\pm)\rs$ if
   their images under the embeddings \eqref{eq:embed_FJ_analytic}
-  and \eqref{eq:embed_FJ_geometric} are conjugate by an element of $\GL_n(E)$
-  (where one picks the same values of $d$).
-
+  and \eqref{eq:embed_FJ_geometric} are conjugate by an element of $\GL_n(E)$.
   Unwrapping this with \Cref{rem:invariants},
   an equivalent definition is to require both of the following conditions:
   \begin{itemize}
