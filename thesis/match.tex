@@ -6,11 +6,11 @@ We first recall the notion of regularity
 that first appeared in \cite[\S6]{ref:multoneconj}.
 
 \begin{definition}
-  [Regular semisimple in $\GL_n(E)$]
+  [Regular semisimple in $\Mat_n(E)$]
   \label{def:rs}
   Consider a $n \times n$ matrix
-  \[ \begin{pmatrix} A & \uu \\ \vv^\top & d \end{pmatrix} \in \GL_n(E) \]
-  in $\GL_n(E)$, where $A$ is an $(n-1) \times (n-1)$ matrix.
+  \[ \begin{pmatrix} A & \uu \\ \vv^\top & d \end{pmatrix} \in \Mat_n(E) \]
+  where $A$ is an $(n-1) \times (n-1)$ matrix.
   Then we say this matrix is \emph{regular semi-simple} if
   \[ \left< \uu, A\uu, \dots, A^{n-2}\uu \right> \]
   and \[ \left< \vv^\top, \vv^\top A, \dots, \vv^\top A^{n-2} \right> \]
@@ -37,7 +37,7 @@ that first appeared in \cite[\S6]{ref:multoneconj}.
   \[
     \begin{pmatrix} A_1 & \uu_1 \\ \vv_1^\top & d_1 \end{pmatrix},
     \begin{pmatrix} A_2 & \uu_2 \\ \vv_2^\top & d_2 \end{pmatrix}
-    \in \GL_{n}(E)
+    \in \Mat_{n}(E)
   \]
   are conjugate by an element of $\GL_{n-1}(E)$.
   This happens if and only if the following conditions all hold:
@@ -51,7 +51,7 @@ that first appeared in \cite[\S6]{ref:multoneconj}.
   under the action of $\GL_{n-1}(E)$.
 
   Put another way, the invariants of
-  \[ \begin{pmatrix} A & \uu \\ \vv^\top & d \end{pmatrix} \in \GL_n(E) \]
+  \[ \begin{pmatrix} A & \uu \\ \vv^\top & d \end{pmatrix} \in \Mat_n(E) \]
   are the (monic) characteristic polynomial of $A$
   (which has $n-1$ coefficients besides the leading coefficient),
   the values of $\vv^\top A^i \uu$ for $i = 0, \dots, n-2$
@@ -66,12 +66,12 @@ particular cases relevant to this paper.
   In the group version of the AFL:
   \begin{itemize}
     \ii We say $\gamma \in S_n(F)$ is regular semisimple
-    if its image under the inclusion $S_n(F) \subseteq \GL_n(E)$ is regular semisimple.
+    if its image under the inclusion $S_n(F) \subseteq \Mat_n(E)$ is regular semisimple.
     We write $\gamma \in S_n(F)\rs$.
 
     \ii For $g \in \U(\VV_n^\pm)$,
     we say $g$ is regular semisimple
-    if its image under the inclusion $\U(\VV_n^\pm) \subseteq \GL_n(E)$ is regular semisimple.
+    if its image under the inclusion $\U(\VV_n^\pm) \subseteq \Mat_n(E)$ is regular semisimple.
     We write $g \in \U(\VV_n^\pm)\rs$.
   \end{itemize}
   In the semi-Lie version of the AFL:
@@ -80,7 +80,7 @@ particular cases relevant to this paper.
     is regular semisimple if its image under the embedding
     \begin{equation}
       \begin{aligned}
-        S_n(F) \times V'_n(F) &\hookrightarrow \GL_{n+1}(E) \\
+        S_n(F) \times V'_n(F) &\hookrightarrow \Mat_{n+1}(E) \\
         (\gamma, \uu, \vv^\top) &\mapsto \begin{pmatrix} \gamma & \uu \\ \vv^\top & 0 \end{pmatrix}
       \end{aligned}
       \label{eq:embed_FJ_analytic}
@@ -98,12 +98,14 @@ particular cases relevant to this paper.
     is regular semisimple if its image under the embedding
     \begin{equation}
       \begin{aligned}
-        \U(\VV_n^\pm) \times \VV_n^\pm &\hookrightarrow \GL_{n+1}(E) \\
+        \U(\VV_n^\pm) \times \VV_n^\pm &\hookrightarrow \Mat_{n+1}(E) \\
         (g, u) &\mapsto \begin{pmatrix} g & u \\ u^\ast & 0 \end{pmatrix}
       \end{aligned}
       \label{eq:embed_FJ_geometric}
     \end{equation}
-    is regular semisimple; here $u^\ast$ is the conjugate transpose.
+    is regular semisimple.
+    Here $u^\ast$ is the conjugate transpose.
+
     This is equivalent to the set $\left(  u, gu, \dots, g^{n-1}u \right)$
     being linearly independent (i.e.\ form a basis of $\VV_n^\pm$);
     in this case the independence of $\left( u^\ast, u^\ast g, \dots, u^\ast g^{n-1} \right)$
@@ -163,6 +165,7 @@ For the semi-Lie version matching is defined analogously:
   matches the element $(g, u) \in (\U(\VV_n^\pm) \times \VV_n^\pm)\rs$ if
   their images under the embeddings \eqref{eq:embed_FJ_analytic}
   and \eqref{eq:embed_FJ_geometric} are conjugate by an element of $\GL_n(E)$.
+
   Unwrapping this with \Cref{rem:invariants},
   an equivalent definition is to require both of the following conditions:
   \begin{itemize}
