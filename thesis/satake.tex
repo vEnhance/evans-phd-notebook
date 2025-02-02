@@ -1,4 +1,4 @@
-\chapter{Base change}
+\section{Base change}
 \label{ch:satake}
 
 This section introduces necessary background material on the base change
@@ -8,7 +8,7 @@ Throughout this section we let $\Sym(n)$ denote the symmetric group in $n$ varia
 with order $n!$
 (since $S_n(F) \subseteq \GL_n(E)$ is already reserved for the symmetric space).
 
-\section{Background on the Satake transformation in transformation}
+\subsection{Background on the Satake transformation in transformation}
 We recall a general form of the Satake transformation, which will be used later.
 
 For this subsection, $G$ will denote an arbitrary connected reductive group
@@ -50,7 +50,7 @@ once when $G$ is the general linear group (which is split),
 and once when $G$ is a unitary group.
 
 
-\section{The Satake transformation for the particular Hecke algebras $\HH(\GL_n(E))$ and $\HH(\U(\VV_n^+))$}
+\subsection{The Satake transformation for the particular Hecke algebras $\HH(\GL_n(E))$ and $\HH(\U(\VV_n^+))$}
 To take the Satake transform of $\HH(\U(\VV_n^+))$, we define the following abbreviations.
 \begin{itemize}
   \ii Let $T$ denote the split diagonal torus of $\GL_n$.
@@ -132,7 +132,7 @@ So, henceforth, we will consider
   \Sat &\colon \HH(\U(\VV_n^+)) \xrightarrow{\sim} \QQ[Y_1^{\pm}, \dots, Y_m^{\pm}]^{W_m}.
 \end{align*}
 
-\section{Relation of Satake transformation to base change}
+\subsection{Relation of Satake transformation to base change}
 Let
 \[ \BC \colon \HH(\GL_n(E)) \to \HH(\U(\VV_n^+)) \]
 denote the stable base change morphism from $\GL_n(E)$ to the unitary group $\U$.
@@ -153,7 +153,7 @@ Here the right arrow is also denoted $\BC$ following \cite{ref:AFLspherical}
 This gives a way in which we can concretely calculate the map $\BC$
 in some situations.
 
-\section{The map $\BC^{\eta^{n-1}}_{S_n}$}
+\subsection{The map $\BC^{\eta^{n-1}}_{S_n}$}
 Before we can define the map $\BC^{\eta^{n-1}}_{S_n}$
 we need one more piece of notation.
 Consider the following map.
@@ -205,7 +205,7 @@ When combined with the Satake information we have, we get the following diagram.
 \end{tikzcd}
 \end{center}
 
-\section{Calculation of $\BC_{S_n}$ when $n = 3$}
+\subsection{Calculation of $\BC_{S_n}$ when $n = 3$}
 The goal of this section is to make the base change
 fully known in the special case $n = 3$, where $m = \left\lfloor n/2 \right\rfloor = 1$.
 (In this case $\BC_{S_n}^{\eta^{n-1}} = \BC_{S_n}$ as $\eta^2 = 1$.)
@@ -216,7 +216,7 @@ However, we will not use these results again later on.
 When it is not more difficult, some of the results will be stated for all $n$,
 rather than $n = 3$ specifically.
 
-\subsection{Overview}
+\subsubsection{Overview}
 Throughout this subsection, we use the shorthand
 \[ \varpi^{(n_1, n_2, n_3)} \coloneqq \diag(\varpi^{n_1}, \varpi^{n_2}, \varpi^{n_3}). \]
 As a $\QQ$-module, the spaces $\HH(\U(\VV_n^+))$ and $\HH(S_n(F))$
@@ -248,7 +248,7 @@ at it (one only needs to check it has $\OO_E$ entries
 and that the determinant has valuation $r$,
 rather than determining the exact coset $K'\varpi^{(n_1, n_2, n_3)}K'$).
 
-\subsection{Satake transform of the determinant characteristic function on the top arrow}
+\subsubsection{Satake transform of the determinant characteristic function on the top arrow}
 This is the easiest calculation, and we do it for all $n$ rather than just $n = 3$.
 \begin{proposition}
   [Satake transform for $v \circ \det = r$]
@@ -312,7 +312,7 @@ This is the easiest calculation, and we do it for all $n$ rather than just $n = 
 \end{proof}
 
 
-\subsection{Satake transform of the indicator on the bottom arrow}
+\subsubsection{Satake transform of the indicator on the bottom arrow}
 \begin{proposition}
   [Satake transform for $\varpi^{-r} \Mat_3(\OO_E) \cap \U(\VV_3^+)$]
   For each $r \ge 0$ we have
@@ -416,7 +416,7 @@ This is the easiest calculation, and we do it for all $n$ rather than just $n = 
   we get the formula claimed.
 \end{proof}
 
-\subsection{Integration over fiber}
+\subsubsection{Integration over fiber}
 \begin{proposition}
   [Integration over fiber]
   For every integer $r \ge 0$, we have
@@ -533,7 +533,7 @@ This is the easiest calculation, and we do it for all $n$ rather than just $n = 
   as desired.
 \end{proof}
 
-\subsection{Base change from $\HH(\U(\VV_3^+))$ to $\HH(S_3(F))$}
+\subsubsection{Base change from $\HH(\U(\VV_3^+))$ to $\HH(S_3(F))$}
 We first need to determine an element of $\HH(\U(\VV_n^+))$
 which is in the pre-image of
 \[ \mathbf{1}_{\varpi^{-r} \Mat_3(\OO_E) \cap \U(\VV_3^+)} \]

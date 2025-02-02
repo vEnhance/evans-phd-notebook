@@ -11,6 +11,17 @@
 }
 
 \documentclass[final,twoside]{mitthesis}
+
+\let\oldchapter\chapter
+\let\oldsection\section
+\let\oldsubsection\subsection
+\let\oldsubsubsection\subsubsection
+
+\renewcommand{\section}{\oldchapter}
+\renewcommand{\subsection}{\oldsection}
+\renewcommand{\subsubsection}{\oldsubsection}
+\newcommand{\subsubsubsection}{\oldsubsubsection}
+
 \input{preamble}
 \input{hypersetup}
 \addbibresource{refs.bib}

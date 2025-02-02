@@ -1,9 +1,9 @@
-\chapter{Support of the weighted orbital integral for $S_2(F) \times V_2'(F)$}
+\section{Support of the weighted orbital integral for $S_2(F) \times V_2'(F)$}
 \label{ch:orbitalFJ1}
 
 We assume $\guv$ is as in \Cref{lem:semi_lie_params} throughout this chapter.
 
-\section{Iwasawa decomposition}
+\subsection{Iwasawa decomposition}
 The overall method is to take the Iwasawa decomposition in $KAN$ form:
 \begin{lemma}
   [Iwasawa decomposition]
@@ -20,7 +20,7 @@ where we take multiplicative Haar measure on $F^\times$
 (normalized so that $\OO_F^\times$ has volume $1$)
 and additive Haar measure on $F$ (so $\OO_F$ has volume $1$).
 
-\section{Action of upper triangular matrices on $(\gamma, \uu, \vv^\top)$}
+\subsection{Action of upper triangular matrices on $(\gamma, \uu, \vv^\top)$}
 We now compute the action of an arbitrary
 \[ h = \begin{pmatrix} x_1 & 0 \\ 0 & x_2 \end{pmatrix}
   \begin{pmatrix} 1 & y \\ 0 & 1 \end{pmatrix} \]
@@ -56,7 +56,7 @@ Meanwhile, we have
     = \begin{pmatrix} 0 & \frac{e}{x_2} \end{pmatrix}.
 \end{align*}
 
-\section{Description of support}
+\subsection{Description of support}
 From now on we fix the notation
 \begin{align*}
   n_1 &\coloneqq v(x_1) \\
@@ -78,7 +78,7 @@ Note that it follows we have
 \end{equation}
 
 
-\subsection{Collating the linear constraints}
+\subsubsection{Collating the linear constraints}
 For a given $r \ge 0$, we find that $h$ contributes to the integral exactly
 if $h\uu$ and $\vv^\top h\inv$ have $\OO_F$-entries,
 and all the entries of $h \gamma h\inv$ are in $\varpi^{-r}\OO_F$.
@@ -110,7 +110,7 @@ In summary, up until now we have the following requirements imposed:
   \label{eq:linear_constraints}
 \end{equation}
 
-\subsection{The quadratic constraint}
+\subsubsection{The quadratic constraint}
 As for the quadratic constraint, we seek $y$ such that
 \begin{align*}
   \phantom\iff \frac{x_1}{x_2} \cdot (-cy^2+(d-a)y+b) &\in \varpi^{-r} \OO_F \\
@@ -138,7 +138,7 @@ so $\theta$ takes the odd value if $v(b)+v(c) < 2v(d-a)$ and the even value othe
 This definition ensures that
 \[ v \left( \frac bc + \frac{(d-a)^2}{4c^2} \right) = \theta - 2v(c). \]
 
-\section{Cases based on $\theta$}
+\subsection{Cases based on $\theta$}
 Henceforth we consider two cases based on $\theta$.
 We start number these Case 5 and Case 6 to prevent confusion
 with the cases introduced in \Cref{ch:orbital1}.
@@ -194,7 +194,7 @@ with the cases introduced in \Cref{ch:orbital1}.
   And these cases must be disjoint because the right-hand sides above are unequal.
 \end{description}
 
-\subsection{Analysis of Case 5}
+\subsubsection{Analysis of Case 5}
 The triple $(x_1, x_2, y) \in \OO_F^\times \times \OO_F^\times \times \OO_F$
 contributes to the weighted orbital integral in Case 5 exactly if the following identities hold:
 \begin{align*}
@@ -222,7 +222,7 @@ Hence the overall volume of the support in $H$ for this pair $(m, n_2)$ is given
 And again, this case is summed over
 \[ 0 \le n_2 \le v(e), \qquad 0 \le m \le \theta + 2r. \]
 
-\subsection{Analysis of Case 6\ts+ and Case 6\ts-}
+\subsubsection{Analysis of Case 6\ts+ and Case 6\ts-}
 Again, this case could only occur if $\theta$ is even.
 The triple $(x_1, x_2, y) \in \OO_F^\times \times \OO_F^\times \times \OO_F$
 contributes to the weighted orbital integral in Case 6\ts+ and Case 6\ts-

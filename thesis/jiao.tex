@@ -1,14 +1,14 @@
-\chapter{Intersection numbers for $\Int((g,u), f)$ for $n = 2$}
+\section{Intersection numbers for $\Int((g,u), f)$ for $n = 2$}
 \label{ch:jiao}
 This chapter is dedicated to computing intersection numbers
 for the semi-Lie version of AFL in the special case $n = 2$.
 
-\section{Background on quaternion division algebra}
+\subsection{Background on quaternion division algebra}
 Through this section we let $\DD$ be a quaternion division algebra over $F$,
 with a fixed maximal order $\OO_\DD$.
 We will make $\DD$ explicit in the following way for our calculations to follow.
 
-\subsection{Structure as a noncommutative algebra}
+\subsubsection{Structure as a noncommutative algebra}
 As $F$-vector spaces we will write
 \[ \DD = E \oplus E \Pi \]
 where $\Pi$ is selected so that $\Pi^2 = \varpi$.
@@ -16,7 +16,7 @@ We endow $\DD$ with a noncommutative multiplication according to
 \[ \Pi t = \bar t \Pi \qquad \text{ for all } t \in E \]
 where $\ol{t}$ is the image of $t \in E$ under the nontrivial element of $\Gal(E/F)$.
 
-\subsection{Conjugation of elements of $\DD$}
+\subsubsection{Conjugation of elements of $\DD$}
 In general, suppose $x \in \DD$ is any element
 decomposed as $x = a + b \Pi$ for $a,b \in E$.
 Then we denote by $\bar x \in \DD$ the conjugate in $\DD$ defined by
@@ -69,7 +69,7 @@ It will be convenient to introduce the following notation:
 In particular, the formula for conjugation then reads as the simpler
 \[ \bar x = x_0 - x_-. \]
 
-\subsection{Hermitian structure}
+\subsubsection{Hermitian structure}
 We view $\DD$ as an $E/F$-Hermitian space under left multiplication by $E$;
 that is, for $a,b,t \in E$ we consider
 \[ t \cdot (a + b \Pi) = a t + b t \Pi. \]
@@ -84,7 +84,7 @@ In particular, note that
 or equivalently
 \[ \left\langle a+b\Pi, a+b\Pi \right\rangle = a \bar a - b \bar b \varpi. \]
 
-\subsection{Identification of $\VV_n^-$ with $\DD$}
+\subsubsection{Identification of $\VV_n^-$ with $\DD$}
 We continue using the notation $(\EE, \iota_\EE, \lambda_\EE)$ as the triple over $\FF$
 whose Rosati involution has signature $(1,0)$.
 Moreover, we will take the identification
@@ -93,12 +93,12 @@ see \cite[Remark 2.5]{ref:KR},
 and hence the corresponding identification
 \[ \VV_n^- \simeq \DD. \]
 
-\section{The invariants for the orbit of $(g,u)$}
+\subsection{The invariants for the orbit of $(g,u)$}
 \label{sec:g_u_invariants}
 
 We specialize to the situation where $u \in \OO_\DD$ and $g \in \U(\VV_n^-)$.
 
-\subsection{Coordinates for $g$}
+\subsubsection{Coordinates for $g$}
 To impose coordinates on $g$, we appeal to the following fact.
 \begin{lemma}
   [Description of $\U(\VV_2^-)$]
@@ -151,7 +151,7 @@ Hence, written as a matrix with respect to the obvious basis $\{1, \Pi\}$ we hav
   \beta &  \bar\alpha
   \end{pmatrix}. \]
 
-\subsection{Coordinates for $u$}
+\subsubsection{Coordinates for $u$}
 We also impose coordinates for $u$ according to
 \[ u = s + t \Pi \in \OO_\DD \qquad s, t \in E. \]
 To make the calculation that follows less complicated,
@@ -197,7 +197,7 @@ and $s$ and $t$ are not both zero (we require $st = 0$ from \Cref{assume:st_zero
   but a right-hand side with even valuation.
 \end{remark}
 
-\subsection{The invariants of the matching}
+\subsubsection{The invariants of the matching}
 At this point we can state:
 \begin{lemma}
   \label{lem:g_u_invariants}
@@ -230,7 +230,7 @@ At this point we can state:
   and recalling that $s t = 0$.
 \end{proof}
 
-\section{A basis for $\HH(\U(\VV_2^+))$}
+\subsection{A basis for $\HH(\U(\VV_2^+))$}
 \label{sec:hecke_unitary_basis}
 
 As before $K = \GL_2(\OO_E) \cap \U(\VV_2^+)$denotes the maximal hyperspecial compact subgroup of $\U(\VV_2^+)$.
@@ -257,8 +257,8 @@ Analogous to \Cref{sec:hecke_basis_FJ} we then have the following result.
 
 The base change for this basis is given later in \Cref{lem:finale_base_change}.
 
-\section{Background on special divisors for $n = 2$}
-\subsection{The Rapoport-Zink space $\RZ_2$ and $\TTr$}
+\subsection{Background on special divisors for $n = 2$}
+\subsubsection{The Rapoport-Zink space $\RZ_2$ and $\TTr$}
 Recall $\RZ_2$ from \Cref{ch:geo}.
 With the Hecke operator $\TT$ from \cite{ref:AFLspherical}
 (see \Cref{ch:geo} for discussion)
@@ -271,7 +271,7 @@ so that we have the diagram
 \end{tikzcd}
 \end{center}
 
-\subsection{The Lubin-Tate space $\MM_2$}
+\subsubsection{The Lubin-Tate space $\MM_2$}
 We introduce the notation $\MM_2$ for the \emph{Lubin-Tate space} for $n = 2$.
 It is defined almost in the same way as $\RZ_2$ except that we replace
 $\XX_2$ with $\EE$ now.
@@ -312,7 +312,7 @@ The image of $\alpha + \beta \Pi \in \OO_\DD^\times / \OO_F^\times$
 is then $(\lambda, \alpha + \beta \Pi) \in \PU(2)$
 for any choice of $\lambda$ with $\lambda \bar \lambda = \Nm (\alpha + \beta \Pi)$.
 
-\subsection{The divisor $\ZO4$ on $\MM_2 \times \MM_2$}
+\subsubsection{The divisor $\ZO4$ on $\MM_2 \times \MM_2$}
 Now we define the special orthogonal divisor $\ZO4(u)$
 on $\MM_2 \times \MM_2$ as follows.
 \begin{definition}
@@ -360,7 +360,7 @@ We assume this conjecture henceforth.
 but then the generalization \Cref{conj:semi_lie_spherical} would be less obvious,
 since a definition like this would not easily extend to $n > 2$.)
 
-\subsection{The divisor $\ZO3$ on $\MM_2$}
+\subsubsection{The divisor $\ZO3$ on $\MM_2$}
 Turning to $\MM_2 \times \MM_2$, we will henceforth always identify $\MM_2$
 with its image under the diagonal map
 \begin{center}
@@ -385,7 +385,7 @@ with its image under the diagonal map
   when we identify $\MM_2$ with its image in $\MM_2 \times \MM_2$.
 \end{definition}
 
-\section{Comparison of the unitary and orthogonal special divisors}
+\subsection{Comparison of the unitary and orthogonal special divisors}
 We now relate $\ZD(u)$ to $\ZO3(u)$ through our
 isomorphism $\RZ_{2,2} \xrightarrow{\sim} \MM_2 \times \MM_2$.
 Recall that we have the notation
@@ -406,7 +406,7 @@ Define $\ZO4(u)^\circ$ and $\ZO3(u)^\circ$ similarly.
   that restriction is for other parts of the paper that don't affect this lemma.)
 \end{proof}
 
-\section{The intersection number as a triple product}
+\subsection{The intersection number as a triple product}
 We return to the intersection number
 \[ \Int((g,u), \fr) = \chi_{\RZ_{n,n}} \left(
       \Sheaf_{\TT_{\mathbf{1} \otimes \fr}(\Delta_{\ZD(u)})}
@@ -442,7 +442,7 @@ In that case we have
   \label{eq:int_to_int_circ}
 \end{equation}
 
-\section{The formula of Gross-Keating}
+\subsection{The formula of Gross-Keating}
 \label{sec:GK}
 In what follows, we let
 \[ \left\langle x, y \right\rangle _0

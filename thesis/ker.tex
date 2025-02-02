@@ -1,4 +1,4 @@
-\chapter{Large kernel and large image}
+\section{Large kernel and large image}
 \label{ch:ker}
 
 In this chapter we use \Cref{cor:semi_lie_combo} to prove
@@ -9,7 +9,7 @@ although we do not provide all the details.
 
 We assume $\guv$ is as in \Cref{lem:semi_lie_params} throughout this chapter.
 
-\section{In the semi-Lie case, the kernel is trivial if we allow $v(e)$ to vary, for every fixed choice of $\gamma$}
+\subsection{In the semi-Lie case, the kernel is trivial if we allow $v(e)$ to vary, for every fixed choice of $\gamma$}
 We prove \Cref{thm:semi_lie_ker_trivial} in this section.
 We treat $\gamma$ as fixed, satisfying the requirements of \Cref{lem:semi_lie_params},
 and we let
@@ -272,7 +272,7 @@ This is easier to see with some illustrations, which we give below.
   Hence the same proof still shows that the determinant is nonzero.
 \end{proof}
 
-\subsection{Proof of \Cref{thm:semi_lie_ker_trivial}}
+\subsubsection{Proof of \Cref{thm:semi_lie_ker_trivial}}
 We can now deduce:
 
 \semiliekertriv*
@@ -286,7 +286,7 @@ we are supposed to have
 Since $M$ has full rank, it follows that $c_0 = \dots = c_N = 0$.
 \end{proof}
 
-\section{In the semi-Lie case, the kernel has finite codimension for fixed $v(e)$}
+\subsection{In the semi-Lie case, the kernel has finite codimension for fixed $v(e)$}
 We prove \Cref{thm:semi_lie_ker_huge} in this section.
 We start with the following lemma.
 \begin{lemma}
@@ -365,7 +365,7 @@ We need one more lemma:
   This contradiction completes the proof of the lemma.
 \end{proof}
 
-\subsection{Proof of \Cref{thm:semi_lie_ker_huge}}
+\subsubsection{Proof of \Cref{thm:semi_lie_ker_huge}}
 We now prove:
 \semiliekerlarge*
 
@@ -414,7 +414,7 @@ then
 So we are done by \Cref{lem:chebyshev}.
 \end{proof}
 
-\section{A sequence of test functions almost lying in the kernel in the semi-Lie case}
+\subsection{A sequence of test functions almost lying in the kernel in the semi-Lie case}
 We make one additional remark on the kernel that unifies both of the preceding two sections.
 For this section, we define the following indicator function for $r \ge 3$:
 \[ \phi_r \coloneqq \mathbf{1}_{K', \le r} + \mathbf{1}_{K', \le (r-1)}
@@ -530,7 +530,7 @@ for which the orbital integral does not vanish.
   Then \Cref{thm:semi_lie_finite_codim_full} follows directly
   from \eqref{eq:semi_lie_finite_codim_large_r} and \eqref{eq:semi_lie_finite_codim_small_r}.
 \end{proof}
-\section{Proof of \Cref{thm:no_kernel_group} for the group AFL}
+\subsection{Proof of \Cref{thm:no_kernel_group} for the group AFL}
 We give the short proof of the following:
 \nogroupkernel*
 
@@ -558,7 +558,7 @@ We give the short proof of the following:
   The proof is complete.
 \end{proof}
 
-\section{A sequence of test functions almost lying in the kernel in the group AFL case}
+\subsection{A sequence of test functions almost lying in the kernel in the group AFL case}
 We mention the following $S_3(F)$ analog of \Cref{thm:semi_lie_finite_codim_full}.
 \begin{theorem}
   [A sequence in $\HH(S_3(F))$]
@@ -627,7 +627,7 @@ of \Cref{lem:derivative_nn} and \Cref{lem:derivative_cc}, respectively.
   And where $r < -\half\ell$, the entire orbital integral is identically zero anyways, as needed.
 \end{proof}
 
-\subsection{Generation of $\HH(S_3(F))$ as an ideal}
+\subsubsection{Generation of $\HH(S_3(F))$ as an ideal}
 In the spirit of the conjecture proposed in \cite[Conjecture 1.0.2]{ref:AFLspherical},
 we mention the following result as well.
 

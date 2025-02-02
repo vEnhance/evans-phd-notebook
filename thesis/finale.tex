@@ -1,4 +1,4 @@
-\chapter{Proof of \Cref{thm:semi_lie_n_equals_2}}
+\section{Proof of \Cref{thm:semi_lie_n_equals_2}}
 \label{ch:finale}
 We now put together all the results from the previous chapters to
 prove \Cref{thm:semi_lie_n_equals_2}.
@@ -6,8 +6,8 @@ prove \Cref{thm:semi_lie_n_equals_2}.
 On the orbital side, we assume $\guv$ is as in \Cref{lem:semi_lie_params} throughout this chapter.
 On the geometric side, we assume $(g,u)$ are as described in \Cref{sec:g_u_invariants}.
 
-\section{Matching $\guv$ and $(g,u)$, and the invariants for the matching}
-\subsection{The invariants for the orbit of $\guv$}
+\subsection{Matching $\guv$ and $(g,u)$, and the invariants for the matching}
+\subsubsection{The invariants for the orbit of $\guv$}
 Recall the relations in \Cref{lem:semi_lie_params}.
 The invariants in this case as described in \Cref{def:matching_semi_lie} are:
 \begin{itemize}
@@ -20,7 +20,7 @@ The invariants in this case as described in \Cref{def:matching_semi_lie} are:
 Note that the parameters $b$ and $c$ are absent; but we have
 \[ v(b) + v(c) = v(\det \gamma - a d). \]
 
-\subsection{Matching}
+\subsubsection{Matching}
 We now take these results and line them up with \Cref{lem:g_u_invariants}
 to deduce the following lemma.
 
@@ -83,7 +83,7 @@ to deduce the following lemma.
   So indeed $v(1-a \bar a) = v(\bar bc)$ must be odd.
 \end{remark}
 
-\section{Translation of the Gross-Keating data to the orbital side}
+\subsection{Translation of the Gross-Keating data to the orbital side}
 We combine the results of \Cref{sec:GK} with \Cref{lem:finale_match}.
 Retaining the notation
 \begin{align*}
@@ -177,7 +177,7 @@ Subtracting the two gives
   \label{eq:int_subtract}
 \end{equation}
 
-\section{Base change}
+\subsection{Base change}
 \label{sec:finale_base_change}
 The base change for $n=2$ was already calculated in \cite{ref:AFLspherical}
 and we simply recall the result here.
@@ -206,11 +206,11 @@ As in \Cref{ch:jiao}, we define
   This follows directly from \cite[Equation (7.1.9)]{ref:AFLspherical}.
 \end{proof}
 
-\section{Transfer factor}
+\subsection{Transfer factor}
 As stated in \eqref{eq:semi_lie_transfer}, the transfer factor is
 \[ \omega\guv = (-1)^{v(c)+1}. \]
 
-\section{Comparison to orbital formula}
+\subsection{Comparison to orbital formula}
 In what follows, we introduce the shorthand
 \[ \partial\Orb(r, v(b), v(c), v(e), v(d-a))
   \coloneqq \partial \Orb(\guv, \mathbf{1}_{K'_{S, \le r}}). \]
@@ -235,7 +235,7 @@ We continue to use the notation $N$ and $\varkappa$ from \Cref{ch:orbitalFJ2} de
 and prove \Cref{thm:miracle} by exhausting the
 cases based on which value of $N$ is smallest.
 
-\subsection{Proof of \Cref{thm:miracle}
+\subsubsection{Proof of \Cref{thm:miracle}
   when $v(e) \le \tfrac{v(b)+v(c)-1}{2} + r$
   and $v(e) \le v(d-a) + r$}
 In the Gross-Keating formula we have simply
@@ -261,7 +261,7 @@ that is we need
 \end{align*}
 which is obvious.
 
-\subsection{Proof of \Cref{thm:miracle}
+\subsubsection{Proof of \Cref{thm:miracle}
   when $\tfrac{v(b)+v(c)-1}{2} + r < v(e)$
   and $v(b)+v(c) < 2v(d-a)$}
 
@@ -282,7 +282,7 @@ We compare this to \Cref{cor:semi_lie_derivative_single}; we check
 \end{align*}
 which is clear.
 
-\subsection{Proof of \Cref{thm:miracle}
+\subsubsection{Proof of \Cref{thm:miracle}
   when $v(d-a)+r < v(e)$ and $2v(d-a) < v(b)+v(c)$}
 Hence $N = v(d-a) + r$ and $\varkappa \coloneqq v(e) - (v(d-a)+r) > 0$.
 In the Gross-Keating side formula, we now have
@@ -342,7 +342,7 @@ The coefficient of $q^N$ is given by
 which matches the one from Gross-Keating.
 Hence \Cref{thm:miracle} is completely proved.
 
-\section{Conclusion (proof of \Cref{thm:semi_lie_n_equals_2})}
+\subsection{Conclusion (proof of \Cref{thm:semi_lie_n_equals_2})}
 From \Cref{thm:miracle} we have
 \begin{align*}
   \GK(r, v(b), v(c), v(e), v(d-a))
@@ -405,7 +405,7 @@ for any $r \ge 0$.
 And hence from the $r = 0$ case we can inductively conclude
 \Cref{thm:semi_lie_n_equals_2} for $r > 0$, completing the proof.
 
-\section{A particularly clean formula for a certain intersection number}
+\subsection{A particularly clean formula for a certain intersection number}
 We mention in particular that the value of
 \[ \Int^\circ((g,u), 1_{K,r})
   = \Big\langle \mathbb{T}_{\mathbf{1}_K \otimes \mathbf{1}_{K, r}}

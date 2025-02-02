@@ -1,4 +1,4 @@
-\chapter{Evaluation of the weighted orbital integral for $S_3(F)$}
+\section{Evaluation of the weighted orbital integral for $S_3(F)$}
 \label{ch:orbital2}
 
 We now put together the sums we found in the previous section
@@ -6,7 +6,7 @@ to come up with the expression for the weighted orbital integral.
 We continue to assume \Cref{lem:S3_abcd} and \Cref{lem:parameter_constraints}
 in this chapter.
 
-\section{Region where $n \leq 0$ for all values of $\ell$}
+\subsection{Region where $n \leq 0$ for all values of $\ell$}
 \begin{proposition}
   [$I_{n \le 0}$]
   \label{prop:O_zero}
@@ -51,7 +51,7 @@ in this chapter.
   (We write it over $0 \le j \le \delta+2r$ for consistency with a later part.)
 \end{proof}
 
-\section{Contribution from Case 1 and Case 2 assuming $v(b) \ge 0$ and $v(d) \ge 0$}
+\subsection{Contribution from Case 1 and Case 2 assuming $v(b) \ge 0$ and $v(d) \ge 0$}
 Again using $\Vol(t_1:-v(t_1)=m) = q^{2m} (1-q^{-2})$,
 summing all the cases gives the following contribution within
 $\kappa \int_{t, t_1 \in E} \mathbf{1}[n > 0] \mathbf{1}_{\le r}(\gamma,t,m)$:
@@ -196,7 +196,7 @@ simplifying the expression to just
     &+ \sum_{n=\max(j+1, 2j-r)}^{\min(j+\lambda, \ell+r)} q^{j} \cdot (-1)^n q^{s(n-2j)} \Bigg).
 \end{align*}
 
-\section{Merging of $I_{n \le 0}$ with $I_{n > 0}^{\text{1+2}}$ (and proof of \Cref{thm:full_orbital_ell_odd})}
+\subsection{Merging of $I_{n \le 0}$ with $I_{n > 0}^{\text{1+2}}$ (and proof of \Cref{thm:full_orbital_ell_odd})}
 We continue assuming $v(b) = v(d) = 0$.
 It turns out that $I_{n \le 0} + I_{n > 0}^{\text{1+2}}$ can be rewritten more compactly
 (giving a simple answer especially when $\ell$ is odd).
@@ -443,7 +443,7 @@ If $\ell$ is even, we now have the following intermediate result.
 On the other hand, when $\ell$ is odd, we get \Cref{thm:full_orbital_ell_odd}:
 \ellodd*
 
-\section{Contribution from Case 3\ts{+}, 3\ts{-}, 4\ts{+} assuming $v(b) \ge 0$ and $v(d) \ge 0$}
+\subsection{Contribution from Case 3\ts{+}, 3\ts{-}, 4\ts{+} assuming $v(b) \ge 0$ and $v(d) \ge 0$}
 These cases only appear when $\ell$ is even and we assume this for this subsection.
 We consider the contribution of these cases within
 $\kappa \int_{t, t_1 \in E} \mathbf{1}[n > 0] \mathbf{1}_{\le r}(\gamma,t,m)$
@@ -500,7 +500,7 @@ and put $\Vol(t_1:-v(t_1)=m) = q^{2m} (1-q^{-2})$ to get:
 \end{align*}
 We now analyze each double sum.
 
-\subsection{Analysis of the coefficient of the top-degree term $q^{\frac{\ell}{2}+r}$}
+\subsubsection{Analysis of the coefficient of the top-degree term $q^{\frac{\ell}{2}+r}$}
 We start by analyzing just the first three double sums:
 Fix an index $k$; we collect the coefficient of $(-q^s)^k$.
 \begin{itemize}
@@ -937,7 +937,7 @@ we see that we need to verify
 which follows directly from the definition of $\Arch$ that we proposed.
 \end{proof}
 
-\subsection{Analysis of the remaining double sum}
+\subsubsection{Analysis of the remaining double sum}
 It remains to evaluate
 \[
   \sum_{n=\ell+r+1}^{\lambda+r} \sum_{m=n-\frac{\ell}{2}+\delta}^{\min(n,\lambda)+\delta+r}
@@ -1084,7 +1084,7 @@ To proceed further we split this into cases based on whether $\lambda > \ell+r$ 
   \end{equation}
 \end{itemize}
 
-\section{Proof of \Cref{thm:full_orbital_ell_even}}
+\subsection{Proof of \Cref{thm:full_orbital_ell_even}}
 We now put the finishing touches to deduce \Cref{thm:full_orbital_ell_even}.
 
 \elleven*
@@ -1139,12 +1139,12 @@ We now put the finishing touches to deduce \Cref{thm:full_orbital_ell_even}.
   \]
 \end{remark}
 
-\section{Contribution of cases for the $v(b) = v(d) < 0$ case (and proof of \Cref{thm:full_orbital_ell_neg})}
+\subsection{Contribution of cases for the $v(b) = v(d) < 0$ case (and proof of \Cref{thm:full_orbital_ell_neg})}
 We now deal with the edge case $v(b) = v(d) < 0$.
 The region $I_{n \le 0}$ remains the same, but we need to alter the calculation of the other parts.
 We assume $|v(d)| \le r$ henceforth since otherwise the entire orbital integral vanishes.
 
-\subsection{Contribution of Case 1 and Case 2}
+\subsubsection{Contribution of Case 1 and Case 2}
 This situation only occurs if $r > 2|v(d)|$.
 In that case we get
 \begin{align*}
@@ -1164,7 +1164,7 @@ In that case we get
     q^{n - (m+2|v(d)|-r)} \cdot (-1)^n q^{s(2m-n)}.
 \end{align*}
 
-\subsection{Contribution of Case 3\ts+ and Case 4\ts+}
+\subsubsection{Contribution of Case 3\ts+ and Case 4\ts+}
 We split the sum into several cases.
 \begin{align*}
   I_{n > 0}^{\text{3+4}}
@@ -1197,7 +1197,7 @@ We split the sum into several cases.
     q^{n - (m+2|v(d)|-r)} (-1)^n q^{s(2m-n)}.
 \end{align*}
 
-\subsection{Merging the contributions}
+\subsubsection{Merging the contributions}
 When we put together these sums, the first two double sums fold together and
 we get just the following five double sums:
 \begin{align*}
@@ -1217,7 +1217,7 @@ we get just the following five double sums:
     q^{n - (m+2|v(d)|-r)} (-1)^n q^{s(2m-n)}.
 \end{align*}
 
-\subsubsection{The first double sum, combined with $I_{n \le 0}$}
+\subsubsubsection{The first double sum, combined with $I_{n \le 0}$}
 We start with
 \[ \sum_{n=1}^{-|v(d)|+r} \sum_{m=n-r}^{-2|v(d)|+r} q^{n} \left( 1 + q^{-1} \right) (-1)^n q^{s(2m-n)} \]
 We'd like to write an analogous sum over $j$.
@@ -1251,7 +1251,7 @@ Hence once we incorporate $I_{n \le 0}$ in we have
     q^{-|v(d)|+r} (-q^s)^k.
 \end{align*}
 
-\subsubsection{The second double sum}
+\subsubsubsection{The second double sum}
 We turn  to the second double sum
 \[ \sum_{n=-|v(d)|+r+1}^{\lambda-|v(d)|+r} \sum_{m=n-r}^{n-|v(d)|} (-1)^n q^{s(2m-n)}. \]
 Working with $k = 2m-n$,
@@ -1269,7 +1269,7 @@ In other words, the double sum in question equals
   & - \max\left( \left\lceil \frac{k-|v(d)|+r+1}{2} \right\rceil, k+|v(d)| \right) + 1 \bigg) (-q^s)^k.
 \end{align*}
 
-\subsubsection{The third, fourth, and fifth double sum}
+\subsubsubsection{The third, fourth, and fifth double sum}
 Now we evaluate the final three double sums.
 Replacing $j = n - (m + 2 |v(d)| - r)$ gives
 $2m-n = 2(n - (2|v(d)| - r) - j) - n = n - 4|v(d)| + 2r - 2j$ and
@@ -1364,7 +1364,7 @@ Let $k = n - 2j - 4|v(d)| + 2r$ and transform this into
     q^j (-q^s)^k.
 \end{align*}
 
-\subsection{Collation}
+\subsubsection{Collation}
 Altogether, we have arrived at the following formula
 \begin{align*}
   \Orb(\gamma, \mathbf{1}_{K'_{S, \le r}}, s)
@@ -1468,7 +1468,7 @@ Interchange the order of the latter sum to be $k$ first:
 Putting this all together gives \Cref{thm:full_orbital_ell_neg}:
 \ellneg*
 
-\section{Derivatives of the orbital integral on $S_3(F)$}
+\subsection{Derivatives of the orbital integral on $S_3(F)$}
 \label{sec:S3_orbital_deriv}
 
 We now differentiate each of the three earlier theorems.
@@ -1476,7 +1476,7 @@ Because of the similarity of the shapes of the orbitals,
 we prove the general results \Cref{lem:derivative_nn} and \Cref{lem:derivative_cc}
 and specialize them to the cases we need.
 
-\subsection{Analysis of the $\nn_\gamma$ sum}
+\subsubsection{Analysis of the $\nn_\gamma$ sum}
 \begin{lemma}
   [Derivative of $\nn_\gamma$ sum]
   \label{lem:derivative_nn}
@@ -1512,7 +1512,7 @@ and specialize them to the cases we need.
   \end{itemize}
 \end{proof}
 
-\subsection{Analysis of the $\cc_\gamma$ sum}
+\subsubsection{Analysis of the $\cc_\gamma$ sum}
 We will use the following extremely easy lemma:
 \begin{lemma}
   [Extremely easy]
@@ -1659,7 +1659,7 @@ We will use the following extremely easy lemma:
   which equals the claimed expression.
 \end{proof}
 
-\subsection{Proof of \Cref{thm:S3_orbital_deriv}}
+\subsubsection{Proof of \Cref{thm:S3_orbital_deriv}}
 All that remains is to apply the above lemmas with the correct inputs.
 To spell out the details:
 \begin{itemize}

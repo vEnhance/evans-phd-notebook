@@ -1,4 +1,4 @@
-\chapter{Support for the weighted orbital integral for $S_3(F)$}
+\section{Support for the weighted orbital integral for $S_3(F)$}
 \label{ch:orbital1}
 
 In this section we set up the framework of the weighted orbital integral
@@ -9,8 +9,8 @@ and determining the volume of the supports of the indicator function.
 
 We always retain the setting of \Cref{lem:S3_abcd} throughout this chapter.
 
-\section{Reparametrization in terms of valuations}
-\subsection{Computation of value in indicator function}
+\subsection{Reparametrization in terms of valuations}
+\subsubsection{Computation of value in indicator function}
 We are integrating over $t_1 \in E$ and $t_2 \in E$.
 Regarding $h' \in H'$ as an element of $\GL_3(E)$ as described before, we have
 \[ h' = \begin{pmatrix}
@@ -112,7 +112,7 @@ in the work that follows.
 For brevity, we abbreviate
 \[ \mathbf{1}_{\le r}(\gamma, t, m) \coloneqq \mathbf{1}_{K'_{S, \le r}}(\Gamma(\gamma, t, m)). \]
 
-\subsection{Reparametrizing the integral in terms of $t$ and $m$}
+\subsubsection{Reparametrizing the integral in terms of $t$ and $m$}
 \label{sec:qs_weight_from_sub}
 From now on, following \cite[\S4]{ref:AFL} we always fix the notation
 \begin{align*}
@@ -143,7 +143,7 @@ Bringing this all into the weighted orbital integral gives
   (-1)^n q^{s(2m-n)} \cdot q^{2n-2m} \odif t \odif t_1.
 \end{align*}
 
-\section{Description of the support of $\mathbf{1}_{\le r}$ when $n \le 0$}
+\subsection{Description of the support of $\mathbf{1}_{\le r}$ when $n \le 0$}
 \begin{proposition}
   [Support of $\mathbf{1}_{\le r}$ for $n=0$]
   Whenever $n = 0$ (this requires $v(t) \geq 0$),
@@ -204,7 +204,7 @@ Note all the results in this section hold for any $b$ and $d$
 with $v(b) \ge -r$ and $v(d) \ge -r$, i.e.~we do not yet need to consider cases
 based on whether $b$ and $d$ are units or not.
 
-\section{Description of the support of $\mathbf{1}_{\le r}$ when $n > 0$}
+\subsection{Description of the support of $\mathbf{1}_{\le r}$ when $n > 0$}
 In this situation we evaluate over $n > 0$ only.
 In this case $t$ is automatically a unit.
 
@@ -261,7 +261,7 @@ In summary:
   \end{equation}
 \end{proposition}
 
-\section{Rewriting the quadratic constraint on the valuation of $t$ in the $n > 0$ situation}
+\subsection{Rewriting the quadratic constraint on the valuation of $t$ in the $n > 0$ situation}
 We now analyze the inequality
 \begin{equation}
   v\left( (2at-b)^2 - (b^2-4a\bar d) \right) \geq n-r
@@ -435,13 +435,13 @@ as well as the identity
 = \frac{4 - \Norm(b \pm \tau)}{4} \]
 to calculate $v(1-\xi_1\bar{\xi_1})$ entries in the latter four cases.
 
-\section{Case analysis}
+\subsection{Case analysis}
 Up until now the analysis has been valid for all five cases of
 \Cref{lem:parameter_constraints}.
 However, starting from now on we will have to be a little more careful
 and think about which situation of \Cref{lem:parameter_constraints} we are in.
 
-\subsection{Analysis of Case 1 and 2 assuming $n > 0$ and $v(b) = 0$}
+\subsubsection{Analysis of Case 1 and 2 assuming $n > 0$ and $v(b) = 0$}
 We analyze Case 1 and 2 assuming $v(b) = 0$.
 
 Considering $n > 0$ and $n-r \le m \le n+\delta+r$ as fixed,
@@ -537,7 +537,7 @@ where each $(m,n)$ gives a volume contribution of
 Notice that $m \leq \delta + r$ could only occur when $n \leq r$.
 \end{description}
 
-\subsection{Analysis of merged Case 1 and 2 assuming $n > 0$ and $v(b) > 0$}
+\subsubsection{Analysis of merged Case 1 and 2 assuming $n > 0$ and $v(b) > 0$}
 If $v(b) > 0$ instead, so that $\ell = 0$ but still $\delta \ge 0$.
 Then \eqref{eq:t_disk_case_1_2} becomes independent of the unit $t$ because we must have
 \[ v\left( t - \frac{b}{2a} \right) = 0. \]
@@ -604,7 +604,7 @@ will work verbatim even in the $v(b) > 0$ situation, which is convenient.
   and therefore one needs to ensure that the terms arising actually match.
 \end{remark}
 
-\subsection{Analysis of Case 3\ts+, 3\ts-, 4\ts+, 4\ts- assuming $n > 0$ and $v(b) \ge 0$ and $v(d) \ge 0$}
+\subsubsection{Analysis of Case 3\ts+, 3\ts-, 4\ts+, 4\ts- assuming $n > 0$ and $v(b) \ge 0$ and $v(d) \ge 0$}
 Suppose $\ell \geq 0$ is even.
 As before we consider $n > 0$ and $n-r \le m \le n+\delta+r$ as fixed,
 and seek to compute the volume of the set of $t$
@@ -708,7 +708,7 @@ The latter inequality contradicts the assumption that $n > \ell + r$,
 so in fact this case can never occur.
 \end{description}
 
-\section{Case analysis when $v(b) = v(d) < 0$}
+\subsection{Case analysis when $v(b) = v(d) < 0$}
 We need to handle now the situation where $v(b) = v(d) < 0$.
 In that case we have $\ell = \delta = 2v(d) < 0$.
 
@@ -718,7 +718,7 @@ we still agree to fix the choice of square root $\tau$ such that
 (Note that in the right-hand side of the first inequality,
 we still have $\lambda + v(d) - \half \ell = \lambda > 0$.)
 
-\subsection{Analysis of merged Case 1 and 2 assuming $v(b) = v(d) < 0$}
+\subsubsection{Analysis of merged Case 1 and 2 assuming $v(b) = v(d) < 0$}
 In the situation where $\ell \ge n - r$,
 then for any unit $t$ we have $v(t-\frac{b}{2a}) = v(b) = -|v(d)| < 0$,
 so \eqref{eq:t_disk_case_1_2} becomes simply
@@ -750,7 +750,7 @@ to show that \eqref{eq:odd_range1} and \eqref{eq:odd_range2}
 match the above range, with the same volume contributions.
 This means that the same expression can be used for the case $v(b) = v(d) < 0$ as well.
 
-\subsection{Analysis of Case 3\ts+ and Case 4\ts+ assuming $v(b) = v(d) < 0$}
+\subsubsection{Analysis of Case 3\ts+ and Case 4\ts+ assuming $v(b) = v(d) < 0$}
 Now suppose $n > \ell + r$ and $v(b) = v(d) < 0$.
 In this situation, we have $\frac{b+\tau}{2a}$ is a unit, and
 \[ \lambda =v\left( 1 - u \bar u \right) =  v\left( 1 - \frac{\Norm(b+\tau)}{4} \right). \]
@@ -782,7 +782,7 @@ The volume contribution is now given by
 since $\max(n+|v(d)|-r, m+2|v(d)|-r)$ could actually be non-positive,
 in contrast to the earlier cases.
 
-\subsection{Analysis of Case 3\ts- and Case 4\ts+ assuming $v(b) = v(d) < 0$}
+\subsubsection{Analysis of Case 3\ts- and Case 4\ts+ assuming $v(b) = v(d) < 0$}
 Again suppose $n > \ell + r$ and $v(b) = v(d) < 0$.
 In this case, \eqref{eq:t_disk_minus_case} becomes simply
 \[ \frac{\ell}{2} = v\left( t - \frac{b-\tau}{2a} \right) \ge n - \frac{\ell}{2} - r \]
