@@ -205,14 +205,26 @@ When combined with the Satake information we have, we get the following diagram.
 \end{tikzcd}
 \end{center}
 
+\ifthesis
 \subsection{Calculation of $\BC_{S_n}$ when $n = 3$}
 The goal of this section is to make the base change
 fully known in the special case $n = 3$, where $m = \left\lfloor n/2 \right\rfloor = 1$.
 (In this case $\BC_{S_n}^{\eta^{n-1}} = \BC_{S_n}$ as $\eta^2 = 1$.)
 The completed result is \Cref{prop:BC_S3}.
+\fi
+\ifpaper
+\subsection{Example: Calculation of $\BC_{S_n}$ when $n = 3$}
+As an example, we make the base change completely explicit
+in the special case $n = 3$, where $m = \left\lfloor n/2 \right\rfloor = 1$.
+(In this case $\BC_{S_n}^{\eta^{n-1}} = \BC_{S_n}$ as $\eta^2 = 1$.)
+The completed result is \Cref{prop:BC_S3}.
+This can be considered a digression and this section will not be needed later.
+\fi
 
 This calculation parallels the $n = 2$ case that was done in \cite[Lemma 7.1.1]{ref:AFLspherical}.
+\ifthesis
 However, we will not use these results again later on.
+\fi
 When it is not more difficult, some of the results will be stated for all $n$,
 rather than $n = 3$ specifically.
 

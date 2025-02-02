@@ -411,10 +411,12 @@ showing that the injectivity essentially comes from $v(\uu\vv^\top)$ alone in th
 See \Cref{thm:semi_lie_ker_trivial} and \Cref{thm:semi_lie_ker_huge} momentarily.
 
 \subsection{Results}
+\ifthesis
 Most of the results here are dedicated toward the semi-Lie version of the AFL,
 which is the new contribution provided by this paper.
 But in \Cref{sec:results_group_AFL} we mention some other results
 we proved for the group version of the AFL.
+\fi
 
 \subsubsection{Formulas for the orbital side of the semi-Lie AFL conjecture for $n=2$}
 \label{sec:semi_lie_intro_formulas}
@@ -655,6 +657,7 @@ The hypothesis \Cref{conj:serre_pullback_space}
 is a stipulation that the pullback of two of the divisors
 behaves in the way one would expect.
 
+\ifthesis
 \subsubsection{Results for $n=3$ for the group AFL}
 \label{sec:results_group_AFL}
 For the group AFL, we were able to fully compute the orbital integral as well.
@@ -729,6 +732,7 @@ which serves as an analog to \Cref{conj:kernel_semi_lie}.
   Meanwhile, here we have only considered an inhomogeneous version of the AFL
   where the first component is $\mathbf{1}_{K'}$.
 \end{remark}
+\fi
 
 \subsection{Roadmap}
 The rest of the paper is organized as follows.
@@ -752,6 +756,7 @@ The paper begins with some general background information.
 \end{itemize}
 
 \subsubsection{Introduction and calculation of the orbital integrals}
+\ifthesis
 We then proceed to introduce the orbital integrals.
 \begin{itemize}
   \ii In \Cref{ch:orbital0} we introduce the weighted orbital integral
@@ -767,6 +772,19 @@ We then proceed to introduce the orbital integrals.
   The analogous calculation is in \Cref{ch:orbitalFJ1,ch:orbitalFJ2},
   which is used to prove \Cref{thm:semi_lie_formula} and its corollaries.
 \end{itemize}
+\fi
+\ifpaper
+In \Cref{ch:orbital0} we introduce the weighted orbital integral
+for the group version of the AFL for full spherical Hecke algebra briefly.
+This is only for comparison with the definition in later sections
+and will not be used again afterwards.
+
+In \Cref{ch:orbitalFJ0} we introduce the weighted orbital integral
+for the semi-Lie version of the AFL for full spherical Hecke algebra,
+and state the parameters to be used in \Cref{lem:semi_lie_params}.
+The main calculation is carried out in \Cref{ch:orbitalFJ1,ch:orbitalFJ2},
+which is used to prove \Cref{thm:semi_lie_formula} and its corollaries.
+\fi
 
 \subsubsection{Large kernel and image}
 Having completely computed the orbital integrals in these cases,
@@ -774,7 +792,9 @@ we take a side trip in \Cref{ch:ker} to prove the large image results asserted.
 We establish \Cref{conj:kernel_semi_lie} for $n = 2$ by proving the asserted
 \Cref{thm:semi_lie_ker_trivial} and \Cref{thm:semi_lie_ker_huge}
 for the orbital integral on $(S_2(F) \times V'_2(F))\rs^-$.
+\ifthesis
 We also prove \Cref{thm:no_kernel_group} for the orbital integral on $S_3(F)\rs^-$.
+\fi
 
 \subsubsection{Geometric side}
 We then turn our attention to the other parts of the two versions of the AFL.
@@ -797,6 +817,7 @@ the subsequent chapters aim to prove \Cref{thm:semi_lie_n_equals_2}.
 Finally, in \Cref{ch:finale} we tie everything together and establish
 \Cref{thm:semi_lie_n_equals_2}.
 
+\ifthesis
 An approximate dependency chart between the chapters is given in Figure~\ref{fig:depchart}.
 
 \begin{figure}[ht]
@@ -819,3 +840,30 @@ An approximate dependency chart between the chapters is given in Figure~\ref{fig
     arranged to loosely resemble the Batman logo.}
   \label{fig:depchart}
 \end{figure}
+\fi
+\ifpaper
+\section{Acknowledgments}
+This paper is a subset of the author's PhD thesis \cite{ref:evans_thesis}
+which was completed under the supervision of Wei Zhang.
+(The thesis \cite{ref:evans_thesis} contains some additional calculations
+related to the $n=3$ case of \Cref{conj:inhomog_spherical}
+which were not included in this paper, but can be found in the published thesis.
+Some Sage source files are also provided in the published thesis.)
+I thank my advisor Wei Zhang for suggesting this project,
+for his infinite patience and kindness throughout my entire time during graduate school,
+and his seemingly instantaneous response times at all hours of the day
+to the many, many stupid questions I asked.
+
+I thank Ryan C.~Chen for his interest in this project,
+reading a draft of the thesis, and for suggesting \cite{ref:CLZ}
+which helped to remove some hypotheses from the main result of this paper.
+I also thank Mark Sellke for proofreading a draft of my PhD thesis
+and finding several corrections.
+
+I thank the organizers and attendees of the fall 2024
+learning seminar on arithmetic inner product formula
+for inviting me to speak about my work-in-progress, and their helpful comments on it
+leading directly to improvements to this paper.
+
+This work was partially supported by NSF GRFP under grant numbers 1745302 and 2141064.
+\fi

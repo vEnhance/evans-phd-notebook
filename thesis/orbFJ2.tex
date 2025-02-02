@@ -73,11 +73,20 @@ In other words, we obtain
   (-1)^k (q^s)^k
   \left( q^{\min\left( v(e), \left\lfloor \frac{k+\theta-v(c)+r}{2} \right\rfloor \right) - \max\left( 0, \left\lceil \frac{k-v(c)-r}{2} \right\rceil \right)} + \dots + q^0 \right).
 \end{align*}
+\ifthesis
 Here, we retain the convention from \Cref{ch:orbital2} that ellipses of the form
 \[ q^i + \dots + q^{i'} \]
 will denote the expression $q^i + q^{i-1} + \dots + q^{i'}$
 (i.e.\ within any ellipses, the exponents are understood to decrease by $1$,
 and the sums are always nonempty, meaning $i \ge i'$).
+\fi
+\ifpaper
+Here, we adopt the convention that ellipses of the form
+\[ q^i + \dots + q^{i'} \]
+denote the expression $q^i + q^{i-1} + \dots + q^{i'}$
+(i.e.\ within any ellipses, the exponents are understood to decrease by $1$,
+and the sums are always nonempty, meaning $i \ge i'$).
+\fi
 
 To simplify the exponent, write
 \begin{equation}
@@ -671,9 +680,35 @@ For brevity, we will define
 (We allow the degenerate case $\kappa = 0$ for convenience,
 in which case $\cc_\guv$ is still identically zero.)
 
+\ifthesis
 We return to differentiating \eqref{eq:top_derivative};
 to do so we reuse the (self-contained) extremely easy \Cref{lem:extremely_easy_lemma}
 from before.
+\fi
+\ifpaper
+We return to differentiating \eqref{eq:top_derivative}.
+We will use the following extremely easy lemma:
+\begin{lemma}
+  [Extremely easy]
+  \label{lem:extremely_easy_lemma}
+  If $a_0 \le a_1$ are integers then
+  \begin{align*}
+    \sum_{k=a_0}^{a_1} (k-a_0) \cdot k \cdot (-1)^k
+    &= (-1)^{a_1} \cdot \frac{a_1(a_1-a_0+1)}{2} - \frac{(-1)^{a_0} + (-1)^{a_1}}{4} \cdot a_0 \\
+    \sum_{k=a_0}^{a_1} (a_1-k) \cdot k \cdot (-1)^k
+    &= (-1)^{a_0} \cdot \frac{a_0(a_1-a_0+1)}{2} - \frac{(-1)^{a_0} + (-1)^{a_1}}{4} \cdot a_1.
+  \end{align*}
+\end{lemma}
+\begin{proof}
+  This follows trivially by induction on $a_1$.
+  (Alternatively, use a symbolic engine like WolframAlpha;
+  see
+  \href{https://www.wolframalpha.com/input?i=sum+\%28k-a\%29*k*\%28-1\%29\%5Ek+from+k\%3Da+to+b}{here}
+  for the first sum and
+  \href{https://www.wolframalpha.com/input?i=sum+\%28b-k\%29*k*\%28-1\%29\%5Ek+from+k\%3Da+to+b}{here}
+  for the second sum.)
+\end{proof}
+\fi
 For the range of $k$ given, we split it into three parts.
 \begin{itemize}
   \ii For $-v(b) + r + 2v(d-a) \le k < -v(b) + v(e) + v(d-a)$,

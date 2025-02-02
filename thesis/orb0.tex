@@ -1,10 +1,23 @@
+\ifthesis
 \section{Synopsis of the weighted orbital integral $\Orb(\gamma, \phi, s)$ for $\gamma \in S_3(F)\rs$ and $\phi \in \HH(S_3(F))$}
 \label{ch:orbital0}
 
 This section defines the weighted orbital integral
 and describes the parameters which we will use to express our answer.
+\fi
+\ifpaper
+\section{Definition of the weighted orbital integral for $S_n(F)$}
+\label{ch:orbital0}
+We briefly mention the definition of the weighted orbital integral
+that appears in \Cref{conj:inhomog_spherical}.
+However, we will not reuse this definition later on.
+This definition is only used for comparison with later definitions
+and to provide context for \Cref{conj:inhomog_spherical}.
+\fi
 
+\ifthesis
 \subsection{Initial definition of the weighted orbital integral for general $S_n(F)$}
+\fi
 Let $H = \GL_{n-1}(F)$.
 Then $H$ has a natural embedding into $\GL_n(E)$ by
 \[ h \mapsto \begin{pmatrix} h & 0 \\ 0 & 1 \end{pmatrix} \]
@@ -47,6 +60,7 @@ Then the following result is true.
   where the transfer factor $\omega$ is defined in \Cref{ch:geo}.
 \end{theorem}
 
+\ifthesis
 \subsection{Basis for the indicator functions in $\HH(S_3(F))$}
 \label{ch:orbital0_hecke_basis}
 From now on assume $n = 3$.
@@ -964,3 +978,4 @@ We now state the derivative of the orbital integral in the three cases we descri
   \end{itemize}
 \end{theorem}
 We prove \Cref{thm:S3_orbital_deriv} in \Cref{sec:S3_orbital_deriv}.
+\fi
