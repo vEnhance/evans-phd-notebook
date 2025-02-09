@@ -646,6 +646,7 @@ Thus, we arrive at the following:
   \]
   so one merely subtracts the left-hand sides evaluated at $r$ and $r-1$ for $r \ge 1$
   to get
+  \ifthesis
   \begin{align*}
     &\phantom= \sum_{j=0}^r \left[ 1 + 2q + 2q^2 + \dots + 2q^{r-j} \right] \mathbf{1}_{K'_{S,j}}
     - \sum_{j=0}^{r-1} \left[ 1 + 2q + 2q^2 + \dots + 2q^{(r-1)-j} \right] \mathbf{1}_{K'_{S,j}} \\
@@ -654,5 +655,16 @@ Thus, we arrive at the following:
     - \sum_{j=0}^{r-1} \left[ 1 + 2q + 2q^2 + \dots + 2q^{(r-1)-j} \right] \mathbf{1}_{K'_{S,j}} \\
     &= \mathbf{1}_{K'_{S,r}} + \sum_{j=0}^{r-1} \left[ 2q^{r-j}\mathbf{1}_{K'_{S,j}} \right].
   \end{align*}
+  \fi
+  \ifpaper
+  \begin{align*}
+    &\phantom= \sum_{j=0}^r \left[ 1 + 2q + 2q^2 + \dots + 2q^{r-j} \right] \mathbf{1}_{K'_{S,j}} \\
+    &\qquad - \sum_{j=0}^{r-1} \left[ 1 + 2q + 2q^2 + \dots + 2q^{(r-1)-j} \right] \mathbf{1}_{K'_{S,j}} \\
+    &= \mathbf{1}_{K'_{S,r}} +
+      \sum_{j=0}^{r-1} \left[ 1 + 2q + 2q^2 + \dots + 2q^{r-j} \right] \mathbf{1}_{K'_{S,j}} \\
+    &\qquad - \sum_{j=0}^{r-1} \left[ 1 + 2q + 2q^2 + \dots + 2q^{(r-1)-j} \right] \mathbf{1}_{K'_{S,j}} \\
+    &= \mathbf{1}_{K'_{S,r}} + \sum_{j=0}^{r-1} \left[ 2q^{r-j}\mathbf{1}_{K'_{S,j}} \right].
+  \end{align*}
+  \fi
   as claimed.
 \end{proof}

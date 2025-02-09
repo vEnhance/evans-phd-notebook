@@ -299,6 +299,7 @@ In other words, we get
   ^{\min\left( \frac{\theta}{2} + r, \left\lfloor \frac{v(b) + r + k}{2} \right\rfloor \right) } q^{n_2}.
 \]
 Hence the total contribution from \textbf{Case 6} can be written as
+\ifthesis
 \begin{align*}
   I^{\text{6+}} + I^{\text{6-}}
   &=
@@ -317,6 +318,27 @@ Hence the total contribution from \textbf{Case 6} can be written as
     + \min\left( v(e), k + \frac{\theta}{2} - v(c) \right) \\
     &\hspace{16ex} - 2\left\lceil \frac{k + \theta - v(c) + r + 1}{2} \right\rceil \bigg) (-q^s)^k.
 \end{align*}
+\fi
+\ifpaper
+\begin{align*}
+  I^{\text{6+}} + I^{\text{6-}}
+  &=
+  \sum_{k = - v(b) - r}^{v(c) + r - 1} (-q^s)^k \left(
+    q^{\min\left( \frac{\theta}{2} + r, \left\lfloor \frac{v(b) + r + k}{2} \right\rfloor \right)}
+    + \dots
+    + q^{\max\left(0, \left\lceil \frac{k + \theta - v(c) + r + 1}{2} \right\rceil \right)}
+    \right) \\
+  &+ q^{\frac{\theta}{2} + r}
+  \sum_{k = \theta - v(b) + r + 1}^{v(c) + r}
+  \left( k - \theta + v(b) - r \right) (-q^s)^k \\
+  &+ q^{\frac{\theta}{2} + r}
+  \sum_{k = v(c) + r + 1}^{2v(e) - \theta + v(c) - r - 1}
+  \bigg( 2 +
+    \min\left( v(e), k - \frac{\theta}{2} + v(b) \right) \\
+    &+\hspace{16ex} \min\left( v(e), k + \frac{\theta}{2} - v(c) \right) \\
+    &\hspace{16ex} - 2\left\lceil \frac{k + \theta - v(c) + r + 1}{2} \right\rceil \bigg) (-q^s)^k.
+\end{align*}
+\fi
 We'd like to further simplify the coefficient of $q^{\frac{\theta}{2}+r}$ as follows.
 First, we may as well write
 \begin{align*}

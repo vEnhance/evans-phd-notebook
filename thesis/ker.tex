@@ -401,16 +401,33 @@ all the polynomials $P_r(Y) - P_{N+2}(Y)$ lie in the kernel.
 We now prove there is no choice of a single $Y \in \CC^\times$ for which
 $P_r(Y)$ is eventually constant, which would complete the proof.
 Indeed, if we write
+\ifthesis
 \[
   P_r(Y) - q P_{r-1}(Y)
   = q^r(Y^r + Y^{-r}) - 2q^{r-1} (Y^{r-1} + Y^{-(r-1)}) + q^{r-2}(Y^{r-2} + Y^{-(r-2)})
 \]
+\fi
+\ifpaper
+\begin{align*}
+  &P_r(Y) - q P_{r-1}(Y) \\
+  &= q^r(Y^r + Y^{-r}) - 2q^{r-1} (Y^{r-1} + Y^{-(r-1)}) + q^{r-2}(Y^{r-2} + Y^{-(r-2)})
+\end{align*}
+\fi
 then
+\ifthesis
 \begin{align*}
   (P_r(Y) - q P_{r-1}(Y)) - (P_{r-1}(Y) - q P_{r-2}(Y))
   &= q^3(Y^r + Y^{-r}) - 3q^2(Y^{r-1} + Y^{-(r-1)}) \\
   &\qquad + 3q(Y^{r-2} + Y^{-(r-2)}) - (Y^{r-3} + Y^{-(r-3)}).
 \end{align*}
+\fi
+\ifpaper
+\begin{align*}
+  &(P_r(Y) - q P_{r-1}(Y)) - (P_{r-1}(Y) - q P_{r-2}(Y)) \\
+  &= q^3(Y^r + Y^{-r}) - 3q^2(Y^{r-1} + Y^{-(r-1)}) \\
+  &\qquad + 3q(Y^{r-2} + Y^{-(r-2)}) - (Y^{r-3} + Y^{-(r-3)}).
+\end{align*}
+\fi
 So we are done by \Cref{lem:chebyshev}.
 \end{proof}
 
@@ -434,8 +451,16 @@ for which the orbital integral does not vanish.
   \[ \partial \Orb \left( \guv, \phi_r + (q+1)\phi_{r-1} + q\phi_{r-2} \right) = 0 \]
   holds for all $r \ge 5$ with at most three exceptions,
   namely those $r$ with
+  \ifthesis
   \[ v(e) - \min\left(\frac{v(b)+v(c)-1}{2}, v(d-a)\right) + 2
     \le r \le v(e) - \min\left(\frac{v(b)+v(c)-1}{2}, v(d-a)\right) + 4. \]
+  \fi
+  \ifpaper
+  \begin{align*}
+    &v(e) - \min\left(\frac{v(b)+v(c)-1}{2}, v(d-a)\right) + 2 \\
+    &\le r \le v(e) - \min\left(\frac{v(b)+v(c)-1}{2}, v(d-a)\right) + 4.
+  \end{align*}
+  \fi
 \end{theorem}
 \begin{proof}
   As always $\theta \coloneqq \min\left( v(b)+v(c), 2v(d-a) \right)$

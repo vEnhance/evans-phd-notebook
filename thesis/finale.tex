@@ -153,17 +153,35 @@ Note that
 For brevity, we henceforth introduce the symbol $\GK$ for the sum above;
 hence we have
 \begin{equation}
+  \ifthesis
   \left< \ZO4(1), \; \ZO4(\bar u \sqrt{\eps} u), \; \ZO4((g \cdot \varpi^r)_-) \right>_{\MM_2 \times \MM_2}
     = \GK(r, v(b), v(c), v(e), v(d-a)).
+  \fi
+  \ifpaper
+  \begin{aligned}
+    &\GK(r, v(b), v(c), v(e), v(d-a)) \\
+    &= \left< \ZO4(1), \; \ZO4(\bar u \sqrt{\eps} u), \; \ZO4((g \cdot \varpi^r)_-) \right>_{\MM_2 \times \MM_2}.
+  \end{aligned}
+  \fi
   \label{eq:GKdef}
 \end{equation}
 
 In that case we also have
+\ifthesis
 \[
   \left< \ZO4(1), \;
     \ZO4\left(\frac{\bar u \sqrt{\eps} u}{\varpi}\right), \;
     \ZO4((g \cdot \varpi^r)_-) \right>_{\MM_2 \times \MM_2}
     = \GK(r, v(b), v(c), v(e)-1, v(d-a)). \]
+\fi
+\ifpaper
+\begin{align*}
+  &\GK(r, v(b), v(c), v(e)-1, v(d-a)) \\
+  &= \left< \ZO4(1), \;
+    \ZO4\left(\frac{\bar u \sqrt{\eps} u}{\varpi}\right), \;
+    \ZO4((g \cdot \varpi^r)_-) \right>_{\MM_2 \times \MM_2}.
+\end{align*}
+\fi
 Subtracting the two gives
 \begin{equation}
   \begin{aligned}
@@ -220,8 +238,14 @@ The main claim is that the following formula holds:
   \label{thm:miracle}
   We have
   \begin{align*}
+    \ifthesis
     &\frac{(-1)^{r+v(c)}}{\log q}\Big(\partial\Orb(r, v(b), v(c), v(e), v(d-a))
       + \partial\Orb(r, v(b), v(c), v(e)-1, v(d-a))\Big) \\
+    \fi
+    \ifpaper
+    \frac{(-1)^{r+v(c)}}{\log q}\Big(&\partial\Orb(r, v(b), v(c), v(e), v(d-a)) \\
+    &+ \partial\Orb(r, v(b), v(c), v(e)-1, v(d-a))\Big) \\
+    \fi
     &= \GK(r, v(b), v(c), v(e), v(d-a)).
   \end{align*}
 \end{theorem}
@@ -444,12 +468,24 @@ We phrase this entirely based on the quantities in the geometric side to keep in
 \begin{proof}
   Recall that
   \begin{align*}
+    \ifpaper
+    &
+    \fi
     \GK(r, v(b), v(c), v(e), v(d-a))
+    \ifpaper
+    \\
+    \fi
     &= \frac{(-1)^{r+v(c)}}{\log q} \Big(
       \partial \Orb(r, v(b), v(c), v(e), v(d-a)) \\
       &\qquad+ \partial \Orb(r, v(b), v(c), v(e)-1, v(d-a))
       \Big) \\
+    \ifpaper
+    &
+    \fi
     \GK(r-1, v(b), v(c), v(e), v(d-a))
+    \ifpaper
+    \\
+    \fi
     &= \frac{(-1)^{r-1+v(c)}}{\log q} \Big(
       \partial \Orb(r-1, v(b), v(c), v(e), v(d-a)) \\
       &\qquad- \partial \Orb(r-1, v(b), v(c), v(e)-1, v(d-a))
