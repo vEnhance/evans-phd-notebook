@@ -12,6 +12,9 @@ with open("targets") as f:
         with open(target) as target_file:
             for line in target_file:
                 line = line.replace(r"\subsubsubsection", r"\paragraph")
+                line = line.replace(r"Case 5", r"Case 1")
+                line = line.replace(r"Case 6", r"Case 2")
+
                 if line.strip() == r"\ifthesis":
                     thesis_mode = True
                     continue
