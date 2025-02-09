@@ -340,11 +340,12 @@ on $\MM_2 \times \MM_2$ as follows.
   \end{center}
 \end{definition}
 
+\ifthesis
 We propose that the Serre tensor construction identifies
 the space $\TTr$ we previously described with the following $\ZO4$ divisor:
 \begin{conjecture}
   [$\TTr \simeq \ZO4(\varpi^r)$]
-  \label{conj:serre_pullback_space}
+  \label{hypo:serre_pullback_space}
   The Serre tensor construction gives an isomorphism
   \[ \TTr \simeq \ZO4(\varpi^r) \]
   such that we get an analogous diagram
@@ -359,6 +360,29 @@ We assume this conjecture henceforth.
 (In fact, for $n = 2$ we could even go as far as to take this as a definition of $\TTr$,
 but then the generalization \Cref{conj:semi_lie_spherical} would be less obvious,
 since a definition like this would not easily extend to $n > 2$.)
+\fi
+\ifpaper
+We need the following additional hypothesis:
+\begin{hypothesis}
+  [$\TTr \simeq \ZO4(\varpi^r)$]
+  \label{hypo:serre_pullback_space}
+  The Serre tensor construction gives an isomorphism
+  \[ \TTr \simeq \ZO4(\varpi^r) \]
+  such that we get an analogous diagram
+  \begin{center}
+  \begin{tikzcd}
+    & \ar[ld] \ZO4(\varpi^r) \ar[rd] & \\
+    \MM_{2} && \MM_{2}.
+  \end{tikzcd}
+  \end{center}
+\end{hypothesis}
+This hypothesis is shown in the in-preparation
+\cite{ref:CLZ} by Ryan C.~Chen, Weixiao Lu, and Wei Zhang.
+Even without this hypothesis,
+for $n = 2$ we could even go as far as to take this as a definition of $\TTr$,
+but then the generalization \Cref{conj:semi_lie_spherical} would be less obvious,
+since a definition like this would not easily extend to $n > 2$.
+\fi
 
 \subsubsection{The divisor $\ZO3$ on $\MM_2$}
 Turning to $\MM_2 \times \MM_2$, we will henceforth always identify $\MM_2$

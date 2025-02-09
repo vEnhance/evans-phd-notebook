@@ -619,14 +619,25 @@ is indeed injective.
 \end{remark}
 
 \subsubsection{The geometric side of the semi-Lie AFL conjecture for $n=2$}
+\ifthesis
 On the geometric side, we were also able to determine the intersection numbers
-subject to the provisionsal \Cref{conj:serre_pullback_space}.
+subject to the provisionsal \Cref{hypo:serre_pullback_space}.
 \begin{theorem}
-  [Semi-Lie AFL for $n=2$]
+  [Semi-Lie AFL for the full Hecke algebra for $n=2$]
   \label{thm:semi_lie_n_equals_2}
-  Assume \Cref{conj:serre_pullback_space}.
+  Assume \Cref{hypo:serre_pullback_space}.
   Then our generalized AFL conjecture, \Cref{conj:semi_lie_spherical}, holds for $n = 2$.
 \end{theorem}
+\fi
+\ifpaper
+To provide evidence for \Cref{conj:semi_lie_spherical}, we prove that:
+\begin{theorem}
+  [Semi-Lie AFL for the full Hecke algebra for $n=2$]
+  \label{thm:semi_lie_n_equals_2}
+  Our generalized AFL conjecture, \Cref{conj:semi_lie_spherical}, holds for $n = 2$.
+\end{theorem}
+\fi
+
 The proof of \Cref{thm:semi_lie_n_equals_2} is built up gradually
 throughout the paper, culminating in \Cref{ch:finale}.
 
@@ -654,7 +665,7 @@ and verify that, under the base change \Cref{ch:satake}
 and the matching condition described in \Cref{ch:rs_matching},
 the two obtained formulas are identical.
 \end{itemize}
-The hypothesis \Cref{conj:serre_pullback_space}
+The hypothesis \Cref{hypo:serre_pullback_space}
 is a stipulation that the pullback of two of the divisors
 behaves in the way one would expect.
 
@@ -859,7 +870,7 @@ to the many, many stupid questions I asked.
 
 I thank Ryan C.~Chen for his interest in this project,
 reading a draft of the thesis, and for suggesting \cite{ref:CLZ}
-which helped to remove some hypotheses from the main result of this paper.
+which helped to remove the hypotheses from the main result of this paper.
 I also thank Mark Sellke for proofreading a draft of my PhD thesis
 and finding several corrections.
 
