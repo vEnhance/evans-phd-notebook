@@ -4,7 +4,6 @@ set -euxo pipefail
 
 latexmk main
 latexmk -pdf -cd thesis/thesis.tex
-latexmk -pdf -cd thesis/paper.tex
 latexmk -cd slides/slides.tex
 
 gcloud storage cp chen-evanchen-phd-math-2025-thesis.pdf gs://web.evanchen.cc/textbooks/chen-evanchen-phd-math-2025-thesis.pdf --cache-control="private,max-age=0"
