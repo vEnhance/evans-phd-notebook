@@ -307,11 +307,11 @@ and we construct it as follows.
 \begin{definition}
   For $k \ge 4$ an even integer,
   the \alert{Eisenstein series} is defined by
-  \[ E_k(z) = \half
+  \[ G_k(z) =
     \sum_{\substack{m,n \in \ZZ \\ (m,n) \ne (0,0)}} (mz+n)^{-k}. \]
 \end{definition}
 The sum is absolutely convergent for $z \in \HH$.
-Indeed, the contribution of terms with $m=0$ is $\zeta(k)$,
+Indeed, the contribution of terms with $m=0$ is $2\zeta(k)$, and
 the contribution of (absolute values) of remaining terms is
 \begin{align*} \sum_{m \ne 0} \sum_{n}
   \left\lvert mz+n \right\rvert^{-k}
@@ -327,7 +327,7 @@ the contribution of (absolute values) of remaining terms is
   + \frac{4}{(2\Im z)^{k/2}} \zeta(k/2)^2 < \infty.
 \end{align*}
 It also satisfies the functional equation as
-\[ E_k\left( \frac{az+b}{cz+d} \right)
+\[ G_k\left( \frac{az+b}{cz+d} \right)
   = (cz+d)^{-k}
   \sum_{\substack{m,n \in \ZZ \\ (m,n) \ne (0,0)}}
   \left( (ma+nc)z + (mb+nd)  \right)^{-k}
@@ -335,7 +335,17 @@ It also satisfies the functional equation as
 and since $ad-bc=1$,
 the map $(m,n) \mapsto (ma+nc,mb+nd)$ is a bijection on $\ZZ^2 - \{(0,0)\}$
 (multiplying by a matrix in $\SL_2(\ZZ)$),
-so the right-hand side is $(cz+d)^{-k} E_k(z)$.
+so the right-hand side is $(cz+d)^{-k} G_k(z)$.
+
+The Fourier expansion of $G_k$ is
+\[ G_k(z) =
+  2\zeta(k) + \frac{2(2\pi i)^{2k}}{(2k-1)!}
+  \sum_{n=1}^\infty \sigma_{2k-1}(n) q^n. \]
+
+Often, it is convenient to normalize this modular form by
+dividing by $2\zeta(k)$. The resulting modular form is called
+the \alert{normalized Eisenstein series}:
+\[ E_k = \frac{1}{2\zeta(k)} G_k. \]
 
 %% TODO calculate
 
